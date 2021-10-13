@@ -1,0 +1,23 @@
+Package: metrica
+Title: Error Metrics for Predicted-Observed Data
+Version: 1.0.1
+Authors@R: c(
+    person("Adrian", "Correndo", email = "correndo@ksu.edu", role = "cre", comment = c(ORCID = "0000-0002-4172-289X")),
+    person("Luiz", "Moro Rosso", email = "lhmrosso@ksu.edu", role = "aut", comment = c(ORCID = "0000-0002-8642-911X")),
+    person("Dean", "Holzworth", email = "dean.holzworth@csiro.au", role = "aut"),
+    person("Ignacio", "Ciampitti", email = "ciampitti@ksu.edu", role = "aut", comment = c(ORCID = "0000-0001-9619-5129")))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Suggests: 
+    covr,
+    testthat (>= 2.0.0)
+Config/testthat/edition: 2
+Depends: 
+    R (>= 2.10)
+Imports:
+    ggplot2,
+    smatr
