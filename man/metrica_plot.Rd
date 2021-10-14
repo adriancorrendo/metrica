@@ -4,18 +4,18 @@
 \alias{metrica_plot}
 \title{metrica_plot}
 \usage{
-metrica_plot(x, y)
+metrica_plot(obs, pre)
 }
 \arguments{
-\item{x}{Vector with numeric elements.}
+\item{obs}{Vector with observed values (numeric).}
 
-\item{y}{Vector with numeric elements.}
+\item{pre}{Vector with predicted values (numeric).}
 }
 \value{
 Object of class \code{ggplot}.
 }
 \description{
-Uncorrected Standard Deviation (uSD).
+Scatter plot of Predictions and Observations.
 }
 \details{
 Creates a scatter plot of sim vs. obs.
@@ -24,7 +24,7 @@ Creates a scatter plot of sim vs. obs.
 \dontrun{
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 10)
-metrica_plot(x = X, y = Y)
+metrica_plot(obs = X, pre = Y)
 }
 }
 \seealso{

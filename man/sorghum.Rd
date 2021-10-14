@@ -28,6 +28,6 @@ validation of version number 2020.03.27.4956. Data available at:
 \url{https://doi.org/10.7910/DVN/EJS4M0}.
 Further details can be found at the official APSIM Next Generation
 website:
-\url{https://apsimnextgeneration.netlify.app/modeldocumentation/}
+\url{https://APSIMnextgeneration.netlify.app/modeldocumentation/}
 }
 \keyword{datasets}

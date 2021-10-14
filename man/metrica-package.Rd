@@ -4,7 +4,7 @@
 \name{metrica-package}
 \alias{metrica}
 \alias{metrica-package}
-\title{metrica: Error Metrics for Predicted-Observed data}
+\title{metrica: Error Metrics for Predicted-Observed Data}
 \description{
 What the package does (one paragraph).
 }

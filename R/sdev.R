@@ -5,6 +5,7 @@
 #' @details Calculates uSD from a vector x.
 #' @examples 
 #' \dontrun{
+#' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' sdev(x = X)
 #' }

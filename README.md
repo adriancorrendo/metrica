@@ -13,9 +13,9 @@ status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metric
 coverage](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg)](https://codecov.io/gh/adriancorrendo/metrica?branch=master)
 <!-- badges: end -->
 
-The goal of metrica packages is to offer preulation models users a
-toolbox of different error metrics accounting for different aspects of
-the…
+The goal of the *metrica* package is to offer users of point-forecast
+models a toolbox with error metrics accounting for different aspects of
+the agreement between predicted and observed values.
 
 <img src="man/figures/metrica_logo.png" height="300" align="right"/>
 
