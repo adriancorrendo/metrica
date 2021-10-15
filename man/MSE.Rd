@@ -4,9 +4,11 @@
 \alias{MSE}
 \title{MSE}
 \usage{
-MSE(obs, pre)
+MSE(data, obs, pre)
 }
 \arguments{
+\item{data}{Dataframe with observed and predicted vectors.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pre}{Vector with predicted values (numeric).}

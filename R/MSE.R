@@ -1,5 +1,6 @@
 #' @title MSE
 #' @description Mean Square Error.
+#' @param data Dataframe with observed and predicted vectors.
 #' @param obs Vector with observed values (numeric).
 #' @param pre Vector with predicted values (numeric).
 #' @return Element of class `double`.
@@ -14,7 +15,13 @@
 #' }
 #' @rdname MSE
 #' @export 
-MSE <- function(obs, pre){
-  sum((obs-pre)^2)/length(obs)
+MSE <- function(data, obs, pred, ...,
+                options = list(), 
+                na_rm = TRUE) {
+  names <- names(data)
+  obs <- tidyselect::vars_pull(names, {{obs}})
+  pred <- tidyselect::vars_pull(names, {{obs}})
+  
+  sum((data$obs-data$pre)^2)/length(data$obs)
 }
 

@@ -18,7 +18,7 @@ test_that('no error MBE', {
   expect_false(inherits(MBE, "try-error"))
 })
 
-MSE <- MSE(obs = wheat$obs, pre = wheat$pre)
+MSE <- MSE(data = wheat, obs = obs, pre = pre)
 
 test_that('no error MSE', {
   expect_false(inherits(MSE, "try-error"))
