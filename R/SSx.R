@@ -1,7 +1,7 @@
 #' @title SSx
 #' @description Sum of Squares (SS) or Uncorrected Variance (not n-1).
 #' @param x Vector with numeric elements.
-#' @return Element of class `double`.
+#' @return Element of class `numeric`.
 #' @details Calculates the SS from a vector x.
 #' @examples 
 #' \dontrun{
@@ -12,5 +12,6 @@
 #' @rdname SSx
 #' @export 
 SSx <- function(x){
-  sum((x - mean(x))^2)/length(x)
+  result <- sum((x - mean(x))^2)/length(x)
+  return(result)
 }

@@ -4,15 +4,15 @@
 \alias{MBE}
 \title{MBE}
 \usage{
-MBE(obs, pre)
+MBE(obs, pred)
 }
 \arguments{
 \item{obs}{Vector with observed values (numeric).}
 
-\item{pre}{Vector with predicted values (numeric).}
+\item{pred}{Vector with predicted values (numeric).}
 }
 \value{
-Element of class \code{double}.
+Element of class \code{numeric}.
 }
 \description{
 Mean Bias Error.
@@ -25,7 +25,7 @@ values.
 \dontrun{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
-Y <- rnorm(n = 100, mean = 0, sd = 9)
-MBE(obs = X, pre = Y)
+Y <- X + rnorm(n=100, mean = 0, sd = 3)
+MBE(obs = X, pred = Y)
 }
 }

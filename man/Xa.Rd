@@ -4,12 +4,12 @@
 \alias{Xa}
 \title{Xa}
 \usage{
-Xa(obs, pre)
+Xa(obs, pred)
 }
 \arguments{
 \item{obs}{Vector with observed values (numeric).}
 
-\item{pre}{Vector with predicted values (numeric).}
+\item{pred}{Vector with predicted values (numeric).}
 }
 \value{
 Element of class \code{double}.
@@ -24,7 +24,7 @@ Calculates the Xa in Predicted-Observed dataset
 \dontrun{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
-Y <- rnorm(n = 100, mean = 0, sd = 9)
-Xa(obs = X, pre = Y)
+Y <- X + rnorm(n=100, mean = 0, sd = 3)
+Xa(obs = X, pred = Y)
 }
 }

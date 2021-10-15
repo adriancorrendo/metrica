@@ -10,7 +10,7 @@ SSx(x)
 \item{x}{Vector with numeric elements.}
 }
 \value{
-Element of class \code{double}.
+Element of class \code{numeric}.
 }
 \description{
 Sum of Squares (SS) or Uncorrected Variance (not n-1).

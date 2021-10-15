@@ -4,15 +4,15 @@
 \alias{CCC}
 \title{CCC}
 \usage{
-CCC(obs, pre)
+CCC(obs, pred)
 }
 \arguments{
 \item{obs}{Vector with observed values (numeric).}
 
-\item{pre}{Vector with predicted values (numeric).}
+\item{pred}{Vector with predicted values (numeric).}
 }
 \value{
-Element of class \code{double}.
+Element of class \code{numeric}.
 }
 \description{
 Concordance Correlation Coefficient.
@@ -24,7 +24,7 @@ Calculates the CCC for Predicted-Observed dataset.
 \dontrun{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
-Y <- rnorm(n = 100, mean = 0, sd = 9)
-CCC(obs = X, pre = Y)
+Y <- X + rnorm(n=100, mean = 0, sd = 3)
+CCC(obs = X, pred = Y)
 }
 }

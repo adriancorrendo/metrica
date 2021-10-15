@@ -10,7 +10,7 @@ sdev(x)
 \item{x}{Vector with numeric elements.}
 }
 \value{
-Element of class \code{double}.
+Element of class \code{numeric}.
 }
 \description{
 Uncorrected Standard Deviation (uSD).
