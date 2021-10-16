@@ -2,6 +2,8 @@
 #' @description Lack of correlation (LCS)component of the Mean Square Error (MSE). 
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the LCS for a Predicted-Observed dataset 
 #' following the MSE segregattion suggested by Kobayashi and Salam 
@@ -15,7 +17,8 @@
 #' }
 #' @rdname LCS
 #' @export 
-LCS <- function(obs, pred){
+LCS <- function(obs, pred,
+                na.rm = TRUE){
   result <- 
     2 * metrica::sdev(pred) * metrica::sdev(obs) *
     (1 - stats::cor(obs,pred))

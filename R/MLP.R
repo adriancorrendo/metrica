@@ -3,6 +3,8 @@
 #' Square Error (MSE).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the MLP for a Predicted-Observed dataset
 #' following the MSE decomposition suggested by Correndo et al (2021).
@@ -15,7 +17,8 @@
 #' }
 #' @rdname MLP
 #' @export 
-MLP <- function(obs, pred){
+MLP <- function(obs, pred,
+                na.rm = TRUE){
   result <- sum (abs(obs - ((mean(obs) -
         (metrica::sdev(obs)/metrica::sdev(pred)*mean(pred))) +
           metrica::sdev(obs)/metrica::sdev(pred) * pred)) *

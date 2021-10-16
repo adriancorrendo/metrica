@@ -2,6 +2,8 @@
 #' @description Mean Absolute Percentage Error.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the MAPE for a Predicted-Observed dataset.
 #' @examples 
@@ -13,7 +15,8 @@
 #' }
 #' @rdname MAPE
 #' @export 
-MAPE <- function(obs, pred){
+MAPE <- function(obs, pred,
+                 na.rm = TRUE){
   result <- (sum((abs(obs-pred)/obs))/length(obs))*100
   return(result)
 }

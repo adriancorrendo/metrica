@@ -2,6 +2,8 @@
 #' @description Coefficient of determination (R2).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the R2 for a Predicted-Observed dataset.
 #' @examples 
@@ -13,7 +15,8 @@
 #' }
 #' @rdname R2
 #' @export 
-R2 <- function(obs, pred){
+R2 <- function(obs, pred,
+               na.rm = TRUE){
   result <- stats::cor(obs,pred)^2
   return(result)
 }

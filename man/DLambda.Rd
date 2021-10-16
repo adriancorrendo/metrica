@@ -4,12 +4,15 @@
 \alias{DLambda}
 \title{DLambda}
 \usage{
-DLambda(obs, pred, na_rm = TRUE)
+DLambda(obs, pred, na.rm = TRUE)
 }
 \arguments{
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
+
+\item{na.rm}{Logic argument to remove rows with missing values
+(NA). Default is na_rm = TRUE.}
 }
 \value{
 Element of class \code{numeric}.

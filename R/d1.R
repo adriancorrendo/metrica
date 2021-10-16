@@ -2,6 +2,8 @@
 #' @description Modified Willmott's Index of Agreement (d1).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the d1 for a Predicted-Observed dataset
 #' following Willmott et al. (2012).

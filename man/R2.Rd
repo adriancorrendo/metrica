@@ -4,12 +4,15 @@
 \alias{R2}
 \title{R2}
 \usage{
-R2(obs, pred)
+R2(obs, pred, na.rm = TRUE)
 }
 \arguments{
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
+
+\item{na.rm}{Logic argument to remove rows with missing values
+(NA). Default is na.rm = TRUE.}
 }
 \value{
 Element of class \code{numeric}.

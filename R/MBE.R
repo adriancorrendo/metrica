@@ -2,6 +2,8 @@
 #' @description Mean Bias Error.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the MBErr of Predicted compared to Observed
 #' values.
@@ -14,7 +16,8 @@
 #' }
 #' @rdname MBE
 #' @export 
-MBE <- function(obs, pred){
+MBE <- function(obs, pred,
+                na.rm = TRUE){
   result <- (mean(pred)-mean(obs))
   return(result)
 }

@@ -2,6 +2,8 @@
 #' @description Accuracy component of Concordance Correlation.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `double`.
 #' @details Calculates the Xa for a Predicted-Observed dataset.
 #' @examples 
@@ -13,7 +15,8 @@
 #' }
 #' @rdname Xa
 #' @export 
-Xa <- function(obs, pred){
+Xa <- function(obs, pred,
+               na.rm = TRUE){
   result <- (2 / (metrica::sdev(pred)/metrica::sdev(obs) +
           metrica::sdev(obs)/metrica::sdev(pred) +
           ((mean(pred)-mean(obs))^2/(metrica::sdev(pred)*metrica::sdev(obs)))) )

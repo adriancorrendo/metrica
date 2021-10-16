@@ -3,6 +3,8 @@
 #' component of the Mean Square Error (MSE). 
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the SDSD for a Predicted-Observed dataset 
 #' following the MSE segregattion suggested by Kobayashi and Salam 
@@ -16,7 +18,8 @@
 #' }
 #' @rdname SDSD
 #' @export 
-SDSD <- function(obs, pred){
+SDSD <- function(obs, pred,
+                 na.rm = TRUE){
   result <- 
     (metrica::sdev(pred) - metrica::sdev(obs))^2
   

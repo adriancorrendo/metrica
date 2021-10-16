@@ -2,6 +2,8 @@
 #' @description Mean Square Error (MSE).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the MSE comparing Predicted and Observed
 #' values.
@@ -15,7 +17,7 @@
 #' @rdname MSE
 #' @export 
 MSE <- function(obs, pred,
-                na_rm = TRUE){
+                na.rm = TRUE){
   result <- sum((obs-pred)^2)/length(obs)
   return(result)
 }

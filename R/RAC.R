@@ -2,6 +2,8 @@
 #' @description Robinson's Agreement Coefficient.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the RAC for a Predicted-Observed dataset 
 #' following Robinson (1957,1959).
@@ -14,7 +16,8 @@
 #' }
 #' @rdname RAC
 #' @export 
-RAC <- function(obs, pred){
+RAC <- function(obs, pred,
+                na.rm = TRUE){
   result <- 
     1 - ((sum((obs - (obs + pred)/2)^2) +
             sum((pred - (obs + pred)/2)^2) ) /

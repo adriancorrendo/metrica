@@ -10,6 +10,9 @@ AC(obs, pred, na.rm = TRUE)
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
+
+\item{na.rm}{Logic argument to remove rows with missing values
+(NA). Default is na.rm = TRUE.}
 }
 \value{
 Element of class \code{numeric}.

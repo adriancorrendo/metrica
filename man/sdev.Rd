@@ -4,10 +4,13 @@
 \alias{sdev}
 \title{sdev}
 \usage{
-sdev(x)
+sdev(x, na.rm = TRUE)
 }
 \arguments{
 \item{x}{Vector with numeric elements.}
+
+\item{na.rm}{Logic argument to remove rows with missing values
+(NA). Default is na.rm = TRUE.}
 }
 \value{
 Element of class \code{numeric}.

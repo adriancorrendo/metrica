@@ -3,6 +3,8 @@
 #' (DLambda).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na_rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the DLambda for a Predicted-Observed dataset
 #' following Duveiller et al. (2015).
@@ -16,7 +18,7 @@
 #' @rdname DLambda
 #' @export 
 DLambda <- function(obs, pred,
-                na_rm = TRUE) {
+                na.rm = TRUE) {
   result <- 
     (2/(metrica::sdev(pred)/metrica::sdev(obs)+
           metrica::sdev(obs)/metrica::sdev(pred)+

@@ -3,6 +3,8 @@
 #' Square Error (MSE).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the MLA for a Predicted-Observed dataset
 #' following the symmetric MSE decomposition suggested by
@@ -16,7 +18,8 @@
 #' }
 #' @rdname MLA
 #' @export 
-MLA <- function(obs, pred){
+MLA <- function(obs, pred,
+                na.rm = TRUE){
   result <- 
     sum ((
       pred - ( (mean(obs) - (metrica::sdev(obs)/

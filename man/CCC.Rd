@@ -4,14 +4,14 @@
 \alias{CCC}
 \title{CCC}
 \usage{
-CCC(obs, pred, na_rm = TRUE)
+CCC(obs, pred, na.rm = TRUE)
 }
 \arguments{
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
 
-\item{na_rm}{Logic argument to remove rows with missing values
+\item{na.rm}{Logic argument to remove rows with missing values
 (NA). Default is na_rm = TRUE.}
 }
 \value{

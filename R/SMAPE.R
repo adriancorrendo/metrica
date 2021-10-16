@@ -2,6 +2,8 @@
 #' @description Symmetric Mean Absolute Percentage Error.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the SMAPE for a Predicted-Observed dataset.
 #' @examples 
@@ -13,7 +15,8 @@
 #' }
 #' @rdname SMAPE
 #' @export 
-SMAPE <- function(obs, pred){
+SMAPE <- function(obs, pred,
+                  na.rm = TRUE){
   result <-
     100/length(obs)*
     (sum (abs(obs-pred)/((abs(obs)+abs(pred))/2)))

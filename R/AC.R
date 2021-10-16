@@ -2,6 +2,8 @@
 #' @description Ji and Gallo's Agreement Coefficient (AC).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the AC for a Predicted-Observed dataset
 #' following Ji and Gallo (2006).

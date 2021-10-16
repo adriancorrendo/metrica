@@ -2,6 +2,8 @@
 #' @description Percentage Bias.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the PBE (%) for a Predicted-Observed dataset.
 #' @examples 
@@ -13,7 +15,8 @@
 #' }
 #' @rdname PBE
 #' @export 
-PBE <- function(obs, pred){
+PBE <- function(obs, pred,
+                na.rm = TRUE){
   result <- 100 * (sum(pred-obs) / sum(obs))
   return(result)
 }
