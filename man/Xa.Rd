@@ -18,7 +18,7 @@ Element of class \code{double}.
 Accuracy component of Concordance Correlation.
 }
 \details{
-Calculates the Xa in Predicted-Observed dataset
+Calculates the Xa for a Predicted-Observed dataset.
 }
 \examples{
 \dontrun{

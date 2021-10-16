@@ -1,22 +1,22 @@
-#' @title NSE
-#' @description Nash-Sutcliffe's Model Efficiency.
+#' @title E1
+#' @description Legates and McCabe's Model Efficiency (E1).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @return Element of class `numeric`.
-#' @details Calculates the NSE for a Predicted-Observed dataset
-#' following Nash and Sutcliffe (1970).
+#' @details Calculates the E1 for a Predicted-Observed dataset
+#' following Legates and McCabee (1990).
 #' @examples 
 #' \dontrun{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 9)
-#' NSE(obs = X, pred = Y)
+#' E1(obs = X, pred = Y)
 #' }
-#' @rdname NSE
+#' @rdname E1
 #' @export 
-NSE <- function(obs, pred,
+E1 <- function(obs, pred,
                 na_rm = TRUE) {
-  result <- 1-(metrica::MSE(obs,pred)/metrica::SSx(obs))
+  result <- 1-(sum(abs(obs-pred)))/(sum(abs(obs-mean(obs))))
   return(result)
 }
 

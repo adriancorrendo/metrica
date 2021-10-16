@@ -3,7 +3,7 @@
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @return Element of class `double`.
-#' @details Calculates the Xa in Predicted-Observed dataset
+#' @details Calculates the Xa for a Predicted-Observed dataset.
 #' @examples 
 #' \dontrun{
 #' set.seed(1)

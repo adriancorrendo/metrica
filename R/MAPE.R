@@ -1,19 +1,19 @@
-#' @title RMSE
-#' @description Root Mean Square Error.
+#' @title MAPE
+#' @description Mean Absolute Percentage Error.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @return Element of class `numeric`.
-#' @details Calculates the RMSE for a Predicted-Observed dataset.
+#' @details Calculates the MAPE for a Predicted-Observed dataset.
 #' @examples 
 #' \dontrun{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- X + rnorm(n=100, mean = 0, sd = 3)
-#' RMSE(obs = X, pred = Y)
+#' MAPE(obs = X, pred = Y)
 #' }
-#' @rdname RMSE
+#' @rdname MAPE
 #' @export 
-RMSE <- function(obs, pred){
-  result <- sqrt(sum((obs-pred)^2)/length(obs))
+MAPE <- function(obs, pred){
+  result <- (sum((abs(obs-pred)/obs))/length(obs))*100
   return(result)
 }

@@ -1,5 +1,5 @@
 #' @title MSE
-#' @description Mean Square Error.
+#' @description Mean Square Error (MSE).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @return Element of class `numeric`.
@@ -15,7 +15,7 @@
 #' @rdname MSE
 #' @export 
 MSE <- function(obs, pred,
-                na_rm = TRUE) {
+                na_rm = TRUE){
   result <- sum((obs-pred)^2)/length(obs)
   return(result)
 }

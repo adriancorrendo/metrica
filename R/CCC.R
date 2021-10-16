@@ -2,6 +2,8 @@
 #' @description Concordance Correlation Coefficient.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na_rm Logic argument to remove rows with missing values 
+#' (NA). Default is na_rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the CCC for Predicted-Observed dataset.
 #' @examples 
@@ -13,7 +15,8 @@
 #' }
 #' @rdname CCC
 #' @export 
-CCC <- function(obs, pred){
+CCC <- function(obs, pred,
+                na_rm = TRUE){
   result <-  stats::cor(obs,pred) *
     (2 / (metrica::sdev(pred)/metrica::sdev(obs) +
             metrica::sdev(obs)/metrica::sdev(pred) +

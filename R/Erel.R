@@ -1,22 +1,23 @@
-#' @title NSE
-#' @description Nash-Sutcliffe's Model Efficiency.
+#' @title Erel
+#' @description Krause Relative Model Efficiency (Erel).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @return Element of class `numeric`.
-#' @details Calculates the NSE for a Predicted-Observed dataset
-#' following Nash and Sutcliffe (1970).
+#' @details Calculates the Erel for a Predicted-Observed dataset
+#' following Krause et al. (2005).
 #' @examples 
 #' \dontrun{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 9)
-#' NSE(obs = X, pred = Y)
+#' Erel(obs = X, pred = Y)
 #' }
-#' @rdname NSE
+#' @rdname Erel
 #' @export 
-NSE <- function(obs, pred,
+Erel <- function(obs, pred,
                 na_rm = TRUE) {
-  result <- 1-(metrica::MSE(obs,pred)/metrica::SSx(obs))
+  result <- 1 - sum(((obs-pred)/obs)^2)/
+    sum(((obs-mean(obs))/mean(obs))^2)
   return(result)
 }
 

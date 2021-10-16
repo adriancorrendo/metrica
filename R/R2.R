@@ -1,19 +1,19 @@
-#' @title RMSE
-#' @description Root Mean Square Error.
+#' @title R2
+#' @description Coefficient of determination (R2).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @return Element of class `numeric`.
-#' @details Calculates the RMSE for a Predicted-Observed dataset.
+#' @details Calculates the R2 for a Predicted-Observed dataset.
 #' @examples 
 #' \dontrun{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- X + rnorm(n=100, mean = 0, sd = 3)
-#' RMSE(obs = X, pred = Y)
+#' R2(obs = X, pred = Y)
 #' }
-#' @rdname RMSE
+#' @rdname R2
 #' @export 
-RMSE <- function(obs, pred){
-  result <- sqrt(sum((obs-pred)^2)/length(obs))
+R2 <- function(obs, pred){
+  result <- stats::cor(obs,pred)^2
   return(result)
 }

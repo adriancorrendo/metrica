@@ -18,8 +18,7 @@ Element of class \code{numeric}.
 Root Mean Square Error.
 }
 \details{
-Calculates the RMSE comparing Predicted and Observed
-values.
+Calculates the RMSE for a Predicted-Observed dataset.
 }
 \examples{
 \dontrun{
