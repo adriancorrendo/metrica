@@ -64,6 +64,7 @@ tiles.plot(obs = example.data$obs, pred = example.data$pred,
 <img src="man/figures/README-example-2.png" width="100%" />
 
 ``` r
+
 # Estimate coefficient of determination (R2)
 metrica::R2(obs = example.data$obs, pred = example.data$pred)
 #> [1] 0.9070934
@@ -78,12 +79,18 @@ metrica::MBE(obs = example.data$obs, pred = example.data$pred)
 
 # Estimate metrics summary
 metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred)
-#>           B0       B1        R2       CCC      MAE     MAPE   SMAPE        MBE
-#> 1 -0.1674639 1.049629 0.9070934 0.9512255 2.283581 542.9795 55.4614 -0.1134242
-#>         PBE       PAB      PPB      MSE     RMSE    RRMSE        RSR       MLA
-#> 1 -10.41666 0.1571194 2.402532 8.188078 2.861482 2.627928 0.03582699 0.2095862
-#>        MLP         SB      PLA      PLP       Ue       Uc        Ub       NSE
-#> 1 7.978492 0.01286506 2.559651 97.44035 97.44035 2.402532 0.1571194 0.8974817
-#>          E1      Erel       KGE        d1       RAC        AC    lambda
-#> 1 0.6797942 -46.14172 0.7936299 0.8440456 0.9756118 0.9001633 0.9512255
+#> # A tibble: 31 × 2
+#>    Metric   value
+#>    <chr>    <dbl>
+#>  1 B0      -0.167
+#>  2 B1       1.05 
+#>  3 R2       0.907
+#>  4 CCC      0.951
+#>  5 MAE      2.28 
+#>  6 MAPE   543.   
+#>  7 SMAPE   55.5  
+#>  8 MBE     -0.113
+#>  9 PBE    -10.4  
+#> 10 PAB      0.157
+#> # … with 21 more rows
 ```
