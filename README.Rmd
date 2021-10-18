@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg)](https://codecov.io/gh/adriancorrendo/metrica?branch=master)
 <!-- badges: end -->
 
-The goal of the *metrica* package is to offer users of point-forecast models a toolbox with error metrics accounting for different aspects of the agreement between predicted and observed values.
+The goal of the *metrica* package is to offer users of point-forecast models a complete toolbox with error metrics accounting for different aspects of the agreement between predicted and observed values.
 
 <img src="man/figures/metrica_logo.png" height="300" align="right"/>
 
@@ -41,38 +41,33 @@ devtools::install_github("adriancorrendo/metrica")
 ```
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you core functions of metrica:
 
 ```{r example}
 library(metrica)
-## basic example code
-```
+# Seed for reproducibility
+set.seed(1)
+X <- rnorm(n = 100, mean = 0, sd = 10)
+Y <- X + rnorm(n=100, mean = 0, sd = 3)
+# Data frame
+example.data <- data.frame(obs = X, pred = Y)
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+# Create scatter plot
+scatter.plot(obs = example.data$obs, pred = example.data$pred)
 
-```{r cars}
-summary(cars)
-```
+# Create tiles plot
+tiles.plot(obs = example.data$obs, pred = example.data$pred, bins = 10)
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>.
+# Estimate R2
+metrica::R2(obs = example.data$obs, pred = example.data$pred)
 
-You can also embed plots, or images, for example:
+# Estimate RMSE
+metrica::RMSE(obs = example.data$obs, pred = example.data$pred)
 
-```{r pressure, echo = FALSE}
-pre <- metrica::wheat$pre
-obs <- metrica::wheat$obs
+# Estimate MBE
+metrica::MBE(obs = example.data$obs, pred = example.data$pred)
 
-scatter.plot <- metrica_plot(x = obs, y = pre)
-
-scatter.plot <- scatter.plot +
-  ggplot2::theme_bw()+
-  ggplot2::labs(x = "Observed values", y = "Predicted values")+
-  ggplot2::coord_fixed(xlim = c(round(min(c(min(pre), min(obs)))),round(max(c(max(pre), max(obs))))),
-                       ylim = c(round(min(c(min(pre), min(obs)))),
-                                round(max(c(max(pre), max(obs))))))
-  
-scatter.plot
+# Estimate metrics summary
+metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred)
 
 ```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

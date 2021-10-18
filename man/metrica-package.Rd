@@ -4,9 +4,9 @@
 \name{metrica-package}
 \alias{metrica}
 \alias{metrica-package}
-\title{metrica: Error Metrics for Predicted-Observed Data}
+\title{metrica: Error Metrics for Predicted-Observed Datasets}
 \description{
-What the package does (one paragraph).
+Metrica offers users of simulation models a complete toolbox with error metrics accounting for different aspects of the agreement between predicted and observed values.
 }
 \author{
 \strong{Maintainer}: Adrian Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID})

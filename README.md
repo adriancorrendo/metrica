@@ -14,8 +14,8 @@ coverage](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge
 <!-- badges: end -->
 
 The goal of the *metrica* package is to offer users of point-forecast
-models a toolbox with error metrics accounting for different aspects of
-the agreement between predicted and observed values.
+models a complete toolbox with error metrics accounting for different
+aspects of the agreement between predicted and observed values.
 
 <img src="man/figures/metrica_logo.png" height="300" align="right"/>
 
@@ -37,36 +37,51 @@ devtools::install_github("adriancorrendo/metrica")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you core functions of metrica:
 
 ``` r
 library(metrica)
-## basic example code
+# Seed for reproducibility
+set.seed(1)
+X <- rnorm(n = 100, mean = 0, sd = 10)
+Y <- X + rnorm(n=100, mean = 0, sd = 3)
+# Data frame
+example.data <- data.frame(obs = X, pred = Y)
+
+# Create scatter plot
+scatter.plot(obs = example.data$obs, pred = example.data$pred)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+<img src="man/figures/README-example-1.png" width="100%" />
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+# Create tiles plot
+tiles.plot(obs = example.data$obs, pred = example.data$pred, bins = 10)
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/master/examples>.
+<img src="man/figures/README-example-2.png" width="100%" />
 
-You can also embed plots, or images, for example:
+``` r
+# Estimate R2
+metrica::R2(obs = example.data$obs, pred = example.data$pred)
+#> [1] 0.9070934
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+# Estimate RMSE
+metrica::RMSE(obs = example.data$obs, pred = example.data$pred)
+#> [1] 2.861482
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+# Estimate MBE
+metrica::MBE(obs = example.data$obs, pred = example.data$pred)
+#> [1] -0.1134242
+
+# Estimate metrics summary
+metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred)
+#>          R2       CCC      MAE        MBE      MSE       MLA      MLP     RMSE
+#> 1 0.9070934 0.9512255 2.283581 -0.1134242 8.188078 0.2095862 7.978492 2.861482
+#>      RRMSE        RSR       PBE       PAB      PPB     MAPE   SMAPE      PLA
+#> 1 2.627928 0.03582699 -10.41666 0.1571194 2.402532 542.9795 55.4614 2.559651
+#>        PLP       Ue       Uc        Ub       NSE        E1      Erel       KGE
+#> 1 97.44035 97.44035 2.402532 0.1571194 0.8974817 0.6797942 -46.14172 0.7936299
+#>          d1       RAC        AC   DLambda
+#> 1 0.8440456 0.9756118 0.9001633 0.9987515
+```
