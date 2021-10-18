@@ -35,9 +35,9 @@ tiles.plot <- function(obs, pred, bins = 6, orientation){
                                                 max(obs))))))+
       ggplot2::geom_hex(ggplot2::aes(x = obs, y = pred),
                         bins = bins, color = "grey20", size=0.15)+
-      viridis::scale_fill_viridis(option = "viridis", direction = -1)+
+      viridis::scale_fill_viridis(option = "cividis", direction = -1)+
       ggplot2::geom_abline()+
-      ggplot2::geom_abline(linetype = "F1", size = 2,col = "#f46036",
+      ggplot2::geom_abline(linetype = "F1", size = 2,col = "#861657",
                            slope = metrica::B1.sma(obs,pred,orientation=orientation),
                            intercept = metrica::B0.sma(obs,pred,orientation=orientation))+
       ggplot2::labs(x = "Observed", y = "Predicted")+
@@ -57,9 +57,9 @@ tiles.plot <- function(obs, pred, bins = 6, orientation){
                                                 max(obs))))))+
       ggplot2::geom_hex(ggplot2::aes(x = obs, y = pred),
                         bins = bins, color = "grey20", size=0.15)+
-      viridis::scale_fill_viridis(option = "viridis", direction = -1)+
+      viridis::scale_fill_viridis(option = "cividis", direction = -1)+
       ggplot2::geom_abline()+
-      ggplot2::geom_abline(linetype = "F1", size = 2,col = "#073b4c",
+      ggplot2::geom_abline(linetype = "F1", size = 2,col = "#006d77",
                            slope = metrica::B1.sma(obs,pred,orientation=orientation),
                            intercept = metrica::B0.sma(obs,pred,orientation=orientation))+
       ggplot2::labs(y = "Observed", x = "Predicted")+

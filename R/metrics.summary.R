@@ -18,6 +18,7 @@
 #' }
 #' @rdname metrics.summary
 #' @importFrom dplyr summarise
+#' @importFrom tidyr pivot_longer everything
 #' @export 
 metrics.summary <-
   function(obs,
@@ -58,5 +59,11 @@ metrics.summary <-
         RAC = as.numeric(metrica::RAC(obs,pred)),
         AC =as.numeric(metrica::AC(obs,pred)),
         lambda = as.numeric(metrica::lambda(obs,pred))
-      ) 
+      ) |> 
+      tidyr::pivot_longer(tidyr::everything(),
+                          names_to = "Metric",
+                          values_to = "value") 
   }
+
+
+

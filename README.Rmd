@@ -57,9 +57,11 @@ scatter.plot(obs = example.data$obs, pred = example.data$pred,
              orientation = "OP")
 
 # Create tiles plot with PO orientation
-tiles.plot(obs = example.data$obs, pred = example.data$pred, bins = 10, orientation = "PO")
+tiles.plot(obs = example.data$obs, pred = example.data$pred,
+           bins = 10, orientation = "PO")
 
-# Estimate R2
+
+# Estimate coefficient of determination (R2)
 metrica::R2(obs = example.data$obs, pred = example.data$pred)
 
 # Estimate RMSE

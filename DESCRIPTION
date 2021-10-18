@@ -23,6 +23,7 @@ Imports:
     stats,
     ggplot2,
     dplyr,
-    viridis,
-    smatr
+    tidyr,
+    viridis
+    
     
