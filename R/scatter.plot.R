@@ -20,7 +20,7 @@
 #' @importFrom ggplot2 ggplot geom_point aes geom_abline labs theme_bw
 #' theme
 scatter.plot <- function(obs, pred, orientation = "PO"){
-  if(orientation == "PO"){
+  plot <-
     data.frame(pred = pred, obs = obs)|>
       ggplot2::ggplot(ggplot2::aes(x = obs, y = pred))+
       ggplot2::coord_fixed(xlim = c(round(min(c(min(pred),
@@ -41,8 +41,9 @@ scatter.plot <- function(obs, pred, orientation = "PO"){
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "none",
                      panel.grid = ggplot2::element_blank())
-  } else {
-    data.frame(pred = pred, obs = obs)|>
+if(orientation == "OP")
+  plot <-
+      data.frame(pred = pred, obs = obs)|>
       ggplot2::ggplot(ggplot2::aes(y = obs, x = pred))+
       ggplot2::coord_fixed(xlim = c(round(min(c(min(pred),
                                                 min(obs)))),
@@ -62,5 +63,5 @@ scatter.plot <- function(obs, pred, orientation = "PO"){
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "none",
                      panel.grid = ggplot2::element_blank())
-  }
+  return(plot)
 }

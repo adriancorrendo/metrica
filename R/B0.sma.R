@@ -22,16 +22,17 @@
 #' @rdname B0.sma
 #' @export 
 B0.sma <- function(obs,
-                  pred,
-                  orientation = "PO",
-                  na.rm = TRUE) {
-  if(orientation == "PO"){
-    slope <- metrica::sdev(pred)/metrica::sdev(obs)
-    result <- mean(pred) - (slope*mean(obs))
-  } else {
+                     pred,
+                     orientation = "PO",
+                     na.rm = TRUE){
+  
+  slope <- metrica::sdev(pred)/metrica::sdev(obs)
+  result <- mean(pred) - (slope*mean(obs))
+  
+  if(orientation == "OP")
     slope <- metrica::sdev(obs)/metrica::sdev(pred)
     result <- mean(obs) - (slope*mean(pred))
-  }
+    
   return(result)
 }
 

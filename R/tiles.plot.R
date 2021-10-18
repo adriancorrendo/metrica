@@ -21,8 +21,8 @@
 #' @importFrom ggplot2 ggplot geom_point aes geom_abline geom_hex
 #' coord_fixed theme_bw labs
 #' @importFrom viridis scale_fill_viridis
-tiles.plot <- function(obs, pred, bins = 6, orientation){
-  if(orientation == "PO"){
+tiles.plot <- function(obs, pred, bins = 6, orientation = "PO"){
+  plot <-
     data.frame(pred = pred, obs = obs)|>
       ggplot2::ggplot(ggplot2::aes(x = obs, y = pred))+
       ggplot2::coord_fixed(xlim = c(round(min(c(min(pred),
@@ -44,7 +44,8 @@ tiles.plot <- function(obs, pred, bins = 6, orientation){
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "right",
                      panel.grid = ggplot2::element_blank())
-  } else {
+if(orientation == "OP")
+  plot <-
     data.frame(pred = pred, obs = obs)|>
       ggplot2::ggplot(ggplot2::aes(y = obs, x = pred))+
       ggplot2::coord_fixed(xlim = c(round(min(c(min(pred),
@@ -66,6 +67,5 @@ tiles.plot <- function(obs, pred, bins = 6, orientation){
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "right",
                      panel.grid = ggplot2::element_blank())
-    
+  return(plot)
   }
-}

@@ -20,6 +20,13 @@ test_that('no error tiles.plot', {
   expect_false(inherits(tiles.plot.test, "try-error"))
 })
 
+bland.altman.plot.test <- bland.altman.plot(obs = wheat$obs,
+                                            pred = wheat$pre)
+
+test_that('no error bland.altman.plot', {
+  expect_false(inherits(bland.altman.plot.test, "try-error"))
+})
+
 sdev.test <- sdev(wheat$pre)
 
 test_that('no error sdev', {
@@ -96,6 +103,12 @@ PLP.test <- PLP(obs = wheat$obs, pred = wheat$pre)
 
 test_that('no error PLP', {
   expect_false(inherits(PLP.test, "try-error"))
+})
+
+LCS.test <- LCS(obs = wheat$obs, pred = wheat$pre)
+
+test_that('no error LCS', {
+  expect_false(inherits(LCS.test, "try-error"))
 })
 
 Uc.test <- Uc(obs = wheat$obs, pred = wheat$pre)

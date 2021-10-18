@@ -4,7 +4,7 @@
 \alias{tiles.plot}
 \title{tiles.plot}
 \usage{
-tiles.plot(obs, pred, bins = 6, orientation)
+tiles.plot(obs, pred, bins = 6, orientation = "PO")
 }
 \arguments{
 \item{obs}{Vector with observed values (numeric).}

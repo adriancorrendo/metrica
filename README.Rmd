@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 [![Travis build status](https://travis-ci.com/adriancorrendo/metrica.svg?branch=master)](https://app.travis-ci.com/github/adriancorrendo/metrica)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&svg=true)](https://ci.appveyor.com/project/adriancorrendo/metrica)
 [![Codecov test coverage](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg)](https://codecov.io/gh/adriancorrendo/metrica?branch=master)
+
 <!-- badges: end -->
 
 The goal of the *metrica* package is to offer users of point-forecast models a complete toolbox with error metrics accounting for different aspects of the agreement between predicted and observed values.
@@ -55,12 +56,14 @@ example.data <- data.frame(obs = X, pred = Y)
 
 # Create scatter plot with OP orientation
 scatter.plot(obs = example.data$obs, pred = example.data$pred,
-             orientation = "OP")
+             orientation = "PO")
 
 # Create tiles plot with PO orientation
 tiles.plot(obs = example.data$obs, pred = example.data$pred,
-           bins = 10, orientation = "PO")
+           bins = 15, orientation = "PO")
 
+# Create a Bland-Altman plot
+bland.altman.plot(example.data$obs, example.data$pred)
 
 # Estimate coefficient of determination (R2)
 metrica::R2(obs = example.data$obs, pred = example.data$pred)
