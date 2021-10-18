@@ -4,12 +4,16 @@
 \alias{scatter.plot}
 \title{scatter.plot}
 \usage{
-scatter.plot(obs, pred)
+scatter.plot(obs, pred, orientation = "PO")
 }
 \arguments{
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
+
+\item{orientation}{Argument of class string specifying the axis
+orientation, PO for predicted vs observed, and OP for
+observed vs predicted. Default is orientation = "PO".}
 }
 \value{
 Object of class \code{ggplot}.

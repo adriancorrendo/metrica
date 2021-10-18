@@ -48,15 +48,16 @@ Y <- X + rnorm(n=100, mean = 0, sd = 3)
 # Data frame
 example.data <- data.frame(obs = X, pred = Y)
 
-# Create scatter plot
-scatter.plot(obs = example.data$obs, pred = example.data$pred)
+# Create scatter plot with OP orientation
+scatter.plot(obs = example.data$obs, pred = example.data$pred,
+             orientation = "OP")
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
 
 ``` r
-# Create tiles plot
-tiles.plot(obs = example.data$obs, pred = example.data$pred, bins = 10)
+# Create tiles plot with PO orientation
+tiles.plot(obs = example.data$obs, pred = example.data$pred, bins = 10, orientation = "PO")
 ```
 
 <img src="man/figures/README-example-2.png" width="100%" />
