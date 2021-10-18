@@ -1,29 +1,28 @@
-#' @title DLambda
+#' @title lambda
 #' @description Duveiller's et al. Lambda Agreemeent Coefficient
 #' (DLambda).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
-#' (NA). Default is na_rm = TRUE.
+#' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
-#' @details Calculates the DLambda for a Predicted-Observed dataset
-#' following Duveiller et al. (2015).
+#' @details Calculates the lambda coefficient for a Predicted-Observed
+#' dataset following Duveiller et al. (2015).
 #' @examples 
 #' \dontrun{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 9)
-#' DLambda(obs = X, pred = Y)
+#' lambda(obs = X, pred = Y)
 #' }
-#' @rdname DLambda
+#' @rdname lambda
 #' @export 
-DLambda <- function(obs, pred,
+lambda <- function(obs, pred,
                 na.rm = TRUE) {
   result <- 
-    (2/(metrica::sdev(pred)/metrica::sdev(obs)+
-          metrica::sdev(obs)/metrica::sdev(pred)+
-          (metrica::MBE(obs,pred)^2/(metrica::sdev(pred)*
-                                       metrica::sdev(obs))))) 
+    1 - ( (metrica::MSE(obs,pred)) /
+            (metrica::SSx(obs) + metrica::SSx(pred) + 
+               metrica::MBE(obs,pred)^2)) 
   return(result)
-}
+} 
 

@@ -1,9 +1,35 @@
 data('wheat')
 
+metrics.summary.test <- metrics.summary(obs = wheat$obs, pred = wheat$pre)
+
+test_that('no error metrics.summary', {
+  expect_false(inherits(metrics.summary.test, "try-error"))
+})
+
+scatter.plot.test <- scatter.plot(obs = wheat$obs, pred = wheat$pre,
+                                  orientation = "PO")
+
+test_that('no error scatter.plot', {
+  expect_false(inherits(scatter.plot.test, "try-error"))
+})
+
+tiles.plot.test <- tiles.plot(obs = wheat$obs, pred = wheat$pre,
+                                  orientation = "PO")
+
+test_that('no error tiles.plot', {
+  expect_false(inherits(tiles.plot.test, "try-error"))
+})
+
 sdev.test <- sdev(wheat$pre)
 
 test_that('no error sdev', {
   expect_false(inherits(sdev.test, "try-error"))
+})
+
+SSx.test <- SSx(wheat$pre)
+
+test_that('no error SSx', {
+  expect_false(inherits(SSx.test, "try-error"))
 })
 
 R2.test <- R2(obs = wheat$obs, pred = wheat$pre)
@@ -12,10 +38,16 @@ test_that('no error R2', {
   expect_false(inherits(R2.test, "try-error"))
 })
 
-SSx.test <- SSx(wheat$pre)
+B0.sma.test <- B0.sma(obs = wheat$obs, pred = wheat$pre)
 
-test_that('no error SSx', {
-  expect_false(inherits(SSx.test, "try-error"))
+test_that('no error B0.sma', {
+  expect_false(inherits(B0.sma.test, "try-error"))
+})
+
+B1.sma.test <- B1.sma(obs = wheat$obs, pred = wheat$pre)
+
+test_that('no error B1.sma', {
+  expect_false(inherits(B1.sma.test, "try-error"))
 })
 
 MBE.test <- MBE(obs = wheat$obs, pre = wheat$pre)
@@ -162,10 +194,10 @@ test_that('no error d1', {
   expect_false(inherits(d1.test, "try-error"))
 })
 
-DLambda.test <- DLambda(obs = wheat$obs, pred = wheat$pre)
+lambda.test <- lambda(obs = wheat$obs, pred = wheat$pre)
 
-test_that('no error DLambda', {
-  expect_false(inherits(DLambda.test, "try-error"))
+test_that('no error lambda', {
+  expect_false(inherits(lambda.test, "try-error"))
 })
 
 NSE.test <- NSE(obs = wheat$obs, pred = wheat$pre)

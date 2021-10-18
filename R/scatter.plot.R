@@ -32,8 +32,11 @@ scatter.plot <- function(obs, pred, orientation = "PO"){
                                     round(max(c(max(pred), 
                                                 max(obs))))))+
       ggplot2::geom_point(shape=21,
-                          fill = "#006d77", alpha = 0.65, size = 3)+
+                          fill = "#073b4c", alpha = 0.65, size = 3)+
       ggplot2::geom_abline()+
+      ggplot2::geom_abline(linetype = "F1", size = 2,col = "#f46036",
+                           slope = metrica::B1.sma(obs,pred,orientation=orientation),
+                           intercept = metrica::B0.sma(obs,pred,orientation=orientation))+
       ggplot2::labs(x = "Observed", y = "Predicted")+
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "none",
@@ -50,8 +53,11 @@ scatter.plot <- function(obs, pred, orientation = "PO"){
                                     round(max(c(max(pred), 
                                                 max(obs))))))+
       ggplot2::geom_point(shape=21,
-                          fill = "#861657", alpha = 0.65, size = 3)+
+                          fill = "#f46036", alpha = 0.65, size = 3)+
       ggplot2::geom_abline()+
+      ggplot2::geom_abline(linetype = "F1", size = 2,col = "#073b4c",
+                           slope = metrica::B1.sma(obs,pred,orientation=orientation),
+                           intercept = metrica::B0.sma(obs,pred,orientation=orientation))+
       ggplot2::labs(y = "Observed", x = "Predicted")+
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "none",

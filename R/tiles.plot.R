@@ -21,7 +21,7 @@
 #' @importFrom ggplot2 ggplot geom_point aes geom_abline geom_hex
 #' coord_fixed theme_bw labs
 #' @importFrom viridis scale_fill_viridis
-tiles.plot <- function(obs, pred, bins = 6, orientation = "PO"){
+tiles.plot <- function(obs, pred, bins = 6, orientation){
   if(orientation == "PO"){
     data.frame(pred = pred, obs = obs)|>
       ggplot2::ggplot(ggplot2::aes(x = obs, y = pred))+
@@ -33,10 +33,13 @@ tiles.plot <- function(obs, pred, bins = 6, orientation = "PO"){
                                                 min(obs)))),
                                     round(max(c(max(pred), 
                                                 max(obs))))))+
-      geom_hex(ggplot2::aes(x = obs, y = pred),
-               bins = bins, color = "grey20", size=0.15)+
+      ggplot2::geom_hex(ggplot2::aes(x = obs, y = pred),
+                        bins = bins, color = "grey20", size=0.15)+
       viridis::scale_fill_viridis(option = "viridis", direction = -1)+
       ggplot2::geom_abline()+
+      ggplot2::geom_abline(linetype = "F1", size = 2,col = "#f46036",
+                           slope = metrica::B1.sma(obs,pred,orientation=orientation),
+                           intercept = metrica::B0.sma(obs,pred,orientation=orientation))+
       ggplot2::labs(x = "Observed", y = "Predicted")+
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "right",
@@ -52,10 +55,13 @@ tiles.plot <- function(obs, pred, bins = 6, orientation = "PO"){
                                                 min(obs)))),
                                     round(max(c(max(pred), 
                                                 max(obs))))))+
-      geom_hex(ggplot2::aes(x = obs, y = pred),
-               bins = bins, color = "grey20", size=0.15)+
-      viridis::scale_fill_viridis(option = "viridis", direction = +1)+
+      ggplot2::geom_hex(ggplot2::aes(x = obs, y = pred),
+                        bins = bins, color = "grey20", size=0.15)+
+      viridis::scale_fill_viridis(option = "viridis", direction = -1)+
       ggplot2::geom_abline()+
+      ggplot2::geom_abline(linetype = "F1", size = 2,col = "#073b4c",
+                           slope = metrica::B1.sma(obs,pred,orientation=orientation),
+                           intercept = metrica::B0.sma(obs,pred,orientation=orientation))+
       ggplot2::labs(y = "Observed", x = "Predicted")+
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "right",

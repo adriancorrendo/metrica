@@ -77,12 +77,12 @@ metrica::MBE(obs = example.data$obs, pred = example.data$pred)
 
 # Estimate metrics summary
 metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred)
-#>          R2       CCC      MAE        MBE      MSE       MLA      MLP     RMSE
-#> 1 0.9070934 0.9512255 2.283581 -0.1134242 8.188078 0.2095862 7.978492 2.861482
-#>      RRMSE        RSR       PBE       PAB      PPB     MAPE   SMAPE      PLA
-#> 1 2.627928 0.03582699 -10.41666 0.1571194 2.402532 542.9795 55.4614 2.559651
-#>        PLP       Ue       Uc        Ub       NSE        E1      Erel       KGE
-#> 1 97.44035 97.44035 2.402532 0.1571194 0.8974817 0.6797942 -46.14172 0.7936299
-#>          d1       RAC        AC   DLambda
-#> 1 0.8440456 0.9756118 0.9001633 0.9987515
+#>           B0       B1        R2       CCC      MAE     MAPE   SMAPE        MBE
+#> 1 -0.1674639 1.049629 0.9070934 0.9512255 2.283581 542.9795 55.4614 -0.1134242
+#>         PBE       PAB      PPB      MSE     RMSE    RRMSE        RSR       MLA
+#> 1 -10.41666 0.1571194 2.402532 8.188078 2.861482 2.627928 0.03582699 0.2095862
+#>        MLP         SB      PLA      PLP       Ue       Uc        Ub       NSE
+#> 1 7.978492 0.01286506 2.559651 97.44035 97.44035 2.402532 0.1571194 0.8974817
+#>          E1      Erel       KGE        d1       RAC        AC    lambda
+#> 1 0.6797942 -46.14172 0.7936299 0.8440456 0.9756118 0.9001633 0.9512255
 ```

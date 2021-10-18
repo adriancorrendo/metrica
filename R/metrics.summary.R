@@ -2,6 +2,10 @@
 #' @description Scatter plot of Predictions and Observations.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param orientation Argument of class string specifying the axis
+#' orientation to estimate slope(B1) and intercept(B0).
+#' "PO" is for predicted vs observed, and "OP" for observed vs predicted.
+#' Default is orientation = "PO".
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return Object of class `tibble`.
@@ -18,25 +22,29 @@
 metrics.summary <-
   function(obs,
            pred,
+           orientation = "PO",
            na.rm = TRUE){ 
     data.frame(obs = obs,
                pred = pred) |>
       summarise(
+        B0 = as.numeric(metrica::B0.sma(obs,pred, orientation = orientation)),
+        B1 = as.numeric(metrica::B1.sma(obs,pred, orientation = orientation)),
         R2 = as.numeric(metrica::R2(obs,pred)),
         CCC = as.numeric(metrica::CCC(obs,pred)),
         MAE =as.numeric(metrica::MAE(obs,pred)),
+        MAPE = as.numeric(metrica::MAPE(obs,pred)),
+        SMAPE =as.numeric(metrica::SMAPE(obs,pred)),
         MBE =as.numeric(metrica::MBE(obs,pred)),
-        MSE = as.numeric(metrica::MSE(obs,pred)),
-        MLA =as.numeric(metrica::MLA(obs,pred)),
-        MLP =as.numeric(metrica::MLP(obs,pred)),
-        RMSE =as.numeric(metrica::RMSE(obs,pred)),
-        RRMSE =as.numeric(metrica::RRMSE(obs,pred)),
-        RSR = as.numeric(metrica::RSR(obs,pred)),
         PBE = as.numeric(metrica::PBE(obs,pred)),
         PAB = as.numeric(metrica::PAB(obs,pred)),
         PPB = as.numeric(metrica::PPB(obs,pred)),
-        MAPE = as.numeric(metrica::MAPE(obs,pred)),
-        SMAPE =as.numeric(metrica::SMAPE(obs,pred)),
+        MSE = as.numeric(metrica::MSE(obs,pred)),
+        RMSE =as.numeric(metrica::RMSE(obs,pred)),
+        RRMSE =as.numeric(metrica::RRMSE(obs,pred)),
+        RSR = as.numeric(metrica::RSR(obs,pred)),
+        MLA =as.numeric(metrica::MLA(obs,pred)),
+        MLP =as.numeric(metrica::MLP(obs,pred)),
+        SB = as.numeric(metrica::SB(obs,pred)),
         PLA =as.numeric(metrica::PLA(obs,pred)),
         PLP =as.numeric(metrica::PLP(obs,pred)),
         Ue =as.numeric(metrica::Ue(obs,pred)),
@@ -49,6 +57,6 @@ metrics.summary <-
         d1 =as.numeric(metrica::d1(obs,pred)),
         RAC = as.numeric(metrica::RAC(obs,pred)),
         AC =as.numeric(metrica::AC(obs,pred)),
-        DLambda = as.numeric(metrica::DLambda(obs,pred))
+        lambda = as.numeric(metrica::lambda(obs,pred))
       ) 
   }

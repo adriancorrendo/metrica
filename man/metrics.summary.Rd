@@ -4,12 +4,17 @@
 \alias{metrics.summary}
 \title{metrics.summary}
 \usage{
-metrics.summary(obs, pred, na.rm = TRUE)
+metrics.summary(obs, pred, orientation = "PO", na.rm = TRUE)
 }
 \arguments{
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
+
+\item{orientation}{Argument of class string specifying the axis
+orientation to estimate slope(B1) and intercept(B0).
+"PO" is for predicted vs observed, and "OP" for observed vs predicted.
+Default is orientation = "PO".}
 
 \item{na.rm}{Logic argument to remove rows with missing values
 (NA). Default is na.rm = TRUE.}
