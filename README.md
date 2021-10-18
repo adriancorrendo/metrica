@@ -37,7 +37,7 @@ devtools::install_github("adriancorrendo/metrica")
 
 ## Example
 
-This is a basic example which shows you core functions of metrica:
+This is a basic example which shows you core functions of *metrica*:
 
 ``` r
 library(metrica)
@@ -45,6 +45,7 @@ library(metrica)
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
+
 # Data frame
 example.data <- data.frame(obs = X, pred = Y)
 
