@@ -84,7 +84,7 @@ The **metrica** package contains +40 functions . Most of them work with only two
 
 
 | Metric | Definition | Details | Formula |
-| ----- | ------------|-------------------- | -------------------- |
+| ------- | ----------|-------------------- | -------------------- |
 | 1. B0 | Intercept of SMA regression | Use | Formula |
 | 2. B1 | Slope of SMA regression |  Use | Formula |
 | 3. R2 | Coefficient of determination |  Use | Formula |

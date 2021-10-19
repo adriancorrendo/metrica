@@ -105,14 +105,18 @@ metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred)
 
 ## Metrics available in *metrica*
 
-The **metrica** package’s functions need two arguments: `observed`(Oi)
-and `predicted` (Pi) values.
+The **metrica** package contains +40 functions . Most of them work with
+only two arguments: `observed`(a.k.a. actual, measured, truth, target)
+and `predicted` (a.k.a. simulated, fitted) values. For now, included
+functions cover the world of “regression error” metrics (i.e. prediction
+performance for continuous variables). Classification error metrics
+coming soon. <b/>
 
 | Metric      | Definition                                                                          | Details | Formula |
 |-------------|-------------------------------------------------------------------------------------|---------|---------|
 | 1\. B0      | Intercept of SMA regression                                                         | Use     | Formula |
 | 2\. B1      | Slope of SMA regression                                                             | Use     | Formula |
-| 3\. R^{2}   | Coefficient of determination                                                        | Use     | Formula |
+| 3\. R2      | Coefficient of determination                                                        | Use     | Formula |
 | 4\. CCC     | Concordance correlation coefficient                                                 | Use     | Formula |
 | 5\. MAE     | Mean Absolute Error                                                                 | Use     | Formula |
 | 6\. MAPE    | Mean Absolute Percentage Error                                                      | Use     | Formula |
