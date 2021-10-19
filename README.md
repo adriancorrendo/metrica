@@ -110,47 +110,47 @@ only two arguments: `observed`(a.k.a. actual, measured, truth, target)
 and `predicted` (a.k.a. simulated, fitted) values. For now, included
 functions cover the world of “regression error” metrics (i.e. prediction
 performance for continuous variables). Classification error metrics
-coming soon. <b/>
+coming soon. <br/>
 
-| Metric      | Definition                                                                          | Details | Formula |
-|-------------|-------------------------------------------------------------------------------------|---------|---------|
-| 1\. B0      | Intercept of SMA regression                                                         | Use     | Formula |
-| 2\. B1      | Slope of SMA regression                                                             | Use     | Formula |
-| 3\. R2      | Coefficient of determination                                                        | Use     | Formula |
-| 4\. CCC     | Concordance correlation coefficient                                                 | Use     | Formula |
-| 5\. MAE     | Mean Absolute Error                                                                 | Use     | Formula |
-| 6\. MAPE    | Mean Absolute Percentage Error                                                      | Use     | Formula |
-| 7\. SMAPE   | Symmetric Mean Absolute Percentage Error                                            | Use     | Formula |
-| 8\. RAE     | Mean Absolute Error                                                                 | Use     | Formula |
-| 9\. RSE     | Mean Absolute Error                                                                 | Use     | Formula |
-| 10\. MBE    | Mean Bias Error                                                                     | Use     | Formula |
-| 11\. PBE    | Percentage Bias Error                                                               | Use     | Formula |
-| 12\. PAB    | Percentage Absolute Error                                                           | Use     | Formula |
-| 13\. PPB    | Percentage Proportional Bias                                                        | Use     | Formula |
-| 14\. MSE    | Mean Squared Error                                                                  | Use     | Formula |
-| 15\. RMSE   | Root Mean Squared Error                                                             | Use     | Formula |
-| 16\. RSE    | Relative Squared Error                                                              | Use     | Formula |
-| 17\. RRMSE  | Relative Root Mean Squared Error                                                    | Use     | Formula |
-| 18\. RSR    | Root Mean Standard Deviation Ratio                                                  | Use     | Formula |
-| 19\. iqRMSE | Inter-quartile Normalized Root Mean Squared Error                                   | Use     | Formula |
-| 20\. MLA    | Mean Lack of Accuracy. Correndo’s MSE decomposition. Correndo et al. (2012)         | Use     | Formula |
-| 21\. MLP    | Mean Lack of Precision Correndo’s MSE decomposition. Correndo et al. (2012)         | Use     | Formula |
-| 22\. PLA    | Percentage Lack of Accuracy                                                         | Use     | Formula |
-| 23\. PLP    | Percentage Lack of Precision                                                        | Use     | Formula |
-| 24\. *MSEs* | Systematic Mean Squared Error. Willmott’s MSE decomposition. Willmott et al. (1985) | Use     | Formula |
-| 25\. *MSEu* | Mean Squared Unsystematic. Willmott’s MSE decomposition. Willmott et al. (1985)     | Use     | Formula |
-| 26\. SB     | Squared Bias. Kobayashi and Salam’s decomposition                                   | Use     | Formula |
-| 27\. SDSD   | Product of Standard Deviations. Kobayashi and Salam’s decomposition                 | Use     | Formula |
-| 28\. LCS    | Lack of Correlation. Kobayashi and Salam’s decomposition                            | Use     | Formula |
-| 29\. Ue     | Random error proportion. Theils’ partial inequalities                               | Use     | Formula |
-| 30\. Uc     | Lack of Consistency. Theils’ partial inequalities                                   | Use     | Formula |
-| 31\. Ub     | Bias error proportion. Theils’ partial inequalities                                 | Use     | Formula |
-| 32\. NSE    | Nash and Sutcliffe’s Model Efficiency. Nash and Sutcliffe (1970)                    | Use     | Formula |
-| 33\. E1     | Absolute Model Efficiency.                                                          | Use     | Formula |
-| 34\. Erel   | Relative Model Efficiency. Krause et al. (2005)                                     | Use     | Formula |
-| 35\. KGE    | Kling-Gupta Model Efficiency. Kling et al. (2012)                                   | Use     | Formula |
-| 36\. *d*    | Index of Agreement. Willmott et al. (1983)                                          | Use     | Formula |
-| 37\. d1     | Absolute Index of Agreement. Willmott et al. (1985)                                 | Use     | Formula |
-| 38\. RAC    | Robinson’s Agreement Coefficient. Robinson (1957)                                   | Use     | Formula |
-| 39\. AC     | Ji and Gallo’s Agreement Coefficient. Ji and Gallo (2006)                           | Use     | Formula |
-| 40\. lambda | Duveiller’s lambda Coefficient. Duveiller et al. (2015)                             | Use     | Formula |
+| Metric      | Definition                                                                  | Details | Formula |
+|-------------|-----------------------------------------------------------------------------|---------|---------|
+| 1\. B0      | Intercept of SMA regression                                                 | Use     | Formula |
+| 2\. B1      | Slope of SMA regression                                                     | Use     | Formula |
+| 3\. R2      | Coefficient of determination                                                | Use     | Formula |
+| 4\. CCC     | Concordance correlation coefficient                                         | Use     | Formula |
+| 5\. MAE     | Mean Absolute Error                                                         | Use     | Formula |
+| 6\. MAPE    | Mean Absolute Percentage Error                                              | Use     | Formula |
+| 7\. SMAPE   | Symmetric Mean Absolute Percentage Error                                    | Use     | Formula |
+| 8\. RAE     | Mean Absolute Error                                                         | Use     | Formula |
+| 9\. RSE     | Relative Absolute Error                                                     | Use     | Formula |
+| 10\. MBE    | Mean Bias Error                                                             | Use     | Formula |
+| 11\. PBE    | Percentage Bias Error                                                       | Use     | Formula |
+| 12\. PAB    | Percentage Absolute Error                                                   | Use     | Formula |
+| 13\. PPB    | Percentage Proportional Bias                                                | Use     | Formula |
+| 14\. MSE    | Mean Squared Error                                                          | Use     | Formula |
+| 15\. RMSE   | Root Mean Squared Error                                                     | Use     | Formula |
+| 16\. RSE    | Relative Squared Error                                                      | Use     | Formula |
+| 17\. RRMSE  | Relative Root Mean Squared Error                                            | Use     | Formula |
+| 18\. RSR    | Root Mean Standard Deviation Ratio                                          | Use     | Formula |
+| 19\. iqRMSE | Inter-quartile Normalized Root Mean Squared Error                           | Use     | Formula |
+| 20\. MLA    | Mean Lack of Accuracy. Correndo’s MSE decomposition. Correndo et al. (2012) | Use     | Formula |
+| 21\. MLP    | Mean Lack of Precision Correndo’s MSE decomposition. Correndo et al. (2012) | Use     | Formula |
+| 22\. PLA    | Percentage Lack of Accuracy                                                 | Use     | Formula |
+| 23\. PLP    | Percentage Lack of Precision                                                | Use     | Formula |
+| 24\. *MSEs* | Systematic Mean. Willmott’s MSE decomposition. Willmott et al. (1985)       | Use     | Formula |
+| 25\. *MSEu* | Unsystematic MSE. Willmott’s MSE decomposition. Willmott et al. (1985)      | Use     | Formula |
+| 26\. SB     | Squared Bias. Kobayashi and Salam’s decomposition                           | Use     | Formula |
+| 27\. SDSD   | Product of Standard Deviations. Kobayashi and Salam’s decomposition         | Use     | Formula |
+| 28\. LCS    | Lack of Correlation. Kobayashi and Salam’s decomposition                    | Use     | Formula |
+| 29\. Ue     | Random error proportion. Theils’ partial inequalities                       | Use     | Formula |
+| 30\. Uc     | Lack of Consistency. Theils’ partial inequalities                           | Use     | Formula |
+| 31\. Ub     | Bias error proportion. Theils’ partial inequalities                         | Use     | Formula |
+| 32\. NSE    | Nash and Sutcliffe’s Model Efficiency. Nash and Sutcliffe (1970)            | Use     | Formula |
+| 33\. E1     | Absolute Model Efficiency.                                                  | Use     | Formula |
+| 34\. Erel   | Relative Model Efficiency. Krause et al. (2005)                             | Use     | Formula |
+| 35\. KGE    | Kling-Gupta Model Efficiency. Kling et al. (2012)                           | Use     | Formula |
+| 36\. *d*    | Index of Agreement. Willmott (1982)                                         | Use     | Formula |
+| 37\. d1     | Absolute Index of Agreement. Willmott et al. (1985)                         | Use     | Formula |
+| 38\. RAC    | Robinson’s Agreement Coefficient. Robinson (1957)                           | Use     | Formula |
+| 39\. AC     | Ji and Gallo’s Agreement Coefficient. Ji and Gallo (2006)                   | Use     | Formula |
+| 40\. lambda | Duveiller’s lambda Coefficient. Duveiller et al. (2015)                     | Use     | Formula |
