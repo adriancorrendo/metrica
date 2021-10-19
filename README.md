@@ -51,7 +51,7 @@ Y <- X + rnorm(n=100, mean = 0, sd = 3)
 example.data <- data.frame(obs = X, pred = Y)
 
 # Create scatter plot with OP orientation
-scatter.plot(obs = example.data$obs, pred = example.data$pred,
+metrica::scatter.plot(obs = example.data$obs, pred = example.data$pred,
              orientation = "PO")
 ```
 
@@ -59,7 +59,7 @@ scatter.plot(obs = example.data$obs, pred = example.data$pred,
 
 ``` r
 # Create tiles plot with PO orientation
-tiles.plot(obs = example.data$obs, pred = example.data$pred,
+metrica::tiles.plot(obs = example.data$obs, pred = example.data$pred,
            bins = 15, orientation = "PO")
 ```
 
@@ -67,7 +67,7 @@ tiles.plot(obs = example.data$obs, pred = example.data$pred,
 
 ``` r
 # Create a Bland-Altman plot
-bland.altman.plot(example.data$obs, example.data$pred)
+metrica::bland.altman.plot(example.data$obs, example.data$pred)
 ```
 
 <img src="man/figures/README-example-3.png" width="100%" />
@@ -137,8 +137,8 @@ coming soon. <br/>
 | 21\. MLP    | Mean Lack of Precision Correndo’s MSE decomposition. Correndo et al. (2012) | Use     | Formula |
 | 22\. PLA    | Percentage Lack of Accuracy                                                 | Use     | Formula |
 | 23\. PLP    | Percentage Lack of Precision                                                | Use     | Formula |
-| 24\. *MSEs* | Systematic Mean. Willmott’s MSE decomposition. Willmott et al. (1985)       | Use     | Formula |
-| 25\. *MSEu* | Unsystematic MSE. Willmott’s MSE decomposition. Willmott et al. (1985)      | Use     | Formula |
+| 24\. MSEs   | Systematic MSE. Willmott’s MSE decomposition. Willmott et al. (1985)        | Use     | Formula |
+| 25\. MSEu   | Unsystematic MSE. Willmott’s MSE decomposition. Willmott et al. (1985)      | Use     | Formula |
 | 26\. SB     | Squared Bias. Kobayashi and Salam’s decomposition                           | Use     | Formula |
 | 27\. SDSD   | Product of Standard Deviations. Kobayashi and Salam’s decomposition         | Use     | Formula |
 | 28\. LCS    | Lack of Correlation. Kobayashi and Salam’s decomposition                    | Use     | Formula |
@@ -149,8 +149,8 @@ coming soon. <br/>
 | 33\. E1     | Absolute Model Efficiency.                                                  | Use     | Formula |
 | 34\. Erel   | Relative Model Efficiency. Krause et al. (2005)                             | Use     | Formula |
 | 35\. KGE    | Kling-Gupta Model Efficiency. Kling et al. (2012)                           | Use     | Formula |
-| 36\. *d*    | Index of Agreement. Willmott (1982)                                         | Use     | Formula |
+| 36\. d      | Index of Agreement. Willmott (1982)                                         | Use     | Formula |
 | 37\. d1     | Absolute Index of Agreement. Willmott et al. (1985)                         | Use     | Formula |
 | 38\. RAC    | Robinson’s Agreement Coefficient. Robinson (1957)                           | Use     | Formula |
 | 39\. AC     | Ji and Gallo’s Agreement Coefficient. Ji and Gallo (2006)                   | Use     | Formula |
-| 40\. lambda | Duveiller’s lambda Coefficient. Duveiller et al. (2015)                     | Use     | Formula |
+| 40\. lambda | Duveiller’s Lambda Coefficient. Duveiller et al. (2015)                     | Use     | Formula |

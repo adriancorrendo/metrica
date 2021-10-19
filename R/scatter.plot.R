@@ -21,7 +21,7 @@
 #' theme
 scatter.plot <- function(obs, pred, orientation = "PO"){
   plot <-
-    data.frame(pred = pred, obs = obs)|>
+    data.frame(pred = pred, obs = obs) |>
       ggplot2::ggplot(ggplot2::aes(x = obs, y = pred))+
       ggplot2::coord_fixed(xlim = c(round(min(c(min(pred),
                                                 min(obs)))),
@@ -43,7 +43,7 @@ scatter.plot <- function(obs, pred, orientation = "PO"){
                      panel.grid = ggplot2::element_blank())
 if(orientation == "OP")
   plot <-
-      data.frame(pred = pred, obs = obs)|>
+      data.frame(pred = pred, obs = obs) |>
       ggplot2::ggplot(ggplot2::aes(y = obs, x = pred))+
       ggplot2::coord_fixed(xlim = c(round(min(c(min(pred),
                                                 min(obs)))),

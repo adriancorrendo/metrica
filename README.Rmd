@@ -55,15 +55,15 @@ Y <- X + rnorm(n=100, mean = 0, sd = 3)
 example.data <- data.frame(obs = X, pred = Y)
 
 # Create scatter plot with OP orientation
-scatter.plot(obs = example.data$obs, pred = example.data$pred,
+metrica::scatter.plot(obs = example.data$obs, pred = example.data$pred,
              orientation = "PO")
 
 # Create tiles plot with PO orientation
-tiles.plot(obs = example.data$obs, pred = example.data$pred,
+metrica::tiles.plot(obs = example.data$obs, pred = example.data$pred,
            bins = 15, orientation = "PO")
 
 # Create a Bland-Altman plot
-bland.altman.plot(example.data$obs, example.data$pred)
+metrica::bland.altman.plot(example.data$obs, example.data$pred)
 
 # Estimate coefficient of determination (R2)
 metrica::R2(obs = example.data$obs, pred = example.data$pred)
@@ -87,7 +87,6 @@ The **metrica** package contains +40 functions . Most of them work with only two
 | --------- | ----------|-------------------- | -------------------- |
 | 1. B0 | Intercept of SMA regression | Use | Formula |
 | 2. B1 | Slope of SMA regression |  Use | Formula |
-| 3. r | Pearson's correlation coefficient |  Use | Formula |
 | 3. R2 | Coefficient of determination |  Use | Formula |
 | 4. CCC | Concordance correlation coefficient |  Use | Formula |
 | 5. MAE | Mean Absolute Error |  Use | Formula |
@@ -109,8 +108,8 @@ The **metrica** package contains +40 functions . Most of them work with only two
 | 21. MLP | Mean Lack of Precision Correndo's MSE decomposition. Correndo et al. (2012) |  Use | Formula |
 | 22. PLA | Percentage Lack of Accuracy |  Use | Formula |
 | 23. PLP | Percentage Lack of Precision |  Use | Formula |
-| 24. *MSEs* | Systematic Mean. Willmott's MSE decomposition. Willmott et al. (1985) |  Use | Formula |
-| 25. *MSEu* | Unsystematic MSE. Willmott's MSE decomposition. Willmott et al. (1985) |  Use | Formula |
+| 24. MSEs | Systematic MSE. Willmott's MSE decomposition. Willmott et al. (1985) |  Use | Formula |
+| 25. MSEu | Unsystematic MSE. Willmott's MSE decomposition. Willmott et al. (1985) |  Use | Formula |
 | 26. SB | Squared Bias. Kobayashi and Salam's decomposition |  Use | Formula |
 | 27. SDSD | Product of Standard Deviations. Kobayashi and Salam's decomposition |  Use | Formula |
 | 28. LCS | Lack of Correlation. Kobayashi and Salam's decomposition |  Use | Formula |
@@ -121,7 +120,7 @@ The **metrica** package contains +40 functions . Most of them work with only two
 | 33. E1 | Absolute Model Efficiency.  |  Use | Formula |
 | 34. Erel | Relative Model Efficiency. Krause et al. (2005) |  Use | Formula |
 | 35. KGE | Kling-Gupta Model Efficiency. Kling et al. (2012) |  Use | Formula |
-| 36. *d* | Index of Agreement. Willmott (1982) |  Use | Formula |
+| 36. d | Index of Agreement. Willmott (1982) |  Use | Formula |
 | 37. d1 | Absolute Index of Agreement. Willmott et al. (1985) |  Use | Formula |
 | 38. RAC | Robinson's Agreement Coefficient. Robinson (1957) |  Use | Formula |
 | 39. AC | Ji and Gallo's Agreement Coefficient. Ji and Gallo (2006) |  Use | Formula |
