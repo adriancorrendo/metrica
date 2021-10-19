@@ -17,6 +17,6 @@
 #' @export 
 RSR <- function(obs, pred,
                 na.rm = TRUE){
-  result <- sqrt((sum((obs-pred)^2)/length(obs)))/metrica::SSx(obs)
+  result <- sqrt((sum((obs-pred)^2)/length(obs)))/metrica::var.u(obs)
   return(result)
 }

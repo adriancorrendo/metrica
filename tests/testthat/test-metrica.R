@@ -33,10 +33,34 @@ test_that('no error sdev', {
   expect_false(inherits(sdev.test, "try-error"))
 })
 
-SSx.test <- SSx(wheat$pre)
+var.u.test <- var.u(wheat$pre)
 
-test_that('no error SSx', {
-  expect_false(inherits(SSx.test, "try-error"))
+test_that('no error var.u', {
+  expect_false(inherits(var.u.test, "try-error"))
+})
+
+RSS.test <- RSS(wheat$obs, wheat$pre)
+
+test_that('no error RSS', {
+  expect_false(inherits(RSS.test, "try-error"))
+})
+
+TSS.test <- TSS(wheat$pre)
+
+test_that('no error TSS', {
+  expect_false(inherits(TSS.test, "try-error"))
+})
+
+RSE.test <- RSE(wheat$obs, wheat$pre)
+
+test_that('no error RSE', {
+  expect_false(inherits(RSE.test, "try-error"))
+})
+
+RAE.test <- RAE(wheat$obs, wheat$pre)
+
+test_that('no error RAE', {
+  expect_false(inherits(RAE.test, "try-error"))
 })
 
 R2.test <- R2(obs = wheat$obs, pred = wheat$pre)
@@ -73,6 +97,12 @@ RMSE.test <- RMSE(obs = wheat$obs, pred = wheat$pre)
 
 test_that('no error RMSE', {
   expect_false(inherits(RMSE.test, "try-error"))
+})
+
+iqRMSE.test <- iqRMSE(obs = wheat$obs, pred = wheat$pre)
+
+test_that('no error iqRMSE', {
+  expect_false(inherits(iqRMSE.test, "try-error"))
 })
 
 Xa.test <- Xa(obs = wheat$obs, pred = wheat$pre)

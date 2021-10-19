@@ -18,7 +18,7 @@
 #' @export 
 NSE <- function(obs, pred,
                 na.rm = TRUE) {
-  result <- 1-(metrica::MSE(obs,pred)/metrica::SSx(obs))
+  result <- 1-(metrica::MSE(obs,pred)/metrica::var.u(obs))
   return(result)
 }
 

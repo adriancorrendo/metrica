@@ -21,7 +21,7 @@ lambda <- function(obs, pred,
                 na.rm = TRUE) {
   result <- 
     1 - ( (metrica::MSE(obs,pred)) /
-            (metrica::SSx(obs) + metrica::SSx(pred) + 
+            (metrica::var.u(obs) + metrica::var.u(pred) + 
                metrica::MBE(obs,pred)^2)) 
   return(result)
 } 

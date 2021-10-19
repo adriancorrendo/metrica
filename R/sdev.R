@@ -1,5 +1,5 @@
 #' @title sdev
-#' @description Uncorrected Standard Deviation (uSD).
+#' @description Uncorrected Standard Deviation (sdev).
 #' @param x Vector with numeric elements.
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
