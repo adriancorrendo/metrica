@@ -4,7 +4,7 @@
 \alias{scatter.plot}
 \title{scatter.plot}
 \usage{
-scatter.plot(obs, pred, orientation = "PO")
+scatter.plot(obs, pred, orientation = "PO", na.rm = TRUE)
 }
 \arguments{
 \item{obs}{Vector with observed values (numeric).}
@@ -14,6 +14,9 @@ scatter.plot(obs, pred, orientation = "PO")
 \item{orientation}{Argument of class string specifying the axis
 orientation, PO for predicted vs observed, and OP for
 observed vs predicted. Default is orientation = "PO".}
+
+\item{na.rm}{Logic argument to remove rows with missing values
+(NA). Default is na.rm = TRUE.}
 }
 \value{
 Object of class \code{ggplot}.

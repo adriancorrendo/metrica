@@ -2,3 +2,14 @@
 
 language: R
 cache: packages
+apt_packages:
+  - libgdal1-dev
+  - gdal-bin
+  - libproj-dev
+  - proj-data
+  - proj-bin
+  - libgeos-dev
+  - libudunits2-dev
+after_success:
+  - Rscript -e ‘covr::codecov()’
+

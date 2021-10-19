@@ -6,6 +6,8 @@
 #' @param orientation Argument of class string specifying the axis
 #' orientation, PO for predicted vs observed, and OP for
 #' observed vs predicted. Default is orientation = "PO".
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
 #' @return Object of class `ggplot`.
 #' @details Creates a scatter plot of sim vs. obs.
 #' @examples 
@@ -21,9 +23,14 @@
 #' @importFrom ggplot2 ggplot geom_point aes geom_abline geom_hex
 #' coord_fixed theme_bw labs
 #' @importFrom viridis scale_fill_viridis
-tiles.plot <- function(obs, pred, bins = 6, orientation = "PO"){
+#' @importFrom dplyr %>%
+tiles.plot <- function(obs,
+                       pred,
+                       bins = 10,
+                       orientation = "PO",
+                       na.rm = TRUE){
   plot <-
-    data.frame(pred = pred, obs = obs)|>
+    data.frame(pred = pred, obs = obs) %>% 
       ggplot2::ggplot(ggplot2::aes(x = obs, y = pred))+
       ggplot2::coord_fixed(xlim = c(round(min(c(min(pred),
                                                 min(obs)))),
@@ -46,7 +53,7 @@ tiles.plot <- function(obs, pred, bins = 6, orientation = "PO"){
                      panel.grid = ggplot2::element_blank())
 if(orientation == "OP")
   plot <-
-    data.frame(pred = pred, obs = obs)|>
+    data.frame(pred = pred, obs = obs) %>% 
       ggplot2::ggplot(ggplot2::aes(y = obs, x = pred))+
       ggplot2::coord_fixed(xlim = c(round(min(c(min(pred),
                                                 min(obs)))),

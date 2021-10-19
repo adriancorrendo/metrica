@@ -20,14 +20,16 @@
 #' B1.sma(obs = X, pred = Y)
 #' }
 #' @rdname B1.sma
+#' @importFrom dplyr case_when
 #' @export 
 B1.sma <- function(obs,
                   pred,
                   orientation = "PO",
                   na.rm = TRUE) {
-    result <- metrica::sdev(pred)/metrica::sdev(obs)
+  result <- metrica::sdev(pred)/metrica::sdev(obs)
   if(orientation == "OP")
-    result <- metrica::sdev(obs)/metrica::sdev(pred)
+  result <- metrica::sdev(obs)/metrica::sdev(pred) 
+  
   return(result)
 }
 

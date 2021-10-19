@@ -4,7 +4,7 @@
 \alias{tiles.plot}
 \title{tiles.plot}
 \usage{
-tiles.plot(obs, pred, bins = 6, orientation = "PO")
+tiles.plot(obs, pred, bins = 10, orientation = "PO", na.rm = TRUE)
 }
 \arguments{
 \item{obs}{Vector with observed values (numeric).}
@@ -16,6 +16,9 @@ tiles.plot(obs, pred, bins = 6, orientation = "PO")
 \item{orientation}{Argument of class string specifying the axis
 orientation, PO for predicted vs observed, and OP for
 observed vs predicted. Default is orientation = "PO".}
+
+\item{na.rm}{Logic argument to remove rows with missing values
+(NA). Default is na.rm = TRUE.}
 }
 \value{
 Object of class \code{ggplot}.
