@@ -21,8 +21,9 @@ Element of class \code{numeric}.
 Mean Bias Error.
 }
 \details{
-Calculates the MBErr of Predicted compared to Observed
-values.
+Calculates the MBE of Predicted compared to Observed
+values. Negative values indicate overestimation. Positive
+values indicate underestimation. Moriasi et al. (2007).
 }
 \examples{
 \dontrun{

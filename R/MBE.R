@@ -5,8 +5,9 @@
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
-#' @details Calculates the MBErr of Predicted compared to Observed
-#' values.
+#' @details Calculates the MBE of Predicted compared to Observed
+#' values. Negative values indicate overestimation. Positive
+#' values indicate underestimation. Moriasi et al. (2007).
 #' @examples 
 #' \dontrun{
 #' set.seed(1)
@@ -18,6 +19,6 @@
 #' @export 
 MBE <- function(obs, pred,
                 na.rm = TRUE){
-  result <- (mean(pred)-mean(obs))
+  result <- (mean(obs)-mean(pred))
   return(result)
 }

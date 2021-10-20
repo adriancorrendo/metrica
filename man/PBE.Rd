@@ -18,10 +18,12 @@ PBE(obs, pred, na.rm = TRUE)
 Element of class \code{numeric}.
 }
 \description{
-Percentage Bias.
+Percentage Bias Error.
 }
 \details{
 Calculates the PBE (\%) for a Predicted-Observed dataset.
+Negative values indicate overestimation. Positive values indicate
+underestimation. Moriasi et al. (2007).
 }
 \examples{
 \dontrun{
