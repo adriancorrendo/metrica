@@ -17,11 +17,12 @@
 #' @export 
 #' @importFrom ggplot2 ggplot geom_point aes geom_abline labs theme_bw
 #' theme
+#' @importFrom dplyr %>% 
 bland.altman.plot <- function(obs,
                               pred){
   plot <-
-  data.frame(pred = pred, obs = obs) |>
-    dplyr::mutate(diff = obs - pred) |>
+  data.frame(pred = pred, obs = obs)  %>% 
+    dplyr::mutate(diff = obs - pred)  %>% 
     ggplot2::ggplot(ggplot2::aes(x = obs, y = diff))+
     ggplot2::coord_fixed(xlim = c(round(min(c(min(pred),
                                               min(obs)))),

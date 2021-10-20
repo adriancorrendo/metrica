@@ -17,8 +17,7 @@
 #' metrics.summary(obs = X, pre = Y)
 #' }
 #' @rdname metrics.summary
-#' @importFrom dplyr summarise
-#' @importFrom tidyr pivot_longer everything
+#' @importFrom dplyr summarise %>% 
 #' @export 
 metrics.summary <-
   function(obs,
@@ -26,13 +25,15 @@ metrics.summary <-
            orientation = "PO",
            na.rm = TRUE){ 
     data.frame(obs = obs,
-               pred = pred) |>
+               pred = pred)  %>% 
       summarise(
         B0 = as.numeric(metrica::B0.sma(obs,pred, orientation = orientation)),
         B1 = as.numeric(metrica::B1.sma(obs,pred, orientation = orientation)),
+        r = as.numeric(metrica::r(obs,pred)),
         R2 = as.numeric(metrica::R2(obs,pred)),
         CCC = as.numeric(metrica::CCC(obs,pred)),
         MAE =as.numeric(metrica::MAE(obs,pred)),
+        RAE =as.numeric(metrica::MAE(obs,pred)),
         MAPE = as.numeric(metrica::MAPE(obs,pred)),
         SMAPE =as.numeric(metrica::SMAPE(obs,pred)),
         RAE =as.numeric(metrica::RAE(obs,pred)),
@@ -60,14 +61,13 @@ metrics.summary <-
         E1 =as.numeric(metrica::E1(obs,pred)),
         Erel =as.numeric(metrica::Erel(obs,pred)),
         KGE = as.numeric(metrica::KGE(obs,pred)),
+        d =as.numeric(metrica::d(obs,pred)),
         d1 =as.numeric(metrica::d1(obs,pred)),
+        d1r =as.numeric(metrica::d1(obs,pred)),
         RAC = as.numeric(metrica::RAC(obs,pred)),
         AC =as.numeric(metrica::AC(obs,pred)),
         lambda = as.numeric(metrica::lambda(obs,pred))
-      ) |> 
-      tidyr::pivot_longer(tidyr::everything(),
-                          names_to = "Metric",
-                          values_to = "value") 
+      ) 
   }
 
 

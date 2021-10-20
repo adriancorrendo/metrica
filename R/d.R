@@ -1,27 +1,26 @@
-#' @title d1
-#' @description Modified Willmott's Index of Agreement (d1).
+#' @title d
+#' @description Willmott's Index of Agreement (d).
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
-#' @details Calculates the d1 for a Predicted-Observed dataset
-#' following Willmott et al. (1985), which uses absolute instead of
-#' squared residuals.
+#' @details Calculates the d for a Predicted-Observed dataset
+#' following Willmott (1981).
 #' @examples 
 #' \dontrun{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 9)
-#' d1(obs = X, pred = Y)
+#' d(obs = X, pred = Y)
 #' }
-#' @rdname d1
+#' @rdname d
 #' @export 
-d1 <- function(obs, pred,
+d <- function(obs, pred,
                na.rm = TRUE) {
   result <- 
-    1-((sum(abs(obs-pred)))/sum(abs(pred-mean(obs))+
-                                  abs(obs-mean(obs))))
+    1-((sum((obs-pred)^2))/sum((abs(obs-mean(pred))+
+                                  abs(pred-mean(obs)))^2))
   return(result)
 }
 

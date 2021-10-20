@@ -18,7 +18,11 @@
 #' @export 
 R2 <- function(obs, pred,
                na.rm = TRUE){
-  result.cor <- stats::cor(obs,pred)^2
-  result.tr <- 1 - ((metrica::RSS(obs,pred))/metrica::TSS(obs))
+  result <- 1 - (sum((obs-pred)^2)/sum((obs-mean(obs))^2))
+  
+  result.tr <- (sum((obs-mean(obs))*(pred-mean(pred))))^2/
+    (sqrt(sum((obs-mean(obs))^2))*sqrt(sum((pred-mean(pred))^2)))^2
+  
   return(result.tr)
+  
 }

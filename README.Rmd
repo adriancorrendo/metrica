@@ -46,6 +46,7 @@ This is a basic example which shows you core functions of *metrica*:
 
 ```{r example}
 library(metrica)
+library(dplyr)
 # Seed for reproducibility
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
@@ -77,17 +78,27 @@ metrica::MBE(obs = example.data$obs, pred = example.data$pred)
 # Estimate metrics summary
 metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred)
 
+# Optional wrangling
+metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred) %>%
+  tidyr::pivot_longer(tidyr::everything(),
+                      names_to = "Metric",
+                      values_to = "value") 
+
 ```
 ## Metrics available in *metrica*
 
-The **metrica** package contains +40 functions . Most of them work with only two arguments: `observed`(a.k.a. actual, measured, truth, target) and `predicted` (a.k.a. simulated, fitted) values. For now, included functions cover the world of "regression error" metrics (i.e. prediction performance for continuous variables). Classification error metrics coming soon. <br/>
+The **metrica** package contains +40 functions. Two arguments are always required: `observed`(Oi; a.k.a. actual, measured, truth, target) and `predicted` (Pi; a.k.a. simulated, fitted) values. Some functions, also require to define axis `orientation`, such as the slope of linear regression describing the PO or OP scatter. For now, included functions cover the world of "regression error" metrics (i.e. prediction performance for continuous variables). Classification error metrics coming soon. <br/>
 
 
 | #|Metric | Definition | Details | Formula |
 | --|------- | ----------|-------------------- | -------------------- |
-| 1| `B0` | Intercept of SMA regression | Test agreement (H0: B0 = 0, B1 = 1)| ![equation](https://latex.codecogs.com/gif.image?%5Cdpi%7B300%7D%20%5Cbg_white%20%5Cbeta_%7B0_%7BPO%7D%7D%20=%20%5Cbar%7BP%7D%20-%20%5Cfrac%7BS_P%7D%7BS_O%7D%20%5C,%20;%5C,%20%5Cbeta_%7B0_%7BOP%7D%7D%20=%20%5Cbar%7BO%7D%20-%20%5Cfrac%7BS_O%7D%7BS_P%7D) |
-| 2| `B1` | Slope of SMA regression |  Test isometry of the PO scatter (H0: B1 = 1). B1 also represents the ratio of standard deviations (So and Sp) | ![equation](https://latex.codecogs.com/gif.image?%5Cdpi%7B300%7D%20%5Cbg_white%20%5Cbeta_%7B1_%7BPO%7D%7D%20=%20%5Cfrac%7BS_P%7D%7BS_O%7D%5C,%20;%5C,%20%5Cbeta_%7B1_%7BOP%7D%7D%20=%20%5Cfrac%7BS_O%7D%7BS_P%7D)|
-| 3| `r` | Pearson's correlation coefficient |  Strength of linear association between P and O. . However, it measures "precision" but no accuracy. | ![equation](https://latex.codecogs.com/gif.image?%5Cdpi%7B300%7D%20%5Cbg_white%20r%20=%20%5Cfrac%7B%7BS%7D_%7BPO%7D%7D%7B%7BS%7D_%7BP%7D%7BS%7D_%7BO%7D%7D) |
+| A| `RSS` | Residual sum of squares (a.k.a. as sum of squares) | The sum of squared differences between predicted and observed values. It represents the base of many error metrics using squared scale such as the MSE | ![equation](https://latex.codecogs.com/svg.image?%5Cbg_white%20%20%20RSS%20=%20%5Csum%7B(O_i%20-%20P_i)%5E2%7D%20)|
+| B| `TSS` | Total sum of squares | The sum of the squared differences between the observations and its mean. It is used as a reference error, for example, to estimate explained variance | ![equation](https://latex.codecogs.com/svg.image?%5Cbg_white%20%20TSS%20=%20%5Csum%7B(O_i%20-%20%5Cbar%7BO%7D)%5E2%7D%20)|
+| C| `var.u` | Sample variance, uncorrected | The mean of sum of squared differences between values of an `x` and its mean (divided by n, not n-1)| ![equation](https://latex.codecogs.com/svg.image?%5Cbg_white%20%20var.u%20=%20%5Cfrac%7B1%7D%7Bn%7D%5Csum%7B(x%20-%20%5Cbar%7Bx%7D)%5E2%7D%20)|
+| D| `sdev` | Sample standard deviation, uncorrected | The square root of the mean of sum of squared differences between values of an `x` and its mean (divided by n, not n-1)| ![equation](https://latex.codecogs.com/svg.image?%5Cbg_white%20%20S%20=%20%5Csqrt%7B%5Cfrac%7B1%7D%7Bn%7D%5Csum%7B(x_i%20-%20%5Cbar%7Bx%7D)%5E2%7D%7D%20) |
+| 1| `B0` | Intercept of SMA regression | SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) recommended to describe the bivariate scatter instead of OLS regression (classic linear model, which results vary with the axis orientation). B0 could be used to test agreement along with B1 (H0: B0 = 0, B1 = 1)| ![equation](https://latex.codecogs.com/gif.image?%5Cdpi%7B300%7D%20%5Cbg_white%20%5Cbeta_%7B0_%7BPO%7D%7D%20=%20%5Cbar%7BP%7D%20-%20%5Cfrac%7BS_P%7D%7BS_O%7D%20%5C,%20;%5C,%20%5Cbeta_%7B0_%7BOP%7D%7D%20=%20%5Cbar%7BO%7D%20-%20%5Cfrac%7BS_O%7D%7BS_P%7D) |
+| 2| `B1` | Slope of SMA regression |  SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) recommended to describe the bivariate scatter instead of OLS regression (classic linear model, which results vary with the axis orientation). B1 could be used to test isometry of the PO scatter (H0: B1 = 1). B1 also represents the ratio of standard deviations (So and Sp) | ![equation](https://latex.codecogs.com/gif.image?%5Cdpi%7B300%7D%20%5Cbg_white%20%5Cbeta_%7B1_%7BPO%7D%7D%20=%20%5Cfrac%7BS_P%7D%7BS_O%7D%5C,%20;%5C,%20%5Cbeta_%7B1_%7BOP%7D%7D%20=%20%5Cfrac%7BS_O%7D%7BS_P%7D)|
+| 3| `r` | Pearson's correlation coefficient |  Strength of linear association between P and O. However, it measures "precision" but no accuracy. | ![equation](https://latex.codecogs.com/gif.image?%5Cdpi%7B300%7D%20%5Cbg_white%20r%20=%20%5Cfrac%7B%7BS%7D_%7BPO%7D%7D%7B%7BS%7D_%7BP%7D%7BS%7D_%7BO%7D%7D) |
 | 4| `R2` | Coefficient of determination |  Strength of linear association between P and O. However, it measures "precision" but no accuracy | ![equation](https://latex.codecogs.com/gif.image?%5Cdpi%7B300%7D%20%5Cbg_white%20R%5E%7B2%7D%20=%20%5Cfrac%7B%7BS%5E2%7D_%7BPO%7D%7D%7B%7BS%5E2%7D_%7BP%7D%7BS%5E2%7D_%7BO%7D%7D)|
 | 5| `Xa` | Accuracy coefficient | Measures accuracy. Used to adjust the precision measured by `r` to estimate agreement |![equation](https://latex.codecogs.com/gif.image?%5Cdpi%7B300%7D%20%5Cbg_white%20X_a%20=%20%5Cfrac%7B2%7D%7B%5Cfrac%7BS_P%7D%7BS_O%7D%20&plus;%20%5Cfrac%7BS_O%7D%7BS_P%7D%20&plus;%20%5Cfrac%7B(%5Cbar%7BO%7D-%5Cbar%7BP%7D)%5E2%7D%7BS_O%20S_P%7D%7D) |
 | 6| `CCC` | Concordance correlation coefficient | Tests agreement. It presents both precision (r) and accuracy (Xa) components. Easy to interpret |![equation](https://latex.codecogs.com/gif.image?%5Cdpi%7B300%7D%20%5Cbg_white%20CCC%20=%20r%20*%20X_a)|

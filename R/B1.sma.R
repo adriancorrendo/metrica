@@ -27,8 +27,9 @@ B1.sma <- function(obs,
                   orientation = "PO",
                   na.rm = TRUE) {
   result <- metrica::sdev(pred)/metrica::sdev(obs)
-  if(orientation == "OP")
+  if (orientation == "OP"){
   result <- metrica::sdev(obs)/metrica::sdev(pred) 
+  }
   
   return(result)
 }

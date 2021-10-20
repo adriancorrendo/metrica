@@ -51,7 +51,7 @@ tiles.plot <- function(obs,
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "right",
                      panel.grid = ggplot2::element_blank())
-if(orientation == "OP")
+if (orientation == "OP"){
   plot <-
     data.frame(pred = pred, obs = obs) %>% 
       ggplot2::ggplot(ggplot2::aes(y = obs, x = pred))+
@@ -74,5 +74,6 @@ if(orientation == "OP")
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "right",
                      panel.grid = ggplot2::element_blank())
+}
   return(plot)
   }
