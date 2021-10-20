@@ -7,6 +7,10 @@
 #' @return Element of class `numeric`.
 #' @details Calculates the KGE for a Predicted-Observed dataset
 #' following Kling et al. (2012).
+#' Kling, H., M. Fuchs, and M. Paulin (2012), Runoff conditions in the
+#' upper Danube basin under an ensemble of climate change scenarios,
+#' Journal of Hydrology 424-425, 264-277, 
+#' doi:10.1016/j.jhydrol.2012.01.011.
 #' @examples 
 #' \dontrun{
 #' set.seed(1)
