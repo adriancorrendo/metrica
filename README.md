@@ -9,8 +9,7 @@
 status](https://travis-ci.com/adriancorrendo/metrica.svg?branch=master)](https://app.travis-ci.com/github/adriancorrendo/metrica)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&svg=true)](https://ci.appveyor.com/project/adriancorrendo/metrica)
-[![Codecov test
-coverage](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg)](https://codecov.io/gh/adriancorrendo/metrica?branch=master)
+[![codecov](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn)](https://codecov.io/gh/adriancorrendo/metrica)
 
 <!-- badges: end -->
 
