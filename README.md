@@ -35,78 +35,95 @@ And the development version from [GitHub](https://github.com/) with:
 devtools::install_github("adriancorrendo/metrica")
 ```
 
-## Example
+## Native datasets
+
+The *metrica* package comes with four example datasets from the APSIM
+software: <br/> 1. `wheat`. 137 datapoints of wheat grain N (grams per
+squared meter) <br/> 2. `barley`. 69 datapoints of barley grain number
+(x1000 grains per squared meter) <br/> 3. `sorghum`. 36 datapoints of
+sorghum grain number (x1000 grains per squared meter) <br/> 4.
+`chickpea`. 39 datapoints of chickpea aboveground dry mass (kg per
+hectare) <br/>
+
+These data correspond to the latest, up-to-date, documentation and
+validation of version number 2020.03.27.4956. Data available at:
+<https://doi.org/10.7910/DVN/EJS4M0>. Further details can be found at
+the official APSIM Next Generation website:
+<https://APSIMnextgeneration.netlify.app/modeldocumentation> <br/>
+
+## Example Code
 
 This is a basic example which shows you core functions of *metrica*:
 
 ``` r
 library(metrica)
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-# Seed for reproducibility
-set.seed(1)
-X <- rnorm(n = 100, mean = 0, sd = 10)
-Y <- X + rnorm(n=100, mean = 0, sd = 3)
 
-# Data frame
+# 1. A. Create a fake dataset
+# Set seed for reproducibility
+set.seed(1)
+# Create a random vector (X) with 100 values
+X <- rnorm(n = 100, mean = 0, sd = 10)
+# Create a second vector (Y) with 100 values by adding error with respect
+# to the first vector (X).
+Y <- X + rnorm(n=100, mean = 0, sd = 3)
+# Merge vectors in a data frame
 example.data <- data.frame(obs = X, pred = Y)
 
-# Create scatter plot with OP orientation
+# 1. B. Call native example datasets
+
+example.data <- barley # or 'wheat', 'sorghum', or 'chickpea'
+
+# 2. Use metrica plot functions
+# 2.a. Create scatter plot with OP orientation
 metrica::scatter.plot(obs = example.data$obs, pred = example.data$pred,
              orientation = "OP")
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
 ``` r
-# Create tiles plot with PO orientation
+# 2.b. Create tiles plot with PO orientation
 metrica::tiles.plot(obs = example.data$obs, pred = example.data$pred,
            bins = 15, orientation = "PO")
 ```
 
-<img src="man/figures/README-example-2.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
 
 ``` r
-# Create a Bland-Altman plot
+# 2.c. Create a Bland-Altman plot
 metrica::bland.altman.plot(example.data$obs, example.data$pred)
 ```
 
-<img src="man/figures/README-example-3.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" />
 
 ``` r
-# Estimate coefficient of determination (R2)
+# 3. Get metrics estimates
+# 3.a. Single estimates
+# 3.a.i. Estimate coefficient of determination (R2)
 metrica::R2(obs = example.data$obs, pred = example.data$pred)
-#> [1] 0.9070934
+#> [1] 0.4512998
 
-# Estimate RMSE
+# 3.a.ii. Estimate root mean squared error (RMSE)
 metrica::RMSE(obs = example.data$obs, pred = example.data$pred)
-#> [1] 2.861482
+#> [1] 3.986028
 
-# Estimate MBE
+# 3.a.iii. Estimate mean bias error (MBE)
 metrica::MBE(obs = example.data$obs, pred = example.data$pred)
-#> [1] 0.1134242
+#> [1] 0.207378
 
-# Estimate metrics summary
+# 3.b. Metrics Summary 
 metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred)
-#>           B0       B1         r        R2       CCC      MAE       RAE     MAPE
-#> 1 0.06501368 1.049629 0.9524145 0.9070934 0.9512255 2.283581 0.3202058 542.9795
-#>     SMAPE       RSE       MBE      PBE       PAB      PPB      MSE     RMSE
-#> 1 55.4614 0.1025183 0.1134242 10.41666 0.1571194 2.402532 8.188078 2.861482
-#>      RRMSE        RSR    iqRMSE       MLA      MLP         SB      SDSD
-#> 1 2.627928 0.03582699 0.2413148 0.2095862 7.978492 0.01286506 0.1967212
-#>        LCS      PLA      PLP       Ue       Uc        Ub       NSE        E1
-#> 1 7.978492 2.559651 97.44035 97.44035 2.402532 0.1571194 0.8974817 0.6797942
-#>        Erel       KGE         d        d1       d1r       RAC        AC
-#> 1 -46.14172 0.7936299 0.9750687 0.8440456 0.8440456 0.9756118 0.9001633
-#>      lambda
-#> 1 0.9512255
+#>        B0        B1         r        R2       CCC     MAE       RAE     MAPE
+#> 1 1.52828 0.9288715 0.6717885 0.4512998 0.6693644 3.05955 0.7639151 16.81127
+#>     SMAPE       RSE      MBE      PBE       PAB       PPB      MSE     RMSE
+#> 1 16.7848 0.6164605 0.207378 1.104366 0.2706729 0.8206954 15.88842 3.986028
+#>       RRMSE       RSR  iqRMSE       MLA      MLP         SB      SDSD      LCS
+#> 1 0.2122709 0.1546553 0.65246 0.1734011 15.71502 0.04300564 0.1303955 15.71502
+#>        PLA      PLP       Ue        Uc        Ub       NSE        E1      Erel
+#> 1 1.091368 98.90863 98.90863 0.8206954 0.2706729 0.3835395 0.2360849 0.4119527
+#>         KGE         d        d1       d1r       RAC        AC    lambda
+#> 1 0.6660299 0.8191397 0.6164166 0.6164166 0.8346082 0.2529857 0.6693644
 
 # Optional wrangling
 metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred) %>%
@@ -114,18 +131,18 @@ metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred) %>%
                       names_to = "Metric",
                       values_to = "value") 
 #> # A tibble: 39 × 2
-#>    Metric    value
-#>    <chr>     <dbl>
-#>  1 B0       0.0650
-#>  2 B1       1.05  
-#>  3 r        0.952 
-#>  4 R2       0.907 
-#>  5 CCC      0.951 
-#>  6 MAE      2.28  
-#>  7 RAE      0.320 
-#>  8 MAPE   543.    
-#>  9 SMAPE   55.5   
-#> 10 RSE      0.103 
+#>    Metric  value
+#>    <chr>   <dbl>
+#>  1 B0      1.53 
+#>  2 B1      0.929
+#>  3 r       0.672
+#>  4 R2      0.451
+#>  5 CCC     0.669
+#>  6 MAE     3.06 
+#>  7 RAE     0.764
+#>  8 MAPE   16.8  
+#>  9 SMAPE  16.8  
+#> 10 RSE     0.616
 #> # … with 29 more rows
 ```
 

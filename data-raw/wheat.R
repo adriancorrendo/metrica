@@ -10,3 +10,4 @@ wheat <- as.data.frame(wheat)
 
 # write data in correct format to data folder ----
 usethis::use_data(wheat, overwrite = TRUE)
+

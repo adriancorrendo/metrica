@@ -40,42 +40,69 @@ And the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("adriancorrendo/metrica")
 ```
-## Example
+## Native datasets
+The *metrica* package comes with four example datasets from the APSIM
+software: <br/>
+1. `wheat`. 137 datapoints of wheat grain N (grams per squared meter) <br/>
+2. `barley`. 69 datapoints of barley grain number (x1000 grains per 
+squared meter) <br/>
+3. `sorghum`. 36 datapoints of sorghum grain number (x1000 grains per
+squared meter) <br/>
+4. `chickpea`. 39 datapoints of chickpea aboveground dry mass (kg per
+hectare) <br/>
+
+These data correspond to the latest, up-to-date, documentation and
+validation of version number 2020.03.27.4956. Data available at:
+https://doi.org/10.7910/DVN/EJS4M0. Further details can be found at the official APSIM Next Generation website: https://APSIMnextgeneration.netlify.app/modeldocumentation <br/>
+
+
+## Example Code
 
 This is a basic example which shows you core functions of *metrica*:
 
-```{r example}
+```{r warning=FALSE, message=FALSE}
 library(metrica)
 library(dplyr)
-# Seed for reproducibility
-set.seed(1)
-X <- rnorm(n = 100, mean = 0, sd = 10)
-Y <- X + rnorm(n=100, mean = 0, sd = 3)
 
-# Data frame
+# 1. A. Create a fake dataset
+# Set seed for reproducibility
+set.seed(1)
+# Create a random vector (X) with 100 values
+X <- rnorm(n = 100, mean = 0, sd = 10)
+# Create a second vector (Y) with 100 values by adding error with respect
+# to the first vector (X).
+Y <- X + rnorm(n=100, mean = 0, sd = 3)
+# Merge vectors in a data frame
 example.data <- data.frame(obs = X, pred = Y)
 
-# Create scatter plot with OP orientation
+# 1. B. Call native example datasets
+
+example.data <- barley # or 'wheat', 'sorghum', or 'chickpea'
+
+# 2. Use metrica plot functions
+# 2.a. Create scatter plot with OP orientation
 metrica::scatter.plot(obs = example.data$obs, pred = example.data$pred,
              orientation = "OP")
 
-# Create tiles plot with PO orientation
+# 2.b. Create tiles plot with PO orientation
 metrica::tiles.plot(obs = example.data$obs, pred = example.data$pred,
            bins = 15, orientation = "PO")
 
-# Create a Bland-Altman plot
+# 2.c. Create a Bland-Altman plot
 metrica::bland.altman.plot(example.data$obs, example.data$pred)
 
-# Estimate coefficient of determination (R2)
+# 3. Get metrics estimates
+# 3.a. Single estimates
+# 3.a.i. Estimate coefficient of determination (R2)
 metrica::R2(obs = example.data$obs, pred = example.data$pred)
 
-# Estimate RMSE
+# 3.a.ii. Estimate root mean squared error (RMSE)
 metrica::RMSE(obs = example.data$obs, pred = example.data$pred)
 
-# Estimate MBE
+# 3.a.iii. Estimate mean bias error (MBE)
 metrica::MBE(obs = example.data$obs, pred = example.data$pred)
 
-# Estimate metrics summary
+# 3.b. Metrics Summary 
 metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred)
 
 # Optional wrangling

@@ -7,7 +7,7 @@
 \format{
 This data frame has 36 rows and the following 2 columns:
 \describe{
-\item{pre}{predicted values}
+\item{pred}{predicted values}
 \item{obs}{observated values}
 }
 }
