@@ -3,3 +3,6 @@
 ^\.travis\.yml$
 ^appveyor\.yml$
 ^codecov\.yml$
+^LICENSE\.md$
+^README\.Rmd$
+^data-raw$
