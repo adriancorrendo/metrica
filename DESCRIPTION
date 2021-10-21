@@ -2,11 +2,12 @@ Package: metrica
 Title: Error Metrics for Predicted-Observed Datasets
 Version: 1.0.1
 Authors@R: c(
-    person("Adrian", "Correndo", email = "correndo@ksu.edu", role = c("cre"), comment = c(ORCID = "0000-0002-4172-289X")),
-    person("Adrian", "Correndo", email = "correndo@ksu.edu", role = c("aut"), comment = c(ORCID = "0000-0002-4172-289X")),
-    person("Luiz", "Moro Rosso", email = "lhmrosso@ksu.edu", role = "aut", comment = c(ORCID = "0000-0002-8642-911X")),
+    person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("cre"), comment = c(ORCID = "0000-0002-4172-289X")),
+    person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("aut"), comment = c(ORCID = "0000-0002-4172-289X")),
+    person("Luiz H.", "Moro Rosso", email = "lhmrosso@ksu.edu", role = "aut", comment = c(ORCID = "0000-0002-8642-911X")),
+    person("Leonardo M.", "Bastos", email = "leonardombastos@gmail.com", role = "aut"),
     person("Dean", "Holzworth", email = "dean.holzworth@csiro.au", role = "aut"),
-    person("Ignacio", "Ciampitti", email = "ciampitti@ksu.edu", role = "aut", comment = c(ORCID = "0000-0001-9619-5129")))
+    person("Ignacio A.", "Ciampitti", email = "ciampitti@ksu.edu", role = "aut", comment = c(ORCID = "0000-0001-9619-5129")))
 Description: Metrica offers users of simulation models a complete toolbox with error metrics accounting for different aspects of the agreement between predicted and observed values.
 License: MIT + file LICENSE
 Encoding: UTF-8

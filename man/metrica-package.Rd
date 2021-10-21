@@ -9,14 +9,15 @@
 Metrica offers users of simulation models a complete toolbox with error metrics accounting for different aspects of the agreement between predicted and observed values.
 }
 \author{
-\strong{Maintainer}: Adrian Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID})
+\strong{Maintainer}: Adrian A. Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID})
 
 Authors:
 \itemize{
-  \item Adrian Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID})
-  \item Luiz Moro Rosso \email{lhmrosso@ksu.edu} (\href{https://orcid.org/0000-0002-8642-911X}{ORCID})
+  \item Adrian A. Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID})
+  \item Luiz H. Moro Rosso \email{lhmrosso@ksu.edu} (\href{https://orcid.org/0000-0002-8642-911X}{ORCID})
+  \item Leonardo M. Bastos \email{leonardombastos@gmail.com}
   \item Dean Holzworth \email{dean.holzworth@csiro.au}
-  \item Ignacio Ciampitti \email{ciampitti@ksu.edu} (\href{https://orcid.org/0000-0001-9619-5129}{ORCID})
+  \item Ignacio A. Ciampitti \email{ciampitti@ksu.edu} (\href{https://orcid.org/0000-0001-9619-5129}{ORCID})
 }
 
 }
