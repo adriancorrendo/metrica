@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# metrica: Performance metrics for predicted-observed datasets.
+# metrica: Prediction performance metrics.
 
 <!-- badges: start -->
 

@@ -1,5 +1,5 @@
 Package: metrica
-Title: Performance metrics for predicted-observed datasets
+Title: Prediction performance metrics
 Version: 1.0.1
 Authors@R: c(
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("cre"), comment = c(ORCID = "0000-0002-4172-289X")),
