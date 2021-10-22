@@ -4,7 +4,7 @@
 \name{metrica-package}
 \alias{metrica}
 \alias{metrica-package}
-\title{metrica: Error Metrics for Predicted-Observed Datasets}
+\title{metrica: Performance metrics for predicted-observed datasets}
 \description{
 Metrica offers users of simulation models a complete toolbox with error metrics accounting for different aspects of the agreement between predicted and observed values.
 }

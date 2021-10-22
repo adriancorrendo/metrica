@@ -1,5 +1,5 @@
 Package: metrica
-Title: Error Metrics for Predicted-Observed Datasets
+Title: Performance metrics for predicted-observed datasets
 Version: 1.0.1
 Authors@R: c(
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("cre"), comment = c(ORCID = "0000-0002-4172-289X")),
@@ -16,6 +16,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Suggests: 
     covr,
+    tidyverse,
+    knitr,
     testthat (>= 2.0.0)
 Config/testthat/edition: 2
 Depends: 

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# metrica
+# metrica: Performance metrics for predicted-observed datasets.
 
 <!-- badges: start -->
 
@@ -14,8 +14,11 @@ status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metric
 <!-- badges: end -->
 
 The goal of the *metrica* package is to offer users of point-forecast
-models a complete toolbox with error metrics accounting for different
-aspects of the agreement between predicted and observed values.
+models a complete toolbox with a wide spectrum of error and goodness of
+fit metrics (+40) accounting for different aspects of the agreement
+between predicted and observed values. Also, some basic visualization
+functions to assess models performance (e.g. scatter with regression
+line; Bland-Altman plot) are provided in customizable format (ggplot).
 
 <img src="man/figures/metrica_logo.png" height="300" align="right"/>
 
@@ -38,11 +41,11 @@ devtools::install_github("adriancorrendo/metrica")
 ## Native datasets
 
 The *metrica* package comes with four example datasets from the APSIM
-software: <br/> 1. `wheat`. 137 datapoints of wheat grain N (grams per
-squared meter) <br/> 2. `barley`. 69 datapoints of barley grain number
-(x1000 grains per squared meter) <br/> 3. `sorghum`. 36 datapoints of
+software: <br/> 1. `wheat`. 137 data-points of wheat grain N (grams per
+squared meter) <br/> 2. `barley`. 69 data-points of barley grain number
+(x1000 grains per squared meter) <br/> 3. `sorghum`. 36 data-points of
 sorghum grain number (x1000 grains per squared meter) <br/> 4.
-`chickpea`. 39 datapoints of chickpea aboveground dry mass (kg per
+`chickpea`. 39 data-points of chickpea aboveground dry mass (kg per
 hectare) <br/>
 
 These data correspond to the latest, up-to-date, documentation and
@@ -53,7 +56,7 @@ the official APSIM Next Generation website:
 
 ## Example Code
 
-This is a basic example which shows you core functions of *metrica*:
+This is a basic example which shows you the core functions of *metrica*:
 
 ``` r
 library(metrica)
@@ -146,16 +149,18 @@ metrica::metrics.summary(obs = example.data$obs, pred = example.data$pred) %>%
 #> # … with 29 more rows
 ```
 
-## Metrics available in *metrica*
+## Performance metrics available in *metrica*
 
 The **metrica** package contains +40 functions. Two arguments are always
 required: `observed`(Oi; a.k.a. actual, measured, truth, target) and
 `predicted` (Pi; a.k.a. simulated, fitted) values. Some functions, also
 require to define axis `orientation`, such as the slope of linear
-regression describing the PO or OP scatter. For now, included functions
+regression describing the bivariate scatter. Current included functions
 cover the world of “regression error” metrics (i.e. prediction
 performance for continuous variables). Classification error metrics
-coming soon. <br/>
+coming soon. Always keep in mind that predicted values should come from
+out-of-bag samples (unseen by training set) to avoid overestimation of
+prediction performance.<br/>
 
 | \#  | Metric   | Definition                                                       | Details                                                                                                                                                                                                                                                                                                                                                                     | Formula                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |-----|----------|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
