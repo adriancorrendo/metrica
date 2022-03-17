@@ -4,9 +4,11 @@
 \alias{RSS}
 \title{RSS}
 \usage{
-RSS(obs, pred, na.rm = TRUE)
+RSS(data = NULL, obs, pred, na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
@@ -18,7 +20,7 @@ RSS(obs, pred, na.rm = TRUE)
 Element of class \code{numeric}.
 }
 \description{
-Residual Sum of Squares (R2).
+Residual Sum of Squares (RSS).
 }
 \details{
 Calculates the RSS for a Predicted-Observed dataset.

@@ -1,6 +1,7 @@
 #' @title Ub
 #' @description Proportion of the total sum of squares related to the
 #' mean bias (Ub). 
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -17,11 +18,18 @@
 #' Ub(obs = X, pred = Y)
 #' }
 #' @rdname Ub
+#' @importFrom rlang eval_tidy quo
 #' @export 
-Ub <- function(obs, pred,
+Ub <- function(data=NULL,
+               obs,
+               pred,
                na.rm = TRUE){
-  result <- 
-    100 * (length(obs)*(mean(obs)-mean(pred))^2) / sum((obs-pred)^2)
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    100 * (length({{obs}})*(mean({{obs}})-mean({{pred}}))^2) / sum(({{obs}}-{{pred}})^2)
+    )
+  )
   
   return(result)
 }

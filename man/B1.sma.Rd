@@ -4,9 +4,11 @@
 \alias{B1.sma}
 \title{B1.sma}
 \usage{
-B1.sma(obs, pred, orientation = "PO", na.rm = TRUE)
+B1.sma(data = NULL, obs, pred, orientation = "PO", na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}

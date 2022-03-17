@@ -4,9 +4,11 @@
 \alias{Xa}
 \title{Xa}
 \usage{
-Xa(obs, pred, na.rm = TRUE)
+Xa(data = NULL, obs, pred, na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}

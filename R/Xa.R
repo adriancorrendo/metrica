@@ -1,5 +1,6 @@
 #' @title Xa
 #' @description Accuracy component of Concordance Correlation.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -14,11 +15,23 @@
 #' Xa(obs = X, pred = Y)
 #' }
 #' @rdname Xa
+#' @importFrom rlang eval_tidy quo
 #' @export 
-Xa <- function(obs, pred,
+Xa <- function(data=NULL,
+               obs,
+               pred,
                na.rm = TRUE){
-  result <- (2 / (metrica::sdev(pred)/metrica::sdev(obs) +
-          metrica::sdev(obs)/metrica::sdev(pred) +
-          ((mean(pred)-mean(obs))^2/(metrica::sdev(pred)*metrica::sdev(obs)))) )
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+      (2 / (sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))/
+              sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}})) +
+              sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
+              sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}})) +
+              ((mean({{pred}})-mean({{obs}}))^2/
+                 (sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))*
+                    sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))))) )
+    )
+  )
   return(result)
 }

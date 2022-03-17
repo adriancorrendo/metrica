@@ -4,9 +4,11 @@
 \alias{AC}
 \title{AC}
 \usage{
-AC(obs, pred, na.rm = TRUE)
+AC(data = NULL, obs, pred, na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
@@ -29,6 +31,7 @@ following Ji and Gallo (2006).
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 9)
-AC(obs = X, pred = Y)
+df <- data.frame(obs = X, pred = Y)
+AC(df, obs = X, pred = Y)
 }
 }

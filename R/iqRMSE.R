@@ -1,5 +1,6 @@
 #' @title iqRMSE
 #' @description Relative Root Mean Squared Error.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -17,13 +18,20 @@
 #' }
 #' @rdname iqRMSE
 #' @importFrom stats quantile
+#' @importFrom rlang eval_tidy quo
 #' @export 
-iqRMSE <- function(obs,
-                    pred,
-                 na.rm = TRUE){
-  result <- sqrt(sum((obs-pred)^2)/length(obs)) / 
-    (stats::quantile(obs,probs = c(.75))[[1]]-
-       stats::quantile(obs,probs = c(.25))[[1]])
+iqRMSE <- function(data = NULL,
+                   obs,
+                   pred,
+                   na.rm = TRUE) {
+  result <- rlang::eval_tidy(
+    data=data,
+    rlang::quo(
+      sqrt(sum(({{obs}}-{{pred}})^2)/length({{obs}})) / 
+    (stats::quantile({{obs}},probs = c(.75))[[1]]-
+       stats::quantile({{obs}},probs = c(.25))[[1]])
+    )
+  )
   return(result)
 }
 

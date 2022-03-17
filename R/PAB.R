@@ -1,6 +1,7 @@
 #' @title PAB
 #' @description Percentage Additive Bias (PAB) component of the
 #' Mean Square Error (MSE).
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -17,12 +18,20 @@
 #' PAB(obs = X, pred = Y)
 #' }
 #' @rdname PAB
+#' @importFrom rlang eval_tidy quo
 #' @export 
-PAB <- function(obs, pred,
+PAB <- function(data=NULL,
+                obs,
+                pred,
                 na.rm = TRUE){
-  result <- 
-    100 * (metrica::SB(obs,pred) /
-             metrica::MSE(obs, pred))
+  SB <- (mean({{obs}}) - mean({{pred}}))^2
+  MSE <- sum(({{obs}}-{{pred}})^2)/length({{obs}})
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    100 * (SB / MSE)
+    )
+  )
   
   return(result)
 }

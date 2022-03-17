@@ -1,5 +1,6 @@
 #' @title RRMSE
 #' @description Relative Root Mean Squared Error.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -18,9 +19,17 @@
 #' RRMSE(obs = X, pred = Y)
 #' }
 #' @rdname RRMSE
+#' @importFrom rlang eval_tidy quo
 #' @export 
-RRMSE <- function(obs, pred,
-                 na.rm = TRUE){
-  result <- sqrt(sum((obs-pred)^2)/length(obs)) / (mean(obs))
+RRMSE <- function(data=NULL,
+                  obs, 
+                  pred,
+                  na.rm = TRUE){
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    sqrt(sum(({{obs}}-{{pred}})^2)/length({{obs}})) / (mean({{obs}}))
+    )
+  )
   return(result)
 }

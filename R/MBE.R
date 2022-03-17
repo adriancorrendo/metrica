@@ -1,5 +1,6 @@
 #' @title MBE
 #' @description Mean Bias Error.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -16,9 +17,17 @@
 #' MBE(obs = X, pred = Y)
 #' }
 #' @rdname MBE
+#' @importFrom rlang eval_tidy quo
 #' @export 
-MBE <- function(obs, pred,
+MBE <- function(data=NULL,
+                obs,
+                pred,
                 na.rm = TRUE){
-  result <- (mean(obs)-mean(pred))
+  result <-  rlang::eval_tidy(
+    data=data,
+    rlang::quo(
+      (mean({{obs}})-mean({{pred}}))
+    )
+  )
   return(result)
 }

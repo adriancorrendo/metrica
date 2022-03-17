@@ -4,9 +4,11 @@
 \alias{metrics.summary}
 \title{metrics.summary}
 \usage{
-metrics.summary(obs, pred, orientation = "PO", na.rm = TRUE)
+metrics.summary(data = NULL, obs, pred, orientation = "PO", na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
@@ -32,6 +34,7 @@ Creates a table with one colum per metric.
 \dontrun{
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 10)
-metrics.summary(obs = X, pre = Y)
+df <- data.frame(obs = X, pred = Y)
+metrics.summary(df, obs = X, pred = Y)
 }
 }

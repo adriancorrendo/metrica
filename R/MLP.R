@@ -1,6 +1,7 @@
 #' @title MLP
 #' @description Mean Lack of Precision (MLP) component of the Mean 
 #' Square Error (MSE).
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -16,16 +17,28 @@
 #' MLP(obs = X, pred = Y)
 #' }
 #' @rdname MLP
+#' @importFrom rlang eval_tidy quo
 #' @export 
-MLP <- function(obs, pred,
+MLP <- function(data=NULL,
+                obs, 
+                pred,
                 na.rm = TRUE){
-  result <- sum (abs(obs - ((mean(obs) -
-        (metrica::sdev(obs)/metrica::sdev(pred)*mean(pred))) +
-          metrica::sdev(obs)/metrica::sdev(pred) * pred)) *
-          abs(pred - ((mean(pred) - (metrica::sdev(pred)/
-          metrica::sdev(obs)*mean(obs))) +
-            metrica::sdev(pred)/metrica::sdev(obs) * obs) ) ) /
-    length(obs) 
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+      sum (abs({{obs}} - ((mean({{obs}}) -
+        (sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
+           sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))*mean({{pred}}))) +
+          sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
+          sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}})) * {{pred}})) *
+          abs({{pred}} - ((mean({{pred}}) - (sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))/
+          sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))*mean({{obs}}))) +
+            sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))/
+            sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}})) * {{obs}}) ) ) /
+    length({{obs}}) 
+    )
+  )
   
   return(result)
 }
+

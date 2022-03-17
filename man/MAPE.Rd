@@ -4,9 +4,11 @@
 \alias{MAPE}
 \title{MAPE}
 \usage{
-MAPE(obs, pred, na.rm = TRUE)
+MAPE(data = NULL, obs, pred, na.rm = TRUE)
 }
 \arguments{
+\item{data}{(optional) argument to call an existing data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}

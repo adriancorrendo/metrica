@@ -1,7 +1,9 @@
 #' @title bland.altman.plot
 #' @description Bland-Altman plot.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param na.rm Logic argument to remove rows with missing values
 #' @return Object of class `ggplot`.
 #' @details Creates a scatter plot of the difference between
 #' observed and predicted values (obs-pred) vs. observed values.
@@ -17,13 +19,19 @@
 #' @export 
 #' @importFrom ggplot2 ggplot geom_point aes geom_abline labs theme_bw
 #' theme
-#' @importFrom dplyr %>% 
-bland.altman.plot <- function(obs,
-                              pred){
-  plot <-
-  data.frame(pred = pred, obs = obs)  %>% 
-    dplyr::mutate(diff = obs - pred)  %>% 
-    ggplot2::ggplot(ggplot2::aes(x = obs, y = diff))+
+#' @importFrom dplyr %>%
+#' @importFrom rlang eval_tidy quo  
+bland.altman.plot <- function(data=NULL,
+                              obs,
+                              pred,
+                              na.rm = TRUE){
+  plot <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    ggplot2::ggplot(data = data.frame(obs = {{obs}}, 
+                                      pred = {{pred}})  %>% 
+                      dplyr::mutate(diff = obs - pred),
+                    ggplot2::aes(x = obs, y = diff))+
     ggplot2::coord_fixed(xlim = c(round(min(c(min(pred),
                                               min(obs)))),
                                   round(max(c(max(pred),
@@ -41,5 +49,7 @@ bland.altman.plot <- function(obs,
     ggplot2::theme_bw()+
     ggplot2::theme(legend.position = "none",
                    panel.grid = ggplot2::element_blank())
+    )
+  )
   return(plot)
 }

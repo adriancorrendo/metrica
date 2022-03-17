@@ -1,5 +1,6 @@
 #' @title KGE
 #' @description Kling-Gupta Model Efficiency (KGE).
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -19,13 +20,27 @@
 #' KGE(obs = X, pred = Y)
 #' }
 #' @rdname KGE
+#' @importFrom rlang eval_tidy quo
 #' @export 
-KGE <- function(obs, pred,
+KGE <- function(data=NULL,
+                obs,
+                pred,
                 na.rm = TRUE) {
-  CVr <- (metrica::sdev(pred)/mean(pred))/(metrica::sdev(obs)/mean(obs))
-  result <- 1 - sqrt( ((stats::cor(obs,pred)-1))^2 +
+  CVr <- rlang::eval_tidy(
+    data=data,
+    rlang::quo(
+    (sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))/mean({{pred}}))/
+      (sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/mean({{obs}}))
+    )
+  )
+  result <- rlang::eval_tidy(
+    data=data,
+    rlang::quo(
+    1 - sqrt( ((stats::cor({{obs}},{{pred}})-1))^2 +
                         ((CVr-1))^2 + 
-                        (((mean(pred)/mean(obs))-1))^2)
+                        (((mean({{pred}})/mean({{obs}}))-1))^2)
+    )
+  )
   return(result)
 }
 

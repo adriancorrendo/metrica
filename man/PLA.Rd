@@ -4,9 +4,11 @@
 \alias{PLA}
 \title{PLA}
 \usage{
-PLA(obs, pred, na.rm = TRUE)
+PLA(data = NULL, obs, pred, na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an exisitng data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}

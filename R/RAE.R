@@ -1,5 +1,6 @@
 #' @title RAE
 #' @description Relative Abosulte Error.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -17,10 +18,17 @@
 #' RAE(obs = X, pred = Y)
 #' }
 #' @rdname RAE
+#' @importFrom rlang eval_tidy quo
 #' @export 
-RAE <- function(obs,
+RAE <- function(data=NULL,
+                obs,
                 pred,
                 na.rm = TRUE){
-  result <- sum(abs(obs-pred)) / sum(abs(obs-mean(obs)))
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+      sum(abs({{obs}}-{{pred}})) / sum(abs({{obs}}-mean({{obs}})))
+    )
+  )
   return(result)
 }

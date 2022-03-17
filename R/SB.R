@@ -1,6 +1,7 @@
 #' @title SB
 #' @description Squared bias (SB)component of the Mean Square 
 #' Error (MSE). 
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -17,11 +18,18 @@
 #' SB(obs = X, pred = Y)
 #' }
 #' @rdname SB
+#' @importFrom rlang eval_tidy quo
 #' @export 
-SB <- function(obs, pred,
+SB <- function(data=NULL,
+               obs,
+               pred,
                na.rm = TRUE){
-  result <- 
-    (mean(obs) - mean(pred))^2
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    (mean({{obs}}) - mean({{pred}}))^2
+    )
+  )
   
   return(result)
 }

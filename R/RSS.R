@@ -1,5 +1,6 @@
 #' @title RSS
-#' @description Residual Sum of Squares (R2).
+#' @description Residual Sum of Squares (RSS).
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -15,9 +16,18 @@
 #' }
 #' @rdname RSS
 #' @importFrom stats cor var
-#' @export 
-RSS <- function(obs, pred,
-               na.rm = TRUE){
-  result <- sum((obs-pred)^2)
+#' @importFrom rlang eval_tidy quo
+#' @export
+
+RSS <- function(data=NULL,
+                  obs,
+                  pred,
+                  na.rm = TRUE){
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+      sum(({{obs}}-{{pred}})^2)
+    )
+  )
   return(result)
 }

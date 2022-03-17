@@ -1,5 +1,6 @@
 #' @title PBE
 #' @description Percentage Bias Error.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -16,9 +17,17 @@
 #' PBE(obs = X, pred = Y)
 #' }
 #' @rdname PBE
+#' @importFrom rlang eval_tidy quo
 #' @export 
-PBE <- function(obs, pred,
+PBE <- function(data=NULL,
+                obs, 
+                pred,
                 na.rm = TRUE){
-  result <- 100 * (sum(obs-pred) / sum(obs))
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+      100 * (sum({{obs}}-{{pred}}) / sum({{obs}}))
+    )
+  )
   return(result)
 }

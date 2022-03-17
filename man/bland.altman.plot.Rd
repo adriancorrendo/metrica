@@ -4,12 +4,16 @@
 \alias{bland.altman.plot}
 \title{bland.altman.plot}
 \usage{
-bland.altman.plot(obs, pred)
+bland.altman.plot(data = NULL, obs, pred, na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
+
+\item{na.rm}{Logic argument to remove rows with missing values}
 }
 \value{
 Object of class \code{ggplot}.

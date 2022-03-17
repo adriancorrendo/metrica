@@ -1,5 +1,6 @@
 #' @title MAPE
 #' @description Mean Absolute Percentage Error.
+#' @param data (optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -14,9 +15,17 @@
 #' MAPE(obs = X, pred = Y)
 #' }
 #' @rdname MAPE
+#' @importFrom rlang eval_tidy quo
 #' @export 
-MAPE <- function(obs, pred,
+MAPE <- function(data=NULL,
+                 obs,
+                 pred,
                  na.rm = TRUE){
-  result <- (sum((abs(obs-pred)/obs))/length(obs))*100
+  result <-  rlang::eval_tidy(
+    data=data,
+    rlang::quo(
+    (sum((abs({{obs}}-{{pred}})/{{obs}}))/length({{obs}}))*100
+    )
+  )
   return(result)
 }

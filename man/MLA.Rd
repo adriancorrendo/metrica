@@ -4,9 +4,11 @@
 \alias{MLA}
 \title{MLA}
 \usage{
-MLA(obs, pred, na.rm = TRUE)
+MLA(data = NULL, obs, pred, na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
@@ -31,6 +33,7 @@ Correndo et al (2021).
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
-MLA(obs = X, pred = Y)
+df <- data.frame(obs = X, pred = Y)
+MLA(df, obs = X, pred = Y)
 }
 }

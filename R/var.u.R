@@ -1,5 +1,6 @@
 #' @title var.u
 #' @description Uncorrected Sample Variance (var.u, not n-1).
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param x Vector with numeric elements.
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
@@ -12,9 +13,16 @@
 #' var.u(x = X)
 #' }
 #' @rdname var.u
+#' @importFrom rlang eval_tidy quo
 #' @export 
-var.u <- function(x,
-                na.rm = TRUE){
-  result <- sum((x - mean(x))^2)/length(x)
+var.u <- function(data=NULL,
+                  x,
+                  na.rm = TRUE){
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    sum(({{x}} - mean({{x}}))^2)/length({{x}})
+    )
+  )
   return(result)
 }

@@ -4,9 +4,11 @@
 \alias{scatter.plot}
 \title{scatter.plot}
 \usage{
-scatter.plot(obs, pred, orientation = "PO", na.rm = TRUE)
+scatter.plot(data = NULL, obs, pred, orientation = "PO", na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame with the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}

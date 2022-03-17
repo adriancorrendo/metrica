@@ -1,5 +1,6 @@
 #' @title RAC
 #' @description Robinson's Agreement Coefficient.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -15,13 +16,20 @@
 #' RAC(obs = X, pred = Y)
 #' }
 #' @rdname RAC
+#' @importFrom rlang eval_tidy quo
 #' @export 
-RAC <- function(obs, pred,
+RAC <- function(data=NULL,
+                obs,
+                pred,
                 na.rm = TRUE){
-  result <- 
-    1 - ((sum((obs - (obs + pred)/2)^2) +
-            sum((pred - (obs + pred)/2)^2) ) /
-           ((sum((obs - (mean(obs)+mean(pred))/2)^2) +
-               sum((pred - (mean(obs)+mean(pred))/2)^2))))
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    1 - ((sum(({{obs}} - ({{obs}} + {{pred}})/2)^2) +
+            sum(({{pred}} - ({{obs}} + {{pred}})/2)^2) ) /
+           ((sum(({{obs}} - (mean({{obs}})+mean({{pred}}))/2)^2) +
+               sum(({{pred}} - (mean({{obs}})+mean({{pred}}))/2)^2))))
+    )
+  )
   return(result)
 }

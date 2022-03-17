@@ -1,5 +1,6 @@
 #' @title TSS
 #' @description Total Sum of Squares (R2).
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
@@ -14,9 +15,16 @@
 #' }
 #' @rdname TSS
 #' @importFrom stats cor var
+#' @importFrom rlang eval_tidy quo
 #' @export 
-TSS <- function(obs, 
-               na.rm = TRUE){
-  result <- sum((obs-mean(obs))^2)
+TSS <- function(data=NULL,
+                obs, 
+                na.rm = TRUE){
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+      sum(({{obs}}-mean({{obs}}))^2)
+    )
+  )
   return(result)
 }

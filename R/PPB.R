@@ -1,6 +1,7 @@
 #' @title PPB
 #' @description Percentage Proportional Bias (PPB) component of the
 #' Mean Square Error (MSE).
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -17,12 +18,22 @@
 #' PPB(obs = X, pred = Y)
 #' }
 #' @rdname PPB
+#' @importFrom rlang eval_tidy quo
 #' @export 
-PPB <- function(obs, pred,
+PPB <- function(data=NULL,
+                obs,
+                pred,
                 na.rm = TRUE){
-  result <- 
-    100 * (metrica::SDSD(obs,pred) /
-             metrica::MSE(obs, pred))
+  SDSD <- (sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}})) -
+             sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}})))^2
+  MSE <- sum(({{obs}}-{{pred}})^2)/length({{obs}})
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    100 * (SDSD /
+             MSE)
+    )
+  )
   
   return(result)
 }

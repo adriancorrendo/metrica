@@ -1,6 +1,7 @@
 #' @title PLA
 #' @description Percentage Lack of Accuracy (PLA) component of the Mean 
 #' Square Error (MSE).
+#' @param data (Optional) argument to call an exisitng data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -17,12 +18,24 @@
 #' PLA(obs = X, pred = Y)
 #' }
 #' @rdname PLA
+#' @importFrom rlang eval_tidy quo
 #' @export 
-PLA <- function(obs, pred,
+PLA <- function(data=NULL,
+                obs,
+                pred,
                 na.rm = TRUE){
-  result <- 
-    100 * (metrica::MLA(obs,pred) /
-             metrica::MSE(obs, pred))
+  MSE <- sum(({{obs}}-{{pred}})^2)/length({{obs}})
+  MLA <- sum ((
+    pred - ( (mean({{obs}}) - (sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
+                                 sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))*mean({{pred}}))) +
+               sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
+               sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}})) * {{pred}}))^2) / length({{obs}})
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    100 * (MLA / MSE)
+    )
+  )
   
   return(result)
 }

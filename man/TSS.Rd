@@ -4,9 +4,11 @@
 \alias{TSS}
 \title{TSS}
 \usage{
-TSS(obs, na.rm = TRUE)
+TSS(data = NULL, obs, na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{na.rm}{Logic argument to remove rows with missing values

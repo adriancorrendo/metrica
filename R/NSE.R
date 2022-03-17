@@ -1,5 +1,6 @@
 #' @title NSE
 #' @description Nash-Sutcliffe's Model Efficiency.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -15,10 +16,20 @@
 #' NSE(obs = X, pred = Y)
 #' }
 #' @rdname NSE
+#' @importFrom rlang eval_tidy quo
 #' @export 
-NSE <- function(obs, pred,
+NSE <- function(data=NULL,
+                obs,
+                pred,
                 na.rm = TRUE) {
-  result <- 1-(metrica::MSE(obs,pred)/metrica::var.u(obs))
+  MSE <- sum(({{obs}}-{{pred}})^2)/length({{obs}})
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+      1-(MSE/
+           sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))
+    )
+  )
   return(result)
 }
 

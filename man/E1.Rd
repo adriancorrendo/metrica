@@ -4,9 +4,11 @@
 \alias{E1}
 \title{E1}
 \usage{
-E1(obs, pred, na.rm = TRUE)
+E1(data = NULL, obs, pred, na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frama contaning the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}

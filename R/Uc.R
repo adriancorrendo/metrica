@@ -1,6 +1,7 @@
 #' @title Uc
 #' @description Lack of consistency (Uc). Proportion of the total sum
-#' of squares related to the proportional bias. 
+#' of squares related to the proportional bias.
+#' @param data (Optional) argument to call an existing data frame containing the data. 
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -17,13 +18,21 @@
 #' Uc(obs = X, pred = Y)
 #' }
 #' @rdname Uc
+#' @importFrom rlang eval_tidy quo
 #' @export 
-Uc <- function(obs, pred,
+Uc <- function(data=NULL,
+               obs, pred,
                na.rm = TRUE){
-  result <- 
-    100*(length(obs)*
-           (metrica::sdev(obs)-metrica::sdev(pred))^2) /
-    sum((obs-pred)^2)
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    100*(length({{obs}})*
+           (sqrt(sum(({{obs}} - mean({{obs}}))^2)/
+                   length({{obs}}))-sqrt(sum(({{pred}} - mean({{pred}}))^2)/
+                                           length({{pred}})))^2) /
+      sum(({{obs}}-{{pred}})^2)
+    )
+  )
   
   return(result)
 }

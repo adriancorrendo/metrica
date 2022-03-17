@@ -1,5 +1,6 @@
 #' @title SMAPE
 #' @description Symmetric Mean Absolute Percentage Error.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -14,11 +15,18 @@
 #' MAPE(obs = X, pred = Y)
 #' }
 #' @rdname SMAPE
+#' @importFrom rlang eval_tidy quo
 #' @export 
-SMAPE <- function(obs, pred,
+SMAPE <- function(data=NULL,
+                  obs,
+                  pred,
                   na.rm = TRUE){
-  result <-
-    100/length(obs)*
-    (sum (abs(obs-pred)/((abs(obs)+abs(pred))/2)))
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    100/length({{obs}})*
+    (sum (abs({{obs}}-{{pred}})/((abs({{obs}})+abs({{pred}}))/2)))
+    )
+  )
   return(result)
 }

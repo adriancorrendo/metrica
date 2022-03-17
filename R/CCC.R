@@ -1,5 +1,6 @@
 #' @title CCC
 #' @description Concordance Correlation Coefficient.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -14,12 +15,25 @@
 #' CCC(obs = X, pred = Y)
 #' }
 #' @rdname CCC
+#' @importFrom rlang eval_tidy quo
 #' @export 
-CCC <- function(obs, pred,
+CCC <- function(data = NULL, 
+                obs, 
+                pred,
                 na.rm = TRUE){
-  result <-  stats::cor(obs,pred) *
-    (2 / (metrica::sdev(pred)/metrica::sdev(obs) +
-            metrica::sdev(obs)/metrica::sdev(pred) +
-            ((mean(pred)-mean(obs))^2/(metrica::sdev(pred)*metrica::sdev(obs)))) )
+  result <-  rlang::eval_tidy(
+    data=data,
+    rlang::quo(
+      stats::cor({{obs}},{{pred}}) *
+    (2 / (sqrt(sum(({{pred}} - mean({{pred}}))^2)/
+                 length({{pred}}))/sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}})) +
+            sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
+            sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}})) +
+            ((mean({{pred}})-mean({{obs}}))^2/
+               (sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))*
+                  sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))))) )
+    )
+  )
   return(result)
 }
+

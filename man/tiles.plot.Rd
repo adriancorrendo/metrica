@@ -4,9 +4,11 @@
 \alias{tiles.plot}
 \title{tiles.plot}
 \usage{
-tiles.plot(obs, pred, bins = 10, orientation = "PO", na.rm = TRUE)
+tiles.plot(data = NULL, obs, pred, bins = 10, orientation = "PO", na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}

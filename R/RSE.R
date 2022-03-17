@@ -1,5 +1,6 @@
 #' @title RSE
 #' @description Relative Squared Error.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -17,10 +18,20 @@
 #' RSE(obs = X, pred = Y)
 #' }
 #' @rdname RSE
+#' @importFrom rlang eval_tidy quo
 #' @export 
-RSE <- function(obs,
+RSE <- function(data = NULL,
+                obs,
                 pred,
                 na.rm = TRUE){
-  result <- metrica::RSS(obs,pred) / metrica::TSS(obs)
+  RSS <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(sum(({{obs}}-{{pred}})^2) ) )
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+      RSS / sum(({{obs}}-mean({{obs}}))^2)
+    )
+  )
   return(result)
 }

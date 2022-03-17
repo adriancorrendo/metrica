@@ -1,5 +1,6 @@
 #' @title d1
 #' @description Modified Willmott's Index of Agreement (d1).
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -16,12 +17,19 @@
 #' d1(obs = X, pred = Y)
 #' }
 #' @rdname d1
+#' @importFrom rlang eval_tidy quo
 #' @export 
-d1 <- function(obs, pred,
+d1 <- function(data = NULL,
+               obs,
+               pred,
                na.rm = TRUE) {
-  result <- 
-    1-((sum(abs(obs-pred)))/sum(abs(pred-mean(obs))+
-                                  abs(obs-mean(obs))))
+  result <- rlang::eval_tidy(
+    data=data,
+    rlang::quo(
+    1-((sum(abs({{obs}}-{{pred}})))/sum(abs({{pred}}-mean({{obs}}))+
+                                  abs({{obs}}-mean({{obs}}))))
+    )
+  )
   return(result)
 }
 

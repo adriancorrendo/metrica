@@ -1,5 +1,6 @@
 #' @title MSE
 #' @description Mean Square Error (MSE).
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -15,10 +16,18 @@
 #' MSE(obs = X, pred = Y)
 #' }
 #' @rdname MSE
+#' @importFrom rlang eval_tidy quo
 #' @export 
-MSE <- function(obs, pred,
+MSE <- function(data=NULL,
+                obs,
+                pred,
                 na.rm = TRUE){
-  result <- sum((obs-pred)^2)/length(obs)
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+      sum(({{obs}}-{{pred}})^2)/length({{obs}})
+    )
+  )
   return(result)
 }
 

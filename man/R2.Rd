@@ -4,9 +4,11 @@
 \alias{R2}
 \title{R2}
 \usage{
-R2(obs, pred, na.rm = TRUE)
+R2(data = NULL, obs, pred, na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
+
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}

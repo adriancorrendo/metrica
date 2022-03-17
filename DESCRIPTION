@@ -1,6 +1,6 @@
 Package: metrica
 Title: Prediction performance metrics
-Version: 1.0.1
+Version: 1.2.0
 Authors@R: c(
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("cre"), comment = c(ORCID = "0000-0002-4172-289X")),
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("aut"), comment = c(ORCID = "0000-0002-4172-289X")),
@@ -8,7 +8,7 @@ Authors@R: c(
     person("Leonardo M.", "Bastos", email = "leonardombastos@gmail.com", role = "aut"),
     person("Dean", "Holzworth", email = "dean.holzworth@csiro.au", role = "aut"),
     person("Ignacio A.", "Ciampitti", email = "ciampitti@ksu.edu", role = "aut", comment = c(ORCID = "0000-0001-9619-5129")))
-Description: Metrica offers users of simulation models a complete toolbox with error metrics accounting for different aspects of the agreement between predicted and observed values.
+Description: Metrica offers users of simulation models a toolbox with prediction error metrics accounting for different aspects of the agreement between predicted and observed values.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -18,15 +18,14 @@ Suggests:
     covr,
     tidyverse,
     knitr,
-    testthat (>= 2.0.0)
-Config/testthat/edition: 2
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
 Imports:
     stats,
     ggplot2,
     dplyr,
+    rlang,
     tidyr,
     viridis
-    
-    

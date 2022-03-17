@@ -1,6 +1,7 @@
 #' @title B1.sma
 #' @description Slope of standardized major axis regression
 #' (symmetric).
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param orientation Argument of class string specifying the axis
@@ -21,14 +22,35 @@
 #' }
 #' @rdname B1.sma
 #' @importFrom dplyr case_when
+#' @importFrom rlang eval_tidy quo
 #' @export 
-B1.sma <- function(obs,
-                  pred,
-                  orientation = "PO",
-                  na.rm = TRUE) {
-  result <- metrica::sdev(pred)/metrica::sdev(obs)
+B1.sma <- function(data = NULL, 
+                   obs,
+                   pred,
+                   orientation = "PO",
+                   na.rm = TRUE) {
+  sdev.pred <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}})) ) )
+  
+  sdev.obs <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}})) ) )
+  
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+      sdev.pred/sdev.obs
+    )
+  )
   if (orientation == "OP"){
-  result <- metrica::sdev(obs)/metrica::sdev(pred) 
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+      sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}})) /
+        sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))
+    )
+  )
   }
   
   return(result)

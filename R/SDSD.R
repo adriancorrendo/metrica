@@ -1,6 +1,7 @@
 #' @title SDSD
 #' @description Square difference between standard deviations (SDSD)
 #' component of the Mean Square Error (MSE). 
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -17,11 +18,19 @@
 #' SDSD(obs = X, pred = Y)
 #' }
 #' @rdname SDSD
+#' @importFrom rlang eval_tidy quo
 #' @export 
-SDSD <- function(obs, pred,
+SDSD <- function(data=NULL,
+                 obs,
+                 pred,
                  na.rm = TRUE){
-  result <- 
-    (metrica::sdev(pred) - metrica::sdev(obs))^2
+  result <- rlang::eval_tidy(
+    data = data,
+    rlang::quo( 
+    (sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}})) -
+       sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}})))^2
+    )
+  )
   
   return(result)
 }

@@ -4,9 +4,11 @@
 \alias{var.u}
 \title{var.u}
 \usage{
-var.u(x, na.rm = TRUE)
+var.u(data = NULL, x, na.rm = TRUE)
 }
 \arguments{
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
+
 \item{x}{Vector with numeric elements.}
 
 \item{na.rm}{Logic argument to remove rows with missing values
