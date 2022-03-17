@@ -28,4 +28,6 @@ Imports:
     dplyr,
     rlang,
     tidyr,
-    viridis
+    viridis,
+    apsimx,
+    utils

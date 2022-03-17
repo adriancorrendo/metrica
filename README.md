@@ -186,6 +186,29 @@ metrica::metrics.summary(data = example.data, obs = measured, pred = simulated) 
 #> #   d1r <dbl>, RAC <dbl>, AC <dbl>, lambda <dbl>
 ```
 
+## Open APSIM Classic out files with predictions
+
+``` r
+# Use import APSIM function
+soybean.out <- metrica::import.apsim(filepath = "tests/testthat/examples/soybean.out")
+
+head(soybean.out)
+#>   Date (dd/mm/yyyy) yield (kg/ha) biomass (kg/ha) grain_protein (%)
+#> 1        16/05/2001        1449.8          2915.9            37.115
+#> 2        10/05/2002        1092.5          2965.1            37.115
+#> 3        23/04/2003        1368.9          3529.6            37.115
+#> 4        26/04/2004        2121.6          4710.3            37.115
+#> 5        09/05/2005        1950.3          4303.9            37.115
+#> 6        20/04/2006        1670.6          3806.6            37.115
+#>   GrainN (g/m^2) lai (m^2/m^2) oilGrainN (g/m^2) grain_oil_conc (%)
+#> 1           0.00             0                 0                0.4
+#> 2           7.10             0                 0                0.4
+#> 3           8.90             0                 0                0.4
+#> 4          13.79             0                 0                0.4
+#> 5          12.68             0                 0                0.4
+#> 6          10.86             0                 0                0.4
+```
+
 ## Performance metrics available in *metrica*
 
 The **metrica** package contains +40 functions. Two arguments are always
