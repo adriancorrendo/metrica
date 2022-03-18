@@ -10,7 +10,7 @@ test_that('no error import.apsim.out', {
 # Test import.apsim.db
 
 db.loc <- testthat::test_path("examples")
-import.apsim.db.test <- import.apsim.db(file = "soybean.example.db",  src.dir = db.loc)
+import.apsim.db.test <- import.apsim.db(filename = "soybean.example.db",  folder = db.loc)
 
 test_that('no error import.apsim.db', {
   expect_false(inherits(import.apsim.db.test, "try-error"))

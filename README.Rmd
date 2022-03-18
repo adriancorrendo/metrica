@@ -132,9 +132,10 @@ soybean.out <- metrica::import.apsim.out(filepath = "tests/testthat/examples/soy
 head(soybean.out)
 
 # Use import.apsim.db for APSIM NextGeneration output
-soybean.db <- metrica::import.apsim.db(file = "soybean.example.db",  src.dir = "tests/testthat/examples/")
+soybean.db <- metrica::import.apsim.db(filename = "soybean.example.db",  folder = "tests/testthat/examples/")
 
-head(soybean.db)
+head(soybean.out)
+#head(soybean.db)
 
 ```
 
