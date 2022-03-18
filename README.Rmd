@@ -129,8 +129,6 @@ metrica::metrics.summary(data = example.data, obs = measured, pred = simulated) 
 # Use import.apsim.out for APSIM Classic output
 soybean.out <- metrica::import.apsim.out(filepath = "tests/testthat/examples/soybean.out")
 
-head(soybean.out)
-
 # Use import.apsim.db for APSIM NextGeneration output
 soybean.db <- metrica::import.apsim.db(filename = "soybean.example.db",  folder = "tests/testthat/examples/")
 
