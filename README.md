@@ -22,7 +22,7 @@ Bland-Altman plot) are provided in customizable format (ggplot).
 
 <img src="man/figures/metrica_logo.png" height="300" align="right"/>
 
-## Installation
+## 1. Installation
 
 You can install the released version of metrica from
 [CRAN](https://CRAN.R-project.org) with:
@@ -38,7 +38,7 @@ And the development version from [GitHub](https://github.com/) with:
 devtools::install_github("adriancorrendo/metrica")
 ```
 
-## Native datasets
+## 2. Native datasets
 
 The *metrica* package comes with four example datasets from the APSIM
 software: <br/> 1. `wheat`. 137 data-points of wheat grain N (grams per
@@ -54,7 +54,7 @@ validation of version number 2020.03.27.4956. Data available at:
 the official APSIM Next Generation website:
 <https://APSIMnextgeneration.netlify.app/modeldocumentation> <br/>
 
-## Example Code
+## 3. Example Code
 
 This is a basic example which shows you the core functions of *metrica*:
 
@@ -188,7 +188,7 @@ head(multiple.sum)
 #> 4 chickpea <tibble [39 x 2]>  <df [41 x 2]>
 ```
 
-## Open APSIM Classic and NextGeneration output files with predictions
+## 4. Import simulated data from APSIM Classic (.out) and APSIM NextGen (.db)
 
 ``` r
 # Use import.apsim.out for APSIM Classic output
@@ -213,9 +213,12 @@ head(soybean.out)
 #> 5          12.68             0                 0                0.4
 #> 6          10.86             0                 0                0.4
 #head(soybean.db)
+
+# If observed.data is already as a dataframe, the user may do the match using a simple code like this:
+# PO.dataframe <- simulated.data %>% left_join(., observed.data) *by = "col" arg. could be required*
 ```
 
-## Performance metrics available in *metrica*
+## 5. Performance metrics available in *metrica*
 
 The **metrica** package contains +40 functions. Two arguments are always
 required: `observed`(Oi; a.k.a. actual, measured, truth, target) and

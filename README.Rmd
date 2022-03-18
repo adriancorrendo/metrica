@@ -162,7 +162,7 @@ head(soybean.out)
 
 ```
 
-## Performance metrics available in *metrica*
+## 5. Performance metrics available in *metrica*
 
 The **metrica** package contains +40 functions. Two arguments are 
 always required: `observed`(Oi; a.k.a. actual, measured, truth, target)

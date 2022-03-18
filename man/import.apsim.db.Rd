@@ -36,6 +36,5 @@ of the specific report that should be returned.
 If you select \sQuote{all} it will return all the components in the data base also as a list.
 }
 \seealso{
-\code{\link[apsimx]{read_apsimx}},\code{\link[RSQLite]{SQLite}},\code{\link[RSQLite]{dbListTables}},
-\code{\link[DBI]{dbGetQuery}}
+\code{\link[apsimx]{read_apsimx}}
 }

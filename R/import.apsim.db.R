@@ -20,8 +20,7 @@
 #' @importFrom RSQLite SQLite dbListTables
 #' @importFrom DBI dbGetQuery
 #' @seealso 
-#'  \code{\link[apsimx]{read_apsimx}},\code{\link[RSQLite]{SQLite}},\code{\link[RSQLite]{dbListTables}},
-#'  \code{\link[DBI]{dbGetQuery}}
+#'  \code{\link[apsimx]{read_apsimx}}
 #' @export
 #' 
 
