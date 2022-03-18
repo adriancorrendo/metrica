@@ -13,6 +13,8 @@
 #' }
 #' @rdname import.apsim.out
 #' @importFrom utils read.delim
+#' @seealso 
+#'  \code{\link[apsimx]{read.apsim}}
 #' @export 
 
 import.apsim.out <- function(filepath){

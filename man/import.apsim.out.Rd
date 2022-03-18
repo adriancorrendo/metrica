@@ -29,3 +29,6 @@ soybean.out <- import.apsim.out(filepath = path)
 head(soybean.out)
 }
 }
+\seealso{
+\code{\link[apsimx]{read.apsim}}
+}
