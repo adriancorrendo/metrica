@@ -104,6 +104,7 @@ metrica::bland.altman.plot(data = example.data,
 # 3. Get metrics estimates
 # 3.a. Single estimates
 # 3.a.i. Estimate coefficient of determination (R2)
+
 metrica::R2(data = example.data, obs = measured, pred = simulated)
 
 # 3.a.ii. Estimate root mean squared error (RMSE)
@@ -141,14 +142,17 @@ head(soybean.out)
 
 The **metrica** package contains +40 functions. Two arguments are 
 always required: `observed`(Oi; a.k.a. actual, measured, truth, target)
-and `predicted` (Pi; a.k.a. simulated, fitted) values. Some functions, 
-also require to define axis `orientation`, such as the slope of linear 
-regression describing the bivariate scatter. Current included functions
-cover the world of "regression error" metrics (i.e. prediction 
-performance for continuous variables). Classification error metrics 
-coming soon. Always keep in mind that predicted values should come 
-from out-of-bag samples (unseen by training set) to avoid 
-overestimation of prediction performance.<br/>
+and `predicted` (Pi; a.k.a. simulated, fitted) values. Also, there is an optional
+`data` arg. that allows to call an existing data frame containing both observed
+and predicted. <br/>
+
+Some functions, also require to define axis `orientation`, such as the slope of 
+linear regression describing the bivariate scatter. Current included functions
+cover the world of "regression error" metrics (i.e. prediction performance for 
+continuous variables). Classification error metrics coming soon. <br/>
+
+Always keep in mind that predicted values should come from out-of-bag samples 
+(unseen by training set) to avoid overestimation of prediction performance. <br/>
 
 
 | #|Metric | Definition | Details | Formula |
