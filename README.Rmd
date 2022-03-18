@@ -28,7 +28,7 @@ of fit metrics (+40) accounting for different aspects of the agreement between p
 
 <img src="man/figures/metrica_logo.png" height="300" align="right"/>
 
-## Installation
+## 1. Installation
 
 You can install the released version of metrica from [CRAN](https://CRAN.R-project.org) with:
 
@@ -42,7 +42,7 @@ And the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("adriancorrendo/metrica")
 ```
-## Native datasets
+## 2. Native datasets
 The *metrica* package comes with four example datasets from the APSIM
 software: <br/>
 1. `wheat`. 137 data-points of wheat grain N (grams per squared meter) <br/>
@@ -58,13 +58,15 @@ validation of version number 2020.03.27.4956. Data available at:
 https://doi.org/10.7910/DVN/EJS4M0. Further details can be found at the official APSIM Next Generation website: https://APSIMnextgeneration.netlify.app/modeldocumentation <br/>
 
 
-## Example Code
+## 3. Example Code
 
 This is a basic example which shows you the core functions of *metrica*:
 
 ```{r warning=FALSE, message=FALSE}
 library(metrica)
 library(dplyr)
+library(purrr)
+library(tidyr)
 
 # 1. A. Create a fake dataset
 # Set seed for reproducibility
@@ -114,17 +116,36 @@ metrica::RMSE(data = example.data, obs = measured, pred = simulated)
 metrica::MBE(data = example.data, obs = measured, pred = simulated)
 
 # 3.b. Metrics Summary 
-metrica::metrics.summary(data = example.data, obs = measured, pred = simulated)  
+metrics.sum <- metrica::metrics.summary(data = example.data, obs = measured, pred = simulated)  
 
+head(metrics.sum, n = 15)
 
 # Optional wrangling (WIDE)
-metrica::metrics.summary(data = example.data, obs = measured, pred = simulated) %>%
+metrics.sum.wide <- metrics.sum %>%
   tidyr::pivot_wider(tidyr::everything(),
                       names_from = "Metric",
                       values_from = "Score") 
 
+# 4. Test multiple datasets at once
+# 4.a. Create nested df with the native examples
+nested.examples <- bind_rows(list(wheat = metrica::wheat, 
+                                  barley = metrica::barley,
+                                  sorghum = metrica::sorghum, 
+                                  chickpea = metrica::chickpea), 
+                             .id = "id") %>%
+  dplyr::group_by(id) %>% tidyr::nest() %>% dplyr::ungroup()
+
+head(nested.examples %>% group_by(id) %>% dplyr::slice_head(n=2))
+
+# 4.b. Run 
+multiple.sum <- nested.examples %>% 
+  # Store metrics in new.column "performance"
+  mutate(performance = map(data, ~metrica::metrics.summary(data=., obs = obs, pred = pred)))
+
+head(multiple.sum)
+
 ```
-## Open APSIM Classic and NextGeneration output files with predictions
+## 4. Import simulated data from APSIM Classic (.out) and APSIM NextGen (.db) 
 ```{r warning=FALSE, message=FALSE}
 
 # Use import.apsim.out for APSIM Classic output
@@ -135,6 +156,9 @@ soybean.db <- metrica::import.apsim.db(filename = "soybean.example.db",  folder 
 
 head(soybean.out)
 #head(soybean.db)
+
+# If observed.data is already as a dataframe, the user may do the match using a simple code like this:
+# PO.dataframe <- simulated.data %>% left_join(., observed.data) *by = "col" arg. could be required*
 
 ```
 

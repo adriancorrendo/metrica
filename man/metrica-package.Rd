@@ -6,7 +6,7 @@
 \alias{metrica-package}
 \title{metrica: Prediction performance metrics}
 \description{
-Metrica offers users of simulation models a toolbox with prediction error metrics accounting for different aspects of the agreement between predicted and observed values.
+Metrica offers users of simulation models a toolbox with prediction performance metrics accounting for different aspects of the agreement between predicted and observed values.
 }
 \author{
 \strong{Maintainer}: Adrian A. Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID})
@@ -15,9 +15,9 @@ Authors:
 \itemize{
   \item Adrian A. Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID})
   \item Luiz H. Moro Rosso \email{lhmrosso@ksu.edu} (\href{https://orcid.org/0000-0002-8642-911X}{ORCID})
-  \item Carlos Hernandez \email{carlosh92@ksu.edu}
-  \item Rai Schwalbert \email{raischwalbert@gmail.com} (\href{https://orcid.org/0000-0001-8488-7507}{ORCID})
-  \item Leonardo M. Bastos \email{leonardombastos@gmail.com}
+  \item Rai Schwalbert \email{rai.schwalbert@hotmail.com} (\href{https://orcid.org/0000-0001-8488-7507}{ORCID})
+  \item Carlos Hernandez \email{carlosh92@ksu.edu} (\href{https://orcid.org/0000-0000-0000-0000}{ORCID})
+  \item Leonardo M. Bastos \email{leonardombastos@gmail.com} (\href{https://orcid.org/0000-0001-8958-6527}{ORCID})
   \item Dean Holzworth \email{dean.holzworth@csiro.au}
   \item Ignacio A. Ciampitti \email{ciampitti@ksu.edu} (\href{https://orcid.org/0000-0001-9619-5129}{ORCID})
 }

@@ -61,6 +61,8 @@ This is a basic example which shows you the core functions of *metrica*:
 ``` r
 library(metrica)
 library(dplyr)
+library(purrr)
+library(tidyr)
 
 # 1. A. Create a fake dataset
 # Set seed for reproducibility
@@ -126,65 +128,64 @@ metrica::MBE(data = example.data, obs = measured, pred = simulated)
 #> [1] 0.207378
 
 # 3.b. Metrics Summary 
-metrica::metrics.summary(data = example.data, obs = measured, pred = simulated)  
-#>    Metric       Score
-#> 1      B0  1.12827429
-#> 2      B1  0.92887151
-#> 3       r  0.67178849
-#> 4      R2  0.45129978
-#> 5      Xa  0.99639155
-#> 6     CCC  0.66936437
-#> 7     MAE  3.05955006
-#> 8    RMAE  0.16293252
-#> 9    MAPE 16.81126728
-#> 10  SMAPE 16.78480321
-#> 11    RAE  0.76391511
-#> 12    RSE  0.61646049
-#> 13    MBE  0.20737800
-#> 14    PBE  1.10436566
-#> 15    PAB  0.27067288
-#> 16    PPB  0.82069538
-#> 17    MSE 15.88841743
-#> 18   RMSE  3.98602778
-#> 19  RRMSE  0.21227093
-#> 20    RSR  0.15465534
-#> 21 iqRMSE  0.65245999
-#> 22    MLA  0.17340114
-#> 23    MLP 15.71501628
-#> 24     SB  0.04300564
-#> 25   SDSD  0.13039551
-#> 26    LCS 15.71501628
-#> 27    PLA  1.09136826
-#> 28    PLP 98.90863174
-#> 29     Ue 98.90863174
-#> 30     Uc  0.82069538
-#> 31     Ub  0.27067288
-#> 32    NSE  0.99987052
-#> 33     E1  0.23608489
-#> 34   Erel  0.41195267
-#> 35    KGE  0.66602990
-#> 36      d  0.81913966
-#> 37     d1  0.61641662
-#> 38    d1r  0.61641662
-#> 39    RAC  0.83460818
-#> 40     AC  0.25298574
-#> 41 lambda  0.66936437
+metrics.sum <- metrica::metrics.summary(data = example.data, obs = measured, pred = simulated)  
 
+head(metrics.sum, n = 15)
+#>    Metric      Score
+#> 1      B0  1.1282743
+#> 2      B1  0.9288715
+#> 3       r  0.6717885
+#> 4      R2  0.4512998
+#> 5      Xa  0.9963915
+#> 6     CCC  0.6693644
+#> 7     MAE  3.0595501
+#> 8    RMAE  0.1629325
+#> 9    MAPE 16.8112673
+#> 10  SMAPE 16.7848032
+#> 11    RAE  0.7639151
+#> 12    RSE  0.6164605
+#> 13    MBE  0.2073780
+#> 14    PBE  1.1043657
+#> 15    PAB  0.2706729
 
 # Optional wrangling (WIDE)
-metrica::metrics.summary(data = example.data, obs = measured, pred = simulated) %>%
+metrics.sum.wide <- metrics.sum %>%
   tidyr::pivot_wider(tidyr::everything(),
                       names_from = "Metric",
                       values_from = "Score") 
-#> # A tibble: 1 x 41
-#>      B0    B1     r    R2    Xa   CCC   MAE  RMAE  MAPE SMAPE   RAE   RSE   MBE
-#>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1  1.13 0.929 0.672 0.451 0.996 0.669  3.06 0.163  16.8  16.8 0.764 0.616 0.207
-#> # ... with 28 more variables: PBE <dbl>, PAB <dbl>, PPB <dbl>, MSE <dbl>,
-#> #   RMSE <dbl>, RRMSE <dbl>, RSR <dbl>, iqRMSE <dbl>, MLA <dbl>, MLP <dbl>,
-#> #   SB <dbl>, SDSD <dbl>, LCS <dbl>, PLA <dbl>, PLP <dbl>, Ue <dbl>, Uc <dbl>,
-#> #   Ub <dbl>, NSE <dbl>, E1 <dbl>, Erel <dbl>, KGE <dbl>, d <dbl>, d1 <dbl>,
-#> #   d1r <dbl>, RAC <dbl>, AC <dbl>, lambda <dbl>
+
+# 4. Test multiple datasets at once
+# 4.a. Create nested df with the native examples
+nested.examples <- bind_rows(list(wheat = metrica::wheat, 
+                                  barley = metrica::barley,
+                                  sorghum = metrica::sorghum, 
+                                  chickpea = metrica::chickpea), 
+                             .id = "id") %>%
+  dplyr::group_by(id) %>% tidyr::nest() %>% dplyr::ungroup()
+
+head(nested.examples %>% group_by(id) %>% dplyr::slice_head(n=2))
+#> # A tibble: 4 x 2
+#> # Groups:   id [4]
+#>   id       data              
+#>   <chr>    <list>            
+#> 1 barley   <tibble [69 x 2]> 
+#> 2 chickpea <tibble [39 x 2]> 
+#> 3 sorghum  <tibble [36 x 2]> 
+#> 4 wheat    <tibble [137 x 2]>
+
+# 4.b. Run 
+multiple.sum <- nested.examples %>% 
+  # Store metrics in new.column "performance"
+  mutate(performance = map(data, ~metrica::metrics.summary(data=., obs = obs, pred = pred)))
+
+head(multiple.sum)
+#> # A tibble: 4 x 3
+#>   id       data               performance  
+#>   <chr>    <list>             <list>       
+#> 1 wheat    <tibble [137 x 2]> <df [41 x 2]>
+#> 2 barley   <tibble [69 x 2]>  <df [41 x 2]>
+#> 3 sorghum  <tibble [36 x 2]>  <df [41 x 2]>
+#> 4 chickpea <tibble [39 x 2]>  <df [41 x 2]>
 ```
 
 ## Open APSIM Classic and NextGeneration output files with predictions
