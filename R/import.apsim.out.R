@@ -1,19 +1,18 @@
-#' @title import.apsim
+#' @title import.apsim.out
 #' @description Function to read/import *.out files and display them as data frames.
 #' @param filepath Argument to specify the location path to the *.out file.
 #' @return Element of class `data.frame`.
 #' @details This function will generate a data frame from an APSIM Classic *.out file.
 #' @examples 
 #' \dontrun{
-#' # Example out from apsimx package repo (by F. Miguez)
-#' path <- ##
-#' apsim.out <- import.apsim(filepath = path)
+#' #' path <- ##
+#' apsim.out <- import.apsim.out(filepath = path)
 #' }
-#' @rdname import.apsim
+#' @rdname import.apsim.out
 #' @importFrom utils read.delim
 #' @export 
 
-import.apsim <- function(filepath){
+import.apsim.out <- function(filepath){
   uppersection <- utils::read.delim(filepath, sep = "",skip = 2,nrows = 1)
   
   COLNAMES <- colnames(uppersection)

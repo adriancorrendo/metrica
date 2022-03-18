@@ -123,13 +123,18 @@ metrica::metrics.summary(data = example.data, obs = measured, pred = simulated) 
                       values_from = "Score") 
 
 ```
-## Open APSIM Classic out files with predictions
+## Open APSIM Classic and NextGeneration output files with predictions
 ```{r warning=FALSE, message=FALSE}
 
-# Use import APSIM function
-soybean.out <- metrica::import.apsim(filepath = "tests/testthat/examples/soybean.out")
+# Use import.apsim.out for APSIM Classic output
+soybean.out <- metrica::import.apsim.out(filepath = "tests/testthat/examples/soybean.out")
 
 head(soybean.out)
+
+# Use import.apsim.db for APSIM NextGeneration output
+soybean.db <- metrica::import.apsim.db(file = "soybean.example.db",  src.dir = "tests/testthat/examples/")
+
+head(soybean.db)
 
 ```
 

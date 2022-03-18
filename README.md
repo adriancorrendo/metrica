@@ -186,11 +186,11 @@ metrica::metrics.summary(data = example.data, obs = measured, pred = simulated) 
 #> #   d1r <dbl>, RAC <dbl>, AC <dbl>, lambda <dbl>
 ```
 
-## Open APSIM Classic out files with predictions
+## Open APSIM Classic and NextGeneration output files with predictions
 
 ``` r
-# Use import APSIM function
-soybean.out <- metrica::import.apsim(filepath = "tests/testthat/examples/soybean.out")
+# Use import.apsim.out for APSIM Classic output
+soybean.out <- metrica::import.apsim.out(filepath = "tests/testthat/examples/soybean.out")
 
 head(soybean.out)
 #>   Date (dd/mm/yyyy) yield (kg/ha) biomass (kg/ha) grain_protein (%)
@@ -207,6 +207,67 @@ head(soybean.out)
 #> 4          13.79             0                 0                0.4
 #> 5          12.68             0                 0                0.4
 #> 6          10.86             0                 0                0.4
+
+# Use import.apsim.db for APSIM NextGeneration output
+soybean.db <- metrica::import.apsim.db(file = "soybean.example.db",  src.dir = "tests/testthat/examples/")
+
+head(soybean.db)
+#>   CheckpointID SimulationID    Zone         Clock.Today Soybean.Phenology.Stage
+#> 1            1            1 paddock 2018-01-01 12:00:00                       1
+#> 2            1            1 paddock 2018-01-02 12:00:00                       1
+#> 3            1            1 paddock 2018-01-03 12:00:00                       1
+#> 4            1            1 paddock 2018-01-04 12:00:00                       1
+#> 5            1            1 paddock 2018-01-05 12:00:00                       1
+#> 6            1            1 paddock 2018-01-06 12:00:00                       1
+#>   Soybean.Phenology.CurrentStageName Soybean.AboveGround.Wt Yield
+#> 1                                                         0     0
+#> 2                                                         0     0
+#> 3                                                         0     0
+#> 4                                                         0     0
+#> 5                                                         0     0
+#> 6                                                         0     0
+#>   Soybean.Grain.Size Soybean.Grain.Number Soybean.Total.Wt Soybean.Leaf.FRGR
+#> 1                  0                    0                0                 0
+#> 2                  0                    0                0                 0
+#> 3                  0                    0                0                 0
+#> 4                  0                    0                0                 0
+#> 5                  0                    0                0                 0
+#> 6                  0                    0                0                 0
+#>   Soybean.Leaf.Fw Soybean.Leaf.Photosynthesis.FT Soybean.Leaf.Photosynthesis.FW
+#> 1               1                              0                              1
+#> 2               1                              0                              1
+#> 3               1                              0                              1
+#> 4               1                              0                              1
+#> 5               1                              0                              1
+#> 6               1                              0                              1
+#>   Soybean.WaterUptake(1) Soybean.WaterUptake(2) Soybean.WaterUptake(3)
+#> 1                     NA                     NA                     NA
+#> 2                     NA                     NA                     NA
+#> 3                     NA                     NA                     NA
+#> 4                     NA                     NA                     NA
+#> 5                     NA                     NA                     NA
+#> 6                     NA                     NA                     NA
+#>   Soybean.WaterUptake(4) Soybean.WaterUptake(5) Soybean.WaterUptake(6)
+#> 1                     NA                     NA                     NA
+#> 2                     NA                     NA                     NA
+#> 3                     NA                     NA                     NA
+#> 4                     NA                     NA                     NA
+#> 5                     NA                     NA                     NA
+#> 6                     NA                     NA                     NA
+#>   Soybean.WaterUptake(7) Soybean.WaterUptake(8) Soybean.WaterUptake(9)
+#> 1                     NA                     NA                     NA
+#> 2                     NA                     NA                     NA
+#> 3                     NA                     NA                     NA
+#> 4                     NA                     NA                     NA
+#> 5                     NA                     NA                     NA
+#> 6                     NA                     NA                     NA
+#>   Soybean.WaterUptake(10)       Date
+#> 1                      NA 2018-01-01
+#> 2                      NA 2018-01-02
+#> 3                      NA 2018-01-03
+#> 4                      NA 2018-01-04
+#> 5                      NA 2018-01-05
+#> 6                      NA 2018-01-06
 ```
 
 ## Performance metrics available in *metrica*

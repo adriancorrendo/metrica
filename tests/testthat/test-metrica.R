@@ -1,13 +1,22 @@
-# Test import.apsim
+# Test import.apsim.out
 
 out.file <- testthat::test_path("examples", "soybean.out")
-import.apsim.test <- import.apsim(filepath = out.file)
+import.apsim.out.test <- import.apsim.out(filepath = out.file)
 
-test_that('no error import.apsim', {
-  expect_false(inherits(import.apsim.test, "try-error"))
+test_that('no error import.apsim.out', {
+  expect_false(inherits(import.apsim.out.test, "try-error"))
 })
 
-# Data
+# Test import.apsim.db
+
+db.loc <- testthat::test_path("examples")
+import.apsim.db.test <- import.apsim.db(file = "soybean.example.db",  src.dir = db.loc)
+
+test_that('no error import.apsim.db', {
+  expect_false(inherits(import.apsim.db.test, "try-error"))
+})
+
+# Data for metrics
 data('wheat')
 
 # 1. Metrics summary

@@ -5,6 +5,8 @@ Authors@R: c(
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("cre"), comment = c(ORCID = "0000-0002-4172-289X")),
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("aut"), comment = c(ORCID = "0000-0002-4172-289X")),
     person("Luiz H.", "Moro Rosso", email = "lhmrosso@ksu.edu", role = "aut", comment = c(ORCID = "0000-0002-8642-911X")),
+    person("Carlos", "Hernandez", email = "carlosh92@ksu.edu", role = "aut"),
+    person("Rai", "Schwalbert", email = "raischwalbert@gmail.com", role = "aut", comment = c(ORCID = "0000-0001-8488-7507")),
     person("Leonardo M.", "Bastos", email = "leonardombastos@gmail.com", role = "aut"),
     person("Dean", "Holzworth", email = "dean.holzworth@csiro.au", role = "aut"),
     person("Ignacio A.", "Ciampitti", email = "ciampitti@ksu.edu", role = "aut", comment = c(ORCID = "0000-0001-9619-5129")))
@@ -18,6 +20,7 @@ Suggests:
     covr,
     tidyverse,
     knitr,
+    apsimx,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Depends: 
@@ -29,5 +32,6 @@ Imports:
     rlang,
     tidyr,
     viridis,
-    apsimx,
-    utils
+    utils,
+    DBI,
+    RSQLite

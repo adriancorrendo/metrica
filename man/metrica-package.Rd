@@ -15,6 +15,8 @@ Authors:
 \itemize{
   \item Adrian A. Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID})
   \item Luiz H. Moro Rosso \email{lhmrosso@ksu.edu} (\href{https://orcid.org/0000-0002-8642-911X}{ORCID})
+  \item Carlos Hernandez \email{carlosh92@ksu.edu}
+  \item Rai Schwalbert \email{raischwalbert@gmail.com} (\href{https://orcid.org/0000-0001-8488-7507}{ORCID})
   \item Leonardo M. Bastos \email{leonardombastos@gmail.com}
   \item Dean Holzworth \email{dean.holzworth@csiro.au}
   \item Ignacio A. Ciampitti \email{ciampitti@ksu.edu} (\href{https://orcid.org/0000-0001-9619-5129}{ORCID})
