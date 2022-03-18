@@ -152,7 +152,7 @@ overestimation of prediction performance.<br/>
 
 
 | #|Metric | Definition | Details | Formula |
-| --|------- | ----------|-------------------- | -------------------- |
+| --|------- | ----------|-------------------- | ----------------------------- |
 | A| `RSS` | Residual sum of squares (a.k.a. as sum of squares) | The sum of squared differences between predicted and observed values. It represents the base of many error metrics using squared scale such as the MSE |![equation](formulae\A.RSS.gif) |
 | B| `TSS` | Total sum of squares | The sum of the squared differences between the observations and its mean. It is used as a reference error, for example, to estimate explained variance |![equation](formulae\B.TSS.gif)|
 | C| `var.u` | Sample variance, uncorrected | The mean of sum of squared differences between values of an `x` and its mean (divided by n, not n-1)|![equation](formulae\C.var.u.gif)|
