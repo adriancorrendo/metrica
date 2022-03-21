@@ -84,7 +84,7 @@ example.data <- barley %>%  # or 'wheat', 'sorghum', or 'chickpea'
 
 
 # 2. Use metrica plot functions
-# 2.a. Create scatter plot with OP orientation
+# 2.a. Create scatter plot with PO orientation
 barley.scat.plot <- metrica::scatter.plot(data = example.data, obs = measured, pred = simulated,
              orientation = "PO")
 barley.scat.plot
@@ -96,7 +96,7 @@ barley.scat.plot
 # Alternative using vectors instead of dataframe
 #metrica::scatter.plot(obs = example.data$obs, pred = example.data$pred)
 
-# 2.b. Create tiles plot with PO orientation
+# 2.b. Create tiles plot with OP orientation
 barley.tiles.plot <- metrica::tiles.plot(data = example.data, obs = measured, pred = simulated,
            bins = 15, orientation = "OP")
 
@@ -195,23 +195,46 @@ head(multiple.sum)
 ## 4. Print metrics in a plot
 
 ``` r
-# Create list of selected metrics
+df <- metrica::wheat
+
+# A. Metrics summary
+metrics.sum.wheat <- metrica::metrics.summary(data = df, obs = obs, pred = pred)
+# Wide format for SMA Equation
+metrics.sum.wheat.wide <- metrics.sum.wheat %>% 
+  tidyr::pivot_wider(tidyr::everything(), names_from = "Metric", values_from = "Score")
+
+# B. Create list of selected metrics
 selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "CCC", "KGE", "PLA", "PLP")
 
-# Creat performance summary table for ggplot
-perf.table <- metrics.sum %>%
+# C. Create a reduced performance table for ggplot
+perf.table <- metrics.sum.wheat %>%
   # Apply a filter to keep only the selected metrics
   dplyr::filter(Metric %in% selected.metrics) %>% 
   # Round numbers for clarity
   mutate_if(is.numeric,~round(.,2))
 
+# D. Create scatter plot with PO orientation
+wheat.scat.plot <- 
+  metrica::scatter.plot(data = df, 
+                        obs = obs, pred = pred,
+                        orientation = "PO")
+
 # PLOT, Doesn't work when using facets
-barley.scat.plot + 
+wheat.scat.plot + 
   # Annotate Table
-  ggpp::annotate(geom="table", x = 5, y = 32, label = perf.table,
+  ggpp::annotate(geom="table", 
+                 # Position
+                 x = min(df$obs), y = 1.05*max(df$pred),
+                 # Call the table
+                 label = perf.table,
+                 # Align Table (left)
                  hjust = 0, vjust = 1)+
   # Add SMA equation
-  geom_text(data = metrics.sum.wide, aes(x=22, y= 8, label = paste0("y = ",round(B0,2),"+",round(B1,2),"x"), hjust=0))
+  geom_text(data = metrics.sum.wheat.wide, 
+            aes(x=0.75*max(df$obs), 
+                y= 1.25*min(df$pred),
+                # Equation
+                label = paste0("y = ",round(B0,2),"+",round(B1,2),"x"), hjust=0))
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
