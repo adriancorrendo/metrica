@@ -216,7 +216,7 @@ barley.scat.plot +
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
-## 4. Import simulated data from APSIM Classic (.out) and APSIM NextGen (.db)
+## 5. Import simulated data from APSIM Classic (.out) and APSIM NextGen (.db)
 
 ``` r
 # Use import.apsim.out for APSIM Classic output
@@ -246,7 +246,7 @@ head(soybean.out)
 # PO.dataframe <- simulated.data %>% left_join(., observed.data) *by = "col" arg. could be required*
 ```
 
-## 5. Performance metrics available in *metrica*
+## 6. Performance metrics available in *metrica*
 
 The **metrica** package contains +40 functions. Two arguments are always
 required: `observed`(Oi; a.k.a. actual, measured, truth, target) and
