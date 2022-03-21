@@ -63,6 +63,7 @@ library(metrica)
 library(dplyr)
 library(purrr)
 library(tidyr)
+library(ggpmisc)
 
 # 1. A. Create a fake dataset
 # Set seed for reproducibility
@@ -84,8 +85,9 @@ example.data <- barley %>%  # or 'wheat', 'sorghum', or 'chickpea'
 
 # 2. Use metrica plot functions
 # 2.a. Create scatter plot with OP orientation
-metrica::scatter.plot(data = example.data, obs = measured, pred = simulated,
-             orientation = "OP")
+barley.scat.plot <- metrica::scatter.plot(data = example.data, obs = measured, pred = simulated,
+             orientation = "PO")
+barley.scat.plot
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
@@ -95,23 +97,25 @@ metrica::scatter.plot(data = example.data, obs = measured, pred = simulated,
 #metrica::scatter.plot(obs = example.data$obs, pred = example.data$pred)
 
 # 2.b. Create tiles plot with PO orientation
-metrica::tiles.plot(data = example.data, obs = measured, pred = simulated,
-           bins = 15, orientation = "PO")
+barley.tiles.plot <- metrica::tiles.plot(data = example.data, obs = measured, pred = simulated,
+           bins = 15, orientation = "OP")
+
+barley.tiles.plot
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
 
 ``` r
-
 # 2.c. Create a Bland-Altman plot
-metrica::bland.altman.plot(data = example.data,
+barley.ba.plot <- metrica::bland.altman.plot(data = example.data,
                            obs = measured, pred = simulated)
+
+barley.ba.plot
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" />
 
 ``` r
-
 # 3. Get metrics estimates
 # 3.a. Single estimates
 # 3.a.i. Estimate coefficient of determination (R2)
@@ -187,6 +191,30 @@ head(multiple.sum)
 #> 3 sorghum  <tibble [36 x 2]>  <df [41 x 2]>
 #> 4 chickpea <tibble [39 x 2]>  <df [41 x 2]>
 ```
+
+## 4. Print metrics in a plot
+
+``` r
+# Create list of selected metrics
+selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "CCC", "KGE", "PLA", "PLP")
+
+# Creat performance summary table for ggplot
+perf.table <- metrics.sum %>%
+  # Apply a filter to keep only the selected metrics
+  dplyr::filter(Metric %in% selected.metrics) %>% 
+  # Round numbers for clarity
+  mutate_if(is.numeric,~round(.,2))
+
+# PLOT, Doesn't work when using facets
+barley.scat.plot + 
+  # Annotate Table
+  ggpp::annotate(geom="table", x = 5, y = 32, label = perf.table,
+                 hjust = 0, vjust = 1)+
+  # Add SMA equation
+  geom_text(data = metrics.sum.wide, aes(x=22, y= 8, label = paste0("y = ",round(B0,2),"+",round(B1,2),"x"), hjust=0))
+```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 ## 4. Import simulated data from APSIM Classic (.out) and APSIM NextGen (.db)
 
