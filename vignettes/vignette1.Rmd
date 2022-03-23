@@ -1,10 +1,10 @@
 ---
-title: "Assessing model agreement in wheat grain nitrogen content prediction - a case study"
+title: "Assessing model agreement in wheat grain nitrogen content prediction - a use case"
 author: "Leo Bastos, Adrian Correndo"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Assessing model agreement in wheat grain nitrogen content prediction - a case study}
+  %\VignetteIndexEntry{Assessing model agreement in wheat grain nitrogen content prediction - a use case}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,20 +16,20 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Introduction  
-The *`metrica`* package was developed to compute and visualize the level of agreement between observed ground-truth values and model-derived (e.g., mechanistic or empirical) predictions. 
+## 1 Introduction  
+The *`metrica`* package was developed to visualize and compute the level of agreement between observed ground-truth values and model-derived (e.g., mechanistic or empirical) predictions. 
 
 This package is intended to fit into the following workflow:  
 
-  1. a data set containing the observed values is used to train a model  
-  2. the trained model is used to generate predictions  
-  3. a data frame containing at least the **observed** and model-**predicted** values is created  
-  4. *`metrica`* package is used to compute goodness of fit and error metrics based on observed and predicted values  
-  5. *`metrica`* package is used to visualize model fit and selected fit metrics  
+1. a data set containing the observed values is used to train a model  
+2. the trained model is used to generate predictions  
+3. a data frame containing at least the **observed** and model-**predicted** values is created  
+4. *`metrica`* package is used to compute goodness of fit and error metrics based on observed and predicted values  
+5. *`metrica`* package is used to visualize model fit and selected fit metrics  
 
-This vignette introduces the functionality of the *`metrica`* package applied to  model-predicted and observed values of wheat grain nitrogen (N) content (on grams of N $m^-2$).  
+This vignette introduces the functionality of the *`metrica`* package applied to observed and model-predicted values of wheat grain nitrogen (N) content (in grams of N $m^{-2}$).  
 
-## Wheat grain N content  
+## 2 Wheat grain N content  
 Let's begin by loading the packages needed.  
 ```{r libraries}
 library(ggplot2)
@@ -41,9 +41,101 @@ Now we load the `wheat` data set included in the `metrica` package.
 # Load
 data(wheat)
 
-# Print
-wheat
+# Printing first observations
+head(wheat)
 ```
+
+This data set contains two columns:  
+
+- **pred**: model-predicted wheat grain N content, in g N $m^{-2}$,  
+- **obs**: ground-truth observed wheat grain N content, in g N $m^{-2}$  
+
+## 3 Visual assessment of agreement  
+### 3.1 Scatterplot of pred vs. obs  
+The simplest way to visually assess agreemenet between observed and predicted values is with a scatterplot.  
+
+We can use the function `scatter.plot()` from the *metrica* package to create a scatterplot.  
+
+The function requires specifying at least:  
+
+- the data frame object name (`data` argument)
+- the name of the column containing observed values (`obs` argument)  
+- the name of the column containing predicted values (`pred` argument)  
+
+Besides a scatterplot, this function also adds to the plot the **1:1 line** (solid line) and the **linear regression line** (dashed line).  
+
+```{r scatter.plot PO}
+scatter.plot(data = wheat, 
+             obs = obs, 
+             pred = pred)
+```
+
+The default behavior of `scatter.plot()` places the `obs` column on the x axis and the `pred` column on the y axis (`orientation = "PO"`). This can be inverted by changing the argument `orientation` to "OP":    
+```{r scatter.plot OP}
+scatter.plot(data = wheat, 
+             obs = obs, 
+             pred = pred,
+             orientation = "OP")
+```
+
+
+The output of the `scatter.plot()` function is a `ggplot2` object that can be further customized:  
+```{r scatter.plot custom}
+scatter.plot(data = wheat, 
+             obs = obs, 
+             pred = pred,
+             orientation = "OP")+
+  labs(x ="Predicted wheat N content (g N/m2)",
+       y = "Observed wheat N content (g N/m2)")+
+  theme_dark()
+```
+
+## 3.2 Bland-Altman plot  
+The Bland-Altman plot is another way of visually assessing observed vs. predicted agreement. It plots the difference between observed and predicted values on the y axis, and the observed values on the x axis:  
+
+```{r bland-altman}
+bland.altman.plot(data = wheat,
+                  obs = obs, 
+                  pred = pred)
+```
+
+## 4 Numerical assessment of agreement  
+The *metrica* package contains functions for **41 metrics** to assess agreement between observed and predicted values for continuous data (i.e., regression error).  
+
+A list with all the the metrics including their name, definition, details, formula, and function name, please check [here](www.addalinkhere.metrica).  
+
+All of the metric functions take the same three arguments as the plotting functions:  
+
+- the data frame object name (`data` argument)
+- the name of the column containing observed values (`obs` argument)  
+- the name of the column containing predicted values (`pred` argument)  
+
+The user can choose to calculate a single metric, or to calculate all metrics at once.  
+
+To calculate a single metric, the metric function can be called.  
+For example, to calculate $R^{-2}$, we can use the `R2()` function:  
+```{r r2}
+R2(data = wheat,
+   obs = obs, 
+   pred = pred)
+```
+
+Similarly, to calculate root mean squared error, we can use the `RMSE()` function:  
+```{r rmse}
+RMSE(data = wheat,
+   obs = obs, 
+   pred = pred)
+```
+
+The user can also calculate all 41 metrics at once using the function `metrics.summary()`:  
+```{r metrics summary}
+metrics.summary(data = wheat,
+   obs = obs, 
+   pred = pred)
+```
+
+## 5 Visual and numerical assessment combined  
+The user can 
 
 
 
