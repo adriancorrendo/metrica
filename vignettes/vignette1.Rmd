@@ -1,0 +1,49 @@
+---
+title: "Assessing model agreement in wheat grain nitrogen content prediction - a case study"
+author: "Leo Bastos, Adrian Correndo"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Assessing model agreement in wheat grain nitrogen content prediction - a case study}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction  
+The *`metrica`* package was developed to compute and visualize the level of agreement between observed ground-truth values and model-derived (e.g., mechanistic or empirical) predictions. 
+
+This package is intended to fit into the following workflow:  
+
+  1. a data set containing the observed values is used to train a model  
+  2. the trained model is used to generate predictions  
+  3. a data frame containing at least the **observed** and model-**predicted** values is created  
+  4. *`metrica`* package is used to compute goodness of fit and error metrics based on observed and predicted values  
+  5. *`metrica`* package is used to visualize model fit and selected fit metrics  
+
+This vignette introduces the functionality of the *`metrica`* package applied to  model-predicted and observed values of wheat grain nitrogen (N) content (on grams of N $m^-2$).  
+
+## Wheat grain N content  
+Let's begin by loading the packages needed.  
+```{r libraries}
+library(ggplot2)
+library(metrica)
+```
+
+Now we load the `wheat` data set included in the `metrica` package.
+```{r load data}
+# Load
+data(wheat)
+
+# Print
+wheat
+```
+
+
+
