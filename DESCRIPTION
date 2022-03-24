@@ -35,5 +35,6 @@ Imports:
     viridis,
     utils,
     DBI,
-    RSQLite
+    RSQLite,
+    ggpp
 VignetteBuilder: knitr

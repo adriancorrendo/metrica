@@ -31,8 +31,9 @@ This vignette introduces the functionality of the *`metrica`* package applied to
 
 ## 2 Wheat grain N content  
 Let's begin by loading the packages needed.  
-```{r libraries}
+```{r libraries, message=F, warning=F}
 library(ggplot2)
+library(dplyr)
 library(metrica)
 ```
 
@@ -52,7 +53,7 @@ This data set contains two columns:
 
 ## 3 Visual assessment of agreement  
 ### 3.1 Scatterplot of pred vs. obs  
-The simplest way to visually assess agreemenet between observed and predicted values is with a scatterplot.  
+The simplest way to visually assess agreement between observed and predicted values is with a scatterplot.  
 
 We can use the function `scatter.plot()` from the *metrica* package to create a scatterplot.  
 
@@ -131,11 +132,42 @@ The user can also calculate all 41 metrics at once using the function `metrics.s
 ```{r metrics summary}
 metrics.summary(data = wheat,
    obs = obs, 
-   pred = pred)
+   pred = pred) 
 ```
 
 ## 5 Visual and numerical assessment combined  
-The user can 
+The user can also create a scatter plot that includes not only the **predicted** vs. **observed** points, **1:1 line**, and **regression line**, but also **5 selected metrics and their values** and the **regression equation**.  
 
+This is acompplished with the function `scatter.metrics()`:  
+
+```{r scatter.metrics}
+scatter.metrics(data = wheat,
+   obs = obs, 
+   pred = pred)
+```
+
+## 6 Exporting  
+To export the metrics summary table, the user can simply write it to file with the function `write.csv()`:  
+
+```{r export metric.summary, eval=F }
+metrics.summary(data = wheat,
+   obs = obs, 
+   pred = pred) %>%
+  write.csv("metrics.summary.csv")
+
+```
+
+
+Similarly, to export a plot, the user can simply write it to file with the function `ggsave()`:  
+
+```{r export plot, eval=F}
+scatter.metrics(data = wheat,
+   obs = obs, 
+   pred = pred)
+
+ggsave("scatter.metrics.png",
+       width = 5,
+       height = 5)
+```
 
 
