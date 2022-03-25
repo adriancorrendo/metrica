@@ -4,22 +4,32 @@
 \alias{metrics.summary}
 \title{metrics.summary}
 \usage{
-metrics.summary(data = NULL, obs, pred, orientation = "PO", na.rm = TRUE)
+metrics.summary(
+  data = NULL,
+  obs,
+  pred,
+  orientation = "PO",
+  na.rm = TRUE,
+  metrics.list = NULL
+)
 }
 \arguments{
 \item{data}{(Optional) argument to call an existing data frame containing the data.}
 
-\item{obs}{Vector with observed values (numeric).}
+\item{obs}{vector with observed values (numeric).}
 
-\item{pred}{Vector with predicted values (numeric).}
+\item{pred}{vector with predicted values (numeric).}
 
-\item{orientation}{Argument of class string specifying the axis
+\item{orientation}{argument of class string specifying the axis
 orientation to estimate slope(B1) and intercept(B0).
 "PO" is for predicted vs observed, and "OP" for observed vs predicted.
 Default is orientation = "PO".}
 
 \item{na.rm}{Logic argument to remove rows with missing values
 (NA). Default is na.rm = TRUE.}
+
+\item{metrics.list}{vector or list of specific selected metrics. Default is = NULL,
+which will estimate all metrics available.}
 }
 \value{
 Object of class \code{tibble}.

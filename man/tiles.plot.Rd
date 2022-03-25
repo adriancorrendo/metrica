@@ -4,7 +4,16 @@
 \alias{tiles.plot}
 \title{tiles.plot}
 \usage{
-tiles.plot(data = NULL, obs, pred, bins = 10, orientation = "PO", na.rm = TRUE)
+tiles.plot(
+  data = NULL,
+  obs,
+  pred,
+  bins = 10,
+  orientation = "PO",
+  print.metrics = FALSE,
+  metrics.list = NULL,
+  na.rm = TRUE
+)
 }
 \arguments{
 \item{data}{(Optional) argument to call an existing data frame containing the data.}
@@ -18,6 +27,10 @@ tiles.plot(data = NULL, obs, pred, bins = 10, orientation = "PO", na.rm = TRUE)
 \item{orientation}{Argument of class string specifying the axis
 orientation, PO for predicted vs observed, and OP for
 observed vs predicted. Default is orientation = "PO".}
+
+\item{print.metrics}{boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.}
+
+\item{metrics.list}{vector or list of selected metrics to print on the plot.}
 
 \item{na.rm}{Logic argument to remove rows with missing values
 (NA). Default is na.rm = TRUE.}

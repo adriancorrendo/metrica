@@ -156,44 +156,12 @@ head(multiple.sum)
 ```{r warning=F, message=F}
 df <- metrica::wheat
 
-# A. Metrics summary
-metrics.sum.wheat <- metrica::metrics.summary(data = df, obs = obs, pred = pred)
-# Wide format for SMA Equation
-metrics.sum.wheat.wide <- metrics.sum.wheat %>% 
-  tidyr::pivot_wider(tidyr::everything(), names_from = "Metric", values_from = "Score")
-
 # B. Create list of selected metrics
 selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "CCC", "KGE", "PLA", "PLP")
 
-# C. Create a reduced performance table for ggplot
-perf.table <- metrics.sum.wheat %>%
-  # Apply a filter to keep only the selected metrics
-  dplyr::filter(Metric %in% selected.metrics) %>% 
-  # Round numbers for clarity
-  mutate_if(is.numeric,~round(.,2))
+metrica::scatter.plot(data = df, obs = obs, pred = pred, print.metrics = TRUE, 
+                      metrics.list = selected.metrics)
 
-# D. Create scatter plot with PO orientation
-wheat.scat.plot <- 
-  metrica::scatter.plot(data = df, 
-                        obs = obs, pred = pred,
-                        orientation = "PO")
-
-# PLOT, Doesn't work when using facets
-wheat.scat.plot + 
-  # Annotate Table
-  ggpp::annotate(geom="table", 
-                 # Position
-                 x = min(df$obs), y = 1.05*max(df$pred),
-                 # Call the table
-                 label = perf.table,
-                 # Align Table (left)
-                 hjust = 0, vjust = 1)+
-  # Add SMA equation
-  geom_text(data = metrics.sum.wheat.wide, 
-            aes(x=0.75*max(df$obs), 
-                y= 1.25*min(df$pred),
-                # Equation
-                label = paste0("y = ",round(B0,2),"+",round(B1,2),"x"), hjust=0))
   
 
 ```

@@ -9,3 +9,5 @@
 ^formulae$
 ^\.circleci$
 ^\.circleci/config\.yml$
+^doc$
+^Meta$

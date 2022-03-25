@@ -1,12 +1,14 @@
 #' @title metrics.summary
 #' @description Scatter plot of Predictions and Observations.
 #' @param data (Optional) argument to call an existing data frame containing the data.
-#' @param obs Vector with observed values (numeric).
-#' @param pred Vector with predicted values (numeric).
-#' @param orientation Argument of class string specifying the axis
+#' @param obs vector with observed values (numeric).
+#' @param pred vector with predicted values (numeric).
+#' @param orientation argument of class string specifying the axis
 #' orientation to estimate slope(B1) and intercept(B0).
 #' "PO" is for predicted vs observed, and "OP" for observed vs predicted.
 #' Default is orientation = "PO".
+#' @param metrics.list vector or list of specific selected metrics. Default is = NULL, 
+#' which will estimate all metrics available.
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return Object of class `tibble`.
@@ -22,20 +24,27 @@
 #' @importFrom dplyr summarise %>%
 #' @importFrom rlang eval_tidy quo 
 #' @export 
+
 metrics.summary <-
   function(data=NULL,
            obs,
            pred,
            orientation = "PO",
-           na.rm = TRUE){
+           na.rm = TRUE,
+           metrics.list = NULL){
+    
     metrics <- c("B0","B1","r","R2", "Xa","CCC","MAE","RMAE","MAPE","SMAPE",
                  "RAE","RSE","MBE","PBE","PAB","PPB","MSE","RMSE","RRMSE","RSR",
                  "iqRMSE","MLA","MLP","SB","SDSD","LCS","PLA","PLP","Ue","Uc",
                  "Ub","NSE","E1","Erel","KGE","d","d1","d1r","RAC","AC",
                  "lambda")
-    newDataFrame <- data.frame(Metric = metrics, 
-                               Score = 1:41,
+    
+    # Create data.frame to store metrics
+    newDataFrame <- data.frame(`Metric` = metrics, 
+                               Score = 1:length(metrics),
                                row.names = NULL)
+    
+    # Run the metrics
     newDataFrame["Score"] <- 
       rlang::eval_tidy(
         data=data,
@@ -85,9 +94,12 @@ metrics.summary <-
           )
         )
       )
+    
+    # Filter for metrics.list, if provided
+    if (!is.null(metrics.list)) {
+      newDataFrame <- dplyr::filter(newDataFrame, `Metric` %in% metrics.list)  }
+    
     return(newDataFrame)
     
   }
-
-
 

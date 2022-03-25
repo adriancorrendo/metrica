@@ -132,24 +132,68 @@ The user can also calculate all 41 metrics at once using the function `metrics.s
 ```{r metrics summary}
 metrics.summary(data = wheat,
    obs = obs, 
-   pred = pred) 
-```
-
-## 5 Visual and numerical assessment combined  
-The user can also create a scatter plot that includes not only the **predicted** vs. **observed** points, **1:1 line**, and **regression line**, but also **5 selected metrics and their values** and the **regression equation**.  
-
-This is acompplished with the function `scatter.metrics()`:  
-
-```{r scatter.metrics}
-scatter.metrics(data = wheat,
-   obs = obs, 
    pred = pred)
 ```
+
+If the user wants just specific metrics, within the same function `metrics.summary()`, user can pass a list of desired metrics using the argument "metrics.list" as follows:  
+```{r metrics summary list}
+
+my.metrics <- c("R2","MAE", "RMSE", "RSR", "NSE", "KGE")
+
+metrics.summary(data = wheat,   
+                obs = obs,    
+                pred = pred,
+                metrics.list = my.metrics) 
+
+```
+
+
+## 5 Visual and numerical assessment combined  
+The user can also create a scatter plot that includes not only the **predicted** vs. **observed** points, **1:1 line**, and **regression line**, but also **selected metrics and their values** plust the **SMA regression equation**.  
+
+This is accomplished with the function `scatter.plot()`:  
+
+```{r scatter.plot}
+scatter.plot(data = wheat,
+             obs = obs, 
+             pred = pred)
+
+```
+
+To print the metrics on the `scatter.plot()`, just use print.metrics. Warning: do not forget to specify your 'metrics.list':  
+
+```{r scatter.plot.print.metrics}
+
+my.metrica.plot <- scatter.plot(data = wheat,
+             obs = obs, 
+             pred = pred,
+             print.metrics = TRUE, metrics.list = my.metrics)
+
+my.metrica.plot
+
+```
+Also, as a ggplot element, outputs are flexible of further edition:  
+
+```{r scatter.plot.edit }
+
+my.metrica.plot +
+  # Modify labels
+  labs(x = "Observed (days to emergence)", y = "Predicted (days to emergence)")+
+  # Modify theme
+  theme_light()
+
+my.metrica.plot +
+  # Modify labels
+  labs(x = "Observed (Mg/ha)", y = "Predicted (Mg/ha)")+
+  # Modify theme
+  theme_dark()
+```
+
 
 ## 6 Exporting  
 To export the metrics summary table, the user can simply write it to file with the function `write.csv()`:  
 
-```{r export metric.summary, eval=F }
+```{r export metrics.summary, eval=F }
 metrics.summary(data = wheat,
    obs = obs, 
    pred = pred) %>%
@@ -161,11 +205,9 @@ metrics.summary(data = wheat,
 Similarly, to export a plot, the user can simply write it to file with the function `ggsave()`:  
 
 ```{r export plot, eval=F}
-scatter.metrics(data = wheat,
-   obs = obs, 
-   pred = pred)
 
-ggsave("scatter.metrics.png",
+ggsave(plot = my.metrica.plot,
+       "scatter.metrics.png",
        width = 5,
        height = 5)
 ```

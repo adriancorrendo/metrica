@@ -6,6 +6,8 @@
 #' @param orientation Argument of class string specifying the axis
 #' orientation, PO for predicted vs observed, and OP for
 #' observed vs predicted. Default is orientation = "PO".
+#' @param print.metrics boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.
+#' @param metrics.list vector or list of selected metrics to print on the plot.
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return Object of class `ggplot`.
@@ -19,16 +21,25 @@
 #' @seealso 
 #'  \code{\link[ggplot2]{ggplot}},\code{\link[ggplot2]{geom_point}},\code{\link[ggplot2]{aes}}
 #' @rdname scatter.plot
-#' @export 
 #' @importFrom ggplot2 ggplot geom_point aes geom_abline labs theme_bw
 #' theme
 #' @importFrom dplyr %>%
 #' @importFrom rlang eval_tidy quo
+#' @export
 scatter.plot <- function(data = NULL, 
                          obs,
                          pred,
                          orientation = "PO",
+                         print.metrics = FALSE,
+                         metrics.list = NULL,
                          na.rm = TRUE){
+  
+  # STOP. Specify metrics.list
+  if (print.metrics == TRUE & is.null(metrics.list)) {
+    stop("Please, specify the 'metrics.list' arg. For example, metrics.list = c('R2','RMSE','NSE'). 
+       Choose wisely, not more than 6 recommended to maintain an appropriate visualization") }
+  
+  # Get SMA slope and intercepts for printing
   B1.PO <- rlang::eval_tidy(
     data = data,
     rlang::quo(
@@ -47,7 +58,18 @@ scatter.plot <- function(data = NULL,
     data = data,
     rlang::quo(
       mean({{obs}}) - (B1.OP*mean({{pred}}))  )  )
-
+  
+  # Generate metrics summary
+  metrics.table <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(
+    metrica::metrics.summary(data = data, obs = {{obs}}, pred = {{pred}}, 
+                             orientation = orientation,
+                    metrics.list = metrics.list) ) ) %>% 
+    # Round numbers for clarity
+    dplyr::mutate_if(base::is.numeric,~base::round(.,2)) 
+  
+  # Generate plot
   plot <- rlang::eval_tidy(
     data = data,
     rlang::quo(
@@ -69,7 +91,15 @@ scatter.plot <- function(data = NULL,
         ggplot2::labs(x = "Observed", y = "Predicted")+
         ggplot2::theme_bw()+
         ggplot2::theme(legend.position = "none",
-                       panel.grid = ggplot2::element_blank())
+                       panel.grid = ggplot2::element_blank())+
+        # Add SMA equation
+        ggpp::annotate(geom="text", 
+                       x=0.70*max({{obs}}), 
+                       y= 1.25*min({{pred}}),
+                       # Equation
+                       label = paste0("y = ",round(B0.PO, 2),"+",
+                                      round(B1.PO,2),"x"), 
+                       hjust=0)
     )
   )
   if (orientation == "OP"){
@@ -94,9 +124,34 @@ scatter.plot <- function(data = NULL,
           ggplot2::labs(y = "Observed", x = "Predicted")+
           ggplot2::theme_bw()+
           ggplot2::theme(legend.position = "none",
-                         panel.grid = ggplot2::element_blank())
+                         panel.grid = ggplot2::element_blank())+
+          # Add SMA equation
+          ggpp::annotate(geom="text", 
+                         x=0.70*max({{obs}}), 
+                         y= 1.25*min({{pred}}),
+                         # Equation
+                         label = paste0("y = ",round(B0.OP,2),"+",
+                                        round(B1.OP,2),"x"), 
+                         hjust=0)
       )
     )
-  } #IF END 
+  } #IF END
+  
+  if (print.metrics == TRUE){
+    plot <- 
+      rlang::eval_tidy(data=data,
+                       rlang::quo(
+                       plot + # Annotate Table
+                         ggpp::annotate(geom="table", 
+                                        # Position
+                                        x = min({{obs}}), 
+                                        y = 1.05*max({{pred}}),
+                                        # Call the table
+                                        label = metrics.table,
+                                        # Align Table (left)
+                                        hjust = 0, vjust = 1) ) )
+      
+      
+  }
   return(plot)
 }

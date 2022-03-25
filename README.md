@@ -16,7 +16,7 @@ status](https://circleci.com/gh/adriancorrendo/metrica.svg?style=svg)](https://c
 <!-- badges: end -->
 
 The goal of the *metrica* package is to offer users of point-forecast
-models a toolbox with a wide spectrum of error and goodness of fit
+models a toolbox with a wide spectrum of goodness of fit and error
 metrics (+40) accounting for different aspects of the agreement between
 predicted and observed values. Also, some basic visualization functions
 to assess models performance (e.g. scatter with regression line;
@@ -199,44 +199,11 @@ head(multiple.sum)
 ``` r
 df <- metrica::wheat
 
-# A. Metrics summary
-metrics.sum.wheat <- metrica::metrics.summary(data = df, obs = obs, pred = pred)
-# Wide format for SMA Equation
-metrics.sum.wheat.wide <- metrics.sum.wheat %>% 
-  tidyr::pivot_wider(tidyr::everything(), names_from = "Metric", values_from = "Score")
-
 # B. Create list of selected metrics
 selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "CCC", "KGE", "PLA", "PLP")
 
-# C. Create a reduced performance table for ggplot
-perf.table <- metrics.sum.wheat %>%
-  # Apply a filter to keep only the selected metrics
-  dplyr::filter(Metric %in% selected.metrics) %>% 
-  # Round numbers for clarity
-  mutate_if(is.numeric,~round(.,2))
-
-# D. Create scatter plot with PO orientation
-wheat.scat.plot <- 
-  metrica::scatter.plot(data = df, 
-                        obs = obs, pred = pred,
-                        orientation = "PO")
-
-# PLOT, Doesn't work when using facets
-wheat.scat.plot + 
-  # Annotate Table
-  ggpp::annotate(geom="table", 
-                 # Position
-                 x = min(df$obs), y = 1.05*max(df$pred),
-                 # Call the table
-                 label = perf.table,
-                 # Align Table (left)
-                 hjust = 0, vjust = 1)+
-  # Add SMA equation
-  geom_text(data = metrics.sum.wheat.wide, 
-            aes(x=0.75*max(df$obs), 
-                y= 1.25*min(df$pred),
-                # Equation
-                label = paste0("y = ",round(B0,2),"+",round(B1,2),"x"), hjust=0))
+metrica::scatter.plot(data = df, obs = obs, pred = pred, print.metrics = TRUE, 
+                      metrics.list = selected.metrics)
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
