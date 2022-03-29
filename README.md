@@ -5,14 +5,12 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.com/adriancorrendo/metrica.svg?branch=master)](https://app.travis-ci.com/github/adriancorrendo/metrica)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&svg=true)](https://ci.appveyor.com/project/adriancorrendo/metrica)
-[![codecov](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn)](https://codecov.io/gh/adriancorrendo/metrica)
-
 [![CircleCI build
 status](https://circleci.com/gh/adriancorrendo/metrica.svg?style=svg)](https://circleci.com/gh/adriancorrendo/metrica)
+[![codecov](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn)](https://codecov.io/gh/adriancorrendo/metrica)
+[![R-CMD-check](https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg)](https://github.com/adriancorrendo/metrica/actions)
 <!-- badges: end -->
 
 The goal of the *metrica* package is to offer users of point-forecast
