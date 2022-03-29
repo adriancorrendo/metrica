@@ -11,3 +11,4 @@
 ^\.circleci/config\.yml$
 ^doc$
 ^Meta$
+^\.github$

@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
 [![codecov](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn)](https://codecov.io/gh/adriancorrendo/metrica)
 
 [![CircleCI build status](https://circleci.com/gh/adriancorrendo/metrica.svg?style=svg)](https://circleci.com/gh/adriancorrendo/metrica)
+[![R-CMD-check](https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg)](https://github.com/adriancorrendo/metrica/actions)
 <!-- badges: end -->
 
 The goal of the *metrica* package is to offer users of point-forecast 
