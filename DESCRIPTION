@@ -38,3 +38,4 @@ Imports:
     RSQLite,
     ggpp
 VignetteBuilder: knitr
+URL: https://adriancorrendo.github.io/metrica/
