@@ -7,9 +7,6 @@
 
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&svg=true)](https://ci.appveyor.com/project/adriancorrendo/metrica)
-[![CircleCI build
-status](https://circleci.com/gh/adriancorrendo/metrica.svg?style=svg)](https://circleci.com/gh/adriancorrendo/metrica)
-[![codecov](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn)](https://codecov.io/gh/adriancorrendo/metrica)
 [![R-CMD-check](https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg)](https://github.com/adriancorrendo/metrica/actions)
 <!-- badges: end -->
 
@@ -20,7 +17,7 @@ predicted and observed values. Also, some basic visualization functions
 to assess models performance (e.g. scatter with regression line;
 Bland-Altman plot) are provided in customizable format (ggplot).
 
-<img src="man/figures/metrica_logo.png" height="300" align="right"/>
+<img src="man/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;">
 
 ## 1. Installation
 
