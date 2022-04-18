@@ -24,14 +24,8 @@ Bland-Altman plot) are provided in customizable format (ggplot).
 
 ## 1. Installation
 
-You can install the released version of metrica from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("metrica")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -85,7 +79,7 @@ example.data <- barley %>%  # or 'wheat', 'sorghum', or 'chickpea'
 
 # 2. Use metrica plot functions
 # 2.a. Create scatter plot with PO orientation
-barley.scat.plot <- metrica::scatter.plot(data = example.data, obs = measured, pred = simulated,
+barley.scat.plot <- metrica::scatter_plot(data = example.data, obs = measured, pred = simulated,
              orientation = "PO")
 barley.scat.plot
 ```
@@ -94,10 +88,10 @@ barley.scat.plot
 
 ``` r
 # Alternative using vectors instead of dataframe
-#metrica::scatter.plot(obs = example.data$obs, pred = example.data$pred)
+#metrica::scatter_plot(obs = example.data$obs, pred = example.data$pred)
 
 # 2.b. Create tiles plot with OP orientation
-barley.tiles.plot <- metrica::tiles.plot(data = example.data, obs = measured, pred = simulated,
+barley.tiles.plot <- metrica::tiles_plot(data = example.data, obs = measured, pred = simulated,
            bins = 15, orientation = "OP")
 
 barley.tiles.plot
@@ -107,7 +101,7 @@ barley.tiles.plot
 
 ``` r
 # 2.c. Create a Bland-Altman plot
-barley.ba.plot <- metrica::bland.altman.plot(data = example.data,
+barley.ba.plot <- metrica::bland_altman_plot(data = example.data,
                            obs = measured, pred = simulated)
 
 barley.ba.plot
@@ -132,8 +126,9 @@ metrica::MBE(data = example.data, obs = measured, pred = simulated)
 #> [1] 0.207378
 
 # 3.b. Metrics Summary 
-metrics.sum <- metrica::metrics.summary(data = example.data, obs = measured, pred = simulated)  
-
+metrics.sum <- metrica::metrics_summary(data = example.data, 
+                                        obs = measured, pred = simulated)  
+# Print first 15
 head(metrics.sum, n = 15)
 #>    Metric      Score
 #> 1      B0  1.1282743
@@ -180,7 +175,7 @@ head(nested.examples %>% group_by(id) %>% dplyr::slice_head(n=2))
 # 4.b. Run 
 multiple.sum <- nested.examples %>% 
   # Store metrics in new.column "performance"
-  mutate(performance = map(data, ~metrica::metrics.summary(data=., obs = obs, pred = pred)))
+  mutate(performance = map(data, ~metrica::metrics_summary(data=., obs = obs, pred = pred)))
 
 head(multiple.sum)
 #> # A tibble: 4 x 3
@@ -200,8 +195,8 @@ df <- metrica::wheat
 # B. Create list of selected metrics
 selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "CCC", "KGE", "PLA", "PLP")
 
-metrica::scatter.plot(data = df, obs = obs, pred = pred, print.metrics = TRUE, 
-                      metrics.list = selected.metrics)
+metrica::scatter_plot(data = df, obs = obs, pred = pred, print_metrics = TRUE, 
+                      metrics_list = selected.metrics)
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
@@ -209,11 +204,11 @@ metrica::scatter.plot(data = df, obs = obs, pred = pred, print.metrics = TRUE,
 ## 5. Import simulated data from APSIM Classic (.out) and APSIM NextGen (.db)
 
 ``` r
-# Use import.apsim.out for APSIM Classic output
-soybean.out <- metrica::import.apsim.out(filepath = "tests/testthat/examples/soybean.out")
+# Use import_apsim_out for APSIM Classic output
+soybean.out <- metrica::import_apsim_out(filepath = "tests/testthat/examples/soybean.out")
 
-# Use import.apsim.db for APSIM NextGeneration output
-soybean.db <- metrica::import.apsim.db(filename = "soybean.example.db",  folder = "tests/testthat/examples/")
+# Use import_apsim_db for APSIM NextGeneration output
+soybean.db <- metrica::import_apsim_db(filename = "soybean.example.db",  folder = "tests/testthat/examples/")
 
 head(soybean.out)
 #>   Date (dd/mm/yyyy) yield (kg/ha) biomass (kg/ha) grain_protein (%)
@@ -258,7 +253,7 @@ performance. <br/>
 |-----|----------|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | A   | `RSS`    | Residual sum of squares (a.k.a. as sum of squares)               | The sum of squared differences between predicted and observed values. It represents the base of many error metrics using squared scale such as the MSE                                                                                                                                                                                                                      | ![equation](formulae/A.RSS.gif)                                                                                                 |
 | B   | `TSS`    | Total sum of squares                                             | The sum of the squared differences between the observations and its mean. It is used as a reference error, for example, to estimate explained variance                                                                                                                                                                                                                      | ![equation](formulae/B.TSS.gif)                                                                                                 |
-| C   | `var.u`  | Sample variance, uncorrected                                     | The mean of sum of squared differences between values of an `x` and its mean (divided by n, not n-1)                                                                                                                                                                                                                                                                        | ![equation](formulae/C.var.u.gif)                                                                                               |
+| C   | `var_u`  | Sample variance, uncorrected                                     | The mean of sum of squared differences between values of an `x` and its mean (divided by n, not n-1)                                                                                                                                                                                                                                                                        | ![equation](formulae/C.var.u.gif)                                                                                               |
 | D   | `uSD`    | Sample standard deviation, uncorrected                           | The square root of the mean of sum of squared differences between values of an `x` and its mean (divided by n, not n-1)                                                                                                                                                                                                                                                     | ![equation](formulae/D.uSD.gif)                                                                                                 |
 | 1   | `B0`     | Intercept of SMA regression                                      | SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) recommended to describe the bivariate scatter instead of OLS regression (classic linear model, which results vary with the axis orientation). B0 could be used to test agreement along with B1 (H0: B0 = 0, B1 = 1)                                                             | ![equation](formulae/1.B0.gif)                                                                                                  |
 | 2   | `B1`     | Slope of SMA regression                                          | SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) recommended to describe the bivariate scatter instead of OLS regression (classic linear model, which results vary with the axis orientation). B1 could be used to test isometry of the PO scatter (H0: B1 = 1). B1 also represents the ratio of standard deviations (So and Sp) | ![equation](formulae/2.B1.gif)                                                                                                  |

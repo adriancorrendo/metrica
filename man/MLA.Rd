@@ -33,7 +33,6 @@ Correndo et al (2021).
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
-df <- data.frame(obs = X, pred = Y)
-MLA(df, obs = X, pred = Y)
+MLA(obs = X, pred = Y)
 }
 }

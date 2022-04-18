@@ -1,27 +1,27 @@
-#' @title bland.altman.plot
+#' @title bland_altman_plot
 #' @description Bland-Altman plot.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values
-#' @return Object of class `ggplot`.
+#' @return and object of class `ggplot`.
 #' @details Creates a scatter plot of the difference between
 #' observed and predicted values (obs-pred) vs. observed values.
 #' @examples 
 #' \dontrun{
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 10)
-#' blandaltman.plot(obs = X, pre = Y)
+#' bland_altman_plot(obs = X, pred = Y)
 #' }
 #' @seealso 
 #'  \code{\link[ggplot2]{ggplot}},\code{\link[ggplot2]{geom_point}},\code{\link[ggplot2]{aes}}
-#' @rdname bland.altman.plot
+#' @rdname bland_altman_plot
 #' @export 
 #' @importFrom ggplot2 ggplot geom_point aes geom_abline labs theme_bw
 #' theme
 #' @importFrom dplyr %>%
 #' @importFrom rlang eval_tidy quo  
-bland.altman.plot <- function(data=NULL,
+bland_altman_plot <- function(data=NULL,
                               obs,
                               pred,
                               na.rm = TRUE){

@@ -1,6 +1,6 @@
 ---
 title: "Assessing model agreement in wheat grain nitrogen content prediction - a use case"
-author: "Leo Bastos, Adrian Correndo"
+author: "Leo Bastos & Adrian Correndo"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -55,7 +55,7 @@ This data set contains two columns:
 ### 3.1 Scatterplot of pred vs. obs  
 The simplest way to visually assess agreement between observed and predicted values is with a scatterplot.  
 
-We can use the function `scatter.plot()` from the *metrica* package to create a scatterplot.  
+We can use the function `scatter_plot()` from the *metrica* package to create a scatterplot.  
 
 The function requires specifying at least:  
 
@@ -65,24 +65,24 @@ The function requires specifying at least:
 
 Besides a scatterplot, this function also adds to the plot the **1:1 line** (solid line) and the **linear regression line** (dashed line).  
 
-```{r scatter.plot PO}
-scatter.plot(data = wheat, 
+```{r scatter_plot PO}
+scatter_plot(data = wheat, 
              obs = obs, 
              pred = pred)
 ```
 
-The default behavior of `scatter.plot()` places the `obs` column on the x axis and the `pred` column on the y axis (`orientation = "PO"`). This can be inverted by changing the argument `orientation` to "OP":    
-```{r scatter.plot OP}
-scatter.plot(data = wheat, 
+The default behavior of `scatter_plot()` places the `obs` column on the x axis and the `pred` column on the y axis (`orientation = "PO"`). This can be inverted by changing the argument `orientation` to "OP":    
+```{r scatter_plot OP}
+scatter_plot(data = wheat, 
              obs = obs, 
              pred = pred,
              orientation = "OP")
 ```
 
 
-The output of the `scatter.plot()` function is a `ggplot2` object that can be further customized:  
-```{r scatter.plot custom}
-scatter.plot(data = wheat, 
+The output of the `scatter_plot()` function is a `ggplot2` object that can be further customized:  
+```{r scatter_plot custom}
+scatter_plot(data = wheat, 
              obs = obs, 
              pred = pred,
              orientation = "OP")+
@@ -95,7 +95,7 @@ scatter.plot(data = wheat,
 The Bland-Altman plot is another way of visually assessing observed vs. predicted agreement. It plots the difference between observed and predicted values on the y axis, and the observed values on the x axis:  
 
 ```{r bland-altman}
-bland.altman.plot(data = wheat,
+bland_altman_plot(data = wheat,
                   obs = obs, 
                   pred = pred)
 ```
@@ -114,7 +114,7 @@ All of the metric functions take the same three arguments as the plotting functi
 The user can choose to calculate a single metric, or to calculate all metrics at once.  
 
 To calculate a single metric, the metric function can be called.  
-For example, to calculate $R^{-2}$, we can use the `R2()` function:  
+For example, to calculate $R^{2}$, we can use the `R2()` function:  
 ```{r r2}
 R2(data = wheat,
    obs = obs, 
@@ -128,22 +128,22 @@ RMSE(data = wheat,
    pred = pred)
 ```
 
-The user can also calculate all 41 metrics at once using the function `metrics.summary()`:  
+The user can also calculate all 41 metrics at once using the function `metrics_summary()`:  
 ```{r metrics summary}
-metrics.summary(data = wheat,
+metrics_summary(data = wheat,
    obs = obs, 
    pred = pred)
 ```
 
-If the user wants just specific metrics, within the same function `metrics.summary()`, user can pass a list of desired metrics using the argument "metrics.list" as follows:  
+If the user wants just specific metrics, within the same function `metrics_summary()`, user can pass a list of desired metrics using the argument "metrics_list" as follows:  
 ```{r metrics summary list}
 
 my.metrics <- c("R2","MAE", "RMSE", "RSR", "NSE", "KGE")
 
-metrics.summary(data = wheat,   
+metrics_summary(data = wheat,   
                 obs = obs,    
                 pred = pred,
-                metrics.list = my.metrics) 
+                metrics_list = my.metrics) 
 
 ```
 
@@ -151,30 +151,30 @@ metrics.summary(data = wheat,
 ## 5 Visual and numerical assessment combined  
 The user can also create a scatter plot that includes not only the **predicted** vs. **observed** points, **1:1 line**, and **regression line**, but also **selected metrics and their values** plust the **SMA regression equation**.  
 
-This is accomplished with the function `scatter.plot()`:  
+This is accomplished with the function `scatter_plot()`:  
 
-```{r scatter.plot}
-scatter.plot(data = wheat,
+```{r scatter_plot}
+scatter_plot(data = wheat,
              obs = obs, 
              pred = pred)
 
 ```
 
-To print the metrics on the `scatter.plot()`, just use print.metrics. Warning: do not forget to specify your 'metrics.list':  
+To print the metrics on the `scatter_plot()`, just use print.metrics. Warning: do not forget to specify your 'metrics.list':  
 
-```{r scatter.plot.print.metrics}
+```{r scatter_plot print_metrics}
 
-my.metrica.plot <- scatter.plot(data = wheat,
+my.metrica.plot <- scatter_plot(data = wheat,
              obs = obs, 
              pred = pred,
-             print.metrics = TRUE, metrics.list = my.metrics)
+             print_metrics = TRUE, metrics_list = my.metrics)
 
 my.metrica.plot
 
 ```
 Also, as a ggplot element, outputs are flexible of further edition:  
 
-```{r scatter.plot.edit }
+```{r scatter_plot.edit }
 
 my.metrica.plot +
   # Modify labels
@@ -193,11 +193,11 @@ my.metrica.plot +
 ## 6 Exporting  
 To export the metrics summary table, the user can simply write it to file with the function `write.csv()`:  
 
-```{r export metrics.summary, eval=F }
-metrics.summary(data = wheat,
+```{r export metrics_summary, eval=F }
+metrics_summary(data = wheat,
    obs = obs, 
    pred = pred) %>%
-  write.csv("metrics.summary.csv")
+  write.csv("metrics_summary.csv")
 
 ```
 
@@ -207,7 +207,7 @@ Similarly, to export a plot, the user can simply write it to file with the funct
 ```{r export plot, eval=F}
 
 ggsave(plot = my.metrica.plot,
-       "scatter.metrics.png",
+       "scatter_metrics.png",
        width = 5,
        height = 5)
 ```

@@ -1,4 +1,4 @@
-#' @title metrics.summary
+#' @title metrics_summary
 #' @description Scatter plot of Predictions and Observations.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs vector with observed values (numeric).
@@ -7,31 +7,31 @@
 #' orientation to estimate slope(B1) and intercept(B0).
 #' "PO" is for predicted vs observed, and "OP" for observed vs predicted.
 #' Default is orientation = "PO".
-#' @param metrics.list vector or list of specific selected metrics. Default is = NULL, 
+#' @param metrics_list vector or list of specific selected metrics. Default is = NULL, 
 #' which will estimate all metrics available.
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Object of class `tibble`.
+#' @return an object of class `tibble`.
 #' @details Creates a table with one colum per metric.
 #' @examples 
 #' \dontrun{
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 10)
 #' df <- data.frame(obs = X, pred = Y)
-#' metrics.summary(df, obs = X, pred = Y)
+#' metrics_summary(df, obs = X, pred = Y)
 #' }
-#' @rdname metrics.summary
+#' @rdname metrics_summary
 #' @importFrom dplyr summarise %>%
 #' @importFrom rlang eval_tidy quo 
 #' @export 
 
-metrics.summary <-
+metrics_summary <-
   function(data=NULL,
            obs,
            pred,
            orientation = "PO",
            na.rm = TRUE,
-           metrics.list = NULL){
+           metrics_list = NULL){
     
     metrics <- c("B0","B1","r","R2", "Xa","CCC","MAE","RMAE","MAPE","SMAPE",
                  "RAE","RSE","MBE","PBE","PAB","PPB","MSE","RMSE","RRMSE","RSR",
@@ -43,6 +43,7 @@ metrics.summary <-
     newDataFrame <- data.frame(`Metric` = metrics, 
                                Score = 1:length(metrics),
                                row.names = NULL)
+    Metric <- NULL
     
     # Run the metrics
     newDataFrame["Score"] <- 
@@ -50,8 +51,8 @@ metrics.summary <-
         data=data,
         rlang::quo(
           c(
-            B0 = as.numeric(metrica::B0.sma({{data}},{{obs}},{{pred}}, orientation = orientation)),
-            B1 = as.numeric(metrica::B1.sma({{data}},{{obs}},{{pred}}, orientation = orientation)),
+            B0 = as.numeric(metrica::B0_sma({{data}},{{obs}},{{pred}}, orientation = orientation)),
+            B1 = as.numeric(metrica::B1_sma({{data}},{{obs}},{{pred}}, orientation = orientation)),
             r = as.numeric(metrica::r({{data}},{{obs}},{{pred}})),
             R2 = as.numeric(metrica::R2({{data}},{{obs}},{{pred}})),
             Xa = as.numeric(metrica::Xa({{data}},{{obs}},{{pred}})),
@@ -95,9 +96,9 @@ metrics.summary <-
         )
       )
     
-    # Filter for metrics.list, if provided
-    if (!is.null(metrics.list)) {
-      newDataFrame <- dplyr::filter(newDataFrame, `Metric` %in% metrics.list)  }
+    # Filter for metrics_list, if provided
+    if (!is.null(metrics_list)) {
+      newDataFrame <- dplyr::filter(newDataFrame, `Metric` %in% metrics_list)  }
     
     return(newDataFrame)
     

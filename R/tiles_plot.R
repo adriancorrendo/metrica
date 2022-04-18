@@ -1,4 +1,4 @@
-#' @title tiles.plot
+#' @title tiles_plot
 #' @description Scatter plot of Predictions and Observations.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
@@ -7,8 +7,8 @@
 #' @param orientation Argument of class string specifying the axis
 #' orientation, PO for predicted vs observed, and OP for
 #' observed vs predicted. Default is orientation = "PO".
-#' @param print.metrics boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.
-#' @param metrics.list vector or list of selected metrics to print on the plot.
+#' @param print_metrics boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.
+#' @param metrics_list vector or list of selected metrics to print on the plot.
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return Object of class `ggplot`.
@@ -17,29 +17,29 @@
 #' \dontrun{
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 10)
-#' tiles.plot(obs = X, pre = Y)
+#' tiles_plot(obs = X, pred = Y)
 #' }
 #' @seealso 
 #'  \code{\link[ggplot2]{ggplot}},\code{\link[ggplot2]{geom_point}},\code{\link[ggplot2]{aes}}
-#' @rdname tiles.plot
+#' @rdname tiles_plot
 #' @importFrom ggplot2 ggplot geom_point aes geom_abline geom_hex
 #' coord_fixed theme_bw labs
 #' @importFrom viridis scale_fill_viridis
 #' @importFrom dplyr %>%
 #' @importFrom rlang eval_tidy quo
 #' @export
-tiles.plot <- function(data=NULL,
+tiles_plot <- function(data=NULL,
                        obs,
                        pred,
                        bins = 10,
                        orientation = "PO",
-                       print.metrics = FALSE,
-                       metrics.list = NULL, 
+                       print_metrics = FALSE,
+                       metrics_list = NULL, 
                        na.rm = TRUE){
   
-  # STOP. Specify metrics.list
-  if (print.metrics == TRUE & is.null(metrics.list)) {
-  stop("Please, specify the 'metrics.list' arg. For example, metrics.list = c('R2','RMSE','NSE'). 
+  # STOP. Specify metrics_list
+  if (print_metrics == TRUE & is.null(metrics_list)) {
+  stop("Please, specify the 'metrics_list' arg. For example, metrics_list = c('R2','RMSE','NSE'). 
        Choose wisely, not more than 6 recommended to maintain an appropriate visualization") }
   
   # Get SMA slope and intercepts for printing
@@ -66,8 +66,8 @@ tiles.plot <- function(data=NULL,
   metrics.table <- rlang::eval_tidy(
     data = data,
     rlang::quo(
-      metrica::metrics.summary(data = data, obs = {{obs}}, pred = {{pred}}, orientation = orientation,
-                      metrics.list = metrics.list) ) ) %>% 
+      metrica::metrics_summary(data = data, obs = {{obs}}, pred = {{pred}}, orientation = orientation,
+                      metrics_list = metrics_list) ) ) %>% 
     # Round numbers for clarity
     dplyr::mutate_if(base::is.numeric,~base::round(.,2))
   
@@ -141,7 +141,7 @@ if (orientation == "OP"){
   )
 }
   
-  if (print.metrics == TRUE){
+  if (print_metrics == TRUE){
     plot <- 
       rlang::eval_tidy(data=data,
                        rlang::quo(

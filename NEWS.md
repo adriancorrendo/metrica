@@ -1,8 +1,24 @@
-# metrica 1.2.0
+# metrica 1.2.1
 
-* This is the second release of the metrica package.
+Minor updates (1.2.1):
 
-New features:
+Update of function and arguments' names replacing  "." by "_":
+
+Old | New
+import.apsim.out | import_apsim_out
+import.apsim.db | import_apsim_db
+metrics.summary | metrics_summary
+scatter.plot | scatter_plot
+tiles.plot | tiles_plot
+bland.altman.plot | bland_altman_plot
+B0.sma | B0_sma
+B1.sma | B1_sma
+metrics.list | metrics_list
+print.metrics | print_metrics
+
+---------------------
+
+New features (1.2.0):
 
 Data: a new (Optional) arg. called "data" is included for all functions,
 which serves to call an existing data frame containing the predicted-observed data.

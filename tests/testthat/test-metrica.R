@@ -1,68 +1,68 @@
-# Test import.apsim.out
+# Test import_apsim_out
 
 out.file <- testthat::test_path("examples", "soybean.out")
-import.apsim.out.test <- import.apsim.out(filepath = out.file)
+import_apsim_out.test <- import_apsim_out(filepath = out.file)
 
-test_that('no error import.apsim.out', {
-  expect_false(inherits(import.apsim.out.test, "try-error"))
+test_that('no error import_apsim_out', {
+  expect_false(inherits(import_apsim_out.test, "try-error"))
 })
 
-# Test import.apsim.db
+# Test import_apsim_db
 
 db.loc <- testthat::test_path("examples")
-import.apsim.db.test <- import.apsim.db(filename = "soybean.example.db",  folder = db.loc)
+import_apsim_db.test <- import_apsim_db(filename = "soybean.example.db",  folder = db.loc)
 
-test_that('no error import.apsim.db', {
-  expect_false(inherits(import.apsim.db.test, "try-error"))
+test_that('no error import_apsim_db', {
+  expect_false(inherits(import_apsim_db.test, "try-error"))
 })
 
 # Data for metrics
 data('wheat')
 
 # 1. Metrics summary
-metrics.summary.test <- metrics.summary(obs = wheat$obs, pred = wheat$pred,
+metrics_summary.test <- metrics_summary(obs = wheat$obs, pred = wheat$pred,
                                         orientation = "PO")
 
-test_that('no error metrics.summary', {
-  expect_false(inherits(metrics.summary.test, "try-error"))
+test_that('no error metrics_summary', {
+  expect_false(inherits(metrics_summary.test, "try-error"))
 })
 
 # 2. Scatter plot
-scatter.plot.test.PO <- scatter.plot(obs = wheat$obs, pred = wheat$pred,
+scatter_plot.test.PO <- scatter_plot(obs = wheat$obs, pred = wheat$pred,
                                   orientation = "PO")
 
-test_that('no error scatter.plot', {
-  expect_false(inherits(scatter.plot.test.PO, "try-error"))
+test_that('no error scatter_plot', {
+  expect_false(inherits(scatter_plot.test.PO, "try-error"))
 })
 
-scatter.plot.test.OP <- scatter.plot(obs = wheat$obs, pred = wheat$pred,
+scatter_plot.test.OP <- scatter_plot(obs = wheat$obs, pred = wheat$pred,
                                      orientation = "OP")
 
-test_that('no error scatter.plot', {
-  expect_false(inherits(scatter.plot.test.OP, "try-error"))
+test_that('no error scatter_plot', {
+  expect_false(inherits(scatter_plot.test.OP, "try-error"))
 })
 
 # 3. Tiles plot
-tiles.plot.test.PO <- tiles.plot(obs = wheat$obs, pred = wheat$pred,
+tiles_plot.test.PO <- tiles_plot(obs = wheat$obs, pred = wheat$pred,
                                   orientation = "PO")
 
-test_that('no error tiles.plot', {
-  expect_false(inherits(tiles.plot.test.PO, "try-error"))
+test_that('no error tiles_plot', {
+  expect_false(inherits(tiles_plot.test.PO, "try-error"))
 })
 
-tiles.plot.test.OP <- tiles.plot(obs = wheat$obs, pred = wheat$pred,
+tiles_plot.test.OP <- tiles_plot(obs = wheat$obs, pred = wheat$pred,
                                  orientation = "OP")
 
-test_that('no error tiles.plot', {
-  expect_false(inherits(tiles.plot.test.OP, "try-error"))
+test_that('no error tiles_plot', {
+  expect_false(inherits(tiles_plot.test.OP, "try-error"))
 })
 
 # 4. Bland-Altman plot
-bland.altman.plot.test <- bland.altman.plot(obs = wheat$obs,
+bland_altman_plot.test <- bland_altman_plot(obs = wheat$obs,
                                             pred = wheat$pred)
 
-test_that('no error bland.altman.plot', {
-  expect_false(inherits(bland.altman.plot.test, "try-error"))
+test_that('no error bland_altman_plot', {
+  expect_false(inherits(bland_altman_plot.test, "try-error"))
 })
 
 # 5. uSD
@@ -72,11 +72,11 @@ test_that('no error uSD', {
   expect_false(inherits(uSD.test, "try-error"))
 })
 
-# 6. var.u
-var.u.test <- var.u(x = wheat$obs)
+# 6. var_u
+var_u.test <- var_u(x = wheat$obs)
 
-test_that('no error var.u', {
-  expect_false(inherits(var.u.test, "try-error"))
+test_that('no error var_u', {
+  expect_false(inherits(var_u.test, "try-error"))
 })
 
 # 7. RSS
@@ -115,33 +115,33 @@ test_that('no error R2', {
 })
 
 # 12. B0
-B0.sma.test.PO <- B0.sma(obs = wheat$obs, pred = wheat$pred,
+B0_sma.test.PO <- B0_sma(obs = wheat$obs, pred = wheat$pred,
                          orientation = "PO")
 
-test_that('no error B0.sma', {
-  expect_false(inherits(B0.sma.test.PO, "try-error"))
+test_that('no error B0_sma', {
+  expect_false(inherits(B0_sma.test.PO, "try-error"))
 })
 
-B0.sma.test.OP <- B0.sma(obs = wheat$obs, pred = wheat$pred,
+B0_sma.test.OP <- B0_sma(obs = wheat$obs, pred = wheat$pred,
                          orientation = "OP")
 
-test_that('no error B0.sma', {
-  expect_false(inherits(B0.sma.test.OP, "try-error"))
+test_that('no error B0_sma', {
+  expect_false(inherits(B0_sma.test.OP, "try-error"))
 })
 
 # 13. B1
-B1.sma.test.PO <- B1.sma(obs = wheat$obs, pred = wheat$pred,
+B1_sma.test.PO <- B1_sma(obs = wheat$obs, pred = wheat$pred,
                          orientation = "PO")
 
-test_that('no error B1.sma', {
-  expect_false(inherits(B1.sma.test.PO, "try-error"))
+test_that('no error B1_sma', {
+  expect_false(inherits(B1_sma.test.PO, "try-error"))
 })
 
-B1.sma.test.OP <- B1.sma(obs = wheat$obs, pred = wheat$pred,
+B1_sma.test.OP <- B1_sma(obs = wheat$obs, pred = wheat$pred,
                          orientation = "OP")
 
-test_that('no error B1.sma', {
-  expect_false(inherits(B1.sma.test.OP, "try-error"))
+test_that('no error B1_sma', {
+  expect_false(inherits(B1_sma.test.OP, "try-error"))
 })
 
 # 14. MBE

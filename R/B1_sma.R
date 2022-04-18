@@ -1,4 +1,4 @@
-#' @title B1.sma
+#' @title B1_sma
 #' @description Slope of standardized major axis regression
 #' (symmetric).
 #' @param data (Optional) argument to call an existing data frame containing the data.
@@ -18,13 +18,13 @@
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 9)
-#' B1.sma(obs = X, pred = Y)
+#' B1_sma(obs = X, pred = Y)
 #' }
-#' @rdname B1.sma
+#' @rdname B1_sma
 #' @importFrom dplyr case_when
 #' @importFrom rlang eval_tidy quo
 #' @export 
-B1.sma <- function(data = NULL, 
+B1_sma <- function(data = NULL, 
                    obs,
                    pred,
                    orientation = "PO",
