@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,9 +45,11 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.0" id="metrica-120">metrica 1.2.0<a class="anchor" aria-label="anchor" href="#metrica-120"></a></h2>
-<ul><li>This is the second release of the metrica package.</li>
-</ul><p>New features:</p>
+<h2 class="pkg-version" data-toc-text="1.2.1" id="metrica-121">metrica 1.2.1<a class="anchor" aria-label="anchor" href="#metrica-121"></a></h2>
+<p>Minor updates (1.2.1):</p>
+<p>Update of function and arguments’ names replacing “.” by "_":</p>
+<p>Old | New import.apsim.out | import_apsim_out import.apsim.db | import_apsim_db metrics.summary | metrics_summary scatter.plot | scatter_plot tiles.plot | tiles_plot bland.altman.plot | bland_altman_plot B0.sma | B0_sma B1.sma | B1_sma metrics.list | metrics_list print.metrics | print_metrics</p>
+<hr><p>New features (1.2.0):</p>
 <p>Data: a new (Optional) arg. called “data” is included for all functions, which serves to call an existing data frame containing the predicted-observed data. This facilitates passing the functions to multiple and nested data frames at once using mapping functions.</p>
 <p>APSIM: includes two new functions to read APSIM output files from APSIM Classic ["*.out", import.apsim.out()] and APSIM NextGen ["*.db", import.apsim.db()].</p>
 </div>

@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,9 +64,9 @@
 <script src="vignette1_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <main id="main"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Assessing model agreement in wheat grain nitrogen content prediction - a use case</h1>
-                        <h4 data-toc-skip class="author">Leo Bastos, Adrian Correndo</h4>
+                        <h4 data-toc-skip class="author">Leo Bastos &amp; Adrian Correndo</h4>
             
-            <h4 data-toc-skip class="date">2022-04-08</h4>
+            <h4 data-toc-skip class="date">2022-04-18</h4>
       
       
       <div class="d-none name"><code>vignette1.Rmd</code></div>
@@ -133,7 +133,7 @@
 <h3 id="scatterplot-of-pred-vs--obs">3.1 Scatterplot of pred vs. obs<a class="anchor" aria-label="anchor" href="#scatterplot-of-pred-vs--obs"></a>
 </h3>
 <p>The simplest way to visually assess agreement between observed and predicted values is with a scatterplot.</p>
-<p>We can use the function <code><a href="../reference/scatter.plot.html">scatter.plot()</a></code> from the <em>metrica</em> package to create a scatterplot.</p>
+<p>We can use the function <code><a href="../reference/scatter_plot.html">scatter_plot()</a></code> from the <em>metrica</em> package to create a scatterplot.</p>
 <p>The function requires specifying at least:</p>
 <ul>
 <li>the data frame object name (<code>data</code> argument)</li>
@@ -143,27 +143,27 @@
 </ul>
 <p>Besides a scatterplot, this function also adds to the plot the <strong>1:1 line</strong> (solid line) and the <strong>linear regression line</strong> (dashed line).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scatter.plot.html">scatter.plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>, 
+<code class="sourceCode R"><span class="fu"><a href="../reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>, 
              obs <span class="op">=</span> <span class="va">obs</span>, 
              pred <span class="op">=</span> <span class="va">pred</span><span class="op">)</span></code></pre></div>
-<p><img src="vignette1_files/figure-html/scatter.plot%20PO-1.png" width="700"></p>
-<p>The default behavior of <code><a href="../reference/scatter.plot.html">scatter.plot()</a></code> places the <code>obs</code> column on the x axis and the <code>pred</code> column on the y axis (<code>orientation = "PO"</code>). This can be inverted by changing the argument <code>orientation</code> to “OP”:</p>
+<p><img src="vignette1_files/figure-html/scatter_plot%20PO-1.png" width="700"></p>
+<p>The default behavior of <code><a href="../reference/scatter_plot.html">scatter_plot()</a></code> places the <code>obs</code> column on the x axis and the <code>pred</code> column on the y axis (<code>orientation = "PO"</code>). This can be inverted by changing the argument <code>orientation</code> to “OP”:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scatter.plot.html">scatter.plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>, 
+<code class="sourceCode R"><span class="fu"><a href="../reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>, 
              obs <span class="op">=</span> <span class="va">obs</span>, 
              pred <span class="op">=</span> <span class="va">pred</span>,
              orientation <span class="op">=</span> <span class="st">"OP"</span><span class="op">)</span></code></pre></div>
-<p><img src="vignette1_files/figure-html/scatter.plot%20OP-1.png" width="700"></p>
-<p>The output of the <code><a href="../reference/scatter.plot.html">scatter.plot()</a></code> function is a <code>ggplot2</code> object that can be further customized:</p>
+<p><img src="vignette1_files/figure-html/scatter_plot%20OP-1.png" width="700"></p>
+<p>The output of the <code><a href="../reference/scatter_plot.html">scatter_plot()</a></code> function is a <code>ggplot2</code> object that can be further customized:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scatter.plot.html">scatter.plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>, 
+<code class="sourceCode R"><span class="fu"><a href="../reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>, 
              obs <span class="op">=</span> <span class="va">obs</span>, 
              pred <span class="op">=</span> <span class="va">pred</span>,
              orientation <span class="op">=</span> <span class="st">"OP"</span><span class="op">)</span><span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span><span class="st">"Predicted wheat N content (g N/m2)"</span>,
        y <span class="op">=</span> <span class="st">"Observed wheat N content (g N/m2)"</span><span class="op">)</span><span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_dark</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p><img src="vignette1_files/figure-html/scatter.plot%20custom-1.png" width="700"></p>
+<p><img src="vignette1_files/figure-html/scatter_plot%20custom-1.png" width="700"></p>
 </div>
 </div>
 <div class="section level2">
@@ -171,7 +171,7 @@
 </h2>
 <p>The Bland-Altman plot is another way of visually assessing observed vs. predicted agreement. It plots the difference between observed and predicted values on the y axis, and the observed values on the x axis:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/bland.altman.plot.html">bland.altman.plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,
+<code class="sourceCode R"><span class="fu"><a href="../reference/bland_altman_plot.html">bland_altman_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,
                   obs <span class="op">=</span> <span class="va">obs</span>, 
                   pred <span class="op">=</span> <span class="va">pred</span><span class="op">)</span></code></pre></div>
 <p><img src="vignette1_files/figure-html/bland-altman-1.png" width="700"></p>
@@ -190,7 +190,7 @@
 </ul>
 <p>The user can choose to calculate a single metric, or to calculate all metrics at once.</p>
 <p>To calculate a single metric, the metric function can be called.<br>
-For example, to calculate <span class="math inline">\(R^{-2}\)</span>, we can use the <code><a href="../reference/R2.html">R2()</a></code> function:</p>
+For example, to calculate <span class="math inline">\(R^{2}\)</span>, we can use the <code><a href="../reference/R2.html">R2()</a></code> function:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/R2.html">R2</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,
    obs <span class="op">=</span> <span class="va">obs</span>, 
@@ -202,9 +202,9 @@ For example, to calculate <span class="math inline">\(R^{-2}\)</span>, we can us
    obs <span class="op">=</span> <span class="va">obs</span>, 
    pred <span class="op">=</span> <span class="va">pred</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1.666441</span></code></pre></div>
-<p>The user can also calculate all 41 metrics at once using the function <code><a href="../reference/metrics.summary.html">metrics.summary()</a></code>:</p>
+<p>The user can also calculate all 41 metrics at once using the function <code><a href="../reference/metrics_summary.html">metrics_summary()</a></code>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/metrics.summary.html">metrics.summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,
+<code class="sourceCode R"><span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,
    obs <span class="op">=</span> <span class="va">obs</span>, 
    pred <span class="op">=</span> <span class="va">pred</span><span class="op">)</span>
 <span class="co">#&gt;    Metric       Score</span>
@@ -249,15 +249,15 @@ For example, to calculate <span class="math inline">\(R^{-2}\)</span>, we can us
 <span class="co">#&gt; 39    RAC  0.95770115</span>
 <span class="co">#&gt; 40     AC  0.84174217</span>
 <span class="co">#&gt; 41 lambda  0.91553253</span></code></pre></div>
-<p>If the user wants just specific metrics, within the same function <code><a href="../reference/metrics.summary.html">metrics.summary()</a></code>, user can pass a list of desired metrics using the argument “metrics.list” as follows:</p>
+<p>If the user wants just specific metrics, within the same function <code><a href="../reference/metrics_summary.html">metrics_summary()</a></code>, user can pass a list of desired metrics using the argument “metrics_list” as follows:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">my.metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"R2"</span>,<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"RSR"</span>, <span class="st">"NSE"</span>, <span class="st">"KGE"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/metrics.summary.html">metrics.summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,   
+<span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,   
                 obs <span class="op">=</span> <span class="va">obs</span>,    
                 pred <span class="op">=</span> <span class="va">pred</span>,
-                metrics.list <span class="op">=</span> <span class="va">my.metrics</span><span class="op">)</span> 
+                metrics_list <span class="op">=</span> <span class="va">my.metrics</span><span class="op">)</span> 
 <span class="co">#&gt;   Metric      Score</span>
 <span class="co">#&gt; 1     R2 0.84555376</span>
 <span class="co">#&gt; 2    MAE 1.32781184</span>
@@ -270,22 +270,22 @@ For example, to calculate <span class="math inline">\(R^{-2}\)</span>, we can us
 <h2 id="visual-and-numerical-assessment-combined">5 Visual and numerical assessment combined<a class="anchor" aria-label="anchor" href="#visual-and-numerical-assessment-combined"></a>
 </h2>
 <p>The user can also create a scatter plot that includes not only the <strong>predicted</strong> vs. <strong>observed</strong> points, <strong>1:1 line</strong>, and <strong>regression line</strong>, but also <strong>selected metrics and their values</strong> plust the <strong>SMA regression equation</strong>.</p>
-<p>This is accomplished with the function <code><a href="../reference/scatter.plot.html">scatter.plot()</a></code>:</p>
+<p>This is accomplished with the function <code><a href="../reference/scatter_plot.html">scatter_plot()</a></code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scatter.plot.html">scatter.plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,
+<code class="sourceCode R"><span class="fu"><a href="../reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,
              obs <span class="op">=</span> <span class="va">obs</span>, 
              pred <span class="op">=</span> <span class="va">pred</span><span class="op">)</span></code></pre></div>
-<p><img src="vignette1_files/figure-html/scatter.plot-1.png" width="700"></p>
-<p>To print the metrics on the <code><a href="../reference/scatter.plot.html">scatter.plot()</a></code>, just use print.metrics. Warning: do not forget to specify your ‘metrics.list’:</p>
+<p><img src="vignette1_files/figure-html/scatter_plot-1.png" width="700"></p>
+<p>To print the metrics on the <code><a href="../reference/scatter_plot.html">scatter_plot()</a></code>, just use print.metrics. Warning: do not forget to specify your ‘metrics.list’:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">my.metrica.plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/scatter.plot.html">scatter.plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,
+<span class="va">my.metrica.plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,
              obs <span class="op">=</span> <span class="va">obs</span>, 
              pred <span class="op">=</span> <span class="va">pred</span>,
-             print.metrics <span class="op">=</span> <span class="cn">TRUE</span>, metrics.list <span class="op">=</span> <span class="va">my.metrics</span><span class="op">)</span>
+             print_metrics <span class="op">=</span> <span class="cn">TRUE</span>, metrics_list <span class="op">=</span> <span class="va">my.metrics</span><span class="op">)</span>
 
 <span class="va">my.metrica.plot</span></code></pre></div>
-<p><img src="vignette1_files/figure-html/scatter.plot.print.metrics-1.png" width="700"> Also, as a ggplot element, outputs are flexible of further edition:</p>
+<p><img src="vignette1_files/figure-html/scatter_plot%20print_metrics-1.png" width="700"> Also, as a ggplot element, outputs are flexible of further edition:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">my.metrica.plot</span> <span class="op">+</span>
@@ -293,7 +293,7 @@ For example, to calculate <span class="math inline">\(R^{-2}\)</span>, we can us
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Observed (days to emergence)"</span>, y <span class="op">=</span> <span class="st">"Predicted (days to emergence)"</span><span class="op">)</span><span class="op">+</span>
   <span class="co"># Modify theme</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_light</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p><img src="vignette1_files/figure-html/scatter.plot.edit-1.png" width="700"></p>
+<p><img src="vignette1_files/figure-html/scatter_plot.edit-1.png" width="700"></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">my.metrica.plot</span> <span class="op">+</span>
@@ -301,22 +301,22 @@ For example, to calculate <span class="math inline">\(R^{-2}\)</span>, we can us
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Observed (Mg/ha)"</span>, y <span class="op">=</span> <span class="st">"Predicted (Mg/ha)"</span><span class="op">)</span><span class="op">+</span>
   <span class="co"># Modify theme</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_dark</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p><img src="vignette1_files/figure-html/scatter.plot.edit-2.png" width="700"></p>
+<p><img src="vignette1_files/figure-html/scatter_plot.edit-2.png" width="700"></p>
 </div>
 <div class="section level2">
 <h2 id="exporting">6 Exporting<a class="anchor" aria-label="anchor" href="#exporting"></a>
 </h2>
 <p>To export the metrics summary table, the user can simply write it to file with the function <code><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv()</a></code>:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/metrics.summary.html">metrics.summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,
+<code class="sourceCode R"><span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,
    obs <span class="op">=</span> <span class="va">obs</span>, 
    pred <span class="op">=</span> <span class="va">pred</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv</a></span><span class="op">(</span><span class="st">"metrics.summary.csv"</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv</a></span><span class="op">(</span><span class="st">"metrics_summary.csv"</span><span class="op">)</span></code></pre></div>
 <p>Similarly, to export a plot, the user can simply write it to file with the function <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave()</a></code>:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="va">my.metrica.plot</span>,
-       <span class="st">"scatter.metrics.png"</span>,
+       <span class="st">"scatter_metrics.png"</span>,
        width <span class="op">=</span> <span class="fl">5</span>,
        height <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 </div>

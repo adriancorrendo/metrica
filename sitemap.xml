@@ -28,10 +28,10 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/AC.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/B0.sma.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/B0_sma.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/B1.sma.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/B1_sma.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/CCC.html</loc>
@@ -139,7 +139,7 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/barley.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/bland.altman.plot.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/bland_altman_plot.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/chickpea.html</loc>
@@ -154,10 +154,10 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/d1r.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/import.apsim.db.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/import_apsim_db.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/import.apsim.out.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/import_apsim_out.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/index.html</loc>
@@ -172,25 +172,25 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/metrica-package.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/metrics.summary.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/metrics_summary.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/r.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/scatter.plot.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/scatter_plot.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/sorghum.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/tiles.plot.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/tiles_plot.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/uSD.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/var.u.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/var_u.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/wheat.html</loc>
