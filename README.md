@@ -8,6 +8,8 @@
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&svg=true)](https://ci.appveyor.com/project/adriancorrendo/metrica)
 [![R-CMD-check](https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg)](https://github.com/adriancorrendo/metrica/actions)
+[![DOI](https://zenodo.org/badge/414721777.svg)](https://zenodo.org/badge/latestdoi/414721777)
+
 <!-- badges: end -->
 
 The goal of the *metrica* package is to offer users of point-forecast
