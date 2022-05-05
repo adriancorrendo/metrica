@@ -103,7 +103,7 @@ bland_altman_plot(data = wheat,
 ## 4 Numerical assessment of agreement  
 The *metrica* package contains functions for **41 metrics** to assess agreement between observed and predicted values for continuous data (i.e., regression error).  
 
-A list with all the the metrics including their name, definition, details, formula, and function name, please check [here](www.addalinkhere.metrica).  
+A list with all the the metrics including their name, definition, details, formula, and function name, please check [here].  
 
 All of the metric functions take the same three arguments as the plotting functions:  
 
