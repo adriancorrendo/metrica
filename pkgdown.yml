@@ -3,7 +3,7 @@ pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
   vignette1: vignette1.html
-last_built: 2022-05-05T07:51Z
+last_built: 2022-05-05T07:54Z
 urls:
   reference: https://adriancorrendo.github.io/metrica/reference
   article: https://adriancorrendo.github.io/metrica/articles
