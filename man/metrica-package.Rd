@@ -6,7 +6,7 @@
 \alias{metrica-package}
 \title{metrica: Prediction performance metrics}
 \description{
-Metrica offers users of simulation models a toolbox with prediction performance metrics accounting for different aspects of the agreement between predicted and observed values.
+The metrica-package offers users of simulation models a toolbox with prediction performance metrics accounting for different aspects of the agreement between predicted and observed values.
 }
 \seealso{
 Useful links:
@@ -16,7 +16,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Adrian A. Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID})
+\strong{Maintainer}: Adrian A. Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID}) [copyright holder]
 
 Authors:
 \itemize{

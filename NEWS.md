@@ -1,3 +1,11 @@
+# metrica 1.2.2
+
+* May, 05, 2022. <br/>
+
+Maintenance update fixing minor bugs related to checks before CRAN submission (e.g. spelling check, URLs, DOIs, etc.)
+
+# Previous versions
+
 # metrica 1.2.1
 
 Minor updates (1.2.1):

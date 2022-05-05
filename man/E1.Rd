@@ -7,7 +7,7 @@
 E1(data = NULL, obs, pred, na.rm = TRUE)
 }
 \arguments{
-\item{data}{(Optional) argument to call an existing data frama contaning the data.}
+\item{data}{(Optional) argument to call an existing data frame contaning the data.}
 
 \item{obs}{Vector with observed values (numeric).}
 
@@ -24,7 +24,7 @@ Legates and McCabe's Model Efficiency (E1).
 }
 \details{
 Calculates the E1 for a Predicted-Observed dataset
-following Legates and McCabee (1990).
+following Legates and McCabe (1990).
 }
 \examples{
 \dontrun{

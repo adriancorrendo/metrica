@@ -24,7 +24,7 @@ Lack of correlation (LCS)component of the Mean Square Error (MSE).
 }
 \details{
 Calculates the LCS for a Predicted-Observed dataset
-following the MSE segregattion suggested by Kobayashi and Salam
+following the MSE segregation suggested by Kobayashi and Salam
 (2000).
 }
 \examples{

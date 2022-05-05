@@ -1,6 +1,9 @@
 #' @keywords internal
 "_PACKAGE"
 
+# Suppress CMD check note
+#' @importFrom tidyr nest
+
 # The following block is used by usethis to automatically manage
 # roxygen namespace tags. Modify with care!
 ## usethis namespace: start

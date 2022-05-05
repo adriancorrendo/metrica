@@ -1,7 +1,7 @@
 #' @title PLA
 #' @description Percentage Lack of Accuracy (PLA) component of the Mean 
 #' Square Error (MSE).
-#' @param data (Optional) argument to call an exisitng data frame containing the data.
+#' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 

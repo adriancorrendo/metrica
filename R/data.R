@@ -7,7 +7,7 @@
 #' Turkey). 
 #' These data correspond to the latest, up-to-date, documentation and
 #' validation of version number 2020.03.27.4956. Data available at:
-#' \url{https://doi.org/10.7910/DVN/EJS4M0}. 
+#' \doi{10.7910/DVN/EJS4M0}. 
 #' Further details can be found at the official APSIM Next Generation
 #' website:
 #' \url{https://APSIMnextgeneration.netlify.app/modeldocumentation/}
@@ -15,7 +15,7 @@
 #' @format This data frame has 137 rows and the following 2 columns:
 #' \describe{
 #'   \item{pred}{predicted values}
-#'   \item{obs}{observated values}
+#'   \item{obs}{observed values}
 #' }
 #' @source \url{https://github.com/adriancorrendo/metrica}
 "wheat"
@@ -28,7 +28,7 @@
 #' site-years in 2 countries (Australia, and New Zealand). 
 #' These data correspond to the latest, up-to-date, documentation and
 #' validation of version number 2020.03.27.4956. Data available at:
-#' \url{https://doi.org/10.7910/DVN/EJS4M0}. 
+#' \doi{10.7910/DVN/EJS4M0}. 
 #' Further details can be found at the official APSIM Next Generation
 #' website:
 #' \url{https://APSIMnextgeneration.netlify.app/modeldocumentation/}
@@ -36,7 +36,7 @@
 #' @format This data frame has 69 rows and the following 2 columns:
 #' \describe{
 #'   \item{pred}{predicted values}
-#'   \item{obs}{observated values}
+#'   \item{obs}{observed values}
 #' }
 #' @source \url{https://github.com/adriancorrendo/metrica}
 "barley"
@@ -50,7 +50,7 @@
 #' 3 countries (Australia, India, and New Zealand). 
 #' These data correspond to the latest, up-to-date, documentation and
 #' validation of version number 2020.03.27.4956. Data available at:
-#' \url{https://doi.org/10.7910/DVN/EJS4M0}. 
+#' \doi{10.7910/DVN/EJS4M0}. 
 #' Further details can be found at the official APSIM Next Generation
 #' website:
 #' \url{https://APSIMnextgeneration.netlify.app/modeldocumentation/}
@@ -58,7 +58,7 @@
 #' @format This data frame has 39 rows and the following 2 columns:
 #' \describe{
 #'   \item{pred}{predicted values}
-#'   \item{obs}{observated values}
+#'   \item{obs}{observed values}
 #' }
 #' @source \url{https://github.com/adriancorrendo/metrica}
 "chickpea"
@@ -72,7 +72,7 @@
 #' 1 country (Australia). 
 #' These data correspond to the latest, up-to-date, documentation and
 #' validation of version number 2020.03.27.4956. Data available at:
-#' \url{https://doi.org/10.7910/DVN/EJS4M0}. 
+#' \doi{10.7910/DVN/EJS4M0}. 
 #' Further details can be found at the official APSIM Next Generation
 #' website:
 #' \url{https://APSIMnextgeneration.netlify.app/modeldocumentation/}
@@ -80,7 +80,7 @@
 #' @format This data frame has 36 rows and the following 2 columns:
 #' \describe{
 #'   \item{pred}{predicted values}
-#'   \item{obs}{observated values}
+#'   \item{obs}{observed values}
 #' }
 #' @source \url{https://github.com/adriancorrendo/metrica}
 "sorghum"

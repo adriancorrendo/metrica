@@ -20,7 +20,7 @@ RAE(data = NULL, obs, pred, na.rm = TRUE)
 Element of class \code{numeric}.
 }
 \description{
-Relative Abosulte Error.
+Relative Absolute Error.
 }
 \details{
 Calculates the RAE for a Predicted-Observed dataset as the

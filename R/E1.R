@@ -1,13 +1,13 @@
 #' @title E1
 #' @description Legates and McCabe's Model Efficiency (E1).
-#' @param data (Optional) argument to call an existing data frama contaning the data.
+#' @param data (Optional) argument to call an existing data frame contaning the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the E1 for a Predicted-Observed dataset
-#' following Legates and McCabee (1990).
+#' following Legates and McCabe (1990).
 #' @examples 
 #' \dontrun{
 #' set.seed(1)

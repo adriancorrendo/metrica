@@ -25,7 +25,7 @@ mean bias (Ub).
 }
 \details{
 Calculates the Ub for a Predicted-Observed dataset
-following the sum of squares segregattion suggested by Smith and
+following the sum of squares segregation suggested by Smith and
 Rose (1995) also known as Theil's partial inequalities.
 }
 \examples{

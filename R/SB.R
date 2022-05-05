@@ -8,7 +8,7 @@
 #' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
 #' @details Calculates the SB for a Predicted-Observed dataset 
-#' following the MSE segregattion suggested by Kobayashi and Salam 
+#' following the MSE segregation suggested by Kobayashi and Salam 
 #' (2000).
 #' @examples 
 #' \dontrun{

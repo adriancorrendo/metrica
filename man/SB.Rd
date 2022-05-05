@@ -25,7 +25,7 @@ Error (MSE).
 }
 \details{
 Calculates the SB for a Predicted-Observed dataset
-following the MSE segregattion suggested by Kobayashi and Salam
+following the MSE segregation suggested by Kobayashi and Salam
 (2000).
 }
 \examples{

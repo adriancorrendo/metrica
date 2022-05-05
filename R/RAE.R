@@ -1,5 +1,5 @@
 #' @title RAE
-#' @description Relative Abosulte Error.
+#' @description Relative Absolute Error.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
