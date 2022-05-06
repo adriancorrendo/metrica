@@ -11,8 +11,11 @@ R CMD check succeeded
 
 ## Test environments
 - R-hub windows-x86_64-devel (r-devel)
+https://builder.r-hub.io/status/metrica_1.2.2.tar.gz-363f706f0dc94741b83b5ae5f1565b42
 - R-hub ubuntu-gcc-release (r-release)
+https://builder.r-hub.io/status/metrica_1.2.2.tar.gz-39c51ea74502486896d7e741ce57f8db
 - R-hub fedora-clang-devel (r-devel)
+https://builder.r-hub.io/status/metrica_1.2.2.tar.gz-4a8741693b6d419394fcfb3c4650355b
 
 ## R CMD check results
 > On windows-x86_64-devel (r-devel), ubuntu-gcc-release (r-release), fedora-clang-devel (r-devel)
