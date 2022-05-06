@@ -31,6 +31,8 @@ R CMD check succeeded
 
 ## devtools::check_win_devel() results
 
+Report: https://win-builder.r-project.org/143kPSo1e6wY/00check.log
+
 * using log directory 'd:/RCompile/CRANguest/R-devel/metrica.Rcheck'
 * using R Under development (unstable) (2022-05-04 r82317 ucrt)
 * using platform: x86_64-w64-mingw32 (64-bit)
