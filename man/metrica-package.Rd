@@ -6,12 +6,13 @@
 \alias{metrica-package}
 \title{metrica: Prediction Performance Metrics}
 \description{
-The metrica-package offers users of simulation models a toolbox with prediction performance metrics accounting for different aspects of the agreement between predicted and observed values.
+The functions of this package offer users of simulation models a toolbox with prediction performance metrics accounting for different aspects of the agreement between predicted and observed values.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://adriancorrendo.github.io/metrica/}
+  \item Report bugs at \url{https://github.com/adriancorrendo/metrica/issues}
 }
 
 }
