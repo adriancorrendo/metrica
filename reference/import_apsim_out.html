@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,12 +85,15 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
 <span class="r-in"><span class="co"># Pull the git repo and use the following filepath</span></span>
 <span class="r-in"><span class="va">path</span> <span class="op">&lt;-</span> <span class="st">"tests/testthat/examples/soybean.out"</span></span>
 <span class="r-in"><span class="va">soybean.out</span> <span class="op">&lt;-</span> <span class="fu">import_apsim_out</span><span class="op">(</span>filepath <span class="op">=</span> <span class="va">path</span><span class="op">)</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>cannot open file 'tests/testthat/examples/soybean.out': No such file or directory</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in file(file, "rt"):</span> cannot open the connection</span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">soybean.out</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in head(soybean.out):</span> object 'soybean.out' not found</span>
+<span class="r-in"><span class="co"># }</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +74,7 @@
       <img src="" class="logo" alt=""><h1>Available prediction performance metrics and indices</h1>
                         <h4 data-toc-skip class="author">Adrian Correndo</h4>
             
-            <h4 data-toc-skip class="date">2022-05-06</h4>
+            <h4 data-toc-skip class="date">2022-05-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/vignettes/available_metrics.Rmd" class="external-link"><code>vignettes/available_metrics.Rmd</code></a></small>
       <div class="d-none name"><code>available_metrics.Rmd</code></div>
@@ -136,21 +136,21 @@
 <td>1</td>
 <td><code>B0</code></td>
 <td>Intercept of SMA regression</td>
-<td>SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) recommended to describe the bivariate scatter instead of OLS regression (classic linear model, which results vary with the axis orientation). B0 could be used to test agreement along with B1 (H0: B0 = 0, B1 = 1)</td>
+<td>SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) recommended to describe the bivariate scatter instead of OLS regression (classic linear model, which results vary with the axis orientation). B0 could be used to test agreement along with B1 (H0: B0 = 0, B1 = 1) . Warton et al. (2006)</td>
 <td><img src="../reference/figures/1.B0.gif" alt="equation"></td>
 </tr>
 <tr class="even">
 <td>2</td>
 <td><code>B1</code></td>
 <td>Slope of SMA regression</td>
-<td>SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) recommended to describe the bivariate scatter instead of OLS regression (classic linear model, which results vary with the axis orientation). B1 could be used to test isometry of the PO scatter (H0: B1 = 1). B1 also represents the ratio of standard deviations (So and Sp)</td>
+<td>SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) recommended to describe the bivariate scatter instead of OLS regression (classic linear model, which results vary with the axis orientation). B1 could be used to test isometry of the PO scatter (H0: B1 = 1). B1 also represents the ratio of standard deviations (So and Sp). Warton et al. (2006)</td>
 <td><img src="../reference/figures/2.B1.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
 <td>3</td>
 <td><code>r</code></td>
 <td>Pearson’s correlation coefficient</td>
-<td>Strength of linear association between P and O. However, it measures “precision” but no accuracy.</td>
+<td>Strength of linear association between P and O. However, it measures “precision” but no accuracy. Kirch (2008)</td>
 <td><img src="../reference/figures/3.r.gif" alt="equation"></td>
 </tr>
 <tr class="even">
@@ -171,14 +171,14 @@
 <td>6</td>
 <td><code>CCC</code></td>
 <td>Concordance correlation coefficient</td>
-<td>Tests agreement. It presents both precision (r) and accuracy (Xa) components. Easy to interpret</td>
+<td>Tests agreement. It presents both precision (r) and accuracy (Xa) components. Easy to interpret. Lin (1989)</td>
 <td><img src="../reference/figures/6.CCC.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
 <td>7</td>
 <td><code>MAE</code></td>
 <td>Mean Absolute Error</td>
-<td>Measures both lack of accuracy and precision in absolute scale. It keeps the same units than the response variable. Less sensitive to outliers than the MSE or RMSE</td>
+<td>Measures both lack of accuracy and precision in absolute scale. It keeps the same units than the response variable. Less sensitive to outliers than the MSE or RMSE. Willmott &amp; Matsuura (2005)</td>
 <td><img src="../reference/figures/7.MAE.gif" alt="equation"></td>
 </tr>
 <tr class="even">
@@ -199,7 +199,7 @@
 <td>10</td>
 <td><code>SMAPE</code></td>
 <td>Symmetric Mean Absolute Percentage Error</td>
-<td>SMAPE tackles the asymmetry issues of MAPE and includes lower (0%) and upper (200%) bounds.</td>
+<td>SMAPE tackles the asymmetry issues of MAPE and includes lower (0%) and upper (200%) bounds. Makridakis (1993)</td>
 <td><img src="../reference/figures/10.SMAPE.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
@@ -220,14 +220,14 @@
 <td>13</td>
 <td><code>MBE</code></td>
 <td>Mean Bias Error</td>
-<td>Main bias error metric. Same units as the response variable. Related to differences between means of predictions and observations. Negative values indicate overestimation. Positive values indicate underestimation. Unbounded.</td>
+<td>Main bias error metric. Same units as the response variable. Related to differences between means of predictions and observations. Negative values indicate overestimation. Positive values indicate underestimation. Unbounded. Also known as average error. Janssen &amp; Heuberger (1995)</td>
 <td><img src="../reference/figures/13.MBE.gif" alt="equation"></td>
 </tr>
 <tr class="even">
 <td>14</td>
 <td><code>PBE</code></td>
-<td>Percentage Bias Error</td>
-<td>Useful to identify systematic over or under predictions. Percentage units. As the MBE, PBE negative values indicate overestimation, while positive values indicate underestimation. Unbounded.</td>
+<td>Percentage Bias Error.</td>
+<td>Useful to identify systematic over or under predictions. Percentage units. As the MBE, PBE negative values indicate overestimation, while positive values indicate underestimation. Unbounded. Gupta et al. (1999)</td>
 <td><img src="../reference/figures/14.PBE.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
@@ -269,7 +269,7 @@
 <td>20</td>
 <td><code>RSR</code></td>
 <td>Root Mean Standard Deviation Ratio</td>
-<td>RMSE normalized by the standard deviation of observations</td>
+<td>RMSE normalized by the standard deviation of observations. Moriasi et al. (2007)</td>
 <td><img src="../reference/figures/20.RSR.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
@@ -297,112 +297,112 @@
 <td>24</td>
 <td><code>PLA</code></td>
 <td>Percentage Lack of Accuracy</td>
-<td>Percentage of the MSE related to lack of accuracy (systematic differences) on the predictions</td>
+<td>Percentage of the MSE related to lack of accuracy (systematic differences) on the predictions. Correndo et al. (2021)</td>
 <td><img src="../reference/figures/24.PLA.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
 <td>25</td>
 <td><code>PLP</code></td>
 <td>Percentage Lack of Precision</td>
-<td>Percentage of the MSE related to lack of precision (unsystematic differences) on the predictions</td>
+<td>Percentage of the MSE related to lack of precision (unsystematic differences) on the predictions. Correndo et al. (2021)</td>
 <td><img src="../reference/figures/25.PLP.gif" alt="equation"></td>
 </tr>
 <tr class="even">
 <td>26</td>
 <td><code>SB</code></td>
-<td>Squared Bias. Kobayashi and Salam (2000)</td>
-<td>Additive bias component, MSE decomposition</td>
+<td>Squared Bias.</td>
+<td>Additive bias component, MSE decomposition. Kobayashi and Salam (2000)</td>
 <td><img src="../reference/figures/26.SB.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
 <td>27</td>
 <td><code>SDSD</code></td>
-<td>Product of Standard Deviations. Kobayashi and Salam (2000)</td>
-<td>Proportional bias component, MSE decomposition</td>
+<td>Product of Standard Deviations.</td>
+<td>Proportional bias component, MSE decomposition. Kobayashi and Salam (2000)</td>
 <td><img src="../reference/figures/27.SDSD.gif" alt="equation"></td>
 </tr>
 <tr class="even">
 <td>28</td>
 <td><code>LCS</code></td>
-<td>Lack of Correlation. Kobayashi and Salam (2000)</td>
-<td>Random error component, MSE decomposition</td>
+<td>Lack of Correlation.</td>
+<td>Random error component, MSE decomposition. Kobayashi and Salam (2000)</td>
 <td><img src="../reference/figures/28.LCS.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
 <td>29</td>
 <td><code>Ue</code></td>
-<td>Random error proportion of sum of squares. Smith and Rose (1995)</td>
-<td>Sum of squares decomposition. Theils’ partial inequalities</td>
+<td>Random error proportion.</td>
+<td>The Ue estimates the proportion of the total sum of squares related to the random error (unsystematic error or variance) following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil’s partial inequalities</td>
 <td><img src="../reference/figures/29.Ue.gif" alt="equation"></td>
 </tr>
 <tr class="even">
 <td>30</td>
 <td><code>Uc</code></td>
-<td>Lack of Consistency. Smith and Rose (1995)</td>
-<td>Sum of squares decomposition. Theils’ partial inequalities</td>
+<td>Lack of Consistency error proportion.</td>
+<td>The Uc estimates the proportion of the total sum of squares related to the lack of consistency (proportional bias) following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil’s partial inequalities</td>
 <td><img src="../reference/figures/30.Uc.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
 <td>31</td>
 <td><code>Ub</code></td>
-<td>Proportional Bias error proportion. Smith and Rose (1995)</td>
-<td>Sum of squares decomposition. Theils’ partial inequalities</td>
+<td>Mean Bias error proportion.</td>
+<td>The Ub estimates the proportion of the total sum of squares related to the mean bias following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil’s partial inequalities</td>
 <td><img src="../reference/figures/31.Ub.gif" alt="equation"></td>
 </tr>
 <tr class="even">
 <td>32</td>
 <td><code>NSE</code></td>
-<td>Nash and Sutcliffe’s Model Efficiency. Nash and Sutcliffe (1970)</td>
-<td>Model efficiency using squared residuals</td>
+<td>Nash and Sutcliffe’s Model Efficiency.</td>
+<td>Model efficiency using squared residuals normalized by the variance of observations. Nash and Sutcliffe (1970)</td>
 <td><img src="../reference/figures/32.NSE.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
 <td>33</td>
 <td><code>E1</code></td>
-<td>Absolute Model Efficiency. Legates and McCabes (1999)</td>
-<td>Model efficiency. Modification of NSE using absolute residuals instead of squared residuals</td>
+<td>Absolute Model Efficiency.</td>
+<td>Model efficiency. Modification of NSE using absolute residuals instead of squared residuals. Legates and McCabe (1999)</td>
 <td><img src="../reference/figures/33.E1.gif" alt="equation"></td>
 </tr>
 <tr class="even">
 <td>34</td>
 <td><code>Erel</code></td>
-<td>Relative Model Efficiency. Krause et al. (2005)</td>
-<td>Model efficiency</td>
+<td>Relative Model Efficiency.</td>
+<td>Compared to the NSE, the Erel is suggested as more sensitive to systematic over- or under-predictions. Krause et al. (2005)</td>
 <td><img src="../reference/figures/34.Erel.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
 <td>35</td>
 <td><code>KGE</code></td>
-<td>Kling-Gupta Model Efficiency. Kling et al. (2012)</td>
-<td>Model efficiency with accuracy, precision, and consistency components</td>
+<td>Kling-Gupta Model Efficiency</td>
+<td>Model efficiency with accuracy, precision, and consistency components. Kling et al. (2012)</td>
 <td><img src="../reference/figures/35.KGE.gif" alt="equation"></td>
 </tr>
 <tr class="even">
 <td>36</td>
 <td><code>d</code></td>
-<td>Index of Agreement. Willmott (1982)</td>
-<td>Measures accuracy and precision using squared residuals. Dimensionless (normalized). Bounded [0;1]. Asymmetric.</td>
+<td>Index of Agreement.</td>
+<td>Measures accuracy and precision using squared residuals. Dimensionless (normalized). Bounded [0;1]. Asymmetric. Willmott (1981)</td>
 <td><img src="../reference/figures/36.d.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
 <td>37</td>
 <td><code>d1</code></td>
-<td>Modified Index of Agreement. Willmott et al. (1985)</td>
-<td>Measures accuracy and precision using absolute residuals(1). Dimensionless (normalized). Bounded [0;1]. Asymmetric.</td>
+<td>Modified Index of Agreement.</td>
+<td>Measures accuracy and precision using absolute residuals(1). Dimensionless (normalized). Bounded [0;1]. Asymmetric. Willmott et al. (1985)</td>
 <td><img src="../reference/figures/37.d1.gif" alt="equation"></td>
 </tr>
 <tr class="even">
 <td>38</td>
 <td><code>d1r</code></td>
-<td>Refined Index of Agreement. Willmott et al. (2012)</td>
-<td>Refines d1 by a modification on the denominator (potential error) to normalize absolute error</td>
+<td>Refined Index of Agreement.</td>
+<td>Refines d1 by a modification on the denominator (potential error) to normalize absolute error. Willmott et al. (2012)</td>
 <td><img src="../reference/figures/38.d1r.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
 <td>39</td>
 <td><code>RAC</code></td>
-<td>Robinson’s Agreement Coefficient. Robinson (1957)</td>
-<td>RAC measures both accuracy and precision (general agreement). Dimensionless (normalized). Bounded [0;1]. Symmetric.</td>
+<td>Robinson’s Agreement Coefficient.</td>
+<td>RAC measures both accuracy and precision (general agreement). Dimensionless (normalized). Bounded [0;1]. Symmetric. Robinson (1957; 1959)</td>
 <td>
 <img src="../reference/figures/39a.RAC.gif" alt="equation"><br> where <br><img src="../reference/figures/39b.RAC.gif" alt="equation">
 </td>
@@ -410,22 +410,52 @@
 <tr class="even">
 <td>40</td>
 <td><code>AC</code></td>
-<td>Ji and Gallo’s Agreement Coefficient. Ji and Gallo (2006)</td>
-<td>AC measures both accuracy and precision (general agreement). Dimensionless (normalized). Positively bounded [-infinity;1]. Symmetric.</td>
+<td>Ji and Gallo’s Agreement Coefficient.</td>
+<td>AC measures both accuracy and precision (general agreement). Dimensionless (normalized). Positively bounded [-infinity;1]. Symmetric. Ji and Gallo (2006)</td>
 <td><img src="../reference/figures/40.AC.gif" alt="equation"></td>
 </tr>
 <tr class="odd">
 <td>41</td>
 <td><code>lambda</code></td>
-<td>Duveiller’s Lambda Coefficient. Duveiller et al. (2015)</td>
+<td>Duveiller’s Lambda Coefficient.</td>
 <td>
-<code>lambda</code> measures both accuracy and precision. Dimensionless (normalized). Bounded [-1;1]. Symmetric. Equivalent to CCC when <code>r</code> is greater or equal to 0</td>
+<code>lambda</code> measures both accuracy and precision. Dimensionless (normalized). Bounded [-1;1]. Symmetric. Equivalent to CCC when <code>r</code> is greater or equal to 0. Duveiller et al. (2016)</td>
 <td>
 <img src="../reference/figures/41a.lambda.gif" alt="equation"><br> where <br><img src="../reference/figures/41b.lambda.gif" alt="equation">, <br> otherwise <br><img src="../reference/figures/41c.lambda.gif" alt="equation">
 </td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
+</div>
+<div class="section level2">
+<h2 id="references">References: <br><a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li><p>Correndo et al. (2021). Revisiting linear regression to test agreement in continuous predicted-observed datasets. Agric. Syst. 192, 103194. <a href="doi:10.1016/j.agsy.2021.103194" class="uri">doi:10.1016/j.agsy.2021.103194</a></p></li>
+<li><p>Duveiller et al. (2016). Revisiting the concept of a symmetric index of agreement for continuous datasets. Sci. Rep. 6, 1-14. <a href="doi:10.1038/srep19401" class="uri">doi:10.1038/srep19401</a> <br></p></li>
+<li><p>Gupta et al. (1999). Status of automatic calibration for hydrologic models: Comparison with multilevel expert calibration. J. Hydrologic Eng. 4(2): 135-143. <a href="doi:10.1061/(ASCE)1084-0699(1999)4:2(135)" class="uri">doi:10.1061/(ASCE)1084-0699(1999)4:2(135)</a></p></li>
+<li><p>Janssen &amp; Heuberger (1995). Calibration of process-oriented models. Ecol. Modell. 83, 55-66. <a href="doi:10.1016/0304-3800(95)00084-9" class="uri">doi:10.1016/0304-3800(95)00084-9</a> <br></p></li>
+<li><p>Ji &amp; Gallo (2006). An agreement coefficient for image comparison. Photogramm. Eng. Remote Sensing 7, 823–833. <a href="doi:10.14358/PERS.72.7.823" class="uri">doi:10.14358/PERS.72.7.823</a> <br></p></li>
+<li><p>Kling et al. (2012). Runoff conditions in the upper Danube basin under an ensemble of climate change scenarios. J. Hydrol., 424-425, 264-277. <a href="doi:10.1016/j.jhydrol.2012.01.011" class="uri">doi:10.1016/j.jhydrol.2012.01.011</a> <br></p></li>
+<li><p>Kirch (2008). Pearson’s Correlation Coefficient. In: Kirch W. (eds) Encyclopedia of Public Health. Springer, Dordrecht.<a href="doi:https://doi.org/10.1007/978-1-4020-5614-7_2569" class="external-link uri">doi:https://doi.org/10.1007/978-1-4020-5614-7_2569</a></p></li>
+<li><p>Krause et al. (2005). Comparison of different efficiency criteria for hydrological model assessment. Adv. Geosci. 5, 89–97. <a href="doi:10.5194/adgeo-5-89-2005" class="uri">doi:10.5194/adgeo-5-89-2005</a> <br></p></li>
+<li><p>Kobayashi &amp; Salam (2000). Comparing simulated and measured values using mean squared deviation and its components. Agron. J. 92, 345–352. <a href="doi:10.2134/agronj2000.922345x" class="uri">doi:10.2134/agronj2000.922345x</a> <br></p></li>
+<li><p>Legates &amp; McCabe (1999). Evaluating the use of “goodness-of-fit” measures in hydrologic and hydroclimatic model validation. Water Resour. Res. <a href="doi:10.1029/1998WR900018" class="uri">doi:10.1029/1998WR900018</a> <br></p></li>
+<li><p>Lin (1989). A concordance correlation coefficient to evaluate reproducibility. Biometrics. 45 (1), 255–268. <a href="doi:10.2307/2532051" class="uri">doi:10.2307/2532051</a> <br></p></li>
+<li><p>Makridakis (1993). Accuracy measures: theoretical and practical concerns.Int. J. Forecast. 9, 527-529. <a href="doi:10.1016/0169-2070(93)90079-3" class="uri">doi:10.1016/0169-2070(93)90079-3</a></p></li>
+<li><p>Moriasi et al. (2007). Model Evaluation Guidelines for Systematic Quantification of Accuracy in Watershed Simulations. Trans. ASABE 50, 885–900. <a href="doi:10.13031/2013.23153" class="uri">doi:10.13031/2013.23153</a> <br></p></li>
+<li><p>Nash &amp; Sutcliffe (1970). River flow forecasting through conceptual models part I - A discussion of principles. J. Hydrol. 10(3), 292-290. <a href="doi:10.1016/0022-1694(70)90255-6" class="uri">doi:10.1016/0022-1694(70)90255-6</a> <br></p></li>
+<li><p>Robinson (1957). The statistical measurement of agreement. Am. Sociol. Rev. 22(1), 17-25. <a href="doi:doi.org/10.2307/2088760" class="uri">doi:doi.org/10.2307/2088760</a> <br></p></li>
+<li><p>Robinson (1959). The geometric interpretation of agreement. Am. Sociol. Rev. 24(3), 338-345 <a href="doi:10.2307/2089382" class="uri">doi:10.2307/2089382</a> <br></p></li>
+<li><p>Smith &amp; Rose (1995). Model goodness-of-fit analysis using regression and related techniques. Ecol. Model. 77, 49–64. <a href="doi:10.1016/0304-3800(93)E0074-D" class="uri">doi:10.1016/0304-3800(93)E0074-D</a> <br></p></li>
+<li><p>Warton et al. (2006). Bivariate line-fitting methods for allometry. Biol. Rev. Camb. Philos. Soc. 81, 259–291. <a href="doi:10.1002/1521-4036(200203)44:2%3C161::AID-BIMJ161" class="uri">doi:10.1002/1521-4036(200203)44:2&lt;161::AID-BIMJ161</a>3.0.CO;2-N&gt; <br></p></li>
+<li><p>Willmott (1981). On the validation of models. Phys. Geogr. 2, 184–194. <a href="doi:10.1080/02723646.1981.10642213" class="uri">doi:10.1080/02723646.1981.10642213</a> <br></p></li>
+<li><p>Willmott et al. (1985). Statistics for the evaluation and comparison of models. J. Geophys. Res. 90, 8995. <a href="doi:10.1029/jc090ic05p08995" class="uri">doi:10.1029/jc090ic05p08995</a> <br></p></li>
+<li><p>Willmott &amp; Matsuura (2005). Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. Clim. Res. 30, 79–82. <a href="doi:10.3354/cr030079" class="uri">doi:10.3354/cr030079</a> <br></p></li>
+<li><p>Willmott et al. (2012). A refined index of model performance. Int. J. Climatol. 32, 2088–2094. <a href="doi:10.1002/joc.2419" class="uri">doi:10.1002/joc.2419</a> <br></p></li>
+<li><p>Yang et al. (2014). An evaluation of the statistical methods for testing the performance of crop models with observed data. Agric. Syst. 127, 81-89. <a href="doi:10.1016/j.agsy.2014.01.008" class="uri">doi:10.1016/j.agsy.2014.01.008</a></p></li>
+</ol>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

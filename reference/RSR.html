@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,17 +79,29 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Calculates the RSR (0-1) for a Predicted-Observed dataset.</p>
+    <p>The RSR normalizes the Root Mean Squared Error (RMSE) using the standard
+deviation of observed values. It goes from  a optimal value of 0 to infinity.
+Based on RSR, Moriasi et al. (2007) indicates performance ratings as:
+i) very-good (0-0.50), ii) good (0.50-0.60), iii) satisfactory (0.60-0.70), or
+iv) unsatisfactory (&gt;0.70).
+For the formula and more details, see <a href="https://adriancorrendo.github.io/metrica/articles/available_metrics.html">online-documentation</a></p>
+    </div>
+    <div class="section level2">
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <p>Moriasi et al. (2007).
+Model Evaluation Guidelines for Systematic Quantification of Accuracy in Watershed Simulations.
+<em>Trans. ASABE 50, 885–900.</em> <a href="https://doi.org/10.13031/2013.23153" class="external-link">doi:10.13031/2013.23153</a></p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">Y</span> <span class="op">&lt;-</span> <span class="va">X</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">RSR</span><span class="op">(</span>obs <span class="op">=</span> <span class="va">X</span>, pred <span class="op">=</span> <span class="va">Y</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.03582699</span>
+<span class="r-in"><span class="co"># }</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
