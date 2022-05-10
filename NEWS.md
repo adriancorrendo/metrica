@@ -1,10 +1,19 @@
+# metrica 1.2.3
+
+* May, 10, 2022. <br/>
+
+Maintenance update fixing minor errors after feedback from CRAN submission of v1.2.2 (e.g. use 
+'donttest' instead of 'dontrun' in functions' examples, adding references into functions).
+Also, the available metrics vignette was updated adding the corresponding citations of 
+formulae used into functions.
+
+# Previous versions
+
 # metrica 1.2.2
 
 * May, 05, 2022. <br/>
 
 Maintenance update fixing minor bugs related to checks before CRAN submission (e.g. spelling check, URLs, DOIs, etc.)
-
-# Previous versions
 
 # metrica 1.2.1
 

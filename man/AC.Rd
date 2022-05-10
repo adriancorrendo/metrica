@@ -2,7 +2,7 @@
 % Please edit documentation in R/AC.R
 \name{AC}
 \alias{AC}
-\title{AC}
+\title{Ji and Gallo's Agreement Coefficient (AC)}
 \usage{
 AC(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,21 +17,26 @@ AC(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Ji and Gallo's Agreement Coefficient (AC).
+It estimates the AC for a continuous predicted-observed dataset.
 }
 \details{
-Calculates the AC for a Predicted-Observed dataset
-following Ji and Gallo (2006).
+The Ji and Gallo's AC measures general agreement, including both accuracy and precision.
+It is normalized, dimensionless, positively bounded (-infinity;1), and symmetric.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 9)
 df <- data.frame(obs = X, pred = Y)
 AC(df, obs = X, pred = Y)
 }
+}
+\references{
+Ji & Gallo (2006). An agreement coefficient for image comparison.
+\emph{Photogramm. Eng. Remote Sensing 7, 823–833} \doi{10.14358/PERS.72.7.823}
 }

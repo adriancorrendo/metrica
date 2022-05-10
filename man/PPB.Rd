@@ -2,7 +2,7 @@
 % Please edit documentation in R/PPB.R
 \name{PPB}
 \alias{PPB}
-\title{PPB}
+\title{Percentage Proportional Bias (PPB)}
 \usage{
 PPB(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,22 +17,29 @@ PPB(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Percentage Proportional Bias (PPB) component of the
-Mean Square Error (MSE).
+It estimates the contribution of the proportional bias to the Mean Squared Error (MSE)
+following Correndo et al. (2021).
 }
 \details{
-Calculates the PPB (\%) for a Predicted-Observed dataset
-following the symmetric MSE decomposition suggested by
-Correndo et al (2021).
+The PPB (\%) measures the contribution of proportional bias to the MSE.
+The PPB = 100*(((sO - sP)^2)/MSE), where sO, and sP are the sample variances
+of observations and predictions, respectively.
+The greater the value the greater the contribution of proportional bias to the prediction error.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 PPB(obs = X, pred = Y)
 }
+}
+\references{
+Correndo et al. (2021).
+Revisiting linear regression to test agreement in continuous predicted-observed datasets.
+\emph{Agric. Syst. 192, 103194.} \doi{10.1016/j.agsy.2021.103194}
 }

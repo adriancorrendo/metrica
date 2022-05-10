@@ -1,14 +1,23 @@
-#' @title CCC
-#' @description Concordance Correlation Coefficient.
+#' @title Concordance correlation coefficient (CCC) 
+#' @name CCC
+#' @description It estimates the Concordance Correlation Coefficient (CCC)
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Element of class `numeric`.
-#' @details Calculates the CCC for Predicted-Observed dataset.
+#' @return an object of class `numeric`.
+#' @details The CCC it is a normalized coefficient that tests general agreement. 
+#' It presents both precision (r) and accuracy (Xa) components. It is positively bounded to 1. 
+#' The closer to 1 the better. Values towards zero indicate low correlation between observations and predictions.
+#' Negative values would indicate a negative relationship between predicted and observed.
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references
+#' Lin (1989). 
+#' A concordance correlation coefficient to evaluate reproducibility.
+#' _Biometrics 45 (1), 255–268._ \doi{10.2307/2532051}
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- X + rnorm(n=100, mean = 0, sd = 3)

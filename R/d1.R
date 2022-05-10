@@ -1,16 +1,23 @@
-#' @title d1
-#' @description Modified Willmott's Index of Agreement (d1).
+#' @title Modified Index of Agreement (d1).
+#' @name d1
+#' @description It estimates the modified index of agreement (d1).
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Element of class `numeric`.
-#' @details Calculates the d1 for a Predicted-Observed dataset
-#' following Willmott et al. (1985), which uses absolute instead of
-#' squared residuals.
+#' @return an object of class `numeric`.
+#' @details Similar to d, the d1 index it is a normalized, dimensionless metric that tests general agreement.
+#' The difference with d, is that d1 uses absolute residuals instead of squared residuals. It is bounded between 0 and 1. 
+#' The disadvantage is that d is an asymmetric index, that is, dependent to the orientation of
+#' predicted and observed values.
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references
+#' Willmott et al. (1985). 
+#' Statistics for the evaluation and comparison of models. 
+#' _J. Geophys. Res. 90, 8995._ \doi{10.1029/jc090ic05p08995}
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 9)

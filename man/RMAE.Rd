@@ -2,7 +2,7 @@
 % Please edit documentation in R/RMAE.R
 \name{RMAE}
 \alias{RMAE}
-\title{RMAE}
+\title{Relative Mean Absolute Error (RMAE)}
 \usage{
 RMAE(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,17 +17,18 @@ RMAE(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Relative Mean Absolute Error (RMAE).
+It estimates the RMAE for a continuous predicted-observed dataset.
 }
 \details{
-Calculates the RMAE for a Predicted-Observed dataset by
-normalizing the MAE by the mean of observations.
+The RMAE normalizes the Mean Absolute Error (MAE) by the mean of observations.
+The closer to zero the lower the prediction error.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)

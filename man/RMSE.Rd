@@ -2,7 +2,7 @@
 % Please edit documentation in R/RMSE.R
 \name{RMSE}
 \alias{RMSE}
-\title{RMSE}
+\title{Root Mean Squared Error (RMSE)}
 \usage{
 RMSE(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,16 +17,23 @@ RMSE(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Root Mean Square Error.
+It estimates the RMSE for a continuous predicted-observed dataset.
 }
 \details{
-Calculates the RMSE for a Predicted-Observed dataset.
+The RMSE is one of the most widely used error metrics in literature to
+evaluate prediction performance. It measures general agreement, being sensitive to
+both lack of precision and lack of accuracy. It is simply the square root of
+the Mean Squared Error (MSE). Thus, it presents the same units as the variable of
+interest, facilitating the interpretation. It goes from 0 to infinity. The lower
+the value the better the prediction performance. Its counterpart is being very
+sensitive to outliers.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)

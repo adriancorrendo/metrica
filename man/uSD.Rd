@@ -2,7 +2,7 @@
 % Please edit documentation in R/uSD.R
 \name{uSD}
 \alias{uSD}
-\title{uSD}
+\title{Uncorrected Standard Deviation}
 \usage{
 uSD(data = NULL, x, na.rm = TRUE)
 }
@@ -15,16 +15,19 @@ uSD(data = NULL, x, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Uncorrected Standard Deviation (uSD) of observed or predicted values.
+It estimates the (uSD) of observed or predicted values.
 }
 \details{
-Calculates uSD from a vector x.
+The uSD is the sample, uncorrected standard deviation. The square root of
+the mean of sum of squared differences between vector values with respect to their mean.
+It is uncorrected because it is divided by the sample size (n), not n-1.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 uSD(x = X)

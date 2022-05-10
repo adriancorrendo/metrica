@@ -2,12 +2,12 @@
 % Please edit documentation in R/E1.R
 \name{E1}
 \alias{E1}
-\title{E1}
+\title{Absolute Model Efficiency (E1)}
 \usage{
 E1(data = NULL, obs, pred, na.rm = TRUE)
 }
 \arguments{
-\item{data}{(Optional) argument to call an existing data frame contaning the data.}
+\item{data}{(Optional) argument to call an existing data frame containing the data.}
 
 \item{obs}{Vector with observed values (numeric).}
 
@@ -17,20 +17,27 @@ E1(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Legates and McCabe's Model Efficiency (E1).
+It estimates the E1 model efficiency
 }
 \details{
-Calculates the E1 for a Predicted-Observed dataset
-following Legates and McCabe (1990).
+The E1 is a type of model efficiency that modifies the Nash-Sutcliffe model efficiency
+by using absolute residuals instead of squared residuals. The E1 is used to overcome the NSE
+over-sensitivity to extreme values caused by the used of squared residuals.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 9)
 E1(obs = X, pred = Y)
 }
+}
+\references{
+Legates & McCabe (1999).
+Evaluating the use of “goodness-of-fit” measures in hydrologic and hydroclimatic model validation.
+\emph{Water Resour. Res.} \doi{10.1029/1998WR900018}
 }

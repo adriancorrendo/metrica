@@ -2,7 +2,7 @@
 % Please edit documentation in R/R2.R
 \name{R2}
 \alias{R2}
-\title{R2}
+\title{Coefficient of determination (R2).}
 \usage{
 R2(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -20,16 +20,28 @@ R2(data = NULL, obs, pred, na.rm = TRUE)
 Element of class \code{numeric}.
 }
 \description{
-Coefficient of determination (R2).
+It estimates the R2 for a continuous predicted-observed dataset.
 }
 \details{
-Calculates the R2 for a Predicted-Observed dataset.
+The R2 is one of the most widely used metrics evaluating models performance.
+R2 is appropriate to estimate the strength of linear association between two variables.
+It is positively bounded to 1, but it may produce negative values.
+The closer to 1 the better linear association between predictions and observations.
+However, R2 presents a major flaw for prediction performance evaluation:
+it is not sensitive to lack of accuracy (additive or proportional bias). Thus, R2
+only measures precision, but it does not account for accuracy of the predictions.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 R2(obs = X, pred = Y)
 }
+}
+\references{
+Yang et al. (2014).
+An evaluation of the statistical methods for testing the performance of crop models with observed data.
+\emph{Agric. Syst. 127, 81-89.} \doi{10.1016/j.agsy.2014.01.008}
 }

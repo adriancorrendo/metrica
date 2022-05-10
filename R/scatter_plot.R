@@ -1,5 +1,7 @@
-#' @title scatter_plot
-#' @description Scatter plot of Predictions and Observations.
+#' @title Scatter plot of predicted and observed values 
+#' @name scatter_plot
+#' @description It draws a scatter plot of predictions and observations with alternative
+#' axis orientation (P vs. O; O vs. P).
 #' @param data (Optional) argument to call an existing data frame with the data. 
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
@@ -10,10 +12,14 @@
 #' @param metrics_list vector or list of selected metrics to print on the plot.
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Object of class `ggplot`.
-#' @details Creates a scatter plot of predicted vs. observed values.
+#' @return an object of class `ggplot`.
+#' @details It creates a scatter plot of predicted vs. observed values. The plot also includes 
+#' the 1:1 line (solid line) and the linear regression line (dashed line). By default, 
+#' it places the observed on the x-axis and the predicted on the y-axis (orientation = "PO").
+#' This can be inverted by changing the argument orientation = “OP".
+#' For more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/vignette1.html)
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 10)
 #' scatter_plot(obs = X, pre = Y)

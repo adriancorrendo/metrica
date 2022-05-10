@@ -2,7 +2,7 @@
 % Please edit documentation in R/RSE.R
 \name{RSE}
 \alias{RSE}
-\title{RSE}
+\title{Relative Squared Error (RSE)}
 \usage{
 RSE(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,19 +17,20 @@ RSE(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Relative Squared Error.
+It estimates the RSE for a continuous predicted-observer dataset.
 }
 \details{
-Calculates the RSE for a Predicted-Observed dataset. It is
-the ratio between the residual sum of squares (RSS, error of
-predictions with respect to observations) and the total sum of
-squares (TSS, error of observations with respect to its mean).
+The RSE is the ratio between the residual sum of squares (RSS, error of
+predictions with respect to observations) and the total sum of squares (TSS,
+error of observations with respect to its mean). RSE is dimensionless, so it can be
+used to compared models with different units.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)

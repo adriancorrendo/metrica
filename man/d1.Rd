@@ -2,7 +2,7 @@
 % Please edit documentation in R/d1.R
 \name{d1}
 \alias{d1}
-\title{d1}
+\title{Modified Index of Agreement (d1).}
 \usage{
 d1(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,21 +17,28 @@ d1(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Modified Willmott's Index of Agreement (d1).
+It estimates the modified index of agreement (d1).
 }
 \details{
-Calculates the d1 for a Predicted-Observed dataset
-following Willmott et al. (1985), which uses absolute instead of
-squared residuals.
+Similar to d, the d1 index it is a normalized, dimensionless metric that tests general agreement.
+The difference with d, is that d1 uses absolute residuals instead of squared residuals. It is bounded between 0 and 1.
+The disadvantage is that d is an asymmetric index, that is, dependent to the orientation of
+predicted and observed values.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 9)
 d1(obs = X, pred = Y)
 }
+}
+\references{
+Willmott et al. (1985).
+Statistics for the evaluation and comparison of models.
+\emph{J. Geophys. Res. 90, 8995.} \doi{10.1029/jc090ic05p08995}
 }

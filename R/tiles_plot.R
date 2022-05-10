@@ -1,9 +1,11 @@
-#' @title tiles_plot
-#' @description Scatter plot of Predictions and Observations.
+#' @title Tiles plot of predicted and observed values  
+#' @name tiles_plot
+#' @description It draws a tiles plot of predictions and observations with alternative
+#' axis orientation (P vs. O; O vs. P).
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
-#' @param bins Argument of class numeric specifying the number
+#' @param bins Argument of class numeric specifying the number of bins to create the tiles.
 #' @param orientation Argument of class string specifying the axis
 #' orientation, PO for predicted vs observed, and OP for
 #' observed vs predicted. Default is orientation = "PO".
@@ -12,9 +14,13 @@
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return Object of class `ggplot`.
-#' @details Creates a scatter plot of sim vs. obs.
+#' @details It creates a tiles plot of predicted vs. observed values. The plot also includes 
+#' the 1:1 line (solid line) and the linear regression line (dashed line). By default, 
+#' it places the observed on the x-axis and the predicted on the y-axis (orientation = "PO").
+#' This can be inverted by changing the argument orientation = “OP".
+#' For more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/vignette1.html)
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 10)
 #' tiles_plot(obs = X, pred = Y)

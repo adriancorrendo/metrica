@@ -19,8 +19,8 @@ knitr::opts_chunk$set(
 
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&svg=true)](https://ci.appveyor.com/project/adriancorrendo/metrica)
 [![R-CMD-check](https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg)](https://github.com/adriancorrendo/metrica/actions)
-[![DOI](https://zenodo.org/badge/414721777.svg)](https://zenodo.org/badge/latestdoi/414721777)
 [![codecov](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn)](https://app.codecov.io/gh/adriancorrendo/metrica)
+[![DOI](https://zenodo.org/badge/414721777.svg)](https://zenodo.org/badge/latestdoi/414721777)
 <!-- badges: end -->
 
 The goal of the *metrica* package is to offer users of point-forecast 
@@ -186,11 +186,12 @@ metrica::scatter_plot(data = df, obs = obs, pred = pred, print_metrics = TRUE,
 # Use import_apsim_out for APSIM Classic output
 soybean.out <- metrica::import_apsim_out(filepath = "tests/testthat/examples/soybean.out")
 
-# Use import_apsim_db for APSIM NextGeneration output
-soybean.db <- metrica::import_apsim_db(filename = "soybean.example.db",  folder = "tests/testthat/examples/")
-
 head(soybean.out)
-#head(soybean.db)
+
+# Use import_apsim_db for APSIM NextGeneration output
+soybean.db <- metrica::import_apsim_db(filename = "soybean.example.db", folder = "tests/testthat/examples/")
+
+head(soybean.db)
 
 # If observed.data is already as a dataframe, the user may do the match using a simple code like this:
 # PO.dataframe <- simulated.data %>% left_join(., observed.data) *by = "col" arg. could be required*

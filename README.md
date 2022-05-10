@@ -8,8 +8,8 @@
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&svg=true)](https://ci.appveyor.com/project/adriancorrendo/metrica)
 [![R-CMD-check](https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg)](https://github.com/adriancorrendo/metrica/actions)
-[![DOI](https://zenodo.org/badge/414721777.svg)](https://zenodo.org/badge/latestdoi/414721777)
 [![codecov](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn)](https://app.codecov.io/gh/adriancorrendo/metrica)
+[![DOI](https://zenodo.org/badge/414721777.svg)](https://zenodo.org/badge/latestdoi/414721777)
 <!-- badges: end -->
 
 The goal of the *metrica* package is to offer users of point-forecast
@@ -236,9 +236,6 @@ metrica::scatter_plot(data = df, obs = obs, pred = pred, print_metrics = TRUE,
 # Use import_apsim_out for APSIM Classic output
 soybean.out <- metrica::import_apsim_out(filepath = "tests/testthat/examples/soybean.out")
 
-# Use import_apsim_db for APSIM NextGeneration output
-soybean.db <- metrica::import_apsim_db(filename = "soybean.example.db",  folder = "tests/testthat/examples/")
-
 head(soybean.out)
 #>   Date (dd/mm/yyyy) yield (kg/ha) biomass (kg/ha) grain_protein (%)
 #> 1        16/05/2001        1449.8          2915.9            37.115
@@ -254,7 +251,67 @@ head(soybean.out)
 #> 4          13.79             0                 0                0.4
 #> 5          12.68             0                 0                0.4
 #> 6          10.86             0                 0                0.4
-#head(soybean.db)
+
+# Use import_apsim_db for APSIM NextGeneration output
+soybean.db <- metrica::import_apsim_db(filename = "soybean.example.db", folder = "tests/testthat/examples/")
+
+head(soybean.db)
+#>   CheckpointID SimulationID    Zone         Clock.Today Soybean.Phenology.Stage
+#> 1            1            1 paddock 2018-01-01 12:00:00                       1
+#> 2            1            1 paddock 2018-01-02 12:00:00                       1
+#> 3            1            1 paddock 2018-01-03 12:00:00                       1
+#> 4            1            1 paddock 2018-01-04 12:00:00                       1
+#> 5            1            1 paddock 2018-01-05 12:00:00                       1
+#> 6            1            1 paddock 2018-01-06 12:00:00                       1
+#>   Soybean.Phenology.CurrentStageName Soybean.AboveGround.Wt Yield
+#> 1                                                         0     0
+#> 2                                                         0     0
+#> 3                                                         0     0
+#> 4                                                         0     0
+#> 5                                                         0     0
+#> 6                                                         0     0
+#>   Soybean.Grain.Size Soybean.Grain.Number Soybean.Total.Wt Soybean.Leaf.FRGR
+#> 1                  0                    0                0                 0
+#> 2                  0                    0                0                 0
+#> 3                  0                    0                0                 0
+#> 4                  0                    0                0                 0
+#> 5                  0                    0                0                 0
+#> 6                  0                    0                0                 0
+#>   Soybean.Leaf.Fw Soybean.Leaf.Photosynthesis.FT Soybean.Leaf.Photosynthesis.FW
+#> 1               1                              0                              1
+#> 2               1                              0                              1
+#> 3               1                              0                              1
+#> 4               1                              0                              1
+#> 5               1                              0                              1
+#> 6               1                              0                              1
+#>   Soybean.WaterUptake(1) Soybean.WaterUptake(2) Soybean.WaterUptake(3)
+#> 1                     NA                     NA                     NA
+#> 2                     NA                     NA                     NA
+#> 3                     NA                     NA                     NA
+#> 4                     NA                     NA                     NA
+#> 5                     NA                     NA                     NA
+#> 6                     NA                     NA                     NA
+#>   Soybean.WaterUptake(4) Soybean.WaterUptake(5) Soybean.WaterUptake(6)
+#> 1                     NA                     NA                     NA
+#> 2                     NA                     NA                     NA
+#> 3                     NA                     NA                     NA
+#> 4                     NA                     NA                     NA
+#> 5                     NA                     NA                     NA
+#> 6                     NA                     NA                     NA
+#>   Soybean.WaterUptake(7) Soybean.WaterUptake(8) Soybean.WaterUptake(9)
+#> 1                     NA                     NA                     NA
+#> 2                     NA                     NA                     NA
+#> 3                     NA                     NA                     NA
+#> 4                     NA                     NA                     NA
+#> 5                     NA                     NA                     NA
+#> 6                     NA                     NA                     NA
+#>   Soybean.WaterUptake(10)       Date
+#> 1                      NA 2018-01-01
+#> 2                      NA 2018-01-02
+#> 3                      NA 2018-01-03
+#> 4                      NA 2018-01-04
+#> 5                      NA 2018-01-05
+#> 6                      NA 2018-01-06
 
 # If observed.data is already as a dataframe, the user may do the match using a simple code like this:
 # PO.dataframe <- simulated.data %>% left_join(., observed.data) *by = "col" arg. could be required*

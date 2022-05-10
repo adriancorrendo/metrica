@@ -2,7 +2,7 @@
 % Please edit documentation in R/r.R
 \name{r}
 \alias{r}
-\title{r}
+\title{Sample Correlation Coefficient (r)}
 \usage{
 r(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,19 +17,30 @@ r(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Pearson's correlation coefficient (r).
+It estimates the Pearson's r coefficient for a continuous predicted-observed dataset.
 }
 \details{
-Calculates the classic r for a Predicted-Observed dataset.
+The r coefficient measures the strength of linear relationship between two variables.
+It only accounts for precision, but it is not sensitive to lack of prediction accuracy.
+It is a normalized, dimensionless coefficient, that ranges between -1 to 1. It is expected that
+predicted and observed values will show 0 < r < 1.
+It is also known as the Pearson Product Moment Correlation, among other names.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 r(obs = X, pred = Y)
 }
+}
+\references{
+Kirch (2008)
+Pearson’s Correlation Coefficient.
+\emph{In: Kirch W. (eds) Encyclopedia of Public Health. Springer, Dordrecht.}
+\doi{https://doi.org/10.1007/978-1-4020-5614-7_2569}
 }

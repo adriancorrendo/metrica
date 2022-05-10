@@ -1,15 +1,22 @@
-#' @title Erel
-#' @description Krause Relative Model Efficiency (Erel).
+#' @title Relative Model Efficiency (Erel)
+#' @name Erel
+#' @description It estimates the Erel model efficiency
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Element of class `numeric`.
-#' @details Calculates the Erel for a Predicted-Observed dataset
-#' following Krause et al. (2005).
+#' @return an object of class `numeric`.
+#' @details The Erel model efficiency normalizes both residuals (numerator) and observed 
+#' deviations (denominator) by observed values before squaring them. Compared to the NSE, the Erel is suggested as 
+#' more sensitive to systematic over- or under-predictions. 
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references 
+#' Krause et al. (2005). 
+#' Comparison of different efficiency criteria for hydrological model assessment. 
+#' _Adv. Geosci. 5, 89–97._ \doi{10.5194/adgeo-5-89-2005}
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 9)

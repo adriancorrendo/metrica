@@ -2,7 +2,7 @@
 % Please edit documentation in R/MLA.R
 \name{MLA}
 \alias{MLA}
-\title{MLA}
+\title{Mean Lack of Accuracy (MLA)}
 \usage{
 MLA(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,22 +17,31 @@ MLA(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Mean Lack of Accuracy (MLA) component of the Mean
-Square Error (MSE).
+It estimates the MLA, the systematic error component to
+the Mean Squared Error (MSE), for a continuous predicted-observed dataset
+following Correndo et al. (2021).
 }
 \details{
-Calculates the MLA for a Predicted-Observed dataset
-following the symmetric MSE decomposition suggested by
-Correndo et al (2021).
+The MLA represents the systematic (bias) component of the MSE.
+It is obtained via a symmetric decomposition of the MSE (invariant to
+predicted-observed orientation) using a symmetric regression line.
+The MLA is equal to the sum of systematic differences divided by the sample size (n).
+The greater the value the greater the bias of the predictions.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 MLA(obs = X, pred = Y)
 }
+}
+\references{
+Correndo et al. (2021).
+Revisiting linear regression to test agreement in continuous predicted-observed datasets.
+\emph{Agric. Syst. 192, 103194.} \doi{10.1016/j.agsy.2021.103194}
 }

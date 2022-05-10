@@ -2,7 +2,7 @@
 % Please edit documentation in R/metrics_summary.R
 \name{metrics_summary}
 \alias{metrics_summary}
-\title{metrics_summary}
+\title{Prediction Performance Summary}
 \usage{
 metrics_summary(
   data = NULL,
@@ -32,16 +32,21 @@ Default is orientation = "PO".}
 which will estimate all metrics available.}
 }
 \value{
-an object of class \code{tibble}.
+an object of class \code{data.frame} containing all (or selected) metrics.
 }
 \description{
-Scatter plot of Predictions and Observations.
+It estimates a group of metrics characterizing the prediction performance
+for a continuous predicted-observed dataset. By default, it calculates all available metrics.
 }
 \details{
-Creates a table with one colum per metric.
+The user can choose to calculate a single metric, or to calculate all metrics at once.
+This function creates a data.frame with all (or selected) metrics in the \code{metrica}-package.
+If looking for specific metrics, the user can pass a list of desired metrics using the
+argument “metrics_list” (e.g. metrics_list = c("R2","MAE", "RMSE", "RSR", "NSE", "KGE")).
+For the entire list of available metrics with formula, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 10)
 df <- data.frame(obs = X, pred = Y)

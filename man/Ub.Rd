@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ub.R
 \name{Ub}
 \alias{Ub}
-\title{Ub}
+\title{Mean Bias Error Proportion (Ub)}
 \usage{
 Ub(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,22 +17,28 @@ Ub(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Proportion of the total sum of squares related to the
-mean bias (Ub).
+It estimates the Ub component from the sum of squares decomposition
+described by Smith & Rose (1995).
 }
 \details{
-Calculates the Ub for a Predicted-Observed dataset
-following the sum of squares segregation suggested by Smith and
+The Ub estimates the proportion of the total sum of squares related to the
+mean bias following the sum of squares decomposition suggested by Smith and
 Rose (1995) also known as Theil's partial inequalities.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 Ub(obs = X, pred = Y)
 }
+}
+\references{
+Smith & Rose (1995).
+Model goodness-of-fit analysis using regression and related techniques.
+\emph{Ecol. Model. 77, 49–64.} \doi{10.1016/0304-3800(93)E0074-D}
 }

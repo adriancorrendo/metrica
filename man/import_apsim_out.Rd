@@ -22,7 +22,7 @@ This function will generate a data frame object from an APSIM Classic *.out file
 Note: It imports one file at a time.
 }
 \examples{
-\dontrun{
+\donttest{
 # Pull the git repo and use the following filepath
 path <- "tests/testthat/examples/soybean.out"
 soybean.out <- import_apsim_out(filepath = path)

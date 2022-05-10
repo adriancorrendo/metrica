@@ -1,20 +1,26 @@
-#' @title B0_sma
-#' @description Slope of standardized major axis regression
-#' (symmetric).
+#' @name B0_sma
+#' @title Intercept of standardized major axis regression (SMA). 
+#' @description It calculates the intercept (B0) for the bivariate linear relationship
+#' between predicted and observed values following the SMA regression.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
-#' @param orientation Argument of class string specifying the axis
+#' @param orientation Argument of class `string` specifying the axis
 #' orientation, PO for predicted vs observed, and OP for
 #' observed vs predicted. Default is orientation = "PO".
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na_rm = TRUE.
-#' @return Element of class `numeric`.
-#' @details Calculates the intercept (B0) for the bivariate
-#' Predicted-Observed dataset following the standardized major 
-#' axis regression, Warton et al. (2006).
+#' @return an object of class `numeric`.
+#' @details SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) 
+#' recommended to describe the bivariate scatter instead of OLS regression 
+#' (classic linear model, which results vary with the axis orientation).
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references 
+#' Warton et al. (2006). 
+#' Bivariate line-fitting methods for allometry. 
+#' _Biol. Rev. Camb. Philos. Soc. 81, 259–291._ \doi{10.1002/1521-4036(200203)44:2<161::AID-BIMJ161>3.0.CO;2-N} 
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 9)

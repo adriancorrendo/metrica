@@ -1,17 +1,24 @@
-#' @title PPB
-#' @description Percentage Proportional Bias (PPB) component of the
-#' Mean Square Error (MSE).
+#' @title Percentage Proportional Bias (PPB)
+#' @name PPB
+#' @description It estimates the contribution of the proportional bias to the Mean Squared Error (MSE) 
+#' following Correndo et al. (2021).
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Element of class `numeric`.
-#' @details Calculates the PPB (%) for a Predicted-Observed dataset
-#' following the symmetric MSE decomposition suggested by
-#' Correndo et al (2021).
+#' @return an object of class `numeric`.
+#' @details The PPB (%) measures the contribution of proportional bias to the MSE.
+#' The PPB = 100*(((sO - sP)^2)/MSE), where sO, and sP are the sample variances 
+#' of observations and predictions, respectively.
+#' The greater the value the greater the contribution of proportional bias to the prediction error.
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references 
+#' Correndo et al. (2021). 
+#' Revisiting linear regression to test agreement in continuous predicted-observed datasets. 
+#' _Agric. Syst. 192, 103194._ \doi{10.1016/j.agsy.2021.103194} 
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- X + rnorm(n=100, mean = 0, sd = 3)

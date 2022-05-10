@@ -2,7 +2,7 @@
 % Please edit documentation in R/KGE.R
 \name{KGE}
 \alias{KGE}
-\title{KGE}
+\title{Kling-Gupta Model Efficiency (KGE).}
 \usage{
 KGE(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,24 +17,28 @@ KGE(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Kling-Gupta Model Efficiency (KGE).
+It estimates the KGE for a predicted-observed dataset.
 }
 \details{
-Calculates the KGE for a Predicted-Observed dataset
-following Kling et al. (2012).
-Kling, H., M. Fuchs, and M. Paulin (2012), Runoff conditions in the
-upper Danube basin under an ensemble of climate change scenarios,
-Journal of Hydrology 424-425, 264-277,
-doi:10.1016/j.jhydrol.2012.01.011.
+The KGE is a normalized, dimensionless, model efficiency that measures general agreement.
+It presents accuracy, precision, and consistency components. It is symmetric
+(invariant to predicted observed orientation). It is positively bounded up to 1.
+The closer to 1 the better.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 9)
 KGE(obs = X, pred = Y)
 }
+}
+\references{
+Kling et al. (2012).
+Runoff conditions in the upper Danube basin under an ensemble of climate change scenarios.
+\emph{Journal of Hydrology 424-425, 264-277.} \doi{doi:10.1016/j.jhydrol.2012.01.011}
 }

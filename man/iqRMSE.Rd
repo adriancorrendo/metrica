@@ -2,7 +2,7 @@
 % Please edit documentation in R/iqRMSE.R
 \name{iqRMSE}
 \alias{iqRMSE}
-\title{iqRMSE}
+\title{Inter-Quartile Root Mean Squared Error}
 \usage{
 iqRMSE(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,18 +17,18 @@ iqRMSE(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Relative Root Mean Squared Error.
+It estimates the IqRMSE for a continuous predicted-observed dataset.
 }
 \details{
-Calculates the iqRMSE for a Predicted-Observed dataset by
-normalizing the RMSE by the length of the inter-quartile range of
-observations (percentiles 25th to 75th).
+The iqRMSE normalizes the RMSE by the length of the inter-quartile range of
+observations (percentiles 25th to 75th). As an error metric, the lower the values the better.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)

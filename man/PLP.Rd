@@ -2,7 +2,7 @@
 % Please edit documentation in R/PLP.R
 \name{PLP}
 \alias{PLP}
-\title{PLP}
+\title{Percentage Lack of Precision (PLP)}
 \usage{
 PLP(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,22 +17,30 @@ PLP(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Percentage Lack of Precision (PLP) component of the
-Mean Square Error (MSE).
+It estimates the PLP, the contribution of the unsystematic error to
+the Mean Squared Error (MSE) for a continuous predicted-observed dataset
+following Correndo et al. (2021).
 }
 \details{
-Calculates the PLP (\%) for a Predicted-Observed dataset
-following the symmetric MSE decomposition suggested by
-Correndo et al (2021).
+The PLP (\%, 0-100) represents the  contribution of the Mean Lack of Precision (MLP),
+the  unsystematic (random) component of the MSE. It is obtained via a symmetric decomposition
+of the MSE (invariant to predicted-observed orientation).
+The greater the value the greater the contribution of unsystematic error to the MSE.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 PLP(obs = X, pred = Y)
 }
+}
+\references{
+Correndo et al. (2021).
+Revisiting linear regression to test agreement in continuous predicted-observed datasets.
+\emph{Agric. Syst. 192, 103194.} \doi{10.1016/j.agsy.2021.103194}
 }

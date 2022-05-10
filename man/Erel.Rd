@@ -2,7 +2,7 @@
 % Please edit documentation in R/Erel.R
 \name{Erel}
 \alias{Erel}
-\title{Erel}
+\title{Relative Model Efficiency (Erel)}
 \usage{
 Erel(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,20 +17,27 @@ Erel(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Krause Relative Model Efficiency (Erel).
+It estimates the Erel model efficiency
 }
 \details{
-Calculates the Erel for a Predicted-Observed dataset
-following Krause et al. (2005).
+The Erel model efficiency normalizes both residuals (numerator) and observed
+deviations (denominator) by observed values before squaring them. Compared to the NSE, the Erel is suggested as
+more sensitive to systematic over- or under-predictions.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 9)
 Erel(obs = X, pred = Y)
 }
+}
+\references{
+Krause et al. (2005).
+Comparison of different efficiency criteria for hydrological model assessment.
+\emph{Adv. Geosci. 5, 89–97.} \doi{10.5194/adgeo-5-89-2005}
 }

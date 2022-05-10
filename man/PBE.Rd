@@ -2,7 +2,7 @@
 % Please edit documentation in R/PBE.R
 \name{PBE}
 \alias{PBE}
-\title{PBE}
+\title{Percentage Bias Error (PBE).}
 \usage{
 PBE(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,21 +17,28 @@ PBE(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Percentage Bias Error.
+It estimates the PBE for a continuous predicted-observed dataset
+following Gupta et al. (1999).
 }
 \details{
-Calculates the PBE (\%) for a Predicted-Observed dataset.
-Negative values indicate overestimation. Positive values indicate
-underestimation. Moriasi et al. (2007).
+The PBE (\%) is useful to identify systematic over or under predictions.
+It is an unbounded metric. The closer to zero the bias of predictions.
+Negative values indicate overestimation, while positive values indicate underestimation.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 PBE(obs = X, pred = Y)
 }
+}
+\references{
+Gupta et al. (1999).
+Status of automatic calibration for hydrologic models: Comparison with multilevel expert calibration.
+\emph{J. Hydrologic Eng. 4(2): 135-143.} \doi{10.1061/(ASCE)1084-0699(1999)4:2(135)}
 }

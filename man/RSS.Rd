@@ -2,7 +2,7 @@
 % Please edit documentation in R/RSS.R
 \name{RSS}
 \alias{RSS}
-\title{RSS}
+\title{Residual Sum of Squares (RSS)}
 \usage{
 RSS(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,16 +17,18 @@ RSS(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Residual Sum of Squares (RSS).
+It estimates the RSS for a continuous predicted-observed dataset.
 }
 \details{
-Calculates the RSS for a Predicted-Observed dataset.
+The RSS is the sum of the squared differences between predictions and observations.
+It represents the base of many error metrics using squared scale such as the Mean Squared Error (MSE).
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)

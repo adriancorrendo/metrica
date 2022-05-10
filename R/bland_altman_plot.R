@@ -1,14 +1,19 @@
-#' @title bland_altman_plot
-#' @description Bland-Altman plot.
+#' @title Bland-Altman plot 
+#' @name bland_altman_plot
+#' @description It creates a scatter plot of the difference between observed and predicted 
+#' values (obs-pred) vs. observed values. 
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values
-#' @return and object of class `ggplot`.
-#' @details Creates a scatter plot of the difference between
-#' observed and predicted values (obs-pred) vs. observed values.
+#' @return an object of class `ggplot`.
+#' @details See [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references
+#' Bland & Altman (1986).
+#' Statistical methods for assessing agreement between two methods of clinical measurement
+#' _The Lancet 327(8476), 307-310_ \doi{10.1016/S0140-6736(86)90837-8} 
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 10)
 #' bland_altman_plot(obs = X, pred = Y)

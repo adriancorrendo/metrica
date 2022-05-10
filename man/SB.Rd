@@ -2,7 +2,7 @@
 % Please edit documentation in R/SB.R
 \name{SB}
 \alias{SB}
-\title{SB}
+\title{Squared bias (SB)}
 \usage{
 SB(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,22 +17,29 @@ SB(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Squared bias (SB)component of the Mean Square
-Error (MSE).
+It estimates the SB component of the Mean Squared Error (MSE)
+proposed by Kobayashi & Salam (2000).
 }
 \details{
-Calculates the SB for a Predicted-Observed dataset
-following the MSE segregation suggested by Kobayashi and Salam
-(2000).
+The SB represents the additive bias component of the prediction error
+following Kobayashi & Salam (2000). It is in square units of the variable of interest, so
+it does not have a direct interpretation. The lower the value the less contribution to the MSE.
+However, it needs to be compared to MSE as its benchmark.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 9)
 SB(obs = X, pred = Y)
 }
+}
+\references{
+Kobayashi & Salam (2000).
+Comparing simulated and measured values using mean squared deviation and its components.
+\emph{Agron. J. 92, 345–352.} \doi{10.2134/agronj2000.922345x}
 }

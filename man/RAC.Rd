@@ -2,7 +2,7 @@
 % Please edit documentation in R/RAC.R
 \name{RAC}
 \alias{RAC}
-\title{RAC}
+\title{Robinson's Agreement Coefficient (RAC).}
 \usage{
 RAC(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,20 +17,31 @@ RAC(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Robinson's Agreement Coefficient.
+It estimates the RAC for a continuous predicted-observed dataset following
+Robinson (1957; 1959).
 }
 \details{
-Calculates the RAC for a Predicted-Observed dataset
-following Robinson (1957,1959).
+The RAC measures both accuracy and precision (general agreement). It is
+normalized, dimensionless, bounded (0 to 1), and symmetric (invariant to predicted-observed orientation).
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 RAC(obs = X, pred = Y)
 }
+}
+\references{
+Robinson (1957).
+The statistical measurement of agreement.
+\emph{Am. Sociol. Rev. 22(1), 17-25} \doi{10.2307/2088760}
+
+Robinson (1959).
+The geometric interpretation of agreement.
+\emph{Am. Sociol. Rev. 24(3), 338-345} \doi{10.2307/2089382}
 }

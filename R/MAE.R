@@ -1,14 +1,22 @@
-#' @title MAE
-#' @description Mean Absolute Error.
+#' @title Mean Absolute Error (MAE)
+#' @name MAE
+#' @description It estimates the MAE for a continuous predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Element of class `numeric`.
-#' @details Calculates the MAE for a Predicted-Observed dataset.
+#' @return an object of class `numeric`.
+#' @details The MAE measures both lack of accuracy and precision in absolute scale.
+#' It keeps the same units than the response variable. It is less sensitive to outliers 
+#' than the MSE or RMSE. The lower the better.
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references 
+#' Willmott & Matsuura (2005). 
+#' Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. 
+#' _Clim. Res. 30, 79–82._ \doi{10.3354/cr030079}
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- X + rnorm(n=100, mean = 0, sd = 3)

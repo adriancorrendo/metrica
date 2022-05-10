@@ -2,7 +2,7 @@
 % Please edit documentation in R/CCC.R
 \name{CCC}
 \alias{CCC}
-\title{CCC}
+\title{Concordance correlation coefficient (CCC)}
 \usage{
 CCC(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,19 +17,28 @@ CCC(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Concordance Correlation Coefficient.
+It estimates the Concordance Correlation Coefficient (CCC)
 }
 \details{
-Calculates the CCC for Predicted-Observed dataset.
+The CCC it is a normalized coefficient that tests general agreement.
+It presents both precision (r) and accuracy (Xa) components. It is positively bounded to 1.
+The closer to 1 the better. Values towards zero indicate low correlation between observations and predictions.
+Negative values would indicate a negative relationship between predicted and observed.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 CCC(obs = X, pred = Y)
 }
+}
+\references{
+Lin (1989).
+A concordance correlation coefficient to evaluate reproducibility.
+\emph{Biometrics 45 (1), 255–268.} \doi{10.2307/2532051}
 }

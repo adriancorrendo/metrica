@@ -2,7 +2,7 @@
 % Please edit documentation in R/Uc.R
 \name{Uc}
 \alias{Uc}
-\title{Uc}
+\title{Lack of Consistency (Uc)}
 \usage{
 Uc(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,22 +17,28 @@ Uc(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Lack of consistency (Uc). Proportion of the total sum
-of squares related to the proportional bias.
+It estimates the Uc component from the sum of squares decomposition
+described by Smith & Rose (1995).
 }
 \details{
-Calculates the Uc (\%) for a Predicted-Observed dataset
-following the sum of squares segregation suggested by Smith and
-Rose (1995) also known as Theil's partial inequalities.
+The Uc estimates the proportion of the total sum of squares related to the
+lack of consistency (proportional bias) following the sum of squares decomposition
+suggested by Smith and Rose (1995) also known as Theil's partial inequalities.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 Uc(obs = X, pred = Y)
 }
+}
+\references{
+Smith & Rose (1995).
+Model goodness-of-fit analysis using regression and related techniques.
+\emph{Ecol. Model. 77, 49–64.} \doi{10.1016/0304-3800(93)E0074-D}
 }

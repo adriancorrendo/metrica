@@ -149,7 +149,7 @@ metrics_summary(data = wheat,
 
 
 ## 5 Visual and numerical assessment combined  
-The user can also create a scatter plot that includes not only the **predicted** vs. **observed** points, **1:1 line**, and **regression line**, but also **selected metrics and their values** plust the **SMA regression equation**.  
+The user can also create a scatter plot that includes not only the **predicted** vs. **observed** points, **1:1 line**, and **regression line**, but also **selected metrics and their values** plus the **SMA regression equation**.  
 
 This is accomplished with the function `scatter_plot()`:  
 

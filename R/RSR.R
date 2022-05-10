@@ -6,9 +6,18 @@
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return Element of class `numeric`.
-#' @details Calculates the RSR (0-1) for a Predicted-Observed dataset.
+#' @details The RSR normalizes the Root Mean Squared Error (RMSE) using the standard 
+#' deviation of observed values. It goes from  a optimal value of 0 to infinity. 
+#' Based on RSR, Moriasi et al. (2007) indicates performance ratings as: 
+#' i) very-good (0-0.50), ii) good (0.50-0.60), iii) satisfactory (0.60-0.70), or 
+#' iv) unsatisfactory (>0.70). 
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html) 
+#' @references 
+#' Moriasi et al. (2007). 
+#' Model Evaluation Guidelines for Systematic Quantification of Accuracy in Watershed Simulations.
+#' _Trans. ASABE 50, 885–900._ \doi{10.13031/2013.23153}
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- X + rnorm(n=100, mean = 0, sd = 3)

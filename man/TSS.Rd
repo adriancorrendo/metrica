@@ -2,7 +2,7 @@
 % Please edit documentation in R/TSS.R
 \name{TSS}
 \alias{TSS}
-\title{TSS}
+\title{Total Sum of Squares (TSS)}
 \usage{
 TSS(data = NULL, obs, na.rm = TRUE)
 }
@@ -15,16 +15,18 @@ TSS(data = NULL, obs, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Total Sum of Squares (R2).
+It estimates the TSS for a predicted or observed vector.
 }
 \details{
-Calculates the TSS for a Predicted-Observed dataset.
+The TSS sum of the squared differences between the observations and its mean.
+It is used as a reference error, for example, to estimate explained variance.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)

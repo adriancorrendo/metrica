@@ -1,14 +1,23 @@
-#' @title MAPE
-#' @description Mean Absolute Percentage Error.
+#' @title Mean Absolute Percentage Error (MAPE) 
+#' @name MAPE
+#' @description It estimates the MAPE of a continuous predicted-observed dataset.
 #' @param data (optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Element of class `numeric`.
-#' @details Calculates the MAPE for a Predicted-Observed dataset.
+#' @return an object of class `numeric`.
+#' @details The MAPE is expressed in percentage units (independent scale), which it
+#' makes easy to explain and to compare performance across models with different response variables. 
+#' MAPE is asymmetric (sensitive to axis orientation). The lower the better. 
+#' As main disadvantage, MAPE produces infinite or undefined values for zero or close-to-zero observed values.
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references 
+#' Kim & Kim (2016).
+#' A new metric of absolute percentage error for intermittent demand forecast.
+#' _Int. J. Forecast. 32, 669-679._\doi{10.1016/j.ijforecast.2015.12.003}
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- X + rnorm(n=100, mean = 0, sd = 3)

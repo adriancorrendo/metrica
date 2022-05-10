@@ -2,7 +2,7 @@
 % Please edit documentation in R/var_u.R
 \name{var_u}
 \alias{var_u}
-\title{var_u}
+\title{Uncorrected Variance (var_u)}
 \usage{
 var_u(data = NULL, x, na.rm = TRUE)
 }
@@ -18,13 +18,16 @@ var_u(data = NULL, x, na.rm = TRUE)
 Element of class \code{numeric}.
 }
 \description{
-Uncorrected Sample Variance (var_u, not n-1).
+It estimates the var_u of observed or predicted values.
 }
 \details{
-Calculates the var_u of a vector x.
+The var_u is the sample, uncorrected variance. It is calculated as the mean
+of sum of squared differences between values of an x and its mean, divided by the sample size (n).
+It is uncorrected because it is divided by n, and by not n-1 (traditional variance).
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 var_u(x = X)

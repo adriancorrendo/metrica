@@ -2,7 +2,7 @@
 % Please edit documentation in R/bland_altman_plot.R
 \name{bland_altman_plot}
 \alias{bland_altman_plot}
-\title{bland_altman_plot}
+\title{Bland-Altman plot}
 \usage{
 bland_altman_plot(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -16,21 +16,26 @@ bland_altman_plot(data = NULL, obs, pred, na.rm = TRUE)
 \item{na.rm}{Logic argument to remove rows with missing values}
 }
 \value{
-and object of class \code{ggplot}.
+an object of class \code{ggplot}.
 }
 \description{
-Bland-Altman plot.
+It creates a scatter plot of the difference between observed and predicted
+values (obs-pred) vs. observed values.
 }
 \details{
-Creates a scatter plot of the difference between
-observed and predicted values (obs-pred) vs. observed values.
+See \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 10)
 bland_altman_plot(obs = X, pred = Y)
 }
+}
+\references{
+Bland & Altman (1986).
+Statistical methods for assessing agreement between two methods of clinical measurement
+\emph{The Lancet 327(8476), 307-310} \doi{10.1016/S0140-6736(86)90837-8}
 }
 \seealso{
 \code{\link[ggplot2]{ggplot}},\code{\link[ggplot2]{geom_point}},\code{\link[ggplot2]{aes}}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Xa.R
 \name{Xa}
 \alias{Xa}
-\title{Xa}
+\title{Accuracy Component (Xa) of CCC}
 \usage{
 Xa(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,19 +17,28 @@ Xa(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{double}.
+an object of class \code{double}.
 }
 \description{
-Accuracy component of Concordance Correlation.
+It estimates the Xa component for the calculation of the Concordance
+Correlation Coefficient (CCC) following Lin (1989).
 }
 \details{
-Calculates the Xa for a Predicted-Observed dataset.
+The Xa measures accuracy of prediction. It goes from 0 (completely inaccurate) to 1 (perfectly accurate).
+It is used to adjust the precision measured by the correlation coefficient (r)
+in order to evaluate agreement through the CCC.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 Xa(obs = X, pred = Y)
 }
+}
+\references{
+Lin (1989).
+A concordance correlation coefficient to evaluate reproducibility.
+\emph{Biometrics 45 (1), 255–268.} \doi{10.2307/2532051}
 }

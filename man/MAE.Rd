@@ -2,7 +2,7 @@
 % Please edit documentation in R/MAE.R
 \name{MAE}
 \alias{MAE}
-\title{MAE}
+\title{Mean Absolute Error (MAE)}
 \usage{
 MAE(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,19 +17,27 @@ MAE(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Mean Absolute Error.
+It estimates the MAE for a continuous predicted-observed dataset.
 }
 \details{
-Calculates the MAE for a Predicted-Observed dataset.
+The MAE measures both lack of accuracy and precision in absolute scale.
+It keeps the same units than the response variable. It is less sensitive to outliers
+than the MSE or RMSE. The lower the better.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 MAE(obs = X, pred = Y)
 }
+}
+\references{
+Willmott & Matsuura (2005).
+Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance.
+\emph{Clim. Res. 30, 79–82.} \doi{10.3354/cr030079}
 }

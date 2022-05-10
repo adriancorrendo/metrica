@@ -2,7 +2,7 @@
 % Please edit documentation in R/B1_sma.R
 \name{B1_sma}
 \alias{B1_sma}
-\title{B1_sma}
+\title{Slope of standardized major axis regression (SMA).}
 \usage{
 B1_sma(data = NULL, obs, pred, orientation = "PO", na.rm = TRUE)
 }
@@ -17,26 +17,31 @@ B1_sma(data = NULL, obs, pred, orientation = "PO", na.rm = TRUE)
 orientation, PO for predicted vs observed, and OP for
 observed vs predicted. Default is orientation = "PO".}
 
-\item{na.rm}{Logic argument to remove rows with missing values
-(NA). Default is na_rm = TRUE.}
+\item{na.rm}{Logic argument to remove rows with missing values (NA). Default is na_rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Slope of standardized major axis regression
-(symmetric).
+It calculates the slope (B1) for the bivariate linear relationship
+between predicted and observed values following the SMA regression.
 }
 \details{
-Calculates the slope (B1) for the bivariate
-Predicted-Observed dataset following the standardized major axis
-regression, Warton et al. (2006).
+SMA is a symmetric linear regression (invariant results/interpretation to axis orientation)
+recommended to describe the bivariate scatter instead of OLS regression
+(classic linear model, which results vary with the axis orientation).
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 9)
 B1_sma(obs = X, pred = Y)
 }
+}
+\references{
+Warton et al. (2006).
+Bivariate line-fitting methods for allometry.
+\emph{Biol. Rev. Camb. Philos. Soc. 81, 259–291.} \doi{10.1002/1521-4036(200203)44:2<161::AID-BIMJ161>3.0.CO;2-N}
 }

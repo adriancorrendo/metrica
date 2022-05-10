@@ -1,15 +1,23 @@
-#' @title d
-#' @description Willmott's Index of Agreement (d).
+#' @title Willmott's Index of Agreement (d)
+#' @name d
+#' @description It estimates the Willmott's index of agreement (d).
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Element of class `numeric`.
-#' @details Calculates the d for a Predicted-Observed dataset
-#' following Willmott (1981).
+#' @return an object of class `numeric`.
+#' @details The d index it is a normalized, dimensionless metric that tests general agreement.
+#' It measures both accuracy and precision using squared residuals. It is bounded between 0 and 1. 
+#' The disadvantage is that d is an asymmetric index, that is, dependent to what is orientation of
+#' predicted and observed values.
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references
+#' Willmott (1981). 
+#' On the validation of models. 
+#' _Phys. Geogr. 2, 184–194._ \doi{10.1080/02723646.1981.10642213}
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 9)

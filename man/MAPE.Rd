@@ -2,7 +2,7 @@
 % Please edit documentation in R/MAPE.R
 \name{MAPE}
 \alias{MAPE}
-\title{MAPE}
+\title{Mean Absolute Percentage Error (MAPE)}
 \usage{
 MAPE(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,19 +17,28 @@ MAPE(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Mean Absolute Percentage Error.
+It estimates the MAPE of a continuous predicted-observed dataset.
 }
 \details{
-Calculates the MAPE for a Predicted-Observed dataset.
+The MAPE is expressed in percentage units (independent scale), which it
+makes easy to explain and to compare performance across models with different response variables.
+MAPE is asymmetric (sensitive to axis orientation). The lower the better.
+As main disadvantage, MAPE produces infinite or undefined values for zero or close-to-zero observed values.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 MAPE(obs = X, pred = Y)
 }
+}
+\references{
+Kim & Kim (2016).
+A new metric of absolute percentage error for intermittent demand forecast.
+_Int. J. Forecast. 32, 669-679._\doi{10.1016/j.ijforecast.2015.12.003}
 }

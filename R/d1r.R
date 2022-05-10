@@ -1,17 +1,25 @@
-#' @title d1r
-#' @description Refined Willmott's Index of Agreement (d1r).
+#' @title Refined Index of Agreement (d1).
+#' @name d1r
+#' @description It estimates the refined index of agreement (d1r).
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Element of class `numeric`.
-#' @details Calculates the d1e for a Predicted-Observed dataset
-#' following Willmott et al. (2012), which modifies the denominator
-#' (potential error) when normalizing the mean absolute error
-#' (numerator).
+#' @return an object of class `numeric`.
+#' @details Similar to d, and d1, the d1r index it is a normalized, dimensionless 
+#' metric that tests general agreement. The difference is that d1r modifies the 
+#' denominator of the formula (potential error), normalizing the mean absolute error
+#' (numerator) by two-times the mean absolute deviation of observed values. It is 
+#' bounded between 0 and 1. The disadvantage is that d1r is an asymmetric index, 
+#' that is, dependent to the orientation of predicted and observed values.
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references
+#' Willmott et al. (2012). 
+#' A refined index of model performance. 
+#' _Int. J. Climatol. 32, 2088–2094._ \doi{10.1002/joc.2419}
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 9)

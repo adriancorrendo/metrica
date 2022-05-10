@@ -2,7 +2,7 @@
 % Please edit documentation in R/tiles_plot.R
 \name{tiles_plot}
 \alias{tiles_plot}
-\title{tiles_plot}
+\title{Tiles plot of predicted and observed values}
 \usage{
 tiles_plot(
   data = NULL,
@@ -22,7 +22,7 @@ tiles_plot(
 
 \item{pred}{Vector with predicted values (numeric).}
 
-\item{bins}{Argument of class numeric specifying the number}
+\item{bins}{Argument of class numeric specifying the number of bins to create the tiles.}
 
 \item{orientation}{Argument of class string specifying the axis
 orientation, PO for predicted vs observed, and OP for
@@ -39,13 +39,18 @@ observed vs predicted. Default is orientation = "PO".}
 Object of class \code{ggplot}.
 }
 \description{
-Scatter plot of Predictions and Observations.
+It draws a tiles plot of predictions and observations with alternative
+axis orientation (P vs. O; O vs. P).
 }
 \details{
-Creates a scatter plot of sim vs. obs.
+It creates a tiles plot of predicted vs. observed values. The plot also includes
+the 1:1 line (solid line) and the linear regression line (dashed line). By default,
+it places the observed on the x-axis and the predicted on the y-axis (orientation = "PO").
+This can be inverted by changing the argument orientation = “OP".
+For more details, see \href{https://adriancorrendo.github.io/metrica/articles/vignette1.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 10)
 tiles_plot(obs = X, pred = Y)

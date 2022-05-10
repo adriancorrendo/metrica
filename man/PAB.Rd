@@ -2,7 +2,7 @@
 % Please edit documentation in R/PAB.R
 \name{PAB}
 \alias{PAB}
-\title{PAB}
+\title{Percentage Additive Bias (PAB)}
 \usage{
 PAB(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,22 +17,29 @@ PAB(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Percentage Additive Bias (PAB) component of the
-Mean Square Error (MSE).
+It estimates the contribution of the proportional bias to the Mean Squared Error (MSE)
+following Correndo et al. (2021).
 }
 \details{
-Calculates the PAB (\%) for a Predicted-Observed dataset
-following the symmetric MSE decomposition suggested by
-Correndo et al (2021).
+The PAB represents contribution of additive bias () component of the MSE.
+The PAB = 100*((mO-mP)^2/MSE), where mO, and mP represent the mean of observations
+and predictions, respectively.
+The greater the value the greater the contribution of additive bias to the prediction error.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 PAB(obs = X, pred = Y)
 }
+}
+\references{
+Correndo et al. (2021).
+Revisiting linear regression to test agreement in continuous predicted-observed datasets.
+\emph{Agric. Syst. 192, 103194.} \doi{10.1016/j.agsy.2021.103194}
 }

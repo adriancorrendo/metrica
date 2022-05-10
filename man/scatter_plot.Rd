@@ -2,7 +2,7 @@
 % Please edit documentation in R/scatter_plot.R
 \name{scatter_plot}
 \alias{scatter_plot}
-\title{scatter_plot}
+\title{Scatter plot of predicted and observed values}
 \usage{
 scatter_plot(
   data = NULL,
@@ -33,16 +33,21 @@ observed vs predicted. Default is orientation = "PO".}
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Object of class \code{ggplot}.
+an object of class \code{ggplot}.
 }
 \description{
-Scatter plot of Predictions and Observations.
+It draws a scatter plot of predictions and observations with alternative
+axis orientation (P vs. O; O vs. P).
 }
 \details{
-Creates a scatter plot of predicted vs. observed values.
+It creates a scatter plot of predicted vs. observed values. The plot also includes
+the 1:1 line (solid line) and the linear regression line (dashed line). By default,
+it places the observed on the x-axis and the predicted on the y-axis (orientation = "PO").
+This can be inverted by changing the argument orientation = “OP".
+For more details, see \href{https://adriancorrendo.github.io/metrica/articles/vignette1.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 10)
 scatter_plot(obs = X, pre = Y)

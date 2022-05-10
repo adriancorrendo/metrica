@@ -2,7 +2,7 @@
 % Please edit documentation in R/LCS.R
 \name{LCS}
 \alias{LCS}
-\title{LCS}
+\title{Lack of Correlation (LCS)}
 \usage{
 LCS(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,21 +17,28 @@ LCS(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Lack of correlation (LCS)component of the Mean Square Error (MSE).
+It estimates the lack of correlation (LCS) component of the Mean
+Squared Error (MSE) proposed by Kobayashi & Salam (2000).
 }
 \details{
-Calculates the LCS for a Predicted-Observed dataset
-following the MSE segregation suggested by Kobayashi and Salam
-(2000).
+The LCS represents the random component of the prediction error following
+Kobayashi & Salam (2000). The lower the value the less contribution to the MSE.
+However, it needs to be compared to MSE as its benchmark.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 LCS(obs = X, pred = Y)
 }
+}
+\references{
+Kobayashi & Salam (2000).
+Comparing simulated and measured values using mean squared deviation and its components.
+\emph{Agron. J. 92, 345–352.} \doi{10.2134/agronj2000.922345x}
 }

@@ -1,5 +1,7 @@
-#' @title metrics_summary
-#' @description Scatter plot of Predictions and Observations.
+#' @title Prediction Performance Summary
+#' @name metrics_summary
+#' @description It estimates a group of metrics characterizing the prediction performance
+#' for a continuous predicted-observed dataset. By default, it calculates all available metrics.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs vector with observed values (numeric).
 #' @param pred vector with predicted values (numeric).
@@ -11,10 +13,15 @@
 #' which will estimate all metrics available.
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return an object of class `tibble`.
-#' @details Creates a table with one colum per metric.
+#' @return an object of class `data.frame` containing all (or selected) metrics.
+#' @details 
+#' The user can choose to calculate a single metric, or to calculate all metrics at once.
+#' This function creates a data.frame with all (or selected) metrics in the `metrica`-package.
+#' If looking for specific metrics, the user can pass a list of desired metrics using the 
+#' argument “metrics_list” (e.g. metrics_list = c("R2","MAE", "RMSE", "RSR", "NSE", "KGE")).
+#' For the entire list of available metrics with formula, see [online documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 10)
 #' df <- data.frame(obs = X, pred = Y)

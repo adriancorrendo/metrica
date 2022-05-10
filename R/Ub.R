@@ -1,17 +1,23 @@
-#' @title Ub
-#' @description Proportion of the total sum of squares related to the
-#' mean bias (Ub). 
+#' @title Mean Bias Error Proportion (Ub) 
+#' @name Ub
+#' @description It estimates the Ub component from the sum of squares decomposition 
+#' described by Smith & Rose (1995). 
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Element of class `numeric`.
-#' @details Calculates the Ub for a Predicted-Observed dataset 
-#' following the sum of squares segregation suggested by Smith and
+#' @return an object of class `numeric`.
+#' @details The Ub estimates the proportion of the total sum of squares related to the
+#' mean bias following the sum of squares decomposition suggested by Smith and
 #' Rose (1995) also known as Theil's partial inequalities.
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references 
+#' Smith & Rose (1995). 
+#' Model goodness-of-fit analysis using regression and related techniques. 
+#' _Ecol. Model. 77, 49–64._ \doi{10.1016/0304-3800(93)E0074-D}
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- X + rnorm(n=100, mean = 0, sd = 3)

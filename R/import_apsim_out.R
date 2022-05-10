@@ -5,7 +5,7 @@
 #' @return Element of class `data.frame`.
 #' @details This function will generate a data frame object from an APSIM Classic *.out file.
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' # Pull the git repo and use the following filepath
 #' path <- "tests/testthat/examples/soybean.out"
 #' soybean.out <- import_apsim_out(filepath = path)

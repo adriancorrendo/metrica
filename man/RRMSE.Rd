@@ -2,7 +2,7 @@
 % Please edit documentation in R/RRMSE.R
 \name{RRMSE}
 \alias{RRMSE}
-\title{RRMSE}
+\title{Relative Root Mean Squared Error (RMSE)}
 \usage{
 RRMSE(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,20 +17,21 @@ RRMSE(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Relative Root Mean Squared Error.
+It estimates the RRMSE for a continuous predicted-observed dataset.
 }
 \details{
-Calculates the RRMSE for a Predicted-Observed dataset by
-normalizing the RMSE by the mean of observations. In literature, it
-can be also found as NRMSE (normalized root mean squared error),
-however, here we use RRMSE since several other alternatives to
+The RRMSE (\%) normalizes the Root Mean Squared Error (RMSE) by the mean
+of observations. It goes from 0 to infinity. The lower the better the prediction performance.
+In literature, it can be also found as NRMSE (normalized root mean squared error).
+However, here we use RRMSE since several other alternatives to
 "normalize" the RMSE exist (e.g., RSR, iqRMSE).
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)

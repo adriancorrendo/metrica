@@ -2,7 +2,7 @@
 % Please edit documentation in R/NSE.R
 \name{NSE}
 \alias{NSE}
-\title{NSE}
+\title{Nash-Sutcliffe Model Efficiency (NSE)}
 \usage{
 NSE(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,20 +17,28 @@ NSE(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Nash-Sutcliffe's Model Efficiency.
+It estimates the NSE for a continuous predicted-observed dataset.
 }
 \details{
-Calculates the NSE for a Predicted-Observed dataset
-following Nash and Sutcliffe (1970).
+The NSE measures general agreement. It is normalized (by the variance of the observations) and dimensionless.
+It is calculated using the absolute squared differences between the predictions and observations,
+which has been suggested as an issue due to over-sensitivity to outliers.
+It goes form -infinity to 1. The closer to 1 the better the prediction performance.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 9)
 NSE(obs = X, pred = Y)
 }
+}
+\references{
+Nash & Sutcliffe (1970).
+River flow forecasting through conceptual models part I - A discussion of principles.
+\emph{J. Hydrol. 10(3), 292-290.} \doi{10.1016/0022-1694(70)90255-6}
 }

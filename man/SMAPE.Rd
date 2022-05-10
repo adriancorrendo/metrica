@@ -2,7 +2,7 @@
 % Please edit documentation in R/SMAPE.R
 \name{SMAPE}
 \alias{SMAPE}
-\title{SMAPE}
+\title{Symmetric Mean Absolute Percentage Error (SMAPE).}
 \usage{
 SMAPE(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,19 +17,28 @@ SMAPE(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-Symmetric Mean Absolute Percentage Error.
+It estimates the SMAPE for a continuous predicted-observed dataset.
 }
 \details{
-Calculates the SMAPE for a Predicted-Observed dataset.
+The SMAPE (\%) is a normalized, dimensionless, and bounded (0\% to 200\%).
+It is a modification of the MAPE where the denominator is half
+of the sum of absolute differences between observations and predictions.
+This modification solves the problem of MAPE of producing negative or undefined values.
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
 SMAPE(obs = X, pred = Y)
 }
+}
+\references{
+Makridakis (1993).
+Accuracy measures: theoretical and practical concerns.
+\emph{Int. J. Forecast. 9, 527-529.} \doi{10.1016/0169-2070(93)90079-3}
 }

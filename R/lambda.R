@@ -1,16 +1,24 @@
-#' @title lambda
-#' @description Duveiller's et al. Lambda Agreemeent Coefficient
-#' (DLambda).
+#' @title Duveiller's Agreement Coefficient
+#' @name lambda
+#' @description It estimates the Duveiller's Agreement Coefficient (lambda).
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Element of class `numeric`.
-#' @details Calculates the lambda coefficient for a Predicted-Observed
-#' dataset following Duveiller et al. (2015).
+#' @return an object of class `numeric`.
+#' @details lambda measures both accuracy and precision. It is normalized, dimensionless, 
+#' bounded (-1;1), and symmetric (invariant to predicted-observed orientation).
+#' lambda is equivalent to CCC when r is greater or equal to 0. The closer to 1 the better. 
+#' Values towards zero indicate low correlation between observations and predictions.
+#' Negative values would indicate a negative relationship between predicted and observed.
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references 
+#' Duveiller et al. (2016).
+#' Revisiting the concept of a symmetric index of agreement for continuous datasets. 
+#' _Sci. Rep. 6, 1-14._ \doi{10.1038/srep19401}
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 9)
