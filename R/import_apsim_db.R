@@ -12,10 +12,7 @@
 #' @return An object of class `data.frame`, but it depends on the argument \sQuote{value} above
 #' @examples 
 #' \donttest{
-#' # Pull the git repo and use the following path
-#' soybean.db <- import_apsim_db(filename = "soybean.example.db", 
-#' folder = "tests/testthat/examples/")
-#' head(soybean.db)
+#' ## See [documentation](https://adriancorrendo.github.io/metrica/index.html)
 #' }
 #' @rdname import_apsim_db
 #' @importFrom RSQLite SQLite dbListTables

@@ -6,10 +6,7 @@
 #' @details This function will generate a data frame object from an APSIM Classic *.out file.
 #' @examples 
 #' \donttest{
-#' # Pull the git repo and use the following filepath
-#' path <- "tests/testthat/examples/soybean.out"
-#' soybean.out <- import_apsim_out(filepath = path)
-#' head(soybean.out)
+#' ## See [documentation](https://adriancorrendo.github.io/metrica/index.html)
 #' }
 #' @rdname import_apsim_out
 #' @importFrom utils read.delim

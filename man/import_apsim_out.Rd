@@ -23,10 +23,7 @@ Note: It imports one file at a time.
 }
 \examples{
 \donttest{
-# Pull the git repo and use the following filepath
-path <- "tests/testthat/examples/soybean.out"
-soybean.out <- import_apsim_out(filepath = path)
-head(soybean.out)
+## See [documentation](https://adriancorrendo.github.io/metrica/index.html)
 }
 }
 \seealso{

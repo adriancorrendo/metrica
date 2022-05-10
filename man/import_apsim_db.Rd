@@ -29,10 +29,7 @@ Source: https://github.com/femiguez/apsimx by F. Miguez.
 }
 \examples{
 \donttest{
-# Pull the git repo and use the following path
-soybean.db <- import_apsim_db(filename = "soybean.example.db", 
-folder = "tests/testthat/examples/")
-head(soybean.db)
+## See [documentation](https://adriancorrendo.github.io/metrica/index.html)
 }
 }
 \seealso{

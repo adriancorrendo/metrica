@@ -1,6 +1,6 @@
 #' @title Total Sum of Squares (TSS) 
 #' @name TSS
-#' @description It estimates the TSS for a predicted or observed vector.
+#' @description It estimates the TSS for observed vector.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -14,7 +14,7 @@
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- X + rnorm(n=100, mean = 0, sd = 3)
-#' TSS(obs = X, pred = Y)
+#' TSS(obs = X)
 #' }
 #' @rdname TSS
 #' @importFrom stats cor var

@@ -18,7 +18,7 @@ TSS(data = NULL, obs, na.rm = TRUE)
 an object of class \code{numeric}.
 }
 \description{
-It estimates the TSS for a predicted or observed vector.
+It estimates the TSS for observed vector.
 }
 \details{
 The TSS sum of the squared differences between the observations and its mean.
@@ -30,6 +30,6 @@ For the formula and more details, see \href{https://adriancorrendo.github.io/met
 set.seed(1)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- X + rnorm(n=100, mean = 0, sd = 3)
-TSS(obs = X, pred = Y)
+TSS(obs = X)
 }
 }
