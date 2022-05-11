@@ -95,14 +95,14 @@ Always keep in mind that predicted values should come from out-of-bag samples
 
 5. Ji & Gallo (2006). An agreement coefficient for image comparison. Photogramm. Eng. Remote Sensing 7, 823–833. \doi{10.14358/PERS.72.7.823} <br/>
 
-6. Kling et al. (2012). Runoff conditions in the upper Danube basin under an ensemble of climate
+6. Kirch (2008). Pearson’s Correlation Coefficient. In: Kirch W. (eds) Encyclopedia of Public Health. Springer, Dordrecht.\doi{10.1007/978-1-4020-5614-7_2569} <br/>
+
+7. Kling et al. (2012). Runoff conditions in the upper Danube basin under an ensemble of climate
 change scenarios. J. Hydrol., 424-425, 264-277. \doi{10.1016/j.jhydrol.2012.01.011} <br/>
 
-7. Kirch (2008). Pearson’s Correlation Coefficient. In: Kirch W. (eds) Encyclopedia of Public Health. Springer, Dordrecht.\doi{https://doi.org/10.1007/978-1-4020-5614-7_2569} <br/>
+8. Kobayashi & Salam (2000). Comparing simulated and measured values using mean squared deviation and its components. Agron. J. 92, 345–352. \doi{10.2134/agronj2000.922345x} <br/>
 
-8. Krause et al. (2005). Comparison of different efficiency criteria for hydrological model assessment. Adv. Geosci. 5, 89–97. \doi{10.5194/adgeo-5-89-2005} <br/>
-
-9. Kobayashi & Salam (2000). Comparing simulated and measured values using mean squared deviation and its components. Agron. J. 92, 345–352. \doi{10.2134/agronj2000.922345x} <br/>
+9. Krause et al. (2005). Comparison of different efficiency criteria for hydrological model assessment. Adv. Geosci. 5, 89–97. \doi{10.5194/adgeo-5-89-2005} <br/>
 
 10. Legates & McCabe (1999). Evaluating the use of “goodness-of-fit” measures in hydrologic and hydroclimatic model validation. Water Resour. Res. \doi{10.1029/1998WR900018} <br/>
 
@@ -116,7 +116,7 @@ Watershed Simulations. Trans. ASABE 50, 885–900. \doi{10.13031/2013.23153} <br
 
 14. Nash & Sutcliffe (1970). River flow forecasting through conceptual models part I - A discussion of principles. J. Hydrol. 10(3), 292-290. \doi{10.1016/0022-1694(70)90255-6} <br/>
 
-15. Robinson (1957). The statistical measurement of agreement. Am. Sociol. Rev. 22(1), 17-25. \doi{doi.org/10.2307/2088760} <br/>
+15. Robinson (1957). The statistical measurement of agreement. Am. Sociol. Rev. 22(1), 17-25. \doi{10.2307/2088760} <br/>
 
 16. Robinson (1959). The geometric interpretation of agreement. Am. Sociol. Rev. 24(3), 338-345 \doi{10.2307/2089382} <br/>
 
