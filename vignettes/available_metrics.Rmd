@@ -85,55 +85,55 @@ Always keep in mind that predicted values should come from out-of-bag samples
 
 ## References: <br/>
 
-1. Correndo et al. (2021). Revisiting linear regression to test agreement in continuous predicted-observed datasets. Agric. Syst. 192, 103194. <doi:10.1016/j.agsy.2021.103194>
+1. Correndo et al. (2021). Revisiting linear regression to test agreement in continuous predicted-observed datasets. Agric. Syst. 192, 103194. \doi{10.1016/j.agsy.2021.103194} <br/>
 
-2. Duveiller et al. (2016). Revisiting the concept of a symmetric index of agreement for continuous datasets. Sci. Rep. 6, 1-14. <doi:10.1038/srep19401> <br/>
+2. Duveiller et al. (2016). Revisiting the concept of a symmetric index of agreement for continuous datasets. Sci. Rep. 6, 1-14. \doi{10.1038/srep19401} <br/>
 
-3. Gupta et al. (1999). Status of automatic calibration for hydrologic models: Comparison with multilevel expert calibration. J. Hydrologic Eng. 4(2): 135-143. <doi:10.1061/(ASCE)1084-0699(1999)4:2(135)> 
+3. Gupta et al. (1999). Status of automatic calibration for hydrologic models: Comparison with multilevel expert calibration. J. Hydrologic Eng. 4(2): 135-143. \doi{10.1061/(ASCE)1084-0699(1999)4:2(135)}  <br/>
 
-4. Janssen & Heuberger (1995). Calibration of process-oriented models. Ecol. Modell. 83, 55-66. <doi:10.1016/0304-3800(95)00084-9> <br/>
+4. Janssen & Heuberger (1995). Calibration of process-oriented models. Ecol. Modell. 83, 55-66. \doi{10.1016/0304-3800(95)00084-9} <br/>
 
-5. Ji & Gallo (2006). An agreement coefficient for image comparison. Photogramm. Eng. Remote Sensing 7, 823–833. <doi:10.14358/PERS.72.7.823> <br/>
-
+5. Ji & Gallo (2006). An agreement coefficient for image comparison. Photogramm. Eng. Remote Sensing 7, 823–833. \doi{10.14358/PERS.72.7.823} <br/>
 
 6. Kling et al. (2012). Runoff conditions in the upper Danube basin under an ensemble of climate
-change scenarios. J. Hydrol., 424-425, 264-277. <doi:10.1016/j.jhydrol.2012.01.011> <br/>
+change scenarios. J. Hydrol., 424-425, 264-277. \doi{10.1016/j.jhydrol.2012.01.011} <br/>
 
-7. Kirch (2008). Pearson’s Correlation Coefficient. In: Kirch W. (eds) Encyclopedia of Public Health. Springer, Dordrecht.<doi:https://doi.org/10.1007/978-1-4020-5614-7_2569>
+7. Kirch (2008). Pearson’s Correlation Coefficient. In: Kirch W. (eds) Encyclopedia of Public Health. Springer, Dordrecht.\doi{https://doi.org/10.1007/978-1-4020-5614-7_2569} <br/>
 
-8. Krause et al. (2005). Comparison of different efficiency criteria for hydrological model assessment. Adv. Geosci. 5, 89–97. <doi:10.5194/adgeo-5-89-2005> <br/>
+8. Krause et al. (2005). Comparison of different efficiency criteria for hydrological model assessment. Adv. Geosci. 5, 89–97. \doi{10.5194/adgeo-5-89-2005} <br/>
 
-9. Kobayashi & Salam (2000). Comparing simulated and measured values using mean squared deviation and its components. Agron. J. 92, 345–352. <doi:10.2134/agronj2000.922345x> <br/>
+9. Kobayashi & Salam (2000). Comparing simulated and measured values using mean squared deviation and its components. Agron. J. 92, 345–352. \doi{10.2134/agronj2000.922345x} <br/>
 
-10. Legates & McCabe (1999). Evaluating the use of “goodness-of-fit” measures in hydrologic and hydroclimatic model validation. Water Resour. Res. <doi:10.1029/1998WR900018> <br/>
+10. Legates & McCabe (1999). Evaluating the use of “goodness-of-fit” measures in hydrologic and hydroclimatic model validation. Water Resour. Res. \doi{10.1029/1998WR900018} <br/>
 
 11. Lin (1989). A concordance correlation coefficient to evaluate reproducibility.
-Biometrics. 45 (1), 255–268. <doi:10.2307/2532051> <br/>
+Biometrics. 45 (1), 255–268. \doi{10.2307/2532051} <br/>
 
-12. Makridakis (1993). Accuracy measures: theoretical and practical concerns.Int. J. Forecast. 9, 527-529. <doi:10.1016/0169-2070(93)90079-3>
+12. Makridakis (1993). Accuracy measures: theoretical and practical concerns.Int. J. Forecast. 9, 527-529. \doi{10.1016/0169-2070(93)90079-3} <br/>
 
 13. Moriasi et al. (2007). Model Evaluation Guidelines for Systematic Quantification of Accuracy in
-Watershed Simulations. Trans. ASABE 50, 885–900. <doi:10.13031/2013.23153> <br/>
+Watershed Simulations. Trans. ASABE 50, 885–900. \doi{10.13031/2013.23153} <br/>
 
-14. Nash & Sutcliffe (1970). River flow forecasting through conceptual models part I - A discussion of principles. J. Hydrol. 10(3), 292-290. <doi:10.1016/0022-1694(70)90255-6> <br/>
+14. Nash & Sutcliffe (1970). River flow forecasting through conceptual models part I - A discussion of principles. J. Hydrol. 10(3), 292-290. \doi{10.1016/0022-1694(70)90255-6} <br/>
 
-15. Robinson (1957). The statistical measurement of agreement. Am. Sociol. Rev. 22(1), 17-25. <doi:doi.org/10.2307/2088760> <br/>
+15. Robinson (1957). The statistical measurement of agreement. Am. Sociol. Rev. 22(1), 17-25. \doi{doi.org/10.2307/2088760} <br/>
 
-16. Robinson (1959). The geometric interpretation of agreement. Am. Sociol. Rev. 24(3), 338-345 <doi:10.2307/2089382> <br/>
+16. Robinson (1959). The geometric interpretation of agreement. Am. Sociol. Rev. 24(3), 338-345 \doi{10.2307/2089382} <br/>
 
 17. Smith & Rose (1995). Model goodness-of-fit analysis using regression and related
-techniques. Ecol. Model. 77, 49–64. <doi:10.1016/0304-3800(93)E0074-D> <br/>
+techniques. Ecol. Model. 77, 49–64. \doi{10.1016/0304-3800(93)E0074-D} <br/>
 
-18. Warton et al. (2006). Bivariate line-fitting methods for allometry. Biol. Rev. Camb. Philos. Soc. 81, 259–291. <doi:10.1002/1521-4036(200203)44:2<161::AID-BIMJ161>3.0.CO;2-N> <br/>
+18. Warton et al. (2006). Bivariate line-fitting methods for allometry. Biol. Rev. Camb. Philos. Soc. 81, 259–291. \doi{10.1002/1521-4036(200203)44:2<161::AID-BIMJ161>3.0.CO;2-N} <br/>
 
-19. Willmott (1981). On the validation of models. Phys. Geogr. 2, 184–194. <doi:10.1080/02723646.1981.10642213> <br/>
+19. Willmott (1981). On the validation of models. Phys. Geogr. 2, 184–194. \doi{10.1080/02723646.1981.10642213} <br/>
 
-20. Willmott et al. (1985). Statistics for the evaluation and comparison of models. J. Geophys. Res. 90, 8995. <doi:10.1029/jc090ic05p08995> <br/>
+20. Willmott et al. (1985). Statistics for the evaluation and comparison of models. J. Geophys. Res. 90, 8995. \doi{10.1029/jc090ic05p08995} <br/>
 
-21. Willmott & Matsuura (2005). Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. Clim. Res. 30, 79–82. <doi:10.3354/cr030079> <br/>
+21. Willmott & Matsuura (2005). Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. Clim. Res. 30, 79–82. \doi{10.3354/cr030079} <br/>
 
-22. Willmott et al. (2012). A refined index of model performance. Int. J. Climatol. 32, 2088–2094. <doi:10.1002/joc.2419> <br/>
+22. Willmott et al. (2012). A refined index of model performance. Int. J. Climatol. 32, 2088–2094. \doi{10.1002/joc.2419} <br/>
 
-23. Yang et al. (2014). An evaluation of the statistical methods for testing the performance of crop models with observed data. Agric. Syst. 127, 81-89. <doi:10.1016/j.agsy.2014.01.008>
+23. Yang et al. (2014). An evaluation of the statistical methods for testing the performance of crop models with observed data. Agric. Syst. 127, 81-89. \doi{10.1016/j.agsy.2014.01.008} <br/>
+
 
 
