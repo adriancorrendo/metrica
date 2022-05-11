@@ -20,7 +20,8 @@ AC(data = NULL, obs, pred, na.rm = TRUE)
 an object of class \code{numeric}.
 }
 \description{
-It estimates the AC for a continuous predicted-observed dataset.
+It estimates the agreement coefficient suggested by Ji & Gallo (2006)
+for a continuous predicted-observed dataset.
 }
 \details{
 The Ji and Gallo's AC measures general agreement, including both accuracy and precision.

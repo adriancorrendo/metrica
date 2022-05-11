@@ -1,6 +1,6 @@
 #' @title Absolute Model Efficiency (E1)
 #' @name E1
-#' @description It estimates the E1 model efficiency
+#' @description It estimates the E1 model efficiency using absolute differences.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).

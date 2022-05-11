@@ -1,6 +1,7 @@
 #' @title Modified Index of Agreement (d1).
 #' @name d1
-#' @description It estimates the modified index of agreement (d1).
+#' @description It estimates the modified index of agreement (d1) using absolute
+#' differences following Willmott et al. (1985).
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).

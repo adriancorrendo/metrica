@@ -20,8 +20,8 @@ RAC(data = NULL, obs, pred, na.rm = TRUE)
 an object of class \code{numeric}.
 }
 \description{
-It estimates the RAC for a continuous predicted-observed dataset following
-Robinson (1957; 1959).
+It estimates the agreement coefficient suggested by
+Robinson (1957; 1959) for a continuous predicted-observed dataset.
 }
 \details{
 The RAC measures both accuracy and precision (general agreement). It is

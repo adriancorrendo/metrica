@@ -20,7 +20,7 @@ E1(data = NULL, obs, pred, na.rm = TRUE)
 an object of class \code{numeric}.
 }
 \description{
-It estimates the E1 model efficiency
+It estimates the E1 model efficiency using absolute differences.
 }
 \details{
 The E1 is a type of model efficiency that modifies the Nash-Sutcliffe model efficiency

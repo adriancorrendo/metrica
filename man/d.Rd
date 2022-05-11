@@ -20,7 +20,8 @@ d(data = NULL, obs, pred, na.rm = TRUE)
 an object of class \code{numeric}.
 }
 \description{
-It estimates the Willmott's index of agreement (d).
+It estimates the Willmott's index of agreement (d) for a
+continuous predicted-observed dataset.
 }
 \details{
 The d index it is a normalized, dimensionless metric that tests general agreement.

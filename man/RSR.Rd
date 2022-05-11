@@ -2,7 +2,7 @@
 % Please edit documentation in R/RSR.R
 \name{RSR}
 \alias{RSR}
-\title{RSR}
+\title{Root Mean Standard Deviation Ratio (RSR)}
 \usage{
 RSR(data = NULL, obs, pred, na.rm = TRUE)
 }
@@ -17,10 +17,11 @@ RSR(data = NULL, obs, pred, na.rm = TRUE)
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-Element of class \code{numeric}.
+an object of class \code{numeric}.
 }
 \description{
-RMSE:Standard Deviation Ratio (RSR).
+It estimates the MSE normalized by the standard deviation of observed values
+following Moriasi et al. (2007).
 }
 \details{
 The RSR normalizes the Root Mean Squared Error (RMSE) using the standard

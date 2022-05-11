@@ -52,7 +52,7 @@ Always keep in mind that predicted values should come from out-of-bag samples
 | 11| `RAE` | Relative Absolute Error |  RAE normalizes MAE with respect to the total absolute error. Lower bound at 0 (perfect fit) and no upper bound (infinity) |![equation](../man/figures/11.RAE.gif) |
 | 12| `RSE` | Relative Squared Error |  Proportion of the total sum of squares that corresponds to differences between predictions and observations (residual sum of squares)|![equation](../man/figures/12.RSE.gif) |
 | 13| `MBE` | Mean Bias Error |  Main bias error metric. Same units as the response variable. Related to differences between means of predictions and observations. Negative values indicate overestimation. Positive values indicate underestimation. Unbounded. Also known as average error. Janssen & Heuberger (1995) |![equation](../man/figures/13.MBE.gif) |
-| 14| `PBE` | Percentage Bias Error. |  Useful to identify systematic over or under predictions. Percentage units. As the MBE, PBE negative values indicate overestimation, while positive values indicate underestimation. Unbounded. Gupta et al. (1999) | ![equation](../man/figures/14.PBE.gif) |
+| 14| `PBE` | Percentage Bias Error |  Useful to identify systematic over or under predictions. Percentage units. As the MBE, PBE negative values indicate overestimation, while positive values indicate underestimation. Unbounded. Gupta et al. (1999) | ![equation](../man/figures/14.PBE.gif) |
 | 15| `PAB` | Percentage Additive Bias |  Percentage of the MSE related to systematic additive issues on the predictions. Related to difference of the means of predictions and observations | ![equation](../man/figures/15.PAB.gif) |
 | 16| `PPB` | Percentage Proportional Bias | Percentage of the MSE related to systematic proportionality issues on the predictions. Related to slope of regression line describing the bivariate scatter | ![equation](../man/figures/16.PPB.gif) |
 | 17| `MSE` | Mean Squared Error |  Comprises both accuracy and precision. High sensitivity to outliers | ![equation](../man/figures/17.MSE.gif) |
@@ -64,76 +64,76 @@ Always keep in mind that predicted values should come from out-of-bag samples
 | 23| `MLP` | Mean Lack of Precision | Variance component of MSE decomposition. Correndo et al. (2021)  | ![equation](../man/figures/23.MLP.gif) |
 | 24| `PLA` | Percentage Lack of Accuracy |  Percentage of the MSE related to lack of accuracy (systematic differences) on the predictions. Correndo et al. (2021) | ![equation](../man/figures/24.PLA.gif) |
 | 25| `PLP` | Percentage Lack of Precision |  Percentage of the MSE related to lack of precision (unsystematic differences) on the predictions. Correndo et al. (2021) | ![equation](../man/figures/25.PLP.gif) |
-| 26| `SB` | Squared Bias. |  Additive bias component, MSE decomposition. Kobayashi and Salam (2000) | ![equation](../man/figures/26.SB.gif) |
-| 27| `SDSD` | Product of Standard Deviations. | Proportional bias component,  MSE decomposition. Kobayashi and Salam (2000) | ![equation](../man/figures/27.SDSD.gif) |
-| 28| `LCS` | Lack of Correlation. |  Random error component, MSE decomposition. Kobayashi and Salam (2000) | ![equation](../man/figures/28.LCS.gif)|
-| 29| `Ue` | Random error proportion. | The Ue estimates the proportion of the total sum of squares related to the random error (unsystematic error or variance) following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil's partial inequalities | ![equation](../man/figures/29.Ue.gif) |
-| 30| `Uc` | Lack of Consistency error proportion.  |  The Uc estimates the proportion of the total sum of squares related to the lack of consistency (proportional bias) following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil's partial inequalities | ![equation](../man/figures/30.Uc.gif) |
-| 31| `Ub` | Mean Bias error proportion. |  The Ub estimates the proportion of the total sum of squares related to the mean bias following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil's partial inequalities | ![equation](../man/figures/31.Ub.gif) |
-| 32| `NSE` | Nash and Sutcliffe's Model Efficiency. |  Model efficiency using squared residuals normalized by the variance of observations. Nash and Sutcliffe (1970) | ![equation](../man/figures/32.NSE.gif) |
-| 33| `E1` | Absolute Model Efficiency. |  Model efficiency. Modification of NSE using absolute residuals instead of squared residuals. Legates and McCabe (1999) | ![equation](../man/figures/33.E1.gif) |
-| 34| `Erel` | Relative Model Efficiency. |  Compared to the NSE, the Erel is suggested as more sensitive to systematic over- or under-predictions. Krause et al. (2005) |![equation](../man/figures/34.Erel.gif) |
+| 26| `SB` | Squared Bias |  Additive bias component, MSE decomposition. Kobayashi and Salam (2000) | ![equation](../man/figures/26.SB.gif) |
+| 27| `SDSD` | Product of Standard Deviations | Proportional bias component,  MSE decomposition. Kobayashi and Salam (2000) | ![equation](../man/figures/27.SDSD.gif) |
+| 28| `LCS` | Lack of Correlation |  Random error component, MSE decomposition. Kobayashi and Salam (2000) | ![equation](../man/figures/28.LCS.gif)|
+| 29| `Ue` | Random error proportion | The Ue estimates the proportion of the total sum of squares related to the random error (unsystematic error or variance) following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil's partial inequalities | ![equation](../man/figures/29.Ue.gif) |
+| 30| `Uc` | Lack of Consistency error proportion  |  The Uc estimates the proportion of the total sum of squares related to the lack of consistency (proportional bias) following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil's partial inequalities | ![equation](../man/figures/30.Uc.gif) |
+| 31| `Ub` | Mean Bias error proportion |  The Ub estimates the proportion of the total sum of squares related to the mean bias following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil's partial inequalities | ![equation](../man/figures/31.Ub.gif) |
+| 32| `NSE` | Nash and Sutcliffe's Model Efficiency |  Model efficiency using squared residuals normalized by the variance of observations. Nash and Sutcliffe (1970) | ![equation](../man/figures/32.NSE.gif) |
+| 33| `E1` | Absolute Model Efficiency |  Model efficiency. Modification of NSE using absolute residuals instead of squared residuals. Legates and McCabe (1999) | ![equation](../man/figures/33.E1.gif) |
+| 34| `Erel` | Relative Model Efficiency |  Compared to the NSE, the Erel is suggested as more sensitive to systematic over- or under-predictions. Krause et al. (2005) |![equation](../man/figures/34.Erel.gif) |
 | 35| `KGE` | Kling-Gupta Model Efficiency |  Model efficiency with accuracy, precision, and consistency components. Kling et al. (2012) | ![equation](../man/figures/35.KGE.gif) |
-| 36| `d` | Index of Agreement. |  Measures accuracy and precision using squared residuals. Dimensionless (normalized). Bounded [0;1]. Asymmetric. Willmott (1981) |  ![equation](../man/figures/36.d.gif) |
-| 37| `d1` | Modified Index of Agreement. | Measures accuracy and precision using absolute residuals(1). Dimensionless (normalized). Bounded [0;1]. Asymmetric. Willmott et al. (1985)  | ![equation](../man/figures/37.d1.gif) |
-| 38| `d1r` | Refined Index of Agreement. |  Refines d1 by a modification on the denominator (potential error) to normalize absolute error. Willmott et al. (2012) | ![equation](../man/figures/38.d1r.gif) |
-| 39| `RAC` | Robinson's Agreement Coefficient. |  RAC measures both accuracy and precision (general agreement). Dimensionless (normalized). Bounded [0;1]. Symmetric. Robinson (1957; 1959) | ![equation](../man/figures/39a.RAC.gif) <br/> where <br/> ![equation](../man/figures/39b.RAC.gif) |
-| 40| `AC` | Ji and Gallo's Agreement Coefficient. |  AC measures both accuracy and precision (general agreement). Dimensionless (normalized). Positively bounded [-infinity;1]. Symmetric. Ji and Gallo (2006) |![equation](../man/figures/40.AC.gif) |
-| 41| `lambda` | Duveiller's Lambda Coefficient. | `lambda` measures both accuracy and precision. Dimensionless (normalized). Bounded [-1;1]. Symmetric. Equivalent to CCC when `r` is greater or equal to 0. Duveiller et al. (2016) | ![equation](../man/figures/41a.lambda.gif) <br/> where <br/> ![equation](../man/figures/41b.lambda.gif), <br/> otherwise <br/> ![equation](../man/figures/41c.lambda.gif)|
+| 36| `d` | Index of Agreement |  Measures accuracy and precision using squared residuals. Dimensionless (normalized). Bounded [0;1]. Asymmetric Willmott (1981) |  ![equation](../man/figures/36.d.gif) |
+| 37| `d1` | Modified Index of Agreement | Measures accuracy and precision using absolute residuals(1). Dimensionless (normalized). Bounded [0;1]. Asymmetric Willmott et al. (1985)  | ![equation](../man/figures/37.d1.gif) |
+| 38| `d1r` | Refined Index of Agreement |  Refines d1 by a modification on the denominator (potential error) to normalize absolute error. Willmott et al. (2012) | ![equation](../man/figures/38.d1r.gif) |
+| 39| `RAC` | Robinson's Agreement Coefficient |  RAC measures both accuracy and precision (general agreement). Dimensionless (normalized). Bounded [0;1]. Symmetric. Robinson (1957; 1959) | ![equation](../man/figures/39a.RAC.gif) <br/> where <br/> ![equation](../man/figures/39b.RAC.gif) |
+| 40| `AC` | Ji and Gallo's Agreement Coefficient |  AC measures both accuracy and precision (general agreement). Dimensionless (normalized). Positively bounded [-infinity;1]. Symmetric. Ji and Gallo (2006) |![equation](../man/figures/40.AC.gif) |
+| 41| `lambda` | Duveiller's Lambda Coefficient | `lambda` measures both accuracy and precision. Dimensionless (normalized). Bounded [-1;1]. Symmetric. Equivalent to CCC when `r` is greater or equal to 0. Duveiller et al. (2016) | ![equation](../man/figures/41a.lambda.gif) <br/> where <br/> ![equation](../man/figures/41b.lambda.gif), <br/> otherwise <br/> ![equation](../man/figures/41c.lambda.gif)|
 
 <br/>
 
 ## References: <br/>
 
-1. Correndo et al. (2021). Revisiting linear regression to test agreement in continuous predicted-observed datasets. Agric. Syst. 192, 103194. \doi{10.1016/j.agsy.2021.103194} <br/>
+1. Correndo et al. (2021). Revisiting linear regression to test agreement in continuous predicted-observed datasets. _Agric. Syst. 192, 103194._ \doi{10.1016/j.agsy.2021.103194} <br/>
 
-2. Duveiller et al. (2016). Revisiting the concept of a symmetric index of agreement for continuous datasets. Sci. Rep. 6, 1-14. \doi{10.1038/srep19401} <br/>
+2. Duveiller et al. (2016). Revisiting the concept of a symmetric index of agreement for continuous datasets. _Sci. Rep. 6, 1-14._ \doi{10.1038/srep19401} <br/>
 
-3. Gupta et al. (1999). Status of automatic calibration for hydrologic models: Comparison with multilevel expert calibration. J. Hydrologic Eng. 4(2): 135-143. \doi{10.1061/(ASCE)1084-0699(1999)4:2(135)}  <br/>
+3. Gupta et al. (1999). Status of automatic calibration for hydrologic models: Comparison with multilevel expert calibration. _J. Hydrologic Eng. 4(2): 135-143._ \doi{10.1061/(ASCE)1084-0699(1999)4:2(135) } <br/>
 
-4. Janssen & Heuberger (1995). Calibration of process-oriented models. Ecol. Modell. 83, 55-66. \doi{10.1016/0304-3800(95)00084-9} <br/>
+4. Janssen & Heuberger (1995). Calibration of process-oriented models. _Ecol. Modell. 83, 55-66._ \doi{10.1016/0304-3800(95)00084-9} <br/>
 
-5. Ji & Gallo (2006). An agreement coefficient for image comparison. Photogramm. Eng. Remote Sensing 7, 823–833. \doi{10.14358/PERS.72.7.823} <br/>
+5. Ji & Gallo (2006). An agreement coefficient for image comparison. _Photogramm. Eng. Remote Sensing 7, 823–833._ \doi{10.14358/PERS.72.7.823} <br/>
 
-6. Kirch (2008). Pearson’s Correlation Coefficient. In: Kirch W. (eds) Encyclopedia of Public Health. Springer, Dordrecht.\doi{10.1007/978-1-4020-5614-7_2569} <br/>
+6. Kling et al. (2012). Runoff conditions in the upper Danube basin under an ensemble of climate
+change scenarios. _J. Hydrol., 424-425, 264-277._ \doi{10.1016/j.jhydrol.2012.01.011} <br/>
 
-7. Kling et al. (2012). Runoff conditions in the upper Danube basin under an ensemble of climate
-change scenarios. J. Hydrol., 424-425, 264-277. \doi{10.1016/j.jhydrol.2012.01.011} <br/>
+7. Kirch (2008). Pearson’s Correlation Coefficient. _In: Kirch W. (eds) Encyclopedia of Public Health. Springer, Dordrecht._ \doi{10.1007/978-1-4020-5614-7_2569} <br/>
 
-8. Kobayashi & Salam (2000). Comparing simulated and measured values using mean squared deviation and its components. Agron. J. 92, 345–352. \doi{10.2134/agronj2000.922345x} <br/>
+8. Krause et al. (2005). Comparison of different efficiency criteria for hydrological model assessment. _Adv. Geosci. 5, 89–97._ \doi{10.5194/adgeo-5-89-2005} <br/>
 
-9. Krause et al. (2005). Comparison of different efficiency criteria for hydrological model assessment. Adv. Geosci. 5, 89–97. \doi{10.5194/adgeo-5-89-2005} <br/>
+9. Kobayashi & Salam (2000). Comparing simulated and measured values using mean squared deviation and its components. _Agron. J. 92, 345–352._ \doi{10.2134/agronj2000.922345x} <br/>
 
-10. Legates & McCabe (1999). Evaluating the use of “goodness-of-fit” measures in hydrologic and hydroclimatic model validation. Water Resour. Res. \doi{10.1029/1998WR900018} <br/>
+10. Legates & McCabe (1999). Evaluating the use of “goodness-of-fit” measures in hydrologic and hydroclimatic model validation. _Water Resour. Res._ \doi{10.1029/1998WR900018} <br/>
 
 11. Lin (1989). A concordance correlation coefficient to evaluate reproducibility.
-Biometrics. 45 (1), 255–268. \doi{10.2307/2532051} <br/>
+_Biometrics 45 (1), 255–268._ \doi{10.2307/2532051} <br/>
 
-12. Makridakis (1993). Accuracy measures: theoretical and practical concerns.Int. J. Forecast. 9, 527-529. \doi{10.1016/0169-2070(93)90079-3} <br/>
+12. Makridakis (1993). Accuracy measures: theoretical and practical concerns. _Int. J. Forecast. 9, 527-529._ \doi{10.1016/0169-2070(93)90079-3} <br/>
 
 13. Moriasi et al. (2007). Model Evaluation Guidelines for Systematic Quantification of Accuracy in
-Watershed Simulations. Trans. ASABE 50, 885–900. \doi{10.13031/2013.23153} <br/>
+Watershed Simulations. _Trans. ASABE 50, 885–900._ \doi{10.13031/2013.23153} <br/>
 
-14. Nash & Sutcliffe (1970). River flow forecasting through conceptual models part I - A discussion of principles. J. Hydrol. 10(3), 292-290. \doi{10.1016/0022-1694(70)90255-6} <br/>
+14. Nash & Sutcliffe (1970). River flow forecasting through conceptual models part I - A discussion of principles. _J. Hydrol. 10(3), 292-290._ \doi{10.1016/0022-1694(70)90255-6} <br/>
 
-15. Robinson (1957). The statistical measurement of agreement. Am. Sociol. Rev. 22(1), 17-25. \doi{10.2307/2088760} <br/>
+15. Robinson (1957). The statistical measurement of agreement. _Am. Sociol. Rev. 22(1), 17-25._ \doi{10.2307/2088760} <br/>
 
-16. Robinson (1959). The geometric interpretation of agreement. Am. Sociol. Rev. 24(3), 338-345 \doi{10.2307/2089382} <br/>
+16. Robinson (1959). The geometric interpretation of agreement. _Am. Sociol. Rev. 24(3), 338-345._ \doi{10.2307/2089382} <br/>
 
 17. Smith & Rose (1995). Model goodness-of-fit analysis using regression and related
-techniques. Ecol. Model. 77, 49–64. \doi{10.1016/0304-3800(93)E0074-D} <br/>
+techniques. _Ecol. Model. 77, 49–64._ \doi{10.1016/0304-3800(93)E0074-D} <br/>
 
-18. Warton et al. (2006). Bivariate line-fitting methods for allometry. Biol. Rev. Camb. Philos. Soc. 81, 259–291. \doi{10.1002/1521-4036(200203)44:2<161::AID-BIMJ161>3.0.CO;2-N} <br/>
+18. Warton et al. (2006). Bivariate line-fitting methods for allometry. _Biol. Rev. Camb. Philos. Soc. 81, 259–291._ \doi{10.1002/1521-4036(200203)44:2<161::AID-BIMJ161>3.0.CO;2-N} <br/>
 
-19. Willmott (1981). On the validation of models. Phys. Geogr. 2, 184–194. \doi{10.1080/02723646.1981.10642213} <br/>
+19. Willmott (1981). On the validation of models. _Phys. Geogr. 2, 184–194._ \doi{10.1080/02723646.1981.10642213} <br/>
 
-20. Willmott et al. (1985). Statistics for the evaluation and comparison of models. J. Geophys. Res. 90, 8995. \doi{10.1029/jc090ic05p08995} <br/>
+20. Willmott et al. (1985). Statistics for the evaluation and comparison of models. _J. Geophys. Res. 90, 8995._ \doi{10.1029/jc090ic05p08995} <br/>
 
-21. Willmott & Matsuura (2005). Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. Clim. Res. 30, 79–82. \doi{10.3354/cr030079} <br/>
+21. Willmott & Matsuura (2005). Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. _Clim. Res. 30, 79–82._ \doi{10.3354/cr030079} <br/>
 
-22. Willmott et al. (2012). A refined index of model performance. Int. J. Climatol. 32, 2088–2094. \doi{10.1002/joc.2419} <br/>
+22. Willmott et al. (2012). A refined index of model performance. _Int. J. Climatol. 32, 2088–2094._  \doi{10.1002/joc.2419} <br/>
 
-23. Yang et al. (2014). An evaluation of the statistical methods for testing the performance of crop models with observed data. Agric. Syst. 127, 81-89. \doi{10.1016/j.agsy.2014.01.008} <br/>
+23. Yang et al. (2014). An evaluation of the statistical methods for testing the performance of crop models with observed data. _Agric. Syst. 127, 81-89._ \doi{10.1016/j.agsy.2014.01.008} <br/>
 
 
 

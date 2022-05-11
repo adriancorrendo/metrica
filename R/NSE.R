@@ -1,6 +1,7 @@
 #' @title Nash-Sutcliffe Model Efficiency (NSE) 
 #' @name NSE
-#' @description It estimates the NSE for a continuous predicted-observed dataset.
+#' @description It estimates the model efficiency suggested by Nash & Sutcliffe (1970)
+#' for a continuous predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).

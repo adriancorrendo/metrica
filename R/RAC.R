@@ -1,7 +1,7 @@
 #' @title Robinson's Agreement Coefficient (RAC).
 #' @name RAC
-#' @description It estimates the RAC for a continuous predicted-observed dataset following
-#' Robinson (1957; 1959).
+#' @description It estimates the agreement coefficient suggested by
+#' Robinson (1957; 1959) for a continuous predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).

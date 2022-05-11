@@ -20,7 +20,8 @@ CCC(data = NULL, obs, pred, na.rm = TRUE)
 an object of class \code{numeric}.
 }
 \description{
-It estimates the Concordance Correlation Coefficient (CCC)
+It estimates the Concordance Correlation Coefficient (CCC) for
+a continuous predicted-observed dataset.
 }
 \details{
 The CCC it is a normalized coefficient that tests general agreement.

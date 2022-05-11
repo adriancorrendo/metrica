@@ -20,7 +20,7 @@ Erel(data = NULL, obs, pred, na.rm = TRUE)
 an object of class \code{numeric}.
 }
 \description{
-It estimates the Erel model efficiency
+It estimates the Erel model efficiency using differences to observations.
 }
 \details{
 The Erel model efficiency normalizes both residuals (numerator) and observed

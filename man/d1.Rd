@@ -20,7 +20,8 @@ d1(data = NULL, obs, pred, na.rm = TRUE)
 an object of class \code{numeric}.
 }
 \description{
-It estimates the modified index of agreement (d1).
+It estimates the modified index of agreement (d1) using absolute
+differences following Willmott et al. (1985).
 }
 \details{
 Similar to d, the d1 index it is a normalized, dimensionless metric that tests general agreement.

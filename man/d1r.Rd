@@ -20,7 +20,8 @@ d1r(data = NULL, obs, pred, na.rm = TRUE)
 an object of class \code{numeric}.
 }
 \description{
-It estimates the refined index of agreement (d1r).
+It estimates the refined index of agreement (d1r) following
+Willmott et al. (2012).
 }
 \details{
 Similar to d, and d1, the d1r index it is a normalized, dimensionless

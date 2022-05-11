@@ -1,6 +1,7 @@
 #' @title Refined Index of Agreement (d1).
 #' @name d1r
-#' @description It estimates the refined index of agreement (d1r).
+#' @description It estimates the refined index of agreement (d1r) following 
+#' Willmott et al. (2012).
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).

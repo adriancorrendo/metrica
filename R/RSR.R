@@ -1,11 +1,13 @@
-#' @title RSR
-#' @description RMSE:Standard Deviation Ratio (RSR).
+#' @title Root Mean Standard Deviation Ratio (RSR)
+#' @name RSR
+#' @description It estimates the MSE normalized by the standard deviation of observed values
+#' following Moriasi et al. (2007).
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return Element of class `numeric`.
+#' @return an object of class `numeric`.
 #' @details The RSR normalizes the Root Mean Squared Error (RMSE) using the standard 
 #' deviation of observed values. It goes from  a optimal value of 0 to infinity. 
 #' Based on RSR, Moriasi et al. (2007) indicates performance ratings as: 

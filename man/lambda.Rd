@@ -20,7 +20,8 @@ lambda(data = NULL, obs, pred, na.rm = TRUE)
 an object of class \code{numeric}.
 }
 \description{
-It estimates the Duveiller's Agreement Coefficient (lambda).
+It estimates the agreement coefficient (lambda) suggested by
+Duveiller et al. (2016) for a continuous predicted-observed dataset.
 }
 \details{
 lambda measures both accuracy and precision. It is normalized, dimensionless,

@@ -1,6 +1,7 @@
 #' @title Willmott's Index of Agreement (d)
 #' @name d
-#' @description It estimates the Willmott's index of agreement (d).
+#' @description It estimates the Willmott's index of agreement (d) for a 
+#' continuous predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).

@@ -20,7 +20,8 @@ NSE(data = NULL, obs, pred, na.rm = TRUE)
 an object of class \code{numeric}.
 }
 \description{
-It estimates the NSE for a continuous predicted-observed dataset.
+It estimates the model efficiency suggested by Nash & Sutcliffe (1970)
+for a continuous predicted-observed dataset.
 }
 \details{
 The NSE measures general agreement. It is normalized (by the variance of the observations) and dimensionless.

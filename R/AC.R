@@ -1,6 +1,7 @@
 #' @title Ji and Gallo's Agreement Coefficient (AC)
 #' @name AC
-#' @description It estimates the AC for a continuous predicted-observed dataset.
+#' @description It estimates the agreement coefficient suggested by Ji & Gallo (2006)
+#' for a continuous predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).

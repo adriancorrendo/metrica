@@ -1,6 +1,7 @@
 #' @title Duveiller's Agreement Coefficient
 #' @name lambda
-#' @description It estimates the Duveiller's Agreement Coefficient (lambda).
+#' @description It estimates the agreement coefficient (lambda) suggested by
+#' Duveiller et al. (2016) for a continuous predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).

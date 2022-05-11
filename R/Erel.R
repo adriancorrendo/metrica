@@ -1,6 +1,6 @@
 #' @title Relative Model Efficiency (Erel)
 #' @name Erel
-#' @description It estimates the Erel model efficiency
+#' @description It estimates the Erel model efficiency using differences to observations.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
