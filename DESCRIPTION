@@ -1,7 +1,7 @@
 Package: metrica
 Title: Prediction Performance Metrics
-Version: 1.2.3
-Date: 2022-05-10
+Version: 1.2.3.9000
+Date: 2022-05-12
 Authors@R: c(
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("cre", "cph"), comment = c(ORCID = "0000-0002-4172-289X")),
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("aut"), comment = c(ORCID = "0000-0002-4172-289X")),

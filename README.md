@@ -5,11 +5,20 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/metrica)](https://CRAN.R-project.org/package=metrica)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/metrica?color=blue)](https://r-pkg.org/pkg/metrica)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/last-month/metrica?color=blue)](https://r-pkg.org/pkg/metrica)
+<br/>
+
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&svg=true)](https://ci.appveyor.com/project/adriancorrendo/metrica)
 [![R-CMD-check](https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg)](https://github.com/adriancorrendo/metrica/actions)
 [![codecov](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn)](https://app.codecov.io/gh/adriancorrendo/metrica)
-[![DOI](https://zenodo.org/badge/414721777.svg)](https://zenodo.org/badge/latestdoi/414721777)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6543296.svg)](https://doi.org/10.5281/zenodo.6543296)
+
 <!-- badges: end -->
 
 The goal of the *metrica* package is to offer users of point-forecast
