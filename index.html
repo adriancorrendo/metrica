@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +71,8 @@
 <div class="page-header"><h1 id="metrica-prediction-performance-metrics">metrica: Prediction performance metrics.<a class="anchor" aria-label="anchor" href="#metrica-prediction-performance-metrics"></a>
 </h1></div>
 <!-- badges: start -->
-<p>The goal of the <em>metrica</em> package is to offer users of point-forecast models a toolbox with a wide spectrum of goodness of fit and error metrics (+40) accounting for different aspects of the agreement between predicted and observed values. Also, some basic visualization functions to assess models performance (e.g. scatter with regression line; Bland-Altman plot) are provided in customizable format (ggplot).</p>
+
+<!-- badges: end --><p>The goal of the <em>metrica</em> package is to offer users of point-forecast models a toolbox with a wide spectrum of goodness of fit and error metrics (+40) accounting for different aspects of the agreement between predicted and observed values. Also, some basic visualization functions to assess models performance (e.g. scatter with regression line; Bland-Altman plot) are provided in customizable format (ggplot).</p>
 <p><img src="reference/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;"><br></p>
 <p>This package contains +40 functions. Two arguments are always required: <code>observed</code>(Oi; a.k.a. actual, measured, truth, target) and <code>predicted</code> (Pi; a.k.a. simulated, fitted) values. Also, there is an optional <code>data</code> arg. that allows to call an existing data frame containing both observed and predicted vectors. <br></p>
 <p>Some functions, also require to define axis <code>orientation</code>, such as the slope of linear regression describing the bivariate scatter. Current included functions cover the world of “regression error” metrics (i.e. prediction performance for continuous variables). Classification error metrics coming soon. <br></p>
@@ -366,10 +367,13 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://CRAN.R-project.org/package=metrica" class="external-link"><img src="https://www.r-pkg.org/badges/version/metrica" alt="CRAN status"></a></li>
+<li><a href="https://r-pkg.org/pkg/metrica" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/metrica?color=blue" alt="CRAN RStudio mirror downloads"></a></li>
+<li><a href="https://r-pkg.org/pkg/metrica" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/last-month/metrica?color=blue" alt="CRAN RStudio mirror downloads"></a></li>
 <li><a href="https://ci.appveyor.com/project/adriancorrendo/metrica" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://github.com/adriancorrendo/metrica/actions" class="external-link"><img src="https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://app.codecov.io/gh/adriancorrendo/metrica" class="external-link"><img src="https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn" alt="codecov"></a></li>
-<li><a href="https://zenodo.org/badge/latestdoi/414721777" class="external-link"><img src="https://zenodo.org/badge/414721777.svg" alt="DOI"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.6543296" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6543296.svg" alt="DOI"></a></li>
 </ul>
 </div>
 
