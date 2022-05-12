@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,8 +84,11 @@
 <div class="section level2">
 <h2 id="1-installation">1. Installation<a class="anchor" aria-label="anchor" href="#1-installation"></a>
 </h2>
-<p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>You can install the CRAN version of <code>metrica</code> with: <br></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"metrica"</span><span class="op">)</span></code></pre></div>
+<p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"adriancorrendo/metrica"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -99,7 +102,7 @@
 <h2 id="3-example-code">3. Example Code<a class="anchor" aria-label="anchor" href="#3-example-code"></a>
 </h2>
 <p>This is a basic example which shows you the core functions of <em>metrica</em>:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adriancorrendo.github.io/metrica/">metrica</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span>
@@ -130,7 +133,7 @@
              orientation <span class="op">=</span> <span class="st">"PO"</span><span class="op">)</span>
 <span class="va">barley.scat.plot</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-2-1.png" width="100%"></p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Alternative using vectors instead of dataframe</span>
 <span class="co">#metrica::scatter_plot(obs = example.data$obs, pred = example.data$pred)</span>
 
@@ -140,14 +143,14 @@
 
 <span class="va">barley.tiles.plot</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-2-2.png" width="100%"></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># 2.c. Create a Bland-Altman plot</span>
 <span class="va">barley.ba.plot</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/bland_altman_plot.html">bland_altman_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>,
                            obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span>
 
 <span class="va">barley.ba.plot</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-2-3.png" width="100%"></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># 3. Get metrics estimates</span>
 <span class="co"># 3.a. Single estimates</span>
 <span class="co"># 3.a.i. Estimate coefficient of determination (R2)</span>
@@ -227,7 +230,7 @@
 <div class="section level2">
 <h2 id="4-print-metrics-in-a-plot">4. Print metrics in a plot<a class="anchor" aria-label="anchor" href="#4-print-metrics-in-a-plot"></a>
 </h2>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/wheat.html">wheat</a></span>
 
 <span class="co"># B. Create list of selected metrics</span>
@@ -240,7 +243,7 @@
 <div class="section level2">
 <h2 id="5-import-simulated-data-from-apsim-classic-out-and-apsim-nextgen-db">5. Import simulated data from APSIM Classic (.out) and APSIM NextGen (.db)<a class="anchor" aria-label="anchor" href="#5-import-simulated-data-from-apsim-classic-out-and-apsim-nextgen-db"></a>
 </h2>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Use import_apsim_out for APSIM Classic output</span>
 <span class="va">soybean.out</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/import_apsim_out.html">import_apsim_out</a></span><span class="op">(</span>filepath <span class="op">=</span> <span class="st">"tests/testthat/examples/soybean.out"</span><span class="op">)</span>
 
