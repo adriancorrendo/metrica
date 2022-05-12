@@ -62,6 +62,12 @@ case](https://adriancorrendo.github.io/metrica/articles/vignette1.html)
 
 ## 1. Installation
 
+You can install the CRAN version of `metrica` with: <br/>
+
+``` r
+install.packages("metrica")
+```
+
 You can install the development version from
 [GitHub](https://github.com/) with:
 
