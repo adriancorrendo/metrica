@@ -260,7 +260,7 @@ For example, to calculate <span class="math inline">\(R^{2}\)</span>, we can use
 <p>If the user wants just specific metrics, within the same function <code><a href="../reference/metrics_summary.html">metrics_summary()</a></code>, user can pass a list of desired metrics using the argument “metrics_list” as follows:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">my.metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"R2"</span>,<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"RSR"</span>, <span class="st">"NSE"</span>, <span class="st">"KGE"</span><span class="op">)</span>
+<span class="va">my.metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"R2"</span>,<span class="st">"MBE"</span>, <span class="st">"RMSE"</span>, <span class="st">"RSR"</span>, <span class="st">"NSE"</span>, <span class="st">"KGE"</span>, <span class="st">"CCC"</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wheat</span>,   
                 obs <span class="op">=</span> <span class="va">obs</span>,    
@@ -268,11 +268,12 @@ For example, to calculate <span class="math inline">\(R^{2}\)</span>, we can use
                 metrics_list <span class="op">=</span> <span class="va">my.metrics</span><span class="op">)</span> 
 <span class="co">#&gt;   Metric      Score</span>
 <span class="co">#&gt; 1     R2 0.84555376</span>
-<span class="co">#&gt; 2    MAE 1.32781184</span>
-<span class="co">#&gt; 3   RMSE 1.66644142</span>
-<span class="co">#&gt; 4    RSR 0.09678632</span>
-<span class="co">#&gt; 5    NSE 0.83871126</span>
-<span class="co">#&gt; 6    KGE 0.91064709</span></code></pre></div>
+<span class="co">#&gt; 2    CCC 0.91553253</span>
+<span class="co">#&gt; 3    MBE 0.31815953</span>
+<span class="co">#&gt; 4   RMSE 1.66644142</span>
+<span class="co">#&gt; 5    RSR 0.09678632</span>
+<span class="co">#&gt; 6    NSE 0.83871126</span>
+<span class="co">#&gt; 7    KGE 0.91064709</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="visual-and-numerical-assessment-combined">5 Visual and numerical assessment combined<a class="anchor" aria-label="anchor" href="#visual-and-numerical-assessment-combined"></a>
