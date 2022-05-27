@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -204,14 +204,14 @@
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">nest</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_head</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 4 x 2</span>
+<span class="co">#&gt; # A tibble: 4 × 2</span>
 <span class="co">#&gt; # Groups:   id [4]</span>
 <span class="co">#&gt;   id       data              </span>
 <span class="co">#&gt;   &lt;chr&gt;    &lt;list&gt;            </span>
-<span class="co">#&gt; 1 barley   &lt;tibble [69 x 2]&gt; </span>
-<span class="co">#&gt; 2 chickpea &lt;tibble [39 x 2]&gt; </span>
-<span class="co">#&gt; 3 sorghum  &lt;tibble [36 x 2]&gt; </span>
-<span class="co">#&gt; 4 wheat    &lt;tibble [137 x 2]&gt;</span>
+<span class="co">#&gt; 1 barley   &lt;tibble [69 × 2]&gt; </span>
+<span class="co">#&gt; 2 chickpea &lt;tibble [39 × 2]&gt; </span>
+<span class="co">#&gt; 3 sorghum  &lt;tibble [36 × 2]&gt; </span>
+<span class="co">#&gt; 4 wheat    &lt;tibble [137 × 2]&gt;</span>
 
 <span class="co"># 4.b. Run </span>
 <span class="va">multiple.sum</span> <span class="op">&lt;-</span> <span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -219,13 +219,13 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>performance <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">data</span>, <span class="op">~</span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">.</span>, obs <span class="op">=</span> <span class="va">obs</span>, pred <span class="op">=</span> <span class="va">pred</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">multiple.sum</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 4 x 3</span>
+<span class="co">#&gt; # A tibble: 4 × 3</span>
 <span class="co">#&gt;   id       data               performance  </span>
 <span class="co">#&gt;   &lt;chr&gt;    &lt;list&gt;             &lt;list&gt;       </span>
-<span class="co">#&gt; 1 wheat    &lt;tibble [137 x 2]&gt; &lt;df [41 x 2]&gt;</span>
-<span class="co">#&gt; 2 barley   &lt;tibble [69 x 2]&gt;  &lt;df [41 x 2]&gt;</span>
-<span class="co">#&gt; 3 sorghum  &lt;tibble [36 x 2]&gt;  &lt;df [41 x 2]&gt;</span>
-<span class="co">#&gt; 4 chickpea &lt;tibble [39 x 2]&gt;  &lt;df [41 x 2]&gt;</span></code></pre></div>
+<span class="co">#&gt; 1 wheat    &lt;tibble [137 × 2]&gt; &lt;df [41 × 2]&gt;</span>
+<span class="co">#&gt; 2 barley   &lt;tibble [69 × 2]&gt;  &lt;df [41 × 2]&gt;</span>
+<span class="co">#&gt; 3 sorghum  &lt;tibble [36 × 2]&gt;  &lt;df [41 × 2]&gt;</span>
+<span class="co">#&gt; 4 chickpea &lt;tibble [39 × 2]&gt;  &lt;df [41 × 2]&gt;</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="4-print-metrics-in-a-plot">4. Print metrics in a plot<a class="anchor" aria-label="anchor" href="#4-print-metrics-in-a-plot"></a>
@@ -234,10 +234,14 @@
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/wheat.html">wheat</a></span>
 
 <span class="co"># B. Create list of selected metrics</span>
-<span class="va">selected.metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MAE"</span>,<span class="st">"RMSE"</span>, <span class="st">"RRMSE"</span>, <span class="st">"R2"</span>, <span class="st">"CCC"</span>, <span class="st">"KGE"</span>, <span class="st">"PLA"</span>, <span class="st">"PLP"</span><span class="op">)</span>
+<span class="va">selected.metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MAE"</span>,<span class="st">"RMSE"</span>, <span class="st">"RRMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NSE"</span>, <span class="st">"KGE"</span>, <span class="st">"PLA"</span>, <span class="st">"PLP"</span><span class="op">)</span>
 
-<span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, obs <span class="op">=</span> <span class="va">obs</span>, pred <span class="op">=</span> <span class="va">pred</span>, print_metrics <span class="op">=</span> <span class="cn">TRUE</span>, 
-                      metrics_list <span class="op">=</span> <span class="va">selected.metrics</span><span class="op">)</span></code></pre></div>
+<span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, 
+                              obs <span class="op">=</span> <span class="va">obs</span>, pred <span class="op">=</span> <span class="va">pred</span>, 
+                              print_metrics <span class="op">=</span> <span class="cn">TRUE</span>, 
+                              metrics_list <span class="op">=</span> <span class="va">selected.metrics</span><span class="op">)</span>
+
+<span class="va">plot</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
 </div>
 <div class="section level2">

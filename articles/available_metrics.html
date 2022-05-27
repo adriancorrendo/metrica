@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +74,7 @@
       <img src="" class="logo" alt=""><h1>Available prediction performance metrics and indices</h1>
                         <h4 data-toc-skip class="author">Adrian Correndo</h4>
             
-            <h4 data-toc-skip class="date">2022-05-12</h4>
+            <h4 data-toc-skip class="date">2022-05-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/vignettes/available_metrics.Rmd" class="external-link"><code>vignettes/available_metrics.Rmd</code></a></small>
       <div class="d-none name"><code>available_metrics.Rmd</code></div>
@@ -85,8 +85,11 @@
 <div class="section level2">
 <h2 id="performance-metrics-available-in-metrica">Performance metrics available in <em>metrica</em><a class="anchor" aria-label="anchor" href="#performance-metrics-available-in-metrica"></a>
 </h2>
-<p>The <strong>metrica</strong> package contains +40 functions. Two arguments are always required: <code>observed</code>(Oi; a.k.a. actual, measured, truth, target) and <code>predicted</code> (Pi; a.k.a. simulated, fitted) values. Also, there is an optional <code>data</code> arg. that allows to call an existing data frame containing both observed and predicted vectors. <br></p>
-<p>Some functions, also require to define axis <code>orientation</code>, such as the slope of linear regression describing the bivariate scatter. Current included functions cover the world of “regression error” metrics (i.e. prediction performance for continuous variables). Classification error metrics coming soon. <br></p>
+<p>The <strong>metrica</strong> package contains +40 functions. <br></p>
+<p>Two arguments are always required: <code>observed</code>(Oi; a.k.a. actual, measured, truth, target) and <code>predicted</code> (Pi; a.k.a. simulated, fitted, modelled) values. Also, there is an optional <code>data</code> arg. that allows to call an existing data frame containing both observed and predicted vectors. <br></p>
+<p>Some functions, also require to define axis <code>orientation</code>, such as the slope of linear regression describing the bivariate scatter. <br></p>
+<p>Current included functions cover the world of “regression error” metrics (i.e.  prediction performance for continuous variables). <br></p>
+<p>Classification error metrics coming soon. <br></p>
 <p>Always keep in mind that predicted values should come from out-of-bag samples (unseen by training set) to avoid overestimation of prediction performance. <br></p>
 <table class="table">
 <colgroup>
