@@ -22,11 +22,12 @@ status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metric
 <!-- badges: end -->
 
 The goal of the *metrica* package is to offer users of point-forecast
-models a toolbox with a wide spectrum of goodness of fit and error
-metrics (+40) accounting for different aspects of the agreement between
-predicted and observed values. Also, some basic visualization functions
-to assess models performance (e.g. scatter with regression line;
-Bland-Altman plot) are provided in customizable format (ggplot).
+simulation models (e.g. APSIM, DSSAT, DNDC, Machine Learning) a toolbox
+with a wide spectrum of goodness of fit and error metrics (+40)
+accounting for different aspects of the agreement between predicted and
+observed values. Also, some basic visualization functions to assess
+models performance (e.g. scatter with regression line; Bland-Altman
+plot) are provided in customizable format (ggplot).
 
 <img src="man/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;">
 <br/>

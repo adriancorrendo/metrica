@@ -138,7 +138,7 @@ metrics_summary(data = wheat,
 If the user wants just specific metrics, within the same function `metrics_summary()`, user can pass a list of desired metrics using the argument "metrics_list" as follows:  
 ```{r metrics summary list}
 
-my.metrics <- c("R2","MAE", "RMSE", "RSR", "NSE", "KGE")
+my.metrics <- c("R2","MBE", "RMSE", "RSR", "NSE", "KGE", "CCC")
 
 metrics_summary(data = wheat,   
                 obs = obs,    
