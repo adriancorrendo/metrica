@@ -120,8 +120,10 @@ barley.scat.plot
 #metrica::scatter_plot(obs = example.data$obs, pred = example.data$pred)
 
 # 2.b. Create tiles plot with OP orientation
-barley.tiles.plot <- metrica::tiles_plot(data = example.data, obs = measured, pred = simulated,
-           bins = 15, orientation = "OP")
+barley.tiles.plot <- 
+  metrica::tiles_plot(data = example.data, 
+                      obs = measured, pred = simulated,
+                      bins = 10, orientation = "OP")
 
 barley.tiles.plot
 

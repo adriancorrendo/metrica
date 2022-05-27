@@ -18,7 +18,7 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
 Depends: 
-    R (>= 4.1.2)
+    R (>= 2.10)
 Suggests: 
     covr,
     tidyverse,
