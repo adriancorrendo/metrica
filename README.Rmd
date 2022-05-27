@@ -174,19 +174,19 @@ multiple.sum <- nested.examples %>%
 head(multiple.sum)
 
 ```
-
 ## 4. Print metrics in a plot
 ```{r warning=F, message=F}
 df <- metrica::wheat
 
 # B. Create list of selected metrics
-selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "CCC", "KGE", "PLA", "PLP")
+selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "NSE", "KGE", "PLA", "PLP")
 
-metrica::scatter_plot(data = df, obs = obs, pred = pred, print_metrics = TRUE, 
-                      metrics_list = selected.metrics)
+plot <- metrica::scatter_plot(data = df, 
+                              obs = obs, pred = pred, 
+                              print_metrics = TRUE, 
+                              metrics_list = selected.metrics)
 
-  
-
+plot
 ```
 
 

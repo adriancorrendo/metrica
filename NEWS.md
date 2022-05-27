@@ -1,3 +1,11 @@
+# metrica 1.2.4
+
+* May 27th, 2022. <br/>
+
+Development update fixing minor a bug on the NSE() function to estimate the Nash-Sutcliffe model efficiency that produce only values of NSE=1.00 on v1.23.
+
+# Previous versions
+
 # metrica 1.2.3
 
 * May, 10, 2022. <br/>
@@ -6,8 +14,6 @@ Maintenance update fixing minor errors after feedback from CRAN submission of v1
 'donttest' instead of 'dontrun' in functions' examples, adding references into functions).
 Also, the available metrics vignette was updated adding the corresponding citations of 
 formulae used into functions.
-
-# Previous versions
 
 # metrica 1.2.2
 

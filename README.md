@@ -207,14 +207,14 @@ nested.examples <- bind_rows(list(wheat = metrica::wheat,
   dplyr::group_by(id) %>% tidyr::nest() %>% dplyr::ungroup()
 
 head(nested.examples %>% group_by(id) %>% dplyr::slice_head(n=2))
-#> # A tibble: 4 x 2
+#> # A tibble: 4 × 2
 #> # Groups:   id [4]
 #>   id       data              
 #>   <chr>    <list>            
-#> 1 barley   <tibble [69 x 2]> 
-#> 2 chickpea <tibble [39 x 2]> 
-#> 3 sorghum  <tibble [36 x 2]> 
-#> 4 wheat    <tibble [137 x 2]>
+#> 1 barley   <tibble [69 × 2]> 
+#> 2 chickpea <tibble [39 × 2]> 
+#> 3 sorghum  <tibble [36 × 2]> 
+#> 4 wheat    <tibble [137 × 2]>
 
 # 4.b. Run 
 multiple.sum <- nested.examples %>% 
@@ -222,13 +222,13 @@ multiple.sum <- nested.examples %>%
   mutate(performance = map(data, ~metrica::metrics_summary(data=., obs = obs, pred = pred)))
 
 head(multiple.sum)
-#> # A tibble: 4 x 3
+#> # A tibble: 4 × 3
 #>   id       data               performance  
 #>   <chr>    <list>             <list>       
-#> 1 wheat    <tibble [137 x 2]> <df [41 x 2]>
-#> 2 barley   <tibble [69 x 2]>  <df [41 x 2]>
-#> 3 sorghum  <tibble [36 x 2]>  <df [41 x 2]>
-#> 4 chickpea <tibble [39 x 2]>  <df [41 x 2]>
+#> 1 wheat    <tibble [137 × 2]> <df [41 × 2]>
+#> 2 barley   <tibble [69 × 2]>  <df [41 × 2]>
+#> 3 sorghum  <tibble [36 × 2]>  <df [41 × 2]>
+#> 4 chickpea <tibble [39 × 2]>  <df [41 × 2]>
 ```
 
 ## 4. Print metrics in a plot
@@ -237,10 +237,14 @@ head(multiple.sum)
 df <- metrica::wheat
 
 # B. Create list of selected metrics
-selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "CCC", "KGE", "PLA", "PLP")
+selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "NSE", "KGE", "PLA", "PLP")
 
-metrica::scatter_plot(data = df, obs = obs, pred = pred, print_metrics = TRUE, 
-                      metrics_list = selected.metrics)
+plot <- metrica::scatter_plot(data = df, 
+                              obs = obs, pred = pred, 
+                              print_metrics = TRUE, 
+                              metrics_list = selected.metrics)
+
+plot
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />

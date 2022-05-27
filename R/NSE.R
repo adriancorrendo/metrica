@@ -27,18 +27,28 @@
 #' @rdname NSE
 #' @importFrom rlang eval_tidy quo
 #' @export 
+
 NSE <- function(data=NULL,
                 obs,
                 pred,
                 na.rm = TRUE) {
-  MSE <- sum(({{obs}}-{{pred}})^2)/length({{obs}})
-  result <- rlang::eval_tidy(
-    data = data,
-    rlang::quo(
-      1-(MSE/
-           sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))
-    )
-  )
+  
+  n <- rlang::eval_tidy(data = data,
+                        rlang::quo(length({{obs}}) ) )
+  
+  mean_obs <- rlang::eval_tidy(data = data,
+                               rlang::quo( sum({{obs}}) ) )  / n
+  
+  numerator <-  rlang::eval_tidy(data = data,
+                                 rlang::quo( 
+                                   sum( ({{obs}}-{{pred}})^2 ) / n ) )
+  
+  denominator <- rlang::eval_tidy(data = data,
+                                  rlang::quo(
+                                    sum( ({{obs}} - mean_obs)^2 ) / n ) )
+  
+  result <- 1 - ( numerator / denominator )
+  
   return(result)
 }
 
