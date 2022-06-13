@@ -150,7 +150,7 @@ barley.tiles.plot
 
 ``` r
 # 2.c. Create a density plot with OP orientation
-barley.denisty.plot <-
+barley.density.plot <-
 metrica::density_plot(data = example.data, 
                       obs = measured, pred = simulated,
                       n = 5, 
@@ -158,7 +158,7 @@ metrica::density_plot(data = example.data,
            colors = c(low = "white", high = "steelblue")
            )
 
-barley.denisty.plot
+barley.density.plot
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" />

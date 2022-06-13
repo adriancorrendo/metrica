@@ -130,7 +130,7 @@ barley.tiles.plot <-
 barley.tiles.plot
 
 # 2.c. Create a density plot with OP orientation
-barley.denisty.plot <-
+barley.density.plot <-
 metrica::density_plot(data = example.data, 
                       obs = measured, pred = simulated,
                       n = 5, 
@@ -138,7 +138,7 @@ metrica::density_plot(data = example.data,
            colors = c(low = "white", high = "steelblue")
            )
 
-barley.denisty.plot
+barley.density.plot
 
 # 2.d. Create a Bland-Altman plot
 barley.ba.plot <- metrica::bland_altman_plot(data = example.data,
