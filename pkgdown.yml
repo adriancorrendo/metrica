@@ -1,10 +1,10 @@
 pandoc: 2.7.3
-pkgdown: 2.0.3
+pkgdown: 2.0.4
 pkgdown_sha: ~
 articles:
   available_metrics: available_metrics.html
   vignette1: vignette1.html
-last_built: 2022-05-27T21:40Z
+last_built: 2022-06-13T08:02Z
 urls:
   reference: https://adriancorrendo.github.io/metrica/reference
   article: https://adriancorrendo.github.io/metrica/articles

@@ -61,6 +61,9 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/MBE.html</loc>
   </url>
   <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/MIC.html</loc>
+  </url>
+  <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/MLA.html</loc>
   </url>
   <url>
@@ -155,6 +158,12 @@
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/d1r.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/dcorr.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/density_plot.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/import_apsim_db.html</loc>

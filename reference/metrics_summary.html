@@ -12,7 +12,7 @@ for a continuous predicted-observed dataset. By default, it calculates all avail
     
     <a class="navbar-brand me-2" href="../index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,25 +75,38 @@ for a continuous predicted-observed dataset. By default, it calculates all avail
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
 <dd><p>(Optional) argument to call an existing data frame containing the data.</p></dd>
+
+
 <dt>obs</dt>
 <dd><p>vector with observed values (numeric).</p></dd>
+
+
 <dt>pred</dt>
 <dd><p>vector with predicted values (numeric).</p></dd>
+
+
 <dt>orientation</dt>
 <dd><p>argument of class string specifying the axis
 orientation to estimate slope(B1) and intercept(B0).
 "PO" is for predicted vs observed, and "OP" for observed vs predicted.
 Default is orientation = "PO".</p></dd>
+
+
 <dt>na.rm</dt>
 <dd><p>Logic argument to remove rows with missing values
 (NA). Default is na.rm = TRUE.</p></dd>
+
+
 <dt>metrics_list</dt>
 <dd><p>vector or list of specific selected metrics. Default is = NULL,
 which will estimate all metrics available.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>an object of class <code>data.frame</code> containing all (or selected) metrics.</p>
+    
+
+<p>an object of class <code>data.frame</code> containing all (or selected) metrics.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -153,6 +166,8 @@ For the entire list of available metrics with formula, see <a href="https://adri
 <span class="r-out co"><span class="r-pr">#&gt;</span> 39    RAC   0.55527555</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 40     AC  -1.61289162</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 41 lambda   0.11065629</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42  dcorr   0.17286650</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43    MIC   0.28186524</span>
 <span class="r-in"><span class="co"># }</span></span>
 </code></pre></div>
     </div>
@@ -165,7 +180,7 @@ For the entire list of available metrics with formula, see <a href="https://adri
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>
