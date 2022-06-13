@@ -11,6 +11,9 @@ scatter_plot(
   orientation = "PO",
   print_metrics = FALSE,
   metrics_list = NULL,
+  position_metrics = c(x = NULL, y = NULL),
+  print_eq = TRUE,
+  position_eq = c(x = NULL, y = NULL),
   na.rm = TRUE
 )
 }
@@ -28,6 +31,14 @@ observed vs predicted. Default is orientation = "PO".}
 \item{print_metrics}{boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.}
 
 \item{metrics_list}{vector or list of selected metrics to print on the plot.}
+
+\item{position_metrics}{vector or list with '(x,y)' coordinates to locate the metrics_table into the plot.
+Default : c(x = min(obs), y = 1.05*max(pred)).}
+
+\item{print_eq}{boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.}
+
+\item{position_eq}{vector or list with '(x,y)' coordinates to locate the SMA equation into the plot.
+Default : c(x = 0.70 max(x), y = 1.25*min(y)).}
 
 \item{na.rm}{Logic argument to remove rows with missing values
 (NA). Default is na.rm = TRUE.}

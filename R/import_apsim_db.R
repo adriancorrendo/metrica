@@ -17,8 +17,6 @@
 #' @rdname import_apsim_db
 #' @importFrom RSQLite SQLite dbListTables
 #' @importFrom DBI dbGetQuery
-#' @seealso 
-#'  \code{\link[apsimx]{read_apsimx}}
 #' @export
 #' 
 

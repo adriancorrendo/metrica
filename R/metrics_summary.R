@@ -44,7 +44,7 @@ metrics_summary <-
                  "RAE","RSE","MBE","PBE","PAB","PPB","MSE","RMSE","RRMSE","RSR",
                  "iqRMSE","MLA","MLP","SB","SDSD","LCS","PLA","PLP","Ue","Uc",
                  "Ub","NSE","E1","Erel","KGE","d","d1","d1r","RAC","AC",
-                 "lambda")
+                 "lambda", "dcorr", "MIC")
     
     # Create data.frame to store metrics
     newDataFrame <- data.frame(`Metric` = metrics, 
@@ -98,7 +98,9 @@ metrics_summary <-
             d1r =as.numeric(metrica::d1({{data}},{{obs}},{{pred}})),
             RAC = as.numeric(metrica::RAC({{data}},{{obs}},{{pred}})),
             AC =as.numeric(metrica::AC({{data}},{{obs}},{{pred}})),
-            lambda = as.numeric(metrica::lambda({{data}},{{obs}},{{pred}}))
+            lambda = as.numeric(metrica::lambda({{data}},{{obs}},{{pred}})),
+            dcorr = as.numeric(metrica::dcorr({{data}}, {{obs}}, {{pred}})),
+            MIC = as.numeric(metrica::MIC({{data}}, {{obs}}, {{pred}}))
           )
         )
       )

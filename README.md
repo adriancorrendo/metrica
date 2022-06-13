@@ -136,8 +136,12 @@ barley.scat.plot
 #metrica::scatter_plot(obs = example.data$obs, pred = example.data$pred)
 
 # 2.b. Create tiles plot with OP orientation
-barley.tiles.plot <- metrica::tiles_plot(data = example.data, obs = measured, pred = simulated,
-           bins = 15, orientation = "OP")
+barley.tiles.plot <- 
+  metrica::tiles_plot(data = example.data, 
+                      obs = measured, pred = simulated,
+                      bins = 10, 
+                      orientation = "OP",
+                      colors = c(low = "pink", high = "steelblue"))
 
 barley.tiles.plot
 ```
@@ -145,14 +149,29 @@ barley.tiles.plot
 <img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
 
 ``` r
-# 2.c. Create a Bland-Altman plot
+# 2.c. Create a density plot with OP orientation
+barley.denisty.plot <-
+metrica::density_plot(data = example.data, 
+                      obs = measured, pred = simulated,
+                      n = 5, 
+                      orientation = "OP", 
+           colors = c(low = "white", high = "steelblue")
+           )
+
+barley.denisty.plot
+```
+
+<img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" />
+
+``` r
+# 2.d. Create a Bland-Altman plot
 barley.ba.plot <- metrica::bland_altman_plot(data = example.data,
                            obs = measured, pred = simulated)
 
 barley.ba.plot
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-4.png" width="100%" />
 
 ``` r
 # 3. Get metrics estimates
@@ -226,10 +245,28 @@ head(multiple.sum)
 #> # A tibble: 4 × 3
 #>   id       data               performance  
 #>   <chr>    <list>             <list>       
-#> 1 wheat    <tibble [137 × 2]> <df [41 × 2]>
-#> 2 barley   <tibble [69 × 2]>  <df [41 × 2]>
-#> 3 sorghum  <tibble [36 × 2]>  <df [41 × 2]>
-#> 4 chickpea <tibble [39 × 2]>  <df [41 × 2]>
+#> 1 wheat    <tibble [137 × 2]> <df [43 × 2]>
+#> 2 barley   <tibble [69 × 2]>  <df [43 × 2]>
+#> 3 sorghum  <tibble [36 × 2]>  <df [43 × 2]>
+#> 4 chickpea <tibble [39 × 2]>  <df [43 × 2]>
+
+# 4.c. Non-nested, just with group_by()
+non_nested_summary <- nested.examples %>% unnest(cols = "data") %>% 
+  group_by(id) %>% 
+  summarise(metrics_summary(obs = obs, pred = pred)) %>% 
+  dplyr::arrange(Metric)
+
+head(non_nested_summary)
+#> # A tibble: 6 × 3
+#> # Groups:   id [4]
+#>   id       Metric    Score
+#>   <chr>    <chr>     <dbl>
+#> 1 barley   AC       0.253 
+#> 2 chickpea AC       0.434 
+#> 3 sorghum  AC       0.0889
+#> 4 wheat    AC       0.842 
+#> 5 barley   B0       1.13  
+#> 6 chickpea B0     -99.0
 ```
 
 ## 4. Print metrics in a plot
@@ -243,7 +280,11 @@ selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "NSE", "KGE", "PLA", "PLP")
 plot <- metrica::scatter_plot(data = df, 
                               obs = obs, pred = pred, 
                               print_metrics = TRUE, 
-                              metrics_list = selected.metrics)
+                              metrics_list = selected.metrics,
+                              # Customize metrics position
+                              position_metrics = c(x = 1 , y = 20),
+                              # Customize equation position
+                              position_eq = c(x = 7, y = 19.5))
 
 plot
 ```

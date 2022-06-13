@@ -32,6 +32,3 @@ Source: https://github.com/femiguez/apsimx by F. Miguez.
 ## See [documentation](https://adriancorrendo.github.io/metrica/index.html)
 }
 }
-\seealso{
-\code{\link[apsimx]{read_apsimx}}
-}

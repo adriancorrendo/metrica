@@ -26,6 +26,3 @@ Note: It imports one file at a time.
 ## See [documentation](https://adriancorrendo.github.io/metrica/index.html)
 }
 }
-\seealso{
-\code{\link[apsimx]{read_apsim}}
-}

@@ -10,6 +10,11 @@
 #' observed vs predicted. Default is orientation = "PO".
 #' @param print_metrics boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.
 #' @param metrics_list vector or list of selected metrics to print on the plot.
+#' @param position_metrics vector or list with '(x,y)' coordinates to locate the metrics_table into the plot.
+#' Default : c(x = min(obs), y = 1.05*max(pred)).
+#' @param print_eq boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.
+#' @param position_eq vector or list with '(x,y)' coordinates to locate the SMA equation into the plot.
+#' Default : c(x = 0.70 max(x), y = 1.25*min(y)).
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return an object of class `ggplot`.
@@ -38,6 +43,9 @@ scatter_plot <- function(data = NULL,
                          orientation = "PO",
                          print_metrics = FALSE,
                          metrics_list = NULL,
+                         position_metrics = c("x"=NULL, "y"=NULL),
+                         print_eq = TRUE,
+                         position_eq = c("x"=NULL, "y"=NULL),
                          na.rm = TRUE){
   
   # STOP. Specify metrics_list
@@ -94,18 +102,19 @@ scatter_plot <- function(data = NULL,
         ggplot2::geom_abline(linetype = "F1", size = 2,col = "#f46036",
                              slope = B1.PO,
                              intercept = B0.PO)+
+        # Print SMA equation
+        {if (print_eq == TRUE)
+          ggpp::annotate(geom="text", 
+                         x= ifelse(!is.null(position_eq[["x"]]), position_eq[["x"]], 0.70*max({{obs}}) ) , 
+                         y= ifelse(!is.null(position_eq[["y"]]), position_eq[["y"]], 1.25*min({{pred}}) ),
+                         # Equation
+                         label = paste0("y = ",round(B0.PO, 2),"+",
+                                        round(B1.PO,2),"x"), 
+                         hjust=0) }+ 
         ggplot2::labs(x = "Observed", y = "Predicted")+
         ggplot2::theme_bw()+
         ggplot2::theme(legend.position = "none",
-                       panel.grid = ggplot2::element_blank())+
-        # Add SMA equation
-        ggpp::annotate(geom="text", 
-                       x=0.70*max({{obs}}), 
-                       y= 1.25*min({{pred}}),
-                       # Equation
-                       label = paste0("y = ",round(B0.PO, 2),"+",
-                                      round(B1.PO,2),"x"), 
-                       hjust=0)
+                       panel.grid = ggplot2::element_blank())
     )
   )
   if (orientation == "OP"){
@@ -127,22 +136,23 @@ scatter_plot <- function(data = NULL,
           ggplot2::geom_abline(linetype = "F1", size = 2,col = "#073b4c",
                                slope = B1.OP,
                                intercept = B0.OP)+
+          # Print SMA equation
+          {if (print_eq == TRUE)
+            ggpp::annotate(geom="text",
+                           x= ifelse(!is.null(position_eq[["x"]]), position_eq[["x"]], 0.70*max({{pred}}) ), 
+                           y= ifelse(!is.null(position_eq[["y"]]), position_eq[["y"]], 1.25*min({{obs}}) ),
+                           # Equation
+                           label = paste0("y = ",round(B0.OP,2),"+",
+                                          round(B1.OP,2),"x"),
+                           hjust=0) }+ 
           ggplot2::labs(y = "Observed", x = "Predicted")+
           ggplot2::theme_bw()+
           ggplot2::theme(legend.position = "none",
-                         panel.grid = ggplot2::element_blank())+
-          # Add SMA equation
-          ggpp::annotate(geom="text", 
-                         x=0.70*max({{obs}}), 
-                         y= 1.25*min({{pred}}),
-                         # Equation
-                         label = paste0("y = ",round(B0.OP,2),"+",
-                                        round(B1.OP,2),"x"), 
-                         hjust=0)
-      )
+                         panel.grid = ggplot2::element_blank())
+          )
     )
   } #IF END
-  
+  # Print metrics table
   if (print_metrics == TRUE){
     plot <- 
       rlang::eval_tidy(data=data,
@@ -150,8 +160,8 @@ scatter_plot <- function(data = NULL,
                        plot + # Annotate Table
                          ggpp::annotate(geom="table", 
                                         # Position
-                                        x = min({{obs}}), 
-                                        y = 1.05*max({{pred}}),
+                                        x= ifelse(!is.null(position_metrics[["x"]]), position_metrics[["x"]], min({{obs}}) ), 
+                                        y= ifelse(!is.null(position_metrics[["y"]]), position_metrics[["y"]], 1.05*max({{pred}}) ),
                                         # Call the table
                                         label = metrics.table,
                                         # Align Table (left)

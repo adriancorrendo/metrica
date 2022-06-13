@@ -1,11 +1,11 @@
-#' @title Tiles plot of predicted and observed values  
-#' @name tiles_plot
-#' @description It draws a tiles plot of predictions and observations with alternative
+#' @title Density plot of predicted and observed values  
+#' @name density_plot
+#' @description It draws a density area plot of predictions and observations with alternative
 #' axis orientation (P vs. O; O vs. P).
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
-#' @param bins Argument of class numeric specifying the number of bins to create the tiles.
+#' @param n Argument of class numeric specifying the number of data points in each group.
 #' @param colors Vector or list with two colors '(low, high)' to paint the density gradient.
 #' @param orientation Argument of class string specifying the axis
 #' orientation, PO for predicted vs observed, and OP for
@@ -20,7 +20,7 @@
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return Object of class `ggplot`.
-#' @details It creates a tiles plot of predicted vs. observed values. The plot also includes 
+#' @details It creates a density plot of predicted vs. observed values. The plot also includes 
 #' the 1:1 line (solid line) and the linear regression line (dashed line). By default, 
 #' it places the observed on the x-axis and the predicted on the y-axis (orientation = "PO").
 #' This can be inverted by changing the argument orientation = “OP".
@@ -29,20 +29,20 @@
 #' \donttest{
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- rnorm(n = 100, mean = 0, sd = 10)
-#' tiles_plot(obs = X, pred = Y)
+#' density_plot(obs = X, pred = Y)
 #' }
 #' @seealso 
 #'  \code{\link[ggplot2]{ggplot}},\code{\link[ggplot2]{geom_point}},\code{\link[ggplot2]{aes}}
-#' @rdname tiles_plot
+#' @rdname density_plot
 #' @importFrom ggplot2 ggplot geom_point aes geom_abline geom_hex
 #' coord_fixed theme_bw labs
 #' @importFrom dplyr %>%
 #' @importFrom rlang eval_tidy quo
 #' @export
-tiles_plot <- function(data=NULL,
+density_plot <- function(data=NULL,
                        obs,
                        pred,
-                       bins = 10,
+                       n = 10,
                        colors = c("low"=NULL, "high"=NULL),
                        orientation = "PO",
                        print_metrics = FALSE,
@@ -100,8 +100,7 @@ tiles_plot <- function(data=NULL,
                                                 min({{obs}})))),
                                     round(max(c(max({{pred}}), 
                                                 max({{obs}}))))))+
-      ggplot2::stat_bin2d(ggplot2::aes(y = {{pred}}, x = {{obs}}),
-                            bins = bins)+
+      ggplot2::stat_density_2d(ggplot2::aes_string(fill = '..level..'), geom = "polygon", n = n)+
       { if (!is.null(colors[[1]]))
       ggplot2::scale_fill_gradient(low = palette[[1]], high = palette[[2]]) } +
       ggplot2::geom_abline()+
@@ -136,10 +135,10 @@ if (orientation == "OP"){
                                                 min({{obs}})))),
                                     round(max(c(max({{pred}}), 
                                                 max({{obs}}))))))+
-      ggplot2::stat_bin2d(ggplot2::aes(y = {{obs}}, x = {{pred}}),
-                        bins = bins)+
+        ggplot2::stat_density_2d(ggplot2::aes_string(fill = '..level..'), geom = "polygon", n = n)+
       { if (!is.null(colors[[1]]))
           ggplot2::scale_fill_gradient(low = palette[[1]], high = palette[[2]]) } +
+      #viridis::scale_fill_viridis(option = "cividis", direction = -1)+
       ggplot2::geom_abline()+
       ggplot2::geom_abline(linetype = "F1", size = 2,col = "#006d77",
                            slope = B1.OP,

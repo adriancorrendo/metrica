@@ -368,3 +368,35 @@ test_that('no error lambda', {
   expect_false(inherits(lambda.test, "try-error"))
 })
 
+# 43. dcorr
+
+dcorr.test <- dcorr(obs = wheat$obs, pred = wheat$pred)
+
+test_that('no error dcorr', {
+  expect_false(inherits(dcorr.test, "try-error"))
+})
+
+# 44. MIC
+
+MIC.test <- MIC(obs = wheat$obs, pred = wheat$pred)
+
+test_that('no error MIC', {
+  expect_false(inherits(MIC.test, "try-error"))
+})
+
+
+# 45. Density plot
+density_plot.test.PO <- density_plot(obs = wheat$obs, pred = wheat$pred,
+                                 orientation = "PO")
+
+test_that('no error density_plot', {
+  expect_false(inherits(density_plot.test.PO, "try-error"))
+})
+
+density_plot.test.OP <- density_plot(obs = wheat$obs, pred = wheat$pred,
+                                 orientation = "OP")
+
+test_that('no error density_plot', {
+  expect_false(inherits(density_plot.test.OP, "try-error"))
+})
+

@@ -123,11 +123,24 @@ barley.scat.plot
 barley.tiles.plot <- 
   metrica::tiles_plot(data = example.data, 
                       obs = measured, pred = simulated,
-                      bins = 10, orientation = "OP")
+                      bins = 10, 
+                      orientation = "OP",
+                      colors = c(low = "pink", high = "steelblue"))
 
 barley.tiles.plot
 
-# 2.c. Create a Bland-Altman plot
+# 2.c. Create a density plot with OP orientation
+barley.denisty.plot <-
+metrica::density_plot(data = example.data, 
+                      obs = measured, pred = simulated,
+                      n = 5, 
+                      orientation = "OP", 
+           colors = c(low = "white", high = "steelblue")
+           )
+
+barley.denisty.plot
+
+# 2.d. Create a Bland-Altman plot
 barley.ba.plot <- metrica::bland_altman_plot(data = example.data,
                            obs = measured, pred = simulated)
 
@@ -175,6 +188,14 @@ multiple.sum <- nested.examples %>%
 
 head(multiple.sum)
 
+# 4.c. Non-nested, just with group_by()
+non_nested_summary <- nested.examples %>% unnest(cols = "data") %>% 
+  group_by(id) %>% 
+  summarise(metrics_summary(obs = obs, pred = pred)) %>% 
+  dplyr::arrange(Metric)
+
+head(non_nested_summary)
+
 ```
 ## 4. Print metrics in a plot
 ```{r warning=F, message=F}
@@ -186,7 +207,11 @@ selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "NSE", "KGE", "PLA", "PLP")
 plot <- metrica::scatter_plot(data = df, 
                               obs = obs, pred = pred, 
                               print_metrics = TRUE, 
-                              metrics_list = selected.metrics)
+                              metrics_list = selected.metrics,
+                              # Customize metrics position
+                              position_metrics = c(x = 1 , y = 20),
+                              # Customize equation position
+                              position_eq = c(x = 7, y = 19.5))
 
 plot
 ```

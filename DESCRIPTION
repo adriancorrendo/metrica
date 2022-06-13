@@ -1,7 +1,7 @@
 Package: metrica
 Title: Prediction Performance Metrics
-Version: 1.2.4
-Date: 2022-05-27
+Version: 1.3.0
+Date: 2022-06-13
 Authors@R: c(
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("cre", "cph"), comment = c(ORCID = "0000-0002-4172-289X")),
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("aut"), comment = c(ORCID = "0000-0002-4172-289X")),
@@ -20,11 +20,9 @@ RoxygenNote: 7.2.0
 Depends: 
     R (>= 2.10)
 Suggests: 
-    covr,
     tidyverse,
     knitr,
     rmarkdown,
-    apsimx,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports:
@@ -33,11 +31,12 @@ Imports:
     dplyr,
     rlang,
     tidyr,
-    viridis,
     utils,
     DBI,
     RSQLite,
-    ggpp
+    ggpp,
+    minerva,
+    energy
 VignetteBuilder: knitr
 URL: https://adriancorrendo.github.io/metrica/
 BugReports: https://github.com/adriancorrendo/metrica/issues
