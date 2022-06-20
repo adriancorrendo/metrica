@@ -18,24 +18,37 @@ knitr::opts_chunk$set(
 
 ## Performance metrics available in *metrica*
 
-The **metrica** package contains +40 functions. <br/> 
+The **metrica** package contains +60 functions. <br/> 
 
 Two arguments are always required: `observed`(Oi; a.k.a. actual, measured, truth, target)
-and `predicted` (Pi; a.k.a. simulated, fitted, modelled) values. Also, there is an optional
-`data` arg. that allows to call an existing data frame containing both observed
-and predicted vectors. <br/>
+and `predicted` (Pi; a.k.a. simulated, fitted, modelled, estimated) values. 
+Also, there is an optional `data` arg. that allows to call an existing data frame 
+containing both observed and predicted vectors. <br/>
 
 Some functions, also require to define axis `orientation`, such as the slope of 
 linear regression describing the bivariate scatter. <br/>
 
-Current included functions cover the world of "regression error" metrics (i.e. 
-prediction performance for continuous variables). <br/>
-
-Classification error metrics coming soon. <br/>
+Current version 2.0.0. included functions cover both worlds: "regression" (i.e. 
+continuous variables) and classification (i.e. categorical variables). <br/>
 
 Always keep in mind that predicted values should come from out-of-bag samples 
 (unseen by training set) to avoid overestimation of prediction performance. <br/>
 
+List of metrics <br/>
+
+## Classification (categorical variables)
+
+| #|Metric | Definition | Details | Formula |
+| --|------ | ---------------|-------------------------- | ----------------------- |
+| c1| `accuracy` | Accuracy | Description | accuracy = # correct predictions / # total predictions |
+| c2| `precision` | Precision | Description | precision = TP/(TP + FP) |
+| c3| `recall` | Recall (a.k.a sensitivity) | Description | recall = TP / P = 1 - FNR |
+| c4| `spec` | Specificity | Description | spec = TN / N = 1 - FPR |
+| c5| `fscore` | F-score (a.k.a F1-score, F-measure) | Description | fscore = (1 + B^2) * (precision * recall) / (B^2 * precision) + recall |
+| c6| `cohen_kappa` | Cohen's Kappa Coefficient | Description | cohen_kappa = # correct predictions / # total predictions |
+
+
+## Regression (continuous variables)
 
 | #|Metric | Definition | Details | Formula |
 | --|------ | ---------------|-------------------------- | ----------------------- |
@@ -84,8 +97,11 @@ Always keep in mind that predicted values should come from out-of-bag samples
 | 39| `RAC` | Robinson's Agreement Coefficient |  RAC measures both accuracy and precision (general agreement). Dimensionless (normalized). Bounded [0;1]. Symmetric. Robinson (1957; 1959) | ![equation](../man/figures/39a.RAC.gif) <br/> where <br/> ![equation](../man/figures/39b.RAC.gif) |
 | 40| `AC` | Ji and Gallo's Agreement Coefficient |  AC measures both accuracy and precision (general agreement). Dimensionless (normalized). Positively bounded [-infinity;1]. Symmetric. Ji and Gallo (2006) |![equation](../man/figures/40.AC.gif) |
 | 41| `lambda` | Duveiller's Lambda Coefficient | `lambda` measures both accuracy and precision. Dimensionless (normalized). Bounded [-1;1]. Symmetric. Equivalent to CCC when `r` is greater or equal to 0. Duveiller et al. (2016) | ![equation](../man/figures/41a.lambda.gif) <br/> where <br/> ![equation](../man/figures/41b.lambda.gif), <br/> otherwise <br/> ![equation](../man/figures/41c.lambda.gif)|
-
+| 42| `dcorr` | Distance correlation | Measures the dependency between to random vectors. Compared to Pearson's `r`, it offers the advantage of considering both linear and nonlinear association patterns. It is based on a matrix of centered Euclidean distances compared to the distance of many shuffles of the data. It is dimensionless, bounded [0;1], and symmetric. `dcorr = 0` characterizes independence between vectors. The closest to 1 the better. A disadvantage for the predicted-observed case is that values can be negatively correlated but producing a `dcorr` close to 1. Székely (2007) |  ![equation](../man/figures/36.d.gif) |
+| 43| `MIC` | Maximal Information Coefficient | Measures association between two variables based on "binning" (a.k.a. data bucketing) to reduce the influence of small observation errors. It is based on the "mutual information" concept of information theory, which measures the mutual dependence between two variables. It is dimensionless (normalized), bounded [0;1], and symmetric. Reshef et al. (2011) |  See Reshef et al. 2011 |
 <br/>
+
+
 
 ## References: <br/>
 
@@ -138,6 +154,10 @@ techniques. _Ecol. Model. 77, 49–64._ \doi{10.1016/0304-3800(93)E0074-D} <br/>
 22. Willmott et al. (2012). A refined index of model performance. _Int. J. Climatol. 32, 2088–2094._  \doi{10.1002/joc.2419} <br/>
 
 23. Yang et al. (2014). An evaluation of the statistical methods for testing the performance of crop models with observed data. _Agric. Syst. 127, 81-89._ \doi{10.1016/j.agsy.2014.01.008} <br/>
+
+24. Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007). Measuring and testing dependence by correlation of distances. _Annals of Statistics, Vol. 35(6): 2769-2794._ \doi{10.1214/009053607000000505} <br/>
+
+25. Reshef, D., Reshef, Y., Finucane, H., Grossman, S., McVean, G., Turnbaugh, P.,  Lander, R., Mitzenmacher, M., and Sabeti, P. (2011). Detecting novel associations in large datasets. _Science 334, 6062_. \doi{10.1126/science.1205438}
 
 
 

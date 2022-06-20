@@ -48,7 +48,7 @@
 #' }
 #' @references 
 #' Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007).
-#' _Dependence vy correaltion of distances, Annals of Statistics, Vol. 35(6): 2769-2794_.
+#' _Measuring and testing dependence by correaltion of distances. Annals of Statistics, Vol. 35(6): 2769-2794_.
 #' \doi{10.1214/009053607000000505}.\cr
 #' 
 #' Rizzo, M., and Szekely, G. (2022). 
