@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   available_metrics: available_metrics.html
   vignette1: vignette1.html
-last_built: 2022-06-13T08:07Z
+last_built: 2022-06-20T07:27Z
 urls:
   reference: https://adriancorrendo.github.io/metrica/reference
   article: https://adriancorrendo.github.io/metrica/articles

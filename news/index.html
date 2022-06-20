@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,29 +52,42 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.3.0" id="metrica-130">metrica 1.3.0<a class="anchor" aria-label="anchor" href="#metrica-130"></a></h2>
-<ul><li>June 13th, 2022. <br></li></ul><p>Adding new plotting function: - density_plot, to create a plot that paints density areas of predicted and observed coordinates.</p>
-<p>Adding new arguments to plotting functions scatter_plot, tiles_plot, and density_plot: - print_eq (to print equation or not) - position_metrics (to customize position of metrics_table when print_metrics = TRUE) - position_eq (to customize position of equation when print_eq = TRUE) - colors (for tile_plot and density_plot, to paint gradient from “low” to “high” density of points)</p>
-<p>Adding two new functions to the family of regression performance metrics: - dcorr (Distance correlation) as wrapper of dcor() from energy package (<a href="https://CRAN.R-project.org/package=energy" class="external-link uri">https://CRAN.R-project.org/package=energy</a>), and - MIC (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (<a href="https://CRAN.R-project.org/package=minerva" class="external-link uri">https://CRAN.R-project.org/package=minerva</a>).</p>
+<h2 class="pkg-version" data-toc-text="2.0.0" id="metrica-200">metrica 2.0.0<a class="anchor" aria-label="anchor" href="#metrica-200"></a></h2>
+<ul><li>June 20th, 2022. <br></li></ul><p>This new version of metrica includes:</p>
+<ol style="list-style-type: decimal"><li>Functions to evaluate quality of prediction under classification problems:</li></ol><ul><li>confusion_matrix(): Confusion matrix (as data.frame or plot).</li>
+<li>accuracy(): Accuracy</li>
+<li>error_rate(): Error Rate (a.k.a misclassification rate)</li>
+<li>precision(): Precision</li>
+<li>recall(): Recall (a.k.a sensitivity)</li>
+<li>spec(): specificity.</li>
+<li>fscore(): F-score.</li>
+<li>cohen_kappa(): Cohen’s Kappa Coefficient.</li>
+</ul><ol start="2" style="list-style-type: decimal"><li>Adding two new functions to the family of regression performance metrics:</li></ol><ul><li>dcorr (Distance correlation) as wrapper of dcor() from energy package (<a href="https://CRAN.R-project.org/package=energy" class="external-link uri">https://CRAN.R-project.org/package=energy</a>), and</li>
+<li>MIC (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (<a href="https://CRAN.R-project.org/package=minerva" class="external-link uri">https://CRAN.R-project.org/package=minerva</a>).</li>
+</ul><ol start="3" style="list-style-type: decimal"><li>Adding new plotting function for regression problems:</li></ol><ul><li>density_plot, to create a plot that paints density areas of predicted and observed coordinates.</li></ul><ol start="4" style="list-style-type: decimal"><li>Adding new arguments to plotting functions scatter_plot, tiles_plot, and density_plot:</li></ol><ul><li>print_eq (to print equation or not)</li>
+<li>position_metrics (to customize position of metrics_table when print_metrics = TRUE)</li>
+<li>position_eq (to customize position of equation when print_eq = TRUE)</li>
+<li>colors (for tile_plot and density_plot, to paint gradient from “low” to “high” density of points)</li>
+</ul><div id="section-2-0-0" class="section level103"><p class="heading"></p></div>
 </div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.4" id="metrica-124">metrica 1.2.4<a class="anchor" aria-label="anchor" href="#metrica-124"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.2.4" id="metrica-124-dev">metrica 1.2.4 (dev)<a class="anchor" aria-label="anchor" href="#metrica-124-dev"></a></h2>
 <ul><li>May 27th, 2022. <br></li></ul><p>Development update fixing minor a bug on the NSE() function to estimate the Nash-Sutcliffe model efficiency that produce only values of NSE=1.00 on v1.23.</p>
 </div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.3" id="metrica-123">metrica 1.2.3<a class="anchor" aria-label="anchor" href="#metrica-123"></a></h2><p class="text-muted">CRAN release: 2022-05-12</p>
+<h2 class="pkg-version" data-toc-text="1.2.3" id="metrica-123-cran">metrica 1.2.3 (CRAN)<a class="anchor" aria-label="anchor" href="#metrica-123-cran"></a></h2><p class="text-muted">CRAN release: 2022-05-12</p>
 <ul><li>May, 10, 2022. <br></li></ul><p>Maintenance update fixing minor errors after feedback from CRAN submission of v1.2.2 (e.g. use ‘donttest’ instead of ‘dontrun’ in functions’ examples, adding references into functions). Also, the available metrics vignette was updated adding the corresponding citations of formulae used into functions.</p>
 </div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.2" id="metrica-122">metrica 1.2.2<a class="anchor" aria-label="anchor" href="#metrica-122"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.2.2" id="metrica-122-dev">metrica 1.2.2 (dev)<a class="anchor" aria-label="anchor" href="#metrica-122-dev"></a></h2>
 <ul><li>May, 05, 2022. <br></li></ul><p>Maintenance update fixing minor bugs related to checks before CRAN submission (e.g. spelling check, URLs, DOIs, etc.)</p>
 </div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.1" id="metrica-121">metrica 1.2.1<a class="anchor" aria-label="anchor" href="#metrica-121"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.2.1" id="metrica-121-dev">metrica 1.2.1 (dev)<a class="anchor" aria-label="anchor" href="#metrica-121-dev"></a></h2>
 <p>Minor updates (1.2.1):</p>
 <p>Update of function and arguments’ names replacing “.” by "_":</p>
 <p>Old | New import.apsim.out | import_apsim_out import.apsim.db | import_apsim_db metrics.summary | metrics_summary scatter.plot | scatter_plot tiles.plot | tiles_plot bland.altman.plot | bland_altman_plot B0.sma | B0_sma B1.sma | B1_sma metrics.list | metrics_list print.metrics | print_metrics</p>
-<hr><p>New features (1.2.0):</p>
+<hr><p>New features (1.2.0) (dev):</p>
 <p>Data: a new (Optional) arg. called “data” is included for all functions, which serves to call an existing data frame containing the predicted-observed data. This facilitates passing the functions to multiple and nested data frames at once using mapping functions.</p>
 <p>APSIM: includes two new functions to read APSIM output files from APSIM Classic ["*.out", import.apsim.out()] and APSIM NextGen ["*.db", import.apsim.db()].</p>
 </div>
@@ -83,7 +96,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by Adrian A. Correndo, Adrian A. Correndo, Luiz H. Moro Rosso, Rai Schwalbert, Carlos Hernandez, Leonardo M. Bastos, Dean Holzworth, Ignacio A. Ciampitti.</p>
+  <p></p><p>Developed by Adrian A. Correndo, Adrian A. Correndo, Luiz H. Moro Rosso, Rai Schwalbert, Carlos Hernandez, Leonardo M. Bastos, Luciana Nieto, Dean Holzworth, Ignacio A. Ciampitti.</p>
 </div>
 
 <div class="pkgdown-footer-right">

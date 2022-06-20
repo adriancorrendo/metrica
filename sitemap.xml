@@ -142,6 +142,9 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/Xa.html</loc>
   </url>
   <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/accuracy.html</loc>
+  </url>
+  <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/barley.html</loc>
   </url>
   <url>
@@ -149,6 +152,12 @@
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/chickpea.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/cohen_kappa.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/confusion_matrix.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/d.html</loc>
@@ -164,6 +173,12 @@
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/density_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/error_rate.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/fscore.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/import_apsim_db.html</loc>
@@ -187,13 +202,22 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/metrics_summary.html</loc>
   </url>
   <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/precision.html</loc>
+  </url>
+  <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/r.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/recall.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/scatter_plot.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/sorghum.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/spec.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/tiles_plot.html</loc>
