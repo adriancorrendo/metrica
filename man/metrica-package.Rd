@@ -6,7 +6,7 @@
 \alias{metrica-package}
 \title{metrica: Prediction Performance Metrics}
 \description{
-A compilation of more than 40 functions designed to evaluate prediction performance of point-forecast models accounting for different aspects of the agreement between predicted and observed values. It includes error metrics (e.g. MAE, RMSE), model efficiencies (e.g. NSE, KGE), indices of agreement (e.g. d, RAC), goodness of fit (e.g. r, R2), concordance correlation (e.g. CCC), error decomposition (e.g. lack of accuracy-precision), and plots the visualize agreement. For more details visit the vignettes \url{https://adriancorrendo.github.io/metrica/}.
+A compilation of more than 50 functions designed to evaluate prediction performance of regression (continuous variables) and classification (categorical variables) point-forecast models. Offered scoring rules account for different aspects of the agreement between predicted and observed values. For regression, it includes error metrics (e.g. MAE, RMSE), model efficiencies (e.g. NSE, KGE), indices of agreement (e.g. d, RAC), goodness of fit (e.g. r, R2), concordance correlation (e.g. CCC), error decomposition (e.g. lack of accuracy-precision), and plots the visualize agreement. For classification (binomial and multinomial), it includes functions for confusion matrix, accuracy, precision, recall, specificity, F-score, and Cohen's Kappa. For more details visit the vignettes \url{https://adriancorrendo.github.io/metrica/}.
 }
 \seealso{
 Useful links:
@@ -26,6 +26,7 @@ Authors:
   \item Rai Schwalbert \email{rai.schwalbert@hotmail.com} (\href{https://orcid.org/0000-0001-8488-7507}{ORCID})
   \item Carlos Hernandez \email{carlosh92@ksu.edu} (\href{https://orcid.org/0000-0000-0000-0000}{ORCID})
   \item Leonardo M. Bastos \email{leonardombastos@gmail.com} (\href{https://orcid.org/0000-0001-8958-6527}{ORCID})
+  \item Luciana Nieto \email{lnieto@ksu.edu}
   \item Dean Holzworth \email{dean.holzworth@csiro.au}
   \item Ignacio A. Ciampitti \email{ciampitti@ksu.edu} (\href{https://orcid.org/0000-0001-9619-5129}{ORCID})
 }

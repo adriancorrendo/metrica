@@ -1,7 +1,7 @@
 Package: metrica
 Title: Prediction Performance Metrics
-Version: 1.3.0
-Date: 2022-06-13
+Version: 2.0.0
+Date: 2022-06-20
 Authors@R: c(
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("cre", "cph"), comment = c(ORCID = "0000-0002-4172-289X")),
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("aut"), comment = c(ORCID = "0000-0002-4172-289X")),
@@ -9,9 +9,10 @@ Authors@R: c(
     person("Rai", "Schwalbert", email = "rai.schwalbert@hotmail.com", role = "aut", comment = c(ORCID = "0000-0001-8488-7507")),
     person("Carlos", "Hernandez", email = "carlosh92@ksu.edu", role = "aut", comment = c(ORCID = "0000-0000-0000-0000")),
     person("Leonardo M.", "Bastos", email = "leonardombastos@gmail.com", role = "aut", comment = c(ORCID = "0000-0001-8958-6527")),
+    person("Luciana", "Nieto", email = "lnieto@ksu.edu", role = "aut"),
     person("Dean", "Holzworth", email = "dean.holzworth@csiro.au", role = "aut"),
     person("Ignacio A.", "Ciampitti", email = "ciampitti@ksu.edu", role = "aut", comment = c(ORCID = "0000-0001-9619-5129")))
-Description: A compilation of more than 40 functions designed to evaluate prediction performance of point-forecast models accounting for different aspects of the agreement between predicted and observed values. It includes error metrics (e.g. MAE, RMSE), model efficiencies (e.g. NSE, KGE), indices of agreement (e.g. d, RAC), goodness of fit (e.g. r, R2), concordance correlation (e.g. CCC), error decomposition (e.g. lack of accuracy-precision), and plots the visualize agreement. For more details visit the vignettes <https://adriancorrendo.github.io/metrica/>.
+Description: A compilation of more than 50 functions designed to evaluate prediction performance of regression (continuous variables) and classification (categorical variables) point-forecast models. Offered scoring rules account for different aspects of the agreement between predicted and observed values. For regression, it includes error metrics (e.g. MAE, RMSE), model efficiencies (e.g. NSE, KGE), indices of agreement (e.g. d, RAC), goodness of fit (e.g. r, R2), concordance correlation (e.g. CCC), error decomposition (e.g. lack of accuracy-precision), and plots the visualize agreement. For classification (binomial and multinomial), it includes functions for confusion matrix, accuracy, precision, recall, specificity, F-score, and Cohen's Kappa. For more details visit the vignettes <https://adriancorrendo.github.io/metrica/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

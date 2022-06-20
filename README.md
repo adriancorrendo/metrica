@@ -21,28 +21,44 @@ status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metric
 
 <!-- badges: end -->
 
-The goal of the *metrica* package is to offer users of point-forecast
-simulation models (e.g. APSIM, DSSAT, DNDC, Machine Learning) a toolbox
-with a wide spectrum of goodness of fit and error metrics (+40)
-accounting for different aspects of the agreement between predicted and
-observed values. Also, some basic visualization functions to assess
-models performance (e.g. scatter with regression line; Bland-Altman
-plot) are provided in customizable format (ggplot).
+A compilation of more than 50 functions designed to evaluate prediction
+performance of regression (continuous variables) and classification
+(categorical variables) point-forecast models. Offered scoring rules
+account for different aspects of the agreement between predicted and
+observed values. For regression, it includes error metrics (e.g. MAE,
+RMSE), model efficiencies (e.g. NSE, KGE), indices of agreement (e.g. d,
+RAC), goodness of fit (e.g. r, R2), concordance correlation (e.g. CCC),
+error decomposition (e.g. lack of accuracy-precision), and plots the
+visualize agreement. For classification (binomial and multinomial), it
+includes functions for confusion matrix, accuracy, precision, recall,
+specificity, F-score, and Cohen’s Kappa. For more details visit the
+vignettes <https://adriancorrendo.github.io/metrica/>.
+
+The goal of the *metrica* package is to offer users of regression
+(continuous variables) and classification (categorical variables)
+point-forecast simulation models (e.g. APSIM, DSSAT, DNDC, Machine
+Learning) a toolbox with a wide spectrum of goodness of fit, error
+metrics, indices, and coefficients accounting for different aspects of
+the agreement between predicted and observed values. Also, *metrica*
+some basic visualization functions to assess models performance
+(e.g. confusion matrix, scatter with regression line; Bland-Altman plot)
+provided in customizable format (ggplot).
 
 <img src="man/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;">
 <br/>
 
-This package contains +40 functions. Two arguments are always required:
+This package contains +50 functions. Two arguments are always required:
 `observed`(Oi; a.k.a. actual, measured, truth, target) and `predicted`
-(Pi; a.k.a. simulated, fitted) values. Also, there is an optional `data`
-arg. that allows to call an existing data frame containing both observed
-and predicted vectors. <br/>
+(Pi; a.k.a. simulated, fitted) values. Optional arguments include `data`
+that allows to call an existing data frame containing both observed and
+predicted vectors, and `tidy`, which controls the type of output as a
+list (tidy = FALSE) or as a data.frame (tidy = TRUE). <br/>
 
-Some functions, also require to define axis `orientation`, such as the
-slope of linear regression describing the bivariate scatter. Current
-included functions cover the world of “regression error” metrics
-(i.e. prediction performance for continuous variables). Classification
-error metrics coming soon. <br/>
+Some functions for regression also require to define the axis
+`orientation`. For example, the slope of the symmetric linear regression
+describing the bivariate scatter (SMA). Current included functions cover
+both worlds: “regression” (i.e. continuous variables) & classification
+(i.e. nominal or categorical variables). <br/>
 
 Always keep in mind that predicted values should come from out-of-bag
 samples (unseen by training set) to avoid overestimation of prediction
@@ -57,7 +73,11 @@ Check the Documentation at <https://adriancorrendo.github.io/metrica/>
 metrics](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
 <br/>
 
-[2. A use
+[2. A regression
+case](https://adriancorrendo.github.io/metrica/articles/vignette1.html)
+<br/>
+
+[3. A classification
 case](https://adriancorrendo.github.io/metrica/articles/vignette1.html)
 <br/>
 
