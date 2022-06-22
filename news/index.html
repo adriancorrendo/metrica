@@ -25,7 +25,8 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/vignette1.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/regression_case.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
   </div>
 </li>
 <li class="active nav-item">
@@ -53,22 +54,43 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.0.0" id="metrica-200">metrica 2.0.0<a class="anchor" aria-label="anchor" href="#metrica-200"></a></h2>
-<ul><li>June 20th, 2022. <br></li></ul><p>This new version of metrica includes:</p>
-<ol style="list-style-type: decimal"><li>Functions to evaluate quality of prediction under classification problems:</li></ol><ul><li>confusion_matrix(): Confusion matrix (as data.frame or plot).</li>
-<li>accuracy(): Accuracy</li>
-<li>error_rate(): Error Rate (a.k.a misclassification rate)</li>
-<li>precision(): Precision</li>
-<li>recall(): Recall (a.k.a sensitivity)</li>
-<li>spec(): specificity.</li>
-<li>fscore(): F-score.</li>
-<li>cohen_kappa(): Cohen’s Kappa Coefficient.</li>
-</ul><ol start="2" style="list-style-type: decimal"><li>Adding two new functions to the family of regression performance metrics:</li></ol><ul><li>dcorr (Distance correlation) as wrapper of dcor() from energy package (<a href="https://CRAN.R-project.org/package=energy" class="external-link uri">https://CRAN.R-project.org/package=energy</a>), and</li>
-<li>MIC (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (<a href="https://CRAN.R-project.org/package=minerva" class="external-link uri">https://CRAN.R-project.org/package=minerva</a>).</li>
-</ul><ol start="3" style="list-style-type: decimal"><li>Adding new plotting function for regression problems:</li></ol><ul><li>density_plot, to create a plot that paints density areas of predicted and observed coordinates.</li></ul><ol start="4" style="list-style-type: decimal"><li>Adding new arguments to plotting functions scatter_plot, tiles_plot, and density_plot:</li></ol><ul><li>print_eq (to print equation or not)</li>
-<li>position_metrics (to customize position of metrics_table when print_metrics = TRUE)</li>
-<li>position_eq (to customize position of equation when print_eq = TRUE)</li>
-<li>colors (for tile_plot and density_plot, to paint gradient from “low” to “high” density of points)</li>
-</ul><div id="section-2-0-0" class="section level103"><p class="heading"></p></div>
+<ul><li>June 21th, 2022. <br></li></ul><p>This new version of metrica includes:</p>
+<ol style="list-style-type: decimal"><li>10 new functions to evaluate quality of predictions for classification problems:</li></ol><ul><li>
+<code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code>: Confusion matrix (as data.frame or plot).</li>
+<li>
+<code><a href="../reference/accuracy.html">accuracy()</a></code>: Accuracy</li>
+<li>
+<code><a href="../reference/error_rate.html">error_rate()</a></code>: Error Rate (a.k.a misclassification rate)</li>
+<li>
+<code><a href="../reference/precision.html">precision()</a></code>: Precision</li>
+<li>
+<code><a href="../reference/recall.html">recall()</a></code>: Recall (a.k.a sensitivity)</li>
+<li>
+<code><a href="../reference/specificity.html">specificity()</a></code>: Specificity.</li>
+<li>
+<code><a href="../reference/fscore.html">fscore()</a></code>: F-score.</li>
+<li>
+<code><a href="../reference/cohen_kappa.html">cohen_kappa()</a></code>: Cohen’s Kappa Coefficient.</li>
+<li>
+<code><a href="../reference/baccu.html">baccu()</a></code>: Balanced Accuracy.</li>
+<li>
+<code><a href="../reference/mcc.html">mcc()</a></code>: Matthews Correlation Coefficient.</li>
+<li>
+<code><a href="../reference/fmi.html">fmi()</a></code>: Fowlkes-Mallows Index.</li>
+</ul><ol start="2" style="list-style-type: decimal"><li>Adding two new functions to the family of regression performance metrics:</li></ol><ul><li>
+<code><a href="../reference/dcorr.html">dcorr()</a></code> (Distance correlation) as wrapper of dcor() from energy package (<a href="https://CRAN.R-project.org/package=energy" class="external-link uri">https://CRAN.R-project.org/package=energy</a>), and</li>
+<li>
+<code><a href="../reference/MIC.html">MIC()</a></code> (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (<a href="https://CRAN.R-project.org/package=minerva" class="external-link uri">https://CRAN.R-project.org/package=minerva</a>).</li>
+</ul><ol start="3" style="list-style-type: decimal"><li>Adding new plotting function for regression problems:</li></ol><ul><li>
+<code><a href="../reference/density_plot.html">density_plot()</a></code>, to create a plot that paints density areas of predicted and observed coordinates.</li></ul><ol start="4" style="list-style-type: decimal"><li>Adding new arguments to plotting functions scatter_plot, tiles_plot, and density_plot:</li></ol><ul><li>
+<code>print_eq</code> (to print equation or not)</li>
+<li>
+<code>position_metrics</code> (to customize position of metrics_table when print_metrics = TRUE)</li>
+<li>
+<code>position_eq</code> (to customize position of equation when print_eq = TRUE)</li>
+<li>
+<code>colors</code> (for tile_plot and density_plot, to paint gradient from “low” to “high” density of points)</li>
+</ul><ol start="5" style="list-style-type: decimal"><li>Adding the argument <code>tidy</code> to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)</li></ol><div id="section-2-0-0" class="section level103"><p class="heading"></p></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.4" id="metrica-124-dev">metrica 1.2.4 (dev)<a class="anchor" aria-label="anchor" href="#metrica-124-dev"></a></h2>

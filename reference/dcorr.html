@@ -27,7 +27,8 @@ a continuous predicted-observed dataset."><!-- mathjax --><script src="https://c
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/vignette1.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/regression_case.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
   </div>
 </li>
 <li class="nav-item">
@@ -98,36 +99,39 @@ returns a data.frame, FALSE returns a list (default).</p></dd>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The <strong>dcorr</strong> function is a wrapper for the <code>dcor</code> function
-from the <strong>energy</strong>-package. See Rizzo &amp; Szekely (2022).</p>
-<p>The distance correlation (dcorr) coefficient is a novel measure of dependence
-between random vectors introduced by Szekely et al. (2007). For all distributions
-with finite first moments, distance correlation \(\mathcal R\) generalizes
-the idea of correlation in two fundamental ways:</p>
-<p>(1) \(\mathcal R(X,Y)\) is defined for \(X\) and \(Y\) in arbitrary
+from the <strong>energy</strong>-package. See Rizzo &amp; Szekely (2022). The distance
+correlation (dcorr) coefficient is a novel measure of dependence
+between random vectors introduced by Szekely et al. (2007).</p>
+<p>The dcorr is characterized for being symmetric, which is relevant for the
+predicted-observed case (PO).</p>
+<p>For all distributions with finite first moments, distance correlation
+\(\mathcal R\) generalizes the idea of correlation in two fundamental ways:</p>
+<p>(1) \(\mathcal R(P,O)\) is defined for \(P\) and \(O\) in arbitrary
 dimension.</p>
-<p>(2) \(\mathcal R(X,Y)=0\) characterizes independence of \(X\) and
-\(Y\).</p>
+<p>(2) \(\mathcal R(P,O)=0\) characterizes independence of \(P\) and
+\(O\).</p>
 <p>Distance correlation satisfies \(0 \le \mathcal R \le 1\), and
-\(\mathcal R = 0\) only if \(X\) and \(Y\) are independent. Distance
+\(\mathcal R = 0\) only if \(P\) and \(O\) are independent. Distance
 covariance \(\mathcal V\) provides a new approach to the problem of
 testing the joint independence of random vectors. The formal definitions of the
 population coefficients \(\mathcal V\) and
 \(\mathcal R\) are given in Szekely et al. (2007).</p>
-<p>The empirical distance correlation \(\mathcal{R}_n(\mathbf{X,Y})\) is
+<p>The empirical distance correlation \(\mathcal{R}_n(\mathbf{P,O})\) is
 the square root of
-$$ \mathcal{R}^2_n(\mathbf{X,Y})= \frac {\mathcal{V}^2_n(\mathbf{X,Y})} 
-{\sqrt{ \mathcal{V}^2_n (\mathbf{X}) \mathcal{V}^2_n(\mathbf{Y})}}. $$</p>
+$$ \mathcal{R}^2_n(\mathbf{P,O})= \frac {\mathcal{V}^2_n(\mathbf{P,O})} 
+{\sqrt{ \mathcal{V}^2_n (\mathbf{P}) \mathcal{V}^2_n(\mathbf{O})}}. $$</p>
 <p>For more details, see <a href="https://adriancorrendo.github.io/metrica/articles/available_metrics.html">online-documentation</a>
 and the <a href="https://CRAN.R-project.org/package=energy" class="external-link">energy-package</a></p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007).
-<em>Dependence vy correaltion of distances, Annals of Statistics, Vol. 35(6): 2769-2794</em>.
+<em>Measuring and testing dependence by correaltion of distances. Annals of Statistics, Vol. 35(6): 2769-2794</em>.
 <a href="https://doi.org/10.1214/009053607000000505" class="external-link">doi:10.1214/009053607000000505</a>
 .<br></p>
 <p>Rizzo, M., and Szekely, G. (2022).
-<em>energy: E-Statistics: Multivariate Inference via the Energy of Data. R package version 1.7-10</em>,
+energy: E-Statistics: Multivariate Inference via the Energy of Data.
+<em>R package version 1.7-10.</em>
 <a href="https://CRAN.R-project.org/package=energy" class="external-link">https://CRAN.R-project.org/package=energy</a>.<br></p>
     </div>
     <div class="section level2">
@@ -140,9 +144,9 @@ and the <a href="https://CRAN.R-project.org/package=energy" class="external-link
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">Y</span> <span class="op">&lt;-</span> <span class="va">X</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">dcorr</span><span class="op">(</span>obs <span class="op">=</span> <span class="va">X</span>, pred <span class="op">=</span> <span class="va">Y</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">P</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">O</span> <span class="op">&lt;-</span> <span class="va">P</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dcorr</span><span class="op">(</span>obs <span class="op">=</span> <span class="va">P</span>, pred <span class="op">=</span> <span class="va">O</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.9290235</span>
 <span class="r-in"><span class="co"># }</span></span>
 </code></pre></div>

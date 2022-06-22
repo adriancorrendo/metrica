@@ -42,7 +42,8 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/vignette1.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/regression_case.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
   </div>
 </li>
 <li class="nav-item">
@@ -74,7 +75,7 @@
       <img src="" class="logo" alt=""><h1>Available prediction performance metrics and indices</h1>
                         <h4 data-toc-skip class="author">Adrian Correndo</h4>
             
-            <h4 data-toc-skip class="date">2022-06-20</h4>
+            <h4 data-toc-skip class="date">2022-06-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/vignettes/available_metrics.Rmd" class="external-link"><code>vignettes/available_metrics.Rmd</code></a></small>
       <div class="d-none name"><code>available_metrics.Rmd</code></div>
@@ -95,13 +96,14 @@
 <div class="section level2">
 <h2 id="classification-categorical-variables">Classification (categorical variables)<a class="anchor" aria-label="anchor" href="#classification-categorical-variables"></a>
 </h2>
+<p><em>All classification functions automatically recognizes the number of classes and adjust estimations for binary or multiclass cases (when available)</em></p>
 <table class="table">
 <colgroup>
 <col width="2%">
-<col width="8%">
-<col width="20%">
-<col width="36%">
+<col width="6%">
+<col width="15%">
 <col width="31%">
+<col width="44%">
 </colgroup>
 <thead><tr class="header">
 <th>#</th>
@@ -115,46 +117,86 @@
 <td>c1</td>
 <td><code>accuracy</code></td>
 <td>Accuracy</td>
-<td>Description</td>
-<td>accuracy = # correct predictions / # total predictions</td>
+<td>It is the most commonly used metric to evaluate classification quality. It represents the number of corrected classified cases with respect to all cases. However, be aware that this metric does not cover all aspects about classification quality. When classes are uneven in number, it may not be a reliable metric.</td>
+<td>
+<span class="math inline">\(accuracy = \frac{TP+TN}{TP+FP+TN+FN}\)</span> <img src="../reference/figures/accuracy.png" alt="equation">
+</td>
 </tr>
 <tr class="even">
 <td>c2</td>
 <td><code>precision</code></td>
 <td>Precision</td>
-<td>Description</td>
-<td>precision = TP/(TP + FP)</td>
+<td>Also known as positive predictive value (PPV), it represents the proportion of well classified cases with respect to the total of cases predicted with a given class (multinomial) or the true class (binomial)</td>
+<td>
+<span class="math inline">\(precision = \frac{TP}{TP + FP}\)</span> <img src="../reference/figures/precision.png" alt="equation">
+</td>
 </tr>
 <tr class="odd">
 <td>c3</td>
 <td><code>recall</code></td>
-<td>Recall (a.k.a sensitivity)</td>
-<td>Description</td>
-<td>recall = TP / P = 1 - FNR</td>
+<td>Recall</td>
+<td>Also known as sensitivity, hit rate, or true positive rate (TPR) for binary cases. It represents the proportion of well predicted cases with respect to the total number of observed cases for a given class (multinomial) or the positive class (binomial)</td>
+<td>
+<span class="math inline">\(recall = \frac{TP}{P} = 1 - FNR\)</span> <img src="../reference/figures/recall.png" alt="equation">
+</td>
 </tr>
 <tr class="even">
 <td>c4</td>
 <td><code>spec</code></td>
 <td>Specificity</td>
-<td>Description</td>
-<td>spec = TN / N = 1 - FPR</td>
+<td>Also known as selectivity or true negative rate (TNR). It represents the proportion of well classified negative values with respect to the total number of actual negatives</td>
+<td>
+<span class="math inline">\(specificity = \frac{TN}{N} = 1 - FPR\)</span> <img src="../reference/figures/specificity.png" alt="equation">
+</td>
 </tr>
 <tr class="odd">
 <td>c5</td>
-<td><code>fscore</code></td>
-<td>F-score (a.k.a F1-score, F-measure)</td>
-<td>Description</td>
-<td>fscore = (1 + B^2) * (precision * recall) / (B^2 * precision) + recall</td>
+<td><code>baccu</code></td>
+<td>Balanced Accuracy</td>
+<td>This metric is especially useful when the number of observations across classes is imbalanced</td>
+<td>
+<span class="math inline">\(b.accuracy = \frac{recall + specificity}{2}\)</span> <img src="../reference/figures/balanced_accuracy.png" alt="equation">
+</td>
 </tr>
 <tr class="even">
 <td>c6</td>
+<td><code>fscore</code></td>
+<td>F-score</td>
+<td>a.k.a F1-score, F-measure</td>
+<td>
+<span class="math inline">\(fscore = \frac{(1 + B ^ 2) * precision * recall}{(B ^ 2 * precision) + recall)}\)</span> <img src="../reference/figures/fscore.png" alt="equation">
+</td>
+</tr>
+<tr class="odd">
+<td>c7</td>
 <td><code>cohen_kappa</code></td>
 <td>Cohen’s Kappa Coefficient</td>
-<td>Description</td>
-<td>cohen_kappa = # correct predictions / # total predictions</td>
+<td>The cohen_kappa is considered a more robust metric than the classic <code>accuracy</code>. It normalizes the accuracy by the possibility of agreement by chance. It is positively bounded to 1, but it is not negatively bounded. The closer to 1, the better the classification quality</td>
+<td>
+<span class="math inline">\(kappa = \frac{2 * (TP * TN - FN * FP)}{(TP+FP) * (FP+TN) + (TP+FN) * (FN + TN)}\)</span> <img src="../reference/figures/kappa.png" alt="equation">
+</td>
+</tr>
+<tr class="even">
+<td>c8</td>
+<td><code>mcc</code></td>
+<td>Matthews Correlation Coefficient</td>
+<td>Also known as phi-coefficient. It is particularly useful when the number of observations belonging to each class is uneven. It varies between 0-1, being 0 the worst and 1 the best. Currently, the mcc estimation is only available for binary cases (two classes)</td>
+<td>
+<span class="math inline">\(mcc = \frac{TP * TN - FP * FN}{\sqrt{(TP+FP) * (TP+FN) * (TN+FP) * (TN+FN)}}\)</span> <img src="../reference/figures/mcc.png" alt="equation">
+</td>
+</tr>
+<tr class="odd">
+<td>c9</td>
+<td><code>fmi</code></td>
+<td>Fowlkes-Mallows Index</td>
+<td>The fmi is a metric that measures the similarity between two clusters (predicted and observed). It is equivalent to the square root of the product between precision (PPV) and recall (TPR). It varies between 0-1, being 0 the worst and 1 the best.</td>
+<td>
+<span class="math inline">\(fmi = \sqrt{precision * recall} = \sqrt{PPV * TPR}\)</span> <img src="../reference/figures/fmi.png" alt="equation">
+</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 </div>
 <div class="section level2">
 <h2 id="regression-continuous-variables">Regression (continuous variables)<a class="anchor" aria-label="anchor" href="#regression-continuous-variables"></a>

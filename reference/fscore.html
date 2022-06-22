@@ -25,7 +25,8 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/vignette1.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/regression_case.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
   </div>
 </li>
 <li class="nav-item">
@@ -101,8 +102,11 @@ returns a data.frame, FALSE returns a list; Default : FALSE.</p></dd>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The F-score (or F-measure) is the harmonic mean of precision and recall.
 The universal version of F-score employs a coefficient β, by which can be the
-precision-recall ratio tuned.</p>
-<p>For binomial cases, F-score  =  TP / (TP + 0.5*(FP + FN))</p>
+precision-recall ratio tuned. It is a more robust metric than the classic accuracy,
+especially when the number of cases for each class is uneven.</p>
+<p>For binomial/binary cases, fscore  =  TP / (TP + 0.5*(FP + FN))</p>
+<p>The generalized formula applied to multiclass cases is:</p>
+<p>\(fscore = \frac{(1 + B ^ 2) * (precision * recall)} {((B ^ 2 * precision) + recall)} \)</p>
 <p>It is bounded between 0 and 1.
 The closer to 1 the better. Values towards zero indicate low performance.
 For the formula and more details, see

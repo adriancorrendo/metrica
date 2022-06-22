@@ -27,7 +27,8 @@ a continuous predicted-observed dataset."><!-- mathjax --><script src="https://c
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/vignette1.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/regression_case.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
   </div>
 </li>
 <li class="nav-item">
@@ -99,12 +100,12 @@ returns a data.frame, FALSE returns a list (default).</p></dd>
     <p>The <strong>MIC</strong> function is a wrapper for the <code>mine_stat</code> function of the
 <strong>minerva</strong>-package, a collection of Maximal Information-Based Nonparametric statistics (MINE).
 See Reshef et al. (2011).</p>
-<p>The <strong>MIC</strong> is defined as follows:
-$$\textrm{MIC}(D)=\max_{XY&lt;B(n)} M(D)_{X,Y} = \max_{XY&lt;B(n)} \frac{I^*(D,X,Y)}{log(\min{X,Y})},$$ where
+<p>For the predicted-observed case (PO), the <strong>MIC</strong> is defined as follows:
+$$\textrm{MIC}(D)=\max_{PO&lt;B(n)} M(D)_{X,Y} = \max_{PO&lt;B(n)} \frac{I^ * (D,P,O)} {log(\min{P,O})},$$ where
 \(B(n)=n^{\alpha}\) is the search-grid size,
-\(I^*(D,X,Y)\)
-is the maximum mutual information over all grids <em>X-by-Y</em>, of the distribution
-induced by D on a grid having <em>X</em> and <em>Y</em> bins (where the probability
+\(I^*(D,P,O)\)
+is the maximum mutual information over all grids <em>P-by-O</em>, of the distribution
+induced by D on a grid having <em>P</em> and <em>O</em> bins (where the probability
 mass on a cell of the grid is the fraction of points of D falling in that cell).
 Albanese et al. (2013).</p>
 <p>For more details, see <a href="https://adriancorrendo.github.io/metrica/articles/available_metrics.html">online-documentation</a></p>
