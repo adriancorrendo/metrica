@@ -87,7 +87,7 @@ confusion_matrix <- function(data = NULL, obs, pred,
       rlang::quo(table({{pred}}, {{obs}}, dnn = c("PREDICTED", "OBSERVED")) ) 
     ) 
    
-    if(plot == FALSE){ return(matrix %>% dplyr::select(-count)) }
+    if(plot == FALSE){ return(matrix) }
     else { 
       palette <- c(colors["low"], colors["high"])
       plot <- matrix %>% as.data.frame() %>% 
