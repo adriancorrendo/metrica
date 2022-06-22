@@ -32,9 +32,14 @@ It estimates the F-score for a nominal/categorical predicted-observed dataset.
 \details{
 The F-score (or F-measure) is the harmonic mean of precision and recall.
 The universal version of F-score employs a coefficient β, by which can be the
-precision-recall ratio tuned.
+precision-recall ratio tuned. It is a more robust metric than the classic accuracy,
+especially when the number of cases for each class is uneven.
 
-For binomial cases, F-score  =  TP / (TP + 0.5*(FP + FN))
+For binomial/binary cases, fscore  =  TP / (TP + 0.5*(FP + FN))
+
+The generalized formula applied to multiclass cases is:
+
+\eqn{fscore = \frac{(1 + B ^ 2) * (precision * recall)} {((B ^ 2 * precision) + recall)} }
 
 It is bounded between 0 and 1.
 The closer to 1 the better. Values towards zero indicate low performance.

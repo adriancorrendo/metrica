@@ -1,0 +1,109 @@
+---
+title: "Assessing classification quality"
+author: "Adrian Correndo & Luciana Nieto"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Assessing classification quality}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## 1 Introduction  
+
+This vignette introduces the functionality of the *`metrica`* package applied to classification tasks. <br/>
+
+Select and briefly explain example dataset.
+
+### Libraries
+```{r warning=FALSE, message=FALSE}
+library(metrica)
+library(dplyr)
+library(purrr)
+library(tidyr)
+```
+
+
+### 2. Example datasets 
+```{r warning=FALSE, message=FALSE}
+binomial_case <- data.frame(labels = sample(c("Pos","Neg"), 100, replace = TRUE),
+                            predictions = sample(c("Pos","Neg"), 100, replace = TRUE)) %>% 
+  mutate(predictions = as.factor(predictions), labels = as.factor(labels))
+
+multinomial_case <- data.frame(labels = sample(c("Red","Green", "Blue"), 100, replace = TRUE),
+                               predictions = sample(c("Red","Green", "Blue"), 100, replace = TRUE) ) %>% 
+  mutate(predictions = as.factor(predictions), labels = as.factor(labels))
+
+```
+
+### 3. Confusion Matrix <br/>
+
+### 3.1. Binary
+```{r warning=FALSE, message=FALSE}
+# a. Print
+binomial_case %>% confusion_matrix(obs = labels, pred = predictions, 
+                                            plot = FALSE, colors = c(low="#f9dbbd" , high="#735d78"), 
+                                            unit = "count")
+
+# b. Plot
+binomial_case %>% confusion_matrix(obs = labels, pred = predictions, 
+                                            plot = TRUE, colors = c(low="#f9dbbd" , high="#735d78"), 
+                                            unit = "count")
+```
+
+### 3.2. Multiclass
+```{r warning=FALSE, message=FALSE}
+# a. Print
+multinomial_case %>% confusion_matrix(obs = labels, 
+                                      pred = predictions, 
+                                      plot = FALSE, colors = c(low="#f9dbbd" , high="#735d78"),
+                                      unit = "count")
+
+# b. Plot
+multinomial_case %>% confusion_matrix(obs = labels, 
+                                      pred = predictions, 
+                                      plot = TRUE, colors = c(low="#d3dbbd" , high="#885f78"), 
+                                      unit = "count")
+
+```
+
+### 4 Classification Metrics <br/>
+
+### 4.1. Single dataset <br/>
+```{r}
+# Get classification metrics one by one
+binomial_case %>% accuracy(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% error_rate(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% precision(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% recall(data = ., obs = labels, pred = predictions, atom = F, tidy=TRUE)
+binomial_case %>% specificity(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% baccu(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% fscore(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% cohen_kappa(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% mcc(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% fmi(data = ., obs = labels, pred = predictions, tidy=TRUE)
+
+# Get all at once with metrics_summary()
+binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
+multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
+
+# Get a selected list at once with metrics_summary()
+selected_class_metrics <- c("accuracy", "recall", "fscore")
+
+# Binary
+binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification",
+                                  metrics_list = selected_class_metrics)
+
+# Multiclass
+multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification",
+                                  metrics_list = selected_class_metrics)
+
+
+```

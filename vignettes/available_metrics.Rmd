@@ -37,15 +37,21 @@ Always keep in mind that predicted values should come from out-of-bag samples
 List of metrics <br/>
 
 ## Classification (categorical variables)
+_All classification functions automatically recognizes the number of classes and adjust estimations for binary or multiclass cases (when available)_
 
 | #|Metric | Definition | Details | Formula |
-| --|------ | ---------------|-------------------------- | ----------------------- |
-| c1| `accuracy` | Accuracy | Description | accuracy = # correct predictions / # total predictions |
-| c2| `precision` | Precision | Description | precision = TP/(TP + FP) |
-| c3| `recall` | Recall (a.k.a sensitivity) | Description | recall = TP / P = 1 - FNR |
-| c4| `spec` | Specificity | Description | spec = TN / N = 1 - FPR |
-| c5| `fscore` | F-score (a.k.a F1-score, F-measure) | Description | fscore = (1 + B^2) * (precision * recall) / (B^2 * precision) + recall |
-| c6| `cohen_kappa` | Cohen's Kappa Coefficient | Description | cohen_kappa = # correct predictions / # total predictions |
+| --|------ | ---------------|------------------------------- | -------------------------------------------- |
+| c1| `accuracy` | Accuracy | It is the most commonly used metric to evaluate classification quality. It represents the number of corrected classified cases with respect to all cases. However, be aware that this metric does not cover all aspects about classification quality. When classes are uneven in number, it may not be a reliable metric. | $accuracy = \frac{TP+TN}{TP+FP+TN+FN}$ ![equation](../man/figures/accuracy.png) |
+| c2| `precision` | Precision | Also known as positive predictive value (PPV), it represents the proportion of well classified cases with respect to the total of cases predicted with a given class (multinomial) or the true class (binomial)  | $precision = \frac{TP}{TP + FP}$ ![equation](../man/figures/precision.png)|
+| c3| `recall` | Recall | Also known as sensitivity, hit rate, or true positive rate (TPR) for binary cases. It represents the proportion of well predicted cases with respect to the total number of observed cases for a given class (multinomial) or the positive class (binomial) | $recall = \frac{TP}{P} = 1 - FNR$ ![equation](../man/figures/recall.png)| 
+| c4| `spec` | Specificity | Also known as selectivity or true negative rate (TNR). It represents the proportion of well classified negative values with respect to the total number of actual negatives  | $specificity = \frac{TN}{N} = 1 - FPR$ ![equation](../man/figures/specificity.png)|
+| c5| `baccu` | Balanced Accuracy | This metric is especially useful when the number of observations across classes is imbalanced | $b.accuracy = \frac{recall + specificity}{2}$ ![equation](../man/figures/balanced_accuracy.png)|
+| c6| `fscore` | F-score | a.k.a F1-score, F-measure | $fscore = \frac{(1 + B ^ 2) * precision * recall}{(B ^ 2 * precision) + recall)}$ ![equation](../man/figures/fscore.png)|
+| c7| `cohen_kappa` | Cohen's Kappa Coefficient | The cohen_kappa is considered a more robust metric than the classic `accuracy`. It normalizes the accuracy by the possibility of agreement by chance. It is positively bounded to 1, but it is not negatively bounded. The closer to 1, the better the classification quality | $kappa = \frac{2 * (TP * TN - FN * FP)}{(TP+FP) * (FP+TN) + (TP+FN) * (FN + TN)}$ ![equation](../man/figures/kappa.png)|
+| c8| `mcc` | Matthews Correlation Coefficient | Also known as phi-coefficient. It is particularly useful when the number of observations belonging to each class is uneven. It varies between 0-1, being 0 the worst and 1 the best. Currently, the mcc estimation is only available for binary cases (two classes) | $mcc = \frac{TP * TN - FP * FN}{\sqrt{(TP+FP) * (TP+FN) * (TN+FP) * (TN+FN)}}$ ![equation](../man/figures/mcc.png) |
+| c9| `fmi` | Fowlkes-Mallows Index | The fmi is a metric that measures the similarity between two clusters (predicted and observed). It is equivalent to the square root of the product between precision (PPV) and recall (TPR). It varies between 0-1, being 0 the worst and 1 the best.  | $fmi = \sqrt{precision * recall} = \sqrt{PPV * TPR}$ ![equation](../man/figures/fmi.png) |
+
+<br/>
 
 
 ## Regression (continuous variables)

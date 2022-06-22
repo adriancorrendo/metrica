@@ -123,16 +123,17 @@ R2(data = wheat,
 
 Similarly, to calculate root mean squared error, we can use the `RMSE()` function:  
 ```{r rmse}
-RMSE(data = wheat,
-   obs = obs, 
-   pred = pred)
+RMSE(data = wheat, 
+     obs = obs, 
+     pred = pred)
 ```
 
 The user can also calculate all 41 metrics at once using the function `metrics_summary()`:  
 ```{r metrics summary}
 metrics_summary(data = wheat,
-   obs = obs, 
-   pred = pred)
+                obs = obs, 
+                pred = pred, 
+                type = "regression")
 ```
 
 If the user wants just specific metrics, within the same function `metrics_summary()`, user can pass a list of desired metrics using the argument "metrics_list" as follows:  
@@ -143,6 +144,7 @@ my.metrics <- c("R2","MBE", "RMSE", "RSR", "NSE", "KGE", "CCC")
 metrics_summary(data = wheat,   
                 obs = obs,    
                 pred = pred,
+                type = "regression",
                 metrics_list = my.metrics) 
 
 ```
@@ -165,9 +167,9 @@ To print the metrics on the `scatter_plot()`, just use print.metrics. Warning: d
 ```{r scatter_plot print_metrics}
 
 my.metrica.plot <- scatter_plot(data = wheat,
-             obs = obs, 
-             pred = pred,
-             print_metrics = TRUE, metrics_list = my.metrics)
+                                obs = obs, 
+                                pred = pred,
+                                print_metrics = TRUE, metrics_list = my.metrics)
 
 my.metrica.plot
 

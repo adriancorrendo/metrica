@@ -21,7 +21,7 @@ data('wheat')
 
 # 1. Metrics summary
 metrics_summary.test <- metrics_summary(obs = wheat$obs, pred = wheat$pred,
-                                        orientation = "PO")
+                                        orientation = "PO", type = "regression")
 
 test_that('no error metrics_summary', {
   expect_false(inherits(metrics_summary.test, "try-error"))

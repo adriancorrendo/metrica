@@ -8,9 +8,10 @@ metrics_summary(
   data = NULL,
   obs,
   pred,
+  type,
+  metrics_list = NULL,
   orientation = "PO",
-  na.rm = TRUE,
-  metrics_list = NULL
+  na.rm = TRUE
 )
 }
 \arguments{
@@ -20,23 +21,27 @@ metrics_summary(
 
 \item{pred}{vector with predicted values (numeric).}
 
+\item{type}{argument of class string specifying the type of model. For continuous
+variables use \emph{type = 'regression'}. For categorical variables use \emph{type = 'classification'}.}
+
+\item{metrics_list}{vector or list of specific selected metrics. Default is = NULL,
+which will estimate all metrics available for either regression or classification.}
+
 \item{orientation}{argument of class string specifying the axis
-orientation to estimate slope(B1) and intercept(B0).
+orientation to estimate slope(B1) and intercept(B0). It only applies when type = "regression".
 "PO" is for predicted vs observed, and "OP" for observed vs predicted.
 Default is orientation = "PO".}
 
 \item{na.rm}{Logic argument to remove rows with missing values
 (NA). Default is na.rm = TRUE.}
-
-\item{metrics_list}{vector or list of specific selected metrics. Default is = NULL,
-which will estimate all metrics available.}
 }
 \value{
 an object of class \code{data.frame} containing all (or selected) metrics.
 }
 \description{
 It estimates a group of metrics characterizing the prediction performance
-for a continuous predicted-observed dataset. By default, it calculates all available metrics.
+for a continuous (regression) or categorical (classification) predicted-observed dataset.
+By default, it calculates all available metrics for either regression or classification.
 }
 \details{
 The user can choose to calculate a single metric, or to calculate all metrics at once.
@@ -47,9 +52,20 @@ For the entire list of available metrics with formula, see \href{https://adrianc
 }
 \examples{
 \donttest{
+# Continuous variable (regression)
 X <- rnorm(n = 100, mean = 0, sd = 10)
 Y <- rnorm(n = 100, mean = 0, sd = 10)
-df <- data.frame(obs = X, pred = Y)
-metrics_summary(df, obs = X, pred = Y)
+regression_case <- data.frame(obs = X, pred = Y)
+
+# Get a metrics summary for a regression problem
+metrics_summary(regression_case, obs = X, pred = Y, type = "regression")
+
+# Categorical variable (classification)
+binomial_case <- data.frame(labels = sample(c("True","False"), 100, 
+replace = TRUE), predictions = sample(c("True","False"), 100, replace = TRUE))
+
+#' # Get a metrics summary for a regression problem
+metrics_summary(binomial_case, obs = labels, pred = predictions,
+type = "classification")
 }
 }

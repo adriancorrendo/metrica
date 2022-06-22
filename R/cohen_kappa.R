@@ -57,6 +57,20 @@ cohen_kappa <- function(data=NULL, obs, pred, tidy = FALSE, na.rm = TRUE){
     data = data,
     rlang::quo(table({{pred}}, {{obs}}) ) )
   
+  # If binomial
+  if (nrow(matrix) == 2){ 
+    TP <- matrix[[4]]
+    FP <- matrix[[2]]
+    TN <- matrix[[1]]
+    FN <- matrix[[3]]
+    
+    kappa <- 2*(TP * TN - FP * FN) / ( (TP+FP) * (TN+FP) + (TP+FN) * (TN+FN) ) 
+    
+  }
+  
+  # If multinomial,
+  if (nrow(matrix) >2) {
+  
   expected <- outer(rowSums(matrix), colSums(matrix)) / sum(matrix)
   
   #levels <- nrow(matrix)
@@ -67,11 +81,11 @@ cohen_kappa <- function(data=NULL, obs, pred, tidy = FALSE, na.rm = TRUE){
   n_random <- sum(off_diag * expected)
   
   kappa <- 1 - (n_off_diag / n_random)
+  }
   
-  if (tidy==TRUE){
-    return(as.data.frame(kappa)) }
+  if (tidy==TRUE){return(as.data.frame(kappa)) }
   
-  if (tidy==FALSE){
-    return(kappa) }
+  if (tidy==FALSE){ return(kappa) }
+  
 }
 

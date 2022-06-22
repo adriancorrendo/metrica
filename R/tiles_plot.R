@@ -81,7 +81,9 @@ tiles_plot <- function(data=NULL,
   metrics.table <- rlang::eval_tidy(
     data = data,
     rlang::quo(
-      metrica::metrics_summary(data = data, obs = {{obs}}, pred = {{pred}}, orientation = orientation,
+      metrica::metrics_summary(data = data, obs = {{obs}}, pred = {{pred}}, 
+                               type = "regression",
+                               orientation = orientation,
                       metrics_list = metrics_list) ) ) %>% 
     # Round numbers for clarity
     dplyr::mutate_if(base::is.numeric,~base::round(.,2))

@@ -11,30 +11,33 @@
 #' (NA). Default is na.rm = TRUE.
 #' @return an object of class `numeric`.
 #' @details The \strong{dcorr} function is a wrapper for the \code{dcor} function 
-#' from the \strong{energy}-package. See Rizzo & Szekely (2022).
-#'  
-#' The distance correlation (dcorr) coefficient is a novel measure of dependence 
-#' between random vectors introduced by Szekely et al. (2007). For all distributions 
-#' with finite first moments, distance correlation \eqn{\mathcal R}{R} generalizes 
-#' the idea of correlation in two fundamental ways:
+#' from the \strong{energy}-package. See Rizzo & Szekely (2022). The distance 
+#' correlation (dcorr) coefficient is a novel measure of dependence 
+#' between random vectors introduced by Szekely et al. (2007).
 #' 
-#' (1) \eqn{\mathcal R(X,Y)}{R(X,Y)} is defined for \eqn{X} and \eqn{Y} in arbitrary 
+#' The dcorr is characterized for being symmetric, which is relevant for the
+#' predicted-observed case (PO).
+#'  
+#' For all distributions with finite first moments, distance correlation 
+#' \eqn{\mathcal R}{R} generalizes the idea of correlation in two fundamental ways:
+#' 
+#' (1) \eqn{\mathcal R(P,O)}{R(P,O)} is defined for \eqn{P} and \eqn{O} in arbitrary 
 #' dimension.
 #' 
-#' (2) \eqn{\mathcal R(X,Y)=0}{R(X,Y)=0} characterizes independence of \eqn{X} and 
-#' \eqn{Y}.
+#' (2) \eqn{\mathcal R(P,O)=0}{R(P,O)=0} characterizes independence of \eqn{P} and 
+#' \eqn{O}.
 #' 
 #' Distance correlation satisfies \eqn{0 \le \mathcal R \le 1}{0 \le R \le 1}, and 
-#' \eqn{\mathcal R = 0}{R = 0} only if \eqn{X} and \eqn{Y} are independent. Distance 
+#' \eqn{\mathcal R = 0}{R = 0} only if \eqn{P} and \eqn{O} are independent. Distance 
 #' covariance \eqn{\mathcal V}{V} provides a new approach to the problem of 
 #' testing the joint independence of random vectors. The formal definitions of the
 #' population coefficients \eqn{\mathcal V}{V} and 
 #' \eqn{\mathcal R}{R} are given in Szekely et al. (2007). 
 #' 
-#' The empirical distance correlation \eqn{\mathcal{R}_n(\mathbf{X,Y})}{R(\mathbf{X,Y})} is 
+#' The empirical distance correlation \eqn{\mathcal{R}_n(\mathbf{P,O})}{R(\mathbf{P,O})} is 
 #' the square root of 
-#' \deqn{ \mathcal{R}^2_n(\mathbf{X,Y})= \frac {\mathcal{V}^2_n(\mathbf{X,Y})} 
-#' {\sqrt{ \mathcal{V}^2_n (\mathbf{X}) \mathcal{V}^2_n(\mathbf{Y})}}. }
+#' \deqn{ \mathcal{R}^2_n(\mathbf{P,O})= \frac {\mathcal{V}^2_n(\mathbf{P,O})} 
+#' {\sqrt{ \mathcal{V}^2_n (\mathbf{P}) \mathcal{V}^2_n(\mathbf{O})}}. }
 #'  
 #' For more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
 #' and the [energy-package](https://CRAN.R-project.org/package=energy)
@@ -42,9 +45,9 @@
 #' @examples 
 #' \donttest{
 #' set.seed(1)
-#' X <- rnorm(n = 100, mean = 0, sd = 10)
-#' Y <- X + rnorm(n=100, mean = 0, sd = 3)
-#' dcorr(obs = X, pred = Y)
+#' P <- rnorm(n = 100, mean = 0, sd = 10)
+#' O <- P + rnorm(n=100, mean = 0, sd = 3)
+#' dcorr(obs = P, pred = O)
 #' }
 #' @references 
 #' Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007).
@@ -52,7 +55,8 @@
 #' \doi{10.1214/009053607000000505}.\cr
 #' 
 #' Rizzo, M., and Szekely, G. (2022). 
-#' \emph{energy: E-Statistics: Multivariate Inference via the Energy of Data. R package version 1.7-10},
+#' energy: E-Statistics: Multivariate Inference via the Energy of Data. 
+#' _R package version 1.7-10._
 #' \url{https://CRAN.R-project.org/package=energy}.\cr
 #' 
 #' @seealso 

@@ -1,9 +1,12 @@
 #' @title Specificity  
-#' @name spec
+#' @name specificity
 #' @description It estimates the specificity for a nominal/categorical predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character | factor).
 #' @param pred Vector with predicted values (character | factor).
+#' @param atom Logical operator (TRUE/FALSE) to decide if the estimate is made for 
+#' each class (atom = TRUE) or at a global level (atom = FALSE); Default : FALSE.
+#' When dataset is "binomial" atom does not apply.
 #' @param tidy Logical operator (TRUE/FALSE) to decide the type of return. TRUE 
 #' returns a data.frame, FALSE returns a list; Default : FALSE.
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -39,18 +42,18 @@
 #' replace = TRUE), predictions = sample(c("Red","Blue", "Green"), 100, replace = TRUE)    )
 #' 
 #' # Get specificity estimate for two-class case
-#' spec(data = binomial_case, obs = labels, pred = predictions, tidy = TRUE)
+#' specificity(data = binomial_case, obs = labels, pred = predictions, tidy = TRUE)
 #' 
 #' # Get specificity estimate for each class for the multi-class case
-#' spec(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE)
+#' specificity(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE)
 #' 
 #' # Get specificity estimate for the multi-class case at a global level
-#' spec(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE)
+#' specificity(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE)
 #' }
-#' @rdname spec
+#' @rdname specificity
 #' @importFrom rlang eval_tidy quo
 #' @export 
-spec <- function(data=NULL, obs, pred, tidy = FALSE, na.rm = TRUE){
+specificity <- function(data=NULL, obs, pred, atom = FALSE, tidy = FALSE, na.rm = TRUE){
   
   matrix <- rlang::eval_tidy(
     data = data,
@@ -74,8 +77,9 @@ spec <- function(data=NULL, obs, pred, tidy = FALSE, na.rm = TRUE){
     TN   <- sum(matrix) - (TPFP + TPFN - TP)
     FP   <- TPFP - TP 
     
-    spec <- TN / (TN + FP)   
-    
+  if (atom == TRUE) { spec <- TN / (TN + FP) }
+  
+    if (atom == FALSE) { spec <- mean(TN / (TN + FP)) }
   }
   
   if (tidy==TRUE){

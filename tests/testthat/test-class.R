@@ -1,7 +1,7 @@
 # Test classification metrics
 
-binary <- data.frame(labels = sample(c("Pos","Neg"), 100, replace = TRUE),
-                     predictions = sample(c("Pos","Neg"), 100, replace = TRUE)  )
+binary <- data.frame(labels = sample(c("TRUE","FALSE"), 100, replace = TRUE),
+                     predictions = sample(c("TRUE","FALSE"), 100, replace = TRUE)  )
 
 multiclass <- data.frame(labels = sample(c("Red","Blue", "Green"), 100, replace = TRUE),
                          predictions = sample(c("Red","Blue", "Green"), 100, replace = TRUE) )  
@@ -118,5 +118,44 @@ test_that('no error cohen_kappa_1', {expect_false(inherits(cohen_kappa_1.test, "
 test_that('no error cohen_kappa_2', {expect_false(inherits(cohen_kappa_2.test, "try-error")) })
 test_that('no error cohen_kappa_3', {expect_false(inherits(cohen_kappa_3.test, "try-error")) })
 test_that('no error cohen_kappa_4', {expect_false(inherits(cohen_kappa_4.test, "try-error")) })
+
+# 8. Balanced Accuracy
+baccu_1.test <- baccu(data = binary, obs = labels, pred = predictions, tidy = FALSE)
+baccu_2.test <- baccu(data = binary, obs = labels, pred = predictions, tidy = TRUE)
+baccu_3.test <- baccu(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
+baccu_4.test <- baccu(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
+
+# TEST
+test_that('no error baccu_1', {expect_false(inherits(baccu_1.test, "try-error")) })
+test_that('no error baccu_2', {expect_false(inherits(baccu_2.test, "try-error")) })
+test_that('no error baccu_3', {expect_false(inherits(baccu_3.test, "try-error")) })
+test_that('no error baccu_4', {expect_false(inherits(baccu_4.test, "try-error")) })
+
+# 9. Fowlkes-Mallows Index
+fmi_1.test <- fmi(data = binary, obs = labels, pred = predictions, tidy = FALSE)
+fmi_2.test <- fmi(data = binary, obs = labels, pred = predictions, tidy = TRUE)
+fmi_3.test <- fmi(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
+
+# TEST
+test_that('no error fmi_1', {expect_false(inherits(fmi_1.test, "try-error")) })
+test_that('no error fmi_2', {expect_false(inherits(fmi_2.test, "try-error")) })
+test_that('warning fmi_3', {expect_false(inherits(fmi_3.test, "warning")) })
+
+# 10. Matthews Correlation Coefficient
+mcc_1.test <- mcc(data = binary, obs = labels, pred = predictions, tidy = FALSE)
+mcc_2.test <- mcc(data = binary, obs = labels, pred = predictions, tidy = TRUE)
+mcc_3.test <- mcc(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
+
+# TEST
+test_that('no error mcc_1', {expect_false(inherits(mcc_1.test, "try-error")) })
+test_that('no error mcc_2', {expect_false(inherits(mcc_2.test, "try-error")) })
+test_that('warning mcc_3', {expect_false(inherits(mcc_3.test, "warning")) })
+
+# 11. Classification Metrics Summary
+metrics_summary_1.test <- metrics_summary(data = binary, obs = labels, pred = predictions, type = "classification")
+
+# TEST
+test_that('no error metrics_summary_1', {expect_false(inherits(metrics_summary_1.test, "try-error")) })
+
 
 

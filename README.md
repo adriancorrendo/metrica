@@ -99,13 +99,13 @@ devtools::install_github("adriancorrendo/metrica")
 
 ## 2. Native datasets
 
-The *metrica* package comes with four example datasets from the APSIM
-software: <br/> 1. `wheat`. 137 data-points of wheat grain N (grams per
-squared meter) <br/> 2. `barley`. 69 data-points of barley grain number
-(x1000 grains per squared meter) <br/> 3. `sorghum`. 36 data-points of
-sorghum grain number (x1000 grains per squared meter) <br/> 4.
-`chickpea`. 39 data-points of chickpea aboveground dry mass (kg per
-hectare) <br/>
+The *metrica* package comes with four example datasets of continuous
+variables (regression) from the APSIM software: <br/> 1. `wheat`. 137
+data-points of wheat grain N (grams per squared meter) <br/> 2.
+`barley`. 69 data-points of barley grain number (x1000 grains per
+squared meter) <br/> 3. `sorghum`. 36 data-points of sorghum grain
+number (x1000 grains per squared meter) <br/> 4. `chickpea`. 39
+data-points of chickpea aboveground dry mass (kg per hectare) <br/>
 
 These data correspond to the latest, up-to-date, documentation and
 validation of version number 2020.03.27.4956. Data available at:
@@ -115,7 +115,7 @@ the official APSIM Next Generation website:
 
 ## 3. Example Code
 
-This is a basic example which shows you the core functions of *metrica*:
+### Libraries
 
 ``` r
 library(metrica)
@@ -123,8 +123,15 @@ library(dplyr)
 library(purrr)
 library(tidyr)
 library(ggpmisc)
+```
 
-# 1. A. Create a fake dataset
+This is a basic example which shows you the core regression and
+classification functions of *metrica*: <br/>
+
+## 3.1. REGRESSION
+
+``` r
+# 1. A. Create a random dataset
 # Set seed for reproducibility
 set.seed(1)
 # Create a random vector (X) with 100 values
@@ -140,25 +147,34 @@ example.data <- data.frame(measured = X, simulated = Y)
 example.data <- barley %>%  # or 'wheat', 'sorghum', or 'chickpea'
 # 1.b. create columns as synonyms of observed (measured) and predicted (simulated)
                 mutate(measured = obs, simulated = pred)  
+```
 
+### 3.1.1. Plot functions
 
-# 2. Use metrica plot functions
-# 2.a. Create scatter plot with PO orientation
-barley.scat.plot <- metrica::scatter_plot(data = example.data, obs = measured, pred = simulated,
-             orientation = "PO")
+### 3.1.1.1. Create scatter plot with PO orientation
+
+``` r
+barley.scat.plot <- metrica::scatter_plot(data = example.data, 
+                                          obs = measured, 
+                                          pred = simulated,
+                                          orientation = "PO")
 barley.scat.plot
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
 ``` r
 # Alternative using vectors instead of dataframe
 #metrica::scatter_plot(obs = example.data$obs, pred = example.data$pred)
+```
 
-# 2.b. Create tiles plot with OP orientation
+### 3.1.1.2. Create tiles plot with OP orientation
+
+``` r
 barley.tiles.plot <- 
   metrica::tiles_plot(data = example.data, 
-                      obs = measured, pred = simulated,
+                      obs = measured, 
+                      pred = simulated,
                       bins = 10, 
                       orientation = "OP",
                       colors = c(low = "pink", high = "steelblue"))
@@ -166,10 +182,11 @@ barley.tiles.plot <-
 barley.tiles.plot
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
+### 3.1.1.3. Create a density plot with OP orientation
 
 ``` r
-# 2.c. Create a density plot with OP orientation
 barley.density.plot <-
 metrica::density_plot(data = example.data, 
                       obs = measured, pred = simulated,
@@ -181,37 +198,48 @@ metrica::density_plot(data = example.data,
 barley.density.plot
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
+### 3.1.1.4. Create a Bland-Altman plot
 
 ``` r
-# 2.d. Create a Bland-Altman plot
 barley.ba.plot <- metrica::bland_altman_plot(data = example.data,
                            obs = measured, pred = simulated)
 
 barley.ba.plot
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-4.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+
+### 3.1.2. Metrics functions
+
+### 3.1.2.2. Single estimates
 
 ``` r
-# 3. Get metrics estimates
-# 3.a. Single estimates
-# 3.a.i. Estimate coefficient of determination (R2)
+# a. Estimate coefficient of determination (R2)
 
 metrica::R2(data = example.data, obs = measured, pred = simulated)
 #> [1] 0.4512998
 
-# 3.a.ii. Estimate root mean squared error (RMSE)
+# b. Estimate root mean squared error (RMSE)
 metrica::RMSE(data = example.data, obs = measured, pred = simulated)
 #> [1] 3.986028
 
-# 3.a.iii. Estimate mean bias error (MBE)
+# c. Estimate mean bias error (MBE)
 metrica::MBE(data = example.data, obs = measured, pred = simulated)
 #> [1] 0.207378
 
-# 3.b. Metrics Summary 
+# c. Estimate index of agreement (d)
+metrica::d(data = example.data, obs = measured, pred = simulated)
+#> [1] 0.8191397
+```
+
+### 3.1.2.2. Metrics Summary
+
+``` r
 metrics.sum <- metrica::metrics_summary(data = example.data, 
-                                        obs = measured, pred = simulated)  
+                                        obs = measured, pred = simulated,
+                                        type = "regression")  
 # Print first 15
 head(metrics.sum, n = 15)
 #>    Metric      Score
@@ -235,10 +263,15 @@ head(metrics.sum, n = 15)
 metrics.sum.wide <- metrics.sum %>%
   tidyr::pivot_wider(tidyr::everything(),
                       names_from = "Metric",
-                      values_from = "Score") 
+                      values_from = "Score")
+```
 
-# 4. Test multiple datasets at once
-# 4.a. Create nested df with the native examples
+### 3.1.3. Run multiple datasets at once
+
+### 3.1.3.1. Nested data
+
+``` r
+# a. Create nested df with the native examples
 nested.examples <- bind_rows(list(wheat = metrica::wheat, 
                                   barley = metrica::barley,
                                   sorghum = metrica::sorghum, 
@@ -256,10 +289,11 @@ head(nested.examples %>% group_by(id) %>% dplyr::slice_head(n=2))
 #> 3 sorghum  <tibble [36 × 2]> 
 #> 4 wheat    <tibble [137 × 2]>
 
-# 4.b. Run 
+# b. Run 
 multiple.sum <- nested.examples %>% 
   # Store metrics in new.column "performance"
-  mutate(performance = map(data, ~metrica::metrics_summary(data=., obs = obs, pred = pred)))
+  mutate(performance = map(data, ~metrica::metrics_summary(data=., obs = obs, pred = pred, 
+                                                           type = "regression")))
 
 head(multiple.sum)
 #> # A tibble: 4 × 3
@@ -270,10 +304,15 @@ head(multiple.sum)
 #> 3 sorghum  <tibble [36 × 2]>  <df [43 × 2]>
 #> 4 chickpea <tibble [39 × 2]>  <df [43 × 2]>
 
-# 4.c. Non-nested, just with group_by()
+View(multiple.sum)
+```
+
+### 3.1.3.2. Non-nested data <br/>
+
+``` r
 non_nested_summary <- nested.examples %>% unnest(cols = "data") %>% 
   group_by(id) %>% 
-  summarise(metrics_summary(obs = obs, pred = pred)) %>% 
+  summarise(metrics_summary(obs = obs, pred = pred, type = "regression")) %>% 
   dplyr::arrange(Metric)
 
 head(non_nested_summary)
@@ -289,17 +328,20 @@ head(non_nested_summary)
 #> 6 chickpea B0     -99.0
 ```
 
-## 4. Print metrics in a plot
+### 3.1.4. Print metrics in a plot
 
 ``` r
 df <- metrica::wheat
 
-# B. Create list of selected metrics
+# Create list of selected metrics
 selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "NSE", "KGE", "PLA", "PLP")
 
+# Create the plot
 plot <- metrica::scatter_plot(data = df, 
-                              obs = obs, pred = pred, 
+                              obs = obs, pred = pred,
+                              # Activate print_metrics arg.
                               print_metrics = TRUE, 
+                              # Indicate metrics list
                               metrics_list = selected.metrics,
                               # Customize metrics position
                               position_metrics = c(x = 1 , y = 20),
@@ -309,9 +351,165 @@ plot <- metrica::scatter_plot(data = df,
 plot
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
 
-## 5. Import simulated data from APSIM Classic (.out) and APSIM NextGen (.db)
+## 3.1. CLASSIFICATION <br/>
+
+### Example datasets
+
+``` r
+binomial_case <- data.frame(labels = sample(c("Pos","Neg"), 100, replace = TRUE),
+                            predictions = sample(c("Pos","Neg"), 100, replace = TRUE)) %>% 
+  mutate(predictions = as.factor(predictions), labels = as.factor(labels))
+
+multinomial_case <- data.frame(labels = sample(c("Red","Green", "Blue"), 100, replace = TRUE),
+                               predictions = sample(c("Red","Green", "Blue"), 100, replace = TRUE) ) %>% 
+  mutate(predictions = as.factor(predictions), labels = as.factor(labels))
+```
+
+### 3.1.1. Confusion Matrix <br/>
+
+### 3.1.1.1. Binary
+
+``` r
+# a. Print
+binomial_case %>% confusion_matrix(obs = labels, pred = predictions, 
+                                            plot = FALSE, colors = c(low="#f9dbbd" , high="#735d78"), 
+                                            unit = "count")
+#>          OBSERVED
+#> PREDICTED Neg Pos
+#>       Neg  24  24
+#>       Pos  21  31
+
+# b. Plot
+binomial_case %>% confusion_matrix(obs = labels, pred = predictions, 
+                                            plot = TRUE, colors = c(low="#f9dbbd" , high="#735d78"), 
+                                            unit = "count")
+```
+
+<img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
+
+### 3.1.1.2. Multiclass
+
+``` r
+# a. Print
+multinomial_case %>% confusion_matrix(obs = labels, 
+                                      pred = predictions, 
+                                      plot = FALSE, colors = c(low="#f9dbbd" , high="#735d78"),
+                                      unit = "count")
+#>          OBSERVED
+#> PREDICTED Blue Green Red
+#>     Blue     9    11   9
+#>     Green   11    12  11
+#>     Red     13    13  11
+
+# b. Plot
+multinomial_case %>% confusion_matrix(obs = labels, 
+                                      pred = predictions, 
+                                      plot = TRUE, colors = c(low="#d3dbbd" , high="#885f78"), 
+                                      unit = "count")
+```
+
+<img src="man/figures/README-unnamed-chunk-15-1.png" width="100%" />
+
+### 3.1.1. Classification Metrics <br/>
+
+### 3.1.1.1. Single dataset <br/>
+
+``` r
+# Get classification metrics one by one
+binomial_case %>% accuracy(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>   accuracy
+#> 1     0.55
+binomial_case %>% error_rate(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>   misclass_rate
+#> 1          0.45
+binomial_case %>% precision(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>   precision
+#> 1 0.5961538
+binomial_case %>% recall(data = ., obs = labels, pred = predictions, atom = F, tidy=TRUE)
+#>      recall
+#> 1 0.5636364
+binomial_case %>% specificity(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>        spec
+#> 1 0.5333333
+binomial_case %>% baccu(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>       baccu
+#> 1 0.5484848
+binomial_case %>% fscore(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>      fscore
+#> 1 0.5794393
+binomial_case %>% cohen_kappa(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>        kappa
+#> 1 0.09638554
+binomial_case %>% mcc(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>          mcc
+#> 1 0.09656091
+binomial_case %>% fmi(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>         fmi
+#> 1 0.5796671
+
+# Get all at once with metrics_summary()
+binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
+#>         Metric      Score
+#> 1     accuracy 0.55000000
+#> 2   error_rate 0.45000000
+#> 3    precision 0.59615385
+#> 4       recall 0.56363636
+#> 5  specificity 0.53333333
+#> 6        baccu 0.54848485
+#> 7       fscore 0.57943925
+#> 8  cohen_kappa 0.09638554
+#> 9          mcc 0.09656091
+#> 10         fmi 0.57966713
+multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
+#> Warning in metrica::mcc(data = ~., obs = ~labels, pred = ~predictions): The
+#> generalization of the Matthews Correlation Coefficient for a multiclass setting
+#> has not been implemented yet in metrica
+#> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The
+#> Fowlkes-Mallows Index is not available for multiclass cases. The result has been
+#> recorded as NA
+#>         Metric       Score
+#> 1     accuracy  0.32000000
+#> 2   error_rate  0.68000000
+#> 3    precision  0.32019443
+#> 4       recall  0.32029977
+#> 5  specificity  0.66031031
+#> 6        baccu  0.49030504
+#> 7       fscore  0.32024709
+#> 8  cohen_kappa -0.01918465
+#> 9          mcc          NA
+#> 10         fmi          NA
+
+# Get a selected list at once with metrics_summary()
+selected_class_metrics <- c("accuracy", "recall", "fscore")
+
+# Binary
+binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification",
+                                  metrics_list = selected_class_metrics)
+#>     Metric     Score
+#> 1 accuracy 0.5500000
+#> 2   recall 0.5636364
+#> 3   fscore 0.5794393
+
+# Multiclass
+multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification",
+                                  metrics_list = selected_class_metrics)
+#> Warning in metrica::mcc(data = ~., obs = ~labels, pred = ~predictions): The
+#> generalization of the Matthews Correlation Coefficient for a multiclass setting
+#> has not been implemented yet in metrica
+#> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The
+#> Fowlkes-Mallows Index is not available for multiclass cases. The result has been
+#> recorded as NA
+#>     Metric     Score
+#> 1 accuracy 0.3200000
+#> 2   recall 0.3202998
+#> 3   fscore 0.3202471
+```
+
+## 4. Import data from APSIM
+
+### 4.1. APSIM Classic (.out)
 
 ``` r
 # Use import_apsim_out for APSIM Classic output
@@ -332,7 +530,11 @@ head(soybean.out)
 #> 4          13.79             0                 0                0.4
 #> 5          12.68             0                 0                0.4
 #> 6          10.86             0                 0                0.4
+```
 
+### 4.1. APSIM NextGeneration (.db)
+
+``` r
 # Use import_apsim_db for APSIM NextGeneration output
 soybean.db <- metrica::import_apsim_db(filename = "soybean.example.db", folder = "tests/testthat/examples/")
 

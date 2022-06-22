@@ -14,12 +14,12 @@
 #' \strong{minerva}-package, a collection of Maximal Information-Based Nonparametric statistics (MINE).
 #' See Reshef et al. (2011). 
 #' 
-#' The \strong{MIC} is defined as follows:
-#' \deqn{\textrm{MIC}(D)=\max_{XY<B(n)} M(D)_{X,Y} = \max_{XY<B(n)} \frac{I^*(D,X,Y)}{log(\min{X,Y})},}{MIC(D)=max_{XY<B(n)} M(D)_{X,Y}=max_{XY<B(n)} I*(D,X,Y)/log(min(X,Y)),} where
+#' For the predicted-observed case (PO), the \strong{MIC} is defined as follows:
+#' \deqn{\textrm{MIC}(D)=\max_{PO<B(n)} M(D)_{X,Y} = \max_{PO<B(n)} \frac{I^ * (D,P,O)} {log(\min{P,O})},}{MIC(D)=max_{PO<B(n)} M(D)_{P,O}=max_{PO<B(n)} I * (D,P,O)/log(min(P,O)),} where
 #' \eqn{B(n)=n^{\alpha}} is the search-grid size,
-#' \eqn{I^*(D,X,Y)}{I*(D,X,Y)}
-#' is the maximum mutual information over all grids \emph{X-by-Y}, of the distribution 
-#' induced by D on a grid having \emph{X} and \emph{Y} bins (where the probability
+#' \eqn{I^*(D,P,O)}{I*(D,P,O)}
+#' is the maximum mutual information over all grids \emph{P-by-O}, of the distribution 
+#' induced by D on a grid having \emph{P} and \emph{O} bins (where the probability
 #' mass on a cell of the grid is the fraction of points of D falling in that cell).
 #' Albanese et al. (2013).
 #' 

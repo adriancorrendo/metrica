@@ -1,32 +1,37 @@
 # metrica 2.0.0
 
-* June 20th, 2022. <br/>
+* June 21th, 2022. <br/>
 
 This new version of metrica includes:
 
-1) Functions to evaluate quality of prediction under classification problems:
+1) 10 new functions to evaluate quality of predictions for classification problems:
   
-  - confusion_matrix(): Confusion matrix (as data.frame or plot).
-  - accuracy(): Accuracy
-  - error_rate(): Error Rate (a.k.a misclassification rate)
-  - precision(): Precision
-  - recall(): Recall (a.k.a sensitivity)
-  - spec(): specificity.
-  - fscore(): F-score.
-  - cohen_kappa(): Cohen's Kappa Coefficient.
+  - `confusion_matrix()`: Confusion matrix (as data.frame or plot).
+  - `accuracy()`: Accuracy
+  - `error_rate()`: Error Rate (a.k.a misclassification rate)
+  - `precision()`: Precision
+  - `recall()`: Recall (a.k.a sensitivity)
+  - `specificity()`: Specificity.
+  - `fscore()`: F-score.
+  - `cohen_kappa()`: Cohen's Kappa Coefficient.
+  - `baccu()`: Balanced Accuracy.
+  - `mcc()`: Matthews Correlation Coefficient.
+  - `fmi()`: Fowlkes-Mallows Index.
   
 2) Adding two new functions to the family of regression performance metrics:
-  - dcorr (Distance correlation) as wrapper of dcor() from energy package (https://CRAN.R-project.org/package=energy), and
-  - MIC (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (https://CRAN.R-project.org/package=minerva).
+  - `dcorr()` (Distance correlation) as wrapper of dcor() from energy package (https://CRAN.R-project.org/package=energy), and
+  - `MIC()` (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (https://CRAN.R-project.org/package=minerva).
 
 3) Adding new plotting function for regression problems:
-  - density_plot, to create a plot that paints density areas of predicted and observed coordinates.
+  - `density_plot()`, to create a plot that paints density areas of predicted and observed coordinates.
   
 4) Adding new arguments to plotting functions scatter_plot, tiles_plot, and density_plot:
-  - print_eq (to print equation or not)
-  - position_metrics (to customize position of metrics_table when print_metrics = TRUE)
-  - position_eq (to customize position of equation when print_eq = TRUE)
-  - colors (for tile_plot and density_plot, to paint gradient from "low" to "high" density of points)
+  - `print_eq` (to print equation or not)
+  - `position_metrics` (to customize position of metrics_table when print_metrics = TRUE)
+  - `position_eq` (to customize position of equation when print_eq = TRUE)
+  - `colors` (for tile_plot and density_plot, to paint gradient from "low" to "high" density of points)
+  
+5) Adding the argument `tidy` to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)
 
 ######################################################################################################
 

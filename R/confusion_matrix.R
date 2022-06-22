@@ -45,7 +45,7 @@
 #' @export 
 #' @importFrom rlang eval_tidy quo
 #' @importFrom dplyr select mutate rename %>%
-#' @importFrom ggplot2 ggplot geom_tile geom_text scale_fill_gradient labs scale_x_discrete
+#' @importFrom ggplot2 ggplot geom_tile geom_text scale_fill_gradient labs scale_x_discrete theme_bw
 confusion_matrix <- function(data = NULL, obs, pred, 
                              plot = FALSE, unit = "count", 
                              colors = c("low"=NULL, "high"=NULL),
@@ -60,21 +60,21 @@ confusion_matrix <- function(data = NULL, obs, pred,
       data = data,
       rlang::quo(table({{pred}}, {{obs}}, dnn = c("PREDICTED", "OBSERVED")) ) 
     ) 
-    matrix <- matrix %>% as.data.frame() %>% dplyr::rename(count = Freq) %>% 
-      dplyr::mutate(proportion = count/sum(count))
     
     if(plot == FALSE){ return(matrix) }
     
     else { 
       palette <- c(colors["low"], colors["high"])
       plot <- matrix %>% as.data.frame() %>% 
+        dplyr::rename(count = Freq) %>%
         dplyr::mutate(proportion = count/sum(count) ) %>% 
         ggplot2::ggplot(ggplot2::aes_string("PREDICTED","OBSERVED", fill= "count")) +
         ggplot2::geom_tile() + ggplot2::geom_text(ggplot2::aes_string(label = "count")) +
         { if(!is.null(colors[1]))
           ggplot2::scale_fill_gradient(low= palette[[1]], high = palette[[2]]) } +
         ggplot2::labs(x = "Observed",y = "Predicted")+
-        ggplot2::scale_x_discrete(position="top")
+        ggplot2::scale_x_discrete(position="top")+
+        ggplot2::theme_bw()
       
       
       return(plot)
@@ -86,20 +86,20 @@ confusion_matrix <- function(data = NULL, obs, pred,
       data = data,
       rlang::quo(table({{pred}}, {{obs}}, dnn = c("PREDICTED", "OBSERVED")) ) 
     ) 
-    matrix <- matrix %>% as.data.frame() %>% dplyr::rename(count = Freq) %>% 
-      dplyr::mutate(proportion = count/sum(count) ) 
-    
+   
     if(plot == FALSE){ return(matrix %>% dplyr::select(-count)) }
     else { 
       palette <- c(colors["low"], colors["high"])
       plot <- matrix %>% as.data.frame() %>% 
+        dplyr::rename(count = Freq) %>%
         dplyr::mutate(proportion = count/sum(count) ) %>% 
         ggplot2::ggplot(ggplot2::aes_string("PREDICTED","OBSERVED", fill= "proportion")) +
         ggplot2::geom_tile() + ggplot2::geom_text(ggplot2::aes_string(label = "proportion")) +
         { if(!is.null(colors[1]))
           ggplot2::scale_fill_gradient(low= palette[[1]], high = palette[[2]]) } +
         ggplot2::labs(x = "Observed",y = "Predicted")+
-        ggplot2::scale_x_discrete(position="top")
+        ggplot2::scale_x_discrete(position="top")+
+        ggplot2::theme_bw()
       
       
       return(plot)
