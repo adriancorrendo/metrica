@@ -84,16 +84,16 @@ test_that('no error recall_6', {expect_false(inherits(recall_6.test, "try-error"
 
 
 # 5. Specificity
-spec_1.test <- spec(data = binary, obs = labels, pred = predictions, tidy = FALSE)
-spec_2.test <- spec(data = binary, obs = labels, pred = predictions, tidy = TRUE)
-spec_3.test <- spec(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
-spec_4.test <- spec(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
+specificity_1.test <- specificity(data = binary, obs = labels, pred = predictions, tidy = FALSE)
+specificity_2.test <- specificity(data = binary, obs = labels, pred = predictions, tidy = TRUE)
+specificity_3.test <- specificity(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
+specificity_4.test <- specificity(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 
 # TEST
-test_that('no error spec_1', {expect_false(inherits(spec_1.test, "try-error")) })
-test_that('no error spec_2', {expect_false(inherits(spec_2.test, "try-error")) })
-test_that('no error spec_3', {expect_false(inherits(spec_3.test, "try-error")) })
-test_that('no error spec_4', {expect_false(inherits(spec_4.test, "try-error")) })
+test_that('no error specificity_1', {expect_false(inherits(specificity_1.test, "try-error")) })
+test_that('no error specificity_2', {expect_false(inherits(specificity_2.test, "try-error")) })
+test_that('no error specificity_3', {expect_false(inherits(specificity_3.test, "try-error")) })
+test_that('no error specificity_4', {expect_false(inherits(specificity_4.test, "try-error")) })
 
 # 6. F-score
 fscore_1.test <- fscore(data = binary, obs = labels, pred = predictions, tidy = FALSE)
