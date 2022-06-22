@@ -123,8 +123,8 @@
                                             unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span>
 <span class="co">#&gt;          OBSERVED</span>
 <span class="co">#&gt; PREDICTED Neg Pos</span>
-<span class="co">#&gt;       Neg  30  26</span>
-<span class="co">#&gt;       Pos  14  30</span>
+<span class="co">#&gt;       Neg  28  32</span>
+<span class="co">#&gt;       Pos  17  23</span>
 
 <span class="co"># b. Plot</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, 
@@ -143,9 +143,9 @@
                                       unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span>
 <span class="co">#&gt;          OBSERVED</span>
 <span class="co">#&gt; PREDICTED Blue Green Red</span>
-<span class="co">#&gt;     Blue    16    15  10</span>
-<span class="co">#&gt;     Green    6    10  11</span>
-<span class="co">#&gt;     Red     12     9  11</span>
+<span class="co">#&gt;     Blue     9    10  11</span>
+<span class="co">#&gt;     Green   18    18   9</span>
+<span class="co">#&gt;     Red      7    11   7</span>
 
 <span class="co"># b. Plot</span>
 <span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, 
@@ -165,48 +165,48 @@
 <code class="sourceCode R"><span class="co"># Get classification metrics one by one</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;   accuracy</span>
-<span class="co">#&gt; 1      0.6</span>
+<span class="co">#&gt; 1     0.51</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/error_rate.html">error_rate</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;   misclass_rate</span>
-<span class="co">#&gt; 1           0.4</span>
+<span class="co">#&gt; 1          0.49</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/precision.html">precision</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;   precision</span>
-<span class="co">#&gt; 1 0.6818182</span>
+<span class="co">#&gt; 1     0.575</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/recall.html">recall</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, atom <span class="op">=</span> <span class="cn">F</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;      recall</span>
-<span class="co">#&gt; 1 0.5357143</span>
+<span class="co">#&gt; 1 0.4181818</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/specificity.html">specificity</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;        spec</span>
-<span class="co">#&gt; 1 0.6818182</span>
+<span class="co">#&gt; 1 0.6222222</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/baccu.html">baccu</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;       baccu</span>
-<span class="co">#&gt; 1 0.6087662</span>
+<span class="co">#&gt;      baccu</span>
+<span class="co">#&gt; 1 0.520202</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fscore.html">fscore</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;   fscore</span>
-<span class="co">#&gt; 1    0.6</span>
+<span class="co">#&gt;      fscore</span>
+<span class="co">#&gt; 1 0.4842105</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/cohen_kappa.html">cohen_kappa</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;       kappa</span>
-<span class="co">#&gt; 1 0.2113565</span>
+<span class="co">#&gt;        kappa</span>
+<span class="co">#&gt; 1 0.03921569</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/mcc.html">mcc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;         mcc</span>
-<span class="co">#&gt; 1 0.2175325</span>
+<span class="co">#&gt; 1 0.0410305</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fmi.html">fmi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;         fmi</span>
-<span class="co">#&gt; 1 0.6043672</span>
+<span class="co">#&gt; 1 0.4903616</span>
 
 <span class="co"># Get all at once with metrics_summary()</span>
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span>
-<span class="co">#&gt;         Metric     Score</span>
-<span class="co">#&gt; 1     accuracy 0.6000000</span>
-<span class="co">#&gt; 2   error_rate 0.4000000</span>
-<span class="co">#&gt; 3    precision 0.6818182</span>
-<span class="co">#&gt; 4       recall 0.5357143</span>
-<span class="co">#&gt; 5  specificity 0.6818182</span>
-<span class="co">#&gt; 6        baccu 0.6087662</span>
-<span class="co">#&gt; 7       fscore 0.6000000</span>
-<span class="co">#&gt; 8  cohen_kappa 0.2113565</span>
-<span class="co">#&gt; 9          mcc 0.2175325</span>
-<span class="co">#&gt; 10         fmi 0.6043672</span>
+<span class="co">#&gt;         Metric      Score</span>
+<span class="co">#&gt; 1     accuracy 0.51000000</span>
+<span class="co">#&gt; 2   error_rate 0.49000000</span>
+<span class="co">#&gt; 3    precision 0.57500000</span>
+<span class="co">#&gt; 4       recall 0.41818182</span>
+<span class="co">#&gt; 5  specificity 0.62222222</span>
+<span class="co">#&gt; 6        baccu 0.52020202</span>
+<span class="co">#&gt; 7       fscore 0.48421053</span>
+<span class="co">#&gt; 8  cohen_kappa 0.03921569</span>
+<span class="co">#&gt; 9          mcc 0.04103050</span>
+<span class="co">#&gt; 10         fmi 0.49036165</span>
 <span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span>
 <span class="co">#&gt; Warning in metrica::mcc(data = ~., obs = ~labels, pred = ~predictions): The</span>
 <span class="co">#&gt; generalization of the Matthews Correlation Coefficient for a multiclass setting</span>
@@ -214,17 +214,17 @@
 <span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The</span>
 <span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span>
 <span class="co">#&gt; recorded as NA</span>
-<span class="co">#&gt;         Metric      Score</span>
-<span class="co">#&gt; 1     accuracy 0.37000000</span>
-<span class="co">#&gt; 2   error_rate 0.63000000</span>
-<span class="co">#&gt; 3    precision 0.36812142</span>
-<span class="co">#&gt; 4       recall 0.36948529</span>
-<span class="co">#&gt; 5  specificity 0.68493761</span>
-<span class="co">#&gt; 6        baccu 0.52721145</span>
-<span class="co">#&gt; 7       fscore 0.36880210</span>
-<span class="co">#&gt; 8  cohen_kappa 0.05462185</span>
-<span class="co">#&gt; 9          mcc         NA</span>
-<span class="co">#&gt; 10         fmi         NA</span>
+<span class="co">#&gt;         Metric        Score</span>
+<span class="co">#&gt; 1     accuracy  0.340000000</span>
+<span class="co">#&gt; 2   error_rate  0.660000000</span>
+<span class="co">#&gt; 3    precision  0.326666667</span>
+<span class="co">#&gt; 4       recall  0.328501201</span>
+<span class="co">#&gt; 5  specificity  0.664206630</span>
+<span class="co">#&gt; 6        baccu  0.496353915</span>
+<span class="co">#&gt; 7       fscore  0.327581365</span>
+<span class="co">#&gt; 8  cohen_kappa -0.007633588</span>
+<span class="co">#&gt; 9          mcc           NA</span>
+<span class="co">#&gt; 10         fmi           NA</span>
 
 <span class="co"># Get a selected list at once with metrics_summary()</span>
 <span class="va">selected_class_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"accuracy"</span>, <span class="st">"recall"</span>, <span class="st">"fscore"</span><span class="op">)</span>
@@ -233,9 +233,9 @@
 <span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span>,
                                   metrics_list <span class="op">=</span> <span class="va">selected_class_metrics</span><span class="op">)</span>
 <span class="co">#&gt;     Metric     Score</span>
-<span class="co">#&gt; 1 accuracy 0.6000000</span>
-<span class="co">#&gt; 2   recall 0.5357143</span>
-<span class="co">#&gt; 3   fscore 0.6000000</span>
+<span class="co">#&gt; 1 accuracy 0.5100000</span>
+<span class="co">#&gt; 2   recall 0.4181818</span>
+<span class="co">#&gt; 3   fscore 0.4842105</span>
 
 <span class="co"># Multiclass</span>
 <span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span>,
@@ -247,9 +247,9 @@
 <span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span>
 <span class="co">#&gt; recorded as NA</span>
 <span class="co">#&gt;     Metric     Score</span>
-<span class="co">#&gt; 1 accuracy 0.3700000</span>
-<span class="co">#&gt; 2   recall 0.3694853</span>
-<span class="co">#&gt; 3   fscore 0.3688021</span></code></pre></div>
+<span class="co">#&gt; 1 accuracy 0.3400000</span>
+<span class="co">#&gt; 2   recall 0.3285012</span>
+<span class="co">#&gt; 3   fscore 0.3275814</span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
