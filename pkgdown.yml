@@ -1,11 +1,11 @@
 pandoc: 2.7.3
-pkgdown: 2.0.4
+pkgdown: 2.0.5
 pkgdown_sha: ~
 articles:
   available_metrics: available_metrics.html
   classification_case: classification_case.html
   regression_case: regression_case.html
-last_built: 2022-06-22T07:14Z
+last_built: 2022-06-28T05:29Z
 urls:
   reference: https://adriancorrendo.github.io/metrica/reference
   article: https://adriancorrendo.github.io/metrica/articles

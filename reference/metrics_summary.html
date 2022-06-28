@@ -29,8 +29,8 @@ By default, it calculates all available metrics for either regression or classif
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/classification_case.html">Assessing classification quality</a>
-    <a class="dropdown-item" href="../articles/regression_case.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/regression_case.html">Regression case: Assessing model agreement in wheat grain nitrogen content prediction</a>
   </div>
 </li>
 <li class="nav-item">
@@ -65,15 +65,15 @@ By default, it calculates all available metrics for either regression or classif
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">metrics_summary</span><span class="op">(</span>
-  data <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">obs</span>,
-  <span class="va">pred</span>,
-  <span class="va">type</span>,
-  metrics_list <span class="op">=</span> <span class="cn">NULL</span>,
-  orientation <span class="op">=</span> <span class="st">"PO"</span>,
-  na.rm <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">metrics_summary</span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">obs</span>,</span>
+<span>  <span class="va">pred</span>,</span>
+<span>  <span class="va">type</span>,</span>
+<span>  metrics_list <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  orientation <span class="op">=</span> <span class="st">"PO"</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -129,14 +129,14 @@ For the entire list of available metrics with formula, see <a href="https://adri
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="co"># Continuous variable (regression)</span></span>
-<span class="r-in"><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">regression_case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">X</span>, pred <span class="op">=</span> <span class="va">Y</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Get a metrics summary for a regression problem</span></span>
-<span class="r-in"><span class="fu">metrics_summary</span><span class="op">(</span><span class="va">regression_case</span>, obs <span class="op">=</span> <span class="va">X</span>, pred <span class="op">=</span> <span class="va">Y</span>, type <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># Continuous variable (regression)</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">regression_case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">X</span>, pred <span class="op">=</span> <span class="va">Y</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Get a metrics summary for a regression problem</span></span></span>
+<span class="r-in"><span><span class="fu">metrics_summary</span><span class="op">(</span><span class="va">regression_case</span>, obs <span class="op">=</span> <span class="va">X</span>, pred <span class="op">=</span> <span class="va">Y</span>, type <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Metric         Score</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1      B0  2.261092e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2      B1  9.823083e-01</span>
@@ -181,26 +181,42 @@ For the entire list of available metrics with formula, see <a href="https://adri
 <span class="r-out co"><span class="r-pr">#&gt;</span> 41 lambda  2.972457e-02</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 42  dcorr  1.374032e-01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 43    MIC  1.911684e-01</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Categorical variable (classification)</span></span>
-<span class="r-in"><span class="va">binomial_case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"True"</span>,<span class="st">"False"</span><span class="op">)</span>, <span class="fl">100</span>, </span>
-<span class="r-in">replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"True"</span>,<span class="st">"False"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#' # Get a metrics summary for a regression problem</span></span>
-<span class="r-in"><span class="fu">metrics_summary</span><span class="op">(</span><span class="va">binomial_case</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>,</span>
-<span class="r-in">type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Categorical variable (classification)</span></span></span>
+<span class="r-in"><span><span class="va">binomial_case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"True"</span>,<span class="st">"False"</span><span class="op">)</span>, <span class="fl">100</span>, </span></span>
+<span class="r-in"><span>replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"True"</span>,<span class="st">"False"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#' # Get a metrics summary for a regression problem</span></span></span>
+<span class="r-in"><span><span class="fu">metrics_summary</span><span class="op">(</span><span class="va">binomial_case</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>,</span></span>
+<span class="r-in"><span>type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         Metric       Score</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     accuracy  0.48000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   error_rate  0.52000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3    precision  0.45098039</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4       recall  0.48936170</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5  specificity  0.47169811</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        baccu  0.48052991</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6       balacc  0.48052991</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7       fscore  0.46938776</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  cohen_kappa -0.03875350</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9          mcc -0.03887781</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10         fmi  0.46977924</span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8          agf  0.46952858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9        gmean  0.48044874</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        khat -0.03875350</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11         mcc -0.03887781</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12         fmi  0.46977924</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13         bmi -0.03894018</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14         csi  0.30263158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15      deltap -0.03881553</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16       posLr  0.92629179</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17       negLr  1.08255319</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18         dor  0.85565476</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19         npv  0.51020408</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20         FPR  0.52830189</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21         FNR  0.51063830</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22         FDR  0.54901961</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23         FOR  0.48979592</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24      preval  0.47000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25    preval_t  0.49540479</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26     AUC_roc  0.47035256</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -212,7 +228,7 @@ For the entire list of available metrics with formula, see <a href="https://adri
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

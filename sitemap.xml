@@ -34,6 +34,9 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/AC.html</loc>
   </url>
   <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/AUC_roc.html</loc>
+  </url>
+  <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/B0_sma.html</loc>
   </url>
   <url>
@@ -59,6 +62,9 @@
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/MAPE.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/MASE.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/MBE.html</loc>
@@ -148,7 +154,10 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/accuracy.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/baccu.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/agf.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/balacc.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/barley.html</loc>
@@ -157,13 +166,16 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/bland_altman_plot.html</loc>
   </url>
   <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/bmi.html</loc>
+  </url>
+  <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/chickpea.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/cohen_kappa.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/confusion_matrix.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/reference/confusion_matrix.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/csi.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/d.html</loc>
@@ -178,6 +190,9 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/dcorr.html</loc>
   </url>
   <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/deltap.html</loc>
+  </url>
+  <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/density_plot.html</loc>
   </url>
   <url>
@@ -188,6 +203,9 @@
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/fscore.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/gmean.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/import_apsim_db.html</loc>
@@ -202,7 +220,13 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/iqRMSE.html</loc>
   </url>
   <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/khat.html</loc>
+  </url>
+  <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/lambda.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/likelihood_ratios.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/mcc.html</loc>
@@ -214,7 +238,13 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/metrics_summary.html</loc>
   </url>
   <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/npv.html</loc>
+  </url>
+  <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/precision.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/prevalence.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/r.html</loc>

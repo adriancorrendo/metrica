@@ -42,8 +42,8 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="articles/classification_case.html">Assessing classification quality</a>
-    <a class="dropdown-item" href="articles/regression_case.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
+    <a class="dropdown-item" href="articles/classification_case.html">Classification case: Assessing classification quality</a>
+    <a class="dropdown-item" href="articles/regression_case.html">Regression case: Assessing model agreement in wheat grain nitrogen content prediction</a>
   </div>
 </li>
 <li class="nav-item">
@@ -73,27 +73,45 @@
 </h1></div>
 <!-- badges: start -->
 
-<!-- badges: end --><p>A compilation of more than 50 functions designed to evaluate prediction performance of regression (continuous variables) and classification (categorical variables) point-forecast models. Offered scoring rules account for different aspects of the agreement between predicted and observed values. For regression, it includes error metrics (e.g. MAE, RMSE), model efficiencies (e.g. NSE, KGE), indices of agreement (e.g. d, RAC), goodness of fit (e.g. r, R2), concordance correlation (e.g. CCC), error decomposition (e.g. lack of accuracy-precision), and plots the visualize agreement. For classification (binomial and multinomial), it includes functions for confusion matrix, accuracy, precision, recall, specificity, F-score, and Cohen’s Kappa. For more details visit the vignettes <a href="https://adriancorrendo.github.io/metrica/" class="uri">https://adriancorrendo.github.io/metrica/</a>.</p>
-<p>The goal of the <em>metrica</em> package is to offer users of regression (continuous variables) and classification (categorical variables) point-forecast simulation models (e.g. APSIM, DSSAT, DNDC, Machine Learning) a toolbox with a wide spectrum of goodness of fit, error metrics, indices, and coefficients accounting for different aspects of the agreement between predicted and observed values. Also, <em>metrica</em> some basic visualization functions to assess models performance (e.g. confusion matrix, scatter with regression line; Bland-Altman plot) provided in customizable format (ggplot).</p>
+<!-- badges: end --><div class="section level2">
+<h2 id="introduction--">Introduction <br><a class="anchor" aria-label="anchor" href="#introduction--"></a>
+</h2>
+<p><code>metrica</code> is a compilation of more than 80 functions designed to quantitatively and visually evaluate the prediction performance of regression (continuous variables) and classification (categorical variables) point-forecast models (e.g. APSIM, DSSAT, DNDC, Machine Learning). <code>metrica</code> offers a toolbox with a wide spectrum of goodness of fit, error metrics, indices, and coefficients accounting for different aspects of the agreement between predicted and observed values, plus some basic visualization functions to assess models performance (e.g. confusion matrix, scatter with regression line; Bland-Altman plot) provided in customizable format (ggplot).</p>
+<p>Always keep in mind the concept of “cross-validation” since predicted values should come from out-of-bag samples (unseen by training set) to avoid overestimation of the prediction performance. <br></p>
 <p><img src="reference/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;"><br></p>
-<p>This package contains +50 functions. Two arguments are always required: <code>observed</code>(Oi; a.k.a. actual, measured, truth, target) and <code>predicted</code> (Pi; a.k.a. simulated, fitted) values. Optional arguments include <code>data</code> that allows to call an existing data frame containing both observed and predicted vectors, and <code>tidy</code>, which controls the type of output as a list (tidy = FALSE) or as a data.frame (tidy = TRUE). <br></p>
-<p>Some functions for regression also require to define the axis <code>orientation</code>. For example, the slope of the symmetric linear regression describing the bivariate scatter (SMA). Current included functions cover both worlds: “regression” (i.e. continuous variables) &amp; classification (i.e. nominal or categorical variables). <br></p>
-<p>Always keep in mind that predicted values should come from out-of-bag samples (unseen by training set) to avoid overestimation of prediction performance. <br></p>
 <p>Check the Documentation at <a href="https://adriancorrendo.github.io/metrica/" class="uri">https://adriancorrendo.github.io/metrica/</a> <br></p>
 <p><strong>Vignettes</strong> <br></p>
 <p><a href="https://adriancorrendo.github.io/metrica/articles/available_metrics.html">1. Complete list of metrics</a> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/vignette1.html">2. A regression case</a> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/vignette1.html">3. A classification case</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/regression_case.html">2. A regression case</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/classification_case.html">3. A classification case</a> <br></p>
+</div>
+<div class="section level2">
+<h2 id="functions--">Functions <br><a class="anchor" aria-label="anchor" href="#functions--"></a>
+</h2>
+<p>For regression models, it includes 4 plotting functions (scatter, tiles, density, &amp; Bland-Altman plots), and 48 prediction performance scores including error metrics (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE, RRMSE, RSR, PBE, iqRMSE), model efficiency (NSE, E1, Erel, KGE), indices of agreement (d, d1, d1r, RAC, AC, lambda), goodness of fit (r, R2, RSS, TSS, RSE), adjusted correlation coefficients (CCC, Xa, distance correlation-dcorr-), error decomposition (MLA, MLP, PLA, PLP, PAB, PPB, SB, SDSD, LCS, Ub, Uc, Ue), variability (uSD, var_u), and symmetric regression coefficients (B0_sma, B1_sma). Specifically for time-series predictions, <code>metrica</code> also includes the Mean Absolute Scaled Error (MASE). <br></p>
+<p>For classification (binomial and multinomial) tasks, it includes a function to visualize the confusion matrix using ggplot2, and 27 functions of prediction scores including: accuracy, error rate, precision, recall, specificity, balanced accuracy, F-score, adjusted F-score, G-mean, Bookmaker Informedness (Youden’s J-index), Markedness (deltaP), Matthews Correlation Coefficient, Cohen’s Kappa, negative predictive value, positive and negative likelihood ratios, diagnostic odds ratio, prevalence, critical success index, false positive rate, false negative rate, false detection rate, false omission rate, and area under the ROC curve. <br></p>
+<p><code>metrica</code> also offers a function that allows users to run all prediction performance scores at once. The user just needs to specify the type of model (“regression” or “classification”). <br></p>
+<p>For more details visit the vignettes <a href="https://adriancorrendo.github.io/metrica/" class="uri">https://adriancorrendo.github.io/metrica/</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="core-function-arguments--">Core function arguments <br><a class="anchor" aria-label="anchor" href="#core-function-arguments--"></a>
+</h2>
+<p>There are two basic arguments common to all <code>metrica</code> functions: (i) <code>obs</code>(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) <code>pred</code> (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values. <br></p>
+<p>Optional arguments include <code>data</code> that allows to call an existing data frame containing both observed and predicted vectors, and <code>tidy</code>, which controls the type of output as a list (tidy = FALSE) or as a data.frame (tidy = TRUE). <br></p>
+<p>For regression, some specific functions for regression also require to define the axis <code>orientation</code>. For example, the slope of the symmetric linear regression describing the bivariate scatter (SMA). <br></p>
+<p>For binary classification (two classes), functions also require to check the <code>pos_level</code> arg., which indicates the alphanumeric order of the “positive level”. Normally, the most common binary denominations are c(0,1), c(“Negative”, “Positive”), c(“FALSE”, “TRUE”), so the default pos_level = 2 (1, “Positive”, “TRUE”). However, other cases are also possible, such as c(“Crop”, “NoCrop”) for which the user needs to specify pos_level = 1. <br></p>
+<p>For multiclass classification tasks, some functions present the <code>atom</code> arg. (logical TRUE / FALSE), which controls the output to be an overall average estimate across all classes, or a class-wise estimate. For example, user might be interested in obtaining estimates of precision and recall for each possible class of the prediction. <br></p>
+</div>
 <div class="section level2">
 <h2 id="1-installation">1. Installation<a class="anchor" aria-label="anchor" href="#1-installation"></a>
 </h2>
 <p>You can install the CRAN version of <code>metrica</code> with: <br></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"metrica"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"metrica"</span><span class="op">)</span></span></code></pre></div>
 <p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"adriancorrendo/metrica"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"adriancorrendo/metrica"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="2-native-datasets">2. Native datasets<a class="anchor" aria-label="anchor" href="#2-native-datasets"></a>
@@ -108,11 +126,11 @@
 <h3 id="libraries">Libraries<a class="anchor" aria-label="anchor" href="#libraries"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adriancorrendo.github.io/metrica/">metrica</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.r4photobiology.info/ggpmisc/" class="external-link">ggpmisc</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adriancorrendo.github.io/metrica/">metrica</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
+<span><span class="co">#library(ggpmisc)</span></span></code></pre></div>
 <p>This is a basic example which shows you the core regression and classification functions of <em>metrica</em>: <br></p>
 </div>
 </div>
@@ -120,76 +138,78 @@
 <h2 id="31-regression">3.1. REGRESSION<a class="anchor" aria-label="anchor" href="#31-regression"></a>
 </h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># 1. A. Create a random dataset</span>
-<span class="co"># Set seed for reproducibility</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="co"># Create a random vector (X) with 100 values</span>
-<span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
-<span class="co"># Create a second vector (Y) with 100 values by adding error with respect</span>
-<span class="co"># to the first vector (X).</span>
-<span class="va">Y</span> <span class="op">&lt;-</span> <span class="va">X</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
-<span class="co"># Merge vectors in a data frame, rename them as synonyms of observed (measured) and predicted (simulated)</span>
-<span class="va">example.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>measured <span class="op">=</span> <span class="va">X</span>, simulated <span class="op">=</span> <span class="va">Y</span><span class="op">)</span>
-
-<span class="co"># 1. B. Or call native example datasets</span>
-
-<span class="va">example.data</span> <span class="op">&lt;-</span> <span class="va">barley</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>  <span class="co"># or 'wheat', 'sorghum', or 'chickpea'</span>
-<span class="co"># 1.b. create columns as synonyms of observed (measured) and predicted (simulated)</span>
-                <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>measured <span class="op">=</span> <span class="va">obs</span>, simulated <span class="op">=</span> <span class="va">pred</span><span class="op">)</span>  </code></pre></div>
+<code class="sourceCode R"><span><span class="co"># 1. A. Create a random dataset</span></span>
+<span><span class="co"># Set seed for reproducibility</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co"># Create a random vector (X) with 100 values</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co"># Create a second vector (Y) with 100 values by adding error with respect</span></span>
+<span><span class="co"># to the first vector (X).</span></span>
+<span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="va">X</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co"># Merge vectors in a data frame, rename them as synonyms of observed (measured) and predicted (simulated)</span></span>
+<span><span class="va">example.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>measured <span class="op">=</span> <span class="va">X</span>, simulated <span class="op">=</span> <span class="va">Y</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 1. B. Or call native example datasets</span></span>
+<span></span>
+<span><span class="va">example.data</span> <span class="op">&lt;-</span> <span class="va">barley</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>  <span class="co"># or 'wheat', 'sorghum', or 'chickpea'</span></span>
+<span><span class="co"># 1.b. create columns as synonyms of observed (measured) and predicted (simulated)</span></span>
+<span>                <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>measured <span class="op">=</span> <span class="va">obs</span>, simulated <span class="op">=</span> <span class="va">pred</span><span class="op">)</span>  </span></code></pre></div>
 <div class="section level3"><h3 id="311-plot-functions">3.1.1. Plot functions<a class="anchor" aria-label="anchor" href="#311-plot-functions"></a>
 </h3></div>
 <div class="section level3">
 <h3 id="3111-create-scatter-plot-with-po-orientation">3.1.1.1. Create scatter plot with PO orientation<a class="anchor" aria-label="anchor" href="#3111-create-scatter-plot-with-po-orientation"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">barley.scat.plot</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, 
-                                          obs <span class="op">=</span> <span class="va">measured</span>, 
-                                          pred <span class="op">=</span> <span class="va">simulated</span>,
-                                          orientation <span class="op">=</span> <span class="st">"PO"</span><span class="op">)</span>
-<span class="va">barley.scat.plot</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">barley.scat.plot</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, </span>
+<span>                                          obs <span class="op">=</span> <span class="va">measured</span>, </span>
+<span>                                          pred <span class="op">=</span> <span class="va">simulated</span>,</span>
+<span>                                          orientation <span class="op">=</span> <span class="st">"PO"</span>, </span>
+<span>                                          print_eq <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                          position_eq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">24</span>, y <span class="op">=</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">barley.scat.plot</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Alternative using vectors instead of dataframe</span>
-<span class="co">#metrica::scatter_plot(obs = example.data$obs, pred = example.data$pred)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Alternative using vectors instead of dataframe</span></span>
+<span><span class="co">#metrica::scatter_plot(obs = example.data$obs, pred = example.data$pred)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="3112-create-tiles-plot-with-op-orientation">3.1.1.2. Create tiles plot with OP orientation<a class="anchor" aria-label="anchor" href="#3112-create-tiles-plot-with-op-orientation"></a>
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">barley.tiles.plot</span> <span class="op">&lt;-</span> 
-  <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/tiles_plot.html">tiles_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, 
-                      obs <span class="op">=</span> <span class="va">measured</span>, 
-                      pred <span class="op">=</span> <span class="va">simulated</span>,
-                      bins <span class="op">=</span> <span class="fl">10</span>, 
-                      orientation <span class="op">=</span> <span class="st">"OP"</span>,
-                      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"pink"</span>, high <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">barley.tiles.plot</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">barley.tiles.plot</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/tiles_plot.html">tiles_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, </span>
+<span>                      obs <span class="op">=</span> <span class="va">measured</span>, </span>
+<span>                      pred <span class="op">=</span> <span class="va">simulated</span>,</span>
+<span>                      bins <span class="op">=</span> <span class="fl">10</span>, </span>
+<span>                      orientation <span class="op">=</span> <span class="st">"OP"</span>,</span>
+<span>                      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"pink"</span>, high <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">barley.tiles.plot</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="3113-create-a-density-plot-with-op-orientation">3.1.1.3. Create a density plot with OP orientation<a class="anchor" aria-label="anchor" href="#3113-create-a-density-plot-with-op-orientation"></a>
 </h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">barley.density.plot</span> <span class="op">&lt;-</span>
-<span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/density_plot.html">density_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, 
-                      obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span>,
-                      n <span class="op">=</span> <span class="fl">5</span>, 
-                      orientation <span class="op">=</span> <span class="st">"OP"</span>, 
-           colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span>
-           <span class="op">)</span>
-
-<span class="va">barley.density.plot</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">barley.density.plot</span> <span class="op">&lt;-</span></span>
+<span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/density_plot.html">density_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, </span>
+<span>                      obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span>,</span>
+<span>                      n <span class="op">=</span> <span class="fl">5</span>, </span>
+<span>                      orientation <span class="op">=</span> <span class="st">"OP"</span>, </span>
+<span>           colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span></span>
+<span>           <span class="op">)</span></span>
+<span></span>
+<span><span class="va">barley.density.plot</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="3114-create-a-bland-altman-plot">3.1.1.4. Create a Bland-Altman plot<a class="anchor" aria-label="anchor" href="#3114-create-a-bland-altman-plot"></a>
 </h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">barley.ba.plot</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/bland_altman_plot.html">bland_altman_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>,
-                           obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span>
-
-<span class="va">barley.ba.plot</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">barley.ba.plot</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/bland_altman_plot.html">bland_altman_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>,</span>
+<span>                           obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">barley.ba.plot</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-7-1.png" width="100%"></p>
 </div>
 <div class="section level3"><h3 id="312-metrics-functions">3.1.2. Metrics functions<a class="anchor" aria-label="anchor" href="#312-metrics-functions"></a>
@@ -198,54 +218,79 @@
 <h3 id="3122-single-estimates">3.1.2.2. Single estimates<a class="anchor" aria-label="anchor" href="#3122-single-estimates"></a>
 </h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># a. Estimate coefficient of determination (R2)</span>
-
-<span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/R2.html">R2</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.4512998</span>
-
-<span class="co"># b. Estimate root mean squared error (RMSE)</span>
-<span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/RMSE.html">RMSE</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span>
-<span class="co">#&gt; [1] 3.986028</span>
-
-<span class="co"># c. Estimate mean bias error (MBE)</span>
-<span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/MBE.html">MBE</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.207378</span>
-
-<span class="co"># c. Estimate index of agreement (d)</span>
-<span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/d.html">d</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.8191397</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># a. Estimate coefficient of determination (R2)</span></span>
+<span></span>
+<span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/R2.html">R2</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $R2</span></span>
+<span><span class="co">#&gt; [1] 0.4512998</span></span>
+<span></span>
+<span><span class="co"># b. Estimate root mean squared error (RMSE)</span></span>
+<span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/RMSE.html">RMSE</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $RMSE</span></span>
+<span><span class="co">#&gt; [1] 3.986028</span></span>
+<span></span>
+<span><span class="co"># c. Estimate mean bias error (MBE)</span></span>
+<span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/MBE.html">MBE</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $MBE</span></span>
+<span><span class="co">#&gt; [1] 0.207378</span></span>
+<span></span>
+<span><span class="co"># c. Estimate index of agreement (d)</span></span>
+<span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/d.html">d</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $d</span></span>
+<span><span class="co">#&gt; [1] 0.8191397</span></span>
+<span></span>
+<span><span class="co"># e. Estimate SMA regression intercept (B0)</span></span>
+<span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/B0_sma.html">B0_sma</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         B0</span></span>
+<span><span class="co">#&gt; 1 1.128274</span></span>
+<span></span>
+<span><span class="co"># f. Estimate SMA regression slope (B1)</span></span>
+<span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/B1_sma.html">B1_sma</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $B1</span></span>
+<span><span class="co">#&gt; [1] 0.9288715</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="3122-metrics-summary">3.1.2.2. Metrics Summary<a class="anchor" aria-label="anchor" href="#3122-metrics-summary"></a>
 </h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">metrics.sum</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, 
-                                        obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span>,
-                                        type <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span>  
-<span class="co"># Print first 15</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">metrics.sum</span>, n <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>
-<span class="co">#&gt;    Metric      Score</span>
-<span class="co">#&gt; 1      B0  1.1282743</span>
-<span class="co">#&gt; 2      B1  0.9288715</span>
-<span class="co">#&gt; 3       r  0.6717885</span>
-<span class="co">#&gt; 4      R2  0.4512998</span>
-<span class="co">#&gt; 5      Xa  0.9963915</span>
-<span class="co">#&gt; 6     CCC  0.6693644</span>
-<span class="co">#&gt; 7     MAE  3.0595501</span>
-<span class="co">#&gt; 8    RMAE  0.1629325</span>
-<span class="co">#&gt; 9    MAPE 16.8112673</span>
-<span class="co">#&gt; 10  SMAPE 16.7848032</span>
-<span class="co">#&gt; 11    RAE  0.7639151</span>
-<span class="co">#&gt; 12    RSE  0.6164605</span>
-<span class="co">#&gt; 13    MBE  0.2073780</span>
-<span class="co">#&gt; 14    PBE  1.1043657</span>
-<span class="co">#&gt; 15    PAB  0.2706729</span>
-
-<span class="co"># Optional wrangling (WIDE)</span>
-<span class="va">metrics.sum.wide</span> <span class="op">&lt;-</span> <span class="va">metrics.sum</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span><span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span>,
-                      names_from <span class="op">=</span> <span class="st">"Metric"</span>,
-                      values_from <span class="op">=</span> <span class="st">"Score"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">metrics.sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, </span>
+<span>                               obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span>,</span>
+<span>                               type <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span>  </span>
+<span><span class="co"># Print first 15</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">metrics.sum</span>, n <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    Metric      Score</span></span>
+<span><span class="co">#&gt; 1      B0  1.1282743</span></span>
+<span><span class="co">#&gt; 2      B1  0.9288715</span></span>
+<span><span class="co">#&gt; 3       r  0.6717885</span></span>
+<span><span class="co">#&gt; 4      R2  0.4512998</span></span>
+<span><span class="co">#&gt; 5      Xa  0.9963915</span></span>
+<span><span class="co">#&gt; 6     CCC  0.6693644</span></span>
+<span><span class="co">#&gt; 7     MAE  3.0595501</span></span>
+<span><span class="co">#&gt; 8    RMAE  0.1629325</span></span>
+<span><span class="co">#&gt; 9    MAPE 16.8112673</span></span>
+<span><span class="co">#&gt; 10  SMAPE 16.7848032</span></span>
+<span><span class="co">#&gt; 11    RAE  0.7639151</span></span>
+<span><span class="co">#&gt; 12    RSE  0.6164605</span></span>
+<span><span class="co">#&gt; 13    MBE  0.2073780</span></span>
+<span><span class="co">#&gt; 14    PBE  1.1043657</span></span>
+<span><span class="co">#&gt; 15    PAB  0.2706729</span></span>
+<span></span>
+<span><span class="co"># Optional wrangling (WIDE)</span></span>
+<span><span class="va">metrics.sum.wide</span> <span class="op">&lt;-</span> <span class="va">metrics.sum</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span><span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                      names_from <span class="op">=</span> <span class="st">"Metric"</span>,</span>
+<span>                      values_from <span class="op">=</span> <span class="st">"Score"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">metrics.sum.wide</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 43</span></span>
+<span><span class="co">#&gt;      B0    B1     r    R2    Xa   CCC   MAE  RMAE  MAPE SMAPE   RAE   RSE   MBE</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1  1.13 0.929 0.672 0.451 0.996 0.669  3.06 0.163  16.8  16.8 0.764 0.616 0.207</span></span>
+<span><span class="co">#&gt; # … with 30 more variables: PBE &lt;dbl&gt;, PAB &lt;dbl&gt;, PPB &lt;dbl&gt;, MSE &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   RMSE &lt;dbl&gt;, RRMSE &lt;dbl&gt;, RSR &lt;dbl&gt;, iqRMSE &lt;dbl&gt;, MLA &lt;dbl&gt;, MLP &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   SB &lt;dbl&gt;, SDSD &lt;dbl&gt;, LCS &lt;dbl&gt;, PLA &lt;dbl&gt;, PLP &lt;dbl&gt;, Ue &lt;dbl&gt;, Uc &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   Ub &lt;dbl&gt;, NSE &lt;dbl&gt;, E1 &lt;dbl&gt;, Erel &lt;dbl&gt;, KGE &lt;dbl&gt;, d &lt;dbl&gt;, d1 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   d1r &lt;dbl&gt;, RAC &lt;dbl&gt;, AC &lt;dbl&gt;, lambda &lt;dbl&gt;, dcorr &lt;dbl&gt;, MIC &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 <div class="section level3"><h3 id="313-run-multiple-datasets-at-once">3.1.3. Run multiple datasets at once<a class="anchor" aria-label="anchor" href="#313-run-multiple-datasets-at-once"></a>
 </h3></div>
@@ -253,84 +298,82 @@
 <h3 id="3131-nested-data">3.1.3.1. Nested data<a class="anchor" aria-label="anchor" href="#3131-nested-data"></a>
 </h3>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># a. Create nested df with the native examples</span>
-<span class="va">nested.examples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>wheat <span class="op">=</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/wheat.html">wheat</a></span>, 
-                                  barley <span class="op">=</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/barley.html">barley</a></span>,
-                                  sorghum <span class="op">=</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/sorghum.html">sorghum</a></span>, 
-                                  chickpea <span class="op">=</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/chickpea.html">chickpea</a></span><span class="op">)</span>, 
-                             .id <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">nest</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_head</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 4 × 2</span>
-<span class="co">#&gt; # Groups:   id [4]</span>
-<span class="co">#&gt;   id       data              </span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;list&gt;            </span>
-<span class="co">#&gt; 1 barley   &lt;tibble [69 × 2]&gt; </span>
-<span class="co">#&gt; 2 chickpea &lt;tibble [39 × 2]&gt; </span>
-<span class="co">#&gt; 3 sorghum  &lt;tibble [36 × 2]&gt; </span>
-<span class="co">#&gt; 4 wheat    &lt;tibble [137 × 2]&gt;</span>
-
-<span class="co"># b. Run </span>
-<span class="va">multiple.sum</span> <span class="op">&lt;-</span> <span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="co"># Store metrics in new.column "performance"</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>performance <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">data</span>, <span class="op">~</span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">.</span>, obs <span class="op">=</span> <span class="va">obs</span>, pred <span class="op">=</span> <span class="va">pred</span>, 
-                                                           type <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">multiple.sum</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 4 × 3</span>
-<span class="co">#&gt;   id       data               performance  </span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;list&gt;             &lt;list&gt;       </span>
-<span class="co">#&gt; 1 wheat    &lt;tibble [137 × 2]&gt; &lt;df [43 × 2]&gt;</span>
-<span class="co">#&gt; 2 barley   &lt;tibble [69 × 2]&gt;  &lt;df [43 × 2]&gt;</span>
-<span class="co">#&gt; 3 sorghum  &lt;tibble [36 × 2]&gt;  &lt;df [43 × 2]&gt;</span>
-<span class="co">#&gt; 4 chickpea &lt;tibble [39 × 2]&gt;  &lt;df [43 × 2]&gt;</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/View.html" class="external-link">View</a></span><span class="op">(</span><span class="va">multiple.sum</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># a. Create nested df with the native examples</span></span>
+<span><span class="va">nested.examples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>wheat <span class="op">=</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/wheat.html">wheat</a></span>, </span>
+<span>                                  barley <span class="op">=</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/barley.html">barley</a></span>,</span>
+<span>                                  sorghum <span class="op">=</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/sorghum.html">sorghum</a></span>, </span>
+<span>                                  chickpea <span class="op">=</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/chickpea.html">chickpea</a></span><span class="op">)</span>, </span>
+<span>                             .id <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">nest</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_head</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 2</span></span>
+<span><span class="co">#&gt; # Groups:   id [4]</span></span>
+<span><span class="co">#&gt;   id       data              </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;    &lt;list&gt;            </span></span>
+<span><span class="co">#&gt; 1 barley   &lt;tibble [69 × 2]&gt; </span></span>
+<span><span class="co">#&gt; 2 chickpea &lt;tibble [39 × 2]&gt; </span></span>
+<span><span class="co">#&gt; 3 sorghum  &lt;tibble [36 × 2]&gt; </span></span>
+<span><span class="co">#&gt; 4 wheat    &lt;tibble [137 × 2]&gt;</span></span>
+<span></span>
+<span><span class="co"># b. Run </span></span>
+<span><span class="va">multiple.sum</span> <span class="op">&lt;-</span> <span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="co"># Store metrics in new.column "performance"</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>performance <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">data</span>, <span class="op">~</span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">.</span>, obs <span class="op">=</span> <span class="va">obs</span>, pred <span class="op">=</span> <span class="va">pred</span>, </span>
+<span>                                                           type <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">multiple.sum</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 3</span></span>
+<span><span class="co">#&gt;   id       data               performance  </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;    &lt;list&gt;             &lt;list&gt;       </span></span>
+<span><span class="co">#&gt; 1 wheat    &lt;tibble [137 × 2]&gt; &lt;df [43 × 2]&gt;</span></span>
+<span><span class="co">#&gt; 2 barley   &lt;tibble [69 × 2]&gt;  &lt;df [43 × 2]&gt;</span></span>
+<span><span class="co">#&gt; 3 sorghum  &lt;tibble [36 × 2]&gt;  &lt;df [43 × 2]&gt;</span></span>
+<span><span class="co">#&gt; 4 chickpea &lt;tibble [39 × 2]&gt;  &lt;df [43 × 2]&gt;</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="3132-non-nested-data--">3.1.3.2. Non-nested data <br><a class="anchor" aria-label="anchor" href="#3132-non-nested-data--"></a>
 </h3>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">non_nested_summary</span> <span class="op">&lt;-</span> <span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">obs</span>, pred <span class="op">=</span> <span class="va">pred</span>, type <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">Metric</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">non_nested_summary</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 × 3</span>
-<span class="co">#&gt; # Groups:   id [4]</span>
-<span class="co">#&gt;   id       Metric    Score</span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 barley   AC       0.253 </span>
-<span class="co">#&gt; 2 chickpea AC       0.434 </span>
-<span class="co">#&gt; 3 sorghum  AC       0.0889</span>
-<span class="co">#&gt; 4 wheat    AC       0.842 </span>
-<span class="co">#&gt; 5 barley   B0       1.13  </span>
-<span class="co">#&gt; 6 chickpea B0     -99.0</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">non_nested_summary</span> <span class="op">&lt;-</span> <span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">obs</span>, pred <span class="op">=</span> <span class="va">pred</span>, type <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">Metric</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">non_nested_summary</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
+<span><span class="co">#&gt; # Groups:   id [4]</span></span>
+<span><span class="co">#&gt;   id       Metric    Score</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 barley   AC       0.253 </span></span>
+<span><span class="co">#&gt; 2 chickpea AC       0.434 </span></span>
+<span><span class="co">#&gt; 3 sorghum  AC       0.0889</span></span>
+<span><span class="co">#&gt; 4 wheat    AC       0.842 </span></span>
+<span><span class="co">#&gt; 5 barley   B0       1.13  </span></span>
+<span><span class="co">#&gt; 6 chickpea B0     -99.0</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="314-print-metrics-in-a-plot">3.1.4. Print metrics in a plot<a class="anchor" aria-label="anchor" href="#314-print-metrics-in-a-plot"></a>
 </h3>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/wheat.html">wheat</a></span>
-
-<span class="co"># Create list of selected metrics</span>
-<span class="va">selected.metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MAE"</span>,<span class="st">"RMSE"</span>, <span class="st">"RRMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NSE"</span>, <span class="st">"KGE"</span>, <span class="st">"PLA"</span>, <span class="st">"PLP"</span><span class="op">)</span>
-
-<span class="co"># Create the plot</span>
-<span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, 
-                              obs <span class="op">=</span> <span class="va">obs</span>, pred <span class="op">=</span> <span class="va">pred</span>,
-                              <span class="co"># Activate print_metrics arg.</span>
-                              print_metrics <span class="op">=</span> <span class="cn">TRUE</span>, 
-                              <span class="co"># Indicate metrics list</span>
-                              metrics_list <span class="op">=</span> <span class="va">selected.metrics</span>,
-                              <span class="co"># Customize metrics position</span>
-                              position_metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span> , y <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>,
-                              <span class="co"># Customize equation position</span>
-                              position_eq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">7</span>, y <span class="op">=</span> <span class="fl">19.5</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">plot</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="reference/wheat.html">wheat</a></span></span>
+<span></span>
+<span><span class="co"># Create list of selected metrics</span></span>
+<span><span class="va">selected.metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MAE"</span>,<span class="st">"RMSE"</span>, <span class="st">"RRMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NSE"</span>, <span class="st">"KGE"</span>, <span class="st">"PLA"</span>, <span class="st">"PLP"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create the plot</span></span>
+<span><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, </span>
+<span>                              obs <span class="op">=</span> <span class="va">obs</span>, pred <span class="op">=</span> <span class="va">pred</span>,</span>
+<span>                              <span class="co"># Activate print_metrics arg.</span></span>
+<span>                              print_metrics <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                              <span class="co"># Indicate metrics list</span></span>
+<span>                              metrics_list <span class="op">=</span> <span class="va">selected.metrics</span>,</span>
+<span>                              <span class="co"># Customize metrics position</span></span>
+<span>                              position_metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span> , y <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>,</span>
+<span>                              <span class="co"># Customize equation position</span></span>
+<span>                              position_eq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">7</span>, y <span class="op">=</span> <span class="fl">19.5</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-12-1.png" width="100%"></p>
 </div>
 </div>
@@ -341,13 +384,13 @@
 <h3 id="example-datasets">Example datasets<a class="anchor" aria-label="anchor" href="#example-datasets"></a>
 </h3>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">binomial_case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pos"</span>,<span class="st">"Neg"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-                            predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pos"</span>,<span class="st">"Neg"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">labels</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">multinomial_case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Red"</span>,<span class="st">"Green"</span>, <span class="st">"Blue"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-                               predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Red"</span>,<span class="st">"Green"</span>, <span class="st">"Blue"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">labels</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">binomial_case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pos"</span>,<span class="st">"Neg"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>                            predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pos"</span>,<span class="st">"Neg"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">labels</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">multinomial_case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Red"</span>,<span class="st">"Green"</span>, <span class="st">"Blue"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>                               predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Red"</span>,<span class="st">"Green"</span>, <span class="st">"Blue"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">labels</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3"><h3 id="311-confusion-matrix--">3.1.1. Confusion Matrix <br><a class="anchor" aria-label="anchor" href="#311-confusion-matrix--"></a>
 </h3></div>
@@ -355,41 +398,41 @@
 <h3 id="3111-binary">3.1.1.1. Binary<a class="anchor" aria-label="anchor" href="#3111-binary"></a>
 </h3>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># a. Print</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, 
-                                            plot <span class="op">=</span> <span class="cn">FALSE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#735d78"</span><span class="op">)</span>, 
-                                            unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span>
-<span class="co">#&gt;          OBSERVED</span>
-<span class="co">#&gt; PREDICTED Neg Pos</span>
-<span class="co">#&gt;       Neg  24  24</span>
-<span class="co">#&gt;       Pos  21  31</span>
-
-<span class="co"># b. Plot</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, 
-                                            plot <span class="op">=</span> <span class="cn">TRUE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#735d78"</span><span class="op">)</span>, 
-                                            unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># a. Print</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, </span>
+<span>                                            plot <span class="op">=</span> <span class="cn">FALSE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#735d78"</span><span class="op">)</span>, </span>
+<span>                                            unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          OBSERVED</span></span>
+<span><span class="co">#&gt; PREDICTED Neg Pos</span></span>
+<span><span class="co">#&gt;       Neg  24  24</span></span>
+<span><span class="co">#&gt;       Pos  21  31</span></span>
+<span></span>
+<span><span class="co"># b. Plot</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, </span>
+<span>                                            plot <span class="op">=</span> <span class="cn">TRUE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#735d78"</span><span class="op">)</span>, </span>
+<span>                                            unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-14-1.png" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="3112-multiclass">3.1.1.2. Multiclass<a class="anchor" aria-label="anchor" href="#3112-multiclass"></a>
 </h3>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># a. Print</span>
-<span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, 
-                                      pred <span class="op">=</span> <span class="va">predictions</span>, 
-                                      plot <span class="op">=</span> <span class="cn">FALSE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#735d78"</span><span class="op">)</span>,
-                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span>
-<span class="co">#&gt;          OBSERVED</span>
-<span class="co">#&gt; PREDICTED Blue Green Red</span>
-<span class="co">#&gt;     Blue     9    11   9</span>
-<span class="co">#&gt;     Green   11    12  11</span>
-<span class="co">#&gt;     Red     13    13  11</span>
-
-<span class="co"># b. Plot</span>
-<span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, 
-                                      pred <span class="op">=</span> <span class="va">predictions</span>, 
-                                      plot <span class="op">=</span> <span class="cn">TRUE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#d3dbbd"</span> , high<span class="op">=</span><span class="st">"#885f78"</span><span class="op">)</span>, 
-                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># a. Print</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, </span>
+<span>                                      pred <span class="op">=</span> <span class="va">predictions</span>, </span>
+<span>                                      plot <span class="op">=</span> <span class="cn">FALSE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#735d78"</span><span class="op">)</span>,</span>
+<span>                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          OBSERVED</span></span>
+<span><span class="co">#&gt; PREDICTED Blue Green Red</span></span>
+<span><span class="co">#&gt;     Blue     9    11   9</span></span>
+<span><span class="co">#&gt;     Green   11    12  11</span></span>
+<span><span class="co">#&gt;     Red     13    13  11</span></span>
+<span></span>
+<span><span class="co"># b. Plot</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, </span>
+<span>                                      pred <span class="op">=</span> <span class="va">predictions</span>, </span>
+<span>                                      plot <span class="op">=</span> <span class="cn">TRUE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#d3dbbd"</span> , high<span class="op">=</span><span class="st">"#885f78"</span><span class="op">)</span>, </span>
+<span>                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-15-1.png" width="100%"></p>
 </div>
 <div class="section level3"><h3 id="311-classification-metrics--">3.1.1. Classification Metrics <br><a class="anchor" aria-label="anchor" href="#311-classification-metrics--"></a>
@@ -398,94 +441,246 @@
 <h3 id="3111-single-dataset--">3.1.1.1. Single dataset <br><a class="anchor" aria-label="anchor" href="#3111-single-dataset--"></a>
 </h3>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Get classification metrics one by one</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;   accuracy</span>
-<span class="co">#&gt; 1     0.55</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/error_rate.html">error_rate</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;   misclass_rate</span>
-<span class="co">#&gt; 1          0.45</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/precision.html">precision</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;   precision</span>
-<span class="co">#&gt; 1 0.5961538</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/recall.html">recall</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, atom <span class="op">=</span> <span class="cn">F</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;      recall</span>
-<span class="co">#&gt; 1 0.5636364</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/specificity.html">specificity</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;        spec</span>
-<span class="co">#&gt; 1 0.5333333</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/baccu.html">baccu</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;       baccu</span>
-<span class="co">#&gt; 1 0.5484848</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fscore.html">fscore</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;      fscore</span>
-<span class="co">#&gt; 1 0.5794393</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/cohen_kappa.html">cohen_kappa</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;        kappa</span>
-<span class="co">#&gt; 1 0.09638554</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/mcc.html">mcc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;          mcc</span>
-<span class="co">#&gt; 1 0.09656091</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fmi.html">fmi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;         fmi</span>
-<span class="co">#&gt; 1 0.5796671</span>
-
-<span class="co"># Get all at once with metrics_summary()</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span>
-<span class="co">#&gt;         Metric      Score</span>
-<span class="co">#&gt; 1     accuracy 0.55000000</span>
-<span class="co">#&gt; 2   error_rate 0.45000000</span>
-<span class="co">#&gt; 3    precision 0.59615385</span>
-<span class="co">#&gt; 4       recall 0.56363636</span>
-<span class="co">#&gt; 5  specificity 0.53333333</span>
-<span class="co">#&gt; 6        baccu 0.54848485</span>
-<span class="co">#&gt; 7       fscore 0.57943925</span>
-<span class="co">#&gt; 8  cohen_kappa 0.09638554</span>
-<span class="co">#&gt; 9          mcc 0.09656091</span>
-<span class="co">#&gt; 10         fmi 0.57966713</span>
-<span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span>
-<span class="co">#&gt; Warning in metrica::mcc(data = ~., obs = ~labels, pred = ~predictions): The</span>
-<span class="co">#&gt; generalization of the Matthews Correlation Coefficient for a multiclass setting</span>
-<span class="co">#&gt; has not been implemented yet in metrica</span>
-<span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The</span>
-<span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span>
-<span class="co">#&gt; recorded as NA</span>
-<span class="co">#&gt;         Metric       Score</span>
-<span class="co">#&gt; 1     accuracy  0.32000000</span>
-<span class="co">#&gt; 2   error_rate  0.68000000</span>
-<span class="co">#&gt; 3    precision  0.32019443</span>
-<span class="co">#&gt; 4       recall  0.32029977</span>
-<span class="co">#&gt; 5  specificity  0.66031031</span>
-<span class="co">#&gt; 6        baccu  0.49030504</span>
-<span class="co">#&gt; 7       fscore  0.32024709</span>
-<span class="co">#&gt; 8  cohen_kappa -0.01918465</span>
-<span class="co">#&gt; 9          mcc          NA</span>
-<span class="co">#&gt; 10         fmi          NA</span>
-
-<span class="co"># Get a selected list at once with metrics_summary()</span>
-<span class="va">selected_class_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"accuracy"</span>, <span class="st">"recall"</span>, <span class="st">"fscore"</span><span class="op">)</span>
-
-<span class="co"># Binary</span>
-<span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span>,
-                                  metrics_list <span class="op">=</span> <span class="va">selected_class_metrics</span><span class="op">)</span>
-<span class="co">#&gt;     Metric     Score</span>
-<span class="co">#&gt; 1 accuracy 0.5500000</span>
-<span class="co">#&gt; 2   recall 0.5636364</span>
-<span class="co">#&gt; 3   fscore 0.5794393</span>
-
-<span class="co"># Multiclass</span>
-<span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span>,
-                                  metrics_list <span class="op">=</span> <span class="va">selected_class_metrics</span><span class="op">)</span>
-<span class="co">#&gt; Warning in metrica::mcc(data = ~., obs = ~labels, pred = ~predictions): The</span>
-<span class="co">#&gt; generalization of the Matthews Correlation Coefficient for a multiclass setting</span>
-<span class="co">#&gt; has not been implemented yet in metrica</span>
-<span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The</span>
-<span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span>
-<span class="co">#&gt; recorded as NA</span>
-<span class="co">#&gt;     Metric     Score</span>
-<span class="co">#&gt; 1 accuracy 0.3200000</span>
-<span class="co">#&gt; 2   recall 0.3202998</span>
-<span class="co">#&gt; 3   fscore 0.3202471</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Get classification metrics one by one</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   accuracy</span></span>
+<span><span class="co">#&gt; 1     0.55</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/error_rate.html">error_rate</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   error_rate</span></span>
+<span><span class="co">#&gt; 1       0.45</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/precision.html">precision</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   precision</span></span>
+<span><span class="co">#&gt; 1 0.5961538</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/recall.html">recall</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, atom <span class="op">=</span> <span class="cn">F</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      recall</span></span>
+<span><span class="co">#&gt; 1 0.5636364</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/specificity.html">specificity</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        spec</span></span>
+<span><span class="co">#&gt; 1 0.5333333</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/balacc.html">balacc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      balacc</span></span>
+<span><span class="co">#&gt; 1 0.5484848</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fscore.html">fscore</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      fscore</span></span>
+<span><span class="co">#&gt; 1 0.5794393</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/agf.html">agf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         agf</span></span>
+<span><span class="co">#&gt; 1 0.5795213</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/gmean.html">gmean</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       gmean</span></span>
+<span><span class="co">#&gt; 1 0.5482755</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/khat.html">khat</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         khat</span></span>
+<span><span class="co">#&gt; 1 0.09638554</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/mcc.html">mcc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          mcc</span></span>
+<span><span class="co">#&gt; 1 0.09656091</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fmi.html">fmi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         fmi</span></span>
+<span><span class="co">#&gt; 1 0.5796671</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/likelihood_ratios.html">posLr</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      posLr</span></span>
+<span><span class="co">#&gt; 1 1.207792</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/likelihood_ratios.html">negLr</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       negLr</span></span>
+<span><span class="co">#&gt; 1 0.8181818</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/likelihood_ratios.html">dor</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       dor</span></span>
+<span><span class="co">#&gt; 1 1.47619</span></span>
+<span></span>
+<span><span class="co"># Get all at once with metrics_summary()</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         Metric      Score</span></span>
+<span><span class="co">#&gt; 1     accuracy 0.55000000</span></span>
+<span><span class="co">#&gt; 2   error_rate 0.45000000</span></span>
+<span><span class="co">#&gt; 3    precision 0.59615385</span></span>
+<span><span class="co">#&gt; 4       recall 0.56363636</span></span>
+<span><span class="co">#&gt; 5  specificity 0.53333333</span></span>
+<span><span class="co">#&gt; 6       balacc 0.54848485</span></span>
+<span><span class="co">#&gt; 7       fscore 0.57943925</span></span>
+<span><span class="co">#&gt; 8          agf 0.57952126</span></span>
+<span><span class="co">#&gt; 9        gmean 0.54827553</span></span>
+<span><span class="co">#&gt; 10        khat 0.09638554</span></span>
+<span><span class="co">#&gt; 11         mcc 0.09656091</span></span>
+<span><span class="co">#&gt; 12         fmi 0.57966713</span></span>
+<span><span class="co">#&gt; 13         bmi 0.09696970</span></span>
+<span><span class="co">#&gt; 14         csi 0.40789474</span></span>
+<span><span class="co">#&gt; 15      deltap 0.09615385</span></span>
+<span><span class="co">#&gt; 16       posLr 1.20779221</span></span>
+<span><span class="co">#&gt; 17       negLr 0.81818182</span></span>
+<span><span class="co">#&gt; 18         dor 1.47619048</span></span>
+<span><span class="co">#&gt; 19         npv 0.50000000</span></span>
+<span><span class="co">#&gt; 20         FPR 0.46666667</span></span>
+<span><span class="co">#&gt; 21         FNR 0.43636364</span></span>
+<span><span class="co">#&gt; 22         FDR 0.40384615</span></span>
+<span><span class="co">#&gt; 23         FOR 0.50000000</span></span>
+<span><span class="co">#&gt; 24      preval 0.55000000</span></span>
+<span><span class="co">#&gt; 25    preval_t 0.49309260</span></span>
+<span><span class="co">#&gt; 26     AUC_roc 0.54848485</span></span>
+<span></span>
+<span><span class="co"># Multinomial</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions):</span></span>
+<span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
+<span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
+<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please, consider</span></span>
+<span><span class="co">#&gt; using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The</span></span>
+<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span></span>
+<span><span class="co">#&gt; recorded as NaN.</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
+<span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
+<span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions): For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
+<span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
+<span><span class="co">#&gt;         Metric       Score</span></span>
+<span><span class="co">#&gt; 1     accuracy  0.32000000</span></span>
+<span><span class="co">#&gt; 2   error_rate  0.68000000</span></span>
+<span><span class="co">#&gt; 3    precision  0.32019443</span></span>
+<span><span class="co">#&gt; 4       recall  0.32029977</span></span>
+<span><span class="co">#&gt; 5  specificity  0.66031031</span></span>
+<span><span class="co">#&gt; 6       balacc  0.49030504</span></span>
+<span><span class="co">#&gt; 7       fscore  0.32024709</span></span>
+<span><span class="co">#&gt; 8          agf  0.32024710</span></span>
+<span><span class="co">#&gt; 9        gmean  0.45988829</span></span>
+<span><span class="co">#&gt; 10        khat -0.01918465</span></span>
+<span><span class="co">#&gt; 11         mcc -0.01926552</span></span>
+<span><span class="co">#&gt; 12         fmi         NaN</span></span>
+<span><span class="co">#&gt; 13         bmi -0.01938991</span></span>
+<span><span class="co">#&gt; 14         csi  0.13793860</span></span>
+<span><span class="co">#&gt; 15      deltap -0.01951385</span></span>
+<span><span class="co">#&gt; 16       posLr  0.94291874</span></span>
+<span><span class="co">#&gt; 17       negLr  1.02936485</span></span>
+<span><span class="co">#&gt; 18         dor  0.91601996</span></span>
+<span><span class="co">#&gt; 19         npv  0.66029172</span></span>
+<span><span class="co">#&gt; 20         FPR  0.33968969</span></span>
+<span><span class="co">#&gt; 21         FNR  0.67970023</span></span>
+<span><span class="co">#&gt; 22         FDR  0.67980557</span></span>
+<span><span class="co">#&gt; 23         FOR  0.33970828</span></span>
+<span><span class="co">#&gt; 24      preval         NaN</span></span>
+<span><span class="co">#&gt; 25    preval_t         NaN</span></span>
+<span><span class="co">#&gt; 26     AUC_roc  0.49030504</span></span>
+<span></span>
+<span><span class="co"># Get a selected list at once with metrics_summary()</span></span>
+<span><span class="va">selected_class_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"accuracy"</span>, <span class="st">"recall"</span>, <span class="st">"fscore"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Binary</span></span>
+<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span>,</span>
+<span>                                  metrics_list <span class="op">=</span> <span class="va">selected_class_metrics</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     Metric     Score</span></span>
+<span><span class="co">#&gt; 1 accuracy 0.5500000</span></span>
+<span><span class="co">#&gt; 2   recall 0.5636364</span></span>
+<span><span class="co">#&gt; 3   fscore 0.5794393</span></span>
+<span></span>
+<span><span class="co"># Multiclass</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span>,</span>
+<span>                                  metrics_list <span class="op">=</span> <span class="va">selected_class_metrics</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions):</span></span>
+<span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
+<span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
+<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please, consider</span></span>
+<span><span class="co">#&gt; using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The</span></span>
+<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span></span>
+<span><span class="co">#&gt; recorded as NaN.</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
+<span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
+<span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions): For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
+<span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
+<span><span class="co">#&gt;     Metric     Score</span></span>
+<span><span class="co">#&gt; 1 accuracy 0.3200000</span></span>
+<span><span class="co">#&gt; 2   recall 0.3202998</span></span>
+<span><span class="co">#&gt; 3   fscore 0.3202471</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   accuracy</span></span>
+<span><span class="co">#&gt; 1     0.32</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/error_rate.html">error_rate</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   error_rate</span></span>
+<span><span class="co">#&gt; 1       0.68</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/precision.html">precision</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   precision</span></span>
+<span><span class="co">#&gt; 1 0.3201944</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/recall.html">recall</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, atom <span class="op">=</span> <span class="cn">F</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      recall</span></span>
+<span><span class="co">#&gt; 1 0.3202998</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/specificity.html">specificity</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        spec</span></span>
+<span><span class="co">#&gt; 1 0.6603103</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/balacc.html">balacc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     balacc</span></span>
+<span><span class="co">#&gt; 1 0.490305</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fscore.html">fscore</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in fscore(data = ., obs = labels, pred = predictions, tidy = TRUE):</span></span>
+<span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
+<span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt;      fscore</span></span>
+<span><span class="co">#&gt; 1 0.3202471</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/agf.html">agf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in agf(data = ., obs = labels, pred = predictions, tidy = TRUE): For</span></span>
+<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please, consider</span></span>
+<span><span class="co">#&gt; using `atom = TRUE`</span></span>
+<span><span class="co">#&gt;         agf</span></span>
+<span><span class="co">#&gt; 1 0.3202471</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/gmean.html">gmean</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       gmean</span></span>
+<span><span class="co">#&gt; 1 0.4598883</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/khat.html">khat</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          khat</span></span>
+<span><span class="co">#&gt; 1 -0.01918465</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/mcc.html">mcc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;           mcc</span></span>
+<span><span class="co">#&gt; 1 -0.01926552</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fmi.html">fmi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in fmi(data = ., obs = labels, pred = predictions, tidy = TRUE): The</span></span>
+<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span></span>
+<span><span class="co">#&gt; recorded as NaN.</span></span>
+<span><span class="co">#&gt;   fmi</span></span>
+<span><span class="co">#&gt; 1 NaN</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/likelihood_ratios.html">posLr</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       posLr</span></span>
+<span><span class="co">#&gt; 1 0.9429187</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/likelihood_ratios.html">negLr</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      negLr</span></span>
+<span><span class="co">#&gt; 1 1.029365</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/likelihood_ratios.html">dor</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       dor</span></span>
+<span><span class="co">#&gt; 1 0.91602</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/deltap.html">deltap</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        deltap</span></span>
+<span><span class="co">#&gt; 1 -0.01951385</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/csi.html">csi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         csi</span></span>
+<span><span class="co">#&gt; 1 0.1379386</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/specificity.html">FPR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         FPR</span></span>
+<span><span class="co">#&gt; 1 0.3396897</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/recall.html">FNR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         FNR</span></span>
+<span><span class="co">#&gt; 1 0.6797002</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/precision.html">FDR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         FDR</span></span>
+<span><span class="co">#&gt; 1 0.6798056</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/npv.html">FOR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         FOR</span></span>
+<span><span class="co">#&gt; 1 0.3397083</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/prevalence.html">preval</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in preval(data = ., obs = labels, pred = predictions, tidy = TRUE): For</span></span>
+<span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
+<span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
+<span><span class="co">#&gt;   prev</span></span>
+<span><span class="co">#&gt; 1  NaN</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/prevalence.html">preval_t</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in preval_t(data = ., obs = labels, pred = predictions, tidy = TRUE): For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
+<span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
+<span><span class="co">#&gt;   preval_t</span></span>
+<span><span class="co">#&gt; 1      NaN</span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/AUC_roc.html">AUC_roc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    AUC_roc</span></span>
+<span><span class="co">#&gt; 1 0.490305</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -494,93 +689,93 @@
 <div class="section level3">
 <h3 id="41-apsim-classic-out">4.1. APSIM Classic (.out)<a class="anchor" aria-label="anchor" href="#41-apsim-classic-out"></a>
 </h3>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Use import_apsim_out for APSIM Classic output</span>
-<span class="va">soybean.out</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/import_apsim_out.html">import_apsim_out</a></span><span class="op">(</span>filepath <span class="op">=</span> <span class="st">"tests/testthat/examples/soybean.out"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">soybean.out</span><span class="op">)</span>
-<span class="co">#&gt;   Date (dd/mm/yyyy) yield (kg/ha) biomass (kg/ha) grain_protein (%)</span>
-<span class="co">#&gt; 1        16/05/2001        1449.8          2915.9            37.115</span>
-<span class="co">#&gt; 2        10/05/2002        1092.5          2965.1            37.115</span>
-<span class="co">#&gt; 3        23/04/2003        1368.9          3529.6            37.115</span>
-<span class="co">#&gt; 4        26/04/2004        2121.6          4710.3            37.115</span>
-<span class="co">#&gt; 5        09/05/2005        1950.3          4303.9            37.115</span>
-<span class="co">#&gt; 6        20/04/2006        1670.6          3806.6            37.115</span>
-<span class="co">#&gt;   GrainN (g/m^2) lai (m^2/m^2) oilGrainN (g/m^2) grain_oil_conc (%)</span>
-<span class="co">#&gt; 1           0.00             0                 0                0.4</span>
-<span class="co">#&gt; 2           7.10             0                 0                0.4</span>
-<span class="co">#&gt; 3           8.90             0                 0                0.4</span>
-<span class="co">#&gt; 4          13.79             0                 0                0.4</span>
-<span class="co">#&gt; 5          12.68             0                 0                0.4</span>
-<span class="co">#&gt; 6          10.86             0                 0                0.4</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Use import_apsim_out for APSIM Classic output</span></span>
+<span><span class="va">soybean.out</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/import_apsim_out.html">import_apsim_out</a></span><span class="op">(</span>filepath <span class="op">=</span> <span class="st">"tests/testthat/examples/soybean.out"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">soybean.out</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Date (dd/mm/yyyy) yield (kg/ha) biomass (kg/ha) grain_protein (%)</span></span>
+<span><span class="co">#&gt; 1        16/05/2001        1449.8          2915.9            37.115</span></span>
+<span><span class="co">#&gt; 2        10/05/2002        1092.5          2965.1            37.115</span></span>
+<span><span class="co">#&gt; 3        23/04/2003        1368.9          3529.6            37.115</span></span>
+<span><span class="co">#&gt; 4        26/04/2004        2121.6          4710.3            37.115</span></span>
+<span><span class="co">#&gt; 5        09/05/2005        1950.3          4303.9            37.115</span></span>
+<span><span class="co">#&gt; 6        20/04/2006        1670.6          3806.6            37.115</span></span>
+<span><span class="co">#&gt;   GrainN (g/m^2) lai (m^2/m^2) oilGrainN (g/m^2) grain_oil_conc (%)</span></span>
+<span><span class="co">#&gt; 1           0.00             0                 0                0.4</span></span>
+<span><span class="co">#&gt; 2           7.10             0                 0                0.4</span></span>
+<span><span class="co">#&gt; 3           8.90             0                 0                0.4</span></span>
+<span><span class="co">#&gt; 4          13.79             0                 0                0.4</span></span>
+<span><span class="co">#&gt; 5          12.68             0                 0                0.4</span></span>
+<span><span class="co">#&gt; 6          10.86             0                 0                0.4</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="41-apsim-nextgeneration-db">4.1. APSIM NextGeneration (.db)<a class="anchor" aria-label="anchor" href="#41-apsim-nextgeneration-db"></a>
 </h3>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Use import_apsim_db for APSIM NextGeneration output</span>
-<span class="va">soybean.db</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/import_apsim_db.html">import_apsim_db</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"soybean.example.db"</span>, folder <span class="op">=</span> <span class="st">"tests/testthat/examples/"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">soybean.db</span><span class="op">)</span>
-<span class="co">#&gt;   CheckpointID SimulationID    Zone         Clock.Today Soybean.Phenology.Stage</span>
-<span class="co">#&gt; 1            1            1 paddock 2018-01-01 12:00:00                       1</span>
-<span class="co">#&gt; 2            1            1 paddock 2018-01-02 12:00:00                       1</span>
-<span class="co">#&gt; 3            1            1 paddock 2018-01-03 12:00:00                       1</span>
-<span class="co">#&gt; 4            1            1 paddock 2018-01-04 12:00:00                       1</span>
-<span class="co">#&gt; 5            1            1 paddock 2018-01-05 12:00:00                       1</span>
-<span class="co">#&gt; 6            1            1 paddock 2018-01-06 12:00:00                       1</span>
-<span class="co">#&gt;   Soybean.Phenology.CurrentStageName Soybean.AboveGround.Wt Yield</span>
-<span class="co">#&gt; 1                                                         0     0</span>
-<span class="co">#&gt; 2                                                         0     0</span>
-<span class="co">#&gt; 3                                                         0     0</span>
-<span class="co">#&gt; 4                                                         0     0</span>
-<span class="co">#&gt; 5                                                         0     0</span>
-<span class="co">#&gt; 6                                                         0     0</span>
-<span class="co">#&gt;   Soybean.Grain.Size Soybean.Grain.Number Soybean.Total.Wt Soybean.Leaf.FRGR</span>
-<span class="co">#&gt; 1                  0                    0                0                 0</span>
-<span class="co">#&gt; 2                  0                    0                0                 0</span>
-<span class="co">#&gt; 3                  0                    0                0                 0</span>
-<span class="co">#&gt; 4                  0                    0                0                 0</span>
-<span class="co">#&gt; 5                  0                    0                0                 0</span>
-<span class="co">#&gt; 6                  0                    0                0                 0</span>
-<span class="co">#&gt;   Soybean.Leaf.Fw Soybean.Leaf.Photosynthesis.FT Soybean.Leaf.Photosynthesis.FW</span>
-<span class="co">#&gt; 1               1                              0                              1</span>
-<span class="co">#&gt; 2               1                              0                              1</span>
-<span class="co">#&gt; 3               1                              0                              1</span>
-<span class="co">#&gt; 4               1                              0                              1</span>
-<span class="co">#&gt; 5               1                              0                              1</span>
-<span class="co">#&gt; 6               1                              0                              1</span>
-<span class="co">#&gt;   Soybean.WaterUptake(1) Soybean.WaterUptake(2) Soybean.WaterUptake(3)</span>
-<span class="co">#&gt; 1                     NA                     NA                     NA</span>
-<span class="co">#&gt; 2                     NA                     NA                     NA</span>
-<span class="co">#&gt; 3                     NA                     NA                     NA</span>
-<span class="co">#&gt; 4                     NA                     NA                     NA</span>
-<span class="co">#&gt; 5                     NA                     NA                     NA</span>
-<span class="co">#&gt; 6                     NA                     NA                     NA</span>
-<span class="co">#&gt;   Soybean.WaterUptake(4) Soybean.WaterUptake(5) Soybean.WaterUptake(6)</span>
-<span class="co">#&gt; 1                     NA                     NA                     NA</span>
-<span class="co">#&gt; 2                     NA                     NA                     NA</span>
-<span class="co">#&gt; 3                     NA                     NA                     NA</span>
-<span class="co">#&gt; 4                     NA                     NA                     NA</span>
-<span class="co">#&gt; 5                     NA                     NA                     NA</span>
-<span class="co">#&gt; 6                     NA                     NA                     NA</span>
-<span class="co">#&gt;   Soybean.WaterUptake(7) Soybean.WaterUptake(8) Soybean.WaterUptake(9)</span>
-<span class="co">#&gt; 1                     NA                     NA                     NA</span>
-<span class="co">#&gt; 2                     NA                     NA                     NA</span>
-<span class="co">#&gt; 3                     NA                     NA                     NA</span>
-<span class="co">#&gt; 4                     NA                     NA                     NA</span>
-<span class="co">#&gt; 5                     NA                     NA                     NA</span>
-<span class="co">#&gt; 6                     NA                     NA                     NA</span>
-<span class="co">#&gt;   Soybean.WaterUptake(10)       Date</span>
-<span class="co">#&gt; 1                      NA 2018-01-01</span>
-<span class="co">#&gt; 2                      NA 2018-01-02</span>
-<span class="co">#&gt; 3                      NA 2018-01-03</span>
-<span class="co">#&gt; 4                      NA 2018-01-04</span>
-<span class="co">#&gt; 5                      NA 2018-01-05</span>
-<span class="co">#&gt; 6                      NA 2018-01-06</span>
-
-<span class="co"># If observed.data is already as a dataframe, the user may do the match using a simple code like this:</span>
-<span class="co"># PO.dataframe &lt;- simulated.data %&gt;% left_join(., observed.data) *by = "col" arg. could be required*</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Use import_apsim_db for APSIM NextGeneration output</span></span>
+<span><span class="va">soybean.db</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/import_apsim_db.html">import_apsim_db</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"soybean.example.db"</span>, folder <span class="op">=</span> <span class="st">"tests/testthat/examples/"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">soybean.db</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   CheckpointID SimulationID    Zone         Clock.Today Soybean.Phenology.Stage</span></span>
+<span><span class="co">#&gt; 1            1            1 paddock 2018-01-01 12:00:00                       1</span></span>
+<span><span class="co">#&gt; 2            1            1 paddock 2018-01-02 12:00:00                       1</span></span>
+<span><span class="co">#&gt; 3            1            1 paddock 2018-01-03 12:00:00                       1</span></span>
+<span><span class="co">#&gt; 4            1            1 paddock 2018-01-04 12:00:00                       1</span></span>
+<span><span class="co">#&gt; 5            1            1 paddock 2018-01-05 12:00:00                       1</span></span>
+<span><span class="co">#&gt; 6            1            1 paddock 2018-01-06 12:00:00                       1</span></span>
+<span><span class="co">#&gt;   Soybean.Phenology.CurrentStageName Soybean.AboveGround.Wt Yield</span></span>
+<span><span class="co">#&gt; 1                                                         0     0</span></span>
+<span><span class="co">#&gt; 2                                                         0     0</span></span>
+<span><span class="co">#&gt; 3                                                         0     0</span></span>
+<span><span class="co">#&gt; 4                                                         0     0</span></span>
+<span><span class="co">#&gt; 5                                                         0     0</span></span>
+<span><span class="co">#&gt; 6                                                         0     0</span></span>
+<span><span class="co">#&gt;   Soybean.Grain.Size Soybean.Grain.Number Soybean.Total.Wt Soybean.Leaf.FRGR</span></span>
+<span><span class="co">#&gt; 1                  0                    0                0                 0</span></span>
+<span><span class="co">#&gt; 2                  0                    0                0                 0</span></span>
+<span><span class="co">#&gt; 3                  0                    0                0                 0</span></span>
+<span><span class="co">#&gt; 4                  0                    0                0                 0</span></span>
+<span><span class="co">#&gt; 5                  0                    0                0                 0</span></span>
+<span><span class="co">#&gt; 6                  0                    0                0                 0</span></span>
+<span><span class="co">#&gt;   Soybean.Leaf.Fw Soybean.Leaf.Photosynthesis.FT Soybean.Leaf.Photosynthesis.FW</span></span>
+<span><span class="co">#&gt; 1               1                              0                              1</span></span>
+<span><span class="co">#&gt; 2               1                              0                              1</span></span>
+<span><span class="co">#&gt; 3               1                              0                              1</span></span>
+<span><span class="co">#&gt; 4               1                              0                              1</span></span>
+<span><span class="co">#&gt; 5               1                              0                              1</span></span>
+<span><span class="co">#&gt; 6               1                              0                              1</span></span>
+<span><span class="co">#&gt;   Soybean.WaterUptake(1) Soybean.WaterUptake(2) Soybean.WaterUptake(3)</span></span>
+<span><span class="co">#&gt; 1                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 2                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 3                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 4                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 5                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 6                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt;   Soybean.WaterUptake(4) Soybean.WaterUptake(5) Soybean.WaterUptake(6)</span></span>
+<span><span class="co">#&gt; 1                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 2                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 3                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 4                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 5                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 6                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt;   Soybean.WaterUptake(7) Soybean.WaterUptake(8) Soybean.WaterUptake(9)</span></span>
+<span><span class="co">#&gt; 1                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 2                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 3                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 4                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 5                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt; 6                     NA                     NA                     NA</span></span>
+<span><span class="co">#&gt;   Soybean.WaterUptake(10)       Date</span></span>
+<span><span class="co">#&gt; 1                      NA 2018-01-01</span></span>
+<span><span class="co">#&gt; 2                      NA 2018-01-02</span></span>
+<span><span class="co">#&gt; 3                      NA 2018-01-03</span></span>
+<span><span class="co">#&gt; 4                      NA 2018-01-04</span></span>
+<span><span class="co">#&gt; 5                      NA 2018-01-05</span></span>
+<span><span class="co">#&gt; 6                      NA 2018-01-06</span></span>
+<span></span>
+<span><span class="co"># If observed.data is already as a dataframe, the user may do the match using a simple code like this:</span></span>
+<span><span class="co"># PO.dataframe &lt;- simulated.data %&gt;% left_join(., observed.data) *by = "col" arg. could be required*</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -648,7 +843,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer>

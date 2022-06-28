@@ -27,8 +27,8 @@ a continuous predicted-observed dataset."><!-- mathjax --><script src="https://c
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/classification_case.html">Assessing classification quality</a>
-    <a class="dropdown-item" href="../articles/regression_case.html">Assessing model agreement in wheat grain nitrogen content prediction - a use case</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/regression_case.html">Regression case: Assessing model agreement in wheat grain nitrogen content prediction</a>
   </div>
 </li>
 <li class="nav-item">
@@ -51,7 +51,7 @@ a continuous predicted-observed dataset."><!-- mathjax --><script src="https://c
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Distance Correlation</h1>
-      <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/R/dcorr.R" class="external-link"><code>R/dcorr.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/R/reg_dcorr.R" class="external-link"><code>R/reg_dcorr.R</code></a></small>
       <div class="d-none name"><code>dcorr.Rd</code></div>
     </div>
 
@@ -62,7 +62,7 @@ a continuous predicted-observed dataset.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dcorr</span><span class="op">(</span>data <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">obs</span>, <span class="va">pred</span>, tidy <span class="op">=</span> <span class="cn">FALSE</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dcorr</span><span class="op">(</span>data <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">obs</span>, <span class="va">pred</span>, tidy <span class="op">=</span> <span class="cn">FALSE</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -94,7 +94,8 @@ returns a data.frame, FALSE returns a list (default).</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>an object of class <code>numeric</code>.</p>
+<p>an object of class <code>numeric</code> within a <code>list</code> (if tidy = FALSE) or within a
+<code>data frame</code> (if tidy = TRUE).</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -142,13 +143,13 @@ energy: E-Statistics: Multivariate Inference via the Energy of Data.
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">P</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">O</span> <span class="op">&lt;-</span> <span class="va">P</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">dcorr</span><span class="op">(</span>obs <span class="op">=</span> <span class="va">P</span>, pred <span class="op">=</span> <span class="va">O</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">P</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">O</span> <span class="op">&lt;-</span> <span class="va">P</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dcorr</span><span class="op">(</span>obs <span class="op">=</span> <span class="va">P</span>, pred <span class="op">=</span> <span class="va">O</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.9290235</span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -160,7 +161,7 @@ energy: E-Statistics: Multivariate Inference via the Energy of Data.
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>
