@@ -161,7 +161,7 @@ library(metrica)
 library(dplyr)
 library(purrr)
 library(tidyr)
-library(ggpmisc)
+#library(ggpmisc)
 ```
 
 This is a basic example which shows you the core regression and
