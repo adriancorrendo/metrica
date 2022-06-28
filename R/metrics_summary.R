@@ -60,77 +60,83 @@ metrics_summary <-
       stop("Type of model is either misspelled or not specified. Please, use type = 'regression' or type = 'classification'." )
     
     if (type == "regression"){
-    
-    metrics <- c("B0","B1","r","R2", "Xa","CCC","MAE","RMAE","MAPE","SMAPE",
-                 "RAE","RSE","MBE","PBE","PAB","PPB","MSE","RMSE","RRMSE","RSR",
-                 "iqRMSE","MLA","MLP","SB","SDSD","LCS","PLA","PLP","Ue","Uc",
-                 "Ub","NSE","E1","Erel","KGE","d","d1","d1r","RAC","AC",
-                 "lambda", "dcorr", "MIC")
-    
-    # Create data.frame to store metrics
-    MetricDataFrame <- data.frame(`Metric` = metrics, 
-                                  Score = 1:length(metrics),
-                                  row.names = NULL)
-    Metric <- NULL
-    
-    # Run the metrics
-    MetricDataFrame["Score"] <- 
-      rlang::eval_tidy(
-        data=data,
-        rlang::quo(
-          c(
-            B0 = as.numeric(metrica::B0_sma(data = {{data}},obs={{obs}}, pred={{pred}}, orientation = orientation)),
-            B1 = as.numeric(metrica::B1_sma(data = {{data}},obs={{obs}}, pred={{pred}}, orientation = orientation)),
-            r = as.numeric(metrica::r(data = {{data}},obs={{obs}}, pred={{pred}})),
-            R2 = as.numeric(metrica::R2(data = {{data}},obs={{obs}}, pred={{pred}})),
-            Xa = as.numeric(metrica::Xa(data = {{data}},obs={{obs}}, pred={{pred}})),
-            CCC = as.numeric(metrica::CCC(data = {{data}},obs={{obs}}, pred={{pred}})),
-            MAE =as.numeric(metrica::MAE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            RMAE =as.numeric(metrica::RMAE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            MAPE = as.numeric(metrica::MAPE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            SMAPE =as.numeric(metrica::SMAPE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            RAE =as.numeric(metrica::RAE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            RSE =as.numeric(metrica::RSE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            MBE =as.numeric(metrica::MBE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            PBE = as.numeric(metrica::PBE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            PAB = as.numeric(metrica::PAB(data = {{data}},obs={{obs}}, pred={{pred}})),
-            PPB = as.numeric(metrica::PPB(data = {{data}},obs={{obs}}, pred={{pred}})),
-            MSE = as.numeric(metrica::MSE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            RMSE =as.numeric(metrica::RMSE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            RRMSE =as.numeric(metrica::RRMSE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            RSR = as.numeric(metrica::RSR(data = {{data}},obs={{obs}}, pred={{pred}})),        
-            iqRMSE =as.numeric(metrica::iqRMSE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            MLA =as.numeric(metrica::MLA(data = {{data}},obs={{obs}}, pred={{pred}})),
-            MLP =as.numeric(metrica::MLP(data = {{data}},obs={{obs}}, pred={{pred}})),
-            SB = as.numeric(metrica::SB(data = {{data}},obs={{obs}}, pred={{pred}})),
-            SDSD = as.numeric(metrica::SDSD(data = {{data}},obs={{obs}}, pred={{pred}})),
-            LCS = as.numeric(metrica::LCS(data = {{data}},obs={{obs}}, pred={{pred}})),
-            PLA =as.numeric(metrica::PLA(data = {{data}},obs={{obs}}, pred={{pred}})),
-            PLP =as.numeric(metrica::PLP(data = {{data}},obs={{obs}}, pred={{pred}})),
-            Ue =as.numeric(metrica::Ue(data = {{data}},obs={{obs}}, pred={{pred}})),
-            Uc =as.numeric(metrica::Uc(data = {{data}},obs={{obs}}, pred={{pred}})),
-            Ub =as.numeric(metrica::Ub(data = {{data}},obs={{obs}}, pred={{pred}})),
-            NSE = as.numeric(metrica::NSE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            E1 =as.numeric(metrica::E1(data = {{data}},obs={{obs}}, pred={{pred}})),
-            Erel =as.numeric(metrica::Erel(data = {{data}},obs={{obs}}, pred={{pred}})),
-            KGE = as.numeric(metrica::KGE(data = {{data}},obs={{obs}}, pred={{pred}})),
-            d =as.numeric(metrica::d(data = {{data}},obs={{obs}}, pred={{pred}})),
-            d1 =as.numeric(metrica::d1(data = {{data}},obs={{obs}}, pred={{pred}})),
-            d1r =as.numeric(metrica::d1r(data = {{data}},obs={{obs}}, pred={{pred}})),
-            RAC = as.numeric(metrica::RAC(data = {{data}},obs={{obs}}, pred={{pred}})),
-            AC =as.numeric(metrica::AC(data = {{data}},obs={{obs}}, pred={{pred}})),
-            lambda = as.numeric(metrica::lambda(data = {{data}},obs={{obs}}, pred={{pred}})),
-            dcorr = as.numeric(metrica::dcorr(data = {{data}}, {{obs}}, {{pred}})),
-            MIC = as.numeric(metrica::MIC(data = {{data}}, {{obs}}, {{pred}}))
+      
+      metrics <- c("B0","B1","r","R2", "Xa","CCC","MAE","RMAE","MAPE","SMAPE",
+                   "RAE","RSE","MBE","PBE","PAB","PPB","MSE","RMSE","RRMSE","RSR",
+                   "iqRMSE","MLA","MLP","SB","SDSD","LCS","PLA","PLP","Ue","Uc",
+                   "Ub","NSE","E1","Erel","KGE","d","d1","d1r","RAC","AC",
+                   "lambda", "dcorr", "MIC")
+      
+      # Create data.frame to store metrics
+      MetricDataFrame <- data.frame(`Metric` = metrics, 
+                                    Score = 1:length(metrics),
+                                    row.names = NULL)
+      Metric <- NULL
+      
+      # Run the metrics
+      MetricDataFrame["Score"] <- 
+        rlang::eval_tidy(
+          data=data,
+          rlang::quo(
+            c(
+              B0 = as.numeric(metrica::B0_sma(data = {{data}},obs={{obs}}, pred={{pred}}, orientation = orientation)[[1]]),
+              B1 = as.numeric(metrica::B1_sma(data = {{data}},obs={{obs}}, pred={{pred}}, orientation = orientation)[[1]]),
+              r = as.numeric(metrica::r(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              R2 = as.numeric(metrica::R2(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              Xa = as.numeric(metrica::Xa(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              CCC = as.numeric(metrica::CCC(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              MAE =as.numeric(metrica::MAE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              RMAE =as.numeric(metrica::RMAE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              MAPE = as.numeric(metrica::MAPE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              SMAPE =as.numeric(metrica::SMAPE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              RAE =as.numeric(metrica::RAE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              RSE =as.numeric(metrica::RSE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              MBE =as.numeric(metrica::MBE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              PBE = as.numeric(metrica::PBE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              PAB = as.numeric(metrica::PAB(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              PPB = as.numeric(metrica::PPB(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              MSE = as.numeric(metrica::MSE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              RMSE =as.numeric(metrica::RMSE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              RRMSE =as.numeric(metrica::RRMSE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              RSR = as.numeric(metrica::RSR(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),        
+              iqRMSE =as.numeric(metrica::iqRMSE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              MLA =as.numeric(metrica::MLA(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              MLP =as.numeric(metrica::MLP(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              SB = as.numeric(metrica::SB(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              SDSD = as.numeric(metrica::SDSD(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              LCS = as.numeric(metrica::LCS(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              PLA =as.numeric(metrica::PLA(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              PLP =as.numeric(metrica::PLP(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              Ue =as.numeric(metrica::Ue(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              Uc =as.numeric(metrica::Uc(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              Ub =as.numeric(metrica::Ub(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              NSE = as.numeric(metrica::NSE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              E1 =as.numeric(metrica::E1(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              Erel =as.numeric(metrica::Erel(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              KGE = as.numeric(metrica::KGE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              d =as.numeric(metrica::d(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              d1 =as.numeric(metrica::d1(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              d1r =as.numeric(metrica::d1r(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              RAC = as.numeric(metrica::RAC(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              AC =as.numeric(metrica::AC(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              lambda = as.numeric(metrica::lambda(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              dcorr = as.numeric(metrica::dcorr(data = {{data}}, {{obs}}, {{pred}})[[1]]),
+              MIC = as.numeric(metrica::MIC(data = {{data}}, {{obs}}, {{pred}})[[1]])
+            )
           )
         )
-      )
     }
     
     # Classification ---- 
     if (type == "classification"){
     
-    metrics <- c("accuracy", "error_rate", "precision","recall","specificity", "baccu","fscore","cohen_kappa","mcc","fmi")
+    metrics <- c("accuracy", "error_rate", "precision","recall","specificity",
+                 "balacc","fscore","agf","gmean", "khat",
+                 "mcc", "fmi", "bmi", "csi", "deltap", 
+                 "posLr", "negLr", "dor", "npv", "FPR", 
+                 "FNR", "FDR", "FOR", "preval", "preval_t",
+                 "AUC_roc"
+                 )
     
     # Create data.frame to store metrics
     MetricDataFrame <- data.frame(`Metric` = metrics, 
@@ -141,18 +147,37 @@ metrics_summary <-
     # Run the metrics
     MetricDataFrame["Score"] <- 
       rlang::eval_tidy(
-        data=data,
+        data = data,
         rlang::quo(
-          c(accuracy = as.numeric(metrica::accuracy(data={{data}}, obs={{obs}}, pred={{pred}})),
-            error_rate = as.numeric(metrica::error_rate(data={{data}}, obs={{obs}}, pred={{pred}})),
-            precision = as.numeric(metrica::precision(data={{data}}, obs={{obs}}, pred={{pred}})),
-            recall = as.numeric(metrica::recall(data={{data}}, obs={{obs}}, pred={{pred}})),
-            specificity = as.numeric(metrica::specificity(data={{data}}, obs={{obs}}, pred={{pred}})),
-            baccu = as.numeric(metrica::baccu(data={{data}}, obs={{obs}}, pred={{pred}})),
-            fscore = as.numeric(metrica::fscore(data={{data}}, obs={{obs}}, pred={{pred}})),
-            cohen_kappa = as.numeric(metrica::cohen_kappa(data={{data}}, obs={{obs}}, pred={{pred}})),
-            mcc = as.numeric(metrica::mcc(data={{data}}, obs={{obs}}, pred={{pred}})),
-            fmi = as.numeric(metrica::fmi(data={{data}}, obs={{obs}}, pred={{pred}}))
+          c(#1
+            accuracy = as.numeric(metrica::accuracy(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            error_rate = as.numeric(metrica::error_rate(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            precision = as.numeric(metrica::precision(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            recall = as.numeric(metrica::recall(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            specificity = as.numeric(metrica::specificity(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            balacc = as.numeric(metrica::balacc(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            fscore = as.numeric(metrica::fscore(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            agf = as.numeric(metrica::agf(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            gmean = as.numeric(metrica::gmean(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            khat = as.numeric(metrica::khat(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            #11
+            mcc = as.numeric(metrica::mcc(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            fmi = as.numeric(metrica::fmi(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            bmi = as.numeric(metrica::bmi(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            csi = as.numeric(metrica::csi(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            deltap = as.numeric(metrica::deltap(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            posLr = as.numeric(metrica::posLr(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            negLr = as.numeric(metrica::negLr(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            dor = as.numeric(metrica::dor(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            npv = as.numeric(metrica::npv(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            FPR = as.numeric(metrica::FPR(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            #21
+            FNR = as.numeric(metrica::FNR(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            FDR = as.numeric(metrica::FDR(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            FOR = as.numeric(metrica::FOR(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            preval = as.numeric(metrica::preval(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            preval_t = as.numeric(metrica::preval_t(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            AUC_roc = as.numeric(metrica::AUC_roc(data={{data}}, obs={{obs}}, pred={{pred}})[[1]])
             ) 
           ) 
         )

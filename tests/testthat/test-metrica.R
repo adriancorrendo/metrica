@@ -400,3 +400,19 @@ test_that('no error density_plot', {
   expect_false(inherits(density_plot.test.OP, "try-error"))
 })
 
+
+# 46. MASE 
+chickpea_time <- metrica::chickpea %>% dplyr::arrange(pred) %>% 
+  dplyr::mutate(time = seq(1,39, by =1)) %>% 
+  dplyr::mutate(obs = pred *1.1 + rnorm(n=39, mean = 0, sd = 60))
+
+MASE.test <- MASE(data = chickpea_time, obs = obs, pred = pred, time = time)
+
+test_that('no error MASE', {
+  expect_false(inherits(MASE.test, "try-error"))
+})
+
+# 46.b.
+MASE.test_2 <- MASE(data = chickpea_time, obs = obs, pred = pred, time = time, oob_mae = 50)
+
+test_that('no error MASE', {expect_false(inherits(MASE.test_2, "try-error")) })

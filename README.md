@@ -21,48 +21,25 @@ status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metric
 
 <!-- badges: end -->
 
-A compilation of more than 50 functions designed to evaluate prediction
-performance of regression (continuous variables) and classification
-(categorical variables) point-forecast models. Offered scoring rules
-account for different aspects of the agreement between predicted and
-observed values. For regression, it includes error metrics (e.g. MAE,
-RMSE), model efficiencies (e.g. NSE, KGE), indices of agreement (e.g. d,
-RAC), goodness of fit (e.g. r, R2), concordance correlation (e.g. CCC),
-error decomposition (e.g. lack of accuracy-precision), and plots the
-visualize agreement. For classification (binomial and multinomial), it
-includes functions for confusion matrix, accuracy, precision, recall,
-specificity, F-score, and Cohen’s Kappa. For more details visit the
-vignettes <https://adriancorrendo.github.io/metrica/>.
+## Introduction <br/>
 
-The goal of the *metrica* package is to offer users of regression
-(continuous variables) and classification (categorical variables)
-point-forecast simulation models (e.g. APSIM, DSSAT, DNDC, Machine
-Learning) a toolbox with a wide spectrum of goodness of fit, error
-metrics, indices, and coefficients accounting for different aspects of
-the agreement between predicted and observed values. Also, *metrica*
-some basic visualization functions to assess models performance
-(e.g. confusion matrix, scatter with regression line; Bland-Altman plot)
-provided in customizable format (ggplot).
+`metrica` is a compilation of more than 80 functions designed to
+quantitatively and visually evaluate the prediction performance of
+regression (continuous variables) and classification (categorical
+variables) point-forecast models (e.g. APSIM, DSSAT, DNDC, Machine
+Learning). `metrica` offers a toolbox with a wide spectrum of goodness
+of fit, error metrics, indices, and coefficients accounting for
+different aspects of the agreement between predicted and observed
+values, plus some basic visualization functions to assess models
+performance (e.g. confusion matrix, scatter with regression line;
+Bland-Altman plot) provided in customizable format (ggplot).
+
+Always keep in mind the concept of “cross-validation” since predicted
+values should come from out-of-bag samples (unseen by training set) to
+avoid overestimation of the prediction performance. <br/>
 
 <img src="man/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;">
 <br/>
-
-This package contains +50 functions. Two arguments are always required:
-`observed`(Oi; a.k.a. actual, measured, truth, target) and `predicted`
-(Pi; a.k.a. simulated, fitted) values. Optional arguments include `data`
-that allows to call an existing data frame containing both observed and
-predicted vectors, and `tidy`, which controls the type of output as a
-list (tidy = FALSE) or as a data.frame (tidy = TRUE). <br/>
-
-Some functions for regression also require to define the axis
-`orientation`. For example, the slope of the symmetric linear regression
-describing the bivariate scatter (SMA). Current included functions cover
-both worlds: “regression” (i.e. continuous variables) & classification
-(i.e. nominal or categorical variables). <br/>
-
-Always keep in mind that predicted values should come from out-of-bag
-samples (unseen by training set) to avoid overestimation of prediction
-performance. <br/>
 
 Check the Documentation at <https://adriancorrendo.github.io/metrica/>
 <br/>
@@ -74,12 +51,74 @@ metrics](https://adriancorrendo.github.io/metrica/articles/available_metrics.htm
 <br/>
 
 [2. A regression
-case](https://adriancorrendo.github.io/metrica/articles/vignette1.html)
+case](https://adriancorrendo.github.io/metrica/articles/regression_case.html)
 <br/>
 
 [3. A classification
-case](https://adriancorrendo.github.io/metrica/articles/vignette1.html)
+case](https://adriancorrendo.github.io/metrica/articles/classification_case.html)
 <br/>
+
+## Functions <br/>
+
+For regression models, it includes 4 plotting functions (scatter, tiles,
+density, & Bland-Altman plots), and 48 prediction performance scores
+including error metrics (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE,
+RRMSE, RSR, PBE, iqRMSE), model efficiency (NSE, E1, Erel, KGE), indices
+of agreement (d, d1, d1r, RAC, AC, lambda), goodness of fit (r, R2, RSS,
+TSS, RSE), adjusted correlation coefficients (CCC, Xa, distance
+correlation-dcorr-), error decomposition (MLA, MLP, PLA, PLP, PAB, PPB,
+SB, SDSD, LCS, Ub, Uc, Ue), variability (uSD, var_u), and symmetric
+regression coefficients (B0_sma, B1_sma). Specifically for time-series
+predictions, `metrica` also includes the Mean Absolute Scaled Error
+(MASE). <br/>
+
+For classification (binomial and multinomial) tasks, it includes a
+function to visualize the confusion matrix using ggplot2, and 27
+functions of prediction scores including: accuracy, error rate,
+precision, recall, specificity, balanced accuracy, F-score, adjusted
+F-score, G-mean, Bookmaker Informedness (Youden’s J-index), Markedness
+(deltaP), Matthews Correlation Coefficient, Cohen’s Kappa, negative
+predictive value, positive and negative likelihood ratios, diagnostic
+odds ratio, prevalence, critical success index, false positive rate,
+false negative rate, false detection rate, false omission rate, and area
+under the ROC curve. <br/>
+
+`metrica` also offers a function that allows users to run all prediction
+performance scores at once. The user just needs to specify the type of
+model (“regression” or “classification”). <br/>
+
+For more details visit the vignettes
+<https://adriancorrendo.github.io/metrica/>.
+
+## Core function arguments <br/>
+
+There are two basic arguments common to all `metrica` functions: (i)
+`obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and
+(ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate)
+values. <br/>
+
+Optional arguments include `data` that allows to call an existing data
+frame containing both observed and predicted vectors, and `tidy`, which
+controls the type of output as a list (tidy = FALSE) or as a data.frame
+(tidy = TRUE). <br/>
+
+For regression, some specific functions for regression also require to
+define the axis `orientation`. For example, the slope of the symmetric
+linear regression describing the bivariate scatter (SMA). <br/>
+
+For binary classification (two classes), functions also require to check
+the `pos_level` arg., which indicates the alphanumeric order of the
+“positive level”. Normally, the most common binary denominations are
+c(0,1), c(“Negative”, “Positive”), c(“FALSE”, “TRUE”), so the default
+pos_level = 2 (1, “Positive”, “TRUE”). However, other cases are also
+possible, such as c(“Crop”, “NoCrop”) for which the user needs to
+specify pos_level = 1. <br/>
+
+For multiclass classification tasks, some functions present the `atom`
+arg. (logical TRUE / FALSE), which controls the output to be an overall
+average estimate across all classes, or a class-wise estimate. For
+example, user might be interested in obtaining estimates of precision
+and recall for each possible class of the prediction. <br/>
 
 ## 1. Installation
 
@@ -157,7 +196,9 @@ example.data <- barley %>%  # or 'wheat', 'sorghum', or 'chickpea'
 barley.scat.plot <- metrica::scatter_plot(data = example.data, 
                                           obs = measured, 
                                           pred = simulated,
-                                          orientation = "PO")
+                                          orientation = "PO", 
+                                          print_eq = TRUE,
+                                          position_eq = c(x=24, y =8))
 barley.scat.plot
 ```
 
@@ -219,27 +260,41 @@ barley.ba.plot
 # a. Estimate coefficient of determination (R2)
 
 metrica::R2(data = example.data, obs = measured, pred = simulated)
+#> $R2
 #> [1] 0.4512998
 
 # b. Estimate root mean squared error (RMSE)
 metrica::RMSE(data = example.data, obs = measured, pred = simulated)
+#> $RMSE
 #> [1] 3.986028
 
 # c. Estimate mean bias error (MBE)
 metrica::MBE(data = example.data, obs = measured, pred = simulated)
+#> $MBE
 #> [1] 0.207378
 
 # c. Estimate index of agreement (d)
 metrica::d(data = example.data, obs = measured, pred = simulated)
+#> $d
 #> [1] 0.8191397
+
+# e. Estimate SMA regression intercept (B0)
+metrica::B0_sma(data = example.data, obs = measured, pred = simulated, tidy = TRUE)
+#>         B0
+#> 1 1.128274
+
+# f. Estimate SMA regression slope (B1)
+metrica::B1_sma(data = example.data, obs = measured, pred = simulated)
+#> $B1
+#> [1] 0.9288715
 ```
 
 ### 3.1.2.2. Metrics Summary
 
 ``` r
-metrics.sum <- metrica::metrics_summary(data = example.data, 
-                                        obs = measured, pred = simulated,
-                                        type = "regression")  
+metrics.sum <- metrics_summary(data = example.data, 
+                               obs = measured, pred = simulated,
+                               type = "regression")  
 # Print first 15
 head(metrics.sum, n = 15)
 #>    Metric      Score
@@ -264,6 +319,17 @@ metrics.sum.wide <- metrics.sum %>%
   tidyr::pivot_wider(tidyr::everything(),
                       names_from = "Metric",
                       values_from = "Score")
+
+metrics.sum.wide
+#> # A tibble: 1 × 43
+#>      B0    B1     r    R2    Xa   CCC   MAE  RMAE  MAPE SMAPE   RAE   RSE   MBE
+#>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1  1.13 0.929 0.672 0.451 0.996 0.669  3.06 0.163  16.8  16.8 0.764 0.616 0.207
+#> # … with 30 more variables: PBE <dbl>, PAB <dbl>, PPB <dbl>, MSE <dbl>,
+#> #   RMSE <dbl>, RRMSE <dbl>, RSR <dbl>, iqRMSE <dbl>, MLA <dbl>, MLP <dbl>,
+#> #   SB <dbl>, SDSD <dbl>, LCS <dbl>, PLA <dbl>, PLP <dbl>, Ue <dbl>, Uc <dbl>,
+#> #   Ub <dbl>, NSE <dbl>, E1 <dbl>, Erel <dbl>, KGE <dbl>, d <dbl>, d1 <dbl>,
+#> #   d1r <dbl>, RAC <dbl>, AC <dbl>, lambda <dbl>, dcorr <dbl>, MIC <dbl>
 ```
 
 ### 3.1.3. Run multiple datasets at once
@@ -303,8 +369,6 @@ head(multiple.sum)
 #> 2 barley   <tibble [69 × 2]>  <df [43 × 2]>
 #> 3 sorghum  <tibble [36 × 2]>  <df [43 × 2]>
 #> 4 chickpea <tibble [39 × 2]>  <df [43 × 2]>
-
-View(multiple.sum)
 ```
 
 ### 3.1.3.2. Non-nested data <br/>
@@ -422,8 +486,8 @@ binomial_case %>% accuracy(data = ., obs = labels, pred = predictions, tidy=TRUE
 #>   accuracy
 #> 1     0.55
 binomial_case %>% error_rate(data = ., obs = labels, pred = predictions, tidy=TRUE)
-#>   misclass_rate
-#> 1          0.45
+#>   error_rate
+#> 1       0.45
 binomial_case %>% precision(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #>   precision
 #> 1 0.5961538
@@ -433,14 +497,20 @@ binomial_case %>% recall(data = ., obs = labels, pred = predictions, atom = F, t
 binomial_case %>% specificity(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #>        spec
 #> 1 0.5333333
-binomial_case %>% baccu(data = ., obs = labels, pred = predictions, tidy=TRUE)
-#>       baccu
+binomial_case %>% balacc(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>      balacc
 #> 1 0.5484848
 binomial_case %>% fscore(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #>      fscore
 #> 1 0.5794393
-binomial_case %>% cohen_kappa(data = ., obs = labels, pred = predictions, tidy=TRUE)
-#>        kappa
+binomial_case %>% agf(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>         agf
+#> 1 0.5795213
+binomial_case %>% gmean(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>       gmean
+#> 1 0.5482755
+binomial_case %>% khat(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>         khat
 #> 1 0.09638554
 binomial_case %>% mcc(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #>          mcc
@@ -448,6 +518,15 @@ binomial_case %>% mcc(data = ., obs = labels, pred = predictions, tidy=TRUE)
 binomial_case %>% fmi(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #>         fmi
 #> 1 0.5796671
+binomial_case %>% posLr(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>      posLr
+#> 1 1.207792
+binomial_case %>% negLr(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>       negLr
+#> 1 0.8181818
+binomial_case %>% dor(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>       dor
+#> 1 1.47619
 
 # Get all at once with metrics_summary()
 binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
@@ -457,29 +536,71 @@ binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, ty
 #> 3    precision 0.59615385
 #> 4       recall 0.56363636
 #> 5  specificity 0.53333333
-#> 6        baccu 0.54848485
+#> 6       balacc 0.54848485
 #> 7       fscore 0.57943925
-#> 8  cohen_kappa 0.09638554
-#> 9          mcc 0.09656091
-#> 10         fmi 0.57966713
+#> 8          agf 0.57952126
+#> 9        gmean 0.54827553
+#> 10        khat 0.09638554
+#> 11         mcc 0.09656091
+#> 12         fmi 0.57966713
+#> 13         bmi 0.09696970
+#> 14         csi 0.40789474
+#> 15      deltap 0.09615385
+#> 16       posLr 1.20779221
+#> 17       negLr 0.81818182
+#> 18         dor 1.47619048
+#> 19         npv 0.50000000
+#> 20         FPR 0.46666667
+#> 21         FNR 0.43636364
+#> 22         FDR 0.40384615
+#> 23         FOR 0.50000000
+#> 24      preval 0.55000000
+#> 25    preval_t 0.49309260
+#> 26     AUC_roc 0.54848485
+
+# Multinomial
 multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
-#> Warning in metrica::mcc(data = ~., obs = ~labels, pred = ~predictions): The
-#> generalization of the Matthews Correlation Coefficient for a multiclass setting
-#> has not been implemented yet in metrica
+#> Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions):
+#> For multiclass cases, the fscore should be estimated at a class level. Please,
+#> consider using `atom = TRUE`
+#> Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions): For
+#> multiclass cases, the agf should be estimated at a class level. Please, consider
+#> using `atom = TRUE`
 #> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The
 #> Fowlkes-Mallows Index is not available for multiclass cases. The result has been
-#> recorded as NA
+#> recorded as NaN.
+#> Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions): For
+#> multiclass cases, prevalence should be estimated at a class level. A NaN has
+#> been recorded as the result. Please, use `atom = TRUE`
+#> Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions): For multiclass cases, prevalence threshold should be estimated at a class level. 
+#>       A NaN has been recorded as the result. Please, use `atom = TRUE`.
 #>         Metric       Score
 #> 1     accuracy  0.32000000
 #> 2   error_rate  0.68000000
 #> 3    precision  0.32019443
 #> 4       recall  0.32029977
 #> 5  specificity  0.66031031
-#> 6        baccu  0.49030504
+#> 6       balacc  0.49030504
 #> 7       fscore  0.32024709
-#> 8  cohen_kappa -0.01918465
-#> 9          mcc          NA
-#> 10         fmi          NA
+#> 8          agf  0.32024710
+#> 9        gmean  0.45988829
+#> 10        khat -0.01918465
+#> 11         mcc -0.01926552
+#> 12         fmi         NaN
+#> 13         bmi -0.01938991
+#> 14         csi  0.13793860
+#> 15      deltap -0.01951385
+#> 16       posLr  0.94291874
+#> 17       negLr  1.02936485
+#> 18         dor  0.91601996
+#> 19         npv  0.66029172
+#> 20         FPR  0.33968969
+#> 21         FNR  0.67970023
+#> 22         FDR  0.67980557
+#> 23         FOR  0.33970828
+#> 24      preval         NaN
+#> 25    preval_t         NaN
+#> 26     AUC_roc  0.49030504
 
 # Get a selected list at once with metrics_summary()
 selected_class_metrics <- c("accuracy", "recall", "fscore")
@@ -495,16 +616,113 @@ binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, ty
 # Multiclass
 multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification",
                                   metrics_list = selected_class_metrics)
-#> Warning in metrica::mcc(data = ~., obs = ~labels, pred = ~predictions): The
-#> generalization of the Matthews Correlation Coefficient for a multiclass setting
-#> has not been implemented yet in metrica
+#> Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions):
+#> For multiclass cases, the fscore should be estimated at a class level. Please,
+#> consider using `atom = TRUE`
+#> Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions): For
+#> multiclass cases, the agf should be estimated at a class level. Please, consider
+#> using `atom = TRUE`
 #> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The
 #> Fowlkes-Mallows Index is not available for multiclass cases. The result has been
-#> recorded as NA
+#> recorded as NaN.
+#> Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions): For
+#> multiclass cases, prevalence should be estimated at a class level. A NaN has
+#> been recorded as the result. Please, use `atom = TRUE`
+#> Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions): For multiclass cases, prevalence threshold should be estimated at a class level. 
+#>       A NaN has been recorded as the result. Please, use `atom = TRUE`.
 #>     Metric     Score
 #> 1 accuracy 0.3200000
 #> 2   recall 0.3202998
 #> 3   fscore 0.3202471
+```
+
+``` r
+multinomial_case %>% accuracy(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>   accuracy
+#> 1     0.32
+multinomial_case %>% error_rate(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>   error_rate
+#> 1       0.68
+multinomial_case %>% precision(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>   precision
+#> 1 0.3201944
+multinomial_case %>% recall(data = ., obs = labels, pred = predictions, atom = F, tidy=TRUE)
+#>      recall
+#> 1 0.3202998
+multinomial_case %>% specificity(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>        spec
+#> 1 0.6603103
+multinomial_case %>% balacc(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>     balacc
+#> 1 0.490305
+multinomial_case %>% fscore(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#> Warning in fscore(data = ., obs = labels, pred = predictions, tidy = TRUE):
+#> For multiclass cases, the fscore should be estimated at a class level. Please,
+#> consider using `atom = TRUE`
+#>      fscore
+#> 1 0.3202471
+multinomial_case %>% agf(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#> Warning in agf(data = ., obs = labels, pred = predictions, tidy = TRUE): For
+#> multiclass cases, the agf should be estimated at a class level. Please, consider
+#> using `atom = TRUE`
+#>         agf
+#> 1 0.3202471
+multinomial_case %>% gmean(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>       gmean
+#> 1 0.4598883
+multinomial_case %>% khat(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>          khat
+#> 1 -0.01918465
+multinomial_case %>% mcc(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>           mcc
+#> 1 -0.01926552
+multinomial_case %>% fmi(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#> Warning in fmi(data = ., obs = labels, pred = predictions, tidy = TRUE): The
+#> Fowlkes-Mallows Index is not available for multiclass cases. The result has been
+#> recorded as NaN.
+#>   fmi
+#> 1 NaN
+multinomial_case %>% posLr(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>       posLr
+#> 1 0.9429187
+multinomial_case %>% negLr(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>      negLr
+#> 1 1.029365
+multinomial_case %>% dor(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>       dor
+#> 1 0.91602
+multinomial_case %>% deltap(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>        deltap
+#> 1 -0.01951385
+multinomial_case %>% csi(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>         csi
+#> 1 0.1379386
+multinomial_case %>% FPR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>         FPR
+#> 1 0.3396897
+multinomial_case %>% FNR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>         FNR
+#> 1 0.6797002
+multinomial_case %>% FDR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>         FDR
+#> 1 0.6798056
+multinomial_case %>% FOR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>         FOR
+#> 1 0.3397083
+multinomial_case %>% preval(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#> Warning in preval(data = ., obs = labels, pred = predictions, tidy = TRUE): For
+#> multiclass cases, prevalence should be estimated at a class level. A NaN has
+#> been recorded as the result. Please, use `atom = TRUE`
+#>   prev
+#> 1  NaN
+multinomial_case %>% preval_t(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#> Warning in preval_t(data = ., obs = labels, pred = predictions, tidy = TRUE): For multiclass cases, prevalence threshold should be estimated at a class level. 
+#>       A NaN has been recorded as the result. Please, use `atom = TRUE`.
+#>   preval_t
+#> 1      NaN
+multinomial_case %>% AUC_roc(data = ., obs = labels, pred = predictions, tidy=TRUE)
+#>    AUC_roc
+#> 1 0.490305
 ```
 
 ## 4. Import data from APSIM

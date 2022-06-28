@@ -1,31 +1,49 @@
 # metrica 2.0.0
 
-* June 21th, 2022. <br/>
+* June 28th, 2022. <br/>
 
 This new version of metrica includes:
 
-1) 10 new functions to evaluate quality of predictions for classification problems:
+1) Twenty-seven (27) new functions to evaluate quality of predictions for classification problems:
   
   - `confusion_matrix()`: Confusion matrix (as data.frame or plot).
-  - `accuracy()`: Accuracy
-  - `error_rate()`: Error Rate (a.k.a misclassification rate)
-  - `precision()`: Precision
-  - `recall()`: Recall (a.k.a sensitivity)
-  - `specificity()`: Specificity.
+  - `accuracy()`: Accuracy.
+  - `error_rate()`: Error Rate, misclassification rate.
+  - `precision()`: Precision.
+  - `recall()`: Recall, sensitivity, true positive rate.
+  - `specificity()`: Specificity, selectivity, true negative rate.
   - `fscore()`: F-score.
-  - `cohen_kappa()`: Cohen's Kappa Coefficient.
+  - `agf()`: Adjusted F-score.
+  - `gmean()`: G-mean.
+  - `khat()`: Cohen's Kappa Coefficient.
   - `baccu()`: Balanced Accuracy.
   - `mcc()`: Matthews Correlation Coefficient.
   - `fmi()`: Fowlkes-Mallows Index.
+  - `bmi()`: Informedness, Bookmaker Index.
+  - `csi()`: Critical Success Index, Threat Score, Jaccard Index.
+  - `deltap()`: Markedness or deltaP.
+  - `posLr()`: Positive Likelihood Ratio.
+  - `negLr()`: Negative Likelihood Ratio.
+  - `dor()`: Diagnostic Odds Ratio.
+  - `npv()`: Negative Predictive Value.
+  - `FPR()`: False Positive Rate, false alarm, fall-out.
+  - `FNR()`: False Negative Rate, miss rate.
+  - `FDR()`: False Detection Rate, False Discovery Rate.
+  - `FOR()`: False Omission Rate.
+  - `preval()`: Prevalence.
+  - `preval_t()`: Prevalence threshold.
+  - `AUC_roc()`: Area Under the ROC Curve (trapezoid approach).
+
+2) Three (3) new functions to the family of regression performance metrics:
   
-2) Adding two new functions to the family of regression performance metrics:
+  -`MASE()` (Mean Absolute Scaled Error) for Time Series Analysis.
   - `dcorr()` (Distance correlation) as wrapper of dcor() from energy package (https://CRAN.R-project.org/package=energy), and
   - `MIC()` (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (https://CRAN.R-project.org/package=minerva).
 
-3) Adding new plotting function for regression problems:
+3) One (1) new plotting function for regression problems:
   - `density_plot()`, to create a plot that paints density areas of predicted and observed coordinates.
   
-4) Adding new arguments to plotting functions scatter_plot, tiles_plot, and density_plot:
+4) Four (4) new arguments to plotting functions scatter_plot, tiles_plot, and density_plot (no deprecated):
   - `print_eq` (to print equation or not)
   - `position_metrics` (to customize position of metrics_table when print_metrics = TRUE)
   - `position_eq` (to customize position of equation when print_eq = TRUE)
@@ -33,15 +51,11 @@ This new version of metrica includes:
   
 5) Adding the argument `tidy` to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)
 
+
+6) Fixing a minor a bug on the `NSE()` function to estimate the Nash-Sutcliffe model efficiency that produced only values of NSE=1.00 on v1.2.3.
 ######################################################################################################
 
 # Previous versions
-
-# metrica 1.2.4 (dev)
-
-* May 27th, 2022. <br/>
-
-Development update fixing minor a bug on the NSE() function to estimate the Nash-Sutcliffe model efficiency that produce only values of NSE=1.00 on v1.23.
 
 # metrica 1.2.3 (CRAN)
 

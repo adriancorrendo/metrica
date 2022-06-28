@@ -1,10 +1,10 @@
 ---
-title: "Assessing classification quality"
+title: "Classification case: Assessing classification quality"
 author: "Adrian Correndo & Luciana Nieto"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Assessing classification quality}
+  %\VignetteIndexEntry{Classification case}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,11 +16,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-## 1 Introduction  
+## 1. Introduction <br/>
 
 This vignette introduces the functionality of the *`metrica`* package applied to classification tasks. <br/>
-
-Select and briefly explain example dataset.
 
 ### Libraries
 ```{r warning=FALSE, message=FALSE}
@@ -31,10 +29,21 @@ library(tidyr)
 ```
 
 
-### 2. Example datasets 
+### 2. Example datasets  <br/>
+
 ```{r warning=FALSE, message=FALSE}
-binomial_case <- data.frame(labels = sample(c("Pos","Neg"), 100, replace = TRUE),
-                            predictions = sample(c("Pos","Neg"), 100, replace = TRUE)) %>% 
+set.seed(15)
+
+binomial_case <- data.frame(labels = sample(c("Positive","Negative"), 100, replace = TRUE),
+                            predictions = sample(c("Positive","Negative"), 100, replace = TRUE)) %>% 
+  mutate(predictions = as.factor(predictions), labels = as.factor(labels))
+
+binomial_2 <- data.frame(labels = sample(c("Positive","Negative"), 100, replace = TRUE),
+                            predictions = sample(c("Positive","Negative"), 100, replace = TRUE)) %>% 
+  mutate(predictions = as.factor(predictions), labels = as.factor(labels))
+
+binomial_3 <- data.frame(labels = sample(c("POS","NEG"), 100, replace = TRUE),
+                            predictions = sample(c("POS","NEG"), 100, replace = TRUE)) %>% 
   mutate(predictions = as.factor(predictions), labels = as.factor(labels))
 
 multinomial_case <- data.frame(labels = sample(c("Red","Green", "Blue"), 100, replace = TRUE),
@@ -48,14 +57,17 @@ multinomial_case <- data.frame(labels = sample(c("Red","Green", "Blue"), 100, re
 ### 3.1. Binary
 ```{r warning=FALSE, message=FALSE}
 # a. Print
+
 binomial_case %>% confusion_matrix(obs = labels, pred = predictions, 
                                             plot = FALSE, colors = c(low="#f9dbbd" , high="#735d78"), 
                                             unit = "count")
-
+  
 # b. Plot
 binomial_case %>% confusion_matrix(obs = labels, pred = predictions, 
                                             plot = TRUE, colors = c(low="#f9dbbd" , high="#735d78"), 
                                             unit = "count")
+
+
 ```
 
 ### 3.2. Multiclass
@@ -69,41 +81,139 @@ multinomial_case %>% confusion_matrix(obs = labels,
 # b. Plot
 multinomial_case %>% confusion_matrix(obs = labels, 
                                       pred = predictions, 
-                                      plot = TRUE, colors = c(low="#d3dbbd" , high="#885f78"), 
-                                      unit = "count")
+                                      plot = TRUE, colors = c(low="#d3dbbd" , high="steelblue"), 
+                                      unit = "count")+
+  ggplot2::theme(legend.position = "none")
 
 ```
 
-### 4 Classification Metrics <br/>
+### 4. Classification Metrics <br/>
 
 ### 4.1. Single dataset <br/>
-```{r}
+
+### 4.1.1. Two-class data
+```{r warning=FALSE, message=FALSE}
 # Get classification metrics one by one
-binomial_case %>% accuracy(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% accuracy(data = ., obs = labels, pred = predictions, tidy = TRUE)
 binomial_case %>% error_rate(data = ., obs = labels, pred = predictions, tidy=TRUE)
 binomial_case %>% precision(data = ., obs = labels, pred = predictions, tidy=TRUE)
 binomial_case %>% recall(data = ., obs = labels, pred = predictions, atom = F, tidy=TRUE)
 binomial_case %>% specificity(data = ., obs = labels, pred = predictions, tidy=TRUE)
-binomial_case %>% baccu(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% balacc(data = ., obs = labels, pred = predictions, tidy=TRUE)
 binomial_case %>% fscore(data = ., obs = labels, pred = predictions, tidy=TRUE)
-binomial_case %>% cohen_kappa(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% agf(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% gmean(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% khat(data = ., obs = labels, pred = predictions, tidy=TRUE)
 binomial_case %>% mcc(data = ., obs = labels, pred = predictions, tidy=TRUE)
 binomial_case %>% fmi(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% bmi(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% csi(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% deltap(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% npv(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% FPR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% FNR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% FDR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% FOR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% posLr(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% negLr(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% dor(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% preval(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% preval_t(data = ., obs = labels, pred = predictions, tidy=TRUE)
+binomial_case %>% AUC_roc(data = ., obs = labels, pred = predictions, tidy=TRUE)
 
 # Get all at once with metrics_summary()
 binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
-multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
 
 # Get a selected list at once with metrics_summary()
 selected_class_metrics <- c("accuracy", "recall", "fscore")
 
-# Binary
 binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification",
                                   metrics_list = selected_class_metrics)
 
-# Multiclass
+```
+
+### 4.1.2. Multi-class data
+```{r message=FALSE}
+# Get classification metrics one by one
+multinomial_case %>% accuracy(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% error_rate(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% precision(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% recall(data = ., obs = labels, pred = predictions, atom = F, tidy=TRUE)
+multinomial_case %>% specificity(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% balacc(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% fscore(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% khat(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% mcc(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% fmi(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% bmi(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% npv(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% FOR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% FDR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% FPR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% FNR(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% posLr(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% negLr(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% dor(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% preval(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% preval_t(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% csi(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% deltap(data = ., obs = labels, pred = predictions, tidy=TRUE)
+multinomial_case %>% AUC_roc(data = ., obs = labels, pred = predictions, tidy=TRUE)
+
+# Get all at once with metrics_summary()
+multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
+
+# Get a selected list at once with metrics_summary()
 multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification",
                                   metrics_list = selected_class_metrics)
+
+```
+
+
+### 3.1.3.1. Nested data
+```{r warning=FALSE, message=FALSE}
+# a. Create nested df with the native examples
+nested.examples <- bind_rows(list(fold_1 = binomial_case, 
+                                  fold_2 = binomial_2),
+                             .id = "id") %>%
+  dplyr::group_by(id) %>% tidyr::nest()
+
+head(nested.examples %>% group_by(id) %>% dplyr::slice_head(n=2))
+
+# b. Run 
+mult_sum_class_1 <- nested.examples %>% 
+  # Store metrics in new.column "performance"
+  dplyr::mutate(performance = 
+                  purrr::map(data,
+                             ~metrica::metrics_summary(data = ., 
+                                                       obs = labels, pred = predictions, 
+                                                       type = "classification"))) %>% 
+  dplyr::select(-data) %>% 
+  tidyr::unnest(cols = performance) %>% 
+  dplyr::arrange(Metric)
+
+head(mult_sum_class_1)
+
+```
+
+### 3.1.3.2. Non-nested data <br/>
+```{r warning=F, message=F}
+non_nested_data <- nested.examples %>% unnest(cols = "data") 
+
+# Using group_map()
+mult_sum_class_2 <- non_nested_data %>% 
+  dplyr::group_by(id) %>% 
+  dplyr::group_map(~metrics_summary(data = ., obs = labels, pred = predictions, type = "classification"))
+
+# Using summarise()
+mult_sum_class_3 <- non_nested_data %>% 
+  dplyr::group_by(id) %>% 
+  dplyr::summarise(metrics_summary(obs = labels, pred = predictions, type = "classification")) %>%
+  dplyr::arrange(Metric)
+
+mult_sum_class_1
+mult_sum_class_2
+mult_sum_class_3
 
 
 ```

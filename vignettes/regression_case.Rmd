@@ -1,10 +1,10 @@
 ---
-title: "Assessing model agreement in wheat grain nitrogen content prediction - a use case"
+title: "Regression case: Assessing model agreement in wheat grain nitrogen content prediction"
 author: "Leo Bastos & Adrian Correndo"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Assessing model agreement in wheat grain nitrogen content prediction - a use case}
+  %\VignetteIndexEntry{Regression case}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -118,7 +118,8 @@ For example, to calculate $R^{2}$, we can use the `R2()` function:
 ```{r r2}
 R2(data = wheat,
    obs = obs, 
-   pred = pred)
+   pred = pred, tidy = TRUE)
+
 ```
 
 Similarly, to calculate root mean squared error, we can use the `RMSE()` function:  
@@ -148,6 +149,42 @@ metrics_summary(data = wheat,
                 metrics_list = my.metrics) 
 
 ```
+
+In some cases, we may count with time-series predictions. For example, let's say that we evaluate the production of drymass during the season. For this specific case, the Mean Absolute Scaled Error is a more solid metric compared to conventional RMSE or similar metrics.
+
+```{r metrics time-series}
+
+# Let's suppose that predictions of drymass on the chickpea dataset were made during the cropping season
+# So in this case, we may create a new variable called time that will serve to sort the observations
+chickpea_time <- metrica::chickpea %>% dplyr::arrange(pred) %>% 
+  mutate(time = seq(1,39, by =1)) %>% 
+  mutate(obs = pred *1.1 + rnorm(n=39, mean = 0, sd = 60))
+
+# Plot
+chickpea_time %>% ggplot2::ggplot(aes(x = time))+
+  geom_point(aes(y = pred, fill = "Predicted", shape = "Predicted"))+
+  geom_point(aes(y = obs, fill = "Observed", shape = "Observed"))+
+  geom_line(aes(y = pred, col = "Predicted", linetype = "Predicted"), size = .75)+
+  geom_line(aes(y = obs, col = "Observed", linetype = "Observed"), size = .75)+
+  scale_fill_manual(name = "", values = c("dark red","steelblue"))+
+  scale_shape_manual(name = "", values = c(21,24))+
+  scale_color_manual(name = "", values = c("dark red","steelblue"))+
+  scale_linetype_manual(name = "", values = c(1,2))+
+  labs(x = "Days after planting", y = "Chickpea Drymass (kg/ha)")+
+  theme_bw()+
+  theme(legend.position = "top")
+
+# MASE estimate, with naive approach (random-walk, i.e. using observation of t-1 as prediction)
+metrica::MASE(data = chickpea_time, obs = obs, pred = pred, 
+              naive_step = 1, tidy = FALSE, time = time)
+
+# MASE estimate, with mae coming from an independent training set.
+metrica::MASE(data = chickpea_time, obs = obs, pred = pred, 
+              naive_step = 1, tidy = FALSE, time = time, oob_mae = 120)
+
+
+```
+
 
 
 ## 5 Visual and numerical assessment combined  

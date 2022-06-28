@@ -1,0 +1,176 @@
+#' @title Recall | Sensitivity  
+#' @name recall
+#' @description \code{recall} estimates the recall (a.k.a. sensitivity or true positive rate -TPR-)
+#' for a nominal/categorical predicted-observed dataset.
+#' @param data (Optional) argument to call an existing data frame containing the data.
+#' @param obs Vector with observed values (character | factor).
+#' @param pred Vector with predicted values (character | factor).
+#' @param atom Logical operator (TRUE/FALSE) to decide if the estimate is made for 
+#' each class (atom = TRUE) or at a global level (atom = FALSE); Default : FALSE.
+#' When dataset is "binomial" atom does not apply.
+#' @param pos_level Integer, for binary cases, indicating the order (1|2) of the level 
+#' corresponding to the positive. Generally, the positive level is the second (2)
+#' since following an alpha-numeric order, the most common pairs are 
+#' `(Negative | Positive)`, `(0 | 1)`, `(FALSE | TRUE)`. Default : 2.
+#' @param tidy Logical operator (TRUE/FALSE) to decide the type of return. TRUE 
+#' returns a data.frame, FALSE returns a list; Default : FALSE.
+#' @param na.rm Logic argument to remove rows with missing values 
+#' (NA). Default is na.rm = TRUE.
+#' @return an object of class `numeric` within a `list` (if tidy = FALSE) or within a
+#' `data frame` (if tidy = TRUE).
+#' @details The \code{recall} (a.k.a. sensitivity or true positive rate -TPR-) is a 
+#' non-normalized coefficient that represents the ratio between the correctly 
+#' predicted cases (true positives -TP-) to the total number of actual observations 
+#' that belong to a given class (actual positives -P-). 
+#' 
+#' For binomial cases, \eqn{recall  =  \frac{TP}{P} = \frac{TP}{TP + FN} }
+#' 
+#' The \code{recall} metric is bounded between 0 and 1. The closer to 1 the better.
+#' Values towards zero indicate low performance. It can be either estimated for 
+#' each particular class or at a global level.
+#' 
+#' The false negative rate (or false alarm, or fall-out) is the complement of the 
+#' recall, representing the ratio between the number of false negatives (FN) 
+#' to the actual number of positives (P). The \code{FNR} formula is:
+#' 
+#' \eqn{FNR = 1 - recall = 1 - TPR = \frac{FN}{P}}
+#' 
+#' The \code{fpr} is bounded between 0 and 1. The closer to 0 the better. Low performance 
+#' is indicated with fpr > 0.5.
+#' 
+#' For the formula and more details, see 
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @references
+#' Ting K.M. (2017)
+#' Precision and Recall. 
+#' _In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining._
+#' _Springer, Boston, MA._ \doi{10.1007/978-1-4899-7687-1_659}
+#' 
+#' Ting K.M. (2017).
+#' Sensitivity. 
+#' _In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining._
+#' _Springer, Boston, MA._ \doi{10.1007/978-1-4899-7687-1_751}
+#' 
+#' Trevethan, R. (2017).
+#' _Sensitivity, Specificity, and Predictive Values: Foundations, Pliabilities, and Pitfalls_
+#' _ in Research and Practice. Front. Public Health 5:307_ \doi{10.3389/fpubh.2017.00307}
+#' @examples 
+#' \donttest{
+#' set.seed(123)
+#' # Two-class
+#' binomial_case <- data.frame(labels = sample(c("True","False"), 100, 
+#' replace = TRUE), predictions = sample(c("True","False"), 100, replace = TRUE))
+#' 
+#' # Multi-class
+#' multinomial_case <- data.frame(labels = sample(c("Red","Blue", "Green"), 100, 
+#' replace = TRUE), predictions = sample(c("Red","Blue", "Green"), 100, replace = TRUE))
+#' 
+#' # Get recall estimate for two-class case at global level
+#' recall(data = binomial_case, obs = labels, pred = predictions, tidy = TRUE)
+#' 
+#' # Get FNR estimate for two-class case at global level
+#' FNR(data = binomial_case, obs = labels, pred = predictions, tidy = TRUE)
+#' 
+#' # Get recall estimate for each class for the multi-class case at global level
+#' recall(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE, 
+#' atom = FALSE)
+#' 
+#' # Get recall estimate for the multi-class case at a class-level
+#' recall(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE,
+#' atom = TRUE)
+#' }
+#' @importFrom rlang eval_tidy quo
+#' @rdname recall
+#' @export 
+#' 
+recall <- function(data=NULL, obs, pred, 
+                   atom = FALSE, pos_level = 2, 
+                   tidy = FALSE, na.rm = TRUE){
+  # Recall
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}}) ) )
+  
+  # If binomial, atom arg. doesn't apply
+  if (nrow(matrix) == 2){
+    
+    if (pos_level == 1){
+    TP <- matrix[[1]]
+    TPFN <- matrix[[1]] + matrix[[2]] }
+    
+    if (pos_level == 2){
+      TP <- matrix[[4]]
+      TPFN <- matrix[[4]] + matrix[[3]] }
+    
+    
+    recall <- TP/ (TPFN) }
+  
+  if (nrow(matrix) >2) {
+    
+    # Calculations
+    correct <- diag(matrix)
+    total_actual <- colSums(matrix) 
+    
+    if (atom == FALSE) { 
+      recall <- mean(correct / total_actual) }
+    
+    # Overall
+    if (atom == TRUE) { 
+      recall <- correct / total_actual }
+  }
+  
+  if (tidy == TRUE) {
+    return(as.data.frame(recall)) }
+  
+  if (tidy == FALSE) {
+    return(list("recall" = recall)) } 
+}
+#' @rdname recall
+#' @description \code{FNR} estimates false negative rate (or false alarm, or fall-out)
+#' for a nominal/categorical predicted-observed dataset.
+#' @export 
+#' 
+FNR <- function(data=NULL, obs, pred, 
+                atom = FALSE, pos_level = 2,
+                tidy = FALSE, na.rm = TRUE){
+  # False Negative Rate (FNR)
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}}) ) )
+  
+  # If binomial, atom arg. doesn't apply
+  if (nrow(matrix) == 2){
+    
+    if (pos_level == 1){
+      TP <- matrix[[1]]
+      TPFN <- matrix[[1]] + matrix[[2]] }
+    
+    if (pos_level == 2){
+      TP <- matrix[[4]]
+      TPFN <- matrix[[4]] + matrix[[3]] }
+    
+    
+    recall <- TP/ (TPFN) }
+  
+  if (nrow(matrix) >2) {
+    
+    # Calculations
+    correct <- diag(matrix)
+    total_actual <- colSums(matrix) 
+    
+    if (atom == FALSE) { 
+      recall <- mean(correct / total_actual) }
+    
+    # Overall
+    if (atom == TRUE) { 
+      recall <- correct / total_actual }
+  }
+  # Formula
+  FNR <- 1 - recall
+  
+  if (tidy==TRUE){ return(as.data.frame(FNR)) }
+  
+  if (tidy==FALSE){ return(list("FNR" = FNR)) }
+  
+}
+NULL
