@@ -88,7 +88,6 @@ _Note: All classification functions automatically recognize the number of classe
 |24| `csi` | Critical Success Index | The `csi` is also known as the threat score (TS). It could vary between 0 and 1, being 0 the worst and 1 the best | $csi = \frac{TP}{TP+FP+TN}$|
 |25| `deltap` | Markedness or deltap | The `deltap` is a metric that quantifies the probability that a condition is marked by the predictor with respect to a random chance | $deltap = precision+npv-1 = PPV + NPV -1$|
 |26| `AUC_roc` | Area Under the Curve | The `AUC_roc` estimates the area under the receiving operator characteristic curve following the trapezoid approach. It bounded between 0 and 1. The closet to 1 the better. AUC_roc = 0.5 means the models predictions are the same than a random classifier. | $AUC_{roc} = precision+npv-1 = PPV + NPV -1$|
-|<img width=10/>| <img width=30/> | <img width=40/> | <img width=300/> | <img width=80/> |
 
 <br/>
 

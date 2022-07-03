@@ -41,9 +41,9 @@ Check the Documentation at [https://adriancorrendo.github.io/metrica/](https://a
 
 **Vignettes** <br/>
 
-[1. List of metrics for Regression](https://adriancorrendo.github.io/metrica/articles/available_regression_metrics.html) <br/>
+[1. List of metrics for Regression](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html) <br/>
 
-[2. List of metrics for Classification](https://adriancorrendo.github.io/metrica/articles/available_classification_metrics.html) <br/>
+[2. List of metrics for Classification](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html) <br/>
 
 [3. A regression case (numerical variables)](https://adriancorrendo.github.io/metrica/articles/regression_case.html) <br/>
 
@@ -417,26 +417,8 @@ multinomial_case %>% AUC_roc(data = ., obs = labels, pred = predictions, tidy=TR
 
 
 ## 4. Import data from APSIM
-### 4.1. APSIM Classic (.out)  
-```{r warning=FALSE, message=FALSE}
 
-# Use import_apsim_out for APSIM Classic output
-soybean.out <- metrica::import_apsim_out(filepath = "tests/testthat/examples/soybean.out")
-
-head(soybean.out)
-```
-
-### 4.1. APSIM NextGeneration (.db) 
-```{r warning=FALSE, message=FALSE}
-# Use import_apsim_db for APSIM NextGeneration output
-soybean.db <- metrica::import_apsim_db(filename = "soybean.example.db", folder = "tests/testthat/examples/")
-
-head(soybean.db)
-
-# If observed.data is already as a dataframe, the user may do the match using a simple code like this:
-# PO.dataframe <- simulated.data %>% left_join(., observed.data) *by = "col" arg. could be required*
-
-```
+Please, visit the [vignette](https://adriancorrendo.github.io/metrica/articles/apsim_open.html)
   
 
 

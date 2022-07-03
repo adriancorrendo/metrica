@@ -46,11 +46,11 @@ Check the Documentation at <https://adriancorrendo.github.io/metrica/>
 **Vignettes** <br/>
 
 [1. List of metrics for
-Regression](https://adriancorrendo.github.io/metrica/articles/available_regression_metrics.html)
+Regression](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 <br/>
 
 [2. List of metrics for
-Classification](https://adriancorrendo.github.io/metrica/articles/available_classification_metrics.html)
+Classification](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 <br/>
 
 [3. A regression case (numerical
@@ -734,93 +734,5 @@ multinomial_case %>% AUC_roc(data = ., obs = labels, pred = predictions, tidy=TR
 
 ## 4. Import data from APSIM
 
-### 4.1. APSIM Classic (.out)
-
-``` r
-# Use import_apsim_out for APSIM Classic output
-soybean.out <- metrica::import_apsim_out(filepath = "tests/testthat/examples/soybean.out")
-
-head(soybean.out)
-#>   Date (dd/mm/yyyy) yield (kg/ha) biomass (kg/ha) grain_protein (%)
-#> 1        16/05/2001        1449.8          2915.9            37.115
-#> 2        10/05/2002        1092.5          2965.1            37.115
-#> 3        23/04/2003        1368.9          3529.6            37.115
-#> 4        26/04/2004        2121.6          4710.3            37.115
-#> 5        09/05/2005        1950.3          4303.9            37.115
-#> 6        20/04/2006        1670.6          3806.6            37.115
-#>   GrainN (g/m^2) lai (m^2/m^2) oilGrainN (g/m^2) grain_oil_conc (%)
-#> 1           0.00             0                 0                0.4
-#> 2           7.10             0                 0                0.4
-#> 3           8.90             0                 0                0.4
-#> 4          13.79             0                 0                0.4
-#> 5          12.68             0                 0                0.4
-#> 6          10.86             0                 0                0.4
-```
-
-### 4.1. APSIM NextGeneration (.db)
-
-``` r
-# Use import_apsim_db for APSIM NextGeneration output
-soybean.db <- metrica::import_apsim_db(filename = "soybean.example.db", folder = "tests/testthat/examples/")
-
-head(soybean.db)
-#>   CheckpointID SimulationID    Zone         Clock.Today Soybean.Phenology.Stage
-#> 1            1            1 paddock 2018-01-01 12:00:00                       1
-#> 2            1            1 paddock 2018-01-02 12:00:00                       1
-#> 3            1            1 paddock 2018-01-03 12:00:00                       1
-#> 4            1            1 paddock 2018-01-04 12:00:00                       1
-#> 5            1            1 paddock 2018-01-05 12:00:00                       1
-#> 6            1            1 paddock 2018-01-06 12:00:00                       1
-#>   Soybean.Phenology.CurrentStageName Soybean.AboveGround.Wt Yield
-#> 1                                                         0     0
-#> 2                                                         0     0
-#> 3                                                         0     0
-#> 4                                                         0     0
-#> 5                                                         0     0
-#> 6                                                         0     0
-#>   Soybean.Grain.Size Soybean.Grain.Number Soybean.Total.Wt Soybean.Leaf.FRGR
-#> 1                  0                    0                0                 0
-#> 2                  0                    0                0                 0
-#> 3                  0                    0                0                 0
-#> 4                  0                    0                0                 0
-#> 5                  0                    0                0                 0
-#> 6                  0                    0                0                 0
-#>   Soybean.Leaf.Fw Soybean.Leaf.Photosynthesis.FT Soybean.Leaf.Photosynthesis.FW
-#> 1               1                              0                              1
-#> 2               1                              0                              1
-#> 3               1                              0                              1
-#> 4               1                              0                              1
-#> 5               1                              0                              1
-#> 6               1                              0                              1
-#>   Soybean.WaterUptake(1) Soybean.WaterUptake(2) Soybean.WaterUptake(3)
-#> 1                     NA                     NA                     NA
-#> 2                     NA                     NA                     NA
-#> 3                     NA                     NA                     NA
-#> 4                     NA                     NA                     NA
-#> 5                     NA                     NA                     NA
-#> 6                     NA                     NA                     NA
-#>   Soybean.WaterUptake(4) Soybean.WaterUptake(5) Soybean.WaterUptake(6)
-#> 1                     NA                     NA                     NA
-#> 2                     NA                     NA                     NA
-#> 3                     NA                     NA                     NA
-#> 4                     NA                     NA                     NA
-#> 5                     NA                     NA                     NA
-#> 6                     NA                     NA                     NA
-#>   Soybean.WaterUptake(7) Soybean.WaterUptake(8) Soybean.WaterUptake(9)
-#> 1                     NA                     NA                     NA
-#> 2                     NA                     NA                     NA
-#> 3                     NA                     NA                     NA
-#> 4                     NA                     NA                     NA
-#> 5                     NA                     NA                     NA
-#> 6                     NA                     NA                     NA
-#>   Soybean.WaterUptake(10)       Date
-#> 1                      NA 2018-01-01
-#> 2                      NA 2018-01-02
-#> 3                      NA 2018-01-03
-#> 4                      NA 2018-01-04
-#> 5                      NA 2018-01-05
-#> 6                      NA 2018-01-06
-
-# If observed.data is already as a dataframe, the user may do the match using a simple code like this:
-# PO.dataframe <- simulated.data %>% left_join(., observed.data) *by = "col" arg. could be required*
-```
+Please, visit the
+[vignette](https://adriancorrendo.github.io/metrica/articles/apsim_open.html)

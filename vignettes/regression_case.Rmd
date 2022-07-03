@@ -152,16 +152,14 @@ metrics_summary(data = wheat,
 ```
 ## 5. Time series <br/>
 
-In some cases, we may count with time-series predictions (e.g. cumulative values from daily simulations). For example, let's say that we evaluate the production of drymass during the season. For this specific case, the Mean Absolute Scaled Error is a more solid metric compared to conventional RMSE or similar metrics.
+### 5.1. Example of timeseries prediction
+
+In some cases, we may count with time-series predictions (e.g. cumulative values from daily simulations). For example, let's say that we evaluate the production of drymass during the season. For this specific case, the Mean Absolute Scaled Error is a more solid metric compared to conventional RMSE or similar metrics. <br/>
+
+Let's suppose that we have predictions of wheat grain N over the years on the same location
+for a series of 20 years from 2001 to 2020. Thus, we may get a random sample from the whear data set and assume they represent the time series of interest. Therefore, we create a new `time` variable called `Year` that will serve to sort the observations.
 
 ```{r metrics time-series, fig.width=6, fig.height=5, dpi=120}
-
-# Let's suppose that we have predictions of wheat grain N over the years on the same location
-# for a series of 20 years from 2001 to 2020. 
-# Thus, we may get a random sample from the whear data set and assume they represent 
-# the time series of interest. Therefore, we create a new `time` variable called 
-# `Year` that will serve to sort the observations
-
 set.seed(165)
 
 wheat_time <- metrica::wheat %>% sample_n(., size = 20) %>% 
@@ -180,6 +178,16 @@ wheat_time %>% ggplot2::ggplot(aes(x = Year))+
   labs(x = "Year", y = "Wheat Grain N (g/m2)")+
   theme_bw()+
   theme(legend.position = "top")
+```
+
+### 5.2. Use MASE for timeseries <br/>
+
+In the case of timeseries analysis, the Mean Absolute Scaled Error (MASE, Hyndman & Koehler, 2006), 
+a scaled error metric, is preferable over other classic metrics such as the RMSE. With `metrica`,
+we can use the function MASE. Please, be aware that MASE requires the `obs` and `pred` data along with a third column corresponding to the temporal variable that sorts the data (use the `time` argument to specify it). The default method to scale the MASE is the `naive` forecast (random-walk), which 
+requires the user to define the size of the `naive_step`. Otherwise, an out-of-bag MAE can be specified with the `oob_mae` argument. <br/>
+
+```{r MASE}
 
 # MASE estimate, with naive approach (random-walk, i.e. using observation of t-1 as prediction)
 MASE(data = wheat_time, obs = obs, pred = pred, 
