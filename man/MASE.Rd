@@ -5,10 +5,10 @@
 \title{Mean Absolute Scaled Error (MASE)}
 \usage{
 MASE(
-  data,
+  data = NULL,
   obs,
   pred,
-  time,
+  time = NULL,
   naive_step = 1,
   oob_mae = NULL,
   tidy = FALSE,
@@ -22,8 +22,8 @@ MASE(
 
 \item{pred}{Vector with predicted values (numeric).}
 
-\item{time}{Alphanumeric vector containing the time variable to sort observations.
-Required for MASE estimation.}
+\item{time}{String with the "name" of the vector containing the time variable
+to sort observations. Required for MASE estimation.}
 
 \item{naive_step}{A positive number specifying how many observed values to recall
 back in time when computing the naive expectation. Default = 1}

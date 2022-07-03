@@ -24,12 +24,6 @@ import_apsim_db <- function(filename = "", folder = ".", value = "report", simpl
   
   if(filename == "") stop("need to specify file name")
   
-  file.names <- dir(path = folder, pattern=".db$", ignore.case=TRUE)
-  
-  if(length(file.names) == 0){
-    stop("There are no .db files in the specified directory to read.")
-  }
-  
   file.name.path <- file.path(folder, filename)
   
   con <- DBI::dbConnect(RSQLite::SQLite(), file.name.path)

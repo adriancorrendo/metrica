@@ -4,7 +4,7 @@
 \alias{AC}
 \title{Ji and Gallo's Agreement Coefficient (AC)}
 \usage{
-AC(data = NULL, obs, pred, na.rm = TRUE)
+AC(data = NULL, obs, pred, tidy = FALSE, na.rm = TRUE)
 }
 \arguments{
 \item{data}{(Optional) argument to call an existing data frame containing the data.}
@@ -12,6 +12,9 @@ AC(data = NULL, obs, pred, na.rm = TRUE)
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
+
+\item{tidy}{Logical operator (TRUE/FALSE) to decide the type of return. TRUE
+returns a data.frame, FALSE returns a list; Default : FALSE.}
 
 \item{na.rm}{Logic argument to remove rows with missing values
 (NA). Default is na.rm = TRUE.}

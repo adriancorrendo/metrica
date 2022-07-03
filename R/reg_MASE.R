@@ -5,8 +5,8 @@
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
-#' @param time Alphanumeric vector containing the time variable to sort observations.
-#' Required for MASE estimation.
+#' @param time String with the "name" of the vector containing the time variable
+#' to sort observations. Required for MASE estimation.
 #' @param naive_step A positive number specifying how many observed values to recall
 #' back in time when computing the naive expectation. Default = 1 
 #' @param oob_mae A numeric value indicating the out-of-bag (out-of-sample) MAE.
@@ -59,10 +59,10 @@
 #' MASE(data = time_data, obs = observed, pred = predicted, time = time)
 #' }
 #' @rdname MASE
-#' @importFrom rlang enquo
+#' @importFrom rlang enquo eval_tidy quo
 #' @importFrom dplyr %>% arrange mutate 
 #' @export 
-MASE <- function(data, obs, pred, time, 
+MASE <- function(data = NULL, obs, pred, time = NULL, 
                  naive_step = 1, oob_mae = NULL, tidy = FALSE, na.rm = TRUE) {
   
   if (is.null(data)) {
@@ -72,8 +72,10 @@ MASE <- function(data, obs, pred, time,
   
   observ <- rlang::enquo(obs)
   
-  data_arranged <- data %>% mutate(obs = !!observ) %>% dplyr::arrange(time) 
+  data_arranged <- data %>% mutate(obs = !!observ) %>% dplyr::arrange(time)   
   
+  #data_arranged <- data[with(data, order(time)), ]
+ 
   n <- nrow(data_arranged)
   # 
   # First and last observations to compute error

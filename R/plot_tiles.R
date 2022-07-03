@@ -54,7 +54,7 @@ tiles_plot <- function(data=NULL,
   
   # STOP. Specify metrics_list
   if (print_metrics == TRUE & is.null(metrics_list)) {
-  stop("Please, specify the 'metrics_list' arg. For example, metrics_list = c('R2','RMSE','NSE'). 
+  warning("Please, specify the 'metrics_list' arg. For example, metrics_list = c('R2','RMSE','NSE'). 
        Choose wisely, not more than 6 recommended to maintain an appropriate visualization") }
   
   # Get SMA slope and intercepts for printing

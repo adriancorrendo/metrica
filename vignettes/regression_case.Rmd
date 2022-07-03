@@ -16,7 +16,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-## 1 Introduction  
+## 1. Introduction  
+<img src="../man/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;"> <br/>
 The *`metrica`* package was developed to visualize and compute the level of agreement between observed ground-truth values and model-derived (e.g., mechanistic or empirical) predictions. 
 
 This package is intended to fit into the following workflow:  
@@ -29,7 +30,7 @@ This package is intended to fit into the following workflow:
 
 This vignette introduces the functionality of the *`metrica`* package applied to observed and model-predicted values of wheat grain nitrogen (N) content (in grams of N $m^{-2}$).  
 
-## 2 Wheat grain N content  
+## 2. Wheat grain N content  
 Let's begin by loading the packages needed.  
 ```{r libraries, message=F, warning=F}
 library(ggplot2)
@@ -51,7 +52,7 @@ This data set contains two columns:
 - **pred**: model-predicted wheat grain N content, in g N $m^{-2}$,  
 - **obs**: ground-truth observed wheat grain N content, in g N $m^{-2}$  
 
-## 3 Visual assessment of agreement  
+## 3. Visual assessment of agreement  
 ### 3.1 Scatterplot of pred vs. obs  
 The simplest way to visually assess agreement between observed and predicted values is with a scatterplot.  
 
@@ -65,14 +66,14 @@ The function requires specifying at least:
 
 Besides a scatterplot, this function also adds to the plot the **1:1 line** (solid line) and the **linear regression line** (dashed line).  
 
-```{r scatter_plot PO}
+```{r scatter_plot PO, fig.width=6, fig.height=5, dpi=120}
 scatter_plot(data = wheat, 
              obs = obs, 
              pred = pred)
 ```
 
 The default behavior of `scatter_plot()` places the `obs` column on the x axis and the `pred` column on the y axis (`orientation = "PO"`). This can be inverted by changing the argument `orientation` to "OP":    
-```{r scatter_plot OP}
+```{r scatter_plot OP, fig.width=6, fig.height=5, dpi=120}
 scatter_plot(data = wheat, 
              obs = obs, 
              pred = pred,
@@ -81,7 +82,7 @@ scatter_plot(data = wheat,
 
 
 The output of the `scatter_plot()` function is a `ggplot2` object that can be further customized:  
-```{r scatter_plot custom}
+```{r scatter_plot custom, fig.width=6, fig.height=5, dpi=120}
 scatter_plot(data = wheat, 
              obs = obs, 
              pred = pred,
@@ -94,13 +95,13 @@ scatter_plot(data = wheat,
 ## 3.2 Bland-Altman plot  
 The Bland-Altman plot is another way of visually assessing observed vs. predicted agreement. It plots the difference between observed and predicted values on the y axis, and the observed values on the x axis:  
 
-```{r bland-altman}
+```{r bland-altman, fig.width=6, fig.height=5, dpi=120}
 bland_altman_plot(data = wheat,
                   obs = obs, 
                   pred = pred)
 ```
 
-## 4 Numerical assessment of agreement  
+## 4. Numerical assessment of agreement  
 The *metrica* package contains functions for **41 metrics** to assess agreement between observed and predicted values for continuous data (i.e., regression error).  
 
 A list with all the the metrics including their name, definition, details, formula, and function name, please check [here].  
@@ -149,19 +150,25 @@ metrics_summary(data = wheat,
                 metrics_list = my.metrics) 
 
 ```
+## 5. Time series <br/>
 
-In some cases, we may count with time-series predictions. For example, let's say that we evaluate the production of drymass during the season. For this specific case, the Mean Absolute Scaled Error is a more solid metric compared to conventional RMSE or similar metrics.
+In some cases, we may count with time-series predictions (e.g. cumulative values from daily simulations). For example, let's say that we evaluate the production of drymass during the season. For this specific case, the Mean Absolute Scaled Error is a more solid metric compared to conventional RMSE or similar metrics.
 
-```{r metrics time-series}
+```{r metrics time-series, fig.width=6, fig.height=5, dpi=120}
 
-# Let's suppose that predictions of drymass on the chickpea dataset were made during the cropping season
-# So in this case, we may create a new variable called time that will serve to sort the observations
-chickpea_time <- metrica::chickpea %>% dplyr::arrange(pred) %>% 
-  mutate(time = seq(1,39, by =1)) %>% 
-  mutate(obs = pred *1.1 + rnorm(n=39, mean = 0, sd = 60))
+# Let's suppose that we have predictions of wheat grain N over the years on the same location
+# for a series of 20 years from 2001 to 2020. 
+# Thus, we may get a random sample from the whear data set and assume they represent 
+# the time series of interest. Therefore, we create a new `time` variable called 
+# `Year` that will serve to sort the observations
+
+set.seed(165)
+
+wheat_time <- metrica::wheat %>% sample_n(., size = 20) %>% 
+  mutate(Year = seq(2001,2020, by =1)) 
 
 # Plot
-chickpea_time %>% ggplot2::ggplot(aes(x = time))+
+wheat_time %>% ggplot2::ggplot(aes(x = Year))+
   geom_point(aes(y = pred, fill = "Predicted", shape = "Predicted"))+
   geom_point(aes(y = obs, fill = "Observed", shape = "Observed"))+
   geom_line(aes(y = pred, col = "Predicted", linetype = "Predicted"), size = .75)+
@@ -170,29 +177,29 @@ chickpea_time %>% ggplot2::ggplot(aes(x = time))+
   scale_shape_manual(name = "", values = c(21,24))+
   scale_color_manual(name = "", values = c("dark red","steelblue"))+
   scale_linetype_manual(name = "", values = c(1,2))+
-  labs(x = "Days after planting", y = "Chickpea Drymass (kg/ha)")+
+  labs(x = "Year", y = "Wheat Grain N (g/m2)")+
   theme_bw()+
   theme(legend.position = "top")
 
 # MASE estimate, with naive approach (random-walk, i.e. using observation of t-1 as prediction)
-metrica::MASE(data = chickpea_time, obs = obs, pred = pred, 
-              naive_step = 1, tidy = FALSE, time = time)
+MASE(data = wheat_time, obs = obs, pred = pred, 
+              naive_step = 1, tidy = FALSE, time = "Year")
 
 # MASE estimate, with mae coming from an independent training set.
-metrica::MASE(data = chickpea_time, obs = obs, pred = pred, 
-              naive_step = 1, tidy = FALSE, time = time, oob_mae = 120)
+MASE(data = wheat_time, obs = obs, pred = pred, 
+              naive_step = 1, tidy = FALSE, time = "Year", oob_mae = 50)
 
 
 ```
 
 
 
-## 5 Visual and numerical assessment combined  
+## 6. Visual and numerical assessment combined  
 The user can also create a scatter plot that includes not only the **predicted** vs. **observed** points, **1:1 line**, and **regression line**, but also **selected metrics and their values** plus the **SMA regression equation**.  
 
 This is accomplished with the function `scatter_plot()`:  
 
-```{r scatter_plot}
+```{r scatter_plot, fig.width=6, fig.height=5, dpi=120}
 scatter_plot(data = wheat,
              obs = obs, 
              pred = pred)
@@ -201,7 +208,7 @@ scatter_plot(data = wheat,
 
 To print the metrics on the `scatter_plot()`, just use print.metrics. Warning: do not forget to specify your 'metrics.list':  
 
-```{r scatter_plot print_metrics}
+```{r scatter_plot print_metrics, fig.width=6, fig.height=5, dpi=120}
 
 my.metrica.plot <- scatter_plot(data = wheat,
                                 obs = obs, 
@@ -213,7 +220,7 @@ my.metrica.plot
 ```
 Also, as a ggplot element, outputs are flexible of further edition:  
 
-```{r scatter_plot.edit }
+```{r scatter_plot.edit, fig.width=6, fig.height=5, dpi=120}
 
 my.metrica.plot +
   # Modify labels
@@ -229,13 +236,14 @@ my.metrica.plot +
 ```
 
 
-## 6 Exporting  
+## 7. Exporting  
 To export the metrics summary table, the user can simply write it to file with the function `write.csv()`:  
 
 ```{r export metrics_summary, eval=F }
 metrics_summary(data = wheat,
-   obs = obs, 
-   pred = pred) %>%
+                obs = obs, 
+                pred = pred,
+                type = "regression") %>%
   write.csv("metrics_summary.csv")
 
 ```

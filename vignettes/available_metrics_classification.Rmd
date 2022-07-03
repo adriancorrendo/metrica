@@ -1,0 +1,147 @@
+---
+title: "Classification performance metrics and indices"
+author: "Adrian Correndo & Luciana Nieto"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Classification metrics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Description <br/>
+
+The **metrica** package compiles +80 functions to assess regression (continuous) 
+and classification (categorical) prediction performance from multiple perspectives. <br/> 
+
+For classification (binomial and multinomial) tasks, it includes a function to 
+visualize the confusion matrix using ggplot2, and 27 functions of prediction 
+scores including: accuracy, error rate, precision, recall, specificity, 
+balanced accuracy, F-score, adjusted F-score, G-mean, Bookmaker Informedness 
+(Youden's J-index), Markedness (deltaP), Matthews Correlation Coefficient, 
+khat or Cohen's Kappa, negative predictive value, positive and negative 
+likelihood ratios, diagnostic odds ratio, prevalence, critical success index, 
+false positive rate, false negative rate, false detection rate, false omission 
+rate, and area under the ROC curve. <br/>
+
+For supervised modelling, always keep in mind the concept of "cross-validation" 
+since predicted values should ideally come from out-of-bag samples (unseen by 
+training sets) to avoid overestimation of the prediction performance. <br/>
+
+## Using the functions <br/>
+
+There are two basic arguments common to all `metrica` functions: 
+(i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and 
+(ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled,  estimate) values. <br/>
+
+Optional arguments include `data` that allows to call an existing data frame 
+containing both observed and predicted vectors, and `tidy`, which controls the 
+type of output as a list (tidy = FALSE) or as a data.frame (tidy = TRUE). <br/>
+
+For binary classification (two classes), functions also require to check the 
+`pos_level` arg., which indicates the alphanumeric order of the "positive level".
+Normally, the most common binary denominations are c(0,1), c("Negative", "Positive"), 
+c("FALSE", "TRUE"), so the default pos_level = 2 (1, "Positive", "TRUE"). However, 
+other cases are also possible, such as c("Crop", "NoCrop") for which the user
+needs to specify pos_level = 1. <br/>
+
+For multiclass classification tasks, some functions present the `atom` arg. (logical
+TRUE / FALSE), which controls the output to be an overall average estimate across
+all classes, or a class-wise estimate. For example, user might be interested in 
+obtaining estimates of precision and recall for each possible class of the prediction. <br/>
+
+## List of classification metrics* (categorical variables) <br/>
+_Note: All classification functions automatically recognize the number of classes and adjust estimations for binary or multiclass cases. However, for binary classification tasks, the user would need to check the alphanumeric order of the level considered as positive. By default "pos_level = 2" based on the most common denominations being c(0,1), c("Negative","Positive"), c("TRUE", "FALSE")._ <br/>
+
+| # | Metric | Definition | Details | Formula |
+| :-| :----- | :--------- | :------ | :------ |
+|1| `accuracy` | Accuracy | It is the most commonly used metric to evaluate classification quality. It represents the number of corrected classified cases with respect to all cases. However, be aware that this metric does not cover all aspects about classification quality. When classes are uneven in number, it may not be a reliable metric. | $accuracy = \frac{TP+TN}{TP+FP+TN+FN}$|
+|2| `error_rate` | Error Rate | It represents the complement of accuracy. It could vary between 0 and 1. Being 0 the best and 1 the worst | $error~rate = \frac{FP+FN}{TP+FP+TN+FN}$|
+|3| `precision` | Precision | Also known as positive predictive value (PPV), it represents the proportion of well classified cases with respect to the total of cases predicted with a given class (multinomial) or the true class (binomial)  | $precision = \frac{TP}{TP + FP}$|
+|4| `recall` | Recall | Also known as sensitivity, hit rate, or true positive rate (TPR) for binary cases. It represents the proportion of well predicted cases with respect to the total number of observed cases for a given class (multinomial) or the positive class (binomial) | $recall = \frac{TP}{P} = 1 - FNR$| 
+|5| `specificity` | Specificity | Also known as selectivity or true negative rate (TNR). It represents the proportion of well classified negative values with respect to the total number of actual negatives  | $specificity = \frac{TN}{N} = 1 - FPR$|
+|6| `balacc` | Balanced Accuracy | This metric is especially useful when the number of observations across classes is imbalanced | $b.accuracy = \frac{recall + specificity}{2}$|
+|7| `fscore` | F-score | F1-score, F-measure | $fscore = \frac{(1 + B ^ 2) * precision * recall}{(B ^ 2 * precision) + recall)}$|
+|8| `agf` | Adjusted F-score | The agf adjusts the fscore for datasets with imbalanced classes | $agf = \sqrt{F_2 * invF_{0.5}}$, where $F_2 = 5 * \frac{recall~*~precision}{(4*recall)~+~precision}$, and $invF_{0.5} = (\frac{5}{4}) * \frac{recall~*~precision}{(0.5^2 ~*~ recall)~+~precision}$|
+|9| `gmean` | G-mean | The Geometric Mean (gmean) is a measure that considers a balance between the performance of both majority and minority classes. The higher the value the lower the risk of over-fitting of negative and under-fitting of positive classes | $gmean = \sqrt{recall~*~specificity}$|
+|10| `khat` | K-hat or Cohen's Kappa Coefficient | The khat is considered a more robust metric than the classic `accuracy`. It normalizes the accuracy by the possibility of agreement by chance. It is positively bounded to 1, but it is not negatively bounded. The closer to 1, the better the classification quality | $khat = \frac{2 * (TP * TN - FN * FP)}{(TP+FP) * (FP+TN) + (TP+FN) * (FN + TN)}$|
+|11| `mcc` | Matthews Correlation Coefficient | Also known as phi-coefficient. It is particularly useful when the number of observations belonging to each class is uneven. It varies between 0-1, being 0 the worst and 1 the best. Currently, the mcc estimation is only available for binary cases (two classes) | $mcc = \frac{TP * TN - FP * FN}{\sqrt{(TP+FP) * (TP+FN) * (TN+FP) * (TN+FN)}}$|
+|12| `fmi` | Fowlkes-Mallows Index | The fmi is a metric that measures the similarity between two clusters (predicted and observed). It is equivalent to the square root of the product between precision (PPV) and recall (TPR). It varies between 0-1, being 0 the worst and 1 the best.  | $fmi = \sqrt{precision * recall} = \sqrt{PPV * TPR}$ |
+|13| `bmi`| Informedness | Also known as the Bookmaker Informedness, or as the Youden's J-index. It is a suitable metric when the number of cases for each class is uneven. It varies between| $bmi = recall + specificity -1 = TPR + TNR - 1 = \frac{FP+FN}{TP+FP+TN+FN}$|
+|14| `posLr` | Positive Likelihood Ratio | The posLr, also known as LR(+) represents the odds of obtaining a positive prediction for actual positives. | $posLr = \frac{recall}{1+specificity} = \frac{TPR}{FPR}$|
+|15| `negLr` | Negative Likelihood Ratio | The negLr, also known as LR(-) indicates the odds of obtaining a negative prediction for actual positives (or non-negatives in multiclass) relative to the probability of actual negatives of obtaining a negative prediction | $negLr = \frac{1-recall}{specificity} = \frac{FNR}{TNR}$|
+|16| `dor` | Diagnostic Odds Ratio | The dor is a metric summarizing the effectiveness of classification. It represents the odds of a positive case obtaining a positive prediction result with respect to the odds of actual negatives obtaining a positive result| $dor = \frac{posLr}{negLr}$|
+|17| `npv` | Negative predictive Value | It represents the complement of accuracy. It could vary between 0 and 1. Being 0 the best and 1 the worst | $npv = \frac{TP}{PP} = \frac{TP}{TP + FP}$|
+|18| `FPR` | False Positive Rate | It represents the complement of `specificity`. It could vary between 0 and 1. The lower the better. | $FPR = 1 - specificity = 1 - TNR = \frac{FP}{N}$|
+|19| `FNR` | False Negative Rate | It represents the complement of `recall`. It could vary between 0 and 1. The lower the better. | $FNR = 1 - recall = 1 - TPR = \frac{FN}{P}$|
+|20| `FDR` | False Detection Rate | It represents the complement of `precision` (or positive predictive value -`PPV`-). It could vary between 0 and 1, being 0 the best and 1 the worst | $FDR = 1 - precision = \frac{FP}{PP} = \frac{FP}{TP + FP}$|
+|21| `FOR` | False Omission Rate | It represents the complement of the `npv`. It could vary between 0 and 1, being 0 the best and 1 the worst | $FOR = 1 - npv = \frac{FN}{PN} = \frac{FN}{TN + FN}$|
+|22| `preval` | Error Rate | It represents the complement of accuracy. It could vary between 0 and 1. Being 0 the best and 1 the worst | $error~rate = \frac{FP+FN}{TP+FP+TN+FN}$|
+|23| `preval_t` | Error Rate | It represents the complement of accuracy. It could vary between 0 and 1. Being 0 the best and 1 the worst | $error~rate = \frac{FP+FN}{TP+FP+TN+FN}$|
+|24| `csi` | Critical Success Index | The `csi` is also known as the threat score (TS). It could vary between 0 and 1, being 0 the worst and 1 the best | $csi = \frac{TP}{TP+FP+TN}$|
+|25| `deltap` | Markedness or deltap | The `deltap` is a metric that quantifies the probability that a condition is marked by the predictor with respect to a random chance | $deltap = precision+npv-1 = PPV + NPV -1$|
+|26| `AUC_roc` | Area Under the Curve | The `AUC_roc` estimates the area under the receiving operator characteristic curve following the trapezoid approach. It bounded between 0 and 1. The closet to 1 the better. AUC_roc = 0.5 means the models predictions are the same than a random classifier. | $AUC_{roc} = precision+npv-1 = PPV + NPV -1$|
+|<img width=10/>| <img width=30/> | <img width=40/> | <img width=300/> | <img width=80/> |
+
+<br/>
+
+## References: <br/>
+
+01. Ting K.M. (2017). Confusion Matrix. _In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining. Springer, Boston, MA._ \doi{10.1007/978-1-4899-7687-1_50}
+
+02. (2017) Accuracy. _In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining_
+_. Springer, Boston, MA._ \doi{10.1007/978-1-4899-7687-1_3}
+
+03. García, V., Mollineda, R.A., Sánchez, J.S. (2009). Index of Balanced Accuracy: A Performance Measure for Skewed Class Distributions. _In: Araujo, H., Mendonça, A.M., Pinho, A.J., Torres, M.I. (eds) Pattern Recognition and Image Analysis. IbPRIA 2009. Lecture Notes in Computer Science, vol 5524. Springer-Verlag Berlin Heidelberg._ \doi{10.1007/978-3-642-02172-5_57}
+
+04. Ting K.M. (2017). Precision and Recall. _In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining. Springer, Boston, MA._ \doi{10.1007/978-1-4899-7687-1_659}
+
+05. (2017) Sensitivity. _In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining. Springer, Boston, MA._ \doi{10.1007/978-1-4899-7687-1_751}
+
+06. Ting K.M. (2017). Sensitivity and Specificity. _In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining. Springer, Boston, MA._ \doi{10.1007/978-0-387-30164-8_752}
+
+07. Trevethan, R. (2017). Sensitivity, Specificity, and Predictive Values: Foundations, Pliabilities, and Pitfalls in Research and Practice. _Front. Public Health 5:307_ \doi{10.3389/fpubh.2017.00307}
+
+09. Goutte, C., Gaussier, E. (2005). A Probabilistic Interpretation of Precision, Recall and F-Score, with Implication for Evaluation. _In: D.E. Losada and J.M. Fernandez-Luna (Eds.): ECIR 2005. Advances in Information Retrieval LNCS 3408, pp. 345–359, 2. Springer-Verlag Berlin Heidelberg._ \doi{10.1007/978-3-540-31865-1_25}
+
+10. Maratea, A., Petrosino, A., Manzo, M. (2014). Adjusted-F measure and kernel scaling for imbalanced data learning. _Inf. Sci. 257: 331-341._ \doi{10.1016/j.ins.2013.04.016}
+
+11. De Diego, I.M., Redondo, A.R., Fernández, R.R., Navarro, J., Moguerza, J.M. (2022). General Performance Score for classification problems. _Appl. Intell. (2022)._ \doi{10.1007/s10489-021-03041-7}
+
+12. Fowlkes, Edward B; Mallows, Colin L (1983). A method for comparing two hierarchical clusterings. _Journal of the American Statistical Association. 78 (383): 553–569._ \doi{10.1080/01621459.1983.10478008}
+
+13. Chicco, D., Jurman, G. (2020). The advantages of the Matthews correlation coefficient (MCC) over F1 score and 
+accuracy in binary classification evaluation. _BMC Genomics 21, 6 (2020)._ \doi{10.1186/s12864-019-6413-7}
+
+14. Youden, W.J. (1950). Index for rating diagnostic tests. _Cancer 3: 32-35._ \doi{10.1002/1097-0142(1950)3:1<32::AID-CNCR2820030106>3.0.CO;2-3}
+
+15. Powers, D.M.W. (2011). Evaluation: From Precision, Recall and F-Measure to ROC, Informedness, Markedness & Correlation. _Journal of Machine Learning Technologies 2(1): 37–63._ \doi{10.48550/arXiv.2010.16061}
+
+16. Chicco, D., Tötsch, N., Jurman, G. (2021). The Matthews correlation coefficient (MCC) is more reliable than balanced accuracy, bookmaker informedness, and markedness in two-class confusion matrix evaluation. _BioData Min 14(1): 13._ \doi{10.1186/s13040-021-00244-z}
+
+17. GlasaJeroen, A.S., Lijmer, G., Prins, M.H., Bonsel, G.J., Bossuyta, P.M.M. (2009). The diagnostic odds ratio: a single indicator of test performance. _Journal of Clinical Epidemiology 56(11): 1129-1135._ \doi{10.1016/S0895-4356(03)00177-X}
+
+18. Wang H., Zheng H. (2013). Negative Predictive Value. _In: Dubitzky W., Wolkenhauer O., Cho KH., Yokota H. (eds) Encyclopedia of Systems Biology. Springer, New York, NY._ \doi{10.1007/978-1-4419-9863-7_234}
+
+19. Freeman, E.A., Moisen, G.G. (2008). A comparison of the performance of threshold criteria for binary classification in terms of predicted prevalence and kappa. _Ecol. Modell. 217(1-2): 45-58._ \doi{10.1016/j.ecolmodel.2008.05.015}
+ 
+20. Balayla, J. (2020). Prevalence threshold (φe) and the geometry of screening curves. _Plos one, 15(10):e0240215._ \doi{10.1371/journal.pone.0240215}
+
+21. Schaefer, J.T. (1990). The critical success index as an indicator of warning skill. Weather and Forecasting 5(4): 570-575. \doi{10.1175/1520-0434(1990)005<0570:TCSIAA>2.0.CO;2}
+
+22. Hanley, J.A., McNeil, J.A. (2017). The meaning and use of the area under a receiver operating characteristic (ROC) curve. _Radiology 143(1): 29-36_ \doi{10.1148/radiology.143.1.7063747}
+
+23. Hand, D.J., Till, R.J. (2001). A simple generalisation of the area under the ROC curve for multiple class
+classification problems. _Machine Learning 45: 171-186_ \doi{10.1023/A:1010920819831}  
+
+24. Mandrekar, J.N. (2010). Receiver operating characteristic curve in diagnostic test assessment. _J. Thoracic Oncology 5(9): 1315-1316_ \doi{10.1097/JTO.0b013e3181ec173d} 
+
+
+

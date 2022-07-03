@@ -84,3 +84,35 @@
 #' }
 #' @source \url{https://github.com/adriancorrendo/metrica}
 "sorghum"
+
+#' Binary Land Cover Data 
+#'
+#' @description This example dataset was obtained in 2022 over a small region in Kansas,
+#' using visual interpretation.
+#' The predicted values were the result of a Random Forest classification, 
+#' with a 70/30 % split. 
+#' Values equal to 1 are associated to vegetation, and values equal to 0 are other type of land cover. 
+#
+#' @format This data frame has 284 rows and the following 2 columns:
+#' \describe{
+#'   \item{predicted}{predicted values}
+#'   \item{actual}{observed values}
+#' }
+#' @source \url{https://github.com/adriancorrendo/metrica}
+"land_cover"
+
+#' Multi Class Phenology 
+#'
+#' @description This example data set includes maize phenology classes collected in Kansas during the 2018 growing season.
+#' The predicted values were obtained using a Random Forest classifier with a 70/30 split. 
+#' The dataset includes 16 phenology stages from VT to R6.
+#' For more information please visit
+#' \doi{https://doi.org/10.3390/rs14030469}. 
+#' 
+#' @format This data frame has 103 rows and the following 2 columns:
+#' \describe{
+#'   \item{predicted}{predicted values}
+#'   \item{actual}{observed values}
+#' }
+#' @source \url{https://github.com/adriancorrendo/metrica}
+"maize_phenology"

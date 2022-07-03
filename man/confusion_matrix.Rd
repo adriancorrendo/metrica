@@ -11,6 +11,9 @@ confusion_matrix(
   plot = FALSE,
   unit = "count",
   colors = c(low = NULL, high = NULL),
+  print_metrics = FALSE,
+  metrics_list = c("accuracy", "precision", "recall"),
+  position_metrics = "top",
   na.rm = TRUE
 )
 }
@@ -26,6 +29,15 @@ confusion_matrix(
 \item{unit}{String (text) indicating the type of unit ("count" or "proportion") to show in the confusion matrix, Default: 'count'}
 
 \item{colors}{Vector or list with two colors indicating how to paint the gradient between "low" and "high", Default: c(low = NULL, high = NULL) uses the standard blue gradient of ggplot2.}
+
+\item{print_metrics}{boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.}
+
+\item{metrics_list}{vector or list of selected metrics to print on the plot.
+Default: c("accuracy", "precision", "recall").}
+
+\item{position_metrics}{string specifying the position to print the performance
+\code{metrics_list}. Options are "top" (as a subtitle) or "bottom" (as a caption).
+Default: "bottom".}
 
 \item{na.rm}{Logic argument to remove rows with missing values
 (NA). Default is na.rm = TRUE.}

@@ -23,39 +23,46 @@ status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metric
 
 ## Introduction <br/>
 
-`metrica` is a compilation of more than 80 functions designed to
+<img src="man/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;">
+<br/> `metrica` is a compilation of more than 80 functions designed to
 quantitatively and visually evaluate the prediction performance of
 regression (continuous variables) and classification (categorical
-variables) point-forecast models (e.g. APSIM, DSSAT, DNDC, Machine
-Learning). `metrica` offers a toolbox with a wide spectrum of goodness
-of fit, error metrics, indices, and coefficients accounting for
+variables) point-forecast models (e.g. APSIM, DSSAT, DNDC, Supervised
+Machine Learning). `metrica` offers a toolbox with a wide spectrum of
+goodness of fit, error metrics, indices, and coefficients accounting for
 different aspects of the agreement between predicted and observed
 values, plus some basic visualization functions to assess models
 performance (e.g. confusion matrix, scatter with regression line;
 Bland-Altman plot) provided in customizable format (ggplot).
 
-Always keep in mind the concept of “cross-validation” since predicted
-values should come from out-of-bag samples (unseen by training set) to
-avoid overestimation of the prediction performance. <br/>
-
-<img src="man/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;">
-<br/>
+For supervised models, always keep in mind the concept of
+“cross-validation” since predicted values should ideally come from
+out-of-bag samples (unseen by training sets) to avoid overestimation of
+the prediction performance. <br/>
 
 Check the Documentation at <https://adriancorrendo.github.io/metrica/>
 <br/>
 
 **Vignettes** <br/>
 
-[1. Complete list of
-metrics](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+[1. List of metrics for
+Regression](https://adriancorrendo.github.io/metrica/articles/available_regression_metrics.html)
 <br/>
 
-[2. A regression
-case](https://adriancorrendo.github.io/metrica/articles/regression_case.html)
+[2. List of metrics for
+Classification](https://adriancorrendo.github.io/metrica/articles/available_classification_metrics.html)
 <br/>
 
-[3. A classification
-case](https://adriancorrendo.github.io/metrica/articles/classification_case.html)
+[3. A regression case (numerical
+variables)](https://adriancorrendo.github.io/metrica/articles/regression_case.html)
+<br/>
+
+[4. A classification case (categorical
+variables)](https://adriancorrendo.github.io/metrica/articles/classification_case.html)
+<br/>
+
+[5. Import APSIM
+files](https://adriancorrendo.github.io/metrica/articles/apsim_open.html)
 <br/>
 
 ## Functions <br/>
@@ -90,7 +97,7 @@ model (“regression” or “classification”). <br/>
 For more details visit the vignettes
 <https://adriancorrendo.github.io/metrica/>.
 
-## Core function arguments <br/>
+## Using the functions <br/>
 
 There are two basic arguments common to all `metrica` functions: (i)
 `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and
@@ -161,7 +168,6 @@ library(metrica)
 library(dplyr)
 library(purrr)
 library(tidyr)
-#library(ggpmisc)
 ```
 
 This is a basic example which shows you the core regression and
@@ -321,15 +327,16 @@ metrics.sum.wide <- metrics.sum %>%
                       values_from = "Score")
 
 metrics.sum.wide
-#> # A tibble: 1 × 43
+#> # A tibble: 1 × 45
 #>      B0    B1     r    R2    Xa   CCC   MAE  RMAE  MAPE SMAPE   RAE   RSE   MBE
 #>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1  1.13 0.929 0.672 0.451 0.996 0.669  3.06 0.163  16.8  16.8 0.764 0.616 0.207
-#> # … with 30 more variables: PBE <dbl>, PAB <dbl>, PPB <dbl>, MSE <dbl>,
+#> # … with 32 more variables: PBE <dbl>, PAB <dbl>, PPB <dbl>, MSE <dbl>,
 #> #   RMSE <dbl>, RRMSE <dbl>, RSR <dbl>, iqRMSE <dbl>, MLA <dbl>, MLP <dbl>,
-#> #   SB <dbl>, SDSD <dbl>, LCS <dbl>, PLA <dbl>, PLP <dbl>, Ue <dbl>, Uc <dbl>,
-#> #   Ub <dbl>, NSE <dbl>, E1 <dbl>, Erel <dbl>, KGE <dbl>, d <dbl>, d1 <dbl>,
-#> #   d1r <dbl>, RAC <dbl>, AC <dbl>, lambda <dbl>, dcorr <dbl>, MIC <dbl>
+#> #   RMLA <dbl>, RMLP <dbl>, SB <dbl>, SDSD <dbl>, LCS <dbl>, PLA <dbl>,
+#> #   PLP <dbl>, Ue <dbl>, Uc <dbl>, Ub <dbl>, NSE <dbl>, E1 <dbl>, Erel <dbl>,
+#> #   KGE <dbl>, d <dbl>, d1 <dbl>, d1r <dbl>, RAC <dbl>, AC <dbl>, lambda <dbl>,
+#> #   dcorr <dbl>, MIC <dbl>
 ```
 
 ### 3.1.3. Run multiple datasets at once
@@ -365,10 +372,10 @@ head(multiple.sum)
 #> # A tibble: 4 × 3
 #>   id       data               performance  
 #>   <chr>    <list>             <list>       
-#> 1 wheat    <tibble [137 × 2]> <df [43 × 2]>
-#> 2 barley   <tibble [69 × 2]>  <df [43 × 2]>
-#> 3 sorghum  <tibble [36 × 2]>  <df [43 × 2]>
-#> 4 chickpea <tibble [39 × 2]>  <df [43 × 2]>
+#> 1 wheat    <tibble [137 × 2]> <df [45 × 2]>
+#> 2 barley   <tibble [69 × 2]>  <df [45 × 2]>
+#> 3 sorghum  <tibble [36 × 2]>  <df [45 × 2]>
+#> 4 chickpea <tibble [39 × 2]>  <df [45 × 2]>
 ```
 
 ### 3.1.3.2. Non-nested data <br/>
@@ -448,7 +455,7 @@ binomial_case %>% confusion_matrix(obs = labels, pred = predictions,
 # b. Plot
 binomial_case %>% confusion_matrix(obs = labels, pred = predictions, 
                                             plot = TRUE, colors = c(low="#f9dbbd" , high="#735d78"), 
-                                            unit = "count")
+                                            unit = "count", print_metrics = TRUE)
 ```
 
 <img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
@@ -471,7 +478,7 @@ multinomial_case %>% confusion_matrix(obs = labels,
 multinomial_case %>% confusion_matrix(obs = labels, 
                                       pred = predictions, 
                                       plot = TRUE, colors = c(low="#d3dbbd" , high="#885f78"), 
-                                      unit = "count")
+                                      unit = "count", print_metrics = TRUE)
 ```
 
 <img src="man/figures/README-unnamed-chunk-15-1.png" width="100%" />
@@ -560,19 +567,19 @@ binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, ty
 
 # Multinomial
 multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
-#> Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions):
+#> Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, :
 #> For multiclass cases, the fscore should be estimated at a class level. Please,
 #> consider using `atom = TRUE`
-#> Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions): For
-#> multiclass cases, the agf should be estimated at a class level. Please, consider
-#> using `atom = TRUE`
-#> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The
-#> Fowlkes-Mallows Index is not available for multiclass cases. The result has been
-#> recorded as NaN.
-#> Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions): For
+#> Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions, pos_level
+#> = pos_level): For multiclass cases, the agf should be estimated at a class
+#> level. Please, consider using `atom = TRUE`
+#> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions, pos_level
+#> = pos_level): The Fowlkes-Mallows Index is not available for multiclass cases.
+#> The result has been recorded as NaN.
+#> Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions, : For
 #> multiclass cases, prevalence should be estimated at a class level. A NaN has
 #> been recorded as the result. Please, use `atom = TRUE`
-#> Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions): For multiclass cases, prevalence threshold should be estimated at a class level. 
+#> Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions, : For multiclass cases, prevalence threshold should be estimated at a class level. 
 #>       A NaN has been recorded as the result. Please, use `atom = TRUE`.
 #>         Metric       Score
 #> 1     accuracy  0.32000000
@@ -616,19 +623,19 @@ binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, ty
 # Multiclass
 multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification",
                                   metrics_list = selected_class_metrics)
-#> Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions):
+#> Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, :
 #> For multiclass cases, the fscore should be estimated at a class level. Please,
 #> consider using `atom = TRUE`
-#> Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions): For
-#> multiclass cases, the agf should be estimated at a class level. Please, consider
-#> using `atom = TRUE`
-#> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The
-#> Fowlkes-Mallows Index is not available for multiclass cases. The result has been
-#> recorded as NaN.
-#> Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions): For
+#> Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions, pos_level
+#> = pos_level): For multiclass cases, the agf should be estimated at a class
+#> level. Please, consider using `atom = TRUE`
+#> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions, pos_level
+#> = pos_level): The Fowlkes-Mallows Index is not available for multiclass cases.
+#> The result has been recorded as NaN.
+#> Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions, : For
 #> multiclass cases, prevalence should be estimated at a class level. A NaN has
 #> been recorded as the result. Please, use `atom = TRUE`
-#> Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions): For multiclass cases, prevalence threshold should be estimated at a class level. 
+#> Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions, : For multiclass cases, prevalence threshold should be estimated at a class level. 
 #>       A NaN has been recorded as the result. Please, use `atom = TRUE`.
 #>     Metric     Score
 #> 1 accuracy 0.3200000

@@ -1,6 +1,6 @@
 # metrica 2.0.0
 
-* June 28th, 2022. <br/>
+* July 3rd, 2022. <br/>
 
 This new version of metrica includes:
 
@@ -39,6 +39,8 @@ This new version of metrica includes:
   -`MASE()` (Mean Absolute Scaled Error) for Time Series Analysis.
   - `dcorr()` (Distance correlation) as wrapper of dcor() from energy package (https://CRAN.R-project.org/package=energy), and
   - `MIC()` (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (https://CRAN.R-project.org/package=minerva).
+  - `RMLA()` (Root Mean Lack of Accuracy)
+  - `RMLP()` (Root Mean Lack of Precision)
 
 3) One (1) new plotting function for regression problems:
   - `density_plot()`, to create a plot that paints density areas of predicted and observed coordinates.
@@ -53,6 +55,14 @@ This new version of metrica includes:
 
 
 6) Fixing a minor a bug on the `NSE()` function to estimate the Nash-Sutcliffe model efficiency that produced only values of NSE=1.00 on v1.2.3.
+
+6) Improved coverage of the code testing.
+
+7) README update.
+
+8) Vignettes update creating versions for both classification and regression, and for importing APSIM files.
+
+
 ######################################################################################################
 
 # Previous versions

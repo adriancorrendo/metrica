@@ -1,4 +1,7 @@
 # Test classification metrics
+library(metrica)
+library(dplyr)
+library(testthat)
 
 binary <- data.frame(labels = sample(c("TRUE","FALSE"), 100, replace = TRUE),
                      predictions = sample(c("TRUE","FALSE"), 100, replace = TRUE)  )
@@ -97,6 +100,7 @@ specificity_3.test <- specificity(data = multiclass, obs = labels, pred = predic
 specificity_4.test <- specificity(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 specificity_5.test <- specificity(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 specificity_6.test <- specificity(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+specificity_7.test <- specificity(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
 
 # TEST
 test_that('no error specificity_1', {expect_false(inherits(specificity_1.test, "try-error")) })
@@ -105,6 +109,7 @@ test_that('no error specificity_3', {expect_false(inherits(specificity_3.test, "
 test_that('no error specificity_4', {expect_false(inherits(specificity_4.test, "try-error")) })
 test_that('no error specificity_5', {expect_false(inherits(specificity_5.test, "try-error")) })
 test_that('no error specificity_6', {expect_false(inherits(specificity_6.test, "try-error")) })
+test_that('no error specificity_7', {expect_false(inherits(specificity_7.test, "try-error")) })
 
 # 6. F-score
 fscore_1.test <- fscore(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -113,6 +118,7 @@ fscore_3.test <- fscore(data = multiclass, obs = labels, pred = predictions, tid
 fscore_4.test <- fscore(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 fscore_5.test <- fscore(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 fscore_6.test <- fscore(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+fscore_7.test <- fscore(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
 
 # TEST
 test_that('no error fscore_1', {expect_false(inherits(fscore_1.test, "try-error")) })
@@ -121,6 +127,7 @@ test_that('warning', {expect_warning(fscore_3.test, NA)})
 test_that('warning', {expect_warning(fscore_4.test, NA)})
 test_that('no error fscore_5', {expect_false(inherits(fscore_5.test, "try-error")) })
 test_that('no error fscore_6', {expect_false(inherits(fscore_6.test, "try-error")) })
+test_that('no error fscore_7', {expect_false(inherits(fscore_7.test, "try-error")) })
 
 # 7. K-hat or Cohen's-Kappa
 khat_1.test <- khat(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -209,6 +216,7 @@ agf_3.test <- agf(data = multiclass, obs = labels, pred = predictions, tidy = FA
 agf_4.test <- agf(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 agf_5.test <- agf(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 agf_6.test <- agf(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+agf_7.test <- agf(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
 
 # TEST
 test_that('no error agf_1', {expect_false(inherits(agf_1.test, "try-error")) })
@@ -217,6 +225,7 @@ test_that('warning', {expect_warning(agf_3.test, NA)})
 test_that('warning', {expect_warning(agf_4.test, NA)})
 test_that('no error agf_5', {expect_false(inherits(agf_5.test, "try-error")) })
 test_that('no error agf_6', {expect_false(inherits(agf_6.test, "try-error")) })
+test_that('no error agf_7', {expect_false(inherits(agf_7.test, "try-error")) })
 
 # 13. Gmean
 gmean_1.test <- gmean(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -241,6 +250,7 @@ npv_3.test <- npv(data = multiclass, obs = labels, pred = predictions, tidy = FA
 npv_4.test <- npv(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 npv_5.test <- npv(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 npv_6.test <- npv(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+npv_7.test <- npv(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
 
 # TEST
 test_that('no error npv_1', {expect_false(inherits(npv_1.test, "try-error")) })
@@ -249,6 +259,7 @@ test_that('no error npv_3', {expect_false(inherits(npv_3.test, "try-error")) })
 test_that('no error npv_4', {expect_false(inherits(npv_4.test, "try-error")) })
 test_that('no error npv_5', {expect_false(inherits(npv_5.test, "try-error")) })
 test_that('no error npv_6', {expect_false(inherits(npv_6.test, "try-error")) })
+test_that('no error npv_6', {expect_false(inherits(npv_7.test, "try-error")) })
 
 # 15. posLr
 posLr_1.test <- posLr(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -305,6 +316,8 @@ preval_3.test <- preval(data = multiclass, obs = labels, pred = predictions, tid
 preval_4.test <- preval(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 preval_5.test <- preval(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 preval_6.test <- preval(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+preval_7.test <- preval(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
+preval_8.test <- preval(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
 
 # TEST
 test_that('no error preval_1', {expect_false(inherits(preval_1.test, "try-error")) })
@@ -313,6 +326,8 @@ test_that('warning', {expect_warning(preval_3.test, NA)})
 test_that('warning', {expect_warning(preval_4.test, NA)})
 test_that('no error preval_5', {expect_false(inherits(preval_5.test, "try-error")) })
 test_that('no error preval_6', {expect_false(inherits(preval_6.test, "try-error")) })
+test_that('no error preval_7', {expect_false(inherits(preval_6.test, "try-error")) })
+test_that('no error preval_8', {expect_false(inherits(preval_6.test, "try-error")) })
 
 # 19. preval_t
 preval_t_1.test <- preval_t(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -321,6 +336,8 @@ preval_t_3.test <- preval_t(data = multiclass, obs = labels, pred = predictions,
 preval_t_4.test <- preval_t(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 preval_t_5.test <- preval_t(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 preval_t_6.test <- preval_t(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+preval_t_7.test <- preval_t(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
+preval_t_8.test <- preval_t(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
 
 # TEST
 test_that('no error preval_t_1', {expect_false(inherits(preval_t_1.test, "try-error")) })
@@ -329,6 +346,8 @@ test_that('warning', {expect_warning(preval_t_3.test, NA)})
 test_that('warning', {expect_warning(preval_t_4.test, NA)})
 test_that('no error preval_t_5', {expect_false(inherits(preval_t_5.test, "try-error")) })
 test_that('no error preval_t_6', {expect_false(inherits(preval_t_6.test, "try-error")) })
+test_that('no error preval_t_7', {expect_false(inherits(preval_t_8.test, "try-error")) })
+test_that('no error preval_t_8', {expect_false(inherits(preval_t_8.test, "try-error")) })
 
 # 20. FOR
 FOR_1.test <- FOR(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -337,6 +356,7 @@ FOR_3.test <- FOR(data = multiclass, obs = labels, pred = predictions, tidy = FA
 FOR_4.test <- FOR(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 FOR_5.test <- FOR(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 FOR_6.test <- FOR(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+FOR_7.test <- FOR(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
 
 # TEST
 test_that('no error FOR_1', {expect_false(inherits(FOR_1.test, "try-error")) })
@@ -345,6 +365,7 @@ test_that('no error FOR_3', {expect_false(inherits(FOR_3.test, "try-error")) })
 test_that('no error FOR_4', {expect_false(inherits(FOR_4.test, "try-error")) })
 test_that('no error FOR_5', {expect_false(inherits(FOR_5.test, "try-error")) })
 test_that('no error FOR_6', {expect_false(inherits(FOR_6.test, "try-error")) })
+test_that('no error FOR_7', {expect_false(inherits(FOR_7.test, "try-error")) })
 
 # 21. FPR
 FPR_1.test <- FPR(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -353,6 +374,7 @@ FPR_3.test <- FPR(data = multiclass, obs = labels, pred = predictions, tidy = FA
 FPR_4.test <- FPR(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 FPR_5.test <- FPR(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 FPR_6.test <- FPR(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+FPR_7.test <- FPR(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
 
 # TEST
 test_that('no error FPR_1', {expect_false(inherits(FPR_1.test, "try-error")) })
@@ -361,6 +383,7 @@ test_that('no error FPR_3', {expect_false(inherits(FPR_3.test, "try-error")) })
 test_that('no error FPR_4', {expect_false(inherits(FPR_4.test, "try-error")) })
 test_that('no error FPR_5', {expect_false(inherits(FPR_5.test, "try-error")) })
 test_that('no error FPR_6', {expect_false(inherits(FPR_6.test, "try-error")) })
+test_that('no error FPR_7', {expect_false(inherits(FPR_7.test, "try-error")) })
 
 # 22. FNR
 FNR_1.test <- FNR(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -369,6 +392,8 @@ FNR_3.test <- FNR(data = multiclass, obs = labels, pred = predictions, tidy = FA
 FNR_4.test <- FNR(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 FNR_5.test <- FNR(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 FNR_6.test <- FNR(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+FNR_7.test <- FNR(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, atom = TRUE)
+
 
 # TEST
 test_that('no error FNR_1', {expect_false(inherits(FNR_1.test, "try-error")) })
@@ -377,6 +402,7 @@ test_that('no error FNR_3', {expect_false(inherits(FNR_3.test, "try-error")) })
 test_that('no error FNR_4', {expect_false(inherits(FNR_4.test, "try-error")) })
 test_that('no error FNR_5', {expect_false(inherits(FNR_5.test, "try-error")) })
 test_that('no error FNR_6', {expect_false(inherits(FNR_6.test, "try-error")) })
+test_that('no error FNR_7', {expect_false(inherits(FNR_7.test, "try-error")) })
 
 # 23. FDR
 FDR_1.test <- FDR(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -385,6 +411,7 @@ FDR_3.test <- FDR(data = multiclass, obs = labels, pred = predictions, tidy = FA
 FDR_4.test <- FDR(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 FDR_5.test <- FDR(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 FDR_6.test <- FDR(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+FDR_7.test <- FDR(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
 
 # TEST
 test_that('no error FDR_1', {expect_false(inherits(FDR_1.test, "try-error")) })
@@ -393,6 +420,7 @@ test_that('no error FDR_3', {expect_false(inherits(FDR_3.test, "try-error")) })
 test_that('no error FDR_4', {expect_false(inherits(FDR_4.test, "try-error")) })
 test_that('no error FDR_5', {expect_false(inherits(FDR_5.test, "try-error")) })
 test_that('no error FDR_6', {expect_false(inherits(FDR_6.test, "try-error")) })
+test_that('no error FDR_6', {expect_false(inherits(FDR_7.test, "try-error")) })
 
 # 24. CSI
 csi_1.test <- csi(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -417,6 +445,7 @@ deltap_3.test <- deltap(data = multiclass, obs = labels, pred = predictions, tid
 deltap_4.test <- deltap(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 deltap_5.test <- deltap(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 deltap_6.test <- deltap(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+deltap_7.test <- deltap(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
 
 # TEST
 test_that('no error deltap_1', {expect_false(inherits(deltap_1.test, "try-error")) })
@@ -425,6 +454,7 @@ test_that('no error deltap_3', {expect_false(inherits(deltap_3.test, "try-error"
 test_that('no error deltap_4', {expect_false(inherits(deltap_4.test, "try-error")) })
 test_that('no error deltap_5', {expect_false(inherits(deltap_5.test, "try-error")) })
 test_that('no error deltap_6', {expect_false(inherits(deltap_6.test, "try-error")) })
+test_that('no error deltap_7', {expect_false(inherits(deltap_7.test, "try-error")) })
 
 # 26. AUC_roc
 AUC_roc_1.test <- AUC_roc(data = binary, obs = labels, pred = predictions, tidy = FALSE)
@@ -445,4 +475,169 @@ metrics_summary_1.test <- metrics_summary(data = binary, obs = labels, pred = pr
 test_that('no error metrics_summary_1', {expect_false(inherits(metrics_summary_1.test, "try-error")) })
 
 
+#################
+
+selected_metrics_1 <- c("accuracy")
+selected_metrics_2 <- c("accuracy", "precision")
+selected_metrics_3 <- c("accuracy", "precision", "recall")
+selected_metrics_4 <- c("accuracy", "precision", "recall", "khat")
+selected_metrics_5 <- c("accuracy", "precision", "recall", "khat","mcc")
+selected_metrics_6 <- c("accuracy", "precision", "recall", "khat","mcc", "fscore")
+selected_metrics_7 <- c("accuracy", "precision", "recall", "khat","mcc", "fscore", "agf")
+selected_metrics_8 <- c("accuracy", "precision", "recall", "khat","mcc", "fscore", "agf", "npv")
+selected_metrics_9 <- c("accuracy", "precision", "recall", "khat","mcc", "fscore", "agf", "npv", "FPR")
+selected_metrics_10 <- c("accuracy", "precision", "recall", "khat","mcc", "fscore", "agf", "npv", "FPR", "FNR")
+
+cm_bin_1 <- confusion_matrix(data = binary, obs = labels, pred = predictions,
+                             plot = TRUE,
+                             colors = c(low="#ffe8d6" , high="#892b64"), 
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_1,
+                             position_metrics = "bottom", 
+                             unit = "proportion")
+
+cm_bin_2 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_2,
+                             position_metrics = "bottom")
+
+cm_bin_3 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_3,
+                             position_metrics = "bottom")
+
+cm_bin_4 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_4,
+                             position_metrics = "bottom")
+
+cm_bin_5 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_5,
+                             position_metrics = "bottom")
+
+cm_bin_6 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_6,
+                             position_metrics = "bottom")
+
+cm_bin_7 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_7,
+                             position_metrics = "bottom")
+
+cm_bin_8 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_8,
+                             position_metrics = "bottom")
+
+cm_bin_9 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             colors = c(low="#ffe8d6" , high="#892b64"), 
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_9,
+                             position_metrics = "bottom")
+
+cm_bin_10 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             colors = c(low="#ffe8d6" , high="#892b64"), 
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_10,
+                             position_metrics = "bottom")
+
+
+# TEST
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_1, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_2, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_3, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_4, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_5, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_6, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_7, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_8, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_9, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_10, "try-error")) })
+
+
+cm_bin_top_1 <- confusion_matrix(data = binary, obs = labels, pred = predictions,
+                             plot = TRUE,
+                             colors = c(low="#ffe8d6" , high="#892b64"), 
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_1,
+                             position_metrics = "top")
+
+cm_bin_top_2 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_2,
+                             position_metrics = "top")
+
+cm_bin_top_3 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_3,
+                             position_metrics = "top")
+
+cm_bin_top_4 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_4,
+                             position_metrics = "top")
+
+cm_bin_top_5 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_5,
+                             position_metrics = "top")
+
+cm_bin_top_6 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_6,
+                             position_metrics = "top")
+
+cm_bin_top_7 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_7,
+                             position_metrics = "top")
+
+cm_bin_top_8 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_8,
+                             position_metrics = "top")
+
+cm_bin_top_9 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                             plot = TRUE,
+                             colors = c(low="#ffe8d6" , high="#892b64"), 
+                             print_metrics = TRUE,
+                             metrics_list = selected_metrics_9,
+                             position_metrics = "top")
+
+cm_bin_top_10 <- confusion_matrix(data = binary, obs = labels, pred = predictions, 
+                              plot = TRUE,
+                              colors = c(low="#ffe8d6" , high="#892b64"), 
+                              print_metrics = TRUE,
+                              metrics_list = selected_metrics_10,
+                              position_metrics = "top")
+
+# TEST
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_1, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_2, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_3, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_4, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_5, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_6, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_7, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_8, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_9, "try-error")) })
+test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_10, "try-error")) })
 

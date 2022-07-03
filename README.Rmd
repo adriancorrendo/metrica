@@ -28,24 +28,28 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 ## Introduction <br/>
-
-`metrica` is a compilation of more than 80 functions designed to quantitatively and visually evaluate the prediction performance of regression (continuous variables) and classification (categorical variables) point-forecast models (e.g. APSIM, DSSAT, DNDC, Machine Learning). `metrica` offers a toolbox with a wide spectrum of goodness of fit, error metrics, indices, and coefficients accounting for different aspects of the agreement between predicted and observed values, plus some basic visualization functions to assess models performance (e.g. confusion matrix, scatter with regression line; Bland-Altman plot) provided in customizable format (ggplot). 
-
-Always keep in mind the concept of "cross-validation" since predicted values 
-should come from out-of-bag samples (unseen by training set) to avoid 
-overestimation of the prediction performance. <br/>
-
 <img src="man/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;"> <br/>
+`metrica` is a compilation of more than 80 functions designed to quantitatively and visually evaluate the prediction performance of regression (continuous variables) and classification (categorical variables) point-forecast models (e.g. APSIM, DSSAT, DNDC, Supervised Machine Learning). `metrica` offers a toolbox with a wide spectrum of goodness of fit, error metrics, indices, and coefficients accounting for different aspects of the agreement between predicted and observed values, plus some basic visualization functions to assess models performance (e.g. confusion matrix, scatter with regression line; Bland-Altman plot) provided in customizable format (ggplot). 
+
+
+For supervised models, always keep in mind the concept of "cross-validation" since predicted values 
+should ideally come from out-of-bag samples (unseen by training sets) to avoid overestimation of the 
+prediction performance. <br/>
+
 
 Check the Documentation at [https://adriancorrendo.github.io/metrica/](https://adriancorrendo.github.io/metrica/) <br/>
 
 **Vignettes** <br/>
 
-[1. Complete list of metrics](https://adriancorrendo.github.io/metrica/articles/available_metrics.html) <br/>
+[1. List of metrics for Regression](https://adriancorrendo.github.io/metrica/articles/available_regression_metrics.html) <br/>
 
-[2. A regression case](https://adriancorrendo.github.io/metrica/articles/regression_case.html) <br/>
+[2. List of metrics for Classification](https://adriancorrendo.github.io/metrica/articles/available_classification_metrics.html) <br/>
 
-[3. A classification case](https://adriancorrendo.github.io/metrica/articles/classification_case.html) <br/>
+[3. A regression case (numerical variables)](https://adriancorrendo.github.io/metrica/articles/regression_case.html) <br/>
+
+[4. A classification case (categorical variables)](https://adriancorrendo.github.io/metrica/articles/classification_case.html) <br/>
+
+[5. Import APSIM files](https://adriancorrendo.github.io/metrica/articles/apsim_open.html) <br/>
 
 ## Functions <br/>
 
@@ -57,7 +61,7 @@ For classification (binomial and multinomial) tasks, it includes a function to v
 
 For more details visit the vignettes <https://adriancorrendo.github.io/metrica/>.
 
-## Core function arguments <br/>
+## Using the functions <br/>
 
 There are two basic arguments common to all `metrica` functions: 
 (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and 
@@ -122,7 +126,7 @@ library(metrica)
 library(dplyr)
 library(purrr)
 library(tidyr)
-#library(ggpmisc)
+
 ```
 This is a basic example which shows you the core regression and classification functions of *metrica*: <br/>
 
@@ -148,7 +152,7 @@ example.data <- barley %>%  # or 'wheat', 'sorghum', or 'chickpea'
 
 ### 3.1.1. Plot functions
 ### 3.1.1.1. Create scatter plot with PO orientation
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
 
 barley.scat.plot <- metrica::scatter_plot(data = example.data, 
                                           obs = measured, 
@@ -164,7 +168,7 @@ barley.scat.plot
 ```
 
 ### 3.1.1.2. Create tiles plot with OP orientation
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
 barley.tiles.plot <- 
   metrica::tiles_plot(data = example.data, 
                       obs = measured, 
@@ -177,7 +181,7 @@ barley.tiles.plot
 ```
 
 ### 3.1.1.3. Create a density plot with OP orientation
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
 barley.density.plot <-
 metrica::density_plot(data = example.data, 
                       obs = measured, pred = simulated,
@@ -190,7 +194,7 @@ barley.density.plot
 ```
 
 ### 3.1.1.4. Create a Bland-Altman plot
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
 barley.ba.plot <- metrica::bland_altman_plot(data = example.data,
                            obs = measured, pred = simulated)
 
@@ -275,7 +279,7 @@ head(non_nested_summary)
 ```
 
 ### 3.1.4. Print metrics in a plot
-```{r warning=F, message=F}
+```{r warning=F, message=F, fig.height=6, fig.width=7, dpi=300}
 df <- metrica::wheat
 
 # Create list of selected metrics
@@ -313,7 +317,7 @@ multinomial_case <- data.frame(labels = sample(c("Red","Green", "Blue"), 100, re
 ### 3.1.1. Confusion Matrix <br/>
 
 ### 3.1.1.1. Binary
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
 # a. Print
 binomial_case %>% confusion_matrix(obs = labels, pred = predictions, 
                                             plot = FALSE, colors = c(low="#f9dbbd" , high="#735d78"), 
@@ -322,11 +326,11 @@ binomial_case %>% confusion_matrix(obs = labels, pred = predictions,
 # b. Plot
 binomial_case %>% confusion_matrix(obs = labels, pred = predictions, 
                                             plot = TRUE, colors = c(low="#f9dbbd" , high="#735d78"), 
-                                            unit = "count")
+                                            unit = "count", print_metrics = TRUE)
 ```
 
 ### 3.1.1.2. Multiclass
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7}
 # a. Print
 multinomial_case %>% confusion_matrix(obs = labels, 
                                       pred = predictions, 
@@ -337,7 +341,7 @@ multinomial_case %>% confusion_matrix(obs = labels,
 multinomial_case %>% confusion_matrix(obs = labels, 
                                       pred = predictions, 
                                       plot = TRUE, colors = c(low="#d3dbbd" , high="#885f78"), 
-                                      unit = "count")
+                                      unit = "count", print_metrics = TRUE)
 
 ```
 

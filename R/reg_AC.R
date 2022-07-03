@@ -5,6 +5,8 @@
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
+#' @param tidy Logical operator (TRUE/FALSE) to decide the type of return. TRUE 
+#' returns a data.frame, FALSE returns a list; Default : FALSE.
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return an object of class `numeric` within a `list` (if tidy = FALSE) or within a
@@ -30,8 +32,9 @@
 AC <- function(data = NULL, 
                obs, 
                pred,
+               tidy = FALSE,
                na.rm = TRUE) {
-  result <- rlang::eval_tidy(
+  AC <- rlang::eval_tidy(
     data = data,
     rlang::quo(
     1 -(sum(({{obs}}-{{pred}})^2)/
@@ -39,6 +42,8 @@ AC <- function(data = NULL,
                 (abs(mean({{pred}})-mean({{obs}}))+abs({{pred}}-mean({{pred}}))))) 
     )
   )
-  return(result)
+  if (tidy==TRUE){ return(as.data.frame(AC)) }
+  
+  if (tidy==FALSE){ return(list("AC" = AC)) }
 }
 

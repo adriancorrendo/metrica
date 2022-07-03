@@ -1,8 +1,8 @@
-#' @title Mean Lack of Precision (MLP)
-#' @name MLP
-#' @description It estimates the MLP, the unsystematic error component to
-#' the Mean Squared Error (MSE), for a continuous predicted-observed dataset 
-#' following Correndo et al. (2021).
+#' @title Root Mean Lack of Precision (RMLP)
+#' @name RMLP
+#' @description It estimates the RMLP, the square root of the unsystematic error 
+#' component to the Mean Squared Error (MSE), for a continuous predicted-observed
+#' dataset following Correndo et al. (2021).
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
@@ -12,11 +12,13 @@
 #' (NA). Default is na.rm = TRUE.
 #' @return an object of class `numeric` within a `list` (if tidy = FALSE) or within a
 #' `data frame` (if tidy = TRUE).
-#' @details The MLP represents the unsystematic (random) component of the MSE. 
+#' @details The RMLP represents the unsystematic (random) component of the MSE 
+#' experessed on the original variables units \eqn{ \sqrt{MLP} }. 
 #' It is obtained via a symmetric decomposition of the MSE (invariant to 
-#' predicted-observed orientation) using a symmetric regression line. 
-#' The MLP is equal to the sum of unsystematic differences divided by the sample size (n). 
-#' The greater the value the greater the random noise of the predictions.
+#' predicted-observed orientation) using a symmetric regression line (SMA). 
+#' The RMLP is equal to the square-root of the sum of unsystematic differences 
+#' divided by the sample size (n). The greater the value the greater the random 
+#' noise of the predictions.
 #' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
 #' @references 
 #' Correndo et al. (2021). 
@@ -27,18 +29,18 @@
 #' set.seed(1)
 #' X <- rnorm(n = 100, mean = 0, sd = 10)
 #' Y <- X + rnorm(n=100, mean = 0, sd = 3)
-#' MLP(obs = X, pred = Y)
+#' RMLP(obs = X, pred = Y)
 #' }
-#' @rdname MLP
+#' @rdname RMLP
 #' @importFrom rlang eval_tidy quo
 #' @export 
-MLP <- function(data=NULL,
+RMLP <- function(data=NULL,
                 obs, 
                 pred,
                 tidy = FALSE,
                 na.rm = TRUE){
   
-  MLP <- rlang::eval_tidy(
+  RMLP <- rlang::eval_tidy(
     data = data,
     rlang::quo(
       sum (abs({{obs}} - ((mean({{obs}}) -
@@ -54,8 +56,8 @@ MLP <- function(data=NULL,
     )
   )
   
-  if (tidy==TRUE){ return(as.data.frame(MLP)) }
+  if (tidy==TRUE){ return(as.data.frame(RMLP)) }
   
-  if (tidy==FALSE){ return(list("MLP" = MLP)) }
+  if (tidy==FALSE){ return(list("RMLP" = RMLP)) }
 }
 

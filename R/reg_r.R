@@ -1,6 +1,6 @@
 #' @title Sample Correlation Coefficient (r)
 #' @name r
-#' @description It estimates the Pearson's r coefficient for a continuous predicted-observed dataset.
+#' @description It estimates the Pearson's coefficient of correlation (r) for a continuous predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).

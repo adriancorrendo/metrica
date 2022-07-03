@@ -158,8 +158,16 @@ preval_t <- function(data=NULL, obs, pred,
       # Calculations
       correct <- diag(matrix)
       total_actual <- colSums(matrix) 
-      
       TPR <- correct / total_actual # a.k.a. recall
+      
+      TP   <- diag(matrix)
+      TPFP <- rowSums(matrix)
+      TPFN <- colSums(matrix)
+      TN   <- sum(matrix) - (TPFP + TPFN - TP)
+      FP   <- TPFP - TP 
+      spec <- TN / (TN + FP)
+      FPR <- 1 - spec
+      
       # Formula
       preval_t <- (sqrt(TPR * FPR) - FPR) / (TPR - FPR)
       }

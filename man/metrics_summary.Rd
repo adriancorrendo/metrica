@@ -8,9 +8,10 @@ metrics_summary(
   data = NULL,
   obs,
   pred,
-  type,
+  type = NULL,
   metrics_list = NULL,
   orientation = "PO",
+  pos_level = 2,
   na.rm = TRUE
 )
 }
@@ -31,6 +32,11 @@ which will estimate all metrics available for either regression or classificatio
 orientation to estimate slope(B1) and intercept(B0). It only applies when type = "regression".
 "PO" is for predicted vs observed, and "OP" for observed vs predicted.
 Default is orientation = "PO".}
+
+\item{pos_level}{(for classification only). Integer, for binary cases, indicating the order (1|2) of the level
+corresponding to the positive. Generally, the positive level is the second (2)
+since following an alpha-numeric order, the most common pairs are
+\code{(Negative | Positive)}, \code{(0 | 1)}, \code{(FALSE | TRUE)}. Default : 2.}
 
 \item{na.rm}{Logic argument to remove rows with missing values
 (NA). Default is na.rm = TRUE.}

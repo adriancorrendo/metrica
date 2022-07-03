@@ -1,0 +1,58 @@
+---
+title: "APSIM: Importing APSIM Classic and NewGeneration files"
+author: "Adrian Correndo"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{APSIM import files}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## 1. Introduction  
+
+
+<img src="../man/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;"> <br/>
+
+The *`metrica`* package was developed to assess the prediction performance of, 
+among other, crop simulation models such as APSIM. 
+
+This vignette introduces the functionality of the *`metrica`* package applied
+to facilitate opening APSIM output files in R.  <br/>
+
+## Import data from APSIM
+<img src="../man/figures/APSIM.png" align="right" height="60" style="float:right; height:60px;"> <br/>
+```{r echo=FALSE, include=FALSE}
+library(metrica)
+library(dplyr)
+library(purrr)
+library(tidyr)
+```
+
+
+### 1. APSIM Classic (.out)  
+```{r warning=FALSE, message=FALSE}
+# Use import_apsim_out for APSIM Classic output
+soybean.out <- metrica::import_apsim_out(filepath = "../tests/testthat/examples/soybean.out")
+
+head(soybean.out)
+```
+
+### 1. APSIM NextGeneration (.db) 
+```{r warning=FALSE, message=FALSE}
+# Use import_apsim_db for APSIM NextGeneration output
+soybean.db <- metrica::import_apsim_db(filename = "soybean.example.db", folder = "../tests/testthat/examples/")
+
+head(soybean.db)
+
+# If observed.data is already as a dataframe, the user may do the match using a simple code like this:
+# PO.dataframe <- simulated.data %>% left_join(., observed.data) *by = "col" arg. could be required*
+
+```

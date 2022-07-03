@@ -24,7 +24,7 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \verb{data frame} (if tidy = TRUE).
 }
 \description{
-It estimates the Pearson's r coefficient for a continuous predicted-observed dataset.
+It estimates the Pearson's coefficient of correlation (r) for a continuous predicted-observed dataset.
 }
 \details{
 The r coefficient measures the strength of linear relationship between two variables.

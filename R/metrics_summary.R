@@ -14,6 +14,10 @@
 #' orientation to estimate slope(B1) and intercept(B0). It only applies when type = "regression".
 #' "PO" is for predicted vs observed, and "OP" for observed vs predicted.
 #' Default is orientation = "PO".
+#' @param pos_level (for classification only). Integer, for binary cases, indicating the order (1|2) of the level 
+#' corresponding to the positive. Generally, the positive level is the second (2)
+#' since following an alpha-numeric order, the most common pairs are 
+#' `(Negative | Positive)`, `(0 | 1)`, `(FALSE | TRUE)`. Default : 2.
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return an object of class `data.frame` containing all (or selected) metrics.
@@ -50,9 +54,10 @@ metrics_summary <-
   function(data=NULL,
            obs,
            pred,
-           type,
+           type = NULL,
            metrics_list = NULL,
            orientation = "PO",
+           pos_level = 2,
            na.rm = TRUE
            ){
     
@@ -63,7 +68,7 @@ metrics_summary <-
       
       metrics <- c("B0","B1","r","R2", "Xa","CCC","MAE","RMAE","MAPE","SMAPE",
                    "RAE","RSE","MBE","PBE","PAB","PPB","MSE","RMSE","RRMSE","RSR",
-                   "iqRMSE","MLA","MLP","SB","SDSD","LCS","PLA","PLP","Ue","Uc",
+                   "iqRMSE","MLA","MLP", "RMLA", "RMLP", "SB","SDSD","LCS","PLA","PLP","Ue","Uc",
                    "Ub","NSE","E1","Erel","KGE","d","d1","d1r","RAC","AC",
                    "lambda", "dcorr", "MIC")
       
@@ -102,6 +107,8 @@ metrics_summary <-
               iqRMSE =as.numeric(metrica::iqRMSE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
               MLA =as.numeric(metrica::MLA(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
               MLP =as.numeric(metrica::MLP(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              RMLA =as.numeric(metrica::RMLA(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              RMLP =as.numeric(metrica::RMLP(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
               SB = as.numeric(metrica::SB(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
               SDSD = as.numeric(metrica::SDSD(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
               LCS = as.numeric(metrica::LCS(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
@@ -152,31 +159,31 @@ metrics_summary <-
           c(#1
             accuracy = as.numeric(metrica::accuracy(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
             error_rate = as.numeric(metrica::error_rate(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            precision = as.numeric(metrica::precision(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            recall = as.numeric(metrica::recall(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            specificity = as.numeric(metrica::specificity(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            balacc = as.numeric(metrica::balacc(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            fscore = as.numeric(metrica::fscore(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            agf = as.numeric(metrica::agf(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            gmean = as.numeric(metrica::gmean(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            khat = as.numeric(metrica::khat(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            precision = as.numeric(metrica::precision(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            recall = as.numeric(metrica::recall(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            specificity = as.numeric(metrica::specificity(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            balacc = as.numeric(metrica::balacc(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            fscore = as.numeric(metrica::fscore(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            agf = as.numeric(metrica::agf(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            gmean = as.numeric(metrica::gmean(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            khat = as.numeric(metrica::khat(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
             #11
-            mcc = as.numeric(metrica::mcc(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            fmi = as.numeric(metrica::fmi(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            bmi = as.numeric(metrica::bmi(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            csi = as.numeric(metrica::csi(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            deltap = as.numeric(metrica::deltap(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            posLr = as.numeric(metrica::posLr(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            negLr = as.numeric(metrica::negLr(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            dor = as.numeric(metrica::dor(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            npv = as.numeric(metrica::npv(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            FPR = as.numeric(metrica::FPR(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            mcc = as.numeric(metrica::mcc(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            fmi = as.numeric(metrica::fmi(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            bmi = as.numeric(metrica::bmi(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            csi = as.numeric(metrica::csi(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            deltap = as.numeric(metrica::deltap(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            posLr = as.numeric(metrica::posLr(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            negLr = as.numeric(metrica::negLr(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            dor = as.numeric(metrica::dor(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            npv = as.numeric(metrica::npv(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            FPR = as.numeric(metrica::FPR(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
             #21
-            FNR = as.numeric(metrica::FNR(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            FDR = as.numeric(metrica::FDR(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            FOR = as.numeric(metrica::FOR(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            preval = as.numeric(metrica::preval(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
-            preval_t = as.numeric(metrica::preval_t(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            FNR = as.numeric(metrica::FNR(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            FDR = as.numeric(metrica::FDR(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            FOR = as.numeric(metrica::FOR(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            preval = as.numeric(metrica::preval(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
+            preval_t = as.numeric(metrica::preval_t(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
             AUC_roc = as.numeric(metrica::AUC_roc(data={{data}}, obs={{obs}}, pred={{pred}})[[1]])
             ) 
           ) 

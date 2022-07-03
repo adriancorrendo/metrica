@@ -1,0 +1,168 @@
+---
+title: "Regression performance metrics and indices"
+author: "Adrian Correndo"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Regression metrics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Description <br/>
+
+The **metrica** package compiles +80 functions to assess regression (continuous) 
+and classification (categorical) prediction performance from multiple perspectives. <br/> 
+
+For regression models, it includes 4 plotting functions (scatter, tiles, density, 
+& Bland-Altman plots), and 48 prediction performance scores including error metrics 
+(MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE, RRMSE, RSR, PBE, iqRMSE), 
+model efficiency (NSE, E1, Erel, KGE), indices of agreement (d, d1, d1r, RAC, AC,
+lambda), goodness of fit (r, R2, RSS, TSS, RSE), adjusted correlation coefficients
+(CCC, Xa, distance correlation-dcorr-), error decomposition (MLA, MLP, PLA, PLP, 
+PAB, PPB, SB, SDSD, LCS, Ub, Uc, Ue), variability (uSD, var_u), and symmetric 
+regression coefficients (B0_sma, B1_sma). Specifically for time-series 
+predictions, `metrica` also includes the Mean Absolute Scaled Error (MASE). <br/>
+
+For supervised models, always keep in mind the concept of "cross-validation" 
+since predicted values should ideally come from out-of-bag samples (unseen by 
+training sets) to avoid overestimation of the prediction performance. <br/>
+
+## Using the functions. <br/>
+
+There are two basic arguments common to all `metrica` functions: 
+(i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and 
+(ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled,  estimate) values. <br/>
+
+Optional arguments include `data` that allows to call an existing data frame 
+containing both observed and predicted vectors, and `tidy`, which controls the 
+type of output as a list (tidy = FALSE) or as a data.frame (tidy = TRUE). <br/>
+
+For regression, some specific functions for regression also require to define 
+the axis `orientation`. For example, the slope of the symmetric linear regression 
+describing the bivariate scatter (SMA). <br/>
+
+
+## List of regression prediction performance metrics (continuous variables) <br/>
+
+| # |Metric | Definition | Details | Formula |
+| :-|:----- | :----------|:------- | :------ |
+|01| `RSS` | Residual sum of squares (a.k.a. as sum of squares) | The sum of squared differences between predicted and observed values. It represents the base of many error metrics using squared scale such as the MSE | $RSS = \sum{(O_i - P_i)^2}$ |
+|02| `TSS` | Total sum of squares | The sum of the squared differences between the observations and its mean. It is used as a reference error, for example, to estimate explained variance | $TSS = \sum{(O_i - \bar{O})^2}$ |
+|03| `var_u` | Sample variance, uncorrected | The mean of sum of squared differences between values of an `x` and its mean (divided by n, not n-1)| $var_u = \frac{1}{n}\sum{(x - \bar{x})^2}$ |
+|4| `uSD` | Sample standard deviation, uncorrected | The square root of the mean of sum of squared differences between values of an `x` and its mean (divided by n, not n-1)| $uSD = \sqrt{\frac{1}{n}\sum{(x_i - \bar{x})^2}}$ | 
+|04| `B0` | Intercept of SMA regression | SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) recommended to describe the bivariate scatter instead of OLS regression (classic linear model, which results vary with the axis orientation). B0 could be used to test agreement along with B1 (H0: B0 = 0, B1 = 1) . Warton et al. (2006) | $\beta_{0_{PO}} = \bar{P} - \frac{S_P}{S_O} \, ;\, \beta_{0_{OP}} = \bar{O} - \frac{S_O}{S_P}$ | 
+|06| `B1` | Slope of SMA regression |  SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) recommended to describe the bivariate scatter instead of OLS regression (classic linear model, which results vary with the axis orientation). B1 could be used to test isometry of the PO scatter (H0: B1 = 1). B1 also represents the ratio of standard deviations (So and Sp). Warton et al. (2006) | $\beta_{1_{PO}} = \frac{S_P}{S_O}\, ;\, \beta_{1_{OP}} = \frac{S_O}{S_P}$ | 
+|07| `r` | Pearson's correlation coefficient |  Strength of linear association between P and O. However, it measures "precision" but no accuracy. Kirch (2008) | $r = \frac{{S}_{PO}}{{S}_{P}{S}_{O}}$ | 
+|8| `R2` | Coefficient of determination |  Strength of linear association between P and O. However, it measures "precision" but no accuracy | $R^{2} = \frac{{S^2}_{PO}}{{S^2}_{P}{S^2}_{O}}$ | 
+|09| `Xa` | Accuracy coefficient | Measures accuracy. Used to adjust the precision measured by `r` to estimate agreement |$ X_a = \frac{2}{\frac{S_P}{S_O} + \frac{S_O}{S_P} + \frac{(\bar{O}-\bar{P})^2}{S_O S_P}} $ | 
+|10| `CCC` | Concordance correlation coefficient | Tests agreement. It presents both precision (r) and accuracy (Xa) components. Easy to interpret. Lin (1989) | $CCC = r * X_a$ |
+|11| `MAE` | Mean Absolute Error |  Measures both lack of accuracy and precision in absolute scale. It keeps the same units than the response variable. Less sensitive to outliers than the MSE or RMSE. Willmott & Matsuura (2005) | $MAE = \frac{1}{n} \sum{|O_i - P_i|} $ | 
+|12| `RMAE` | Relative Mean Absolute Error |  Normalizes the MAE with respect to the mean of observations | $RMAE = \frac{\frac{1}{n} \sum{|O_i - P_i|}}{\bar{O}}$ | 
+|13| `MAPE` | Mean Absolute Percentage Error |  Percentage units (independent scale). Easy to explain and to compare performance across models with different response variables. Asymmetric and unbounded. | $MAPE = \frac{1}{n}\sum{|\frac{O_i-P_i}{O_i}|}$ | 
+|14| `SMAPE` | Symmetric Mean Absolute Percentage Error |  SMAPE tackles the asymmetry issues of MAPE and includes lower (0%) and upper (200%) bounds. Makridakis (1993) | $SMAPE = \frac{1}{n}\sum{|\frac{|O_i-P_i|}{(O_i+P_i)/2}|}$ | 
+|15| `RAE` | Relative Absolute Error |  RAE normalizes MAE with respect to the total absolute error. Lower bound at 0 (perfect fit) and no upper bound (infinity) | $RAE = \frac{\sum{|P_i-O_i|}}{\sum{|O_i-\bar{O}|}}$ |
+|16| `RSE` | Relative Squared Error |  Proportion of the total sum of squares that corresponds to differences between predictions and observations (residual sum of squares)| $RSE = \frac{\sum{(P_i-O_i)^2}}{\sum{(O_i-\bar{O})^2}}$ |
+|17| `MBE` | Mean Bias Error |  Main bias error metric. Same units as the response variable. Related to differences between means of predictions and observations. Negative values indicate overestimation. Positive values indicate underestimation. Unbounded. Also known as average error. Janssen & Heuberger (1995) | $MBE = \frac{1}{n} \sum{(O_i - P_i)} = \bar{O}-\bar{P}$ |
+|18| `PBE` | Percentage Bias Error |  Useful to identify systematic over or under predictions. Percentage units. As the MBE, PBE negative values indicate overestimation, while positive values indicate underestimation. Unbounded. Gupta et al. (1999) | $PBE = 100 \frac{\sum{(P_i-O_i)}}{\sum O_i}$ |
+|19| `PAB` | Percentage Additive Bias |  Percentage of the MSE related to systematic additive issues on the predictions. Related to difference of the means of predictions and observations | $PAB = 100\frac{(\bar{O}-\bar{P})^2}{\frac{1}{n} \sum{(P_i - O_i)^2}}$ |
+|20| `PPB` | Percentage Proportional Bias | Percentage of the MSE related to systematic proportionality issues on the predictions. Related to slope of regression line describing the bivariate scatter | $PPB = 100 \frac{S_O S_P}{\frac{1}{n} \sum{(P_i - O_i)^2}}$ |
+|21| `MSE` | Mean Squared Error |  Comprises both accuracy and precision. High sensitivity to outliers | $MSE = \frac{1}{n} \sum{(P_i - O_i)^2}$ |
+|22| `RMSE` | Root Mean Squared Error |  Comprises both precision and accuracy, has the same units than the variable of interest. Very sensitive to outliers | $RMSE = \sqrt{\frac{1}{n} \sum{(P_i - O_i)^2}}$ |
+|23| `RRMSE` | Relative Root Mean Squared Error |  RMSE normalized by the mean of observations | $RRMSE = 100\frac{\sqrt{\frac{1}{n} \sum{(P_i - O_i)^2}}}{\bar{O}}$ |
+|24| `RSR` | Root Mean Standard Deviation Ratio | RMSE normalized by the standard deviation of observations. Moriasi et al. (2007) | $RSR = 100\frac{1}{n} \sum{(P_i - O_i)^2}$ |
+|25| `iqRMSE` | Inter-quartile Normalized Root Mean Squared Error |  RMSE normalized by the interquartile range length (between percentiles 25th and 75th) | $iqRMSE = 100\frac{\sqrt{\frac{1}{n} \sum{(P_i - O_i)^2}}}{[75^{th} percentile - 25^{th} percentile]}$ |
+|26| `MLA` | Mean Lack of Accuracy | Bias component of MSE decomposition. Correndo et al. (2021) | $MLA = (\bar{O}-\bar{P})^2 + (S_O - S_P)^2$ |
+|27| `MLP` | Mean Lack of Precision | Variance component of MSE decomposition. Correndo et al. (2021)  | $MLP = 2 S_O S_P (1-r)$ |
+|28| `RMLA` | Root Mean Lack of Accuracy | Bias component of MSE decomposition expressed on the original units of interest. Correndo et al. (2021) | $RMLA = \sqrt{(\bar{O}-\bar{P})^2 + (S_O - S_P)^2}$ |
+|29| `RMLP` | Root Mean Lack of Precision | Variance component of MSE decomposition expressed on the original units of interest. Correndo et al. (2021)  | $RMLP = \sqrt{2 S_O S_P (1-r)}$ |
+|30| `PLA` | Percentage Lack of Accuracy |  Percentage of the MSE related to lack of accuracy (systematic differences) on the predictions. Correndo et al. (2021) | $PLA = 100 \frac{(\bar{O}-\bar{P})^2 + (S_O - S_P)^2}{\frac{1}{n} \sum{(P_i - O_i)^2} }$ |
+|31| `PLP` | Percentage Lack of Precision |  Percentage of the MSE related to lack of precision (unsystematic differences) on the predictions. Correndo et al. (2021) | $PLP = 100 \frac{2 S_O S_P (1-r)}{\frac{1}{n} \sum{(P_i - O_i)^2} }$ |
+|32| `SB` | Squared Bias |  Additive bias component, MSE decomposition. Kobayashi and Salam (2000) | $SB=(\bar{O}-\bar{P})^2$ |
+|33| `SDSD` | Product of Standard Deviations | Proportional bias component,  MSE decomposition. Kobayashi and Salam (2000) | $SDSD = S_O S_P$ |
+|34| `LCS` | Lack of Correlation |  Random error component, MSE decomposition. Kobayashi and Salam (2000) | $LCS = 2 S_P S_O (1-r)$ |
+|35| `Ue` | Random error proportion | The Ue estimates the proportion of the total sum of squares related to the random error (unsystematic error or variance) following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil's partial inequalities | $Ue = \frac{2n(1-r)S_O S_P}{\sum{(O_i-P_i)^2}}$ |
+|36| `Uc` | Lack of Consistency error proportion  |  The Uc estimates the proportion of the total sum of squares related to the lack of consistency (proportional bias) following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil's partial inequalities | $Uc = \frac{n(S_O-S_P)^2}{\sum{(O_i-P_i)^2}}$ |
+|37| `Ub` | Mean Bias error proportion |  The Ub estimates the proportion of the total sum of squares related to the mean bias following the sum of squares decomposition suggested by Smith and Rose (1995) also known as Theil's partial inequalities | $Ub = \frac{n(\bar{O}-\bar{P})^2}{\sum{(O_i-P_i)^2}}$ |
+|38| `NSE` | Nash and Sutcliffe's Model Efficiency |  Model efficiency using squared residuals normalized by the variance of observations. Nash and Sutcliffe (1970) | $NSE = 1- \frac{\frac{1}{n} \sum{(P_i - O_i)^2}}{\frac{1}{n} \sum{(O_i - \bar{O})^2}}$ |
+|39| `E1` | Absolute Model Efficiency |  Model efficiency. Modification of NSE using absolute residuals instead of squared residuals. Legates and McCabe (1999) | $E1 = 1- \frac{\sum{|P_i - O_i|}}{\sum{|O_i - \bar{O}|}}$ |
+|40| `Erel` | Relative Model Efficiency |  Compared to the NSE, the Erel is suggested as more sensitive to systematic over- or under-predictions. Krause et al. (2005) | $Erel = 1- \frac{\sum{(\frac{P_i - O_i}{Oi})^2}}{\sum{(\frac{O_i - \bar{O}}{Oi})^2}}$ |
+|41| `KGE` | Kling-Gupta Model Efficiency |  Model efficiency with accuracy, precision, and consistency components. Kling et al. (2012) | $KGE = 1- \sqrt{(r-1)^2+ (\frac{S_P}{S_O}-1)^2+(\frac{\bar{P}}{\bar{O}}-1)^2}$ |
+|42| `d` | Index of Agreement |  Measures accuracy and precision using squared residuals. Dimensionless (normalized). Bounded [0;1]. Asymmetric Willmott (1981) |  $d = 1- \frac{\sum{(O_i - P_i)^2}}{\sum{(|O_i - \bar{P}| + |P_i - \bar{O}|})^2}$ |
+|43| `d1` | Modified Index of Agreement | Measures accuracy and precision using absolute residuals(1). Dimensionless (normalized). Bounded [0;1]. Asymmetric Willmott et al. (1985)  | $d1 = 1- \frac{\sum{|O_i - P_i}|}{\sum{(|O_i - \bar{O}| + |P_i - \bar{O}|})}$ |
+|44| `d1r` | Refined Index of Agreement |  Refines d1 by a modification on the denominator (potential error) to normalize absolute error. Willmott et al. (2012) | $d1r = 1- \frac{\sum{|O_i - P_i}|}{2\sum{|O_i - \bar{O}|}}$ |
+|45| `RAC` | Robinson's Agreement Coefficient | RAC measures both accuracy and precision (general agreement). Dimensionless (normalized). Bounded [0;1]. Symmetric. Robinson (1957; 1959) | $RAC = 1- \frac{\sum{(O_i - Z_i})^2 + \sum{(P_i - Z_i})^2}{\sum{(O_i - \bar{Z})^2 + \sum{(P_i - \bar{Z})^2} } }$ <br/> where <br/> $Zi = \frac{O_i + P_i}{2}; \bar{Z} = \bar{O} + \bar{P}$ |
+|46| `AC` | Ji and Gallo's Agreement Coefficient |  AC measures both accuracy and precision (general agreement). Dimensionless (normalized). Positively bounded [-infinity;1]. Symmetric. Ji and Gallo (2006) | $AC = 1 - \frac{\sum{(O_i-P_i)^2}}{\sum{[(|\bar{P}-\bar{O}|+|O_i-\bar{O}|)(|\bar{P}-\bar{O}|+|P_i-\bar{P}|)]}}$ |
+|47| `lambda` | Duveiller's Lambda Coefficient | `lambda` measures both accuracy and precision. Dimensionless (normalized). Bounded [-1;1]. Symmetric. Equivalent to CCC when `r` is greater or equal to 0. Duveiller et al. (2016) | $\lambda = 1 - \frac{\frac{1}{n}\sum(O_i-P_i)^2}{S^2_P+S^2_O+(\bar{O}-\bar{P})^2+k}$ <br/> where <br/> $k = 0\,\, if\,\, r \geq{0} $, <br/> otherwise <br/> $k = 2|\sum[(O_i-\bar{O})(P_i-\bar{P})]|$ |
+|48| `dcorr` | Distance correlation | Measures the dependency between to random vectors. Compared to Pearson's `r`, it offers the advantage of considering both linear and nonlinear association patterns. It is based on a matrix of centered Euclidean distances compared to the distance of many shuffles of the data. It is dimensionless, bounded [0;1], and symmetric. `dcorr = 0` characterizes independence between vectors. The closest to 1 the better. A disadvantage for the predicted-observed case is that values can be negatively correlated but producing a `dcorr` close to 1. Székely (2007) |  $dcorr = \sqrt{\frac{\mathcal{V}^2_n~(\mathbf{P,O})}{ {\sqrt{\mathcal{V}^2_n (\mathbf{P}) \mathcal{V}^2_n(\mathbf{O})} } }}$ See Székely (2007) for full details |
+|49| `MIC` | Maximal Information Coefficient | Measures association between two variables based on "binning" (a.k.a. data bucketing) to reduce the influence of small observation errors. It is based on the "mutual information" concept of information theory, which measures the mutual dependence between two variables. It is dimensionless (normalized), bounded [0;1], and symmetric. Reshef et al. (2011) |  $MIC(D) = max_{PO<B(n)} M(D)_{X,Y} = max_{PO<B(n)} \frac{I^{(D,P,O)}}{log(\min{P,O})}$ <br/> where $B(n) = n^{\alpha}$ is the search-grid size, $I^{(D,P,O)}$ is the maximum mutual information over all grids P-by-O, of the distribution induced by $D$ on a grid having P and O bins (where the probability mass on a cell of the grid is the fraction of points of D falling in that cell). <br/> See Reshef et al. 2011, for full details. |
+|50| `MASE` | Mean Absolute Scaled Error | The `MASE` is especially well suited for time series predictions, as it scales (or normalize) the error based on _in-sample_ MAE from the naive forecast method (a.k.a. random walk). It is dimensionless (normalized) and symmetric. The reference score is MASE = 1, which indicates that the model performs the same than a naive forecast (error with respect to previous historical observation). MASE <1 indicates that the model performs better than naive forecast, and MASE > 1 indicates a bad performance of the predictions. See Hyndman & Koehler (2006) |  $MASE = \frac{1}{n}(\frac{|O_i-P_i|}{ \frac{1}{T-1} \sum^T_{t=2}~|O_t - O_{t-1}| })$ |
+|<img width=10/>| <img width=30/> | <img width=40/> | <img width=300/> | <img width=80/> |
+
+<br/>
+
+
+## References: <br/>
+
+01. Correndo et al. (2021). Revisiting linear regression to test agreement in continuous predicted-observed datasets. _Agric. Syst. 192, 103194._ \doi{10.1016/j.agsy.2021.103194} <br/>
+
+02. Duveiller et al. (2016). Revisiting the concept of a symmetric index of agreement for continuous datasets. _Sci. Rep. 6, 1-14._ \doi{10.1038/srep19401} <br/>
+
+03. Gupta et al. (1999). Status of automatic calibration for hydrologic models: Comparison with multilevel expert calibration. _J. Hydrologic Eng. 4(2): 135-143._ \doi{10.1061/(ASCE)1084-0699(1999)4:2(135) } <br/>
+
+04. Janssen & Heuberger (1995). Calibration of process-oriented models. _Ecol. Modell. 83, 55-66._ \doi{10.1016/0304-3800(95)00084-9} <br/>
+
+05. Ji & Gallo (2006). An agreement coefficient for image comparison. _Photogramm. Eng. Remote Sensing 7, 823–833._ \doi{10.14358/PERS.72.7.823} <br/>
+
+06. Kling et al. (2012). Runoff conditions in the upper Danube basin under an ensemble of climate
+change scenarios. _J. Hydrol., 424-425, 264-277._ \doi{10.1016/j.jhydrol.2012.01.011} <br/>
+
+07. Kirch (2008). Pearson’s Correlation Coefficient. _In: Kirch W. (eds) Encyclopedia of Public Health. Springer, Dordrecht._ \doi{10.1007/978-1-4020-5614-7_2569} <br/>
+
+08. Krause et al. (2005). Comparison of different efficiency criteria for hydrological model assessment. _Adv. Geosci. 5, 89–97._ \doi{10.5194/adgeo-5-89-2005} <br/>
+
+09. Kobayashi & Salam (2000). Comparing simulated and measured values using mean squared deviation and its components. _Agron. J. 92, 345–352._ \doi{10.2134/agronj2000.922345x} <br/>
+
+10. Legates & McCabe (1999). Evaluating the use of “goodness-of-fit” measures in hydrologic and hydroclimatic model validation. _Water Resour. Res._ \doi{10.1029/1998WR900018} <br/>
+
+11. Lin (1989). A concordance correlation coefficient to evaluate reproducibility.
+_Biometrics 45 (1), 255–268._ \doi{10.2307/2532051} <br/>
+
+12. Makridakis (1993). Accuracy measures: theoretical and practical concerns. _Int. J. Forecast. 9, 527-529._ \doi{10.1016/0169-2070(93)90079-3} <br/>
+
+13. Moriasi et al. (2007). Model Evaluation Guidelines for Systematic Quantification of Accuracy in
+Watershed Simulations. _Trans. ASABE 50, 885–900._ \doi{10.13031/2013.23153} <br/>
+
+14. Nash & Sutcliffe (1970). River flow forecasting through conceptual models part I - A discussion of principles. _J. Hydrol. 10(3), 292-290._ \doi{10.1016/0022-1694(70)90255-6} <br/>
+
+15. Robinson (1957). The statistical measurement of agreement. _Am. Sociol. Rev. 22(1), 17-25._ \doi{10.2307/2088760} <br/>
+
+16. Robinson (1959). The geometric interpretation of agreement. _Am. Sociol. Rev. 24(3), 338-345._ \doi{10.2307/2089382} <br/>
+
+17. Smith & Rose (1995). Model goodness-of-fit analysis using regression and related
+techniques. _Ecol. Model. 77, 49–64._ \doi{10.1016/0304-3800(93)E0074-D} <br/>
+
+18. Warton et al. (2006). Bivariate line-fitting methods for allometry. _Biol. Rev. Camb. Philos. Soc. 81, 259–291._ \doi{10.1002/1521-4036(200203)44:2<161::AID-BIMJ161>3.0.CO;2-N} <br/>
+
+19. Willmott (1981). On the validation of models. _Phys. Geogr. 2, 184–194._ \doi{10.1080/02723646.1981.10642213} <br/>
+
+20. Willmott et al. (1985). Statistics for the evaluation and comparison of models. _J. Geophys. Res. 90, 8995._ \doi{10.1029/jc090ic05p08995} <br/>
+
+21. Willmott & Matsuura (2005). Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. _Clim. Res. 30, 79–82._ \doi{10.3354/cr030079} <br/>
+
+22. Willmott et al. (2012). A refined index of model performance. _Int. J. Climatol. 32, 2088–2094._  \doi{10.1002/joc.2419} <br/>
+
+23. Yang et al. (2014). An evaluation of the statistical methods for testing the performance of crop models with observed data. _Agric. Syst. 127, 81-89._ \doi{10.1016/j.agsy.2014.01.008} <br/>
+
+24. Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007). Measuring and testing dependence by correlation of distances. _Annals of Statistics, Vol. 35(6): 2769-2794._ \doi{10.1214/009053607000000505} <br/>
+
+25. Reshef, D., Reshef, Y., Finucane, H., Grossman, S., McVean, G., Turnbaugh, P.,  Lander, R., Mitzenmacher, M., and Sabeti, P. (2011). Detecting novel associations in large datasets. _Science 334, 6062_. \doi{10.1126/science.1205438}
+
+26. Hyndman, R.J., Koehler, A.B. (2006). Another look at measures of forecast accuracy. _Int. J. Forecast_ \doi{10.3354/cr030079} <br/>
