@@ -24,8 +24,10 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/apsim_open.html">APSIM: Importing APSIM Classic and NewGeneration files</a>
+    <a class="dropdown-item" href="../articles/available_metrics_classification.html">Classification performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/available_metrics_regression.html">Regression performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing the performance of remote sensing models</a>
     <a class="dropdown-item" href="../articles/regression_case.html">Regression case: Assessing model agreement in wheat grain nitrogen content prediction</a>
   </div>
 </li>
@@ -54,7 +56,7 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.0.0" id="metrica-200">metrica 2.0.0<a class="anchor" aria-label="anchor" href="#metrica-200"></a></h2>
-<ul><li>June 28th, 2022. <br></li></ul><p>This new version of metrica includes:</p>
+<ul><li>July 3rd, 2022. <br></li></ul><p>This new version of metrica includes:</p>
 <ol style="list-style-type: decimal"><li>Twenty-seven (27) new functions to evaluate quality of predictions for classification problems:</li></ol><ul><li>
 <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code>: Confusion matrix (as data.frame or plot).</li>
 <li>
@@ -109,7 +111,7 @@
 <code><a href="../reference/prevalence.html">preval_t()</a></code>: Prevalence threshold.</li>
 <li>
 <code><a href="../reference/AUC_roc.html">AUC_roc()</a></code>: Area Under the ROC Curve (trapezoid approach).</li>
-</ul><ol start="2" style="list-style-type: decimal"><li>Three (3) new functions to the family of regression performance metrics:</li></ol><p>-<code><a href="../reference/MASE.html">MASE()</a></code> (Mean Absolute Scaled Error) for Time Series Analysis. - <code><a href="../reference/dcorr.html">dcorr()</a></code> (Distance correlation) as wrapper of dcor() from energy package (<a href="https://CRAN.R-project.org/package=energy" class="external-link uri">https://CRAN.R-project.org/package=energy</a>), and - <code><a href="../reference/MIC.html">MIC()</a></code> (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (<a href="https://CRAN.R-project.org/package=minerva" class="external-link uri">https://CRAN.R-project.org/package=minerva</a>).</p>
+</ul><ol start="2" style="list-style-type: decimal"><li>Three (3) new functions to the family of regression performance metrics:</li></ol><p>-<code><a href="../reference/MASE.html">MASE()</a></code> (Mean Absolute Scaled Error) for Time Series Analysis. - <code><a href="../reference/dcorr.html">dcorr()</a></code> (Distance correlation) as wrapper of dcor() from energy package (<a href="https://CRAN.R-project.org/package=energy" class="external-link uri">https://CRAN.R-project.org/package=energy</a>), and - <code><a href="../reference/MIC.html">MIC()</a></code> (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (<a href="https://CRAN.R-project.org/package=minerva" class="external-link uri">https://CRAN.R-project.org/package=minerva</a>). - <code><a href="../reference/RMLA.html">RMLA()</a></code> (Root Mean Lack of Accuracy) - <code><a href="../reference/RMLP.html">RMLP()</a></code> (Root Mean Lack of Precision)</p>
 <ol start="3" style="list-style-type: decimal"><li>One (1) new plotting function for regression problems:</li></ol><ul><li>
 <code><a href="../reference/density_plot.html">density_plot()</a></code>, to create a plot that paints density areas of predicted and observed coordinates.</li></ul><ol start="4" style="list-style-type: decimal"><li>Four (4) new arguments to plotting functions scatter_plot, tiles_plot, and density_plot (no deprecated):</li></ol><ul><li>
 <code>print_eq</code> (to print equation or not)</li>
@@ -120,8 +122,12 @@
 <li>
 <code>colors</code> (for tile_plot and density_plot, to paint gradient from “low” to “high” density of points)</li>
 </ul><ol start="5" style="list-style-type: decimal"><li><p>Adding the argument <code>tidy</code> to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)</p></li>
-<li><p>Fixing a minor a bug on the <code><a href="../reference/NSE.html">NSE()</a></code> function to estimate the Nash-Sutcliffe model efficiency that produced only values of NSE=1.00 on v1.2.3. ######################################################################################################</p></li>
-</ol></div>
+<li><p>Fixing a minor a bug on the <code><a href="../reference/NSE.html">NSE()</a></code> function to estimate the Nash-Sutcliffe model efficiency that produced only values of NSE=1.00 on v1.2.3.</p></li>
+<li><p>Improved coverage of the code testing.</p></li>
+<li><p>README update.</p></li>
+<li><p>Vignettes update creating versions for both classification and regression, and for importing APSIM files.</p></li>
+</ol><div id="section-2-0-0" class="section level103"><p class="heading"></p></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.3" id="metrica-123-cran">metrica 1.2.3 (CRAN)<a class="anchor" aria-label="anchor" href="#metrica-123-cran"></a></h2><p class="text-muted">CRAN release: 2022-05-12</p>
 <ul><li>May, 10, 2022. <br></li></ul><p>Maintenance update fixing minor errors after feedback from CRAN submission of v1.2.2 (e.g. use ‘donttest’ instead of ‘dontrun’ in functions’ examples, adding references into functions). Also, the available metrics vignette was updated adding the corresponding citations of formulae used into functions.</p>

@@ -26,8 +26,10 @@ observed and the predicted classes by the model."><!-- mathjax --><script src="h
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/apsim_open.html">APSIM: Importing APSIM Classic and NewGeneration files</a>
+    <a class="dropdown-item" href="../articles/available_metrics_classification.html">Classification performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/available_metrics_regression.html">Regression performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing the performance of remote sensing models</a>
     <a class="dropdown-item" href="../articles/regression_case.html">Regression case: Assessing model agreement in wheat grain nitrogen content prediction</a>
   </div>
 </li>
@@ -69,6 +71,9 @@ observed and the predicted classes by the model.</p>
 <span>  plot <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  unit <span class="op">=</span> <span class="st">"count"</span>,</span>
 <span>  colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low <span class="op">=</span> <span class="cn">NULL</span>, high <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>,</span>
+<span>  print_metrics <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  metrics_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"accuracy"</span>, <span class="st">"precision"</span>, <span class="st">"recall"</span><span class="op">)</span>,</span>
+<span>  position_metrics <span class="op">=</span> <span class="st">"top"</span>,</span>
 <span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -97,6 +102,21 @@ observed and the predicted classes by the model.</p>
 
 <dt>colors</dt>
 <dd><p>Vector or list with two colors indicating how to paint the gradient between "low" and "high", Default: c(low = NULL, high = NULL) uses the standard blue gradient of ggplot2.</p></dd>
+
+
+<dt>print_metrics</dt>
+<dd><p>boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.</p></dd>
+
+
+<dt>metrics_list</dt>
+<dd><p>vector or list of selected metrics to print on the plot.
+Default: c("accuracy", "precision", "recall").</p></dd>
+
+
+<dt>position_metrics</dt>
+<dd><p>string specifying the position to print the performance
+<code>metrics_list</code>. Options are "top" (as a subtitle) or "bottom" (as a caption).
+Default: "bottom".</p></dd>
 
 
 <dt>na.rm</dt>

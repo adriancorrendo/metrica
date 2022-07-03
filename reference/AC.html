@@ -26,8 +26,10 @@ for a continuous predicted-observed dataset."><!-- mathjax --><script src="https
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/apsim_open.html">APSIM: Importing APSIM Classic and NewGeneration files</a>
+    <a class="dropdown-item" href="../articles/available_metrics_classification.html">Classification performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/available_metrics_regression.html">Regression performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing the performance of remote sensing models</a>
     <a class="dropdown-item" href="../articles/regression_case.html">Regression case: Assessing model agreement in wheat grain nitrogen content prediction</a>
   </div>
 </li>
@@ -62,7 +64,7 @@ for a continuous predicted-observed dataset.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">AC</span><span class="op">(</span>data <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">obs</span>, <span class="va">pred</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">AC</span><span class="op">(</span>data <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">obs</span>, <span class="va">pred</span>, tidy <span class="op">=</span> <span class="cn">FALSE</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -77,6 +79,11 @@ for a continuous predicted-observed dataset.</p>
 
 <dt>pred</dt>
 <dd><p>Vector with predicted values (numeric).</p></dd>
+
+
+<dt>tidy</dt>
+<dd><p>Logical operator (TRUE/FALSE) to decide the type of return. TRUE
+returns a data.frame, FALSE returns a list; Default : FALSE.</p></dd>
 
 
 <dt>na.rm</dt>
@@ -111,7 +118,9 @@ For the formula and more details, see <a href="https://adriancorrendo.github.io/
 <span class="r-in"><span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">X</span>, pred <span class="op">=</span> <span class="va">Y</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">AC</span><span class="op">(</span><span class="va">df</span>, obs <span class="op">=</span> <span class="va">X</span>, pred <span class="op">=</span> <span class="va">Y</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $AC</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] -1.337312</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

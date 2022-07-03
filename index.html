@@ -41,8 +41,10 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="articles/classification_case.html">Classification case: Assessing classification quality</a>
+    <a class="dropdown-item" href="articles/apsim_open.html">APSIM: Importing APSIM Classic and NewGeneration files</a>
+    <a class="dropdown-item" href="articles/available_metrics_classification.html">Classification performance metrics and indices</a>
+    <a class="dropdown-item" href="articles/available_metrics_regression.html">Regression performance metrics and indices</a>
+    <a class="dropdown-item" href="articles/classification_case.html">Classification case: Assessing the performance of remote sensing models</a>
     <a class="dropdown-item" href="articles/regression_case.html">Regression case: Assessing model agreement in wheat grain nitrogen content prediction</a>
   </div>
 </li>
@@ -76,14 +78,15 @@
 <!-- badges: end --><div class="section level2">
 <h2 id="introduction--">Introduction <br><a class="anchor" aria-label="anchor" href="#introduction--"></a>
 </h2>
-<p><code>metrica</code> is a compilation of more than 80 functions designed to quantitatively and visually evaluate the prediction performance of regression (continuous variables) and classification (categorical variables) point-forecast models (e.g. APSIM, DSSAT, DNDC, Machine Learning). <code>metrica</code> offers a toolbox with a wide spectrum of goodness of fit, error metrics, indices, and coefficients accounting for different aspects of the agreement between predicted and observed values, plus some basic visualization functions to assess models performance (e.g. confusion matrix, scatter with regression line; Bland-Altman plot) provided in customizable format (ggplot).</p>
-<p>Always keep in mind the concept of “cross-validation” since predicted values should come from out-of-bag samples (unseen by training set) to avoid overestimation of the prediction performance. <br></p>
-<p><img src="reference/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;"><br></p>
+<p><img src="reference/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;"><br><code>metrica</code> is a compilation of more than 80 functions designed to quantitatively and visually evaluate the prediction performance of regression (continuous variables) and classification (categorical variables) point-forecast models (e.g. APSIM, DSSAT, DNDC, Supervised Machine Learning). <code>metrica</code> offers a toolbox with a wide spectrum of goodness of fit, error metrics, indices, and coefficients accounting for different aspects of the agreement between predicted and observed values, plus some basic visualization functions to assess models performance (e.g. confusion matrix, scatter with regression line; Bland-Altman plot) provided in customizable format (ggplot).</p>
+<p>For supervised models, always keep in mind the concept of “cross-validation” since predicted values should ideally come from out-of-bag samples (unseen by training sets) to avoid overestimation of the prediction performance. <br></p>
 <p>Check the Documentation at <a href="https://adriancorrendo.github.io/metrica/" class="uri">https://adriancorrendo.github.io/metrica/</a> <br></p>
 <p><strong>Vignettes</strong> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/available_metrics.html">1. Complete list of metrics</a> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/regression_case.html">2. A regression case</a> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/classification_case.html">3. A classification case</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/available_regression_metrics.html">1. List of metrics for Regression</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/available_classification_metrics.html">2. List of metrics for Classification</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/regression_case.html">3. A regression case (numerical variables)</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/classification_case.html">4. A classification case (categorical variables)</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/apsim_open.html">5. Import APSIM files</a> <br></p>
 </div>
 <div class="section level2">
 <h2 id="functions--">Functions <br><a class="anchor" aria-label="anchor" href="#functions--"></a>
@@ -94,7 +97,7 @@
 <p>For more details visit the vignettes <a href="https://adriancorrendo.github.io/metrica/" class="uri">https://adriancorrendo.github.io/metrica/</a>.</p>
 </div>
 <div class="section level2">
-<h2 id="core-function-arguments--">Core function arguments <br><a class="anchor" aria-label="anchor" href="#core-function-arguments--"></a>
+<h2 id="using-the-functions--">Using the functions <br><a class="anchor" aria-label="anchor" href="#using-the-functions--"></a>
 </h2>
 <p>There are two basic arguments common to all <code>metrica</code> functions: (i) <code>obs</code>(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) <code>pred</code> (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values. <br></p>
 <p>Optional arguments include <code>data</code> that allows to call an existing data frame containing both observed and predicted vectors, and <code>tidy</code>, which controls the type of output as a list (tidy = FALSE) or as a data.frame (tidy = TRUE). <br></p>
@@ -129,8 +132,7 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adriancorrendo.github.io/metrica/">metrica</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
-<span><span class="co">#library(ggpmisc)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span></code></pre></div>
 <p>This is a basic example which shows you the core regression and classification functions of <em>metrica</em>: <br></p>
 </div>
 </div>
@@ -282,15 +284,16 @@
 <span>                      values_from <span class="op">=</span> <span class="st">"Score"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">metrics.sum.wide</span></span>
-<span><span class="co">#&gt; # A tibble: 1 × 43</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 45</span></span>
 <span><span class="co">#&gt;      B0    B1     r    R2    Xa   CCC   MAE  RMAE  MAPE SMAPE   RAE   RSE   MBE</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1  1.13 0.929 0.672 0.451 0.996 0.669  3.06 0.163  16.8  16.8 0.764 0.616 0.207</span></span>
-<span><span class="co">#&gt; # … with 30 more variables: PBE &lt;dbl&gt;, PAB &lt;dbl&gt;, PPB &lt;dbl&gt;, MSE &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; # … with 32 more variables: PBE &lt;dbl&gt;, PAB &lt;dbl&gt;, PPB &lt;dbl&gt;, MSE &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   RMSE &lt;dbl&gt;, RRMSE &lt;dbl&gt;, RSR &lt;dbl&gt;, iqRMSE &lt;dbl&gt;, MLA &lt;dbl&gt;, MLP &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   SB &lt;dbl&gt;, SDSD &lt;dbl&gt;, LCS &lt;dbl&gt;, PLA &lt;dbl&gt;, PLP &lt;dbl&gt;, Ue &lt;dbl&gt;, Uc &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   Ub &lt;dbl&gt;, NSE &lt;dbl&gt;, E1 &lt;dbl&gt;, Erel &lt;dbl&gt;, KGE &lt;dbl&gt;, d &lt;dbl&gt;, d1 &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   d1r &lt;dbl&gt;, RAC &lt;dbl&gt;, AC &lt;dbl&gt;, lambda &lt;dbl&gt;, dcorr &lt;dbl&gt;, MIC &lt;dbl&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; #   RMLA &lt;dbl&gt;, RMLP &lt;dbl&gt;, SB &lt;dbl&gt;, SDSD &lt;dbl&gt;, LCS &lt;dbl&gt;, PLA &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   PLP &lt;dbl&gt;, Ue &lt;dbl&gt;, Uc &lt;dbl&gt;, Ub &lt;dbl&gt;, NSE &lt;dbl&gt;, E1 &lt;dbl&gt;, Erel &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   KGE &lt;dbl&gt;, d &lt;dbl&gt;, d1 &lt;dbl&gt;, d1r &lt;dbl&gt;, RAC &lt;dbl&gt;, AC &lt;dbl&gt;, lambda &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   dcorr &lt;dbl&gt;, MIC &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 <div class="section level3"><h3 id="313-run-multiple-datasets-at-once">3.1.3. Run multiple datasets at once<a class="anchor" aria-label="anchor" href="#313-run-multiple-datasets-at-once"></a>
 </h3></div>
@@ -326,10 +329,10 @@
 <span><span class="co">#&gt; # A tibble: 4 × 3</span></span>
 <span><span class="co">#&gt;   id       data               performance  </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;    &lt;list&gt;             &lt;list&gt;       </span></span>
-<span><span class="co">#&gt; 1 wheat    &lt;tibble [137 × 2]&gt; &lt;df [43 × 2]&gt;</span></span>
-<span><span class="co">#&gt; 2 barley   &lt;tibble [69 × 2]&gt;  &lt;df [43 × 2]&gt;</span></span>
-<span><span class="co">#&gt; 3 sorghum  &lt;tibble [36 × 2]&gt;  &lt;df [43 × 2]&gt;</span></span>
-<span><span class="co">#&gt; 4 chickpea &lt;tibble [39 × 2]&gt;  &lt;df [43 × 2]&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 wheat    &lt;tibble [137 × 2]&gt; &lt;df [45 × 2]&gt;</span></span>
+<span><span class="co">#&gt; 2 barley   &lt;tibble [69 × 2]&gt;  &lt;df [45 × 2]&gt;</span></span>
+<span><span class="co">#&gt; 3 sorghum  &lt;tibble [36 × 2]&gt;  &lt;df [45 × 2]&gt;</span></span>
+<span><span class="co">#&gt; 4 chickpea &lt;tibble [39 × 2]&gt;  &lt;df [45 × 2]&gt;</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="3132-non-nested-data--">3.1.3.2. Non-nested data <br><a class="anchor" aria-label="anchor" href="#3132-non-nested-data--"></a>
@@ -410,7 +413,7 @@
 <span><span class="co"># b. Plot</span></span>
 <span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, </span>
 <span>                                            plot <span class="op">=</span> <span class="cn">TRUE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#735d78"</span><span class="op">)</span>, </span>
-<span>                                            unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
+<span>                                            unit <span class="op">=</span> <span class="st">"count"</span>, print_metrics <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-14-1.png" width="100%"></p>
 </div>
 <div class="section level3">
@@ -432,7 +435,7 @@
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, </span>
 <span>                                      pred <span class="op">=</span> <span class="va">predictions</span>, </span>
 <span>                                      plot <span class="op">=</span> <span class="cn">TRUE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#d3dbbd"</span> , high<span class="op">=</span><span class="st">"#885f78"</span><span class="op">)</span>, </span>
-<span>                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
+<span>                                      unit <span class="op">=</span> <span class="st">"count"</span>, print_metrics <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-15-1.png" width="100%"></p>
 </div>
 <div class="section level3"><h3 id="311-classification-metrics--">3.1.1. Classification Metrics <br><a class="anchor" aria-label="anchor" href="#311-classification-metrics--"></a>
@@ -520,19 +523,19 @@
 <span></span>
 <span><span class="co"># Multinomial</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions):</span></span>
+<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, :</span></span>
 <span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
 <span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
-<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please, consider</span></span>
-<span><span class="co">#&gt; using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The</span></span>
-<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span></span>
-<span><span class="co">#&gt; recorded as NaN.</span></span>
-<span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
+<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions, pos_level</span></span>
+<span><span class="co">#&gt; = pos_level): For multiclass cases, the agf should be estimated at a class</span></span>
+<span><span class="co">#&gt; level. Please, consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions, pos_level</span></span>
+<span><span class="co">#&gt; = pos_level): The Fowlkes-Mallows Index is not available for multiclass cases.</span></span>
+<span><span class="co">#&gt; The result has been recorded as NaN.</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions, : For</span></span>
 <span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
 <span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions): For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
+<span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions, : For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
 <span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
 <span><span class="co">#&gt;         Metric       Score</span></span>
 <span><span class="co">#&gt; 1     accuracy  0.32000000</span></span>
@@ -576,19 +579,19 @@
 <span><span class="co"># Multiclass</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span>,</span>
 <span>                                  metrics_list <span class="op">=</span> <span class="va">selected_class_metrics</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions):</span></span>
+<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, :</span></span>
 <span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
 <span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
-<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please, consider</span></span>
-<span><span class="co">#&gt; using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The</span></span>
-<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span></span>
-<span><span class="co">#&gt; recorded as NaN.</span></span>
-<span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
+<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions, pos_level</span></span>
+<span><span class="co">#&gt; = pos_level): For multiclass cases, the agf should be estimated at a class</span></span>
+<span><span class="co">#&gt; level. Please, consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions, pos_level</span></span>
+<span><span class="co">#&gt; = pos_level): The Fowlkes-Mallows Index is not available for multiclass cases.</span></span>
+<span><span class="co">#&gt; The result has been recorded as NaN.</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions, : For</span></span>
 <span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
 <span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions): For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
+<span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions, : For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
 <span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
 <span><span class="co">#&gt;     Metric     Score</span></span>
 <span><span class="co">#&gt; 1 accuracy 0.3200000</span></span>

@@ -26,8 +26,10 @@ for a continuous predicted-observed dataset."><!-- mathjax --><script src="https
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/apsim_open.html">APSIM: Importing APSIM Classic and NewGeneration files</a>
+    <a class="dropdown-item" href="../articles/available_metrics_classification.html">Classification performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/available_metrics_regression.html">Regression performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing the performance of remote sensing models</a>
     <a class="dropdown-item" href="../articles/regression_case.html">Regression case: Assessing model agreement in wheat grain nitrogen content prediction</a>
   </div>
 </li>
@@ -63,10 +65,10 @@ for a continuous predicted-observed dataset.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">MASE</span><span class="op">(</span></span>
-<span>  <span class="va">data</span>,</span>
+<span>  data <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">obs</span>,</span>
 <span>  <span class="va">pred</span>,</span>
-<span>  <span class="va">time</span>,</span>
+<span>  time <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  naive_step <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  oob_mae <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  tidy <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -89,8 +91,8 @@ for a continuous predicted-observed dataset.</p>
 
 
 <dt>time</dt>
-<dd><p>Alphanumeric vector containing the time variable to sort observations.
-Required for MASE estimation.</p></dd>
+<dd><p>String with the "name" of the vector containing the time variable
+to sort observations. Required for MASE estimation.</p></dd>
 
 
 <dt>naive_step</dt>

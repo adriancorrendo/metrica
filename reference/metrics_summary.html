@@ -28,8 +28,10 @@ By default, it calculates all available metrics for either regression or classif
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/apsim_open.html">APSIM: Importing APSIM Classic and NewGeneration files</a>
+    <a class="dropdown-item" href="../articles/available_metrics_classification.html">Classification performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/available_metrics_regression.html">Regression performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing the performance of remote sensing models</a>
     <a class="dropdown-item" href="../articles/regression_case.html">Regression case: Assessing model agreement in wheat grain nitrogen content prediction</a>
   </div>
 </li>
@@ -69,9 +71,10 @@ By default, it calculates all available metrics for either regression or classif
 <span>  data <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">obs</span>,</span>
 <span>  <span class="va">pred</span>,</span>
-<span>  <span class="va">type</span>,</span>
+<span>  type <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  metrics_list <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  orientation <span class="op">=</span> <span class="st">"PO"</span>,</span>
+<span>  pos_level <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -105,6 +108,13 @@ which will estimate all metrics available for either regression or classificatio
 orientation to estimate slope(B1) and intercept(B0). It only applies when type = "regression".
 "PO" is for predicted vs observed, and "OP" for observed vs predicted.
 Default is orientation = "PO".</p></dd>
+
+
+<dt>pos_level</dt>
+<dd><p>(for classification only). Integer, for binary cases, indicating the order (1|2) of the level
+corresponding to the positive. Generally, the positive level is the second (2)
+since following an alpha-numeric order, the most common pairs are
+<code>(Negative | Positive)</code>, <code>(0 | 1)</code>, <code>(FALSE | TRUE)</code>. Default : 2.</p></dd>
 
 
 <dt>na.rm</dt>
@@ -161,26 +171,28 @@ For the entire list of available metrics with formula, see <a href="https://adri
 <span class="r-out co"><span class="r-pr">#&gt;</span> 21 iqRMSE  1.061780e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 22    MLA  5.227917e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 23    MLP  1.763057e+02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24     SB  5.198943e+00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25   SDSD  2.897447e-02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26    LCS  1.763057e+02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27    PLA  2.879862e+00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28    PLP  9.712014e+01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29     Ue  9.712014e+01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30     Uc  1.596094e-02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31     Ub  2.863901e+00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32    NSE -9.610150e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33     E1 -4.523297e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34   Erel  7.188393e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35    KGE -1.992940e+00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36      d  4.208294e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37     d1  2.782443e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38    d1r -4.124383e+05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39    RAC  5.080269e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40     AC -8.388534e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41 lambda  2.972457e-02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42  dcorr  1.374032e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43    MIC  1.911684e-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24   RMLA  5.227917e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25   RMLP  1.763057e+02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26     SB  5.198943e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27   SDSD  2.897447e-02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28    LCS  1.763057e+02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29    PLA  2.879862e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30    PLP  9.712014e+01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31     Ue  9.712014e+01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32     Uc  1.596094e-02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33     Ub  2.863901e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34    NSE -9.610150e-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35     E1 -4.523297e-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36   Erel  7.188393e-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37    KGE -1.992940e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38      d  4.208294e-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39     d1  2.782443e-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40    d1r -4.124383e+05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41    RAC  5.080269e-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42     AC -8.388534e-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 lambda  2.972457e-02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44  dcorr  1.374032e-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45    MIC  1.911684e-01</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Categorical variable (classification)</span></span></span>
 <span class="r-in"><span><span class="va">binomial_case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"True"</span>,<span class="st">"False"</span><span class="op">)</span>, <span class="fl">100</span>, </span></span>

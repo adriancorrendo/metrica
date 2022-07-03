@@ -10,7 +10,13 @@
     <loc>https://adriancorrendo.github.io/metrica/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://adriancorrendo.github.io/metrica/articles/available_metrics.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/articles/apsim_open.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/articles/classification_case.html</loc>
@@ -110,6 +116,12 @@
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/RMAE.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RMLA.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RMLP.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/RMSE.html</loc>
@@ -226,7 +238,13 @@
     <loc>https://adriancorrendo.github.io/metrica/reference/lambda.html</loc>
   </url>
   <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/land_cover.html</loc>
+  </url>
+  <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/likelihood_ratios.html</loc>
+  </url>
+  <url>
+    <loc>https://adriancorrendo.github.io/metrica/reference/maize_phenology.html</loc>
   </url>
   <url>
     <loc>https://adriancorrendo.github.io/metrica/reference/mcc.html</loc>

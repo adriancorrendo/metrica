@@ -6,12 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="metrica">
-<title>Classification case: Assessing classification quality • metrica</title>
+<title>Classification case: Assessing the performance of remote sensing models • metrica</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification case: Assessing classification quality">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification case: Assessing the performance of remote sensing models">
 <meta property="og:description" content="metrica">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -41,8 +41,10 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/available_metrics.html">Available prediction performance metrics and indices</a>
-    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing classification quality</a>
+    <a class="dropdown-item" href="../articles/apsim_open.html">APSIM: Importing APSIM Classic and NewGeneration files</a>
+    <a class="dropdown-item" href="../articles/available_metrics_classification.html">Classification performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/available_metrics_regression.html">Regression performance metrics and indices</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Classification case: Assessing the performance of remote sensing models</a>
     <a class="dropdown-item" href="../articles/regression_case.html">Regression case: Assessing model agreement in wheat grain nitrogen content prediction</a>
   </div>
 </li>
@@ -72,10 +74,10 @@
 
 <script src="classification_case_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Classification case: Assessing classification quality</h1>
+      <img src="" class="logo" alt=""><h1>Classification case: Assessing the performance of remote sensing models</h1>
                         <h4 data-toc-skip class="author">Adrian Correndo &amp; Luciana Nieto</h4>
             
-            <h4 data-toc-skip class="date">2022-06-28</h4>
+            <h4 data-toc-skip class="date">2022-07-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/vignettes/classification_case.Rmd" class="external-link"><code>vignettes/classification_case.Rmd</code></a></small>
       <div class="d-none name"><code>classification_case.Rmd</code></div>
@@ -84,524 +86,614 @@
     
     
 <div class="section level2">
-<h2 id="introduction">1. Introduction <br><a class="anchor" aria-label="anchor" href="#introduction"></a>
+<h2 id="introduction">1. Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>This vignette introduces the functionality of the <em><code>metrica</code></em> package applied to classification tasks. <br></p>
-<div class="section level3">
-<h3 id="libraries">Libraries<a class="anchor" aria-label="anchor" href="#libraries"></a>
-</h3>
+<p><img src="../reference/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;"><br> The <em><code>metrica</code></em> package was developed to visualize and compute the level of agreement between observed ground-truth values and model-derived (e.g., mechanistic or empirical) predicted.</p>
+<p>This package is intended to fit into the following workflow:</p>
+<ol style="list-style-type: decimal">
+<li>a data set containing the observed values is used to train a model<br>
+</li>
+<li>the trained model is used to generate predicted<br>
+</li>
+<li>a data frame containing at least the <strong>observed</strong> and model-<strong>predicted</strong> values is created<br>
+</li>
+<li>
+<em><code>metrica</code></em> package is used to compute and evaluate the classification model based on observed and predicted values<br>
+</li>
+<li>
+<em><code>metrica</code></em> package is used to visualize model fit and selected fit metrics</li>
+</ol>
+<p>This vignette introduces the functionality of the <em><code>metrica</code></em> package applied to observed and model-predicted values of a binary land cover classification scenario, where the two classes are vegetation (1) and non-vegetation (0)).</p>
+<p>Let’s begin by loading the packages needed. <br> ## Libraries</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adriancorrendo.github.io/metrica/">metrica</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span></code></pre></div>
 </div>
+<div class="section level2">
+<h2 id="example-datasets">2. Example datasets <br><a class="anchor" aria-label="anchor" href="#example-datasets"></a>
+</h2>
 <div class="section level3">
-<h3 id="example-datasets">2. Example datasets <br><a class="anchor" aria-label="anchor" href="#example-datasets"></a>
+<h3 id="kansas-land-cover-data">2.1. Kansas Land Cover data<a class="anchor" aria-label="anchor" href="#kansas-land-cover-data"></a>
 </h3>
+<p><br></p>
+<p><img src="../reference/figures/land_cover_example.png" align="right" height="500" style="float:right; height:500px;"></p>
+<p><br></p>
+<p>Now we load the binary <code>land_cover</code> data set already included with the <code>metrica</code> package. This data set contains two columns: <br></p>
+<ul>
+<li><p><code>predicted</code>: model-predicted (random forest) land cover, being vegetation = 1 and other = 0, <br></p></li>
+<li><p><code>actual</code>: ground-truth observed land cover, being 0 = vegetation and 1 = other <br></p></li>
+</ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># Load</span></span>
+<span><span class="va">binary_landCover</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="../reference/land_cover.html">land_cover</a></span></span>
 <span></span>
-<span><span class="va">binomial_case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Positive"</span>,<span class="st">"Negative"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>                            predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Positive"</span>,<span class="st">"Negative"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">labels</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">binomial_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Positive"</span>,<span class="st">"Negative"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>                            predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Positive"</span>,<span class="st">"Negative"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">labels</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">binomial_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"POS"</span>,<span class="st">"NEG"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>                            predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"POS"</span>,<span class="st">"NEG"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">labels</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">multinomial_case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Red"</span>,<span class="st">"Green"</span>, <span class="st">"Blue"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>                               predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Red"</span>,<span class="st">"Green"</span>, <span class="st">"Blue"</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>predictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">labels</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># Printing first observations</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">binary_landCover</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   actual predicted</span></span>
+<span><span class="co">#&gt; 1      0         0</span></span>
+<span><span class="co">#&gt; 2      1         1</span></span>
+<span><span class="co">#&gt; 3      1         1</span></span>
+<span><span class="co">#&gt; 4      0         0</span></span>
+<span><span class="co">#&gt; 5      0         0</span></span>
+<span><span class="co">#&gt; 6      1         1</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="confusion-matrix">3. Confusion Matrix <br><a class="anchor" aria-label="anchor" href="#confusion-matrix"></a>
+<h3 id="maize-phenology">2.2. Maize Phenology<a class="anchor" aria-label="anchor" href="#maize-phenology"></a>
 </h3>
+<p><br></p>
+<p><img src="../reference/figures/maize_phenology_example.png" align="right" height="500" style="float:right; height:500px;"></p>
+<p><br></p>
+<p>Now we load the multinomial <code>maize_phenology</code> data set, which is also already included with the <code>metrica</code> package. This multiclass data set presents 16 different classes corresponding to phenological stages of the maize (<em>Zea Mays</em> (L.)) crop. <br></p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Load</span></span>
+<span><span class="va">multi_maize_phen</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="../reference/maize_phenology.html">maize_phenology</a></span></span>
+<span></span>
+<span><span class="co"># Printing first observations</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">multi_maize_phen</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   actual predicted</span></span>
+<span><span class="co">#&gt; 1     R1       V18</span></span>
+<span><span class="co">#&gt; 2     R2        R1</span></span>
+<span><span class="co">#&gt; 3     R2        R1</span></span>
+<span><span class="co">#&gt; 4     R2        R2</span></span>
+<span><span class="co">#&gt; 5     R2        R2</span></span>
+<span><span class="co">#&gt; 6     R2        R2</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="visual-assessment-of-agreement">3 Visual assessment of agreement <br><a class="anchor" aria-label="anchor" href="#visual-assessment-of-agreement"></a>
+</h2>
+<div class="section level3">
+<h3 id="confusion-matrix">3.1 Confusion matrix<a class="anchor" aria-label="anchor" href="#confusion-matrix"></a>
+</h3>
+<p>The simplest way to visually assess agreement between observed and predicted classes is with a confusion matrix. <br></p>
+<p>We can use the function <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code> from the <em>metrica</em> package. <br></p>
+<p>The function requires specifying: <br></p>
+<ul>
+<li><p>the data frame object name (<code>data</code> argument) <br></p></li>
+<li><p>the name of the column containing observed values (<code>obs</code> argument) <br></p></li>
+<li><p>the name of the column containing predicted values (<code>pred</code> argument) <br></p></li>
+</ul>
+<p>The output of the <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code> function is either a table (<code>plot = FALSE</code>) or a <code>ggplot2</code> object (<code>plot = TRUE</code>) that can be further customized: <br></p>
 </div>
 <div class="section level3">
 <h3 id="binary">3.1. Binary<a class="anchor" aria-label="anchor" href="#binary"></a>
 </h3>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># a. Print</span></span>
+<span><span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, </span>
+<span>                                      plot <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          OBSERVED</span></span>
+<span><span class="co">#&gt; PREDICTED   0   1</span></span>
+<span><span class="co">#&gt;         0 181   6</span></span>
+<span><span class="co">#&gt;         1   6  92</span></span>
 <span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, </span>
-<span>                                            plot <span class="op">=</span> <span class="cn">FALSE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#735d78"</span><span class="op">)</span>, </span>
-<span>                                            unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;           OBSERVED</span></span>
-<span><span class="co">#&gt; PREDICTED  Negative Positive</span></span>
-<span><span class="co">#&gt;   Negative       20       26</span></span>
-<span><span class="co">#&gt;   Positive       23       31</span></span>
-<span>  </span>
 <span><span class="co"># b. Plot</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, </span>
-<span>                                            plot <span class="op">=</span> <span class="cn">TRUE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#735d78"</span><span class="op">)</span>, </span>
-<span>                                            unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<span><span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, </span>
+<span>                                      plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#ffe8d6"</span> , high<span class="op">=</span><span class="st">"#892b64"</span><span class="op">)</span>, </span>
+<span>                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="classification_case_files/figure-html/confusion_matrix%20binary-1.png" width="720"></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># c. Unit = proportion</span></span>
+<span><span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, </span>
+<span>                                      plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#892b64"</span><span class="op">)</span>, </span>
+<span>                                      unit <span class="op">=</span> <span class="st">"proportion"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="classification_case_files/figure-html/confusion_matrix%20binary-2.png" width="720"></p>
 </div>
 <div class="section level3">
 <h3 id="multiclass">3.2. Multiclass<a class="anchor" aria-label="anchor" href="#multiclass"></a>
 </h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># a. Print</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, </span>
-<span>                                      pred <span class="op">=</span> <span class="va">predictions</span>, </span>
-<span>                                      plot <span class="op">=</span> <span class="cn">FALSE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#735d78"</span><span class="op">)</span>,</span>
+<span><span class="va">multi_maize_phen</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, </span>
+<span>                                      plot <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;          OBSERVED</span></span>
-<span><span class="co">#&gt; PREDICTED Blue Green Red</span></span>
-<span><span class="co">#&gt;     Blue    10     7   3</span></span>
-<span><span class="co">#&gt;     Green   13    10   8</span></span>
-<span><span class="co">#&gt;     Red     11    15  23</span></span>
+<span><span class="co">#&gt; PREDICTED R1 R2 R3 R4 R5 R6 V10 V12 V13 V14 V15 V16 V18 V19 V9 VT</span></span>
+<span><span class="co">#&gt;       R1   0  2  0  0  0  0   0   0   0   0   0   0   0   0  0  0</span></span>
+<span><span class="co">#&gt;       R2   0  4  0  0  0  0   0   0   0   1   0   0   0   0  0  0</span></span>
+<span><span class="co">#&gt;       R3   0  1  2  0  0  0   0   0   0   0   0   0   0   0  0  0</span></span>
+<span><span class="co">#&gt;       R4   0  0  0  6  0  0   0   0   0   0   0   0   0   0  0  0</span></span>
+<span><span class="co">#&gt;       R5   0  0  0  0 12  1   0   0   0   0   0   0   0   0  0  0</span></span>
+<span><span class="co">#&gt;       R6   0  0  0  0  3 32   0   0   0   0   0   0   0   0  0  0</span></span>
+<span><span class="co">#&gt;       V10  0  0  0  0  0  0   6   0   0   1   0   0   0   0  0  0</span></span>
+<span><span class="co">#&gt;       V12  0  0  0  0  0  0   0   7   1   0   0   0   0   0  0  0</span></span>
+<span><span class="co">#&gt;       V13  0  0  0  0  0  0   0   0   6   0   0   0   0   0  0  0</span></span>
+<span><span class="co">#&gt;       V14  0  0  0  0  0  0   0   0   0   2   0   0   0   0  0  0</span></span>
+<span><span class="co">#&gt;       V15  0  0  0  0  0  0   0   0   0   0   1   0   0   0  0  1</span></span>
+<span><span class="co">#&gt;       V16  0  0  0  0  0  0   0   0   0   0   0   2   0   0  0  0</span></span>
+<span><span class="co">#&gt;       V18  1  0  0  0  0  0   0   0   0   0   0   0   4   0  0  0</span></span>
+<span><span class="co">#&gt;       V19  0  0  0  0  0  0   0   0   0   0   0   0   0   2  0  0</span></span>
+<span><span class="co">#&gt;       V9   0  0  0  0  0  0   0   0   0   0   0   0   0   0  2  0</span></span>
+<span><span class="co">#&gt;       VT   0  0  0  0  0  0   0   0   0   0   0   0   0   0  0  3</span></span>
 <span></span>
 <span><span class="co"># b. Plot</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, </span>
-<span>                                      pred <span class="op">=</span> <span class="va">predictions</span>, </span>
-<span>                                      plot <span class="op">=</span> <span class="cn">TRUE</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#d3dbbd"</span> , high<span class="op">=</span><span class="st">"steelblue"</span><span class="op">)</span>, </span>
-<span>                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<span><span class="va">multi_maize_phen</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, </span>
+<span>                                      plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                                      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"grey85"</span> , high<span class="op">=</span><span class="st">"steelblue"</span><span class="op">)</span>, </span>
+<span>                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="classification_case_files/figure-html/confusion_matrix%20multiclass-1.png" width="1080"></p>
 </div>
-<div class="section level3">
-<h3 id="classification-metrics">4. Classification Metrics <br><a class="anchor" aria-label="anchor" href="#classification-metrics"></a>
-</h3>
 </div>
+<div class="section level2">
+<h2 id="numerical-assessment-of-agreement">4. Numerical assessment of agreement <br><a class="anchor" aria-label="anchor" href="#numerical-assessment-of-agreement"></a>
+</h2>
+<p>The <em>metrica</em> package contains functions for <strong>26</strong> scoring rules to assess the agreement between observed and predicted values for classification data. <br></p>
+<p>A list with all the the metrics including their name, definition, details, formula, and function name, please check <a href="https://adriancorrendo.github.io/metrica/articles/available_metrics.html">here</a>. <br></p>
+<p>All of the metric functions take at least three arguments: <br></p>
+<ul>
+<li><p>the data frame object name (<code>data</code> argument, optional) <br></p></li>
+<li><p>the name of the column containing observed values (<code>obs</code> argument) <br></p></li>
+<li><p>the name of the column containing predicted values (<code>pred</code> argument) <br></p></li>
+<li><p>an integer (1 or 2) indicating the alphanumerical order of the positive event (<code>pos_level</code> argument, Default = 2) <br></p></li>
+<li><p>a TRUE/FALSE indicating to estimate metrics for each single class (<code>atom</code> argument, Default = FALSE). This argument is only functional for multiclass datasets. <br></p></li>
+<li><p>a TRUE/FALSE indicating to store the numeric result as a list (<code>tidy</code> argument, Default = FALSE), or as a data frame (tidy = TRUE). <br></p></li>
+</ul>
 <div class="section level3">
-<h3 id="single-dataset">4.1. Single dataset <br><a class="anchor" aria-label="anchor" href="#single-dataset"></a>
+<h3 id="single-metrics">4.1. Single metrics<a class="anchor" aria-label="anchor" href="#single-metrics"></a>
 </h3>
-</div>
-<div class="section level3">
-<h3 id="two-class-data">4.1.1. Two-class data<a class="anchor" aria-label="anchor" href="#two-class-data"></a>
-</h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get classification metrics one by one</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   accuracy</span></span>
-<span><span class="co">#&gt; 1     0.51</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/error_rate.html">error_rate</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   error_rate</span></span>
-<span><span class="co">#&gt; 1       0.49</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/precision.html">precision</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   precision</span></span>
-<span><span class="co">#&gt; 1 0.5740741</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/recall.html">recall</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, atom <span class="op">=</span> <span class="cn">F</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      recall</span></span>
-<span><span class="co">#&gt; 1 0.5438596</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/specificity.html">specificity</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        spec</span></span>
-<span><span class="co">#&gt; 1 0.4651163</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/balacc.html">balacc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;     balacc</span></span>
-<span><span class="co">#&gt; 1 0.504488</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fscore.html">fscore</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      fscore</span></span>
-<span><span class="co">#&gt; 1 0.5585586</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/agf.html">agf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        agf</span></span>
-<span><span class="co">#&gt; 1 0.558632</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/gmean.html">gmean</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       gmean</span></span>
-<span><span class="co">#&gt; 1 0.5029493</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/khat.html">khat</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;          khat</span></span>
-<span><span class="co">#&gt; 1 0.008899676</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/mcc.html">mcc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;           mcc</span></span>
-<span><span class="co">#&gt; 1 0.008916106</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fmi.html">fmi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         fmi</span></span>
-<span><span class="co">#&gt; 1 0.5587627</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/bmi.html">bmi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;           bmi</span></span>
-<span><span class="co">#&gt; 1 0.008975928</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/csi.html">csi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         csi</span></span>
-<span><span class="co">#&gt; 1 0.4189189</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/deltap.html">deltap</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        deltap</span></span>
-<span><span class="co">#&gt; 1 0.008856683</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/npv.html">npv</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         npv</span></span>
-<span><span class="co">#&gt; 1 0.4347826</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/specificity.html">FPR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         FPR</span></span>
-<span><span class="co">#&gt; 1 0.5348837</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/recall.html">FNR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         FNR</span></span>
-<span><span class="co">#&gt; 1 0.4561404</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/precision.html">FDR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         FDR</span></span>
-<span><span class="co">#&gt; 1 0.4259259</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/npv.html">FOR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         FOR</span></span>
-<span><span class="co">#&gt; 1 0.5652174</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/likelihood_ratios.html">posLr</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      posLr</span></span>
-<span><span class="co">#&gt; 1 1.016781</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/likelihood_ratios.html">negLr</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       negLr</span></span>
-<span><span class="co">#&gt; 1 0.9807018</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/likelihood_ratios.html">dor</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        dor</span></span>
-<span><span class="co">#&gt; 1 1.036789</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/prevalence.html">preval</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   prev</span></span>
-<span><span class="co">#&gt; 1 0.57</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/prevalence.html">preval_t</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    preval_t</span></span>
-<span><span class="co">#&gt; 1 0.4804595</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/AUC_roc.html">AUC_roc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;     AUC_roc</span></span>
-<span><span class="co">#&gt; 1 0.5692277</span></span>
-<span></span>
-<span><span class="co"># Get all at once with metrics_summary()</span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         Metric       Score</span></span>
-<span><span class="co">#&gt; 1     accuracy 0.510000000</span></span>
-<span><span class="co">#&gt; 2   error_rate 0.490000000</span></span>
-<span><span class="co">#&gt; 3    precision 0.574074074</span></span>
-<span><span class="co">#&gt; 4       recall 0.543859649</span></span>
-<span><span class="co">#&gt; 5  specificity 0.465116279</span></span>
-<span><span class="co">#&gt; 6       balacc 0.504487964</span></span>
-<span><span class="co">#&gt; 7       fscore 0.558558559</span></span>
-<span><span class="co">#&gt; 8          agf 0.558632014</span></span>
-<span><span class="co">#&gt; 9        gmean 0.502949278</span></span>
-<span><span class="co">#&gt; 10        khat 0.008899676</span></span>
-<span><span class="co">#&gt; 11         mcc 0.008916106</span></span>
-<span><span class="co">#&gt; 12         fmi 0.558762673</span></span>
-<span><span class="co">#&gt; 13         bmi 0.008975928</span></span>
-<span><span class="co">#&gt; 14         csi 0.418918919</span></span>
-<span><span class="co">#&gt; 15      deltap 0.008856683</span></span>
-<span><span class="co">#&gt; 16       posLr 1.016781083</span></span>
-<span><span class="co">#&gt; 17       negLr 0.980701754</span></span>
-<span><span class="co">#&gt; 18         dor 1.036789298</span></span>
-<span><span class="co">#&gt; 19         npv 0.434782609</span></span>
-<span><span class="co">#&gt; 20         FPR 0.534883721</span></span>
-<span><span class="co">#&gt; 21         FNR 0.456140351</span></span>
-<span><span class="co">#&gt; 22         FDR 0.425925926</span></span>
-<span><span class="co">#&gt; 23         FOR 0.565217391</span></span>
-<span><span class="co">#&gt; 24      preval 0.570000000</span></span>
-<span><span class="co">#&gt; 25    preval_t 0.480459485</span></span>
-<span><span class="co">#&gt; 26     AUC_roc 0.569227691</span></span>
-<span></span>
-<span><span class="co"># Get a selected list at once with metrics_summary()</span></span>
-<span><span class="va">selected_class_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"accuracy"</span>, <span class="st">"recall"</span>, <span class="st">"fscore"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span>,</span>
-<span>                                  metrics_list <span class="op">=</span> <span class="va">selected_class_metrics</span><span class="op">)</span></span>
-<span><span class="co">#&gt;     Metric     Score</span></span>
-<span><span class="co">#&gt; 1 accuracy 0.5100000</span></span>
-<span><span class="co">#&gt; 2   recall 0.5438596</span></span>
-<span><span class="co">#&gt; 3   fscore 0.5585586</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="multi-class-data">4.1.2. Multi-class data<a class="anchor" aria-label="anchor" href="#multi-class-data"></a>
-</h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get classification metrics one by one</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   accuracy</span></span>
-<span><span class="co">#&gt; 1     0.43</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/error_rate.html">error_rate</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   error_rate</span></span>
-<span><span class="co">#&gt; 1       0.57</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/precision.html">precision</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   precision</span></span>
-<span><span class="co">#&gt; 1 0.4306561</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/recall.html">recall</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, atom <span class="op">=</span> <span class="cn">F</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      recall</span></span>
-<span><span class="co">#&gt; 1 0.4276961</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/specificity.html">specificity</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        spec</span></span>
-<span><span class="co">#&gt; 1 0.7152406</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/balacc.html">balacc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      balacc</span></span>
-<span><span class="co">#&gt; 1 0.5714684</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fscore.html">fscore</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in fscore(data = ., obs = labels, pred = predictions, tidy = TRUE):</span></span>
-<span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
-<span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt;     fscore</span></span>
-<span><span class="co">#&gt; 1 0.429171</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/khat.html">khat</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        khat</span></span>
-<span><span class="co">#&gt; 1 0.1444011</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/mcc.html">mcc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         mcc</span></span>
-<span><span class="co">#&gt; 1 0.1492055</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fmi.html">fmi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in fmi(data = ., obs = labels, pred = predictions, tidy = TRUE): The</span></span>
-<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span></span>
-<span><span class="co">#&gt; recorded as NaN.</span></span>
-<span><span class="co">#&gt;   fmi</span></span>
-<span><span class="co">#&gt; 1 NaN</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/bmi.html">bmi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         bmi</span></span>
-<span><span class="co">#&gt; 1 0.1429367</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/npv.html">npv</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         npv</span></span>
-<span><span class="co">#&gt; 1 0.7218244</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/npv.html">FOR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         FOR</span></span>
-<span><span class="co">#&gt; 1 0.2781756</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/precision.html">FDR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         FDR</span></span>
-<span><span class="co">#&gt; 1 0.5693439</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/specificity.html">FPR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         FPR</span></span>
-<span><span class="co">#&gt; 1 0.2847594</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/recall.html">FNR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         FNR</span></span>
-<span><span class="co">#&gt; 1 0.5723039</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/likelihood_ratios.html">posLr</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      posLr</span></span>
-<span><span class="co">#&gt; 1 1.501956</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/likelihood_ratios.html">negLr</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       negLr</span></span>
-<span><span class="co">#&gt; 1 0.8001558</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/likelihood_ratios.html">dor</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       dor</span></span>
-<span><span class="co">#&gt; 1 1.87708</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/prevalence.html">preval</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in preval(data = ., obs = labels, pred = predictions, tidy = TRUE): For</span></span>
-<span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
-<span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
-<span><span class="co">#&gt;   prev</span></span>
-<span><span class="co">#&gt; 1  NaN</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/prevalence.html">preval_t</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in preval_t(data = ., obs = labels, pred = predictions, tidy = TRUE): For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
-<span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
-<span><span class="co">#&gt;   preval_t</span></span>
-<span><span class="co">#&gt; 1      NaN</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/csi.html">csi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        csi</span></span>
-<span><span class="co">#&gt; 1 0.172737</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/deltap.html">deltap</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      deltap</span></span>
-<span><span class="co">#&gt; 1 0.1524805</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/AUC_roc.html">AUC_roc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;     AUC_roc</span></span>
-<span><span class="co">#&gt; 1 0.5714684</span></span>
-<span></span>
-<span><span class="co"># Get all at once with metrics_summary()</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions):</span></span>
-<span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
-<span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
-<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please, consider</span></span>
-<span><span class="co">#&gt; using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The</span></span>
-<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span></span>
-<span><span class="co">#&gt; recorded as NaN.</span></span>
-<span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
-<span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
-<span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions): For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
-<span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
-<span><span class="co">#&gt;         Metric     Score</span></span>
-<span><span class="co">#&gt; 1     accuracy 0.4300000</span></span>
-<span><span class="co">#&gt; 2   error_rate 0.5700000</span></span>
-<span><span class="co">#&gt; 3    precision 0.4306561</span></span>
-<span><span class="co">#&gt; 4       recall 0.4276961</span></span>
-<span><span class="co">#&gt; 5  specificity 0.7152406</span></span>
-<span><span class="co">#&gt; 6       balacc 0.5714684</span></span>
-<span><span class="co">#&gt; 7       fscore 0.4291710</span></span>
-<span><span class="co">#&gt; 8          agf 0.4291719</span></span>
-<span><span class="co">#&gt; 9        gmean 0.5530874</span></span>
-<span><span class="co">#&gt; 10        khat 0.1444011</span></span>
-<span><span class="co">#&gt; 11         mcc 0.1492055</span></span>
-<span><span class="co">#&gt; 12         fmi       NaN</span></span>
-<span><span class="co">#&gt; 13         bmi 0.1429367</span></span>
-<span><span class="co">#&gt; 14         csi 0.1727370</span></span>
-<span><span class="co">#&gt; 15      deltap 0.1524805</span></span>
-<span><span class="co">#&gt; 16       posLr 1.5019562</span></span>
-<span><span class="co">#&gt; 17       negLr 0.8001558</span></span>
-<span><span class="co">#&gt; 18         dor 1.8770798</span></span>
-<span><span class="co">#&gt; 19         npv 0.7218244</span></span>
-<span><span class="co">#&gt; 20         FPR 0.2847594</span></span>
-<span><span class="co">#&gt; 21         FNR 0.5723039</span></span>
-<span><span class="co">#&gt; 22         FDR 0.5693439</span></span>
-<span><span class="co">#&gt; 23         FOR 0.2781756</span></span>
-<span><span class="co">#&gt; 24      preval       NaN</span></span>
-<span><span class="co">#&gt; 25    preval_t       NaN</span></span>
-<span><span class="co">#&gt; 26     AUC_roc 0.5714684</span></span>
-<span></span>
-<span><span class="co"># Get a selected list at once with metrics_summary()</span></span>
-<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span>,</span>
-<span>                                  metrics_list <span class="op">=</span> <span class="va">selected_class_metrics</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions):</span></span>
-<span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
-<span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
-<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please, consider</span></span>
-<span><span class="co">#&gt; using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions): The</span></span>
-<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span></span>
-<span><span class="co">#&gt; recorded as NaN.</span></span>
-<span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions): For</span></span>
-<span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
-<span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions): For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
-<span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
-<span><span class="co">#&gt;     Metric     Score</span></span>
-<span><span class="co">#&gt; 1 accuracy 0.4300000</span></span>
-<span><span class="co">#&gt; 2   recall 0.4276961</span></span>
-<span><span class="co">#&gt; 3   fscore 0.4291710</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="nested-data">3.1.3.1. Nested data<a class="anchor" aria-label="anchor" href="#nested-data"></a>
-</h3>
+<p>The user can choose to calculate a single metric, or to calculate all metrics at once. <br></p>
+<p>To calculate a single metric, the metric function can be called. For example, to calculate <span class="math inline">\(accuracy\)</span>, we can use the <code><a href="../reference/accuracy.html">accuracy()</a></code> function:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># a. Create nested df with the native examples</span></span>
-<span><span class="va">nested.examples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fold_1 <span class="op">=</span> <span class="va">binomial_case</span>, </span>
-<span>                                  fold_2 <span class="op">=</span> <span class="va">binomial_2</span><span class="op">)</span>,</span>
+<code class="sourceCode R"><span><span class="co"># Binary</span></span>
+<span><span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    accuracy</span></span>
+<span><span class="co">#&gt; 1 0.9578947</span></span>
+<span></span>
+<span><span class="co"># Multiclass</span></span>
+<span><span class="va">maize_phenology</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    accuracy</span></span>
+<span><span class="co">#&gt; 1 0.8834951</span></span></code></pre></div>
+<p>Or considering imbalanced observations across classes we can call the <code><a href="../reference/balacc.html">balacc()</a></code> function for balanced accuracy:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Binary</span></span>
+<span><span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/balacc.html">balacc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     balacc</span></span>
+<span><span class="co">#&gt; 1 0.953345</span></span>
+<span></span>
+<span><span class="co"># Multiclass</span></span>
+<span><span class="va">maize_phenology</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/balacc.html">balacc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      balacc</span></span>
+<span><span class="co">#&gt; 1 0.9160466</span></span></code></pre></div>
+<p>Similarly, to calculate precision, we can use the <code><a href="../reference/precision.html">precision()</a></code> function: <br></p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Binary</span></span>
+<span><span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/precision.html">precision</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   precision</span></span>
+<span><span class="co">#&gt; 1 0.9387755</span></span>
+<span></span>
+<span><span class="co"># Multiclass</span></span>
+<span><span class="va">maize_phenology</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/precision.html">precision</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   precision</span></span>
+<span><span class="co">#&gt; 1 0.8335108</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="metrics-summary">4.2. Metrics summary<a class="anchor" aria-label="anchor" href="#metrics-summary"></a>
+</h3>
+<p>The user can also calculate all metrics at once using the function <code><a href="../reference/metrics_summary.html">metrics_summary()</a></code>: <br></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Get all at once with metrics_summary()</span></span>
+<span><span class="co"># Binary</span></span>
+<span><span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         Metric        Score</span></span>
+<span><span class="co">#&gt; 1     accuracy   0.95789474</span></span>
+<span><span class="co">#&gt; 2   error_rate   0.04210526</span></span>
+<span><span class="co">#&gt; 3    precision   0.93877551</span></span>
+<span><span class="co">#&gt; 4       recall   0.93877551</span></span>
+<span><span class="co">#&gt; 5  specificity   0.96791444</span></span>
+<span><span class="co">#&gt; 6       balacc   0.95334497</span></span>
+<span><span class="co">#&gt; 7       fscore   0.93877551</span></span>
+<span><span class="co">#&gt; 8          agf   0.93877551</span></span>
+<span><span class="co">#&gt; 9        gmean   0.95323364</span></span>
+<span><span class="co">#&gt; 10        khat   0.90668995</span></span>
+<span><span class="co">#&gt; 11         mcc   0.90668995</span></span>
+<span><span class="co">#&gt; 12         fmi   0.93877551</span></span>
+<span><span class="co">#&gt; 13         bmi   0.90668995</span></span>
+<span><span class="co">#&gt; 14         csi   0.32974910</span></span>
+<span><span class="co">#&gt; 15      deltap   0.90668995</span></span>
+<span><span class="co">#&gt; 16       posLr  29.25850340</span></span>
+<span><span class="co">#&gt; 17       negLr   0.06325403</span></span>
+<span><span class="co">#&gt; 18         dor 462.55555556</span></span>
+<span><span class="co">#&gt; 19         npv   0.96791444</span></span>
+<span><span class="co">#&gt; 20         FPR   0.03208556</span></span>
+<span><span class="co">#&gt; 21         FNR   0.06122449</span></span>
+<span><span class="co">#&gt; 22         FDR   0.06122449</span></span>
+<span><span class="co">#&gt; 23         FOR   0.03208556</span></span>
+<span><span class="co">#&gt; 24      preval   0.34385965</span></span>
+<span><span class="co">#&gt; 25    preval_t   0.50382084</span></span>
+<span><span class="co">#&gt; 26     AUC_roc   0.41849817</span></span>
+<span></span>
+<span><span class="co"># Multiclass</span></span>
+<span><span class="va">multi_maize_phen</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~actual, pred = ~predicted, : For</span></span>
+<span><span class="co">#&gt; multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
+<span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~actual, pred = ~predicted, pos_level =</span></span>
+<span><span class="co">#&gt; pos_level): For multiclass cases, the agf should be estimated at a class level.</span></span>
+<span><span class="co">#&gt; Please, consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~actual, pred = ~predicted, pos_level =</span></span>
+<span><span class="co">#&gt; pos_level): The Fowlkes-Mallows Index is not available for multiclass cases. The</span></span>
+<span><span class="co">#&gt; result has been recorded as NaN.</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~actual, pred = ~predicted, : For</span></span>
+<span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
+<span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~actual, pred = ~predicted, : For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
+<span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
+<span><span class="co">#&gt;         Metric        Score</span></span>
+<span><span class="co">#&gt; 1     accuracy 8.834951e-01</span></span>
+<span><span class="co">#&gt; 2   error_rate 1.165049e-01</span></span>
+<span><span class="co">#&gt; 3    precision 8.335108e-01</span></span>
+<span><span class="co">#&gt; 4       recall 8.405168e-01</span></span>
+<span><span class="co">#&gt; 5  specificity 9.915764e-01</span></span>
+<span><span class="co">#&gt; 6       balacc 9.160466e-01</span></span>
+<span><span class="co">#&gt; 7       fscore 8.369991e-01</span></span>
+<span><span class="co">#&gt; 8          agf 8.370017e-01</span></span>
+<span><span class="co">#&gt; 9        gmean 9.129275e-01</span></span>
+<span><span class="co">#&gt; 10        khat 8.624527e-01</span></span>
+<span><span class="co">#&gt; 11         mcc 8.636129e-01</span></span>
+<span><span class="co">#&gt; 12         fmi          NaN</span></span>
+<span><span class="co">#&gt; 13         bmi 8.320932e-01</span></span>
+<span><span class="co">#&gt; 14         csi 5.577765e-02</span></span>
+<span><span class="co">#&gt; 15      deltap 8.254693e-01</span></span>
+<span><span class="co">#&gt; 16       posLr 9.978151e+01</span></span>
+<span><span class="co">#&gt; 17       negLr 1.608381e-01</span></span>
+<span><span class="co">#&gt; 18         dor 6.203850e+02</span></span>
+<span><span class="co">#&gt; 19         npv 9.919585e-01</span></span>
+<span><span class="co">#&gt; 20         FPR 8.423572e-03</span></span>
+<span><span class="co">#&gt; 21         FNR 1.594832e-01</span></span>
+<span><span class="co">#&gt; 22         FDR 1.664892e-01</span></span>
+<span><span class="co">#&gt; 23         FOR 8.041482e-03</span></span>
+<span><span class="co">#&gt; 24      preval          NaN</span></span>
+<span><span class="co">#&gt; 25    preval_t          NaN</span></span>
+<span><span class="co">#&gt; 26     AUC_roc 9.160466e-01</span></span></code></pre></div>
+<p>Alternatively, if the user is only looking for specific metrics, within the same function <code><a href="../reference/metrics_summary.html">metrics_summary()</a></code>, the user can pass a list of desired metrics using the argument “metrics_list” as follows: <br></p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get a selected list at once with metrics_summary()</span></span>
+<span><span class="va">selected_class_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"accuracy"</span>, <span class="st">"precision"</span>, <span class="st">"recall"</span>, <span class="st">"fscore"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Binary</span></span>
+<span><span class="va">bin_sum</span> <span class="op">&lt;-</span> <span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, </span>
+<span>                  obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, </span>
+<span>                  type <span class="op">=</span> <span class="st">"classification"</span>,</span>
+<span>                  metrics_list <span class="op">=</span> <span class="va">selected_class_metrics</span>, pos_level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># Multiclass</span></span>
+<span><span class="va">multi_maize_phen</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, </span>
+<span>                  obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, </span>
+<span>                  type <span class="op">=</span> <span class="st">"classification"</span>,</span>
+<span>                  metrics_list <span class="op">=</span> <span class="va">selected_class_metrics</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~actual, pred = ~predicted, : For</span></span>
+<span><span class="co">#&gt; multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
+<span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~actual, pred = ~predicted, pos_level =</span></span>
+<span><span class="co">#&gt; pos_level): For multiclass cases, the agf should be estimated at a class level.</span></span>
+<span><span class="co">#&gt; Please, consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~actual, pred = ~predicted, pos_level =</span></span>
+<span><span class="co">#&gt; pos_level): The Fowlkes-Mallows Index is not available for multiclass cases. The</span></span>
+<span><span class="co">#&gt; result has been recorded as NaN.</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~actual, pred = ~predicted, : For</span></span>
+<span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
+<span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~actual, pred = ~predicted, : For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
+<span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
+<span><span class="co">#&gt;      Metric     Score</span></span>
+<span><span class="co">#&gt; 1  accuracy 0.8834951</span></span>
+<span><span class="co">#&gt; 2 precision 0.8335108</span></span>
+<span><span class="co">#&gt; 3    recall 0.8405168</span></span>
+<span><span class="co">#&gt; 4    fscore 0.8369991</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="multiple-models">4.3. Multiple models<a class="anchor" aria-label="anchor" href="#multiple-models"></a>
+</h3>
+<p>In some cases, multiple runs of a model are available to compare vs. observed values (e.g. cross-validation folds). Thus, we can also fit the agreement analysis for several datasets as follows: <br></p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span>
+<span><span class="co"># Let's simulated two extra runs of the same model for Land Cover</span></span>
+<span><span class="va">fold_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>actual <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, <span class="fl">285</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>                     predicted <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, <span class="fl">285</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">fold_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>actual <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, <span class="fl">285</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>                     predicted <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, <span class="fl">285</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># a. Create nested df with the folds</span></span>
+<span><span class="va">binary_nested_folds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fold_1 <span class="op">=</span> <span class="va">binary_landCover</span>, </span>
+<span>                                      fold_2 <span class="op">=</span> <span class="va">fold_2</span>,</span>
+<span>                                      fold_3 <span class="op">=</span> <span class="va">fold_3</span><span class="op">)</span>,</span>
 <span>                             .id <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">nest</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_head</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 2</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [2]</span></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">binary_nested_folds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_head</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [3]</span></span></span>
 <span><span class="co">#&gt;   id     data              </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fold_1 <span style="color: #949494;">&lt;tibble [100 × 2]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> fold_2 <span style="color: #949494;">&lt;tibble [100 × 2]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fold_1 <span style="color: #949494;">&lt;tibble [285 × 2]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> fold_2 <span style="color: #949494;">&lt;tibble [285 × 2]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> fold_3 <span style="color: #949494;">&lt;tibble [285 × 2]&gt;</span></span></span>
 <span></span>
 <span><span class="co"># b. Run </span></span>
-<span><span class="va">mult_sum_class_1</span> <span class="op">&lt;-</span> <span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">binary_folds_summary</span> <span class="op">&lt;-</span> <span class="va">binary_nested_folds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="co"># Store metrics in new.column "performance"</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>performance <span class="op">=</span> </span>
 <span>                  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">data</span>,</span>
 <span>                             <span class="op">~</span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, </span>
-<span>                                                       obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, </span>
+<span>                                                       obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, </span>
 <span>                                                       type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">data</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">performance</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">Metric</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mult_sum_class_1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">binary_folds_summary</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [2]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [3]</span></span></span>
 <span><span class="co">#&gt;   id     Metric   Score</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fold_1 accuracy 0.51 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> fold_2 accuracy 0.44 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> fold_1 agf      0.559</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> fold_2 agf      0.472</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> fold_1 AUC_roc  0.569</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> fold_2 AUC_roc  0.525</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fold_1 accuracy 0.958</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> fold_2 accuracy 0.435</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> fold_3 accuracy 0.516</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> fold_1 agf      0.939</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> fold_2 agf      0.393</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> fold_3 agf      0.518</span></span></code></pre></div>
+<div class="section level4">
+<h4 id="non-nested-data">4.3.1. Non-nested data <br><a class="anchor" aria-label="anchor" href="#non-nested-data"></a>
+</h4>
 </div>
-<div class="section level3">
-<h3 id="non-nested-data">3.1.3.2. Non-nested data <br><a class="anchor" aria-label="anchor" href="#non-nested-data"></a>
-</h3>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">non_nested_data</span> <span class="op">&lt;-</span> <span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span> </span>
+<div class="section level4">
+<h4 id="using-group_map">4.3.1.1. Using <code>group_map()</code> <br><a class="anchor" aria-label="anchor" href="#using-group_map"></a>
+</h4>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">non_nested_folds</span> <span class="op">&lt;-</span> <span class="va">binary_nested_folds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co"># Using group_map()</span></span>
-<span><span class="va">mult_sum_class_2</span> <span class="op">&lt;-</span> <span class="va">non_nested_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">binary_folds_summary_2</span> <span class="op">&lt;-</span> <span class="va">non_nested_folds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_map.html" class="external-link">group_map</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_map.html" class="external-link">group_map</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Using summarise()</span></span>
-<span><span class="va">mult_sum_class_3</span> <span class="op">&lt;-</span> <span class="va">non_nested_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">Metric</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">mult_sum_class_1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 52 × 3</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [2]</span></span></span>
-<span><span class="co">#&gt;    id     Metric      Score</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fold_1 accuracy  0.51   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fold_2 accuracy  0.44   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fold_1 agf       0.559  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fold_2 agf       0.472  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fold_1 AUC_roc   0.569  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fold_2 AUC_roc   0.525  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fold_1 balacc    0.504  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fold_2 balacc    0.438  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fold_1 bmi       0.008<span style="text-decoration: underline;">98</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fold_2 bmi      -<span style="color: #BB0000;">0.123</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 42 more rows</span></span></span>
-<span><span class="va">mult_sum_class_2</span></span>
+<span><span class="va">binary_folds_summary_2</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt;         Metric       Score</span></span>
-<span><span class="co">#&gt; 1     accuracy 0.510000000</span></span>
-<span><span class="co">#&gt; 2   error_rate 0.490000000</span></span>
-<span><span class="co">#&gt; 3    precision 0.574074074</span></span>
-<span><span class="co">#&gt; 4       recall 0.543859649</span></span>
-<span><span class="co">#&gt; 5  specificity 0.465116279</span></span>
-<span><span class="co">#&gt; 6       balacc 0.504487964</span></span>
-<span><span class="co">#&gt; 7       fscore 0.558558559</span></span>
-<span><span class="co">#&gt; 8          agf 0.558632014</span></span>
-<span><span class="co">#&gt; 9        gmean 0.502949278</span></span>
-<span><span class="co">#&gt; 10        khat 0.008899676</span></span>
-<span><span class="co">#&gt; 11         mcc 0.008916106</span></span>
-<span><span class="co">#&gt; 12         fmi 0.558762673</span></span>
-<span><span class="co">#&gt; 13         bmi 0.008975928</span></span>
-<span><span class="co">#&gt; 14         csi 0.418918919</span></span>
-<span><span class="co">#&gt; 15      deltap 0.008856683</span></span>
-<span><span class="co">#&gt; 16       posLr 1.016781083</span></span>
-<span><span class="co">#&gt; 17       negLr 0.980701754</span></span>
-<span><span class="co">#&gt; 18         dor 1.036789298</span></span>
-<span><span class="co">#&gt; 19         npv 0.434782609</span></span>
-<span><span class="co">#&gt; 20         FPR 0.534883721</span></span>
-<span><span class="co">#&gt; 21         FNR 0.456140351</span></span>
-<span><span class="co">#&gt; 22         FDR 0.425925926</span></span>
-<span><span class="co">#&gt; 23         FOR 0.565217391</span></span>
-<span><span class="co">#&gt; 24      preval 0.570000000</span></span>
-<span><span class="co">#&gt; 25    preval_t 0.480459485</span></span>
-<span><span class="co">#&gt; 26     AUC_roc 0.569227691</span></span>
+<span><span class="co">#&gt;         Metric        Score</span></span>
+<span><span class="co">#&gt; 1     accuracy   0.95789474</span></span>
+<span><span class="co">#&gt; 2   error_rate   0.04210526</span></span>
+<span><span class="co">#&gt; 3    precision   0.93877551</span></span>
+<span><span class="co">#&gt; 4       recall   0.93877551</span></span>
+<span><span class="co">#&gt; 5  specificity   0.96791444</span></span>
+<span><span class="co">#&gt; 6       balacc   0.95334497</span></span>
+<span><span class="co">#&gt; 7       fscore   0.93877551</span></span>
+<span><span class="co">#&gt; 8          agf   0.93877551</span></span>
+<span><span class="co">#&gt; 9        gmean   0.95323364</span></span>
+<span><span class="co">#&gt; 10        khat   0.90668995</span></span>
+<span><span class="co">#&gt; 11         mcc   0.90668995</span></span>
+<span><span class="co">#&gt; 12         fmi   0.93877551</span></span>
+<span><span class="co">#&gt; 13         bmi   0.90668995</span></span>
+<span><span class="co">#&gt; 14         csi   0.32974910</span></span>
+<span><span class="co">#&gt; 15      deltap   0.90668995</span></span>
+<span><span class="co">#&gt; 16       posLr  29.25850340</span></span>
+<span><span class="co">#&gt; 17       negLr   0.06325403</span></span>
+<span><span class="co">#&gt; 18         dor 462.55555556</span></span>
+<span><span class="co">#&gt; 19         npv   0.96791444</span></span>
+<span><span class="co">#&gt; 20         FPR   0.03208556</span></span>
+<span><span class="co">#&gt; 21         FNR   0.06122449</span></span>
+<span><span class="co">#&gt; 22         FDR   0.06122449</span></span>
+<span><span class="co">#&gt; 23         FOR   0.03208556</span></span>
+<span><span class="co">#&gt; 24      preval   0.34385965</span></span>
+<span><span class="co">#&gt; 25    preval_t   0.50382084</span></span>
+<span><span class="co">#&gt; 26     AUC_roc   0.41849817</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
 <span><span class="co">#&gt;         Metric      Score</span></span>
-<span><span class="co">#&gt; 1     accuracy  0.4400000</span></span>
-<span><span class="co">#&gt; 2   error_rate  0.5600000</span></span>
-<span><span class="co">#&gt; 3    precision  0.4629630</span></span>
-<span><span class="co">#&gt; 4       recall  0.4807692</span></span>
-<span><span class="co">#&gt; 5  specificity  0.3958333</span></span>
-<span><span class="co">#&gt; 6       balacc  0.4383013</span></span>
-<span><span class="co">#&gt; 7       fscore  0.4716981</span></span>
-<span><span class="co">#&gt; 8          agf  0.4717283</span></span>
-<span><span class="co">#&gt; 9        gmean  0.4362390</span></span>
-<span><span class="co">#&gt; 10        khat -0.1235955</span></span>
-<span><span class="co">#&gt; 11         mcc -0.1236951</span></span>
-<span><span class="co">#&gt; 12         fmi  0.4717821</span></span>
-<span><span class="co">#&gt; 13         bmi -0.1233974</span></span>
-<span><span class="co">#&gt; 14         csi  0.3424658</span></span>
-<span><span class="co">#&gt; 15      deltap -0.1239936</span></span>
-<span><span class="co">#&gt; 16       posLr  0.7957560</span></span>
-<span><span class="co">#&gt; 17       negLr  1.3117409</span></span>
-<span><span class="co">#&gt; 18         dor  0.6066411</span></span>
-<span><span class="co">#&gt; 19         npv  0.4130435</span></span>
-<span><span class="co">#&gt; 20         FPR  0.6041667</span></span>
-<span><span class="co">#&gt; 21         FNR  0.5192308</span></span>
-<span><span class="co">#&gt; 22         FDR  0.5370370</span></span>
-<span><span class="co">#&gt; 23         FOR  0.5869565</span></span>
-<span><span class="co">#&gt; 24      preval  0.5200000</span></span>
-<span><span class="co">#&gt; 25    preval_t  0.4757198</span></span>
-<span><span class="co">#&gt; 26     AUC_roc  0.5251623</span></span>
-<span><span class="va">mult_sum_class_3</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 52 × 3</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [2]</span></span></span>
-<span><span class="co">#&gt;    id     Metric      Score</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fold_1 accuracy  0.51   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fold_2 accuracy  0.44   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fold_1 agf       0.559  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fold_2 agf       0.472  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fold_1 AUC_roc   0.569  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fold_2 AUC_roc   0.525  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fold_1 balacc    0.504  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fold_2 balacc    0.438  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fold_1 bmi       0.008<span style="text-decoration: underline;">98</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fold_2 bmi      -<span style="color: #BB0000;">0.123</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 42 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; 1     accuracy  0.4350877</span></span>
+<span><span class="co">#&gt; 2   error_rate  0.5649123</span></span>
+<span><span class="co">#&gt; 3    precision  0.3795620</span></span>
+<span><span class="co">#&gt; 4       recall  0.4062500</span></span>
+<span><span class="co">#&gt; 5  specificity  0.4585987</span></span>
+<span><span class="co">#&gt; 6       balacc  0.4324244</span></span>
+<span><span class="co">#&gt; 7       fscore  0.3924528</span></span>
+<span><span class="co">#&gt; 8          agf  0.3925343</span></span>
+<span><span class="co">#&gt; 9        gmean  0.4316315</span></span>
+<span><span class="co">#&gt; 10        khat -0.1342793</span></span>
+<span><span class="co">#&gt; 11         mcc -0.1345500</span></span>
+<span><span class="co">#&gt; 12         fmi  0.3926794</span></span>
+<span><span class="co">#&gt; 13         bmi -0.1351513</span></span>
+<span><span class="co">#&gt; 14         csi  0.2488038</span></span>
+<span><span class="co">#&gt; 15      deltap -0.1339515</span></span>
+<span><span class="co">#&gt; 16       posLr  0.7503676</span></span>
+<span><span class="co">#&gt; 17       negLr  1.2947049</span></span>
+<span><span class="co">#&gt; 18         dor  0.5795666</span></span>
+<span><span class="co">#&gt; 19         npv  0.4864865</span></span>
+<span><span class="co">#&gt; 20         FPR  0.5414013</span></span>
+<span><span class="co">#&gt; 21         FNR  0.5937500</span></span>
+<span><span class="co">#&gt; 22         FDR  0.6204380</span></span>
+<span><span class="co">#&gt; 23         FOR  0.5135135</span></span>
+<span><span class="co">#&gt; 24      preval  0.4491228</span></span>
+<span><span class="co">#&gt; 25    preval_t  0.5151462</span></span>
+<span><span class="co">#&gt; 26     AUC_roc  0.4457023</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[3]]</span></span>
+<span><span class="co">#&gt;         Metric      Score</span></span>
+<span><span class="co">#&gt; 1     accuracy 0.51578947</span></span>
+<span><span class="co">#&gt; 2   error_rate 0.48421053</span></span>
+<span><span class="co">#&gt; 3    precision 0.52857143</span></span>
+<span><span class="co">#&gt; 4       recall 0.50684932</span></span>
+<span><span class="co">#&gt; 5  specificity 0.52517986</span></span>
+<span><span class="co">#&gt; 6       balacc 0.51601459</span></span>
+<span><span class="co">#&gt; 7       fscore 0.51748252</span></span>
+<span><span class="co">#&gt; 8          agf 0.51752352</span></span>
+<span><span class="co">#&gt; 9        gmean 0.51593318</span></span>
+<span><span class="co">#&gt; 10        khat 0.03199606</span></span>
+<span><span class="co">#&gt; 11         mcc 0.03202444</span></span>
+<span><span class="co">#&gt; 12         fmi 0.51759643</span></span>
+<span><span class="co">#&gt; 13         bmi 0.03202917</span></span>
+<span><span class="co">#&gt; 14         csi 0.34741784</span></span>
+<span><span class="co">#&gt; 15      deltap 0.03201970</span></span>
+<span><span class="co">#&gt; 16       posLr 1.06745538</span></span>
+<span><span class="co">#&gt; 17       negLr 0.93901295</span></span>
+<span><span class="co">#&gt; 18         dor 1.13678451</span></span>
+<span><span class="co">#&gt; 19         npv 0.50344828</span></span>
+<span><span class="co">#&gt; 20         FPR 0.47482014</span></span>
+<span><span class="co">#&gt; 21         FNR 0.49315068</span></span>
+<span><span class="co">#&gt; 22         FDR 0.47142857</span></span>
+<span><span class="co">#&gt; 23         FOR 0.49655172</span></span>
+<span><span class="co">#&gt; 24      preval 0.51228070</span></span>
+<span><span class="co">#&gt; 25    preval_t 0.50444076</span></span>
+<span><span class="co">#&gt; 26     AUC_roc 0.51257025</span></span></code></pre></div>
 </div>
+<div class="section level4">
+<h4 id="using-summarise">4.3.1.2. Using <code>summarise()</code> <br><a class="anchor" aria-label="anchor" href="#using-summarise"></a>
+</h4>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Using summarise()</span></span>
+<span><span class="va">binary_folds_summary_3</span> <span class="op">&lt;-</span> <span class="va">non_nested_folds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">Metric</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `summarise()` has grouped output by 'id'. You can override using the `.groups`</span></span>
+<span><span class="co">#&gt; argument.</span></span>
+<span></span>
+<span></span>
+<span><span class="va">binary_folds_summary_3</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 78 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [3]</span></span></span>
+<span><span class="co">#&gt;    id     Metric   Score</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fold_1 accuracy 0.958</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fold_2 accuracy 0.435</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fold_3 accuracy 0.516</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fold_1 agf      0.939</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fold_2 agf      0.393</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fold_3 agf      0.518</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fold_1 AUC_roc  0.418</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fold_2 AUC_roc  0.446</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fold_3 AUC_roc  0.513</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fold_1 balacc   0.953</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 68 more rows</span></span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="visual-assessment">5. Visual Assessment <br><a class="anchor" aria-label="anchor" href="#visual-assessment"></a>
+</h2>
+<div class="section level3">
+<h3 id="customizing-the-confusion-matrix">5.1. Customizing the confusion matrix <br><a class="anchor" aria-label="anchor" href="#customizing-the-confusion-matrix"></a>
+</h3>
+<p>To print the metrics on the <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code>, just use print.metrics = TRUE. Warning: do not forget to specify your ‘metrics.list’ and choice wisely: <br></p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">selected_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"accuracy"</span>, <span class="st">"precision"</span>, <span class="st">"recall"</span>, <span class="st">"khat"</span>,</span>
+<span>                   <span class="st">"mcc"</span>, <span class="st">"fscore"</span>, <span class="st">"agf"</span>, <span class="st">"npv"</span>, <span class="st">"FPR"</span>, <span class="st">"FNR"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binary_matrix_metrics</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, </span>
+<span>                   plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#ffe8d6"</span> , high<span class="op">=</span><span class="st">"#892b64"</span><span class="op">)</span>, </span>
+<span>                   unit <span class="op">=</span> <span class="st">"count"</span>,  </span>
+<span>                   <span class="co"># Print metrics_summary</span></span>
+<span>                   print_metrics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   <span class="co"># List of performance metrics</span></span>
+<span>                   metrics_list <span class="op">=</span> <span class="va">selected_metrics</span>,</span>
+<span>                   <span class="co"># Position (bottom or top)</span></span>
+<span>                   position_metrics <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binary_matrix_metrics</span></span></code></pre></div>
+<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-1.png" width="1080"></p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">multinomial_matrix_metrics</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">maize_phenology</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/confusion_matrix.html">confusion_matrix</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, </span>
+<span>                   plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                   colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"grey85"</span> , high<span class="op">=</span><span class="st">"steelblue"</span><span class="op">)</span>, </span>
+<span>                   unit <span class="op">=</span> <span class="st">"count"</span>,</span>
+<span>                   <span class="co"># Print metrics_summary</span></span>
+<span>                   print_metrics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   <span class="co"># List of performance metrics</span></span>
+<span>                   metrics_list <span class="op">=</span> <span class="va">selected_metrics</span>,</span>
+<span>                   <span class="co"># Position (bottom or top)</span></span>
+<span>                   position_metrics <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in metrica::fscore(data = ~data, obs = ~actual, pred = ~predicted, :</span></span>
+<span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
+<span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::agf(data = ~data, obs = ~actual, pred = ~predicted, : For</span></span>
+<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please, consider</span></span>
+<span><span class="co">#&gt; using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::fmi(data = ~data, obs = ~actual, pred = ~predicted, : The</span></span>
+<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span></span>
+<span><span class="co">#&gt; recorded as NaN.</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval(data = ~data, obs = ~actual, pred = ~predicted, :</span></span>
+<span><span class="co">#&gt; For multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
+<span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::preval_t(data = ~data, obs = ~actual, pred = ~predicted, : For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
+<span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
+<span>  </span>
+<span><span class="va">multinomial_matrix_metrics</span></span></code></pre></div>
+<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-2.png" width="1080"> Also, as a ggplot element, outputs are flexible of further edition:</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">binary_matrix_metrics</span> <span class="op">+</span></span>
+<span>  <span class="co"># Modify labels</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Observed Vegetation"</span>, </span>
+<span>       y <span class="op">=</span> <span class="st">"Predicted Vegetation"</span>,</span>
+<span>       title <span class="op">=</span> <span class="st">"Binary Confusion Matrix"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="classification_case_files/figure-html/scatter_plot.edit-1.png" width="1080"></p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>  </span>
+<span></span>
+<span><span class="va">multinomial_matrix_metrics</span> <span class="op">+</span></span>
+<span>  <span class="co"># Modify labels</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Observed Corn Phenology"</span>, </span>
+<span>       y <span class="op">=</span> <span class="st">"Predicted Corn Phenology"</span>,</span>
+<span>       title <span class="op">=</span> <span class="st">"Multinomial Confusion Matrix"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="co"># Modify theme</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_light</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="classification_case_files/figure-html/scatter_plot.edit-2.png" width="1080"></p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="exporting">6. Exporting<a class="anchor" aria-label="anchor" href="#exporting"></a>
+</h2>
+<p>To export the metrics summary table, the user can simply write it to file with the function <code><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv()</a></code>:</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">binary_landCover</span>,</span>
+<span>                obs <span class="op">=</span> <span class="va">obs</span>, </span>
+<span>                pred <span class="op">=</span> <span class="va">pred</span>,</span>
+<span>                type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv</a></span><span class="op">(</span><span class="st">"binary_landcover_metrics_summary.csv"</span><span class="op">)</span></span></code></pre></div>
+<p>Similarly, to export a plot, the user can simply write it to file with the function <code>ggsave()</code>:</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu">ggsave</span><span class="op">(</span>plot <span class="op">=</span> <span class="va">multinomial_matrix_metrics</span>,</span>
+<span>       <span class="st">"multinomial_matrix_metrics.png"</span>,</span>
+<span>       width <span class="op">=</span> <span class="fl">8</span>,</span>
+<span>       height <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
