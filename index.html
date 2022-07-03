@@ -82,8 +82,8 @@
 <p>For supervised models, always keep in mind the concept of “cross-validation” since predicted values should ideally come from out-of-bag samples (unseen by training sets) to avoid overestimation of the prediction performance. <br></p>
 <p>Check the Documentation at <a href="https://adriancorrendo.github.io/metrica/" class="uri">https://adriancorrendo.github.io/metrica/</a> <br></p>
 <p><strong>Vignettes</strong> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/available_regression_metrics.html">1. List of metrics for Regression</a> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/available_classification_metrics.html">2. List of metrics for Classification</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html">1. List of metrics for Regression</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html">2. List of metrics for Classification</a> <br></p>
 <p><a href="https://adriancorrendo.github.io/metrica/articles/regression_case.html">3. A regression case (numerical variables)</a> <br></p>
 <p><a href="https://adriancorrendo.github.io/metrica/articles/classification_case.html">4. A classification case (categorical variables)</a> <br></p>
 <p><a href="https://adriancorrendo.github.io/metrica/articles/apsim_open.html">5. Import APSIM files</a> <br></p>
@@ -689,97 +689,7 @@
 <div class="section level2">
 <h2 id="4-import-data-from-apsim">4. Import data from APSIM<a class="anchor" aria-label="anchor" href="#4-import-data-from-apsim"></a>
 </h2>
-<div class="section level3">
-<h3 id="41-apsim-classic-out">4.1. APSIM Classic (.out)<a class="anchor" aria-label="anchor" href="#41-apsim-classic-out"></a>
-</h3>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Use import_apsim_out for APSIM Classic output</span></span>
-<span><span class="va">soybean.out</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/import_apsim_out.html">import_apsim_out</a></span><span class="op">(</span>filepath <span class="op">=</span> <span class="st">"tests/testthat/examples/soybean.out"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">soybean.out</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Date (dd/mm/yyyy) yield (kg/ha) biomass (kg/ha) grain_protein (%)</span></span>
-<span><span class="co">#&gt; 1        16/05/2001        1449.8          2915.9            37.115</span></span>
-<span><span class="co">#&gt; 2        10/05/2002        1092.5          2965.1            37.115</span></span>
-<span><span class="co">#&gt; 3        23/04/2003        1368.9          3529.6            37.115</span></span>
-<span><span class="co">#&gt; 4        26/04/2004        2121.6          4710.3            37.115</span></span>
-<span><span class="co">#&gt; 5        09/05/2005        1950.3          4303.9            37.115</span></span>
-<span><span class="co">#&gt; 6        20/04/2006        1670.6          3806.6            37.115</span></span>
-<span><span class="co">#&gt;   GrainN (g/m^2) lai (m^2/m^2) oilGrainN (g/m^2) grain_oil_conc (%)</span></span>
-<span><span class="co">#&gt; 1           0.00             0                 0                0.4</span></span>
-<span><span class="co">#&gt; 2           7.10             0                 0                0.4</span></span>
-<span><span class="co">#&gt; 3           8.90             0                 0                0.4</span></span>
-<span><span class="co">#&gt; 4          13.79             0                 0                0.4</span></span>
-<span><span class="co">#&gt; 5          12.68             0                 0                0.4</span></span>
-<span><span class="co">#&gt; 6          10.86             0                 0                0.4</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="41-apsim-nextgeneration-db">4.1. APSIM NextGeneration (.db)<a class="anchor" aria-label="anchor" href="#41-apsim-nextgeneration-db"></a>
-</h3>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Use import_apsim_db for APSIM NextGeneration output</span></span>
-<span><span class="va">soybean.db</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/import_apsim_db.html">import_apsim_db</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"soybean.example.db"</span>, folder <span class="op">=</span> <span class="st">"tests/testthat/examples/"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">soybean.db</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   CheckpointID SimulationID    Zone         Clock.Today Soybean.Phenology.Stage</span></span>
-<span><span class="co">#&gt; 1            1            1 paddock 2018-01-01 12:00:00                       1</span></span>
-<span><span class="co">#&gt; 2            1            1 paddock 2018-01-02 12:00:00                       1</span></span>
-<span><span class="co">#&gt; 3            1            1 paddock 2018-01-03 12:00:00                       1</span></span>
-<span><span class="co">#&gt; 4            1            1 paddock 2018-01-04 12:00:00                       1</span></span>
-<span><span class="co">#&gt; 5            1            1 paddock 2018-01-05 12:00:00                       1</span></span>
-<span><span class="co">#&gt; 6            1            1 paddock 2018-01-06 12:00:00                       1</span></span>
-<span><span class="co">#&gt;   Soybean.Phenology.CurrentStageName Soybean.AboveGround.Wt Yield</span></span>
-<span><span class="co">#&gt; 1                                                         0     0</span></span>
-<span><span class="co">#&gt; 2                                                         0     0</span></span>
-<span><span class="co">#&gt; 3                                                         0     0</span></span>
-<span><span class="co">#&gt; 4                                                         0     0</span></span>
-<span><span class="co">#&gt; 5                                                         0     0</span></span>
-<span><span class="co">#&gt; 6                                                         0     0</span></span>
-<span><span class="co">#&gt;   Soybean.Grain.Size Soybean.Grain.Number Soybean.Total.Wt Soybean.Leaf.FRGR</span></span>
-<span><span class="co">#&gt; 1                  0                    0                0                 0</span></span>
-<span><span class="co">#&gt; 2                  0                    0                0                 0</span></span>
-<span><span class="co">#&gt; 3                  0                    0                0                 0</span></span>
-<span><span class="co">#&gt; 4                  0                    0                0                 0</span></span>
-<span><span class="co">#&gt; 5                  0                    0                0                 0</span></span>
-<span><span class="co">#&gt; 6                  0                    0                0                 0</span></span>
-<span><span class="co">#&gt;   Soybean.Leaf.Fw Soybean.Leaf.Photosynthesis.FT Soybean.Leaf.Photosynthesis.FW</span></span>
-<span><span class="co">#&gt; 1               1                              0                              1</span></span>
-<span><span class="co">#&gt; 2               1                              0                              1</span></span>
-<span><span class="co">#&gt; 3               1                              0                              1</span></span>
-<span><span class="co">#&gt; 4               1                              0                              1</span></span>
-<span><span class="co">#&gt; 5               1                              0                              1</span></span>
-<span><span class="co">#&gt; 6               1                              0                              1</span></span>
-<span><span class="co">#&gt;   Soybean.WaterUptake(1) Soybean.WaterUptake(2) Soybean.WaterUptake(3)</span></span>
-<span><span class="co">#&gt; 1                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 2                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 3                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 4                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 5                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 6                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt;   Soybean.WaterUptake(4) Soybean.WaterUptake(5) Soybean.WaterUptake(6)</span></span>
-<span><span class="co">#&gt; 1                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 2                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 3                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 4                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 5                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 6                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt;   Soybean.WaterUptake(7) Soybean.WaterUptake(8) Soybean.WaterUptake(9)</span></span>
-<span><span class="co">#&gt; 1                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 2                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 3                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 4                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 5                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt; 6                     NA                     NA                     NA</span></span>
-<span><span class="co">#&gt;   Soybean.WaterUptake(10)       Date</span></span>
-<span><span class="co">#&gt; 1                      NA 2018-01-01</span></span>
-<span><span class="co">#&gt; 2                      NA 2018-01-02</span></span>
-<span><span class="co">#&gt; 3                      NA 2018-01-03</span></span>
-<span><span class="co">#&gt; 4                      NA 2018-01-04</span></span>
-<span><span class="co">#&gt; 5                      NA 2018-01-05</span></span>
-<span><span class="co">#&gt; 6                      NA 2018-01-06</span></span>
-<span></span>
-<span><span class="co"># If observed.data is already as a dataframe, the user may do the match using a simple code like this:</span></span>
-<span><span class="co"># PO.dataframe &lt;- simulated.data %&gt;% left_join(., observed.data) *by = "col" arg. could be required*</span></span></code></pre></div>
-</div>
+<p>Please, visit the <a href="https://adriancorrendo.github.io/metrica/articles/apsim_open.html">vignette</a></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
