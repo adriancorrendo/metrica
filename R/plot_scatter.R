@@ -8,13 +8,23 @@
 #' @param orientation Argument of class string specifying the axis
 #' orientation, PO for predicted vs observed, and OP for
 #' observed vs predicted. Default is orientation = "PO".
-#' @param print_metrics boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.
+#' @param print_metrics boolean TRUE/FALSE to embed metrics in the plot. 
+#' Default is FALSE.
 #' @param metrics_list vector or list of selected metrics to print on the plot.
-#' @param position_metrics vector or list with '(x,y)' coordinates to locate the metrics_table into the plot.
+#' @param position_metrics vector or list with '(x,y)' coordinates to locate the 
+#' metrics_table into the plot.
 #' Default : c(x = min(obs), y = 1.05*max(pred)).
 #' @param print_eq boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.
-#' @param position_eq vector or list with '(x,y)' coordinates to locate the SMA equation into the plot.
+#' @param position_eq vector or list with '(x,y)' coordinates to locate the 
+#' SMA equation into the plot.
 #' Default : c(x = 0.70 max(x), y = 1.25*min(y)).
+#' @param eq_color string indicating the color of the SMA-regression text.
+#' @param shape_type integer indicating the shape type for the data points.
+#' @param shape_size number indicating the shape size for the data points.
+#' @param shape_color string indicating the shape color for the data points.
+#' @param regline_type string or integer indicating the SMA-regression line-type.
+#' @param regline_size number indicating the SMA-regression line size.
+#' @param regline_color string indicating the SMA-regression line color. 
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return an object of class `ggplot`.
@@ -45,6 +55,13 @@ scatter_plot <- function(data = NULL,
                          position_metrics = c("x"=NULL, "y"=NULL),
                          print_eq = TRUE,
                          position_eq = c("x"=NULL, "y"=NULL),
+                         eq_color = NULL,
+                         shape_type = NULL,
+                         shape_size = NULL,
+                         shape_color = NULL,
+                         regline_type = NULL,
+                         regline_size = NULL,
+                         regline_color = NULL,
                          na.rm = TRUE){
   
   # STOP. Specify metrics_list
@@ -92,15 +109,22 @@ scatter_plot <- function(data = NULL,
                                                   min({{obs}})))),
                                       round(max(c(max({{pred}}), 
                                                   max({{obs}}))))))+
-        ggplot2::geom_point(shape=21,
-                            fill = "#073b4c", alpha = 0.65, size = 3)+
+        # Shape
+        ggplot2::geom_point(shape = ifelse(is.null(shape_type), 21, shape_type), 
+                            fill = ifelse(is.null(shape_color), "#073b4c", shape_color), 
+                            size = ifelse(is.null(shape_size), 3, shape_size),
+                            alpha = 0.65) +
+        # 1:1 line
         ggplot2::geom_abline()+
-        ggplot2::geom_abline(linetype = "F1", size = 2,col = "#f46036",
+        # SMA line
+        ggplot2::geom_abline(linetype = ifelse(is.null(regline_type), "F1", regline_type), 
+                             size = ifelse(is.null(regline_size), 2, regline_size), 
+                             col = ifelse(is.null(regline_color), "#f46036", regline_color), 
                              slope = B1.PO,
-                             intercept = B0.PO)+
+                             intercept = B0.PO) +
         # Print SMA equation
         {if (print_eq == TRUE)
-          ggpp::annotate(geom="text", 
+          ggpp::annotate(geom="text", colour = ifelse(is.null(eq_color), "black", eq_color),
                          x= ifelse(!is.null(position_eq[["x"]]), position_eq[["x"]], 0.70*max({{obs}}) ) , 
                          y= ifelse(!is.null(position_eq[["y"]]), position_eq[["y"]], 1.25*min({{pred}}) ),
                          # Equation
@@ -110,6 +134,7 @@ scatter_plot <- function(data = NULL,
         ggplot2::labs(x = "Observed", y = "Predicted")+
         ggplot2::theme_bw()+
         ggplot2::theme(legend.position = "none",
+                       axis.title = ggplot2::element_text(face = "bold", size = ggplot2::rel(1.25)),
                        panel.grid = ggplot2::element_blank())
     )
   )
@@ -126,15 +151,22 @@ scatter_plot <- function(data = NULL,
                                                     min({{obs}})))),
                                         round(max(c(max({{pred}}), 
                                                     max({{obs}}))))))+
-          ggplot2::geom_point(shape=21,
-                              fill = "#f46036", alpha = 0.65, size = 3)+
+          # Shape
+          ggplot2::geom_point(shape = ifelse(is.null(shape_type), 21, shape_type), 
+                              fill = ifelse(is.null(shape_color), "#f46036", shape_color), 
+                              size = ifelse(is.null(shape_size), 3, shape_size),
+                              alpha = 0.65) +
+          # 1:1 line
           ggplot2::geom_abline()+
-          ggplot2::geom_abline(linetype = "F1", size = 2,col = "#073b4c",
-                               slope = B1.OP,
-                               intercept = B0.OP)+
+          # SMA line
+          ggplot2::geom_abline(linetype = ifelse(is.null(regline_type), "F1", regline_type), 
+                               size = ifelse(is.null(regline_size), 2, regline_size), 
+                               col = ifelse(is.null(regline_color), "#073b4c", regline_color), 
+                               slope = B1.PO,
+                               intercept = B0.PO) +
           # Print SMA equation
           {if (print_eq == TRUE)
-            ggpp::annotate(geom="text",
+            ggpp::annotate(geom="text", colour = ifelse(is.null(eq_color), "black", eq_color),
                            x= ifelse(!is.null(position_eq[["x"]]), position_eq[["x"]], 0.70*max({{pred}}) ), 
                            y= ifelse(!is.null(position_eq[["y"]]), position_eq[["y"]], 1.25*min({{obs}}) ),
                            # Equation
@@ -144,6 +176,7 @@ scatter_plot <- function(data = NULL,
           ggplot2::labs(y = "Observed", x = "Predicted")+
           ggplot2::theme_bw()+
           ggplot2::theme(legend.position = "none",
+                         axis.title = ggplot2::element_text(face = "bold", size = ggplot2::rel(1.25)),
                          panel.grid = ggplot2::element_blank())
       )
     )

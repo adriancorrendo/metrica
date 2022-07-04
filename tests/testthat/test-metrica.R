@@ -24,11 +24,14 @@ test_that('no error import_apsim_db', { expect_false(inherits(import_apsim_db.te
 data('wheat')
 
 # 1. Metrics summary
-metrics_summary.test <- metrics_summary(obs = wheat$obs, pred = wheat$pred, orientation = "PO", type = "regression")
+metrics_summary.test <- metrics_summary(data = wheat, obs = obs, pred = pred, orientation = "PO", type = "regression")
 test_that('no error metrics_summary', { expect_false(inherits(metrics_summary.test, "try-error")) })
 
-metrics_summary.test_stop <- try(metrics_summary(obs = wheat$obs, pred = wheat$pred, orientation = "PO"), silent = TRUE)
-test_that("stop", { expect_true(inherits(metrics_summary.test_stop, "try-error")) })
+#metrics_summary.test_stop_data <- try(metrics_summary(obs = wheat$obs, pred = wheat$pred, orientation = "PO", type = "regression"), silent = TRUE)
+#test_that("stop", { expect_true(inherits(metrics_summary.test_stop_data, "try-error")) })
+
+metrics_summary.test_stop_type <- try(metrics_summary(obs = wheat$obs, pred = wheat$pred, orientation = "PO"), silent = TRUE)
+test_that("stop", { expect_true(inherits(metrics_summary.test_stop_type, "try-error")) })
 
 # 2. Scatter plot
 
@@ -44,6 +47,13 @@ test_that('no error scatter_plot', {expect_false(inherits(scatter_plot.test.OP, 
 
 scatter_plot.test.metrics <- scatter_plot(obs = wheat$obs, pred = wheat$pred, print_metrics = TRUE, metrics_list = c("R2", "MSE"))
 test_that('no error scatter_plot', {expect_false(inherits(scatter_plot.test.metrics, "try-error")) })
+
+# Customized scatter plot
+scatter_plot.test_custom <- scatter_plot(obs = wheat$obs, pred = wheat$pred, eq_color = "red",
+                                     shape_type = 1, shape_size = 1, shape_color = "red",
+                                     regline_type = 1, regline_size = 1, regline_color = "red")
+test_that('no error scatter_plot', {expect_false(inherits(scatter_plot.test_custom, "try-error")) })
+
 
 # 3. Tiles plot
 
@@ -66,6 +76,11 @@ test_that('no error tiles_plot', {expect_false(inherits(tiles_plot.test_colors, 
 tiles_plot.test_colors_OP <- tiles_plot(obs = wheat$obs, pred = wheat$pred, orientation = "OP", colors = c(low = "red", high = "blue") )
 test_that('no error tiles_plot', {expect_false(inherits(tiles_plot.test_colors_OP, "try-error")) })
 
+# Customized tiles plot
+tiles_plot.test_custom <- tiles_plot(obs = wheat$obs, pred = wheat$pred, eq_color = "red",
+                                     regline_type = 1, regline_size = 1, regline_color = "red")
+test_that('no error tiles_plot', {expect_false(inherits(tiles_plot.test_custom, "try-error"))})
+
 # 4. Density plot
 
 density_plot.test.stop <- density_plot(obs = wheat$obs, pred = wheat$pred, print_metrics = TRUE)
@@ -84,9 +99,21 @@ test_that('no error density_plot', {expect_false(inherits(density_plot.test_colo
 density_plot.test_colors_OP <- density_plot(obs = wheat$obs, pred = wheat$pred, orientation = "OP", colors = c(low = "red", high = "blue") )
 test_that('no error density_plot', {expect_false(inherits(density_plot.test_colors_OP, "try-error")) })
 
+# Customized density plot
+density_plot.test_custom <- density_plot(obs = wheat$obs, pred = wheat$pred, eq_color = "red",
+                                         regline_type = 1, regline_size = 1, regline_color = "red")
+test_that('no error density_plot', {expect_false(inherits(density_plot.test_custom, "try-error"))})
+
 # 5. Bland-Altman plot
 bland_altman_plot.test <- bland_altman_plot(obs = wheat$obs, pred = wheat$pred)
 test_that('no error bland_altman_plot', { expect_false(inherits(bland_altman_plot.test, "try-error")) })
+
+# Cutsomized Bland-Altman plot
+bland_altman_plot.test_custom <- bland_altman_plot(obs = wheat$obs, pred = wheat$pred, 
+                                                   shape_type = 1, shape_size = 1, shape_color = "red",
+                                                   zeroline_type = 1, zeroline_size = 1, zeroline_color = "red",
+                                                   limitsline_type = 1, limitsline_size = 1, limitsline_color = "red")
+test_that('no error bland_altman_plot', { expect_false(inherits(bland_altman_plot.test_custom, "try-error")) })
 
 # 6. uSD
 uSD.test <- uSD(x = wheat$obs)
@@ -448,8 +475,13 @@ test_that('no error MASE', {expect_false(inherits(MASE.test.tidy, "try-error"))}
 MASE.test_stop_data <- try(MASE(obs = obs, pred = pred, time = time), silent = TRUE)
 test_that('stop', {expect_true(inherits(MASE.test_stop_data, "try-error"))})
 
-MASE.test_stop_time <- try(MASE(data = chickpea_time, obs = obs, pred = pred), silent = TRUE)
-test_that('stop', {expect_true(inherits(MASE.test_stop_time, "try-error"))})
+#MASE.test_stop_time <- try(MASE(data = chickpea_time, obs = obs, pred = pred), silent = TRUE)
+#test_that('stop', {expect_true(inherits(MASE.test_stop_time, "try-error"))})
 
+# Time 
 MASE.test_2 <- MASE(data = chickpea_time, obs = obs, pred = pred, time = time, oob_mae = 50)
 test_that('no error MASE', {expect_false(inherits(MASE.test_2, "try-error")) })
+
+# Time NULL
+MASE.test_3 <- MASE(data = chickpea_time, obs = obs, pred = pred)
+test_that('no error MASE', {expect_false(inherits(MASE.test_3, "try-error")) })

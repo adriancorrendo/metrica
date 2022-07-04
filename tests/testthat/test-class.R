@@ -200,6 +200,7 @@ bmi_3.test <- bmi(data = multiclass, obs = labels, pred = predictions, tidy = FA
 bmi_4.test <- bmi(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 bmi_5.test <- bmi(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 bmi_6.test <- bmi(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+bmi_7.test <- bmi(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
 
 # TEST
 test_that('no error bmi_1', {expect_false(inherits(bmi_1.test, "try-error")) })
@@ -208,6 +209,7 @@ test_that('no error bmi_3', {expect_false(inherits(bmi_3.test, "try-error")) })
 test_that('no error bmi_4', {expect_false(inherits(bmi_4.test, "try-error")) })
 test_that('no error bmi_5', {expect_false(inherits(bmi_5.test, "try-error")) })
 test_that('no error bmi_6', {expect_false(inherits(bmi_6.test, "try-error")) })
+test_that('no error bmi_7', {expect_false(inherits(bmi_7.test, "try-error")) })
 
 # 12. AGF
 agf_1.test <- agf(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -234,6 +236,7 @@ gmean_3.test <- gmean(data = multiclass, obs = labels, pred = predictions, tidy 
 gmean_4.test <- gmean(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 gmean_5.test <- gmean(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 gmean_6.test <- gmean(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+gmean_7.test <- gmean(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
 
 # TEST
 test_that('no error gmean_1', {expect_false(inherits(gmean_1.test, "try-error")) })
@@ -242,6 +245,7 @@ test_that('no error gmean_3', {expect_false(inherits(gmean_3.test, "try-error"))
 test_that('no error gmean_4', {expect_false(inherits(gmean_4.test, "try-error")) })
 test_that('no error gmean_5', {expect_false(inherits(gmean_5.test, "try-error")) })
 test_that('no error gmean_6', {expect_false(inherits(gmean_6.test, "try-error")) })
+test_that('no error gmean_7', {expect_false(inherits(gmean_7.test, "try-error")) })
 
 # 14. npv
 npv_1.test <- npv(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -268,6 +272,7 @@ posLr_3.test <- posLr(data = multiclass, obs = labels, pred = predictions, tidy 
 posLr_4.test <- posLr(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 posLr_5.test <- posLr(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 posLr_6.test <- posLr(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+posLr_7.test <- posLr(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
 
 # TEST
 test_that('no error posLr_1', {expect_false(inherits(posLr_1.test, "try-error")) })
@@ -276,6 +281,7 @@ test_that('no error posLr_3', {expect_false(inherits(posLr_3.test, "try-error"))
 test_that('no error posLr_4', {expect_false(inherits(posLr_4.test, "try-error")) })
 test_that('no error posLr_5', {expect_false(inherits(posLr_5.test, "try-error")) })
 test_that('no error posLr_6', {expect_false(inherits(posLr_6.test, "try-error")) })
+test_that('no error posLr_7', {expect_false(inherits(posLr_7.test, "try-error")) })
 
 # 16. negLr
 negLr_1.test <- negLr(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -284,6 +290,7 @@ negLr_3.test <- negLr(data = multiclass, obs = labels, pred = predictions, tidy 
 negLr_4.test <- negLr(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 negLr_5.test <- negLr(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 negLr_6.test <- negLr(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+negLr_7.test <- negLr(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
 
 # TEST
 test_that('no error negLr_1', {expect_false(inherits(negLr_1.test, "try-error")) })
@@ -292,6 +299,7 @@ test_that('no error negLr_3', {expect_false(inherits(negLr_3.test, "try-error"))
 test_that('no error negLr_4', {expect_false(inherits(negLr_4.test, "try-error")) })
 test_that('no error negLr_5', {expect_false(inherits(negLr_5.test, "try-error")) })
 test_that('no error negLr_6', {expect_false(inherits(negLr_6.test, "try-error")) })
+test_that('no error negLr_7', {expect_false(inherits(negLr_7.test, "try-error")) })
 
 # 17. dor
 dor_1.test <- dor(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -300,6 +308,7 @@ dor_3.test <- dor(data = multiclass, obs = labels, pred = predictions, tidy = FA
 dor_4.test <- dor(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 dor_5.test <- dor(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 dor_6.test <- dor(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+dor_7.test <- dor(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
 
 # TEST
 test_that('no error dor_1', {expect_false(inherits(dor_1.test, "try-error")) })
@@ -308,6 +317,7 @@ test_that('no error dor_3', {expect_false(inherits(dor_3.test, "try-error")) })
 test_that('no error dor_4', {expect_false(inherits(dor_4.test, "try-error")) })
 test_that('no error dor_5', {expect_false(inherits(dor_5.test, "try-error")) })
 test_that('no error dor_6', {expect_false(inherits(dor_6.test, "try-error")) })
+test_that('no error dor_7', {expect_false(inherits(dor_7.test, "try-error")) })
 
 # 18. preval
 preval_1.test <- preval(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -429,6 +439,7 @@ csi_3.test <- csi(data = multiclass, obs = labels, pred = predictions, tidy = FA
 csi_4.test <- csi(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
 csi_5.test <- csi(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
 csi_6.test <- csi(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+csi_7.test <- csi(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
 
 # TEST
 test_that('no error csi_1', {expect_false(inherits(csi_1.test, "try-error")) })
@@ -437,6 +448,7 @@ test_that('no error csi_3', {expect_false(inherits(csi_3.test, "try-error")) })
 test_that('no error csi_4', {expect_false(inherits(csi_4.test, "try-error")) })
 test_that('no error csi_5', {expect_false(inherits(csi_5.test, "try-error")) })
 test_that('no error csi_6', {expect_false(inherits(csi_6.test, "try-error")) })
+test_that('no error csi_7', {expect_false(inherits(csi_7.test, "try-error")) })
 
 # 25. deltap
 deltap_1.test <- deltap(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)

@@ -4,7 +4,15 @@
 \alias{bmi}
 \title{Bookmaker Informedness}
 \usage{
-bmi(data = NULL, obs, pred, pos_level = 2, tidy = FALSE, na.rm = TRUE)
+bmi(
+  data = NULL,
+  obs,
+  pred,
+  pos_level = 2,
+  atom = FALSE,
+  tidy = FALSE,
+  na.rm = TRUE
+)
 }
 \arguments{
 \item{data}{(Optional) argument to call an existing data frame containing the data.}
@@ -17,6 +25,10 @@ bmi(data = NULL, obs, pred, pos_level = 2, tidy = FALSE, na.rm = TRUE)
 corresponding to the positive. Generally, the positive level is the second (2)
 since following an alpha-numeric order, the most common pairs are
 \code{(Negative | Positive)}, \code{(0 | 1)}, \code{(FALSE | TRUE)}. Default : 2.}
+
+\item{atom}{Logical operator (TRUE/FALSE) to decide if the estimate is made for
+each class (atom = TRUE) or at a global level (atom = FALSE); Default : FALSE.
+When dataset is "binomial" atom does not apply.}
 
 \item{tidy}{Logical operator (TRUE/FALSE) to decide the type of return. TRUE
 returns a data.frame, FALSE returns a list; Default : FALSE.}

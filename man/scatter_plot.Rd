@@ -14,6 +14,13 @@ scatter_plot(
   position_metrics = c(x = NULL, y = NULL),
   print_eq = TRUE,
   position_eq = c(x = NULL, y = NULL),
+  eq_color = NULL,
+  shape_type = NULL,
+  shape_size = NULL,
+  shape_color = NULL,
+  regline_type = NULL,
+  regline_size = NULL,
+  regline_color = NULL,
   na.rm = TRUE
 )
 }
@@ -28,17 +35,34 @@ scatter_plot(
 orientation, PO for predicted vs observed, and OP for
 observed vs predicted. Default is orientation = "PO".}
 
-\item{print_metrics}{boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.}
+\item{print_metrics}{boolean TRUE/FALSE to embed metrics in the plot.
+Default is FALSE.}
 
 \item{metrics_list}{vector or list of selected metrics to print on the plot.}
 
-\item{position_metrics}{vector or list with '(x,y)' coordinates to locate the metrics_table into the plot.
+\item{position_metrics}{vector or list with '(x,y)' coordinates to locate the
+metrics_table into the plot.
 Default : c(x = min(obs), y = 1.05*max(pred)).}
 
 \item{print_eq}{boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.}
 
-\item{position_eq}{vector or list with '(x,y)' coordinates to locate the SMA equation into the plot.
+\item{position_eq}{vector or list with '(x,y)' coordinates to locate the
+SMA equation into the plot.
 Default : c(x = 0.70 max(x), y = 1.25*min(y)).}
+
+\item{eq_color}{string indicating the color of the SMA-regression text.}
+
+\item{shape_type}{integer indicating the shape type for the data points.}
+
+\item{shape_size}{number indicating the shape size for the data points.}
+
+\item{shape_color}{string indicating the shape color for the data points.}
+
+\item{regline_type}{string or integer indicating the SMA-regression line-type.}
+
+\item{regline_size}{number indicating the SMA-regression line size.}
+
+\item{regline_color}{string indicating the SMA-regression line color.}
 
 \item{na.rm}{Logic argument to remove rows with missing values
 (NA). Default is na.rm = TRUE.}

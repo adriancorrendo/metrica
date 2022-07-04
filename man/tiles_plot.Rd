@@ -16,6 +16,10 @@ tiles_plot(
   position_metrics = c(x = NULL, y = NULL),
   print_eq = TRUE,
   position_eq = c(x = NULL, y = NULL),
+  eq_color = NULL,
+  regline_type = NULL,
+  regline_size = NULL,
+  regline_color = NULL,
   na.rm = TRUE
 )
 }
@@ -45,6 +49,14 @@ Default : c(x = min(obs), y = 1.05*max(pred)).}
 
 \item{position_eq}{vector or list with '(x,y)' coordinates to locate the SMA equation into the plot.
 Default : c(x = 0.70 max(x), y = 1.25*min(y)).}
+
+\item{eq_color}{string indicating the color of the SMA-regression text.}
+
+\item{regline_type}{string or integer indicating the SMA-regression line-type.}
+
+\item{regline_size}{number indicating the SMA-regression line size.}
+
+\item{regline_color}{string indicating the SMA-regression line color.}
 
 \item{na.rm}{Logic argument to remove rows with missing values
 (NA). Default is na.rm = TRUE.}

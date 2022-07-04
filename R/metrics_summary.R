@@ -3,7 +3,7 @@
 #' @description It estimates a group of metrics characterizing the prediction performance
 #' for a continuous (regression) or categorical (classification) predicted-observed dataset. 
 #' By default, it calculates all available metrics for either regression or classification.
-#' @param data (Optional) argument to call an existing data frame containing the data.
+#' @param data argument to call an existing data frame containing the data (optional).
 #' @param obs vector with observed values (numeric).
 #' @param pred vector with predicted values (numeric).
 #' @param type argument of class string specifying the type of model. For continuous
@@ -66,11 +66,11 @@ metrics_summary <-
     
     if (type == "regression"){
       
-      metrics <- c("B0","B1","r","R2", "Xa","CCC","MAE","RMAE","MAPE","SMAPE",
-                   "RAE","RSE","MBE","PBE","PAB","PPB","MSE","RMSE","RRMSE","RSR",
-                   "iqRMSE","MLA","MLP", "RMLA", "RMLP", "SB","SDSD","LCS","PLA","PLP","Ue","Uc",
-                   "Ub","NSE","E1","Erel","KGE","d","d1","d1r","RAC","AC",
-                   "lambda", "dcorr", "MIC")
+      metrics <- c("B0","B1","r","R2", "Xa","CCC","MAE","RMAE","MAPE","SMAPE", #"MASE", 
+                   "RAE","RSE","MBE","PBE","PAB","PPB","MSE","RMSE","RRMSE", "RSR",
+                   "iqRMSE","MLA","MLP", "RMLA", "RMLP", "SB","SDSD","LCS",
+                   "PLA", "PLP","Ue","Uc","Ub","NSE","E1","Erel","KGE","d",
+                   "d1", "d1r","RAC","AC","lambda", "dcorr", "MIC")
       
       # Create data.frame to store metrics
       MetricDataFrame <- data.frame(`Metric` = metrics, 
@@ -94,6 +94,8 @@ metrics_summary <-
               RMAE =as.numeric(metrica::RMAE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
               MAPE = as.numeric(metrica::MAPE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
               SMAPE =as.numeric(metrica::SMAPE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
+              # The MASE function doesn't work yet within the summary function.
+              #MASE = as.numeric(metrica::MASE(data = {{data}}, {{obs}}, {{pred}}, time = {{time}})[[1]]),
               RAE =as.numeric(metrica::RAE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
               RSE =as.numeric(metrica::RSE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),
               MBE =as.numeric(metrica::MBE(data = {{data}},obs={{obs}}, pred={{pred}})[[1]]),

@@ -1,6 +1,7 @@
 #' @title Geometric Mean  
 #' @name gmean
-#' @description It estimates the Geometric Mean score for a nominal/categorical predicted-observed dataset.
+#' @description It estimates the Geometric Mean score for a nominal/categorical 
+#' predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character | factor).
 #' @param pred Vector with predicted values (character | factor).
@@ -8,6 +9,9 @@
 #' corresponding to the positive. Generally, the positive level is the second (2)
 #' since following an alpha-numeric order, the most common pairs are 
 #' `(Negative | Positive)`, `(0 | 1)`, `(FALSE | TRUE)`. Default : 2.
+#' @param atom Logical operator (TRUE/FALSE) to decide if the estimate is made for 
+#' each class (atom = TRUE) or at a global level (atom = FALSE); Default : FALSE.
+#' When dataset is "binomial" atom does not apply. 
 #' @param tidy Logical operator (TRUE/FALSE) to decide the type of return. TRUE 
 #' returns a data.frame, FALSE returns a list; Default : FALSE.
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -47,7 +51,7 @@
 #' @importFrom rlang eval_tidy quo
 #' @export 
 gmean <- function(data=NULL, obs, pred, 
-                  pos_level = 2,
+                  pos_level = 2, atom = FALSE,
                   tidy = FALSE, na.rm = TRUE){
   
   matrix <- rlang::eval_tidy(
@@ -86,11 +90,22 @@ gmean <- function(data=NULL, obs, pred,
     TN   <- sum(matrix) - (TPFP + TPFN - TP)
     FP   <- TPFP - TP 
     
-    rec <- mean(correct / total_actual)
-    spec <- mean(TN / (TN + FP))
+    
+    if (atom == FALSE) { 
+      #prec <- mean(correct / total_pred)
+      rec <- mean(correct / total_actual)
+      spec <- mean(TN / (TN + FP))
+      #warning("For multiclass cases, the gmean should be estimated at a class level. Please, consider using `atom = TRUE`")
+    }
+    
+    if (atom == TRUE) { 
+      #prec <- correct / total_pred
+      rec <- correct / total_actual
+      spec <- TN / (TN + FP)
+    }
     
   }
-  
+  # Formula
   gmean <- sqrt(spec * rec)
   
   if (tidy == TRUE) {

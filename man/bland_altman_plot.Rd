@@ -4,7 +4,21 @@
 \alias{bland_altman_plot}
 \title{Bland-Altman plot}
 \usage{
-bland_altman_plot(data = NULL, obs, pred, na.rm = TRUE)
+bland_altman_plot(
+  data = NULL,
+  obs,
+  pred,
+  shape_type = NULL,
+  shape_size = NULL,
+  shape_color = NULL,
+  zeroline_type = NULL,
+  zeroline_size = NULL,
+  zeroline_color = NULL,
+  limitsline_type = NULL,
+  limitsline_size = NULL,
+  limitsline_color = NULL,
+  na.rm = TRUE
+)
 }
 \arguments{
 \item{data}{(Optional) argument to call an existing data frame containing the data.}
@@ -12,6 +26,24 @@ bland_altman_plot(data = NULL, obs, pred, na.rm = TRUE)
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
+
+\item{shape_type}{number indicating the shape type for the data points.}
+
+\item{shape_size}{number indicating the shape size for the data points.}
+
+\item{shape_color}{string indicating the shape color for the data points.}
+
+\item{zeroline_type}{string or integer indicating the zero line-type.}
+
+\item{zeroline_size}{number indicating the zero line size.}
+
+\item{zeroline_color}{string indicating the zero line color.}
+
+\item{limitsline_type}{string or integer indicating the limits (+/- 1.96*SD) line-type.}
+
+\item{limitsline_size}{number indicating the limits (+/- 1.96*SD) line size.}
+
+\item{limitsline_color}{string indicating the limits (+/- 1.96*SD) line color.}
 
 \item{na.rm}{Logic argument to remove rows with missing values}
 }

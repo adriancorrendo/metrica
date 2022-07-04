@@ -167,6 +167,7 @@ the official APSIM Next Generation website:
 library(metrica)
 library(dplyr)
 library(purrr)
+library(ggplot2)
 library(tidyr)
 ```
 
@@ -196,15 +197,27 @@ example.data <- barley %>%  # or 'wheat', 'sorghum', or 'chickpea'
 
 ### 3.1.1. Plot functions
 
-### 3.1.1.1. Create scatter plot with PO orientation
+### 3.1.1.1. Create a customizable scatter plot with PO orientation
 
 ``` r
-barley.scat.plot <- metrica::scatter_plot(data = example.data, 
-                                          obs = measured, 
-                                          pred = simulated,
-                                          orientation = "PO", 
-                                          print_eq = TRUE,
-                                          position_eq = c(x=24, y =8))
+barley.scat.plot <- 
+  metrica::scatter_plot(data = example.data, 
+                        obs = measured, 
+                        pred = simulated,
+                        orientation = "PO", 
+                        print_eq = TRUE,
+                        position_eq = c(x=24, y =8), 
+                        # Optional arguments to customize the plot
+                        shape_type = 21,
+                        shape_color = "steelblue",
+                        shape_size = 3,
+                        regline_type = "F1",
+                        regline_color = "#9e0059",
+                        regline_size = 2)+
+  # Customize axis breaks
+  scale_y_continuous(breaks = seq(0,30, by = 5))+
+  scale_x_continuous(breaks = seq(0,30, by = 5))
+
 barley.scat.plot
 ```
 
@@ -219,7 +232,7 @@ barley.scat.plot
 
 ``` r
 barley.tiles.plot <- 
-  metrica::tiles_plot(data = example.data, 
+  tiles_plot(data = example.data, 
                       obs = measured, 
                       pred = simulated,
                       bins = 10, 
@@ -239,8 +252,8 @@ metrica::density_plot(data = example.data,
                       obs = measured, pred = simulated,
                       n = 5, 
                       orientation = "OP", 
-           colors = c(low = "white", high = "steelblue")
-           )
+           colors = c(low = "white", high = "steelblue") )+
+  theme(legend.position = "none")
 
 barley.density.plot
 ```
@@ -251,7 +264,7 @@ barley.density.plot
 
 ``` r
 barley.ba.plot <- metrica::bland_altman_plot(data = example.data,
-                           obs = measured, pred = simulated)
+                                             obs = measured, pred = simulated)
 
 barley.ba.plot
 ```

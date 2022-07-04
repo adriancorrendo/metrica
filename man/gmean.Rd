@@ -4,7 +4,15 @@
 \alias{gmean}
 \title{Geometric Mean}
 \usage{
-gmean(data = NULL, obs, pred, pos_level = 2, tidy = FALSE, na.rm = TRUE)
+gmean(
+  data = NULL,
+  obs,
+  pred,
+  pos_level = 2,
+  atom = FALSE,
+  tidy = FALSE,
+  na.rm = TRUE
+)
 }
 \arguments{
 \item{data}{(Optional) argument to call an existing data frame containing the data.}
@@ -18,6 +26,10 @@ corresponding to the positive. Generally, the positive level is the second (2)
 since following an alpha-numeric order, the most common pairs are
 \code{(Negative | Positive)}, \code{(0 | 1)}, \code{(FALSE | TRUE)}. Default : 2.}
 
+\item{atom}{Logical operator (TRUE/FALSE) to decide if the estimate is made for
+each class (atom = TRUE) or at a global level (atom = FALSE); Default : FALSE.
+When dataset is "binomial" atom does not apply.}
+
 \item{tidy}{Logical operator (TRUE/FALSE) to decide the type of return. TRUE
 returns a data.frame, FALSE returns a list; Default : FALSE.}
 
@@ -29,7 +41,8 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \verb{data frame} (if tidy = TRUE).
 }
 \description{
-It estimates the Geometric Mean score for a nominal/categorical predicted-observed dataset.
+It estimates the Geometric Mean score for a nominal/categorical
+predicted-observed dataset.
 }
 \details{
 The gmean is a metric especially useful for imbalanced classes because it

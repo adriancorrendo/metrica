@@ -16,14 +16,15 @@ MASE(
 )
 }
 \arguments{
-\item{data}{(Optional) argument to call an existing data frame containing the data.}
+\item{data}{(Required) argument to call an existing data frame containing the data.}
 
 \item{obs}{Vector with observed values (numeric).}
 
 \item{pred}{Vector with predicted values (numeric).}
 
-\item{time}{String with the "name" of the vector containing the time variable
-to sort observations. Required for MASE estimation.}
+\item{time}{(Optional) String with the "name" of the vector containing the time variable
+to sort observations. "Optional" to ensure an appropriate MASE estimation.
+Default: NULL, assumes observations are already sorted by time.}
 
 \item{naive_step}{A positive number specifying how many observed values to recall
 back in time when computing the naive expectation. Default = 1}

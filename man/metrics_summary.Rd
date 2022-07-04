@@ -16,7 +16,7 @@ metrics_summary(
 )
 }
 \arguments{
-\item{data}{(Optional) argument to call an existing data frame containing the data.}
+\item{data}{argument to call an existing data frame containing the data (optional).}
 
 \item{obs}{vector with observed values (numeric).}
 

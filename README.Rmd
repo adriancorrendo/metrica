@@ -125,6 +125,7 @@ https://doi.org/10.7910/DVN/EJS4M0. Further details can be found at the official
 library(metrica)
 library(dplyr)
 library(purrr)
+library(ggplot2)
 library(tidyr)
 
 ```
@@ -151,15 +152,27 @@ example.data <- barley %>%  # or 'wheat', 'sorghum', or 'chickpea'
 ```
 
 ### 3.1.1. Plot functions
-### 3.1.1.1. Create scatter plot with PO orientation
-```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
+### 3.1.1.1. Create a customizable scatter plot with PO orientation
+```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=300}
 
-barley.scat.plot <- metrica::scatter_plot(data = example.data, 
-                                          obs = measured, 
-                                          pred = simulated,
-                                          orientation = "PO", 
-                                          print_eq = TRUE,
-                                          position_eq = c(x=24, y =8))
+barley.scat.plot <- 
+  metrica::scatter_plot(data = example.data, 
+                        obs = measured, 
+                        pred = simulated,
+                        orientation = "PO", 
+                        print_eq = TRUE,
+                        position_eq = c(x=24, y =8), 
+                        # Optional arguments to customize the plot
+                        shape_type = 21,
+                        shape_color = "steelblue",
+                        shape_size = 3,
+                        regline_type = "F1",
+                        regline_color = "#9e0059",
+                        regline_size = 2)+
+  # Customize axis breaks
+  scale_y_continuous(breaks = seq(0,30, by = 5))+
+  scale_x_continuous(breaks = seq(0,30, by = 5))
+
 barley.scat.plot
 
 # Alternative using vectors instead of dataframe
@@ -168,9 +181,9 @@ barley.scat.plot
 ```
 
 ### 3.1.1.2. Create tiles plot with OP orientation
-```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
+```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=300}
 barley.tiles.plot <- 
-  metrica::tiles_plot(data = example.data, 
+  tiles_plot(data = example.data, 
                       obs = measured, 
                       pred = simulated,
                       bins = 10, 
@@ -181,22 +194,22 @@ barley.tiles.plot
 ```
 
 ### 3.1.1.3. Create a density plot with OP orientation
-```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
+```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=300}
 barley.density.plot <-
 metrica::density_plot(data = example.data, 
                       obs = measured, pred = simulated,
                       n = 5, 
                       orientation = "OP", 
-           colors = c(low = "white", high = "steelblue")
-           )
+           colors = c(low = "white", high = "steelblue") )+
+  theme(legend.position = "none")
 
 barley.density.plot
 ```
 
 ### 3.1.1.4. Create a Bland-Altman plot
-```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
+```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=300}
 barley.ba.plot <- metrica::bland_altman_plot(data = example.data,
-                           obs = measured, pred = simulated)
+                                             obs = measured, pred = simulated)
 
 barley.ba.plot
 ```
@@ -279,7 +292,7 @@ head(non_nested_summary)
 ```
 
 ### 3.1.4. Print metrics in a plot
-```{r warning=F, message=F, fig.height=6, fig.width=7, dpi=300}
+```{r warning=F, message=F, fig.height=5, fig.width=7, dpi=300}
 df <- metrica::wheat
 
 # Create list of selected metrics
@@ -330,7 +343,7 @@ binomial_case %>% confusion_matrix(obs = labels, pred = predictions,
 ```
 
 ### 3.1.1.2. Multiclass
-```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7}
+```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
 # a. Print
 multinomial_case %>% confusion_matrix(obs = labels, 
                                       pred = predictions, 

@@ -17,6 +17,10 @@
 #' @param print_eq boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.
 #' @param position_eq vector or list with '(x,y)' coordinates to locate the SMA equation into the plot.
 #' Default : c(x = 0.70 max(x), y = 1.25*min(y)).
+#' @param eq_color string indicating the color of the SMA-regression text.
+#' @param regline_type string or integer indicating the SMA-regression line-type.
+#' @param regline_size number indicating the SMA-regression line size.
+#' @param regline_color string indicating the SMA-regression line color. 
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
 #' @return Object of class `ggplot`.
@@ -34,8 +38,8 @@
 #' @seealso 
 #'  \code{\link[ggplot2]{ggplot}},\code{\link[ggplot2]{geom_point}},\code{\link[ggplot2]{aes}}
 #' @rdname tiles_plot
-#' @importFrom ggplot2 ggplot geom_point aes geom_abline geom_hex
-#' coord_fixed theme_bw labs
+#' @importFrom ggplot2 ggplot geom_point aes geom_abline geom_hex stat_bin2d 
+#' coord_fixed theme_bw labs stat_bin_hex
 #' @importFrom dplyr %>%
 #' @importFrom rlang eval_tidy quo
 #' @export
@@ -50,6 +54,10 @@ tiles_plot <- function(data=NULL,
                        position_metrics = c("x"=NULL, "y"=NULL),
                        print_eq = TRUE,
                        position_eq = c("x"=NULL, "y"=NULL),
+                       eq_color = NULL,
+                       regline_type = NULL,
+                       regline_size = NULL,
+                       regline_color = NULL,
                        na.rm = TRUE){
   
   # STOP. Specify metrics_list
@@ -102,17 +110,21 @@ tiles_plot <- function(data=NULL,
                                                 min({{obs}})))),
                                     round(max(c(max({{pred}}), 
                                                 max({{obs}}))))))+
-      ggplot2::stat_bin2d(ggplot2::aes(y = {{pred}}, x = {{obs}}),
-                            bins = bins)+
+      # Tiles geom_hex not working due to ggplot2 issue
+      #ggplot2::stat_bin_hex(ggplot2::aes(y = {{obs}}, x = {{pred}}), bins = bins)+
+      ggplot2::stat_bin2d(ggplot2::aes(y = {{pred}}, x = {{obs}}), bins = bins)+
       { if (!is.null(colors[[1]]))
       ggplot2::scale_fill_gradient(low = palette[[1]], high = palette[[2]]) } +
       ggplot2::geom_abline()+
-      ggplot2::geom_abline(linetype = "F1", size = 2,col = "#861657",
-                           slope = B1.PO,
-                           intercept = B0.PO)+
+      # SMA line
+      ggplot2::geom_abline(linetype = ifelse(is.null(regline_type), "F1", regline_type), 
+                             size = ifelse(is.null(regline_size), 2, regline_size), 
+                             col = ifelse(is.null(regline_color), "#f46036", regline_color), 
+                             slope = B1.PO,
+                             intercept = B0.PO) +
       # Print SMA equation
       {if (print_eq == TRUE)
-          ggpp::annotate(geom="text", 
+          ggpp::annotate(geom="text", colour = ifelse(is.null(eq_color), "black", eq_color),
                          x= ifelse(!is.null(position_eq[["x"]]), position_eq[["x"]], 0.70*max({{obs}}) ) , 
                          y= ifelse(!is.null(position_eq[["y"]]), position_eq[["y"]], 1.25*min({{pred}}) ),
                          # Equation
@@ -122,6 +134,7 @@ tiles_plot <- function(data=NULL,
       ggplot2::labs(y = "Predicted", x = "Observed")+
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "right",
+                     axis.title = ggplot2::element_text(face = "bold", size = ggplot2::rel(1.25)),
                      panel.grid = ggplot2::element_blank())
       )
   )
@@ -138,17 +151,22 @@ if (orientation == "OP"){
                                                 min({{obs}})))),
                                     round(max(c(max({{pred}}), 
                                                 max({{obs}}))))))+
-      ggplot2::stat_bin2d(ggplot2::aes(y = {{obs}}, x = {{pred}}),
-                        bins = bins)+
+      # Tiles geom_hex not working due to ggplot2 issue
+      #ggplot2::stat_bin_hex(ggplot2::aes(y = {{obs}}, x = {{pred}}), bins = bins)+
+      ggplot2::stat_bin2d(ggplot2::aes(y = {{obs}}, x = {{pred}}), bins = bins)+
       { if (!is.null(colors[[1]]))
           ggplot2::scale_fill_gradient(low = palette[[1]], high = palette[[2]]) } +
+      # 1:1 line
       ggplot2::geom_abline()+
-      ggplot2::geom_abline(linetype = "F1", size = 2,col = "#006d77",
-                           slope = B1.OP,
-                           intercept = B0.OP)+
+      # SMA line
+      ggplot2::geom_abline(linetype = ifelse(is.null(regline_type), "F1", regline_type), 
+                             size = ifelse(is.null(regline_size), 2, regline_size), 
+                             col = ifelse(is.null(regline_color), "#073b4c", regline_color), 
+                             slope = B1.PO,
+                             intercept = B0.PO) +
       # Print SMA equation
       {if (print_eq == TRUE)
-      ggpp::annotate(geom="text",
+      ggpp::annotate(geom="text", colour = ifelse(is.null(eq_color), "black", eq_color),
                      x= ifelse(!is.null(position_eq[["x"]]), position_eq[["x"]], 0.70*max({{pred}}) ), 
                      y= ifelse(!is.null(position_eq[["y"]]), position_eq[["y"]], 1.25*min({{obs}}) ),
                      # Equation
@@ -158,6 +176,7 @@ if (orientation == "OP"){
       ggplot2::labs(y = "Observed", x = "Predicted")+
       ggplot2::theme_bw()+
       ggplot2::theme(legend.position = "right",
+                     axis.title = ggplot2::element_text(face = "bold", size = ggplot2::rel(1.25)),
                      panel.grid = ggplot2::element_blank())
       
     )
@@ -173,8 +192,6 @@ if (orientation == "OP"){
                                           # Position
                                           x= ifelse(!is.null(position_metrics[["x"]]), position_metrics[["x"]], min({{obs}}) ), 
                                           y= ifelse(!is.null(position_metrics[["y"]]), position_metrics[["y"]], 1.05*max({{pred}}) ),
-                                          #x = min({{obs}}), 
-                                          #y = 1.05*max({{pred}}),
                                           # Call the table
                                           label = metrics.table,
                                           # Align Table (left)

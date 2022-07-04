@@ -14,21 +14,28 @@ import_apsim_db(filename = "", folder = ".", value = "report", simplify = TRUE)
 \item{value}{either \sQuote{report}, \sQuote{all} (list) or user-defined for a specific report.}
 
 \item{simplify}{if TRUE will attempt to simplify multiple reports into a single data.frame.
-If FALSE it will return a list.}
+If FALSE it will return a list. Default: TRUE.}
 }
 \value{
 An object of class \code{data.frame}, but it depends on the argument \sQuote{value} above
 }
 \description{
-Imports data from SQLite databases (*.db)
+Imports data from SQLite databases (*.db) applied by APSIM
+Next Generation. It reads one file at a time.
 }
 \note{
-Adapted from apsimx to maintain compatibility. For reference, we also recommend
-to check and use the function apsimx::read_apsimx() as an alternative.
+This function was adapted from apsimx package (Miguez, 2022).
+For reference, we recommend to check and use the function
+apsimx::read_apsimx() as an alternative.
 Source: https://github.com/femiguez/apsimx by F. Miguez.
 }
 \examples{
 \donttest{
 ## See [documentation](https://adriancorrendo.github.io/metrica/index.html)
 }
+}
+\references{
+Miguez, F. (2022)
+apsimx: Inspect, Read, Edit and Run 'APSIM' "Next Generation" and 'APSIM' Classic.
+\emph{R package version 2.3.1,} \url{https://CRAN.R-project.org/package=apsimx}
 }

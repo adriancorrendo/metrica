@@ -1,10 +1,10 @@
 # metrica 2.0.0
 
-* July 3rd, 2022. <br/>
+* July 4th, 2022. <br/>
 
 This new version of metrica includes:
 
-1) Twenty-seven (27) new functions to evaluate quality of predictions for classification problems:
+1) Twenty-seven (27) additional functions to evaluate quality of predictions for classification problems:
   
   - `confusion_matrix()`: Confusion matrix (as data.frame or plot).
   - `accuracy()`: Accuracy.
@@ -34,33 +34,51 @@ This new version of metrica includes:
   - `preval_t()`: Prevalence threshold.
   - `AUC_roc()`: Area Under the ROC Curve (trapezoid approach).
 
-2) Three (3) new functions to the family of regression performance metrics:
+2) Three (3) additional functions to the family of regression performance metrics:
   
-  -`MASE()` (Mean Absolute Scaled Error) for Time Series Analysis.
+  - `MASE()` (Mean Absolute Scaled Error) for Time Series Analysis.
   - `dcorr()` (Distance correlation) as wrapper of dcor() from energy package (https://CRAN.R-project.org/package=energy), and
   - `MIC()` (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (https://CRAN.R-project.org/package=minerva).
   - `RMLA()` (Root Mean Lack of Accuracy)
   - `RMLP()` (Root Mean Lack of Precision)
+  
+3) Update of the metrics_summary() function including:
+  - run performance metrics summary either for "regression" or "classification"
+  using the new `type` argument, 'required' to specify the type of prediction task.
+  - `pos_level` argument, for binomial classification, to allow the user to specify the alphanumeric order of the "positive" level.
+  -
 
-3) One (1) new plotting function for regression problems:
+4) One (1) additional plotting function for regression:
   - `density_plot()`, to create a plot that paints density areas of predicted and observed coordinates.
   
-4) Four (4) new arguments to plotting functions scatter_plot, tiles_plot, and density_plot (no deprecated):
+5) Seventeen (17) additional arguments to customize scatter_plot, tiles_plot, and density_plot:
   - `print_eq` (to print equation or not)
   - `position_metrics` (to customize position of metrics_table when print_metrics = TRUE)
   - `position_eq` (to customize position of equation when print_eq = TRUE)
+  - `eq_color` (to customize color of the equation when print_eq = TRUE)
   - `colors` (for tile_plot and density_plot, to paint gradient from "low" to "high" density of points)
+  - `shape_type` (to customize shape of the scatter_plot() and bland_altman_plot())
+  - `shape_size` (to customize shape of the scatter_plot() and bland_altman_plot())
+  - `shape_color` (to customize shape of the scatter_plot() and bland_altman_plot())
+  - `regline_type` (to customize regression line of the scatter_plot(), tiles_plot, and density_plot())
+  - `regline_size` (to customize regression line of the scatter_plot(), tiles_plot, and density_plot())
+  - `regline_color` (to customize regression line of the scatter_plot(), tiles_plot, and density_plot())
+  - `zeroline_type` (to customize lines of the bland_altman_plot())
+  - `zeroline_size` (to customize lines of the bland_altman_plot())
+  - `zeroline_color` (to customize lines of the bland_altman_plot())
+  - `limitsline_type` (to customize lines of the bland_altman_plot())
+  - `limitsline_size` (to customize lines of the bland_altman_plot())
+  - `limitsline_color` (to customize lines of the bland_altman_plot())
   
-5) Adding the argument `tidy` to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)
+6) Adding the argument `tidy` to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)
 
+7) Fixing a minor a bug on the `NSE()` function to estimate the Nash-Sutcliffe model efficiency that produced only values of NSE=1.00 on v1.2.3.
 
-6) Fixing a minor a bug on the `NSE()` function to estimate the Nash-Sutcliffe model efficiency that produced only values of NSE=1.00 on v1.2.3.
+8) Improved coverage of the code testing.
 
-6) Improved coverage of the code testing.
+9) README update with new features descriptions and links to vignettes.
 
-7) README update.
-
-8) Vignettes update creating versions for both classification and regression, and for importing APSIM files.
+10) Vignettes update creating versions for both classification and regression, and for importing APSIM files.
 
 
 ######################################################################################################

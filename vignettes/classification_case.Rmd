@@ -125,7 +125,7 @@ binary_landCover %>% confusion_matrix(obs = actual, pred = predicted,
 
 ### 3.2. Multiclass
 
-```{r confusion_matrix multiclass, fig.width=9, fig.height=7, dpi=120}  
+```{r confusion_matrix multiclass, fig.width=6, fig.height=5, dpi=120}  
 # a. Print
 multi_maize_phen %>% confusion_matrix(obs = actual, pred = predicted, 
                                       plot = FALSE, 
@@ -228,8 +228,59 @@ multi_maize_phen %>%
                   metrics_list = selected_class_metrics)
 
 ```
+### 4.3. Class wise metrics (`atom` = TRUE)
 
-### 4.3. Multiple models
+For multiclass cases, most of the classification metrics can (and should) be estimated 
+at the class level and not simply as an overall average across classes. With the 
+exceptions of kappa (khat), mcc, fmi, and AUC_roc, all classification metrics can be 
+estimated at the class level using the argument `atom = TRUE`, as follows:
+
+```{r atom argument}
+# Precision
+maize_phenology %>% metrica::precision(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# Recall
+maize_phenology %>% metrica::recall(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# Specificity
+maize_phenology %>% metrica::specificity(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+
+# atom = TRUE available for more functions available (remove #)
+# F-score
+# maize_phenology %>% metrica::fscore(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # Adjusted F-score
+# maize_phenology %>% metrica::agf(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # G-mean
+# maize_phenology %>% metrica::gmean(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # Negative predictive value
+# maize_phenology %>% metrica::npv(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # Prevalence
+# maize_phenology %>% metrica::preval(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # Prevalence threshold
+# maize_phenology %>% metrica::preval_t(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # False omission rate
+# maize_phenology %>% metrica::FOR(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # False detection rate
+# maize_phenology %>% metrica::FDR(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # False positive rate
+# maize_phenology %>% metrica::FPR(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # Falase negative rate
+# maize_phenology %>% metrica::FNR(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # Delta-p
+# maize_phenology %>% metrica::deltap(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # Critical Success Index
+# maize_phenology %>% metrica::csi(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # Bookmaker Informedness
+# maize_phenology %>% metrica::bmi(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # Positive likelihood ratio
+# maize_phenology %>% metrica::posLr(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # Negative likelihood ratio
+# maize_phenology %>% metrica::negLr(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+# # Diagnostic odds ratio
+# maize_phenology %>% metrica::dor(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)
+
+```
+
+
+### 4.4. Multiple models
 
 In some cases, multiple runs of a model are available to compare vs. observed values (e.g. cross-validation folds). Thus, we can also fit the agreement analysis for several datasets as follows: <br/>
 
@@ -267,9 +318,9 @@ head(binary_folds_summary)
 
 ```
 
-#### 4.3.1. Non-nested data <br/>
+#### 4.4.1. Non-nested data <br/>
 
-#### 4.3.1.1. Using `group_map()` <br/>
+#### 4.4.1.1. Using `group_map()` <br/>
 
 ```{r multiple_models unnested group_map}
 non_nested_folds <- binary_nested_folds %>% unnest(cols = "data") 
@@ -282,7 +333,7 @@ binary_folds_summary_2 <- non_nested_folds %>%
 binary_folds_summary_2
 ```
 
-#### 4.3.1.2. Using `summarise()` <br/>
+#### 4.4.1.2. Using `summarise()` <br/>
 
 ```{r multiple_models unnested summarise}
 
@@ -302,7 +353,7 @@ binary_folds_summary_3
 
 To print the metrics on the `confusion_matrix()`, just use print.metrics = TRUE. Warning: do not forget to specify your 'metrics.list' and choice wisely: <br/>  
 
-```{r scatter_plot print_metrics, fig.width=9, fig.height=7, dpi=120}
+```{r scatter_plot print_metrics, fig.width=6, fig.height=5, dpi=120}
 
 selected_metrics <- c("accuracy", "precision", "recall", "khat",
                    "mcc", "fscore", "agf", "npv", "FPR", "FNR")
@@ -340,7 +391,7 @@ multinomial_matrix_metrics
 ```
 Also, as a ggplot element, outputs are flexible of further edition:  
 
-```{r scatter_plot.edit, fig.width=9, fig.height=7, dpi=120}
+```{r scatter_plot.edit, fig.width=6, fig.height=5, dpi=120}
 
 binary_matrix_metrics +
   # Modify labels

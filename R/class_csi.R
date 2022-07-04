@@ -9,6 +9,9 @@
 #' corresponding to the positive. Generally, the positive level is the second (2)
 #' since following an alpha-numeric order, the most common pairs are 
 #' `(Negative | Positive)`, `(0 | 1)`, `(FALSE | TRUE)`. Default : 2.
+#' @param atom Logical operator (TRUE/FALSE) to decide if the estimate is made for 
+#' each class (atom = TRUE) or at a global level (atom = FALSE); Default : FALSE.
+#' When dataset is "binomial" atom does not apply.
 #' @param tidy Logical operator (TRUE/FALSE) to decide the type of return. TRUE 
 #' returns a data.frame, FALSE returns a list; Default : FALSE.
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -55,7 +58,7 @@
 #' @importFrom rlang eval_tidy quo
 #' @export 
 csi <- function(data=NULL, obs, pred, 
-                pos_level = 2,
+                pos_level = 2, atom = FALSE,
                 tidy = FALSE, na.rm = TRUE){
   
   matrix <- rlang::eval_tidy(
@@ -92,9 +95,11 @@ csi <- function(data=NULL, obs, pred,
     TPFP <- rowSums(matrix)
     TPFN <- colSums(matrix)
     TN   <- sum(matrix) - (TPFP + TPFN - TP)
-    FP   <- TPFP - TP 
+    FP   <- TPFP - TP
     
-    csi <- mean(TP / (TP + TN + FP))
+    if (atom == FALSE){ csi <- mean(TP / (TP + TN + FP)) }
+    
+    if (atom == TRUE){ csi <- TP / (TP + TN + FP) }
     
     
   }

@@ -2,11 +2,12 @@
 #' @name MASE
 #' @description It estimates the mean absolute error using the naive-error approach
 #' for a continuous predicted-observed dataset.
-#' @param data (Optional) argument to call an existing data frame containing the data.
+#' @param data (Required) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (numeric).
 #' @param pred Vector with predicted values (numeric).
-#' @param time String with the "name" of the vector containing the time variable
-#' to sort observations. Required for MASE estimation.
+#' @param time (Optional) String with the "name" of the vector containing the time variable
+#' to sort observations. "Optional" to ensure an appropriate MASE estimation. 
+#' Default: NULL, assumes observations are already sorted by time.
 #' @param naive_step A positive number specifying how many observed values to recall
 #' back in time when computing the naive expectation. Default = 1 
 #' @param oob_mae A numeric value indicating the out-of-bag (out-of-sample) MAE.
@@ -66,9 +67,10 @@ MASE <- function(data = NULL, obs, pred, time = NULL,
                  naive_step = 1, oob_mae = NULL, tidy = FALSE, na.rm = TRUE) {
   
   if (is.null(data)) {
-    stop("For timeseries analysis, consider using a data frame containing obs, pred, and time columns") }
-  if (is.null(time)) {
-    stop("MASE is a metric for timeseries analysis. Please, specify the time argument to arrange observations.") }
+       stop("For MASE estimation, the 'data' argument is required. Please, use a data frame containing observed, predicted, and time columns") }
+  
+  if (!is.null(time)) {
+    #  stop("MASE is a metric for timeseries analysis. Please, specify the time argument to arrange observations.") 
   
   observ <- rlang::enquo(obs)
   
@@ -85,7 +87,20 @@ MASE <- function(data = NULL, obs, pred, time = NULL,
    
   # Errors
   sum_abs_err <- sum( abs(data_arranged[["obs"]] - data_arranged[["pred"]]) ) / n
-  mae_naive <- sum( abs(obs_naive[init:n] - obs_naive[1:final]) ) / final
+  mae_naive <- sum( abs(obs_naive[init:n] - obs_naive[1:final]) ) / final }
+  
+  if (is.null(time)) { 
+    
+    n <- nrow(data)
+     
+    # First and last observations to compute error
+    init <- naive_step + 1
+    final <- n - naive_step
+    obs_naive <- data[["obs"]]
+    
+    # Errors
+    sum_abs_err <- sum( abs(data[["obs"]] - data[["pred"]]) ) / n
+    mae_naive <- sum( abs(obs_naive[init:n] - obs_naive[1:final]) ) / final }
   
   # If out-of-bag MAE is not provided
   if (is.null(oob_mae)) {MASE <-  (sum_abs_err / mae_naive)}

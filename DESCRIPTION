@@ -1,7 +1,7 @@
 Package: metrica
 Title: Prediction Performance Metrics
 Version: 2.0.0
-Date: 2022-07-02
+Date: 2022-07-04
 Authors@R: c(
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("cre", "cph"), comment = c(ORCID = "0000-0002-4172-289X")),
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("aut"), comment = c(ORCID = "0000-0002-4172-289X")),
@@ -25,6 +25,7 @@ Suggests:
     purrr,
     knitr,
     rmarkdown,
+    apsimx,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports:

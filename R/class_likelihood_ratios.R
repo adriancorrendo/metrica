@@ -9,6 +9,9 @@
 #' corresponding to the positive. Generally, the positive level is the second (2)
 #' since following an alpha-numeric order, the most common pairs are 
 #' `(Negative | Positive)`, `(0 | 1)`, `(FALSE | TRUE)`. Default : 2.
+#' @param atom Logical operator (TRUE/FALSE) to decide if the estimate is made for 
+#' each class (atom = TRUE) or at a global level (atom = FALSE); Default : FALSE.
+#' When dataset is "binomial" atom does not apply. 
 #' @param tidy Logical operator (TRUE/FALSE) to decide the type of return. TRUE 
 #' returns a data.frame, FALSE returns a list; Default : FALSE.
 #' @param na.rm Logic argument to remove rows with missing values 
@@ -71,7 +74,7 @@
 #' @export
 #' 
 posLr <- function(data=NULL, obs, pred, 
-                  pos_level = 2,
+                  pos_level = 2, atom = FALSE,
                   tidy = FALSE, na.rm = TRUE){
   # Positive Likelihood Ratio 
   
@@ -111,8 +114,18 @@ posLr <- function(data=NULL, obs, pred,
     TN   <- sum(matrix) - (TPFP + TPFN - TP)
     FP   <- TPFP - TP 
     
-    rec <- mean(correct / total_actual)
-    spec <- mean(TN / (TN + FP))
+    if (atom == FALSE) { 
+      #prec <- mean(correct / total_pred)
+      rec <- mean(correct / total_actual)
+      spec <- mean(TN / (TN + FP))
+      #warning("For multiclass cases, the gmean should be estimated at a class level. Please, consider using `atom = TRUE`")
+    }
+    
+    if (atom == TRUE) { 
+      #prec <- correct / total_pred
+      rec <- correct / total_actual
+      spec <- TN / (TN + FP)
+    }
     
   }
   # Formula
@@ -129,7 +142,7 @@ posLr <- function(data=NULL, obs, pred,
 #' @export
 #' 
 negLr <- function(data=NULL, obs, pred, 
-                  pos_level = 2,
+                  pos_level = 2, atom = FALSE,
                   tidy = FALSE, na.rm = TRUE){
   # Negative Likelihood Ratio 
   matrix <- rlang::eval_tidy(
@@ -168,8 +181,18 @@ negLr <- function(data=NULL, obs, pred,
     TN   <- sum(matrix) - (TPFP + TPFN - TP)
     FP   <- TPFP - TP 
     
-    rec <- mean(correct / total_actual)
-    spec <- mean(TN / (TN + FP))
+    if (atom == FALSE) { 
+      #prec <- mean(correct / total_pred)
+      rec <- mean(correct / total_actual)
+      spec <- mean(TN / (TN + FP))
+      #warning("For multiclass cases, the gmean should be estimated at a class level. Please, consider using `atom = TRUE`")
+    }
+    
+    if (atom == TRUE) { 
+      #prec <- correct / total_pred
+      rec <- correct / total_actual
+      spec <- TN / (TN + FP)
+    }
     
   }
   
@@ -186,7 +209,7 @@ negLr <- function(data=NULL, obs, pred,
 #' @export
 #'  
 dor <- function(data=NULL, obs, pred, 
-                pos_level = 2,
+                pos_level = 2, atom = FALSE,
                 tidy = FALSE, na.rm = TRUE){
   # Diagnostic Odds Ratio
   matrix <- rlang::eval_tidy(
@@ -225,8 +248,18 @@ dor <- function(data=NULL, obs, pred,
     TN   <- sum(matrix) - (TPFP + TPFN - TP)
     FP   <- TPFP - TP 
     
-    rec <- mean(correct / total_actual)
-    spec <- mean(TN / (TN + FP))
+    if (atom == FALSE) { 
+      #prec <- mean(correct / total_pred)
+      rec <- mean(correct / total_actual)
+      spec <- mean(TN / (TN + FP))
+      #warning("For multiclass cases, the gmean should be estimated at a class level. Please, consider using `atom = TRUE`")
+    }
+    
+    if (atom == TRUE) { 
+      #prec <- correct / total_pred
+      rec <- correct / total_actual
+      spec <- TN / (TN + FP)
+    }
     
   }
   

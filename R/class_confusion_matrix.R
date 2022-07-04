@@ -108,6 +108,7 @@ confusion_matrix <- function(data = NULL, obs, pred,
         ggplot2::theme_bw()+
         ggplot2::theme(panel.border = ggplot2::element_rect(color = "grey75"),
                        panel.grid = ggplot2::element_blank(),
+                       axis.title = ggplot2::element_text(face = "bold", size = ggplot2::rel(1.25)),
                        axis.text.y = ggplot2::element_text(angle = 90, hjust = 0.5, vjust = 0.5),
                        plot.subtitle = element_text(size=ggplot2::rel(0.85), hjust=0, face="italic", color="black"),
                        plot.caption = element_text(size=ggplot2::rel(0.85), hjust=0, face="italic", color="black"))
@@ -132,7 +133,7 @@ confusion_matrix <- function(data = NULL, obs, pred,
           ggplot2::theme_bw()+
           ggplot2::theme(panel.border = ggplot2::element_rect(color = "grey75"),
                          panel.grid = ggplot2::element_blank(),
-                         axis.title = ggplot2::element_text(face = "bold", size = ggplot2::rel(1.5)),
+                         axis.title = ggplot2::element_text(face = "bold", size = ggplot2::rel(1.25)),
                          axis.text.y = ggplot2::element_text(angle = 90, hjust = 0.5, vjust = 0.5),
                          plot.subtitle = element_text(size=ggplot2::rel(0.85), hjust=0, face="italic", color="black"),
                          plot.caption = element_text(size=ggplot2::rel(0.85), hjust=0, face="italic", color="black"))
