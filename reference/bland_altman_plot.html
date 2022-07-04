@@ -64,7 +64,21 @@ values (obs-pred) vs. observed values.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bland_altman_plot</span><span class="op">(</span>data <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">obs</span>, <span class="va">pred</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bland_altman_plot</span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">obs</span>,</span>
+<span>  <span class="va">pred</span>,</span>
+<span>  shape_type <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  shape_size <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  shape_color <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  zeroline_type <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  zeroline_size <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  zeroline_color <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  limitsline_type <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  limitsline_size <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  limitsline_color <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -79,6 +93,42 @@ values (obs-pred) vs. observed values.</p>
 
 <dt>pred</dt>
 <dd><p>Vector with predicted values (numeric).</p></dd>
+
+
+<dt>shape_type</dt>
+<dd><p>number indicating the shape type for the data points.</p></dd>
+
+
+<dt>shape_size</dt>
+<dd><p>number indicating the shape size for the data points.</p></dd>
+
+
+<dt>shape_color</dt>
+<dd><p>string indicating the shape color for the data points.</p></dd>
+
+
+<dt>zeroline_type</dt>
+<dd><p>string or integer indicating the zero line-type.</p></dd>
+
+
+<dt>zeroline_size</dt>
+<dd><p>number indicating the zero line size.</p></dd>
+
+
+<dt>zeroline_color</dt>
+<dd><p>string indicating the zero line color.</p></dd>
+
+
+<dt>limitsline_type</dt>
+<dd><p>string or integer indicating the limits (+/- 1.96*SD) line-type.</p></dd>
+
+
+<dt>limitsline_size</dt>
+<dd><p>number indicating the limits (+/- 1.96*SD) line size.</p></dd>
+
+
+<dt>limitsline_color</dt>
+<dd><p>string indicating the limits (+/- 1.96*SD) line color.</p></dd>
 
 
 <dt>na.rm</dt>

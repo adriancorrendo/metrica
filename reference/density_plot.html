@@ -76,6 +76,10 @@ axis orientation (P vs. O; O vs. P).</p>
 <span>  position_metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>,</span>
 <span>  print_eq <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  position_eq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>,</span>
+<span>  eq_color <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  regline_type <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  regline_size <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  regline_color <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -128,6 +132,22 @@ Default : c(x = min(obs), y = 1.05*max(pred)).</p></dd>
 <dt>position_eq</dt>
 <dd><p>vector or list with '(x,y)' coordinates to locate the SMA equation into the plot.
 Default : c(x = 0.70 max(x), y = 1.25*min(y)).</p></dd>
+
+
+<dt>eq_color</dt>
+<dd><p>string indicating the color of the SMA-regression text.</p></dd>
+
+
+<dt>regline_type</dt>
+<dd><p>string or integer indicating the SMA-regression line-type.</p></dd>
+
+
+<dt>regline_size</dt>
+<dd><p>number indicating the SMA-regression line size.</p></dd>
+
+
+<dt>regline_color</dt>
+<dd><p>string indicating the SMA-regression line color.</p></dd>
 
 
 <dt>na.rm</dt>

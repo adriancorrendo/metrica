@@ -61,7 +61,15 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bmi</span><span class="op">(</span>data <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">obs</span>, <span class="va">pred</span>, pos_level <span class="op">=</span> <span class="fl">2</span>, tidy <span class="op">=</span> <span class="cn">FALSE</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bmi</span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">obs</span>,</span>
+<span>  <span class="va">pred</span>,</span>
+<span>  pos_level <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  atom <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  tidy <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -83,6 +91,12 @@
 corresponding to the positive. Generally, the positive level is the second (2)
 since following an alpha-numeric order, the most common pairs are
 <code>(Negative | Positive)</code>, <code>(0 | 1)</code>, <code>(FALSE | TRUE)</code>. Default : 2.</p></dd>
+
+
+<dt>atom</dt>
+<dd><p>Logical operator (TRUE/FALSE) to decide if the estimate is made for
+each class (atom = TRUE) or at a global level (atom = FALSE); Default : FALSE.
+When dataset is "binomial" atom does not apply.</p></dd>
 
 
 <dt>tidy</dt>

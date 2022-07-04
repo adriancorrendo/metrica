@@ -132,6 +132,7 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adriancorrendo.github.io/metrica/">metrica</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span></code></pre></div>
 <p>This is a basic example which shows you the core regression and classification functions of <em>metrica</em>: <br></p>
 </div>
@@ -159,15 +160,27 @@
 <div class="section level3"><h3 id="311-plot-functions">3.1.1. Plot functions<a class="anchor" aria-label="anchor" href="#311-plot-functions"></a>
 </h3></div>
 <div class="section level3">
-<h3 id="3111-create-scatter-plot-with-po-orientation">3.1.1.1. Create scatter plot with PO orientation<a class="anchor" aria-label="anchor" href="#3111-create-scatter-plot-with-po-orientation"></a>
+<h3 id="3111-create-a-customizable-scatter-plot-with-po-orientation">3.1.1.1. Create a customizable scatter plot with PO orientation<a class="anchor" aria-label="anchor" href="#3111-create-a-customizable-scatter-plot-with-po-orientation"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">barley.scat.plot</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, </span>
-<span>                                          obs <span class="op">=</span> <span class="va">measured</span>, </span>
-<span>                                          pred <span class="op">=</span> <span class="va">simulated</span>,</span>
-<span>                                          orientation <span class="op">=</span> <span class="st">"PO"</span>, </span>
-<span>                                          print_eq <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>                                          position_eq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">24</span>, y <span class="op">=</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">barley.scat.plot</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, </span>
+<span>                        obs <span class="op">=</span> <span class="va">measured</span>, </span>
+<span>                        pred <span class="op">=</span> <span class="va">simulated</span>,</span>
+<span>                        orientation <span class="op">=</span> <span class="st">"PO"</span>, </span>
+<span>                        print_eq <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                        position_eq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">24</span>, y <span class="op">=</span><span class="fl">8</span><span class="op">)</span>, </span>
+<span>                        <span class="co"># Optional arguments to customize the plot</span></span>
+<span>                        shape_type <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>                        shape_color <span class="op">=</span> <span class="st">"steelblue"</span>,</span>
+<span>                        shape_size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>                        regline_type <span class="op">=</span> <span class="st">"F1"</span>,</span>
+<span>                        regline_color <span class="op">=</span> <span class="st">"#9e0059"</span>,</span>
+<span>                        regline_size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="co"># Customize axis breaks</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">30</span>, by <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">30</span>, by <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">barley.scat.plot</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -179,7 +192,7 @@
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">barley.tiles.plot</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/tiles_plot.html">tiles_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, </span>
+<span>  <span class="fu"><a href="reference/tiles_plot.html">tiles_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, </span>
 <span>                      obs <span class="op">=</span> <span class="va">measured</span>, </span>
 <span>                      pred <span class="op">=</span> <span class="va">simulated</span>,</span>
 <span>                      bins <span class="op">=</span> <span class="fl">10</span>, </span>
@@ -198,8 +211,8 @@
 <span>                      obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span>,</span>
 <span>                      n <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>                      orientation <span class="op">=</span> <span class="st">"OP"</span>, </span>
-<span>           colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span></span>
-<span>           <span class="op">)</span></span>
+<span>           colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span> <span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">barley.density.plot</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
@@ -209,7 +222,7 @@
 </h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">barley.ba.plot</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/bland_altman_plot.html">bland_altman_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>,</span>
-<span>                           obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span></span>
+<span>                                             obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">barley.ba.plot</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-7-1.png" width="100%"></p>

@@ -79,7 +79,7 @@ for a continuous predicted-observed dataset.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>(Optional) argument to call an existing data frame containing the data.</p></dd>
+<dd><p>(Required) argument to call an existing data frame containing the data.</p></dd>
 
 
 <dt>obs</dt>
@@ -91,8 +91,9 @@ for a continuous predicted-observed dataset.</p>
 
 
 <dt>time</dt>
-<dd><p>String with the "name" of the vector containing the time variable
-to sort observations. Required for MASE estimation.</p></dd>
+<dd><p>(Optional) String with the "name" of the vector containing the time variable
+to sort observations. "Optional" to ensure an appropriate MASE estimation.
+Default: NULL, assumes observations are already sorted by time.</p></dd>
 
 
 <dt>naive_step</dt>

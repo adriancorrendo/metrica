@@ -77,7 +77,7 @@
       <img src="" class="logo" alt=""><h1>Classification case: Assessing the performance of remote sensing models</h1>
                         <h4 data-toc-skip class="author">Adrian Correndo &amp; Luciana Nieto</h4>
             
-            <h4 data-toc-skip class="date">2022-07-03</h4>
+            <h4 data-toc-skip class="date">2022-07-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/vignettes/classification_case.Rmd" class="external-link"><code>vignettes/classification_case.Rmd</code></a></small>
       <div class="d-none name"><code>classification_case.Rmd</code></div>
@@ -237,7 +237,7 @@
 <span>                                      plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                                      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"grey85"</span> , high<span class="op">=</span><span class="st">"steelblue"</span><span class="op">)</span>, </span>
 <span>                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/confusion_matrix%20multiclass-1.png" width="1080"></p>
+<p><img src="classification_case_files/figure-html/confusion_matrix%20multiclass-1.png" width="720"></p>
 </div>
 </div>
 <div class="section level2">
@@ -411,10 +411,107 @@
 <span><span class="co">#&gt; 4    fscore 0.8369991</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="multiple-models">4.3. Multiple models<a class="anchor" aria-label="anchor" href="#multiple-models"></a>
+<h3 id="class-wise-metrics-atom-true">4.3. Class wise metrics (<code>atom</code> = TRUE)<a class="anchor" aria-label="anchor" href="#class-wise-metrics-atom-true"></a>
+</h3>
+<p>For multiclass cases, most of the classification metrics can (and should) be estimated at the class level and not simply as an overall average across classes. With the exceptions of kappa (khat), mcc, fmi, and AUC_roc, all classification metrics can be estimated at the class level using the argument <code>atom = TRUE</code>, as follows:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Precision</span></span>
+<span><span class="va">maize_phenology</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="../reference/precision.html">precision</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, atom <span class="op">=</span> <span class="cn">TRUE</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     precision</span></span>
+<span><span class="co">#&gt; R1  0.0000000</span></span>
+<span><span class="co">#&gt; R2  0.8000000</span></span>
+<span><span class="co">#&gt; R3  0.6666667</span></span>
+<span><span class="co">#&gt; R4  1.0000000</span></span>
+<span><span class="co">#&gt; R5  0.9230769</span></span>
+<span><span class="co">#&gt; R6  0.9142857</span></span>
+<span><span class="co">#&gt; V10 0.8571429</span></span>
+<span><span class="co">#&gt; V12 0.8750000</span></span>
+<span><span class="co">#&gt; V13 1.0000000</span></span>
+<span><span class="co">#&gt; V14 1.0000000</span></span>
+<span><span class="co">#&gt; V15 0.5000000</span></span>
+<span><span class="co">#&gt; V16 1.0000000</span></span>
+<span><span class="co">#&gt; V18 0.8000000</span></span>
+<span><span class="co">#&gt; V19 1.0000000</span></span>
+<span><span class="co">#&gt; V9  1.0000000</span></span>
+<span><span class="co">#&gt; VT  1.0000000</span></span>
+<span><span class="co"># Recall</span></span>
+<span><span class="va">maize_phenology</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="../reference/recall.html">recall</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, atom <span class="op">=</span> <span class="cn">TRUE</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        recall</span></span>
+<span><span class="co">#&gt; R1  0.0000000</span></span>
+<span><span class="co">#&gt; R2  0.5714286</span></span>
+<span><span class="co">#&gt; R3  1.0000000</span></span>
+<span><span class="co">#&gt; R4  1.0000000</span></span>
+<span><span class="co">#&gt; R5  0.8000000</span></span>
+<span><span class="co">#&gt; R6  0.9696970</span></span>
+<span><span class="co">#&gt; V10 1.0000000</span></span>
+<span><span class="co">#&gt; V12 1.0000000</span></span>
+<span><span class="co">#&gt; V13 0.8571429</span></span>
+<span><span class="co">#&gt; V14 0.5000000</span></span>
+<span><span class="co">#&gt; V15 1.0000000</span></span>
+<span><span class="co">#&gt; V16 1.0000000</span></span>
+<span><span class="co">#&gt; V18 1.0000000</span></span>
+<span><span class="co">#&gt; V19 1.0000000</span></span>
+<span><span class="co">#&gt; V9  1.0000000</span></span>
+<span><span class="co">#&gt; VT  0.7500000</span></span>
+<span><span class="co"># Specificity</span></span>
+<span><span class="va">maize_phenology</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="../reference/specificity.html">specificity</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, atom <span class="op">=</span> <span class="cn">TRUE</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          spec</span></span>
+<span><span class="co">#&gt; R1  0.9803922</span></span>
+<span><span class="co">#&gt; R2  0.9895833</span></span>
+<span><span class="co">#&gt; R3  0.9900990</span></span>
+<span><span class="co">#&gt; R4  1.0000000</span></span>
+<span><span class="co">#&gt; R5  0.9886364</span></span>
+<span><span class="co">#&gt; R6  0.9571429</span></span>
+<span><span class="co">#&gt; V10 0.9896907</span></span>
+<span><span class="co">#&gt; V12 0.9895833</span></span>
+<span><span class="co">#&gt; V13 1.0000000</span></span>
+<span><span class="co">#&gt; V14 1.0000000</span></span>
+<span><span class="co">#&gt; V15 0.9901961</span></span>
+<span><span class="co">#&gt; V16 1.0000000</span></span>
+<span><span class="co">#&gt; V18 0.9898990</span></span>
+<span><span class="co">#&gt; V19 1.0000000</span></span>
+<span><span class="co">#&gt; V9  1.0000000</span></span>
+<span><span class="co">#&gt; VT  1.0000000</span></span>
+<span></span>
+<span><span class="co"># atom = TRUE available for more functions available (remove #)</span></span>
+<span><span class="co"># F-score</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::fscore(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # Adjusted F-score</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::agf(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # G-mean</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::gmean(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # Negative predictive value</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::npv(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # Prevalence</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::preval(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # Prevalence threshold</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::preval_t(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # False omission rate</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::FOR(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # False detection rate</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::FDR(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # False positive rate</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::FPR(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # Falase negative rate</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::FNR(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # Delta-p</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::deltap(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # Critical Success Index</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::csi(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # Bookmaker Informedness</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::bmi(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # Positive likelihood ratio</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::posLr(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # Negative likelihood ratio</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::negLr(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span>
+<span><span class="co"># # Diagnostic odds ratio</span></span>
+<span><span class="co"># maize_phenology %&gt;% metrica::dor(obs = actual, pred = predicted, atom = TRUE, tidy = TRUE)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="multiple-models">4.4. Multiple models<a class="anchor" aria-label="anchor" href="#multiple-models"></a>
 </h3>
 <p>In some cases, multiple runs of a model are available to compare vs. observed values (e.g. cross-validation folds). Thus, we can also fit the agreement analysis for several datasets as follows: <br></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span>
 <span><span class="co"># Let's simulated two extra runs of the same model for Land Cover</span></span>
@@ -463,13 +560,13 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> fold_2 agf      0.393</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> fold_3 agf      0.518</span></span></code></pre></div>
 <div class="section level4">
-<h4 id="non-nested-data">4.3.1. Non-nested data <br><a class="anchor" aria-label="anchor" href="#non-nested-data"></a>
+<h4 id="non-nested-data">4.4.1. Non-nested data <br><a class="anchor" aria-label="anchor" href="#non-nested-data"></a>
 </h4>
 </div>
 <div class="section level4">
-<h4 id="using-group_map">4.3.1.1. Using <code>group_map()</code> <br><a class="anchor" aria-label="anchor" href="#using-group_map"></a>
+<h4 id="using-group_map">4.4.1.1. Using <code>group_map()</code> <br><a class="anchor" aria-label="anchor" href="#using-group_map"></a>
 </h4>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">non_nested_folds</span> <span class="op">&lt;-</span> <span class="va">binary_nested_folds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co"># Using group_map()</span></span>
@@ -566,9 +663,9 @@
 <span><span class="co">#&gt; 26     AUC_roc 0.51257025</span></span></code></pre></div>
 </div>
 <div class="section level4">
-<h4 id="using-summarise">4.3.1.2. Using <code>summarise()</code> <br><a class="anchor" aria-label="anchor" href="#using-summarise"></a>
+<h4 id="using-summarise">4.4.1.2. Using <code>summarise()</code> <br><a class="anchor" aria-label="anchor" href="#using-summarise"></a>
 </h4>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Using summarise()</span></span>
 <span><span class="va">binary_folds_summary_3</span> <span class="op">&lt;-</span> <span class="va">non_nested_folds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -605,7 +702,7 @@
 <h3 id="customizing-the-confusion-matrix">5.1. Customizing the confusion matrix <br><a class="anchor" aria-label="anchor" href="#customizing-the-confusion-matrix"></a>
 </h3>
 <p>To print the metrics on the <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code>, just use print.metrics = TRUE. Warning: do not forget to specify your ‘metrics.list’ and choice wisely: <br></p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">selected_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"accuracy"</span>, <span class="st">"precision"</span>, <span class="st">"recall"</span>, <span class="st">"khat"</span>,</span>
 <span>                   <span class="st">"mcc"</span>, <span class="st">"fscore"</span>, <span class="st">"agf"</span>, <span class="st">"npv"</span>, <span class="st">"FPR"</span>, <span class="st">"FNR"</span><span class="op">)</span></span>
@@ -624,8 +721,8 @@
 <span>                   position_metrics <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">binary_matrix_metrics</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-1.png" width="1080"></p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-1.png" width="720"></p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">multinomial_matrix_metrics</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">maize_phenology</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -655,16 +752,16 @@
 <span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
 <span>  </span>
 <span><span class="va">multinomial_matrix_metrics</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-2.png" width="1080"> Also, as a ggplot element, outputs are flexible of further edition:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-2.png" width="720"> Also, as a ggplot element, outputs are flexible of further edition:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">binary_matrix_metrics</span> <span class="op">+</span></span>
 <span>  <span class="co"># Modify labels</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Observed Vegetation"</span>, </span>
 <span>       y <span class="op">=</span> <span class="st">"Predicted Vegetation"</span>,</span>
 <span>       title <span class="op">=</span> <span class="st">"Binary Confusion Matrix"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/scatter_plot.edit-1.png" width="1080"></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<p><img src="classification_case_files/figure-html/scatter_plot.edit-1.png" width="720"></p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  </span>
 <span></span>
 <span><span class="va">multinomial_matrix_metrics</span> <span class="op">+</span></span>
@@ -674,23 +771,23 @@
 <span>       title <span class="op">=</span> <span class="st">"Multinomial Confusion Matrix"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="co"># Modify theme</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_light</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/scatter_plot.edit-2.png" width="1080"></p>
+<p><img src="classification_case_files/figure-html/scatter_plot.edit-2.png" width="720"></p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="exporting">6. Exporting<a class="anchor" aria-label="anchor" href="#exporting"></a>
 </h2>
 <p>To export the metrics summary table, the user can simply write it to file with the function <code><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv()</a></code>:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">binary_landCover</span>,</span>
 <span>                obs <span class="op">=</span> <span class="va">obs</span>, </span>
 <span>                pred <span class="op">=</span> <span class="va">pred</span>,</span>
 <span>                type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv</a></span><span class="op">(</span><span class="st">"binary_landcover_metrics_summary.csv"</span><span class="op">)</span></span></code></pre></div>
-<p>Similarly, to export a plot, the user can simply write it to file with the function <code>ggsave()</code>:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<p>Similarly, to export a plot, the user can simply write it to file with the function <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave()</a></code>:</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="fu">ggsave</span><span class="op">(</span>plot <span class="op">=</span> <span class="va">multinomial_matrix_metrics</span>,</span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="va">multinomial_matrix_metrics</span>,</span>
 <span>       <span class="st">"multinomial_matrix_metrics.png"</span>,</span>
 <span>       width <span class="op">=</span> <span class="fl">8</span>,</span>
 <span>       height <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></span></code></pre></div>

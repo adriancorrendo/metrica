@@ -56,8 +56,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.0.0" id="metrica-200">metrica 2.0.0<a class="anchor" aria-label="anchor" href="#metrica-200"></a></h2>
-<ul><li>July 3rd, 2022. <br></li></ul><p>This new version of metrica includes:</p>
-<ol style="list-style-type: decimal"><li>Twenty-seven (27) new functions to evaluate quality of predictions for classification problems:</li></ol><ul><li>
+<ul><li>July 4th, 2022. <br></li></ul><p>This new version of metrica includes:</p>
+<ol style="list-style-type: decimal"><li>Twenty-seven (27) additional functions to evaluate quality of predictions for classification problems:</li></ol><ul><li>
 <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code>: Confusion matrix (as data.frame or plot).</li>
 <li>
 <code><a href="../reference/accuracy.html">accuracy()</a></code>: Accuracy.</li>
@@ -111,20 +111,59 @@
 <code><a href="../reference/prevalence.html">preval_t()</a></code>: Prevalence threshold.</li>
 <li>
 <code><a href="../reference/AUC_roc.html">AUC_roc()</a></code>: Area Under the ROC Curve (trapezoid approach).</li>
-</ul><ol start="2" style="list-style-type: decimal"><li>Three (3) new functions to the family of regression performance metrics:</li></ol><p>-<code><a href="../reference/MASE.html">MASE()</a></code> (Mean Absolute Scaled Error) for Time Series Analysis. - <code><a href="../reference/dcorr.html">dcorr()</a></code> (Distance correlation) as wrapper of dcor() from energy package (<a href="https://CRAN.R-project.org/package=energy" class="external-link uri">https://CRAN.R-project.org/package=energy</a>), and - <code><a href="../reference/MIC.html">MIC()</a></code> (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (<a href="https://CRAN.R-project.org/package=minerva" class="external-link uri">https://CRAN.R-project.org/package=minerva</a>). - <code><a href="../reference/RMLA.html">RMLA()</a></code> (Root Mean Lack of Accuracy) - <code><a href="../reference/RMLP.html">RMLP()</a></code> (Root Mean Lack of Precision)</p>
-<ol start="3" style="list-style-type: decimal"><li>One (1) new plotting function for regression problems:</li></ol><ul><li>
-<code><a href="../reference/density_plot.html">density_plot()</a></code>, to create a plot that paints density areas of predicted and observed coordinates.</li></ul><ol start="4" style="list-style-type: decimal"><li>Four (4) new arguments to plotting functions scatter_plot, tiles_plot, and density_plot (no deprecated):</li></ol><ul><li>
+</ul><ol start="2" style="list-style-type: decimal"><li>Three (3) additional functions to the family of regression performance metrics:</li></ol><ul><li>
+<code><a href="../reference/MASE.html">MASE()</a></code> (Mean Absolute Scaled Error) for Time Series Analysis.</li>
+<li>
+<code><a href="../reference/dcorr.html">dcorr()</a></code> (Distance correlation) as wrapper of dcor() from energy package (<a href="https://CRAN.R-project.org/package=energy" class="external-link uri">https://CRAN.R-project.org/package=energy</a>), and</li>
+<li>
+<code><a href="../reference/MIC.html">MIC()</a></code> (Maximal Information Coefficient) as wrapper of mine_stat() from minerva package (<a href="https://CRAN.R-project.org/package=minerva" class="external-link uri">https://CRAN.R-project.org/package=minerva</a>).</li>
+<li>
+<code><a href="../reference/RMLA.html">RMLA()</a></code> (Root Mean Lack of Accuracy)</li>
+<li>
+<code><a href="../reference/RMLP.html">RMLP()</a></code> (Root Mean Lack of Precision)</li>
+</ul><ol start="3" style="list-style-type: decimal"><li>Update of the metrics_summary() function including:</li></ol><ul><li>run performance metrics summary either for “regression” or “classification” using the new <code>type</code> argument, ‘required’ to specify the type of prediction task.</li>
+<li>
+<code>pos_level</code> argument, for binomial classification, to allow the user to specify the alphanumeric order of the “positive” level.</li>
+<li>
+</li></ul><ol start="4" style="list-style-type: decimal"><li>One (1) additional plotting function for regression:</li></ol><ul><li>
+<code><a href="../reference/density_plot.html">density_plot()</a></code>, to create a plot that paints density areas of predicted and observed coordinates.</li></ul><ol start="5" style="list-style-type: decimal"><li>Seventeen (17) additional arguments to customize scatter_plot, tiles_plot, and density_plot:</li></ol><ul><li>
 <code>print_eq</code> (to print equation or not)</li>
 <li>
 <code>position_metrics</code> (to customize position of metrics_table when print_metrics = TRUE)</li>
 <li>
 <code>position_eq</code> (to customize position of equation when print_eq = TRUE)</li>
 <li>
+<code>eq_color</code> (to customize color of the equation when print_eq = TRUE)</li>
+<li>
 <code>colors</code> (for tile_plot and density_plot, to paint gradient from “low” to “high” density of points)</li>
-</ul><ol start="5" style="list-style-type: decimal"><li><p>Adding the argument <code>tidy</code> to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)</p></li>
+<li>
+<code>shape_type</code> (to customize shape of the scatter_plot() and bland_altman_plot())</li>
+<li>
+<code>shape_size</code> (to customize shape of the scatter_plot() and bland_altman_plot())</li>
+<li>
+<code>shape_color</code> (to customize shape of the scatter_plot() and bland_altman_plot())</li>
+<li>
+<code>regline_type</code> (to customize regression line of the scatter_plot(), tiles_plot, and density_plot())</li>
+<li>
+<code>regline_size</code> (to customize regression line of the scatter_plot(), tiles_plot, and density_plot())</li>
+<li>
+<code>regline_color</code> (to customize regression line of the scatter_plot(), tiles_plot, and density_plot())</li>
+<li>
+<code>zeroline_type</code> (to customize lines of the bland_altman_plot())</li>
+<li>
+<code>zeroline_size</code> (to customize lines of the bland_altman_plot())</li>
+<li>
+<code>zeroline_color</code> (to customize lines of the bland_altman_plot())</li>
+<li>
+<code>limitsline_type</code> (to customize lines of the bland_altman_plot())</li>
+<li>
+<code>limitsline_size</code> (to customize lines of the bland_altman_plot())</li>
+<li>
+<code>limitsline_color</code> (to customize lines of the bland_altman_plot())</li>
+</ul><ol start="6" style="list-style-type: decimal"><li><p>Adding the argument <code>tidy</code> to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)</p></li>
 <li><p>Fixing a minor a bug on the <code><a href="../reference/NSE.html">NSE()</a></code> function to estimate the Nash-Sutcliffe model efficiency that produced only values of NSE=1.00 on v1.2.3.</p></li>
 <li><p>Improved coverage of the code testing.</p></li>
-<li><p>README update.</p></li>
+<li><p>README update with new features descriptions and links to vignettes.</p></li>
 <li><p>Vignettes update creating versions for both classification and regression, and for importing APSIM files.</p></li>
 </ol><div id="section-2-0-0" class="section level103"><p class="heading"></p></div>
 </div>
