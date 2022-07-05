@@ -88,9 +88,9 @@
 
 
 <dt>B</dt>
-<dd><p>Numeric value indicating the weight (a.k.a. β or beta) to be applied to the
-relationship between recall and precision. β &lt; 1 weights more precision than recall.
-β &gt; 1 gives B times more importance to recall than precision. Default: 1.</p></dd>
+<dd><p>Numeric value indicating the weight (a.k.a. B or beta) to be applied to the
+relationship between recall and precision. B &lt; 1 weights more precision than recall.
+B &gt; 1 gives B times more importance to recall than precision. Default: 1.</p></dd>
 
 
 <dt>pos_level</dt>
@@ -129,8 +129,8 @@ returns a data.frame, FALSE returns a list; Default : FALSE.</p></dd>
 especially when the number of cases for each class is uneven. It represents the harmonic
 mean of precision and recall. Thus, to achieve high values of F-score it is necessary
 to have both high precision and high recall.</p>
-<p>The universal version of F-score employs a coefficient β, by which we can tune the
-precision-recall ratio. Values of β &gt; 1 give more weight to recall, and B &lt; 1 give more
+<p>The universal version of F-score employs a coefficient B, by which we can tune the
+precision-recall ratio. Values of B &gt; 1 give more weight to recall, and B &lt; 1 give more
 weight to precision.</p>
 <p>For binomial/binary cases, fscore  =  TP / (TP + 0.5*(FP + FN))</p>
 <p>The generalized formula applied to multiclass cases is:</p>
@@ -138,7 +138,7 @@ weight to precision.</p>
 <p>It is bounded between 0 and 1.
 The closer to 1 the better. Values towards zero indicate low performance.
 For the formula and more details, see
-<a href="https://adriancorrendo.github.io/metrica/articles/available_metrics.html">online-documentation</a></p>
+<a href="https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html">online-documentation</a></p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>

@@ -126,7 +126,9 @@
 <code>pos_level</code> argument, for binomial classification, to allow the user to specify the alphanumeric order of the “positive” level.</li>
 <li>
 </li></ul><ol start="4" style="list-style-type: decimal"><li>One (1) additional plotting function for regression:</li></ol><ul><li>
-<code><a href="../reference/density_plot.html">density_plot()</a></code>, to create a plot that paints density areas of predicted and observed coordinates.</li></ul><ol start="5" style="list-style-type: decimal"><li>Seventeen (17) additional arguments to customize scatter_plot, tiles_plot, and density_plot:</li></ol><ul><li>
+<code><a href="../reference/density_plot.html">density_plot()</a></code>, to create a plot that paints density areas of predicted and observed coordinates.</li></ul><ol start="5" style="list-style-type: decimal"><li><p>Fixing issue with the <code><a href="../reference/tiles_plot.html">tiles_plot()</a></code> not plotting hexagons. Changed ggplot2::geom_hex() by ggplot2::stat_bin2d</p></li>
+<li><p>Seventeen (17) additional arguments to customize scatter_plot, tiles_plot, and density_plot:</p></li>
+</ol><ul><li>
 <code>print_eq</code> (to print equation or not)</li>
 <li>
 <code>position_metrics</code> (to customize position of metrics_table when print_metrics = TRUE)</li>
@@ -160,11 +162,11 @@
 <code>limitsline_size</code> (to customize lines of the bland_altman_plot())</li>
 <li>
 <code>limitsline_color</code> (to customize lines of the bland_altman_plot())</li>
-</ul><ol start="6" style="list-style-type: decimal"><li><p>Adding the argument <code>tidy</code> to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)</p></li>
+</ul><ol start="7" style="list-style-type: decimal"><li><p>Adding the argument <code>tidy</code> to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)</p></li>
 <li><p>Fixing a minor a bug on the <code><a href="../reference/NSE.html">NSE()</a></code> function to estimate the Nash-Sutcliffe model efficiency that produced only values of NSE=1.00 on v1.2.3.</p></li>
 <li><p>Improved coverage of the code testing.</p></li>
 <li><p>README update with new features descriptions and links to vignettes.</p></li>
-<li><p>Vignettes update creating versions for both classification and regression, and for importing APSIM files.</p></li>
+<li><p>Updated vignettes creating independent versions for classification and regression models, and for importing APSIM files.</p></li>
 </ol><div id="section-2-0-0" class="section level103"><p class="heading"></p></div>
 </div>
     <div class="section level2">
