@@ -17,7 +17,7 @@ downloads](https://cranlogs.r-pkg.org/badges/last-month/metrica?color=blue)](htt
 status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&svg=true)](https://ci.appveyor.com/project/adriancorrendo/metrica)
 [![R-CMD-check](https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg)](https://github.com/adriancorrendo/metrica/actions)
 [![codecov](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn)](https://app.codecov.io/gh/adriancorrendo/metrica)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6543296.svg)](https://doi.org/10.5281/zenodo.6543296)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6474101.svg)](https://doi.org/10.5281/zenodo.6474101)
 
 <!-- badges: end -->
 
