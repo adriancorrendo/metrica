@@ -14,7 +14,7 @@
 #' @details 
 #' The Ji and Gallo's AC measures general agreement, including both accuracy and precision. 
 #' It is normalized, dimensionless, positively bounded (-infinity;1), and symmetric.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Ji & Gallo (2006). An agreement coefficient for image comparison.
 #' _Photogramm. Eng. Remote Sensing 7, 823–833_ \doi{10.14358/PERS.72.7.823}

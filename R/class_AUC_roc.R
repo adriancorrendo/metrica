@@ -40,7 +40,7 @@
 #' (Hand & Till, 2001).
 #' 
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Hanley, J.A., McNeil, J.A. (2017).
 #' The meaning and use of the area under a receiver operating characteristic (ROC) curve. 

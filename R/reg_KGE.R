@@ -14,7 +14,7 @@
 #' It presents accuracy, precision, and consistency components. It is symmetric 
 #' (invariant to predicted observed orientation). It is positively bounded up to 1. 
 #' The closer to 1 the better. 
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Kling et al. (2012).
 #' Runoff conditions in the upper Danube basin under an ensemble of climate change scenarios.

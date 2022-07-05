@@ -1,6 +1,7 @@
 #' @title Specificity  
 #' @name specificity
-#' @description \code{specificity} estimates the specificity (a.k.a. selectivity, or true negative rate -TNR-)  
+#' @description \code{specificity} estimates the specificity (a.k.a. selectivity, 
+#' or true negative rate -TNR-)  
 #' for a nominal/categorical predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character | factor).
@@ -39,7 +40,7 @@
 #' is indicated with FPR > 0.5.
 #' 
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Ting K.M. (2017)
 #' Sensitivity and Specificity. 

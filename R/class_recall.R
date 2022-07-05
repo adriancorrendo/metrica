@@ -1,7 +1,7 @@
 #' @title Recall | Sensitivity  
 #' @name recall
-#' @description \code{recall} estimates the recall (a.k.a. sensitivity or true positive rate -TPR-)
-#' for a nominal/categorical predicted-observed dataset.
+#' @description \code{recall} estimates the recall (a.k.a. sensitivity or true 
+#' positive rate -TPR-) for a nominal/categorical predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character | factor).
 #' @param pred Vector with predicted values (character | factor).
@@ -39,7 +39,7 @@
 #' is indicated with fpr > 0.5.
 #' 
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Ting K.M. (2017)
 #' Precision and Recall. 

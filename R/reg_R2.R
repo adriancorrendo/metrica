@@ -17,7 +17,7 @@
 #' However, R2 presents a major flaw for prediction performance evaluation: 
 #' it is not sensitive to lack of accuracy (additive or proportional bias). Thus, R2 
 #' only measures precision, but it does not account for accuracy of the predictions.  
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Yang et al. (2014). 
 #' An evaluation of the statistical methods for testing the performance of crop models with observed data.

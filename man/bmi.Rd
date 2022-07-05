@@ -41,7 +41,8 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \verb{data frame} (if tidy = TRUE).
 }
 \description{
-It estimates the Bookmaker Informedness (a.k.a. Youden's J-index) for a nominal/categorical predicted-observed dataset.
+It estimates the Bookmaker Informedness (a.k.a. Youden's J-index)
+for a nominal/categorical predicted-observed dataset.
 }
 \details{
 The Bookmaker Informedness (or Youden's J index) it is a suitable metric when the
@@ -54,7 +55,7 @@ The general formula applied to both binary and multiclass cases is:
 It is bounded between 0 and 1.
 The closer to 1 the better. Values towards zero indicate low performance.
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

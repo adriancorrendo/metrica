@@ -55,7 +55,7 @@ It creates a scatter plot of the difference between observed and predicted
 values (obs-pred) vs. observed values.
 }
 \details{
-See \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For more details, see \href{https://adriancorrendo.github.io/metrica/}{online-documentation}
 }
 \examples{
 \donttest{

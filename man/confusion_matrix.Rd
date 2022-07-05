@@ -24,11 +24,15 @@ confusion_matrix(
 
 \item{pred}{Vector with predicted values (character or factor).}
 
-\item{plot}{Logical operator (TRUE/FALSE) that controls the output as a \code{data.frame} (plot = FALSE) or as a plot of type \code{ggplot} (plot = TRUE), Default: FALSE}
+\item{plot}{Logical operator (TRUE/FALSE) that controls the output as a
+\code{data.frame} (plot = FALSE) or as a plot of type \code{ggplot} (plot = TRUE), Default: FALSE}
 
-\item{unit}{String (text) indicating the type of unit ("count" or "proportion") to show in the confusion matrix, Default: 'count'}
+\item{unit}{String (text) indicating the type of unit ("count" or "proportion")
+to show in the confusion matrix, Default: 'count'}
 
-\item{colors}{Vector or list with two colors indicating how to paint the gradient between "low" and "high", Default: c(low = NULL, high = NULL) uses the standard blue gradient of ggplot2.}
+\item{colors}{Vector or list with two colors indicating how to paint the gradient
+between "low" and "high", Default: c(low = NULL, high = NULL) uses the standard
+blue gradient of ggplot2.}
 
 \item{print_metrics}{boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.}
 
@@ -43,18 +47,19 @@ Default: "bottom".}
 (NA). Default is na.rm = TRUE.}
 }
 \value{
-An object of class \code{data.frame} when plot = FALSE, or of type \code{ggplot} when plot = TRUE.
+An object of class \code{data.frame} when plot = FALSE, or of type \code{ggplot}
+when plot = TRUE.
 }
 \description{
-It creates a confusion matrix table or plot displaying the agreement between the
-observed and the predicted classes by the model.
+It creates a confusion matrix table or plot displaying the agreement
+between the observed and the predicted classes by the model.
 }
 \details{
 A confusion matrix is a method for summarizing the predictive performance of a classification algorithm.
 It is particularly useful if you have an unbalanced number of observations belonging to each class or if you have
 a multinomial dataset (more than two classes in your dataset. A confusion matrix can give you a good hint about
 the types of errors that your model is making.
-See \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+See \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

@@ -75,7 +75,7 @@ dramatically drops.
 It is bounded between 0 and 1.
 The closer to 1 the better. Values towards zero indicate low performance.
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{
@@ -101,6 +101,6 @@ A comparison of the performance of threshold criteria for binary classification 
 \emph{. Ecol. Modell. 217(1-2): 45-58.} \doi{10.1016/j.ecolmodel.2008.05.015}
 
 Balayla, J. (2020).
-Prevalence threshold (φe) and the geometry of screening curves.
+Prevalence threshold and the geometry of screening curves.
 _Plos one, 15(10):e0240215, _ \doi{10.1371/journal.pone.0240215}
 }

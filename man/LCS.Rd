@@ -31,7 +31,7 @@ Squared Error (MSE) proposed by Kobayashi & Salam (2000).
 The LCS represents the random component of the prediction error following
 Kobayashi & Salam (2000). The lower the value the less contribution to the MSE.
 However, it needs to be compared to MSE as its benchmark.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

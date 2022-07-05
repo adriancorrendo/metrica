@@ -28,7 +28,7 @@ It estimates the var_u of observed or predicted values.
 The var_u is the sample, uncorrected variance. It is calculated as the mean
 of sum of squared differences between values of an x and its mean, divided by the sample size (n).
 It is uncorrected because it is divided by n, and by not n-1 (traditional variance).
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

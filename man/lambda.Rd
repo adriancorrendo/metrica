@@ -33,7 +33,7 @@ bounded (-1;1), and symmetric (invariant to predicted-observed orientation).
 lambda is equivalent to CCC when r is greater or equal to 0. The closer to 1 the better.
 Values towards zero indicate low correlation between observations and predictions.
 Negative values would indicate a negative relationship between predicted and observed.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

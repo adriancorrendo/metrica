@@ -28,7 +28,7 @@ It estimates the (uSD) of observed or predicted values.
 The uSD is the sample, uncorrected standard deviation. The square root of
 the mean of sum of squared differences between vector values with respect to their mean.
 It is uncorrected because it is divided by the sample size (n), not n-1.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

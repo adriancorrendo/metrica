@@ -17,7 +17,7 @@
 #' divided by the sample size (n). The greater the value the worse the predicted performance.
 #' Unfortunately, the units of MSE do not have a direct interpretation. For a more direct interpretation, 
 #' the square root of MSE (RMSE) has the same units as the variable of interest.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references
 #' Willmott (1981). 
 #' On the validation of models. 

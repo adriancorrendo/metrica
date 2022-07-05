@@ -13,7 +13,7 @@
 #' @details The MAE measures both lack of accuracy and precision in absolute scale.
 #' It keeps the same units than the response variable. It is less sensitive to outliers 
 #' than the MSE or RMSE. The lower the better.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Willmott & Matsuura (2005). 
 #' Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. 

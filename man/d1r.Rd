@@ -34,7 +34,7 @@ denominator of the formula (potential error), normalizing the mean absolute erro
 (numerator) by two-times the mean absolute deviation of observed values. It is
 bounded between 0 and 1. The disadvantage is that d1r is an asymmetric index,
 that is, dependent to the orientation of predicted and observed values.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

@@ -29,7 +29,7 @@ It estimates the RSS for a continuous predicted-observed dataset.
 \details{
 The RSS is the sum of the squared differences between predictions and observations.
 It represents the base of many error metrics using squared scale such as the Mean Squared Error (MSE).
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

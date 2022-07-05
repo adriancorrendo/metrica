@@ -32,7 +32,7 @@ of observations. It goes from 0 to infinity. The lower the better the prediction
 In literature, it can be also found as NRMSE (normalized root mean squared error).
 However, here we use RRMSE since several other alternatives to
 "normalize" the RMSE exist (e.g., RSR, iqRMSE).
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

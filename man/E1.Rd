@@ -30,7 +30,7 @@ It estimates the E1 model efficiency using absolute differences.
 The E1 is a type of model efficiency that modifies the Nash-Sutcliffe model efficiency
 by using absolute residuals instead of squared residuals. The E1 is used to overcome the NSE
 over-sensitivity to extreme values caused by the used of squared residuals.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

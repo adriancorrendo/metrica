@@ -14,7 +14,7 @@
 #' makes easy to explain and to compare performance across models with different response variables. 
 #' MAPE is asymmetric (sensitive to axis orientation). The lower the better. 
 #' As main disadvantage, MAPE produces infinite or undefined values for zero or close-to-zero observed values.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Kim & Kim (2016).
 #' A new metric of absolute percentage error for intermittent demand forecast.

@@ -37,7 +37,7 @@
 #' Values towards zero indicate low precision of predictions.
 #' 
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Ting K.M. (2017)
 #' Precision and Recall. 

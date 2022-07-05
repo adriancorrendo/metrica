@@ -31,7 +31,7 @@ following Gupta et al. (1999).
 The PBE (\%) is useful to identify systematic over or under predictions.
 It is an unbounded metric. The closer to zero the bias of predictions.
 Negative values indicate overestimation, while positive values indicate underestimation.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

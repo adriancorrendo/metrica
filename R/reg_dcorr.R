@@ -40,7 +40,7 @@
 #' \deqn{ \mathcal{R}^2_n(\mathbf{P,O})= \frac {\mathcal{V}^2_n(\mathbf{P,O})} 
 #' {\sqrt{ \mathcal{V}^2_n (\mathbf{P}) \mathcal{V}^2_n(\mathbf{O})}}. }
 #'  
-#' For more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' and the [energy-package](https://CRAN.R-project.org/package=energy)
 #' 
 #' @examples 

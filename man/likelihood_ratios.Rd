@@ -64,8 +64,9 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \verb{data frame} (if tidy = TRUE).
 }
 \description{
-It estimates the positive likelihood ratio \code{posLr}, negative likelihood
-ratio \code{negLr}, and diagnostic odds ratio \code{dor} for a nominal/categorical predicted-observed dataset.
+It estimates the positive likelihood ratio \code{posLr},
+negative likelihood ratio \code{negLr}, and diagnostic odds ratio \code{dor}
+for a nominal/categorical predicted-observed dataset.
 }
 \details{
 The likelihood ratios are metrics designed to assess the expectations of
@@ -98,7 +99,7 @@ The ratios are define as follows:
 \eqn{dor = \frac{posLr}{negLr}}
 
 For more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

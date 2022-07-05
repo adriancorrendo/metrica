@@ -144,7 +144,7 @@ multi_maize_phen %>% confusion_matrix(obs = actual, pred = predicted,
 
 The *metrica* package contains functions for **26** scoring rules to assess the agreement between observed and predicted values for classification data.  <br/>
 
-A list with all the the metrics including their name, definition, details, formula, and function name, please check [here](https://adriancorrendo.github.io/metrica/articles/available_metrics.html).  <br/>
+A list with all the the classification metrics including their name, definition, details, formula, and function name, please check [here](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html).  <br/>
 
 All of the metric functions take at least three arguments:  <br/>
 

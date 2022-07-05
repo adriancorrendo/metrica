@@ -25,7 +25,7 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 The Ue estimates the proportion of the total sum of squares related to the
 random error (unsystematic error or variance) following the sum of squares decomposition
 suggested by Smith and Rose (1995) also known as Theil's partial inequalities.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \description{
 It estimates the Ue component from the sum of squares decomposition

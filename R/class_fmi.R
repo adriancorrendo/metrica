@@ -1,6 +1,7 @@
 #' @title Fowlkes-Mallows Index  
 #' @name fmi
-#' @description It estimates the Fowlkes-Mallows Index for a nominal/categorical predicted-observed dataset.
+#' @description It estimates the Fowlkes-Mallows Index for a nominal/categorical 
+#' predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character | factor).
 #' @param pred Vector with predicted values (character | factor).
@@ -25,7 +26,7 @@
 #' multiclass cases, fmi will produce a `NA` and display a warning. 
 #'  
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Fowlkes, Edward B; Mallows, Colin L (1983).
 #' A method for comparing two hierarchical clusterings.

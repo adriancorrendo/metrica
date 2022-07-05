@@ -15,7 +15,7 @@
 #' It is calculated using the absolute squared differences between the predictions and observations, 
 #' which has been suggested as an issue due to over-sensitivity to outliers.
 #' It goes form -infinity to 1. The closer to 1 the better the prediction performance.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Nash & Sutcliffe (1970).
 #' River flow forecasting through conceptual models part I - A discussion of principles.

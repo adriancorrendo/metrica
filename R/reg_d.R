@@ -15,7 +15,7 @@
 #' It measures both accuracy and precision using squared residuals. It is bounded between 0 and 1. 
 #' The disadvantage is that d is an asymmetric index, that is, dependent to what is orientation of
 #' predicted and observed values.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references
 #' Willmott (1981). 
 #' On the validation of models. 

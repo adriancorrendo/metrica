@@ -27,7 +27,7 @@ It estimates the TSS for observed vector.
 \details{
 The TSS sum of the squared differences between the observations and its mean.
 It is used as a reference error, for example, to estimate explained variance.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

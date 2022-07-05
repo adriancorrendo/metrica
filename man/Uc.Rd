@@ -31,7 +31,7 @@ described by Smith & Rose (1995).
 The Uc estimates the proportion of the total sum of squares related to the
 lack of consistency (proportional bias) following the sum of squares decomposition
 suggested by Smith and Rose (1995) also known as Theil's partial inequalities.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

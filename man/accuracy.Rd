@@ -37,14 +37,14 @@ indicate low accuracy of predictions. It can be also expressed as percentage if
 multiplied by 100. It is estimated at a global level (not at the class level).
 
 Accuracy presents limitations to address classification quality under unbalanced classes,
-and it is not able to distinguish among misclassification distributions. For thoses cases,
+and it is not able to distinguish among misclassification distributions. For those cases,
 it is advised to apply other metrics such as balanced accuracy (baccu), F-score (fscore),
 Matthews Correlation Coefficient (mcc), or Cohen's Kappa Coefficient (cohen_kappa).
 
 Accuracy is directly related to the error_rate, since accuracy = 1 – error_rate.
 
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

@@ -78,7 +78,7 @@ The \code{precision} metric is bounded between 0 and 1. The closer to 1 the bett
 Values towards zero indicate low precision of predictions.
 
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

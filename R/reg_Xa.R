@@ -14,7 +14,7 @@
 #' @details The Xa measures accuracy of prediction. It goes from 0 (completely inaccurate) to 1 (perfectly accurate).
 #' It is used to adjust the precision measured by the correlation coefficient (r) 
 #' in order to evaluate agreement through the CCC.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Lin (1989). 
 #' A concordance correlation coefficient to evaluate reproducibility.

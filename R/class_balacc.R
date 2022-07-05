@@ -21,7 +21,7 @@
 #' The closer to 1 the better. 
 #'  
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' García, V., Mollineda, R.A., Sánchez, J.S. (2009). Index of Balanced Accuracy: 
 #' A Performance Measure for Skewed Class Distributions. 

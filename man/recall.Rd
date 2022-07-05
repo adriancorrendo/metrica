@@ -52,8 +52,8 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \verb{data frame} (if tidy = TRUE).
 }
 \description{
-\code{recall} estimates the recall (a.k.a. sensitivity or true positive rate -TPR-)
-for a nominal/categorical predicted-observed dataset.
+\code{recall} estimates the recall (a.k.a. sensitivity or true
+positive rate -TPR-) for a nominal/categorical predicted-observed dataset.
 
 \code{FNR} estimates false negative rate (or false alarm, or fall-out)
 for a nominal/categorical predicted-observed dataset.
@@ -80,7 +80,7 @@ The \code{fpr} is bounded between 0 and 1. The closer to 0 the better. Low perfo
 is indicated with fpr > 0.5.
 
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

@@ -29,7 +29,7 @@ It estimates the IqRMSE for a continuous predicted-observed dataset.
 \details{
 The iqRMSE normalizes the RMSE by the length of the inter-quartile range of
 observations (percentiles 25th to 75th). As an error metric, the lower the values the better.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

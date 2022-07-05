@@ -15,7 +15,7 @@
 #' In literature, it can be also found as NRMSE (normalized root mean squared error).
 #' However, here we use RRMSE since several other alternatives to 
 #' "normalize" the RMSE exist (e.g., RSR, iqRMSE).
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html) 
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @examples 
 #' \donttest{
 #' set.seed(1)

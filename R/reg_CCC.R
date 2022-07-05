@@ -15,7 +15,7 @@
 #' It presents both precision (r) and accuracy (Xa) components. It is positively bounded to 1. 
 #' The closer to 1 the better. Values towards zero indicate low correlation between observations and predictions.
 #' Negative values would indicate a negative relationship between predicted and observed.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references
 #' Lin (1989). 
 #' A concordance correlation coefficient to evaluate reproducibility.

@@ -57,7 +57,7 @@ and its inverse (the negative predictive value -\code{npv}-) as follows:
 The higher the deltap the better the classification performance.
 
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

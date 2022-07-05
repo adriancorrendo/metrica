@@ -16,7 +16,7 @@
 #' absolute errors of observations with respect to its mean. 
 #' It presents its lower bound at 0 (perfect fit), and has no upper bound. 
 #' It can be used to compare models using different units.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html) 
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @examples 
 #' \donttest{
 #' set.seed(1)

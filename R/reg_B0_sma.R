@@ -17,7 +17,7 @@
 #' @details SMA is a symmetric linear regression (invariant results/interpretation to axis orientation) 
 #' recommended to describe the bivariate scatter instead of OLS regression 
 #' (classic linear model, which results vary with the axis orientation).
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Warton et al. (2006). 
 #' Bivariate line-fitting methods for allometry. 

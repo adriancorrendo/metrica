@@ -16,7 +16,7 @@
 #' lambda is equivalent to CCC when r is greater or equal to 0. The closer to 1 the better. 
 #' Values towards zero indicate low correlation between observations and predictions.
 #' Negative values would indicate a negative relationship between predicted and observed.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Duveiller et al. (2016).
 #' Revisiting the concept of a symmetric index of agreement for continuous datasets. 

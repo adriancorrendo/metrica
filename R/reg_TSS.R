@@ -11,7 +11,7 @@
 #' `data frame` (if tidy = TRUE).
 #' @details The TSS sum of the squared differences between the observations and its mean.
 #' It is used as a reference error, for example, to estimate explained variance.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @examples 
 #' \donttest{
 #' set.seed(1)

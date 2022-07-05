@@ -29,7 +29,7 @@ It estimates the RMAE for a continuous predicted-observed dataset.
 \details{
 The RMAE normalizes the Mean Absolute Error (MAE) by the mean of observations.
 The closer to zero the lower the prediction error.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

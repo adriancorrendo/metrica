@@ -162,7 +162,7 @@ metrics_summary(data = wheat,
 In some cases, we may count with time-series predictions (e.g. cumulative values from daily simulations). For example, let's say that we evaluate the production of drymass during the season. For this specific case, the Mean Absolute Scaled Error is a more solid metric compared to conventional RMSE or similar metrics. <br/>
 
 Let's suppose that we have predictions of wheat grain N over the years on the same location
-for a series of 20 years from 2001 to 2020. Thus, we may get a random sample from the whear data set and assume they represent the time series of interest. Therefore, we create a new `time` variable called `Year` that will serve to sort the observations.
+for a series of 20 years from 2001 to 2020. Thus, we may get a random sample from the wheat data set and assume they represent the time series of interest. Therefore, we create a new `time` variable called `Year` that will serve to sort the observations.
 
 ```{r metrics time-series, fig.width=6, fig.height=5, dpi=200}
 set.seed(165)

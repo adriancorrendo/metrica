@@ -42,7 +42,7 @@
 #' between the model and the naive forecast (or oob predictions). MASE > 1 indicate 
 #' poor performance. 
 #' 
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Hyndman, R.J., Koehler, A.B. (2006). 
 #' Another look at measures of forecast accuracy. 

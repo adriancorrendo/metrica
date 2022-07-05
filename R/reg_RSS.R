@@ -12,7 +12,7 @@
 #' `data frame` (if tidy = TRUE).
 #' @details The RSS is the sum of the squared differences between predictions and observations.
 #' It represents the base of many error metrics using squared scale such as the Mean Squared Error (MSE).
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @examples 
 #' \donttest{
 #' set.seed(1)

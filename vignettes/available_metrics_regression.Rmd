@@ -21,19 +21,20 @@ knitr::opts_chunk$set(
 The **metrica** package compiles +80 functions to assess regression (continuous) 
 and classification (categorical) prediction performance from multiple perspectives. <br/> 
 
-For regression models, it includes 4 plotting functions (scatter, tiles, density, 
-& Bland-Altman plots), and 48 prediction performance scores including error metrics 
+For regression models, it includes 4 plotting functions (scatter, tiles, density,
+& Bland-Altman plots), and 48 prediction performance scores including error metrics
 (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE, RRMSE, RSR, PBE, iqRMSE), 
-model efficiency (NSE, E1, Erel, KGE), indices of agreement (d, d1, d1r, RAC, AC,
-lambda), goodness of fit (r, R2, RSS, TSS, RSE), adjusted correlation coefficients
-(CCC, Xa, distance correlation-dcorr-), error decomposition (MLA, MLP, PLA, PLP, 
-PAB, PPB, SB, SDSD, LCS, Ub, Uc, Ue), variability (uSD, var_u), and symmetric 
-regression coefficients (B0_sma, B1_sma). Specifically for time-series 
-predictions, `metrica` also includes the Mean Absolute Scaled Error (MASE). <br/>
+error decomposition (MLA, MLP, PLA, PLP, PAB, PPB, SB, SDSD, LCS, Ub, Uc, Ue), 
+model efficiency (NSE, E1, Erel, KGE), indices of agreement (d, d1, d1r, RAC, 
+AC, lambda), goodness of fit (r, R2, RSS, TSS, RSE), adjusted correlation 
+coefficients (CCC, Xa, distance correlation-dcorr-, maximal information 
+coefficient -MIC-), variability (uSD, var_u), and symmetric regression coefficients 
+(B0_sma, B1_sma). Specifically for time-series predictions, `metrica` also 
+includes the Mean Absolute Scaled Error (MASE). <br/>
 
 For supervised models, always keep in mind the concept of "cross-validation" 
-since predicted values should ideally come from out-of-bag samples (unseen by 
-training sets) to avoid overestimation of the prediction performance. <br/>
+since predicted values should ideally come from out-of-bag samples 
+(unseen by training sets) to avoid overestimation of the prediction performance. <br/>
 
 ## Using the functions. <br/>
 

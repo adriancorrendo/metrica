@@ -17,7 +17,7 @@
 #' interest, facilitating the interpretation. It goes from 0 to infinity. The lower 
 #' the value the better the prediction performance. Its counterpart is being very
 #' sensitive to outliers.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @examples 
 #' \donttest{
 #' set.seed(1)

@@ -34,7 +34,7 @@ The closer to 1 the better linear association between predictions and observatio
 However, R2 presents a major flaw for prediction performance evaluation:
 it is not sensitive to lack of accuracy (additive or proportional bias). Thus, R2
 only measures precision, but it does not account for accuracy of the predictions.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

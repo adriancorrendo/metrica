@@ -62,7 +62,7 @@ false alarms + misses = TP + FP + TN). However, the csi has been criticized for
 not representing an unbiased measure of forecast skill (Schaefer, 1990).
 
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

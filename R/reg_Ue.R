@@ -14,7 +14,7 @@
 #' The Ue estimates the proportion of the total sum of squares related to the
 #' random error (unsystematic error or variance) following the sum of squares decomposition 
 #' suggested by Smith and Rose (1995) also known as Theil's partial inequalities.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Smith & Rose (1995). 
 #' Model goodness-of-fit analysis using regression and related techniques. 

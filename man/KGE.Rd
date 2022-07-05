@@ -31,7 +31,7 @@ The KGE is a normalized, dimensionless, model efficiency that measures general a
 It presents accuracy, precision, and consistency components. It is symmetric
 (invariant to predicted observed orientation). It is positively bounded up to 1.
 The closer to 1 the better.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

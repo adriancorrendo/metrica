@@ -12,7 +12,7 @@
 #' `data frame` (if tidy = TRUE).
 #' @details The RMAE normalizes the Mean Absolute Error (MAE) by the mean of observations.
 #' The closer to zero the lower the prediction error.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @examples 
 #' \donttest{
 #' set.seed(1)

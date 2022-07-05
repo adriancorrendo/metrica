@@ -13,7 +13,7 @@
 #' `data frame` (if tidy = TRUE).
 #' @details The RAC measures both accuracy and precision (general agreement). It is 
 #' normalized, dimensionless, bounded (0 to 1), and symmetric (invariant to predicted-observed orientation).
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references
 #' Robinson (1957).
 #' The statistical measurement of agreement. 

@@ -30,7 +30,7 @@ for a continuous predicted-observed dataset.
 \details{
 The Ji and Gallo's AC measures general agreement, including both accuracy and precision.
 It is normalized, dimensionless, positively bounded (-infinity;1), and symmetric.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

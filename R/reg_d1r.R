@@ -17,7 +17,7 @@
 #' (numerator) by two-times the mean absolute deviation of observed values. It is 
 #' bounded between 0 and 1. The disadvantage is that d1r is an asymmetric index, 
 #' that is, dependent to the orientation of predicted and observed values.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references
 #' Willmott et al. (2012). 
 #' A refined index of model performance. 

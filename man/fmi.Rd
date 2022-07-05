@@ -29,7 +29,8 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \verb{data frame} (if tidy = TRUE).
 }
 \description{
-It estimates the Fowlkes-Mallows Index for a nominal/categorical predicted-observed dataset.
+It estimates the Fowlkes-Mallows Index for a nominal/categorical
+predicted-observed dataset.
 }
 \details{
 The fmi has gained popularity within the machine learning community
@@ -43,7 +44,7 @@ The fmi is only available for the evaluation of binary cases (two classes). For
 multiclass cases, fmi will produce a \code{NA} and display a warning.
 
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

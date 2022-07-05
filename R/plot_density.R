@@ -28,7 +28,7 @@
 #' the 1:1 line (solid line) and the linear regression line (dashed line). By default, 
 #' it places the observed on the x-axis and the predicted on the y-axis (orientation = "PO").
 #' This can be inverted by changing the argument orientation = “OP".
-#' For more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/vignette1.html)
+#' For more details, see [online-documentation](https://adriancorrendo.github.io/metrica/)
 #' @examples 
 #' \donttest{
 #' X <- rnorm(n = 100, mean = 0, sd = 10)

@@ -19,7 +19,7 @@
 #' if multiplied by 100. It is estimated at a global level (not at the class level).
 #' The error rate is directly related to the accuracy, since error_rate = 1 – accuracy' .
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' (2017) Accuracy. _In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining_
 #' _Springer, Boston, MA._ \doi{10.1007/978-1-4899-7687-1_3}

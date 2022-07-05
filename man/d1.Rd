@@ -32,7 +32,7 @@ Similar to d, the d1 index it is a normalized, dimensionless metric that tests g
 The difference with d, is that d1 uses absolute residuals instead of squared residuals. It is bounded between 0 and 1.
 The disadvantage is that d is an asymmetric index, that is, dependent to the orientation of
 predicted and observed values.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

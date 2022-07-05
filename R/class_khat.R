@@ -1,4 +1,4 @@
-#' @title K-hat (Cohen's Kappa Coefficient  )
+#' @title K-hat (Cohen's Kappa Coefficient)
 #' @name khat
 #' @description It estimates the Cohen's Kappa Coefficient for a nominal/categorical 
 #' predicted-observed dataset.
@@ -27,7 +27,7 @@
 #' the lower the kappa the lower the prediction quality. 
 #' 
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Cohen, J. (1960).
 #' A coefficient of agreement for nominal scales. 

@@ -32,7 +32,7 @@ It only accounts for precision, but it is not sensitive to lack of prediction ac
 It is a normalized, dimensionless coefficient, that ranges between -1 to 1. It is expected that
 predicted and observed values will show 0 < r < 1.
 It is also known as the Pearson Product Moment Correlation, among other names.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

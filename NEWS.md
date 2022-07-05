@@ -51,7 +51,9 @@ This new version of metrica includes:
 4) One (1) additional plotting function for regression:
   - `density_plot()`, to create a plot that paints density areas of predicted and observed coordinates.
   
-5) Seventeen (17) additional arguments to customize scatter_plot, tiles_plot, and density_plot:
+5) Fixing issue with the `tiles_plot()` not plotting hexagons. Changed ggplot2::geom_hex() by ggplot2::stat_bin2d
+  
+6) Seventeen (17) additional arguments to customize scatter_plot, tiles_plot, and density_plot:
   - `print_eq` (to print equation or not)
   - `position_metrics` (to customize position of metrics_table when print_metrics = TRUE)
   - `position_eq` (to customize position of equation when print_eq = TRUE)
@@ -70,15 +72,15 @@ This new version of metrica includes:
   - `limitsline_size` (to customize lines of the bland_altman_plot())
   - `limitsline_color` (to customize lines of the bland_altman_plot())
   
-6) Adding the argument `tidy` to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)
+7) Adding the argument `tidy` to all metrics functions, which allows to control the user the type of return (tidy=TRUE returns a data.frame, tidy = FALSE returns a list)
 
-7) Fixing a minor a bug on the `NSE()` function to estimate the Nash-Sutcliffe model efficiency that produced only values of NSE=1.00 on v1.2.3.
+8) Fixing a minor a bug on the `NSE()` function to estimate the Nash-Sutcliffe model efficiency that produced only values of NSE=1.00 on v1.2.3.
 
-8) Improved coverage of the code testing.
+9) Improved coverage of the code testing.
 
 9) README update with new features descriptions and links to vignettes.
 
-10) Vignettes update creating versions for both classification and regression, and for importing APSIM files.
+10) Updated vignettes creating independent versions for classification and regression models, and for importing APSIM files.
 
 
 ######################################################################################################

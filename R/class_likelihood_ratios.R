@@ -1,7 +1,8 @@
 #' @title Likelihood Ratios (Classification)
 #' @name likelihood_ratios
-#' @description It estimates the positive likelihood ratio \code{posLr}, negative likelihood 
-#' ratio \code{negLr}, and diagnostic odds ratio \code{dor} for a nominal/categorical predicted-observed dataset.
+#' @description It estimates the positive likelihood ratio \code{posLr}, 
+#' negative likelihood ratio \code{negLr}, and diagnostic odds ratio \code{dor} 
+#' for a nominal/categorical predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character | factor).
 #' @param pred Vector with predicted values (character | factor).
@@ -48,7 +49,7 @@
 #' \eqn{dor = \frac{posLr}{negLr}}  
 #'  
 #' For more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' GlasaJeroen, A.S., Lijmer, G., Prins, M.H., Bonsel, G.J., Bossuyta, P.M.M. (2009). 
 #' The diagnostic odds ratio: a single indicator of test performance. 

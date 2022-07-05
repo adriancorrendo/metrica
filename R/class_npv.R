@@ -37,7 +37,7 @@
 #' Values towards zero indicate low npv of predictions.
 #' 
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Wang H., Zheng H. (2013).
 #' Negative Predictive Value. 

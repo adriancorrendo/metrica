@@ -32,7 +32,7 @@ The PAB represents contribution of additive bias () component of the MSE.
 The PAB = 100*((mO-mP)^2/MSE), where mO, and mP represent the mean of observations
 and predictions, respectively.
 The greater the value the greater the contribution of additive bias to the prediction error.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

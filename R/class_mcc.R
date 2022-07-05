@@ -24,7 +24,7 @@
 #' The closer to 1 the better the classification performance. 
 #' 
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Chicco, D., Jurman, G. (2020)
 #' The advantages of the Matthews correlation coefficient (MCC) over F1 score and 

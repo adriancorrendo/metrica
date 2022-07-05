@@ -36,7 +36,7 @@ predicted-observed orientation) using a symmetric regression line (SMA).
 The RMLA is equal to the square-root of the sum of systematic differences
 divided by the sample size (n).
 The greater the value the greater the bias of the predictions.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

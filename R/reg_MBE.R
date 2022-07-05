@@ -17,7 +17,7 @@
 #' Positive values indicate general underestimation. The disadvantages are that is 
 #' only sensitive to additional bias, so the MBE may mask a poor performance if 
 #' overestimation and underestimation co-exist (a type of proportional bias).
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @examples 
 #' \donttest{
 #' set.seed(1)

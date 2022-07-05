@@ -71,7 +71,7 @@ the MASE below 1, the better the prediction quality. MASE = indicates no differe
 between the model and the naive forecast (or oob predictions). MASE > 1 indicate
 poor performance.
 
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

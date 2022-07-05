@@ -2,7 +2,7 @@
 % Please edit documentation in R/class_khat.R
 \name{khat}
 \alias{khat}
-\title{K-hat (Cohen's Kappa Coefficient  )}
+\title{K-hat (Cohen's Kappa Coefficient)}
 \usage{
 khat(data = NULL, obs, pred, pos_level = 2, tidy = FALSE, na.rm = TRUE)
 }
@@ -45,7 +45,7 @@ distributed across the classes (i.e. identical row and column sums). Thus,
 the lower the kappa the lower the prediction quality.
 
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

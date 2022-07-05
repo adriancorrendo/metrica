@@ -52,7 +52,8 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \verb{data frame} (if tidy = TRUE).
 }
 \description{
-\code{specificity} estimates the specificity (a.k.a. selectivity, or true negative rate -TNR-)
+\code{specificity} estimates the specificity (a.k.a. selectivity,
+or true negative rate -TNR-)
 for a nominal/categorical predicted-observed dataset.
 
 \code{FPR} estimates the false positive rate (a.k.a fall-out or false alarm)
@@ -80,7 +81,7 @@ The \code{FPR} is bounded between 0 and 1. The closer to 0 the better. Low perfo
 is indicated with FPR > 0.5.
 
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

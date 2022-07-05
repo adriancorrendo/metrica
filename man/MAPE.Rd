@@ -31,7 +31,7 @@ The MAPE is expressed in percentage units (independent scale), which it
 makes easy to explain and to compare performance across models with different response variables.
 MAPE is asymmetric (sensitive to axis orientation). The lower the better.
 As main disadvantage, MAPE produces infinite or undefined values for zero or close-to-zero observed values.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

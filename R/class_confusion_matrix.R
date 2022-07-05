@@ -1,13 +1,17 @@
 #' @title Confusion Matrix
 #' @name confusion_matrix
-#' @description It creates a confusion matrix table or plot displaying the agreement between the
-#' observed and the predicted classes by the model.
+#' @description It creates a confusion matrix table or plot displaying the agreement 
+#' between the observed and the predicted classes by the model.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character or factor).
 #' @param pred Vector with predicted values (character or factor).
-#' @param plot Logical operator (TRUE/FALSE) that controls the output as a `data.frame` (plot = FALSE) or as a plot of type `ggplot` (plot = TRUE), Default: FALSE
-#' @param unit String (text) indicating the type of unit ("count" or "proportion") to show in the confusion matrix, Default: 'count'
-#' @param colors Vector or list with two colors indicating how to paint the gradient between "low" and "high", Default: c(low = NULL, high = NULL) uses the standard blue gradient of ggplot2.
+#' @param plot Logical operator (TRUE/FALSE) that controls the output as a 
+#' `data.frame` (plot = FALSE) or as a plot of type `ggplot` (plot = TRUE), Default: FALSE
+#' @param unit String (text) indicating the type of unit ("count" or "proportion") 
+#' to show in the confusion matrix, Default: 'count'
+#' @param colors Vector or list with two colors indicating how to paint the gradient
+#'  between "low" and "high", Default: c(low = NULL, high = NULL) uses the standard 
+#'  blue gradient of ggplot2.
 #' @param print_metrics boolean TRUE/FALSE to embed metrics in the plot. Default is FALSE.
 #' @param metrics_list vector or list of selected metrics to print on the plot. 
 #' Default: c("accuracy", "precision", "recall").
@@ -16,12 +20,13 @@
 #' Default: "bottom".
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
-#' @return An object of class `data.frame` when plot = FALSE, or of type `ggplot` when plot = TRUE.
+#' @return An object of class `data.frame` when plot = FALSE, or of type `ggplot` 
+#' when plot = TRUE.
 #' @details A confusion matrix is a method for summarizing the predictive performance of a classification algorithm. 
 #' It is particularly useful if you have an unbalanced number of observations belonging to each class or if you have 
 #' a multinomial dataset (more than two classes in your dataset. A confusion matrix can give you a good hint about
 #' the types of errors that your model is making.
-#' See [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' See [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Ting K.M. (2017).
 #' Confusion Matrix. _In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining._ 

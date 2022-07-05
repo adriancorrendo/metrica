@@ -61,8 +61,8 @@ variables)](https://adriancorrendo.github.io/metrica/articles/regression_case.ht
 variables)](https://adriancorrendo.github.io/metrica/articles/classification_case.html)
 <br/>
 
-[5. Import APSIM
-files](https://adriancorrendo.github.io/metrica/articles/apsim_open.html)
+[5. Import files from
+APSIM](https://adriancorrendo.github.io/metrica/articles/apsim_open.html)
 <br/>
 
 ## Functions <br/>
@@ -70,25 +70,28 @@ files](https://adriancorrendo.github.io/metrica/articles/apsim_open.html)
 For regression models, it includes 4 plotting functions (scatter, tiles,
 density, & Bland-Altman plots), and 48 prediction performance scores
 including error metrics (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE,
-RRMSE, RSR, PBE, iqRMSE), model efficiency (NSE, E1, Erel, KGE), indices
-of agreement (d, d1, d1r, RAC, AC, lambda), goodness of fit (r, R2, RSS,
-TSS, RSE), adjusted correlation coefficients (CCC, Xa, distance
-correlation-dcorr-), error decomposition (MLA, MLP, PLA, PLP, PAB, PPB,
-SB, SDSD, LCS, Ub, Uc, Ue), variability (uSD, var_u), and symmetric
-regression coefficients (B0_sma, B1_sma). Specifically for time-series
-predictions, `metrica` also includes the Mean Absolute Scaled Error
-(MASE). <br/>
+RRMSE, RSR, PBE, iqRMSE), error decomposition (MLA, MLP, PLA, PLP, PAB,
+PPB, SB, SDSD, LCS, Ub, Uc, Ue), model efficiency (NSE, E1, Erel, KGE),
+indices of agreement (d, d1, d1r, RAC, AC, lambda), goodness of fit (r,
+R2, RSS, TSS, RSE), adjusted correlation coefficients (CCC, Xa, distance
+correlation-dcorr-, maximal information coefficient -MIC-), variability
+(uSD, var_u), and symmetric regression coefficients (B0_sma, B1_sma).
+Specifically for time-series predictions, `metrica` also includes the
+Mean Absolute Scaled Error (MASE). <br/>
 
 For classification (binomial and multinomial) tasks, it includes a
 function to visualize the confusion matrix using ggplot2, and 27
 functions of prediction scores including: accuracy, error rate,
-precision, recall, specificity, balanced accuracy, F-score, adjusted
-F-score, G-mean, Bookmaker Informedness (Youden’s J-index), Markedness
-(deltaP), Matthews Correlation Coefficient, Cohen’s Kappa, negative
-predictive value, positive and negative likelihood ratios, diagnostic
-odds ratio, prevalence, critical success index, false positive rate,
-false negative rate, false detection rate, false omission rate, and area
-under the ROC curve. <br/>
+precision, recall, specificity, balanced accuracy (balacc), F-score
+(fscore), adjusted F-score (agf), G-mean (gmean), Bookmaker Informedness
+(bmi, a.k.a. Youden’s J-index), Markedness (deltaP), Matthews
+Correlation Coefficient (mcc), Cohen’s Kappa (khat), negative predictive
+value (npv), positive and negative likelihood ratios (posLr, negLr),
+diagnostic odds ratio (dor), prevalence (preval), prevalence threshold
+(preval_t), critical success index (csi, a.k.a. threat score), false
+positive rate (FPR), false negative rate (FNR), false detection rate
+(FDR), false omission rate (FOR), and area under the ROC curve
+(AUC_roc). <br/>
 
 `metrica` also offers a function that allows users to run all prediction
 performance scores at once. The user just needs to specify the type of

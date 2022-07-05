@@ -16,7 +16,8 @@
 #' @param limitsline_color string indicating the limits (+/- 1.96*SD) line color.  
 #' @param na.rm Logic argument to remove rows with missing values
 #' @return an object of class `ggplot`.
-#' @details See [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' @details 
+#' For more details, see [online-documentation](https://adriancorrendo.github.io/metrica/)
 #' @references
 #' Bland & Altman (1986).
 #' Statistical methods for assessing agreement between two methods of clinical measurement

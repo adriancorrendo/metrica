@@ -24,7 +24,7 @@
 #' mass on a cell of the grid is the fraction of points of D falling in that cell).
 #' Albanese et al. (2013).
 #' 
-#' For more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @examples 
 #' \donttest{
 #' set.seed(1)

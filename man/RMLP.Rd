@@ -30,13 +30,13 @@ dataset following Correndo et al. (2021).
 }
 \details{
 The RMLP represents the unsystematic (random) component of the MSE
-experessed on the original variables units \eqn{ \sqrt{MLP} }.
+expressed on the original variables units \eqn{ \sqrt{MLP} }.
 It is obtained via a symmetric decomposition of the MSE (invariant to
 predicted-observed orientation) using a symmetric regression line (SMA).
 The RMLP is equal to the square-root of the sum of unsystematic differences
 divided by the sample size (n). The greater the value the greater the random
 noise of the predictions.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

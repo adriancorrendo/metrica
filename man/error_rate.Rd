@@ -36,7 +36,7 @@ indicate low error_rate of predictions. It can be also expressed as percentage
 if multiplied by 100. It is estimated at a global level (not at the class level).
 The error rate is directly related to the accuracy, since error_rate = 1 – accuracy' .
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

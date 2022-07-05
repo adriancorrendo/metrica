@@ -16,7 +16,7 @@
 #' Based on RSR, Moriasi et al. (2007) indicates performance ratings as: 
 #' i) very-good (0-0.50), ii) good (0.50-0.60), iii) satisfactory (0.60-0.70), or 
 #' iv) unsatisfactory (>0.70). 
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html) 
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Moriasi et al. (2007). 
 #' Model Evaluation Guidelines for Systematic Quantification of Accuracy in Watershed Simulations.

@@ -31,7 +31,7 @@ The RSE is the ratio between the residual sum of squares (RSS, error of
 predictions with respect to observations) and the total sum of squares (TSS,
 error of observations with respect to its mean). RSE is dimensionless, so it can be
 used to compared models with different units.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

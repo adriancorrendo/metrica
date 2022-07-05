@@ -33,7 +33,7 @@ The PLP (\%, 0-100) represents the  contribution of the Mean Lack of Precision (
 the  unsystematic (random) component of the MSE. It is obtained via a symmetric decomposition
 of the MSE (invariant to predicted-observed orientation).
 The greater the value the greater the contribution of unsystematic error to the MSE.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

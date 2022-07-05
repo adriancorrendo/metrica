@@ -15,7 +15,7 @@
 #' The PAB = 100*((mO-mP)^2/MSE), where mO, and mP represent the mean of observations
 #' and predictions, respectively. 
 #' The greater the value the greater the contribution of additive bias to the prediction error.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Correndo et al. (2021). 
 #' Revisiting linear regression to test agreement in continuous predicted-observed datasets. 

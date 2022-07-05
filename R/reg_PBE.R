@@ -14,7 +14,7 @@
 #' @details The PBE (%) is useful to identify systematic over or under predictions. 
 #' It is an unbounded metric. The closer to zero the bias of predictions. 
 #' Negative values indicate overestimation, while positive values indicate underestimation.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html) 
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Gupta et al. (1999). 
 #' Status of automatic calibration for hydrologic models: Comparison with multilevel expert calibration.

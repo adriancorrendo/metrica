@@ -17,7 +17,7 @@
 #' predicted-observed orientation) using a symmetric regression line. 
 #' The MLP is equal to the sum of unsystematic differences divided by the sample size (n). 
 #' The greater the value the greater the random noise of the predictions.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Correndo et al. (2021). 
 #' Revisiting linear regression to test agreement in continuous predicted-observed datasets. 

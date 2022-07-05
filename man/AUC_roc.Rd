@@ -57,7 +57,7 @@ Finally, the AUC is directly related to the Gini-index (a.k.a. G1) since Gini + 
 (Hand & Till, 2001).
 
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

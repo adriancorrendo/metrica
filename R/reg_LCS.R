@@ -14,7 +14,7 @@
 #' @details The LCS represents the random component of the prediction error following
 #' Kobayashi & Salam (2000). The lower the value the less contribution to the MSE.
 #' However, it needs to be compared to MSE as its benchmark.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references
 #' Kobayashi & Salam (2000).
 #' Comparing simulated and measured values using mean squared deviation and its components. 

@@ -32,7 +32,7 @@ The NSE measures general agreement. It is normalized (by the variance of the obs
 It is calculated using the absolute squared differences between the predictions and observations,
 which has been suggested as an issue due to over-sensitivity to outliers.
 It goes form -infinity to 1. The closer to 1 the better the prediction performance.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

@@ -58,7 +58,7 @@ the square root of
 \deqn{ \mathcal{R}^2_n(\mathbf{P,O})= \frac {\mathcal{V}^2_n(\mathbf{P,O})} 
 {\sqrt{ \mathcal{V}^2_n (\mathbf{P}) \mathcal{V}^2_n(\mathbf{O})}}. }
 
-For more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 and the \href{https://CRAN.R-project.org/package=energy}{energy-package}
 }
 \examples{

@@ -1,6 +1,7 @@
 #' @title Bookmaker Informedness  
 #' @name bmi
-#' @description It estimates the Bookmaker Informedness (a.k.a. Youden's J-index) for a nominal/categorical predicted-observed dataset.
+#' @description It estimates the Bookmaker Informedness (a.k.a. Youden's J-index)
+#' for a nominal/categorical predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character | factor).
 #' @param pred Vector with predicted values (character | factor).
@@ -27,7 +28,7 @@
 #' It is bounded between 0 and 1. 
 #' The closer to 1 the better. Values towards zero indicate low performance. 
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Youden, W.J. (1950).
 #' Index for rating diagnostic tests. 

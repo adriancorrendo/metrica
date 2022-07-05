@@ -54,7 +54,8 @@ The user can choose to calculate a single metric, or to calculate all metrics at
 This function creates a data.frame with all (or selected) metrics in the \code{metrica}-package.
 If looking for specific metrics, the user can pass a list of desired metrics using the
 argument “metrics_list” (e.g. metrics_list = c("R2","MAE", "RMSE", "RSR", "NSE", "KGE")).
-For the entire list of available metrics with formula, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online documentation}
+For the entire list of available metrics with formula,
+see \href{https://adriancorrendo.github.io/metrica/}{online-documentation}
 }
 \examples{
 \donttest{

@@ -34,7 +34,7 @@ the systematic (bias) component of the MSE. It is obtained via a symmetric decom
 the MSE (invariant to predicted-observed orientation). The PLA can be further segregated
 into percentage additive bias (PAB) and percentage proportional bias (PPB).
 The greater the value the greater the contribution of systematic error to the MSE.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

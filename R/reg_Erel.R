@@ -13,7 +13,7 @@
 #' @details The Erel model efficiency normalizes both residuals (numerator) and observed 
 #' deviations (denominator) by observed values before squaring them. Compared to the NSE, the Erel is suggested as 
 #' more sensitive to systematic over- or under-predictions. 
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references 
 #' Krause et al. (2005). 
 #' Comparison of different efficiency criteria for hydrological model assessment. 

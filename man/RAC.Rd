@@ -30,7 +30,7 @@ Robinson (1957; 1959) for a continuous predicted-observed dataset.
 \details{
 The RAC measures both accuracy and precision (general agreement). It is
 normalized, dimensionless, bounded (0 to 1), and symmetric (invariant to predicted-observed orientation).
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

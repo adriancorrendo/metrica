@@ -4,9 +4,9 @@
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character | factor).
 #' @param pred Vector with predicted values (character | factor).
-#' @param B Numeric value indicating the weight (a.k.a. β or beta) to be applied to the 
-#' relationship between recall and precision. β < 1 weights more precision than recall.
-#' β > 1 gives B times more importance to recall than precision. Default: 1.
+#' @param B Numeric value indicating the weight (a.k.a. B or beta) to be applied to the 
+#' relationship between recall and precision. B < 1 weights more precision than recall.
+#' B > 1 gives B times more importance to recall than precision. Default: 1.
 #' @param pos_level Integer, for binary cases, indicating the order (1|2) of the level 
 #' corresponding to the positive. Generally, the positive level is the second (2)
 #' since following an alpha-numeric order, the most common pairs are 
@@ -25,8 +25,8 @@
 #' mean of precision and recall. Thus, to achieve high values of F-score it is necessary 
 #' to have both high precision and high recall. 
 #' 
-#' The universal version of F-score employs a coefficient β, by which we can tune the
-#' precision-recall ratio. Values of β > 1 give more weight to recall, and B < 1 give more
+#' The universal version of F-score employs a coefficient B, by which we can tune the
+#' precision-recall ratio. Values of B > 1 give more weight to recall, and B < 1 give more
 #' weight to precision. 
 #' 
 #' For binomial/binary cases, fscore  =  TP / (TP + 0.5*(FP + FN))
@@ -38,7 +38,7 @@
 #' It is bounded between 0 and 1. 
 #' The closer to 1 the better. Values towards zero indicate low performance. 
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Goutte, C., Gaussier, E. (2005).
 #' A Probabilistic Interpretation of Precision, Recall and F-Score, with Implication for Evaluation. 

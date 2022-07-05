@@ -31,7 +31,7 @@ The SMAPE (\%) is a normalized, dimensionless, and bounded (0\% to 200\%).
 It is a modification of the MAPE where the denominator is half
 of the sum of absolute differences between observations and predictions.
 This modification solves the problem of MAPE of producing negative or undefined values.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

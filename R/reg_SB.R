@@ -15,7 +15,7 @@
 #' following Kobayashi & Salam (2000). It is in square units of the variable of interest, so 
 #' it does not have a direct interpretation. The lower the value the less contribution to the MSE. 
 #' However, it needs to be compared to MSE as its benchmark.
-#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' For the formula and more details, see [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 #' @references
 #' Kobayashi & Salam (2000).
 #' Comparing simulated and measured values using mean squared deviation and its components. 

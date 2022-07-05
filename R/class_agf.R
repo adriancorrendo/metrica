@@ -28,7 +28,7 @@
 #' It is bounded between 0 and 1. 
 #' The closer to 1 the better. Values towards zero indicate low performance. 
 #' For the formula and more details, see 
-#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics.html)
+#' [online-documentation](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 #' @references
 #' Maratea, A., Petrosino, A., Manzo, M. (2014).
 #' Adjusted-F measure and kernel scaling for imbalanced data learning. 

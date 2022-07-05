@@ -30,7 +30,7 @@ It estimates the Erel model efficiency using differences to observations.
 The Erel model efficiency normalizes both residuals (numerator) and observed
 deviations (denominator) by observed values before squaring them. Compared to the NSE, the Erel is suggested as
 more sensitive to systematic over- or under-predictions.
-For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+For the formula and more details, see \href{https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html}{online-documentation}
 }
 \examples{
 \donttest{

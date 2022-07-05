@@ -23,17 +23,19 @@ and classification (categorical) prediction performance from multiple perspectiv
 
 For classification (binomial and multinomial) tasks, it includes a function to 
 visualize the confusion matrix using ggplot2, and 27 functions of prediction 
-scores including: accuracy, error rate, precision, recall, specificity, 
-balanced accuracy, F-score, adjusted F-score, G-mean, Bookmaker Informedness 
-(Youden's J-index), Markedness (deltaP), Matthews Correlation Coefficient, 
-khat or Cohen's Kappa, negative predictive value, positive and negative 
-likelihood ratios, diagnostic odds ratio, prevalence, critical success index, 
-false positive rate, false negative rate, false detection rate, false omission 
-rate, and area under the ROC curve. <br/>
+scores including: accuracy, error rate, precision, recall, specificity, balanced
+accuracy (balacc), F-score (fscore), adjusted F-score (agf), G-mean (gmean), 
+Bookmaker Informedness (bmi, a.k.a. Youden's J-index), Markedness (deltaP), 
+Matthews Correlation Coefficient (mcc), Cohen's Kappa (khat), negative predictive 
+value (npv), positive and negative likelihood ratios (posLr, negLr), diagnostic 
+odds ratio (dor), prevalence (preval), prevalence threshold (preval_t), critical 
+success index (csi, a.k.a. threat score), false positive rate (FPR), false 
+negative rate (FNR), false detection rate (FDR), false omission rate (FOR), 
+and area under the ROC curve (AUC_roc). <br/>
 
-For supervised modelling, always keep in mind the concept of "cross-validation" 
-since predicted values should ideally come from out-of-bag samples (unseen by 
-training sets) to avoid overestimation of the prediction performance. <br/>
+For supervised models, always keep in mind the concept of "cross-validation" 
+since predicted values should ideally come from out-of-bag samples 
+(unseen by training sets) to avoid overestimation of the prediction performance. <br/>
 
 ## Using the functions <br/>
 

@@ -42,7 +42,7 @@ has more relevance than the other). It is bounded between -1 and 1.
 The closer to 1 the better the classification performance.
 
 For the formula and more details, see
-\href{https://adriancorrendo.github.io/metrica/articles/available_metrics.html}{online-documentation}
+\href{https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html}{online-documentation}
 }
 \examples{
 \donttest{

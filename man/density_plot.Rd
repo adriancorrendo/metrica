@@ -73,7 +73,7 @@ It creates a density plot of predicted vs. observed values. The plot also includ
 the 1:1 line (solid line) and the linear regression line (dashed line). By default,
 it places the observed on the x-axis and the predicted on the y-axis (orientation = "PO").
 This can be inverted by changing the argument orientation = “OP".
-For more details, see \href{https://adriancorrendo.github.io/metrica/articles/vignette1.html}{online-documentation}
+For more details, see \href{https://adriancorrendo.github.io/metrica/}{online-documentation}
 }
 \examples{
 \donttest{
