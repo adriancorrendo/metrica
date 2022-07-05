@@ -2,7 +2,15 @@
 
 * This is a major update of the package. Precedent version (v1.2.3)
 
-## Author comment's on NOTES:
+## Maintaner's comments on checks:
+- Locally tested on Windows
+- Tested on win_devel, win_oldrelease, macos_bigsur_release, and 
+macos_highsierra_release using devtools
+- Linux platforms temporally unavailable from rhub::check_for_cran(). However,
+R-CMD-check on Ubuntu 20.04.4 hass passed flawlessly on GitHub, link:
+https://github.com/adriancorrendo/metrica/runs/7190371163
+
+## Maintainer's comments on NOTES:
 
 Potential misspelled words are not actually misspelled:
 
@@ -12,7 +20,7 @@ Potential misspelled words are not actually misspelled:
 
 #########################################################################
 
-## 1. Local R CMD check results ──────────────────────────── metrica 2.0.0 ────
+## 1. Local R CMD (--as-cran = TRUE) check results ───────── metrica 2.0.0 ────
 Duration: 1m 6.3s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
@@ -63,7 +71,7 @@ Status: 1 NOTE*
 
 ##############################################################################
 
-# 3. R-hub check, results from devtools::check_rhub()
+## 4. R-hub check, results from devtools::check_rhub()
 
 ## Test environments
 
@@ -88,15 +96,13 @@ https://builder.r-hub.io/status/metrica_2.0.0.tar.gz-75833cbaf296433e9addbbbff81
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
 - R-hub windows-x86_64-devel (r-devel)
-Awaiting for r-hub to fix check_for_cran()
+Temporally unavailable in r-hub::check_for_cran()
 
 - R-hub fedora-clang-devel (r-devel)
-Awaiting for r-hub to fix check_for_cran()
+Temporally unavailable in r-hub::check_for_cran()
 
 - R-hub ubuntu-gcc-release (r-release)
-Awaiting for r-hub to fix check_for_cran()
-
-## R CMD check results
+Temporally unavailable in r-hub::check_for_cran()
 
 
 ####################################################################
