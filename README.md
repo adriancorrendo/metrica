@@ -239,7 +239,7 @@ barley.tiles.plot <-
                       obs = measured, 
                       pred = simulated,
                       bins = 10, 
-                      orientation = "OP",
+                      orientation = "PO",
                       colors = c(low = "pink", high = "steelblue"))
 
 barley.tiles.plot
@@ -254,7 +254,7 @@ barley.density.plot <-
 metrica::density_plot(data = example.data, 
                       obs = measured, pred = simulated,
                       n = 5, 
-                      orientation = "OP", 
+                      orientation = "PO", 
            colors = c(low = "white", high = "steelblue") )+
   theme(legend.position = "none")
 
@@ -423,6 +423,8 @@ df <- metrica::wheat
 # Create list of selected metrics
 selected.metrics <- c("MAE","RMSE", "RRMSE", "R2", "NSE", "KGE", "PLA", "PLP")
 
+
+df <- metrica::wheat
 # Create the plot
 plot <- metrica::scatter_plot(data = df, 
                               obs = obs, pred = pred,
@@ -431,9 +433,9 @@ plot <- metrica::scatter_plot(data = df,
                               # Indicate metrics list
                               metrics_list = selected.metrics,
                               # Customize metrics position
-                              position_metrics = c(x = 1 , y = 20),
+                              position_metrics = c(x = 16 , y = 9),
                               # Customize equation position
-                              position_eq = c(x = 7, y = 19.5))
+                              position_eq = c(x = 16.2, y = 9.5))
 
 plot
 ```

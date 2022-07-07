@@ -26,7 +26,7 @@ Authors:
   \item Rai Schwalbert \email{rai.schwalbert@hotmail.com} (\href{https://orcid.org/0000-0001-8488-7507}{ORCID})
   \item Carlos Hernandez \email{carlosh92@ksu.edu} (\href{https://orcid.org/0000-0000-0000-0000}{ORCID})
   \item Leonardo M. Bastos \email{leonardombastos@gmail.com} (\href{https://orcid.org/0000-0001-8958-6527}{ORCID})
-  \item Luciana Nieto \email{lnieto@ksu.edu}
+  \item Luciana Nieto \email{lnieto@ksu.edu} (\href{https://orcid.org/0000-0002-7172-0799}{ORCID})
   \item Dean Holzworth \email{dean.holzworth@csiro.au}
   \item Ignacio A. Ciampitti \email{ciampitti@ksu.edu} (\href{https://orcid.org/0000-0001-9619-5129}{ORCID})
 }
