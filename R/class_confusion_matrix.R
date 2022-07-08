@@ -86,7 +86,7 @@ confusion_matrix <- function(data = NULL, obs, pred,
         dplyr::mutate(PREDICTED = as.factor(PREDICTED), OBSERVED = as.factor(OBSERVED)) %>% 
         dplyr::rename(count = Freq) %>%
         dplyr::mutate(proportion = round(count/sum(count),2) ) %>% 
-        dplyr::mutate(isdiag = (PREDICTED == OBSERVED)) |>
+        dplyr::mutate(isdiag = (PREDICTED == OBSERVED)) %>%
         dplyr::arrange(isdiag)
       # Obtain the levels the order the cm
       levels <- levels(mat_plot[["PREDICTED"]])
