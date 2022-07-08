@@ -41,7 +41,7 @@ d1r <- function(data = NULL,
     data=data,
     rlang::quo(
       
-    1 - ( (sum(abs({{obs}} - {{pred}} ))) / 2 * sum( abs({{obs}} - mean({{obs}}) )) )
+    1 - ( (sum(abs({{obs}} - {{pred}} ))) / (2 * sum( abs({{obs}} - mean({{obs}}) ))) )
     )
   )
   if (tidy==TRUE){ return(as.data.frame(d1r)) }

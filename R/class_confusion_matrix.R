@@ -190,13 +190,14 @@ confusion_matrix <- function(data = NULL, obs, pred,
               if (position_metrics == "top"){
                 plot +
                 ggplot2::labs(subtitle = paste("Performance metrics: \n", 
-                                               metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
+                                            metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
                                             metrics.table[2, "Metric"], " = ", metrics.table[2, "Score"], "; ",
                                             metrics.table[3, "Metric"], " = ", metrics.table[3, "Score"], "; ",
                                             metrics.table[4, "Metric"], " = ", metrics.table[4, "Score"], "." )) }
               else {
                 plot +
-                ggplot2::labs(caption = paste("Performance metrics: \n", metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
+                ggplot2::labs(caption = paste("Performance metrics: \n", 
+                                                metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
                                                 metrics.table[2, "Metric"], " = ", metrics.table[2, "Score"], "; ",
                                                 metrics.table[3, "Metric"], " = ", metrics.table[3, "Score"], "; ",
                                                 metrics.table[4, "Metric"], " = ", metrics.table[4, "Score"], "." )) } }
@@ -204,32 +205,35 @@ confusion_matrix <- function(data = NULL, obs, pred,
              plot <-
              if (position_metrics == "top"){
                plot +
-                ggplot2::labs(subtitle = paste("Performance metrics: \n", metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
+                ggplot2::labs(subtitle = paste("Performance metrics: \n", 
+                                            metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
                                             metrics.table[2, "Metric"], " = ", metrics.table[2, "Score"], "; ",
                                             metrics.table[3, "Metric"], " = ", metrics.table[3, "Score"], "; ",
                                             metrics.table[4, "Metric"], " = ", metrics.table[4, "Score"], "; ",
                                             metrics.table[5, "Metric"], " = ", metrics.table[5, "Score"], "." )) } 
              else {
                plot +
-               ggplot2::labs(caption = paste("Performance metrics: \n", metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
+               ggplot2::labs(caption = paste("Performance metrics: \n", 
+                                             metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
                                                metrics.table[2, "Metric"], " = ", metrics.table[2, "Score"], "; ",
                                                metrics.table[3, "Metric"], " = ", metrics.table[3, "Score"], "; ",
                                                metrics.table[4, "Metric"], " = ", metrics.table[4, "Score"], "; ",
                                                metrics.table[5, "Metric"], " = ", metrics.table[5, "Score"], ".")) } }
             if (levels_metrics_list == 6){
               plot <-
-              if (position_metrics == "top"){
-                plot +
-                ggplot2::labs(subtitle = strwrap(paste("Performance metrics: \n", metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
-                                                       metrics.table[2, "Metric"], " = ", metrics.table[2, "Score"], "; ",
-                                                       metrics.table[3, "Metric"], " = ", metrics.table[3, "Score"], "; ",
-                                                       metrics.table[4, "Metric"], " = ", metrics.table[4, "Score"], "; ",
-                                                       metrics.table[5, "Metric"], " = ", metrics.table[5, "Score"], "; \n",
-                                                       metrics.table[6, "Metric"], " = ", metrics.table[6, "Score"], "." ))
-                                ) }
+                if (position_metrics == "top"){
+                  plot +
+                    ggplot2::labs(subtitle = paste("Performance metrics: \n", 
+                                                   metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
+                                                   metrics.table[2, "Metric"], " = ", metrics.table[2, "Score"], "; ",
+                                                   metrics.table[3, "Metric"], " = ", metrics.table[3, "Score"], "; ",
+                                                   metrics.table[4, "Metric"], " = ", metrics.table[4, "Score"], "; ",
+                                                   metrics.table[5, "Metric"], " = ", metrics.table[5, "Score"], "; \n",
+                                                   metrics.table[6, "Metric"], " = ", metrics.table[6, "Score"], "." )) }
               else {
                 plot +
-                ggplot2::labs(caption = paste("Performance metrics: \n", metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
+                  ggplot2::labs(caption = paste("Performance metrics: \n", 
+                                                metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
                                                 metrics.table[2, "Metric"], " = ", metrics.table[2, "Score"], "; ",
                                                 metrics.table[3, "Metric"], " = ", metrics.table[3, "Score"], "; ",
                                                 metrics.table[4, "Metric"], " = ", metrics.table[4, "Score"], "; ",
@@ -239,7 +243,8 @@ confusion_matrix <- function(data = NULL, obs, pred,
               plot <-
               if (position_metrics == "top"){
                 plot +
-                ggplot2::labs(subtitle = paste("Performance metrics: \n", metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
+                ggplot2::labs(subtitle = paste("Performance metrics: \n", 
+                                            metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
                                             metrics.table[2, "Metric"], " = ", metrics.table[2, "Score"], "; ",
                                             metrics.table[3, "Metric"], " = ", metrics.table[3, "Score"], "; ",
                                             metrics.table[4, "Metric"], " = ", metrics.table[4, "Score"], "; ",
@@ -266,8 +271,7 @@ confusion_matrix <- function(data = NULL, obs, pred,
                                             metrics.table[5, "Metric"], " = ", metrics.table[5, "Score"], "; \n",
                                             metrics.table[6, "Metric"], " = ", metrics.table[6, "Score"], "; ",
                                             metrics.table[7, "Metric"], " = ", metrics.table[7, "Score"], "; ",
-                                            metrics.table[8, "Metric"], " = ", metrics.table[8, "Score"], "; ",
-                                            metrics.table[9, "Metric"], " = ", metrics.table[9, "Score"], "."  )) }
+                                            metrics.table[8, "Metric"], " = ", metrics.table[8, "Score"], "."  )) }
             else {
               plot +
               ggplot2::labs(caption = paste("Performance metrics: \n", metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
@@ -277,8 +281,7 @@ confusion_matrix <- function(data = NULL, obs, pred,
                                               metrics.table[5, "Metric"], " = ", metrics.table[5, "Score"], "; \n",
                                               metrics.table[6, "Metric"], " = ", metrics.table[6, "Score"], "; ",
                                               metrics.table[7, "Metric"], " = ", metrics.table[7, "Score"], "; ",
-                                              metrics.table[8, "Metric"], " = ", metrics.table[8, "Score"], "; ",
-                                              metrics.table[9, "Metric"], " = ", metrics.table[9, "Score"], ".")) } }
+                                              metrics.table[8, "Metric"], " = ", metrics.table[8, "Score"], ".")) } }
           if (levels_metrics_list == 9){
             plot <-
             if (position_metrics == "top"){
@@ -294,7 +297,8 @@ confusion_matrix <- function(data = NULL, obs, pred,
                                             metrics.table[9, "Metric"], " = ", metrics.table[9, "Score"], ".")) }
             else { 
               plot +
-              ggplot2::labs(caption = paste("Performance metrics: \n", metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
+              ggplot2::labs(caption = paste("Performance metrics: \n",
+                                              metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
                                               metrics.table[2, "Metric"], " = ", metrics.table[2, "Score"], "; ",
                                               metrics.table[3, "Metric"], " = ", metrics.table[3, "Score"], "; ",
                                               metrics.table[4, "Metric"], " = ", metrics.table[4, "Score"], "; ",
@@ -307,7 +311,8 @@ confusion_matrix <- function(data = NULL, obs, pred,
               plot <-
               if (position_metrics == "top"){
                 plot +
-               ggplot2::labs(subtitle = paste("Performance metrics: \n", metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
+               ggplot2::labs(subtitle = paste("Performance metrics: \n", 
+                                            metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
                                             metrics.table[2, "Metric"], " = ", metrics.table[2, "Score"], "; ",
                                             metrics.table[3, "Metric"], " = ", metrics.table[3, "Score"], "; ",
                                             metrics.table[4, "Metric"], " = ", metrics.table[4, "Score"], "; ",
@@ -319,7 +324,8 @@ confusion_matrix <- function(data = NULL, obs, pred,
                                             metrics.table[10, "Metric"], " = ", metrics.table[10, "Score"], ".")) } 
               else {
                 plot +
-                ggplot2::labs(caption = paste("Performance metrics: \n", metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
+                ggplot2::labs(caption = paste("Performance metrics: \n", 
+                                                metrics.table[1, "Metric"], " = ", metrics.table[1, "Score"], "; ",
                                                 metrics.table[2, "Metric"], " = ", metrics.table[2, "Score"], "; ",
                                                 metrics.table[3, "Metric"], " = ", metrics.table[3, "Score"], "; ",
                                                 metrics.table[4, "Metric"], " = ", metrics.table[4, "Score"], "; ",

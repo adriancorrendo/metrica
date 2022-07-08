@@ -1,10 +1,14 @@
 # metrica 2.0.0.999
 
-* July 4th, 2022. <br/>
+* July 7th, 2022. <br/>
 
 This dev-version fixes minor bugs found in v2.0.0:
 
 1) regression lines with "OP" orientation in scatter_plot(), density_plot(), and tiles_plot()
+
+2) estimation of d1r index for regression.
+
+3) printing metrics on confusion matrix.
 
 ##############################################################################
 
