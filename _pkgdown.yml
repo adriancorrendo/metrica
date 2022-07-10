@@ -2,9 +2,5 @@ title: metrica
 url: https://adriancorrendo.github.io/metrica/
 template:
   bootstrap: 5
-  bslib:
-    bg: "#EDEEC9"
-    fg: "#272640"
-    primary: "#fb8f67"
-    base_font: {google: "Ubuntu"}
+  bootswatch: sandstone
 
