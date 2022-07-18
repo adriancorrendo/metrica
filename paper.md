@@ -54,7 +54,7 @@ To conduct a comprehensive assessment of prediction performance combining differ
 
 As an open source software, `metrica` facilitates a transparent and reproducible process to assist researchers on evaluation models performance. 
 
-The use of `metrica` is also suggested by the package for sustainable transport planning `stplanr` [@stplanr]
+The use of `metrica` is...
 
 # Usage
 
@@ -88,10 +88,10 @@ To import files from simulation models like APSIM Classic and APSIM Next Gen...
 
 Other packages to compute error metrics: <br/>
 
-- `yardstick` [@citation]
-- `Metrics` [@citation]
-- `hydroGOF` [@citation]
-- `performance` [@citation]
+- `yardstick` 
+- `Metrics` 
+- `hydroGOF` 
+- `performance` 
 
 # Formulae
 
