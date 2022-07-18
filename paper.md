@@ -48,9 +48,7 @@ date: 18 July 2022
 
 # Statement of need
 
-Distance based computations and models are at the core of many spatial analysis operations in various scientific fields.
-The simplest distance metric is the Euclidean distance (or distance as the crow flies), it is easy and inexpensive to compute. The use of this simple metric may be well fitted to study some phenomenon, such as species distribution or pollution diffusion. 
-But whenever research aims at studying human activities (transport of persons or goods for example) it is common to use more realistic metrics based on road distance or travel time.
+Reproducibility.
 
 To conduct a comprehensive assessment of prediction performance combining different perspectives in R, users have to use multiple packages or even have to define functions by hand. 
 
@@ -60,13 +58,21 @@ The use of `metrica` is also suggested by the package for sustainable transport 
 
 # Usage
 
+### Regression (continuous variables)
+
 For regression models, it includes 4 plotting functions (scatter, tiles, density, & Bland-Altman plots), and 48 prediction performance scores including error metrics (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE, RRMSE, RSR, PBE, iqRMSE), error decomposition (MLA, MLP, PLA, PLP, PAB, PPB, SB, SDSD, LCS, Ub, Uc, Ue), model efficiency (NSE, E1, Erel, KGE), indices of agreement (d, d1, d1r, RAC, AC, lambda), goodness of fit (r, R2, RSS, TSS, RSE), adjusted correlation coefficients (CCC, Xa, distance correlation-dcorr-, maximal information coefficient -MIC-), variability (uSD, var_u), and symmetric regression coefficients (B0_sma, B1_sma). Specifically for time-series predictions, metrica also includes the Mean Absolute Scaled Error (MASE).
+
+![Caption for example figure.\label{fig:scatter_plot}](man/figures/README-unnamed-chunk-3-1.png) <br/>
+
+### Classification (categorical variables)
 
 For classification (binomial and multinomial) tasks, it includes a function to visualize the confusion matrix using ggplot2, and 27 functions of prediction scores including: accuracy, error rate, precision, recall, specificity, balanced accuracy (balacc), F-score (fscore), adjusted F-score (agf), G-mean (gmean), Bookmaker Informedness (bmi, a.k.a. Youden’s J-index), Markedness (deltaP), Matthews Correlation Coefficient (mcc), Cohen’s Kappa (khat), negative predictive value (npv), positive and negative likelihood ratios (posLr, negLr), diagnostic odds ratio (dor), prevalence (preval), prevalence threshold (preval_t), critical success index (csi, a.k.a. threat score), false positive rate (FPR), false negative rate (FNR), false detection rate (FDR), false omission rate (FOR), and area under the ROC curve (AUC_roc). 
 
+![Caption for example figure.\label{fig:multiclass_cm}](man/figures/README-unnamed-chunk-15-1.png) <br/>
+
 ### Table 1: Example table.
 
-| Class | Role | When to Subclass |
+| Col1 | Col2 | Col3 |
 |---|---|---|
 | ABC | DEFG | HIJKL |
 
@@ -74,9 +80,11 @@ For classification (binomial and multinomial) tasks, it includes a function to v
 
 # APSIM files
 
+To import files from simulation models like APSIM Classic and APSIM Next Gen...
+
 # Dependencies?
 
-`metrica` has the following main
+`metrica` has the following main dependencies
 
 Other packages to compute error metrics: <br/>
 
@@ -84,6 +92,56 @@ Other packages to compute error metrics: <br/>
 - `Metrics` [@citation]
 - `hydroGOF` [@citation]
 - `performance` [@citation]
+
+# Formulae
+
+Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$
+
+Double dollars make self-standing equations:
+
+$$\Theta(x) = \left\{\begin{array}{l}
+0\textrm{ if } x < 0\cr
+1\textrm{ else}
+\end{array}\right.$$
+
+You can also use plain \LaTeX for equations
+\begin{equation}\label{eq:fourier}
+\hat f(\omega) = \int_{-\infty}^{\infty} f(x) e^{i\omega x} dx
+\end{equation}
+and refer to \autoref{eq:fourier} from text.
+
+# Citations
+
+Citations to entries in paper.bib should be in
+[rMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
+format.
+
+If you want to cite a software repository URL (e.g. something on GitHub without a preferred
+citation) then you can do it with the example BibTeX entry below for @fidgit.
+
+For a quick reference, the following citation commands can be used:
+- `@author:2001`  ->  "Author et al. (2001)"
+- `[@author:2001]` -> "(Author et al., 2001)"
+- `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
+
+# Figures
+
+Figures can be included like this: <br/>
+
+![Caption for example figure.\label{fig:logo}](man/figures/metrica_logo.png) <br/>
+
+and referenced from text using \autoref{fig:logo}.
+
+Figure sizes can be customized by adding an optional second parameter:
+![Figure #. Metrica logo.](man/figures/metrica_logo.png){ width=20% }
+
+# Acknowledgements
+
+We acknowledge contributions from #### during the genesis of this project.
+
+# License
+
+`metrica` is under MIT License...
 
 
 # References
