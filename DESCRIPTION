@@ -7,7 +7,7 @@ Authors@R: c(
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("aut"), comment = c(ORCID = "0000-0002-4172-289X")),
     person("Luiz H.", "Moro Rosso", email = "lhmrosso@ksu.edu", role = "aut", comment = c(ORCID = "0000-0002-8642-911X")),
     person("Rai", "Schwalbert", email = "rai.schwalbert@hotmail.com", role = "aut", comment = c(ORCID = "0000-0001-8488-7507")),
-    person("Carlos", "Hernandez", email = "carlosh92@ksu.edu", role = "aut", comment = c(ORCID = "0000-0000-0000-0000")),
+    person("Carlos", "Hernandez", email = "carlosh92@ksu.edu", role = "aut", comment = c(ORCID = "0000-0001-5171-2516")),
     person("Leonardo M.", "Bastos", email = "leonardombastos@gmail.com", role = "aut", comment = c(ORCID = "0000-0001-8958-6527")),
     person("Luciana", "Nieto", email = "lnieto@ksu.edu", comment = c(ORCID = "0000-0002-7172-0799"), role = "aut"),
     person("Dean", "Holzworth", email = "dean.holzworth@csiro.au", role = "aut"),
