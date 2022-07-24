@@ -2,23 +2,17 @@
 
 * This is a minor update fixing bugs of the package v2.0.0. 
 
-## Maintainer's comments on NOTES:
+## Maintainer's comments on NOTES (1):
 
-i - Problems with news in 'NEWS.md':
-  Cannot extract version info from the following section titles:
-    Previous versions
-    
-This note appeared using the devtools::check_win_devel (https://win-builder.r-project.org/oz5AIah7zsc4/). However, it does not affect the identification of the current version of the package (v2.0.1). The section "Previous version" contains comments to allow users to see the package progress over time. Moreover, I did not find errors on the version numbers of precedent versions.
-
-ii - Found the following files/directories:
+i - Found the following files/directories:
     'lastMiKTeXException'
   
-This note only appeared for the rhub::Windows Server 2022, R-devel, and does not seem to mean a problem.
+This note only appeared for the rhub::Windows Server 2022, R-devel, and does not seem to represent a problem.
 
 #########################################################################
 
 ## 1. Local R CMD (--as-cran = TRUE) check results ───────── metrica 2.0.1 ────
-Duration: 1m 7.3s
+Duration: 1m 6.2s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
@@ -46,13 +40,9 @@ other attached packages:
 
 ## 2. WIN-DEVEL. Results devtools::check_win_devel()
 
-Build log: https://win-builder.r-project.org/oz5AIah7zsc4/
+Build log: https://win-builder.r-project.org/qLRecSwZfLQT/
 
-Status: 1 NOTE*
-
-Problems with news in 'NEWS.md':
-  Cannot extract version info from the following section titles:
-    Previous versions
+Status: OK
 
 ##############################################################################
 
@@ -60,54 +50,54 @@ Problems with news in 'NEWS.md':
 
 ## Test environments
 
-── metrica 2.0.1: OK
-
-  Build ID:   metrica_2.0.1.tar.gz-d0c1ba623d764e02921cb8fa2b2ff492
-  Platform:   Ubuntu Linux 20.04.1 LTS, R-release, GCC
-  Submitted:  6m 41s ago
-  Build time: 28m 12s
-
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
-
-── metrica 2.0.1: OK
-
-  Build ID:   metrica_2.0.1.tar.gz-b9fd81b0136b4198b60718026c251ef1
-  Platform:   Fedora Linux, R-devel, clang, gfortran
-  Submitted:  6m 41s ago
-  Build time: 29m 2.7s
-
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
-
-── metrica 2.0.1: OK
-
-  Build ID:   metrica_2.0.1.tar.gz-71bd1526f5014c039be2f2f5d9ddaa01
-  Platform:   Apple Silicon (M1), macOS 11.6 Big Sur, R-release
-  Submitted:  6m 41s ago
-  Build time: 3m 38.8s
-
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
-
-── metrica 2.0.1: OK
-
-  Build ID:   metrica_2.0.1.tar.gz-2973b84910a140bd8bb42679fe351982
-  Platform:   macOS 10.13.6 High Sierra, R-release, CRAN's setup
-  Submitted:  6m 41s ago
-  Build time: 2m 9.2s
-
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
-
 ── metrica 2.0.1: NOTE
 
-  Build ID:   metrica_2.0.1.tar.gz-6f55d517dcb34cdeb316f241f7cfe4eb
+  Build ID:   metrica_2.0.1.tar.gz-cddad00116384bfe8374f5e0222ab4a6
   Platform:   Windows Server 2022, R-devel, 64 bit
-  Submitted:  19m 29.1s ago
-  Build time: 12m 57.1s
+  Submitted:  28m 58s ago
+  Build time: 7m 59.6s
 
 ❯ checking for detritus in the temp directory ... NOTE
   Found the following files/directories:
     'lastMiKTeXException'
 
 0 errors ✔ | 0 warnings ✔ | 1 note ✖
+
+── metrica 2.0.1: OK
+
+  Build ID:   metrica_2.0.1.tar.gz-1bf5dd3e5aaf432286a28e77368835ee
+  Platform:   Ubuntu Linux 20.04.1 LTS, R-release, GCC
+  Submitted:  28m 58s ago
+  Build time: 27m 21.4s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
+── metrica 2.0.1: OK
+
+  Build ID:   metrica_2.0.1.tar.gz-3a7e79c144b74f3db218c7495e2cf5fa
+  Platform:   Fedora Linux, R-devel, clang, gfortran
+  Submitted:  28m 58s ago
+  Build time: 27m 58.2s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
+── metrica 2.0.1: OK
+
+  Build ID:   metrica_2.0.1.tar.gz-ab17ac63da134bffaa77f571fa694d0d
+  Platform:   Apple Silicon (M1), macOS 11.6 Big Sur, R-release
+  Submitted:  28m 58s ago
+  Build time: 1m 20s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
+── metrica 2.0.1: OK
+
+  Build ID:   metrica_2.0.1.tar.gz-cdc84b2cf7574c25b84eeae3614b0c5f
+  Platform:   macOS 10.13.6 High Sierra, R-release, CRAN's setup
+  Submitted:  28m 58s ago
+  Build time: 1m 51.1s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
 ####################################################################
 
