@@ -60,10 +60,12 @@
 <ol style="list-style-type: decimal"><li><p>regression lines with “OP” orientation in scatter_plot(), density_plot(), and tiles_plot(), which were producing the “PO” oriented regression lines instead.</p></li>
 <li><p>estimation of “d1r” index for regression, which produced misleading values due to a typo in the denominator.</p></li>
 <li><p>printing metrics on confusion matrix, which produced a NaN when printing 9 metrics.</p></li>
-</ol><div id="section-2-0-1" class="section level103"><p class="heading"></p></div>
+</ol><div id="section-2-0-1" class="section level103">
+<p class="heading"></p>
+<ul><li>PREVIOUS VERSIONS</li></ul></div>
 </div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="2.0.0" id="metrica-200-cran">metrica 2.0.0 (CRAN)<a class="anchor" aria-label="anchor" href="#metrica-200-cran"></a></h2><p class="text-muted">CRAN release: 2022-07-05</p>
+<h2 class="pkg-version" data-toc-text="2.0.0" id="metrica-200">metrica 2.0.0<a class="anchor" aria-label="anchor" href="#metrica-200"></a></h2><p class="text-muted">CRAN release: 2022-07-05</p>
 <ul><li>July 4th, 2022. <br></li></ul><p>This new version of metrica includes:</p>
 <ol style="list-style-type: decimal"><li>Twenty-seven (27) additional functions to evaluate quality of predictions for classification problems:</li></ol><ul><li>
 <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code>: Confusion matrix (as data.frame or plot).</li>
@@ -177,19 +179,19 @@
 <li><p>Updated vignettes creating independent versions for classification and regression models, and for importing APSIM files.</p></li>
 </ol></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.3" id="metrica-123-cran">metrica 1.2.3 (CRAN)<a class="anchor" aria-label="anchor" href="#metrica-123-cran"></a></h2><p class="text-muted">CRAN release: 2022-05-12</p>
+<h2 class="pkg-version" data-toc-text="1.2.3" id="metrica-123">metrica 1.2.3<a class="anchor" aria-label="anchor" href="#metrica-123"></a></h2><p class="text-muted">CRAN release: 2022-05-12</p>
 <ul><li>May, 10, 2022. <br></li></ul><p>Maintenance update fixing minor errors after feedback from CRAN submission of v1.2.2 (e.g. use ‘donttest’ instead of ‘dontrun’ in functions’ examples, adding references into functions). Also, the available metrics vignette was updated adding the corresponding citations of formulae used into functions.</p>
 </div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.2" id="metrica-122-dev">metrica 1.2.2 (dev)<a class="anchor" aria-label="anchor" href="#metrica-122-dev"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.2.2" id="metrica-122">metrica 1.2.2<a class="anchor" aria-label="anchor" href="#metrica-122"></a></h2>
 <ul><li>May, 05, 2022. <br></li></ul><p>Maintenance update fixing minor bugs related to checks before CRAN submission (e.g. spelling check, URLs, DOIs, etc.)</p>
 </div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.1" id="metrica-121-dev">metrica 1.2.1 (dev)<a class="anchor" aria-label="anchor" href="#metrica-121-dev"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.2.1" id="metrica-121">metrica 1.2.1<a class="anchor" aria-label="anchor" href="#metrica-121"></a></h2>
 <p>Minor updates (1.2.1):</p>
 <p>Update of function and arguments’ names replacing “.” by "_":</p>
 <p>Old | New import.apsim.out | import_apsim_out import.apsim.db | import_apsim_db metrics.summary | metrics_summary scatter.plot | scatter_plot tiles.plot | tiles_plot bland.altman.plot | bland_altman_plot B0.sma | B0_sma B1.sma | B1_sma metrics.list | metrics_list print.metrics | print_metrics</p>
-<hr><p>New features (1.2.0) (dev):</p>
+<hr><p>New features (1.2.0)</p>
 <p>Data: a new (Optional) arg. called “data” is included for all functions, which serves to call an existing data frame containing the predicted-observed data. This facilitates passing the functions to multiple and nested data frames at once using mapping functions.</p>
 <p>APSIM: includes two new functions to read APSIM output files from APSIM Classic ["*.out", import.apsim.out()] and APSIM NextGen ["*.db", import.apsim.db()].</p>
 </div>
