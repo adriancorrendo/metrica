@@ -44,9 +44,9 @@ bibliography: paper.bib
 
 # Summary 
 
-![Figure #. Metrica logo.](man/figures/metrica_logo.png){ width=15% }
+![Figure 1. Metrica logo.](man/figures/metrica_logo.png){ width=15% }
 
-The `metrica` R-package [@metrica_manual] is an open-source software designed to facilitate the quantitative and visual assessment of prediction performance of point-forecast simulation models for continuous (regression) and categorical variables (classification). The package assembles a series of more than 80 functions that account for multiple aspects of the agreement between predicted and observed values. Without the need of advanced skills on programming, `metrica` enables users to automate the estimation of multiple prediction performance metrics including goodness of fit, error metrics, error decomposition, model efficiency, indices of agreement, and to produce stylish data visualization outputs.
+The `metrica` R-package [@metrica_manual] is an open-source software designed to facilitate the quantitative and visual assessment of prediction performance of point-forecast simulation models for continuous (regression) and categorical variables (classification). The package assembles a series of more than 80 functions that account for multiple aspects of the agreement between predicted and observed values. Without the need of advanced skills on programming, `metrica` enables users to automate the estimation of multiple prediction performance metrics including goodness of fit, error metrics, error decomposition, model efficiency, indices of agreement, and to produce stylish data visualization outputs. This article introduces the `metrica` R-package, developed with the main objective of contributing to reproducible evaluation of point-forecast models performance.
 
 # Statement of need
 
@@ -56,7 +56,23 @@ In the area of agricultural sciences in particular, point-forecast simulation mo
 
 As the reproducibility of data analysis continues as a challenge for modern science [@Seibold_2022], the development of open source software like `metrica` represent a step-forward toward transparent and reproducible process to assist researchers on the evaluation models performance. We especifically decided to create `metrica` in R software [@R_Core_Team] due to its substantial role in modern data science [@Thiem_2018]. Under the open-source philosophy, R hosts cutting-edge algorithms that combined with an infrastructure like the Comprehensive R Archive Network (CRAN) -enhancing global dissemination-,  clearly empowers the democratization of statistical computing [@Hackenberger_2020].
 
-This article introduces the `metrica` R-package, developed with the main objective of contributing to reproducible evaluation of point-forecast models performance. 
+There are existing packages that assist on the models performance assessment such as: 
+
+- `yardstick` [@yardstick_manual], as part of the tidymodels meta-package, provides a good collection of metrics for designed to evaluate regression, classification and probabilistic models. However, compared to `metrica`, the variety of metrics for regression and classification is limited, and it does not offer plotting functions.
+
+- `mlr3` [@mlr3_paper] provides a compelling interface for building machine learning models, which includes the models' evaluation as one of the steps. The number of performance metrics is similar for classification, but in the case of continuous variables (regression models), `metrica` offers way more variety of metrics and visualization.
+
+- `Metrics` [@Metrics_manual] presents a good number of metrics for binary classification, and for regression. However, if offers less variety of metrics, it does not provide a function comparable to `metrica::metrics_summary()`, no plotting functions, it only works under the vectorized form (data.frame$variable), for classification it does not work for multi-class cases, and it does not work if the values of the predicted and observed vectors are not numeric (binary, 0-1).
+
+- `hydroGOF` [@hydroGOF_manual] offers a good collection of metrics, however, some of them very specific for hydrology problems. In terms of plots, it only provides a few  visualization functions and using base R plots. It does not offer options for classification.
+
+- `cvms` [@cvms_package] is a good option for evaluation cross-validated models. However, it offers less variety of metrics and it does not present plotting functions for regression. It offers great flexibility to create confusion matrices.
+
+- `scoringutils` [@scoringutils_package] offers a wide variety of scoring rules but focused in probabilistic forecast but not in point-forecast models.
+
+- `performance` [@performance_paper] offers a compelling toolbox for the evaluation of statistical models but it only works with the models' objects (because it works with their likelihood). Therefore, it does not support the evaluation point-forecast with simply predicted and observed values.
+
+To extent of our knowledge, the `metrica` package provide some unique functionalities that are not being offered by other packages of model evaluation such as: the visualization options for regression (scatter_plot, density_plot, tiles_plot), implementation of a symmetric linear regression (standardized major axis, [@Warton_2006]) to describe: i) the pattern of the bivariate relationship with linear parameters (B0_sma-intercept-, and B1_sma-slope-), and ii) the degree of agreement between predicted-observed values by using the SMA-line to decompose the mean-squared-error (MSE) into lack of accuracy (MLA, PLA, RMLA) and lack of precision (MLP, PLP, RMLP) components [@CORRENDO2021_AgSyst]. Similarly, `metrica` also offers an equivalent MSE decomposition described by [@Kobayashi_Salam_2000], and the estimation of several indices of agreement not implemented yet by other packages related to model evaluation such the Robinson's index of agreement (RAC, [CITATION]), the Ji & Gallo agreement coefficient (AC, [@Ji_Gallo_2006]), the Duvellier's lambda (lambda, [@Duveiller_2016]), the distance correlation (dcorr [@Szekely_2007]), or the maximal information coefficient (MIC, [@Reshef_2011]), among others.
 
 # Usage
 
@@ -172,41 +188,13 @@ To import files from the APSIM Next Generation (SQL, *.db files), users can use 
 metrica::import_apsim_db(filename = "*.db", folder = "../folder/")
 ```
 
-# Similar packages
-
-Other packages to compute evaluate models performance compared to `metrica`: 
-
-- `yardstick` [@yardstick_manual] provides an extensive collection of metrics, however, it presents less amount of metrics and it does not other offer plotting functions for regression and classification. As advantages, it provides options for classification models with "probabilities".
-
-- `Metrics` [@Metrics_manual] presents a good amount of metrics for binary classification, and for regression. However, `metrica` offers more metrics. The `Metrics` package has no plotting functions, it only works under the vectorized form (data.frame$variable), for classification it does not work for multi-class cases, and it does not work if the values of the predicted and observed vectors are not numeric (binary, 0-1).
-
-- `hydroGOF` [@hydroGOF_manual] offers a good collection of metrics, however, some of them very specific for hydrology problems. In terms of plots, it only provides a few  visualization functions and using base R plots. It does not offer options for classification.
-
-- `cvms` [@cvms_package] offers less variety of metrics and it does not offer plotting functions for regression. It offers great flexibility to create confusion matrices.
-
-- `scoringutils` [@scoringutils_package] offers a wide variety of scoring rules but focused in probabilistic forecast but not in point-forecast models.
-
-- `performance` [@performance_paper] offers a compelling toolbox for the evaluation of statistical models but it only works with the models' objects (because it works with their likelihood). Therefore, it does not support the evaluation point-forecast with simply predicted and observed values.
-
-
-# Figures
-
-Figures can be included like this: 
-
-![Caption for example figure.\label{fig:logo}](man/figures/metrica_logo.png) 
-
-and referenced from text using \autoref{fig:logo}.
-
-Figure sizes can be customized by adding an optional second parameter:
-![Figure #. Metrica logo.](man/figures/metrica_logo.png){ width=20% }
-
 # Acknowledgements
 
 We acknowledge contributions from #### during the genesis of this project.
 
 # License
 
-`metrica` is under MIT License...
+`metrica` is under MIT License.
 
 
 # References
