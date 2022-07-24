@@ -1,27 +1,24 @@
-# metrica 2.0.0 
+# metrica 2.0.1 
 
-* This is a major update of the package. Precedent version (v1.2.3)
-
-## Maintaner's comments on checks:
-- Locally tested on Windows
-- Tested on win_devel, win_oldrelease, macos_bigsur_release, and 
-macos_highsierra_release using devtools
-- Linux platforms temporally unavailable from rhub::check_for_cran(). However,
-R-CMD-check on Ubuntu 20.04.4 hass passed flawlessly on GitHub, link:
-https://github.com/adriancorrendo/metrica/runs/7190371163
+* This is a minor update fixing bugs of the package v2.0.0. 
 
 ## Maintainer's comments on NOTES:
 
-Potential misspelled words are not actually misspelled:
+i - Problems with news in 'NEWS.md':
+  Cannot extract version info from the following section titles:
+    Previous versions
+    
+This note appeared using the devtools::check_win_devel (https://win-builder.r-project.org/oz5AIah7zsc4/). However, it does not affect the identification of the current version of the package (v2.0.1). The section "Previous version" contains comments to allow users to see the package progress over time. Moreover, I did not find errors on the version numbers of precedent versions.
 
-- "APSIM, DNDC, & DSSAT" stand for three different crop-soil simulation models
-- "MASE, MBE, & dcorr" are acronyms for error metrics
-- "multinomial" is a common denomination for models with multiple classes as potential output.
+ii - Found the following files/directories:
+    'lastMiKTeXException'
+  
+This note only appeared for the rhub::Windows Server 2022, R-devel, and does not seem to mean a problem.
 
 #########################################################################
 
-## 1. Local R CMD (--as-cran = TRUE) check results ───────── metrica 2.0.0 ────
-Duration: 1m 6.3s
+## 1. Local R CMD (--as-cran = TRUE) check results ───────── metrica 2.0.1 ────
+Duration: 1m 7.3s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
@@ -43,67 +40,74 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] metrica_2.0.0
+[1] metrica_2.0.1
 
 ##############################################################################
 
 ## 2. WIN-DEVEL. Results devtools::check_win_devel()
 
-Build log: https://win-builder.r-project.org/0f1N2Trvfddi/
+Build log: https://win-builder.r-project.org/oz5AIah7zsc4/
 
 Status: 1 NOTE*
 
-## 3. WIN_OLD-RELEASE: Results devtools::check_win_oldrelease()
-
-Build log: https://win-builder.r-project.org/5N6tHA97WF37/
-
-Status: 1 NOTE*
-
-*Possibly misspelled words in DESCRIPTION:
-  APSIM (15:237)
-  DNDC (15:251)
-  DSSAT (15:244)
-  MASE (15:742)
-  MBE (15:427)
-  dcorr (15:648)
-  multinomial (15:809)
-
+Problems with news in 'NEWS.md':
+  Cannot extract version info from the following section titles:
+    Previous versions
 
 ##############################################################################
 
-## 4. R-hub check, results from devtools::check_rhub()
+## 3. R-hub check, results from devtools::check_rhub()
 
 ## Test environments
 
-── metrica 2.0.0: OK
-https://builder.r-hub.io/status/metrica_2.0.0.tar.gz-9627b1e3a68145cabc4f95f14474e2aa
+── metrica 2.0.1: OK
 
-  Build ID:   metrica_2.0.0.tar.gz-9627b1e3a68145cabc4f95f14474e2aa
+  Build ID:   metrica_2.0.1.tar.gz-d0c1ba623d764e02921cb8fa2b2ff492
+  Platform:   Ubuntu Linux 20.04.1 LTS, R-release, GCC
+  Submitted:  6m 41s ago
+  Build time: 28m 12s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
+── metrica 2.0.1: OK
+
+  Build ID:   metrica_2.0.1.tar.gz-b9fd81b0136b4198b60718026c251ef1
+  Platform:   Fedora Linux, R-devel, clang, gfortran
+  Submitted:  6m 41s ago
+  Build time: 29m 2.7s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
+── metrica 2.0.1: OK
+
+  Build ID:   metrica_2.0.1.tar.gz-71bd1526f5014c039be2f2f5d9ddaa01
   Platform:   Apple Silicon (M1), macOS 11.6 Big Sur, R-release
-  Submitted:  13m 11.3s ago
-  Build time: 1m 7.9s
+  Submitted:  6m 41s ago
+  Build time: 3m 38.8s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
-── metrica 2.0.0: OK
-https://builder.r-hub.io/status/metrica_2.0.0.tar.gz-75833cbaf296433e9addbbbff81bd89e
+── metrica 2.0.1: OK
 
-  Build ID:   metrica_2.0.0.tar.gz-75833cbaf296433e9addbbbff81bd89e
+  Build ID:   metrica_2.0.1.tar.gz-2973b84910a140bd8bb42679fe351982
   Platform:   macOS 10.13.6 High Sierra, R-release, CRAN's setup
-  Submitted:  13m 11.3s ago
-  Build time: 1m 36.1s
+  Submitted:  6m 41s ago
+  Build time: 2m 9.2s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
-- R-hub windows-x86_64-devel (r-devel)
-Temporally unavailable in r-hub::check_for_cran()
+── metrica 2.0.1: NOTE
 
-- R-hub fedora-clang-devel (r-devel)
-Temporally unavailable in r-hub::check_for_cran()
+  Build ID:   metrica_2.0.1.tar.gz-6f55d517dcb34cdeb316f241f7cfe4eb
+  Platform:   Windows Server 2022, R-devel, 64 bit
+  Submitted:  19m 29.1s ago
+  Build time: 12m 57.1s
 
-- R-hub ubuntu-gcc-release (r-release)
-Temporally unavailable in r-hub::check_for_cran()
+❯ checking for detritus in the temp directory ... NOTE
+  Found the following files/directories:
+    'lastMiKTeXException'
 
+0 errors ✔ | 0 warnings ✔ | 1 note ✖
 
 ####################################################################
 

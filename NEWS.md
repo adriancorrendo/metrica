@@ -1,20 +1,21 @@
-# metrica 2.0.0.999
+# metrica 2.0.1
 
-* July 7th, 2022. <br/>
+* July 23th, 2022. <br/>
 
-This dev-version fixes minor bugs found in v2.0.0:
+This new version fixes minor bugs found in v2.0.0:
 
-1) regression lines with "OP" orientation in scatter_plot(), density_plot(), and tiles_plot()
+1) regression lines with "OP" orientation in scatter_plot(), density_plot(), and tiles_plot(), which were producing the "PO" oriented regression lines instead.
 
-2) estimation of d1r index for regression.
+2) estimation of "d1r" index for regression, which produced misleading values due to a typo in the denominator.
 
-3) printing metrics on confusion matrix.
+3) printing metrics on confusion matrix, which produced a NaN when printing 9 metrics.
 
-##############################################################################
 
-PREVIOUS VERSION
+######################################################################################################
 
-# metrica 2.0.0
+# Previous versions
+
+# metrica 2.0.0 (CRAN)
 
 * July 4th, 2022. <br/>
 
@@ -97,11 +98,6 @@ This new version of metrica includes:
 9) README update with new features descriptions and links to vignettes.
 
 10) Updated vignettes creating independent versions for classification and regression models, and for importing APSIM files.
-
-
-######################################################################################################
-
-# Previous versions
 
 # metrica 1.2.3 (CRAN)
 

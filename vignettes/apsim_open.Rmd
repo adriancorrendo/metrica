@@ -1,6 +1,6 @@
 ---
 title: "APSIM: Importing APSIM Classic and NewGeneration files"
-author: "Adrian Correndo"
+author: "Rai Schwalbert & Adrian Correndo"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >

@@ -149,18 +149,47 @@ devtools::install_github("adriancorrendo/metrica")
 ## 2. Native datasets
 
 The *metrica* package comes with four example datasets of continuous
-variables (regression) from the APSIM software: <br/> 1. `wheat`. 137
-data-points of wheat grain N (grams per squared meter) <br/> 2.
-`barley`. 69 data-points of barley grain number (x1000 grains per
-squared meter) <br/> 3. `sorghum`. 36 data-points of sorghum grain
-number (x1000 grains per squared meter) <br/> 4. `chickpea`. 39
-data-points of chickpea aboveground dry mass (kg per hectare) <br/>
+variables (regression) from the APSIM software: <br/>
+
+1.  `wheat`. 137 data-points of wheat grain N (grams per squared meter)
+    <br/>
+2.  `barley`. 69 data-points of barley grain number (x1000 grains per
+    squared meter) <br/>
+3.  `sorghum`. 36 data-points of sorghum grain number (x1000 grains per
+    squared meter) <br/>
+4.  `chickpea`. 39 data-points of chickpea aboveground dry mass (kg per
+    hectare) <br/>
 
 These data correspond to the latest, up-to-date, documentation and
 validation of version number 2020.03.27.4956. Data available at:
 <https://doi.org/10.7910/DVN/EJS4M0>. Further details can be found at
 the official APSIM Next Generation website:
 <https://APSIMnextgeneration.netlify.app/modeldocumentation> <br/>
+
+In addition, `metrica` also provides two native examples for categorical
+variables (classification):
+
+5.  `land_cover` is a binary dataset of land cover using satellite
+    images obtained in 2022 over a small region in Kansas (USA). Values
+    equal to 1 are associated to vegetation, and values equal to 0
+    represent other type of land cover. Observed values come from human
+    visualization, while predicted values were obtained with a Random
+    Forest classifier.<br/>
+
+6.  `maize_phenology` is a data set of maize/corn (*Zea mays* L.)
+    phenology (crop development stage) collected in Kansas (USA)
+    during 2018. The data includes 16 different phenology stages.
+    Observed values were obtained via human visualization, while
+    predicted values were obtained with a Random Forest classifier.
+    <br/>
+
+Any of the above-mentioned data sets can be called with
+`metrica::name_of_dataset`, for example: <br/>
+
+``` r
+metrica::wheat
+metrica::land_cover
+```
 
 ## 3. Example Code
 
