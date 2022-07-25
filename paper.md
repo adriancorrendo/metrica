@@ -66,7 +66,7 @@ For regression models, it includes 4 plotting functions (scatter, tiles, density
 
 To extent of our knowledge, `metrica` provides unique features not supported (or partially supported) by other similar R packages [@yardstick_manual; @mlr3_paper; @Metrics_manual; @hydroGOF_manual; @cvms_package; @performance_paper] designed for model evaluation such as:
 
-- work under both vectorized (calling variables with $) or data.frame forms (using data argument).
+- work under both vectorized (calling variables with $) or data.frame forms (using `data` argument).
 
 - store results as a list (`tidy = FALSE`) or as a table (`tidy = TRUE`).
 
@@ -80,36 +80,27 @@ To extent of our knowledge, `metrica` provides unique features not supported (or
 
 - easily import files from APSIM Classic with `import_apsim_out()`), and APSIM Next Generation with `import_apsim_db()`.
 
-# Usage
-
 ## System requirements and installation
 
 The `metrica` package operates within the R environment, the first step is to install R (version 4.2.0 or higher). We encourage users to install the latest version RStudio desktop [@RStudio_manual], a free and user-friendly environment that facilitates operations in R.
 
-To install the latest stable version (CRAN mirror) of the `metrica` package, users just need to run the following line:
+To install and load the package:
 
-```
+```r
+# Stable version (CRAN)
 install.packages("metrica")
 
-```
-
-To install the latest development version (GitHub repository) of the metrica package, users need to run the following line:
-
-```
+# Development version (GitHub)
 devtools::install_github("adriancorrendo/metrica")
 
-```
-
-To load the package, users simply need to type:
-
-```
+# Load
 library(metrica)
 
 ```
 
 ## Using the functions
 
-There are two basic arguments common to all `metrica` functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values. Optional arguments include `data` that allows to call an existing data frame containing both observed and predicted vectors, and `tidy`, which controls the type of output as a list (tidy = FALSE) or as a data.frame (tidy = TRUE).
+There are two basic arguments common to all `metrica` functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values. 
 
 For regression, some specific functions also require defining the axis `orientation`. For example, the slope of the symmetric linear regression describing the bivariate scatter (SMA). For binary classification (two classes), functions also require to check the `pos_level` arg., which indicates the alphanumeric order of the “positive level”. Normally, the most common binary denominations are c(0,1), c(“Negative”, “Positive”), c(“FALSE”, “TRUE”), so the default pos_level = 2 (1, “Positive”, “TRUE”). However, other cases are also possible, such as c(“Crop”, “NoCrop”) for which the user needs to specify pos_level = 1.
 
@@ -182,26 +173,13 @@ confusion_matrix(data = data_multiclass,
 
 ![Caption for example figure.\label{fig:multiclass_cm}](man/figures/README-unnamed-chunk-15-1.png) 
 
-### Table 1: Classification metrics summary.
+### Table 2: Classification metrics summary.
 
 | Metric | Score |
 |---|---|
 | accuracy | 0.90 |
 | precision | 0.90 |
 | recall | 0.90 |
-
-# APSIM files
-
-The metrica package was developed to assess the prediction performance of, among other, crop simulation models such as APSIM. In order to import files from simulation models like APSIM Classic (*.out files), users can implement:
-
-```r
-metrica::import_apsim_out(filepath = "../*.out")
-```
-To import files from the APSIM Next Generation (SQL, *.db files), users can use the following lines of code:
-
-```r
-metrica::import_apsim_db(filename = "*.db", folder = "../folder/")
-```
 
 # Acknowledgements
 
