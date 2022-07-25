@@ -58,7 +58,11 @@ Finally, it is noteworthy that in the area of agricultural sciences, although po
 
 # Package features
 
-For regression models, it includes 4 plotting functions (scatter, tiles, density, & Bland-Altman plots), and 48 prediction performance scores. For classification models (two-class or multi-class), `metrica` includes a function to visualize the confusion matrix using ggplot2 [@ggplot_book], and 27 functions of prediction scores. The full list of regression and classification performance metrics, along with their corresponding description, formula, and literature sources, is presented in the package documentation at: i) https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html, ii) https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html.
+For regression models, it includes 4 plotting functions (scatter, tiles, density, & Bland-Altman plots), and 48 prediction performance scores. For classification models (two-class or multi-class), `metrica` includes a function to visualize the confusion matrix using ggplot2 [@ggplot_book], and 27 functions of prediction scores. The full list of regression and classification performance metrics, along with their corresponding description, formula, and literature sources, is presented in the package documentation at: 
+
+- Regression metrics: https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html.
+
+- Classification metrics: https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html.
 
 To extent of our knowledge, `metrica` provides unique features not supported (or partially supported) by other similar R packages [@yardstick_manual; @mlr3_paper; @Metrics_manual; @hydroGOF_manual; @cvms_package; @performance_paper] designed for model evaluation such as:
 
@@ -72,13 +76,13 @@ To extent of our knowledge, `metrica` provides unique features not supported (or
 
 - alternative MSE decomposition approaches such as the ones described by [@Kobayashi_Salam_2000] (`SB`, `SDSD`, `LCS`), and by [@Smith_Rose_1995] (`Ub`, `Uc`, `Ue`).
 
-- the estimation of multiple indices of agreement and model efficiencies at their alternative versions such as: i) the index of agreement `d` [CITATION] (and its modified `d1` [CITATION] and revised variants `d1r` [CITATION]), ii) the Nash–Sutcliffe model efficiency (`NSE`) [@Nash_1970] and its improved variants `E1` [CITATION], `Erel` [CITATION], and Kling-Gupta model efficiency (`KGE`) [CITATION], iii) the Robinson's index of agreement (RAC, [CITATION]), iv) the Ji & Gallo agreement coefficient (AC, [@Ji_Gallo_2006]), v) the Duvellier's lambda (lambda, [@Duveiller_2016]), vi) the distance correlation (`dcorr`) [@Szekely_2007], or vii) the maximal information coefficient (`MIC`) [@Reshef_2011]), among others.
+- the estimation of multiple indices of agreement and model efficiencies at their alternative versions such as: i) the index of agreement `d` [@Willmott_1981], and its modified `d1` [@Willmott_etal_1985] and refined `d1r` [@Willmott_etal_2012] variants, ii) the Nash–Sutcliffe model efficiency (`NSE`) [@Nash_1970] and its improved variants `E1` [@Legates_1999], `Erel` [@Krause_2005], and Kling-Gupta model efficiency (`KGE`) [@Kling_etal_2012], iii) the Robinson's index of agreement (RAC) [@Robinson_1957; @Robinson_1959], iv) the Ji & Gallo agreement coefficient (AC) [@Ji_Gallo_2006], v) the Duvellier's `lambda` [@Duveiller_2016], vi) the distance correlation (`dcorr`) [@Szekely_2007], or vii) the maximal information coefficient (`MIC`) [@Reshef_2011]), among others.
 
-- import files from APSIM Classic with `import_apsim_out()`), and APSIM Next Generation with `import_apsim_db()`.
+- easily import files from APSIM Classic with `import_apsim_out()`), and APSIM Next Generation with `import_apsim_db()`.
 
 # Usage
 
-### System requirements and installation
+## System requirements and installation
 
 The `metrica` package operates within the R environment, the first step is to install R (version 4.2.0 or higher). We encourage users to install the latest version RStudio desktop [@RStudio_manual], a free and user-friendly environment that facilitates operations in R.
 
@@ -114,36 +118,65 @@ For regression, some specific functions also require defining the axis `orientat
 For multi-class classification tasks, some functions present the `atom` arg. (logical TRUE / FALSE), which controls the output to be an overall average estimate across all classes, or a class-wise estimate. For
 example, user might be interested in obtaining estimates of precision and recall for each possible class of the prediction.
 
-### Example 1: Regression (continuous variables)
+## Example 1: Regression (continuous variables)
 
-The following line of code calls a `data.frame` called `wheat`, contained as a native dataset.
+The following line of code calls a `data.frame` called `wheat`, contained by `metrica` as part of the native datasets.
 
 ```r
 data_wheat <- metrica::wheat
 ```
 
-This usage example specifies a vector with a few metrics of interest, finally computed by the `metrics_summary` function below.
+Users can specifies a vector with a few classification metrics of interest, which can be passed within the `metrics_summary()` function as follows:
 
 ```r
 my_reg_metrics <- c("RMSE", "MAE", "KGE", "d", "PLP", "PLA")
 metrics_summary(data = data_wheat, type = "regression", metrics_list = my_reg_metrics)
 ```
 
+### Table 1: Regression metrics summary.
+
+| Metric | Score |
+|---|---|
+| RMSE | 0.90 |
+| RMSE | 0.90 |
+
+To produce a classical scatter_plot users may use:
+
+```r
+scatter_plot(data = data_wheat, 
+             obs = obs , pred = pred,
+             print_metrics = TRUE, 
+             metrics_list = my_reg_metrics)
+```
+
 ![Caption for example figure.\label{fig:scatter_plot}](man/figures/README-unnamed-chunk-3-1.png) 
 
 ### Classification (categorical variables)
 
-Use maize_phenology example
+The following line of code calls a `data.frame` called `maize_phenology`, one of the native datasets of `metrica` for classification.
 
 ```r
 data_multiclass <- metrica::maize_phenology
 ```
+
 ```r
 recall(data = data_multiclass, obs = , pred = , atom = TRUE)
 ```
 
 ```r
-metrics_summary(data = data_multiclass, obs = , type = "classification")
+my_class_metrics <- c("RMSE", "MAE", "KGE", "d", "PLP", "PLA")
+metrics_summary(data = data_multiclass, 
+                obs = actual, pred = predicted,
+                type = "classification")
+```
+
+To produce a classical confusion matrix plot users may use:
+
+```r
+confusion_matrix(data = data_multiclass,
+                 obs = actual, pred = predicted, 
+                 plot = TRUE, 
+                 colors = c(low="grey85" , high="steelblue") )
 ```
 
 ![Caption for example figure.\label{fig:multiclass_cm}](man/figures/README-unnamed-chunk-15-1.png) 
