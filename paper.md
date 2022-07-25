@@ -19,7 +19,7 @@ authors:
     affiliation: 1
   - name: Leonardo M. Bastos
     orcid: 0000-0001-8958-6527
-    affiliation: 3
+    affiliation: 5
   - name: Luciana Nieto 
     orcid: 0000-0002-7172-0799
     affiliation: 1
@@ -38,6 +38,8 @@ affiliations:
    index: 3
  - name: CSIRO, Australia.
    index: 4
+ - name: Department of Crop and Soil Sciences, University of Georgia, Athens, GA, USA.
+ - index: 5
 date: 18 July 2022
 bibliography: paper.bib
 ---
