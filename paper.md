@@ -50,11 +50,11 @@ The `metrica` R-package [@metrica_manual] is an open-source software designed to
 
 # Statement of need
 
-Evaluating the prediction quality is perhaps the most relevant step for any simulation model (@Wallach_etal_2019). A myriad of metrics and visualization techniques exist to conduct the prediction performance assessment (@Tedeschi_2006, add 1-2 more). However, to conduct a comprehensive assessment of predicted-observed agreement in R, users have to rely on multiple packages, and sometimes on self-defined functions, which increases the risk of committing involuntary mistakes due to the need of fluctuating syntax and data wrangling.
+Evaluating the prediction quality is perhaps the most relevant step for any simulation model (@Wallach_etal_2019). A myriad of metrics and visualization techniques exist to conduct the prediction performance assessment (@Tedeschi_2006, add 1-2 more). However, to conduct a comprehensive assessment of predicted-observed agreement in R, users have to rely on multiple packages, and sometimes on self-defined functions, which increases the risk of involuntary mistakes due to the need of fluctuating syntax and data wrangling.
 
 In the area of agricultural sciences in particular, point-forecast simulation models such as the Agricultural Production Systems sIMulator (APSIM) [@APSIM_classic, @APSIM_nextgen] count with tools to facilitate the integration into R through packages such as apsimx [@apsimx_manual]. However, the assessment of the model simulations quality is not yet integrated for R users.
 
-As the reproducibility of data analysis continues as a challenge for modern science [@Seibold_2022], the development of open source software like `metrica` represent a step-forward toward transparent and reproducible process to assist researchers on the evaluation models performance. We especifically decided to create `metrica` in R software [@R_Core_Team] due to its substantial role in modern data science [@Thiem_2018]. Under the open-source philosophy, R hosts cutting-edge algorithms that combined with an infrastructure like the Comprehensive R Archive Network (CRAN) -enhancing global dissemination-,  clearly empowers the democratization of statistical computing [@Hackenberger_2020].
+As the reproducibility of data analysis continues as a challenge for modern science [@Seibold_2022], the development of open source software like `metrica` represent a step-forward toward transparent and reproducible process to assist researchers on evaluating models performance. We especifically decided to create `metrica` in R software [@R_Core_Team] due to its substantial role in modern data science [@Thiem_2018]. Under the open-source philosophy, R hosts cutting-edge algorithms that combined with an infrastructure like the Comprehensive R Archive Network (CRAN) -enhancing global dissemination-, clearly empowers the democratization of statistical computing [@Hackenberger_2020].
 
 There are existing packages that assist on the models performance assessment such as: 
 
@@ -62,13 +62,14 @@ There are existing packages that assist on the models performance assessment suc
 
 - `mlr3` [@mlr3_paper] provides a compelling interface for building machine learning models, which includes the models' evaluation as one of the steps. The number of performance metrics is similar for classification, but in the case of continuous variables (regression models), `metrica` offers way more variety of metrics and visualization.
 
-- `Metrics` [@Metrics_manual] presents a good number of metrics for binary classification, and for regression. However, if offers less variety of metrics, it does not provide a function comparable to `metrica::metrics_summary()`, no plotting functions, it only works under the vectorized form (data.frame$variable), for classification it does not work for multi-class cases, and it does not work if the values of the predicted and observed vectors are not numeric (binary, 0-1).
+- `Metrics` [@Metrics_manual] presents a good number of metrics for binary classification, and for regression. However, it offers less variety of metrics, it does not provide a function comparable to `metrica::metrics_summary()`, no plotting functions, it only works under the vectorized form (data.frame$variable), for classification it does not work for multi-class cases, and it does not work if the values of the predicted and observed vectors are not numeric (binary, 0-1).
 
-- `hydroGOF` [@hydroGOF_manual] offers a good collection of metrics, however, some of them very specific for hydrology problems. In terms of plots, it only provides a few  visualization functions and using base R plots. It does not offer options for classification.
+- `hydroGOF` [@hydroGOF_manual] offers a good collection of metrics, however, some of them very specific for hydrology problems. In terms of plots, it only provides a few  visualization functions 
+using base R plots. It does not offer options for classification.
 
 - `cvms` [@cvms_package] is a good option for evaluation cross-validated models. However, it offers less variety of metrics and it does not present plotting functions for regression. It offers great flexibility to create confusion matrices.
 
-- `scoringutils` [@scoringutils_package] offers a wide variety of scoring rules but focused in probabilistic forecast but not in point-forecast models.
+- `scoringutils` [@scoringutils_package] offers a wide variety of scoring rules but focused on probabilistic forecast but not on point-forecast models.
 
 - `performance` [@performance_paper] offers a compelling toolbox for the evaluation of statistical models but it only works with the models' objects (because it works with their likelihood). Therefore, it does not support the evaluation point-forecast with simply predicted and observed values.
 
@@ -78,16 +79,16 @@ To extent of our knowledge, the `metrica` package provide some unique functional
 
 ### System requirements and installation
 
-Since the metrica package operates within the R environment, the first step is to install R (version 4.2.0 or higher), a free software available at its official website [@R_Core_Team]. To assist on the interface experience with R, we encourage users to install the latest version RStudio desktop [@RStudio_manual] as a free and user-friendly environment that facilitates to operate R.
+Since the metrica package operates within the R environment, the first step is to install R (version 4.2.0 or higher), a free software available at its official website [@R_Core_Team]. To improve the interface experience, we encourage users to install the latest version RStudio desktop [@RStudio_manual], a free and user-friendly environment that facilitates operations in R.
 
-To install the latest stable version (CRAN mirror) of metrica package, users just need to run to following lines:
+To install the latest stable version (CRAN mirror) of the metrica package, users just need to run the following line:
 
 ```
 install.packages("metrica")
 
 ```
 
-To install the latest development version (GitHub repository) of soiltestcorr package, users just need to run to following lines:
+To install the latest development version (GitHub repository) of the metrica package, users need to run the following line:
 
 ```
 devtools::install_github("adriancorrendo/metrica")
@@ -113,8 +114,8 @@ frame containing both observed and predicted vectors, and `tidy`, which
 controls the type of output as a list (tidy = FALSE) or as a data.frame
 (tidy = TRUE).
 
-For regression, some specific functions for regression also require to
-define the axis `orientation`. For example, the slope of the symmetric
+For regression, some specific functions also require defining 
+the axis `orientation`. For example, the slope of the symmetric
 linear regression describing the bivariate scatter (SMA).
 
 For binary classification (two classes), functions also require to check
@@ -134,13 +135,15 @@ and recall for each possible class of the prediction.
 
 ### Regression (continuous variables)
 
-For regression models, it includes 4 plotting functions (scatter, tiles, density, & Bland-Altman plots), and 48 prediction performance scores including error metrics (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE, RRMSE, RSR, PBE, iqRMSE), error decomposition (MLA, MLP, PLA, PLP, PAB, PPB, SB, SDSD, LCS, Ub, Uc, Ue), model efficiency (NSE, E1, Erel, KGE), indices of agreement (d, d1, d1r, RAC, AC, lambda), goodness of fit (r, R2, RSS, TSS, RSE), adjusted correlation coefficients (CCC, Xa, distance correlation-dcorr-, maximal information coefficient -MIC-), variability (uSD, var_u), and symmetric regression coefficients (B0_sma, B1_sma). Specifically for time-series predictions, metrica also includes the Mean Absolute Scaled Error (MASE).
+For regression models, it includes 4 plotting functions (scatter, tiles, density, & Bland-Altman plots), and 48 prediction performance scores including error metrics (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE, RRMSE, RSR, PBE, iqRMSE), error decomposition (MLA, MLP, PLA, PLP, PAB, PPB, SB, SDSD, LCS, Ub, Uc, Ue), model efficiency (NSE, E1, Erel, KGE), indices of agreement (d, d1, d1r, RAC, AC, lambda), goodness of fit (r, R2, RSS, TSS, RSE), adjusted correlation coefficients (CCC, Xa, distance correlation-dcorr-, maximal information coefficient -MIC-), variability (uSD, var_u), and symmetric regression coefficients (B0_sma, B1_sma). Specifically for time-series predictions, metrica also includes the Mean Absolute Scaled Error (MASE). A full list of metrics abbreviation is presented in the package documentation.
 
-Use wheat example
+The following line of code defines a `data.frame` object with the `wheat` database, contained in the metrica package.
 
 ```r
 data_wheat <- metrica::wheat
 ```
+
+This usage example specifies a vector with a few metrics of interest, finally computed by the `metrics_summary` function below.
 
 ```r
 my_reg_metrics <- c("RMSE", "MAE", "KGE", "d", "PLP", "PLA")
