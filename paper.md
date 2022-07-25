@@ -34,12 +34,10 @@ affiliations:
    index: 1
  - name: Private Consultant, Brasil.
    index: 2
- - name: Department of Agronomy, University of Georgia, GA, USA.
+ - name: Department of Crop and Soil Sciences, University of Georgia, Athens, GA, USA.
    index: 3
  - name: CSIRO, Australia.
    index: 4
- - name: Department of Crop and Soil Sciences, University of Georgia, Athens, GA, USA.
- - index: 5
 date: 18 July 2022
 bibliography: paper.bib
 ---
