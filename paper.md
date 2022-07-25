@@ -44,44 +44,45 @@ bibliography: paper.bib
 
 # Summary 
 
-![Figure 1. Metrica logo.](man/figures/metrica_logo.png){ width=15% }
+![Figure 1. Metrica logo.](man/figures/metrica_logo.png){ width=15% align=left}
 
 The `metrica` R-package [@metrica_manual] is an open-source software designed to facilitate the quantitative and visual assessment of prediction performance of point-forecast simulation models for continuous (regression) and categorical variables (classification). The package assembles a series of more than 80 functions that account for multiple aspects of the agreement between predicted and observed values. Without the need of advanced skills on programming, `metrica` enables users to automate the estimation of multiple prediction performance metrics including goodness of fit, error metrics, error decomposition, model efficiency, indices of agreement, and to produce stylish data visualization outputs. This article introduces the `metrica` R-package, developed with the main objective of contributing to reproducible evaluation of point-forecast models performance.
 
 # Statement of need
 
-Evaluating the prediction quality is perhaps the most relevant step for any simulation model (@Wallach_etal_2019). A myriad of metrics and visualization techniques exist to conduct the prediction performance assessment (@Tedeschi_2006, add 1-2 more). However, to conduct a comprehensive assessment of predicted-observed agreement in R, users have to rely on multiple packages, and sometimes on self-defined functions, which increases the risk of involuntary mistakes due to the need of fluctuating syntax and data wrangling.
+Evaluating the prediction quality is a crucial step for any simulation model, for which a myriad of metrics and visualization techniques have been developed [@Tedeschi_2006; @Yang_2014; @Wallach_etal_2019]. Nonetheless, to conduct a comprehensive assessment of the predicted-observed agreement in R [@R_Core_Team], users normally have to rely on multiple packages, and even on self-defined functions, which increases the risk of involuntary mistakes due to the need of fluctuating syntax and data wrangling.
 
-In the area of agricultural sciences in particular, point-forecast simulation models such as the Agricultural Production Systems sIMulator (APSIM) [@APSIM_classic, @APSIM_nextgen] count with tools to facilitate the integration into R through packages such as apsimx [@apsimx_manual]. However, the assessment of the model simulations quality is not yet integrated for R users.
+As the reproducibility of data analysis continues to be a challenge for science [@Seibold_2022], the development of open source software like `metrica` represent a step-forward toward transparent and reproducible process to assist researchers on evaluating models performance. We specifically decided to create `metrica` in R software [@R_Core_Team] due to its substantial role in data science [@Thiem_2018]. Under the open-source philosophy, R hosts cutting-edge algorithms that combined with an infrastructure like the Comprehensive R Archive Network (CRAN) -enhancing global dissemination-, clearly empowers the democratization of statistical computing [@Hackenberger_2020].
 
-As the reproducibility of data analysis continues as a challenge for modern science [@Seibold_2022], the development of open source software like `metrica` represent a step-forward toward transparent and reproducible process to assist researchers on evaluating models performance. We especifically decided to create `metrica` in R software [@R_Core_Team] due to its substantial role in modern data science [@Thiem_2018]. Under the open-source philosophy, R hosts cutting-edge algorithms that combined with an infrastructure like the Comprehensive R Archive Network (CRAN) -enhancing global dissemination-, clearly empowers the democratization of statistical computing [@Hackenberger_2020].
+Finally, it is noteworthy that in the area of agricultural sciences, although point-forecast simulation models such as the Agricultural Production Systems sIMulator (APSIM) [@APSIM_classic; @APSIM_nextgen] count with tools to facilitate the integration into R through packages such as apsimx [@apsimx_manual], the assessment of their prediction quality is not yet integrated for R users. Therefore, we aim `metrica` to offer users of agricultural simulation models a toolbox for assessing the simulation performance.
 
-There are existing packages that assist on the models performance assessment such as: 
+# Package features
 
-- `yardstick` [@yardstick_manual], as part of the tidymodels meta-package, provides a good collection of metrics for designed to evaluate regression, classification and probabilistic models. However, compared to `metrica`, the variety of metrics for regression and classification is limited, and it does not offer plotting functions.
+For regression models, it includes 4 plotting functions (scatter, tiles, density, & Bland-Altman plots), and 48 prediction performance scores. For classification models (two-class or multi-class), `metrica` includes a function to visualize the confusion matrix using ggplot2 [@ggplot_book], and 27 functions of prediction scores. The full list of regression and classification performance metrics, along with their corresponding description, formula, and literature sources, is presented in the package documentation at: i) https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html, ii) https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html.
 
-- `mlr3` [@mlr3_paper] provides a compelling interface for building machine learning models, which includes the models' evaluation as one of the steps. The number of performance metrics is similar for classification, but in the case of continuous variables (regression models), `metrica` offers way more variety of metrics and visualization.
+To extent of our knowledge, `metrica` provides unique features not supported (or partially supported) by other similar R packages [@yardstick_manual; @mlr3_paper; @Metrics_manual; @hydroGOF_manual; @cvms_package; @performance_paper] designed for model evaluation such as:
 
-- `Metrics` [@Metrics_manual] presents a good number of metrics for binary classification, and for regression. However, it offers less variety of metrics, it does not provide a function comparable to `metrica::metrics_summary()`, no plotting functions, it only works under the vectorized form (data.frame$variable), for classification it does not work for multi-class cases, and it does not work if the values of the predicted and observed vectors are not numeric (binary, 0-1).
+- work under both vectorized (calling variables with $) or data.frame forms (using data argument).
 
-- `hydroGOF` [@hydroGOF_manual] offers a good collection of metrics, however, some of them very specific for hydrology problems. In terms of plots, it only provides a few  visualization functions 
-using base R plots. It does not offer options for classification.
+- store results as a list (`tidy = FALSE`) or as a table (`tidy = TRUE`).
 
-- `cvms` [@cvms_package] is a good option for evaluation cross-validated models. However, it offers less variety of metrics and it does not present plotting functions for regression. It offers great flexibility to create confusion matrices.
+- for classification, functions automatically recognize two-class or multi-class data; and specifically for multi-class models, metrics can be estimated for each class (`atom = TRUE`).
 
-- `scoringutils` [@scoringutils_package] offers a wide variety of scoring rules but focused on probabilistic forecast but not on point-forecast models.
+- the implementation of a symmetric linear regression (standardized major axis-SMA-, [@Warton_2006]) to describe: i) the pattern of the bivariate relationship with linear parameters (`B0_sma`, `B1_sma`), and ii) the degree of predicted-observed agreement by using the SMA-line to decompose the mean-squared-error (MSE) into lack of accuracy (`MLA`, `PLA`, `RMLA`) and lack of precision (`MLP`, `PLP`, `RMLP`) components [@CORRENDO2021_AgSyst]. 
 
-- `performance` [@performance_paper] offers a compelling toolbox for the evaluation of statistical models but it only works with the models' objects (because it works with their likelihood). Therefore, it does not support the evaluation point-forecast with simply predicted and observed values.
+- alternative MSE decomposition approaches such as the ones described by [@Kobayashi_Salam_2000] (`SB`, `SDSD`, `LCS`), and by [@Smith_Rose_1995] (`Ub`, `Uc`, `Ue`).
 
-To extent of our knowledge, the `metrica` package provide some unique functionalities that are not being offered by other packages of model evaluation such as: the visualization options for regression (scatter_plot, density_plot, tiles_plot), implementation of a symmetric linear regression (standardized major axis, [@Warton_2006]) to describe: i) the pattern of the bivariate relationship with linear parameters (B0_sma-intercept-, and B1_sma-slope-), and ii) the degree of agreement between predicted-observed values by using the SMA-line to decompose the mean-squared-error (MSE) into lack of accuracy (MLA, PLA, RMLA) and lack of precision (MLP, PLP, RMLP) components [@CORRENDO2021_AgSyst]. Similarly, `metrica` also offers an equivalent MSE decomposition described by [@Kobayashi_Salam_2000], and the estimation of several indices of agreement not implemented yet by other packages related to model evaluation such the Robinson's index of agreement (RAC, [CITATION]), the Ji & Gallo agreement coefficient (AC, [@Ji_Gallo_2006]), the Duvellier's lambda (lambda, [@Duveiller_2016]), the distance correlation (dcorr [@Szekely_2007]), or the maximal information coefficient (MIC, [@Reshef_2011]), among others.
+- the estimation of multiple indices of agreement and model efficiencies at their alternative versions such as: i) the index of agreement `d` [CITATION] (and its modified `d1` [CITATION] and revised variants `d1r` [CITATION]), ii) the Nash–Sutcliffe model efficiency (`NSE`) [@Nash_1970] and its improved variants `E1` [CITATION], `Erel` [CITATION], and Kling-Gupta model efficiency (`KGE`) [CITATION], iii) the Robinson's index of agreement (RAC, [CITATION]), iv) the Ji & Gallo agreement coefficient (AC, [@Ji_Gallo_2006]), v) the Duvellier's lambda (lambda, [@Duveiller_2016]), vi) the distance correlation (`dcorr`) [@Szekely_2007], or vii) the maximal information coefficient (`MIC`) [@Reshef_2011]), among others.
+
+- import files from APSIM Classic with `import_apsim_out()`), and APSIM Next Generation with `import_apsim_db()`.
 
 # Usage
 
 ### System requirements and installation
 
-Since the metrica package operates within the R environment, the first step is to install R (version 4.2.0 or higher), a free software available at its official website [@R_Core_Team]. To improve the interface experience, we encourage users to install the latest version RStudio desktop [@RStudio_manual], a free and user-friendly environment that facilitates operations in R.
+The `metrica` package operates within the R environment, the first step is to install R (version 4.2.0 or higher). We encourage users to install the latest version RStudio desktop [@RStudio_manual], a free and user-friendly environment that facilitates operations in R.
 
-To install the latest stable version (CRAN mirror) of the metrica package, users just need to run the following line:
+To install the latest stable version (CRAN mirror) of the `metrica` package, users just need to run the following line:
 
 ```
 install.packages("metrica")
@@ -104,40 +105,18 @@ library(metrica)
 
 ## Using the functions
 
-There are two basic arguments common to all `metrica` functions: (i)
-`obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and
-(ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate)
-values.
-
-Optional arguments include `data` that allows to call an existing data
-frame containing both observed and predicted vectors, and `tidy`, which
-controls the type of output as a list (tidy = FALSE) or as a data.frame
+There are two basic arguments common to all `metrica` functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate)
+values. Optional arguments include `data` that allows to call an existing data frame containing both observed and predicted vectors, and `tidy`, which controls the type of output as a list (tidy = FALSE) or as a data.frame
 (tidy = TRUE).
 
-For regression, some specific functions also require defining 
-the axis `orientation`. For example, the slope of the symmetric
-linear regression describing the bivariate scatter (SMA).
+For regression, some specific functions also require defining the axis `orientation`. For example, the slope of the symmetric linear regression describing the bivariate scatter (SMA). For binary classification (two classes), functions also require to check the `pos_level` arg., which indicates the alphanumeric order of the “positive level”. Normally, the most common binary denominations are c(0,1), c(“Negative”, “Positive”), c(“FALSE”, “TRUE”), so the default pos_level = 2 (1, “Positive”, “TRUE”). However, other cases are also possible, such as c(“Crop”, “NoCrop”) for which the user needs to specify pos_level = 1.
 
-For binary classification (two classes), functions also require to check
-the `pos_level` arg., which indicates the alphanumeric order of the
-“positive level”. Normally, the most common binary denominations are
-c(0,1), c(“Negative”, “Positive”), c(“FALSE”, “TRUE”), so the default
-pos_level = 2 (1, “Positive”, “TRUE”). However, other cases are also
-possible, such as c(“Crop”, “NoCrop”) for which the user needs to
-specify pos_level = 1.
+For multi-class classification tasks, some functions present the `atom` arg. (logical TRUE / FALSE), which controls the output to be an overall average estimate across all classes, or a class-wise estimate. For
+example, user might be interested in obtaining estimates of precision and recall for each possible class of the prediction.
 
-For multiclass classification tasks, some functions present the `atom`
-arg. (logical TRUE / FALSE), which controls the output to be an overall
-average estimate across all classes, or a class-wise estimate. For
-example, user might be interested in obtaining estimates of precision
-and recall for each possible class of the prediction.
+### Example 1: Regression (continuous variables)
 
-
-### Regression (continuous variables)
-
-For regression models, it includes 4 plotting functions (scatter, tiles, density, & Bland-Altman plots), and 48 prediction performance scores including error metrics (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE, RRMSE, RSR, PBE, iqRMSE), error decomposition (MLA, MLP, PLA, PLP, PAB, PPB, SB, SDSD, LCS, Ub, Uc, Ue), model efficiency (NSE, E1, Erel, KGE), indices of agreement (d, d1, d1r, RAC, AC, lambda), goodness of fit (r, R2, RSS, TSS, RSE), adjusted correlation coefficients (CCC, Xa, distance correlation-dcorr-, maximal information coefficient -MIC-), variability (uSD, var_u), and symmetric regression coefficients (B0_sma, B1_sma). Specifically for time-series predictions, metrica also includes the Mean Absolute Scaled Error (MASE). A full list of metrics abbreviation is presented in the package documentation.
-
-The following line of code defines a `data.frame` object with the `wheat` database, contained in the metrica package.
+The following line of code calls a `data.frame` called `wheat`, contained as a native dataset.
 
 ```r
 data_wheat <- metrica::wheat
@@ -153,8 +132,6 @@ metrics_summary(data = data_wheat, type = "regression", metrics_list = my_reg_me
 ![Caption for example figure.\label{fig:scatter_plot}](man/figures/README-unnamed-chunk-3-1.png) 
 
 ### Classification (categorical variables)
-
-For classification (binomial and multinomial) tasks, it includes a function to visualize the confusion matrix using ggplot2, and 27 functions of prediction scores including: accuracy, error rate, precision, recall, specificity, balanced accuracy (balacc), F-score (fscore), adjusted F-score (agf), G-mean (gmean), Bookmaker Informedness (bmi, a.k.a. Youden’s J-index), Markedness (deltaP), Matthews Correlation Coefficient (mcc), Cohen’s Kappa (khat), negative predictive value (npv), positive and negative likelihood ratios (posLr, negLr), diagnostic odds ratio (dor), prevalence (preval), prevalence threshold (preval_t), critical success index (csi, a.k.a. threat score), false positive rate (FPR), false negative rate (FNR), false detection rate (FDR), false omission rate (FOR), and area under the ROC curve (AUC_roc). 
 
 Use maize_phenology example
 
@@ -198,6 +175,5 @@ We acknowledge contributions from #### during the genesis of this project.
 # License
 
 `metrica` is under MIT License.
-
 
 # References
