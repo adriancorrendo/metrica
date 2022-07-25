@@ -36,7 +36,7 @@ affiliations:
    index: 2
  - name: Department of Agronomy, University of Georgia, GA, USA.
    index: 3
- - name: CSIRO, Australia.
+ - name: CSIRO Agriculture and Food, Australia.
    index: 4
 date: 18 July 2022
 bibliography: paper.bib
@@ -109,14 +109,11 @@ library(metrica)
 
 ## Using the functions
 
-There are two basic arguments common to all `metrica` functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate)
-values. Optional arguments include `data` that allows to call an existing data frame containing both observed and predicted vectors, and `tidy`, which controls the type of output as a list (tidy = FALSE) or as a data.frame
-(tidy = TRUE).
+There are two basic arguments common to all `metrica` functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values. Optional arguments include `data` that allows to call an existing data frame containing both observed and predicted vectors, and `tidy`, which controls the type of output as a list (tidy = FALSE) or as a data.frame (tidy = TRUE).
 
 For regression, some specific functions also require defining the axis `orientation`. For example, the slope of the symmetric linear regression describing the bivariate scatter (SMA). For binary classification (two classes), functions also require to check the `pos_level` arg., which indicates the alphanumeric order of the “positive level”. Normally, the most common binary denominations are c(0,1), c(“Negative”, “Positive”), c(“FALSE”, “TRUE”), so the default pos_level = 2 (1, “Positive”, “TRUE”). However, other cases are also possible, such as c(“Crop”, “NoCrop”) for which the user needs to specify pos_level = 1.
 
-For multi-class classification tasks, some functions present the `atom` arg. (logical TRUE / FALSE), which controls the output to be an overall average estimate across all classes, or a class-wise estimate. For
-example, user might be interested in obtaining estimates of precision and recall for each possible class of the prediction.
+For multi-class classification tasks, some functions present the `atom` arg. (logical TRUE / FALSE), which controls the output to be an overall average estimate across all classes, or a class-wise estimate. For example, user might be interested in obtaining estimates of precision and recall for each possible class of the prediction.
 
 ## Example 1: Regression (continuous variables)
 
@@ -138,9 +135,13 @@ metrics_summary(data = data_wheat, type = "regression", metrics_list = my_reg_me
 | Metric | Score |
 |---|---|
 | RMSE | 0.90 |
-| RMSE | 0.90 |
+| MAE | 0.90 |
+| KGE | 0.90 |
+| d | 0.90 |
+| PLP | 0.90 |
+| PLA | 0.90 |
 
-To produce a classical scatter_plot users may use:
+To produce a classical scatter plot users may use:
 
 ```r
 scatter_plot(data = data_wheat, 
@@ -164,7 +165,7 @@ recall(data = data_multiclass, obs = , pred = , atom = TRUE)
 ```
 
 ```r
-my_class_metrics <- c("RMSE", "MAE", "KGE", "d", "PLP", "PLA")
+my_class_metrics <- c("accuracy", "precision", "recall")
 metrics_summary(data = data_multiclass, 
                 obs = actual, pred = predicted,
                 type = "classification")
@@ -181,12 +182,13 @@ confusion_matrix(data = data_multiclass,
 
 ![Caption for example figure.\label{fig:multiclass_cm}](man/figures/README-unnamed-chunk-15-1.png) 
 
-### Table 1: Example table.
+### Table 1: Classification metrics summary.
 
-| Col1 | Col2 | Col3 |
-|---|---|---|
-| ABC | DEFG | HIJKL |
-
+| Metric | Score |
+|---|---|
+| accuracy | 0.90 |
+| precision | 0.90 |
+| recall | 0.90 |
 
 # APSIM files
 
