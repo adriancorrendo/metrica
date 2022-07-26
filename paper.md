@@ -76,17 +76,15 @@ To extent of our knowledge, compared to similar R packages designed for model ev
 
 - for regression, implementing a symmetric linear regression (standardized major axis-SMA-, [@Warton_2006]) to describe: i) the pattern of the bivariate relationship with linear parameters (`B0_sma`, `B1_sma`), and ii) the degree of predicted-observed agreement by using the SMA-line to decompose the mean-squared-error (MSE) into lack of accuracy (`MLA`, `PLA`, `RMLA`) and lack of precision (`MLP`, `PLP`, `RMLP`) components [@CORRENDO2021_AgSyst]. 
 
-- offering alternative MSE decomposition approaches such as the ones described by [@Kobayashi_Salam_2000] (`SB`, `SDSD`, `LCS`), and by [@Smith_Rose_1995] (`Ub`, `Uc`, `Ue`).
+- offering MSE decomposition approaches described by [@Kobayashi_Salam_2000] (`SB`, `SDSD`, `LCS`), and [@Smith_Rose_1995] (`Ub`, `Uc`, `Ue`).
 
-- including multiple indices of agreement and model efficiencies at their alternative versions such as: i) the index of agreement `d` [@Willmott_1981], and its modified `d1` [@Willmott_etal_1985] and refined `d1r` [@Willmott_etal_2012] variants, ii) the Nash–Sutcliffe model efficiency (`NSE`) [@Nash_1970] and its improved variants `E1` [@Legates_1999], `Erel` [@Krause_2005], and Kling-Gupta model efficiency (`KGE`) [@Kling_etal_2012], iii) the Robinson's index of agreement (RAC) [@Robinson_1957; @Robinson_1959], iv) the Ji & Gallo agreement coefficient (AC) [@Ji_Gallo_2006], v) the Duvellier's `lambda` [@Duveiller_2016], vi) the distance correlation (`dcorr`) [@Szekely_2007], or vii) the maximal information coefficient (`MIC`) [@Reshef_2011]), among others.
+- including multiple indices of agreement and model efficiency such as: i) the index of agreement `d` [@Willmott_1981], and its modified `d1` [@Willmott_etal_1985] and refined `d1r` [@Willmott_etal_2012] variants, ii) the Nash–Sutcliffe model efficiency (`NSE`) [@Nash_1970] and its improved variants `E1` [@Legates_1999], `Erel` [@Krause_2005], and Kling-Gupta model efficiency (`KGE`) [@Kling_etal_2012], iii) the Robinson's index of agreement (RAC) [@Robinson_1957; @Robinson_1959], iv) the Ji & Gallo agreement coefficient (AC) [@Ji_Gallo_2006], v) the Duvellier's `lambda` [@Duveiller_2016], vi) the distance correlation (`dcorr`) [@Szekely_2007], or vii) the maximal information coefficient (`MIC`) [@Reshef_2011]), among others.
 
 - importing files from APSIM Classic with `import_apsim_out()`), and from APSIM Next Generation with the `import_apsim_db()` function.
 
 ## System requirements and installation
 
-Since `metrica` operates within R, the first step is to install R (version 4.2.0 or higher). We encourage users to install RStudio desktop [@RStudio_manual], a free and user-friendly environment that facilitates operations in R.
-
-To install and load the package:
+Since `metrica` operates within R, the first step is to install R (>= 4.2.0). To install and load the package:
 
 ```r
 # Stable version (CRAN)
@@ -102,13 +100,11 @@ library(metrica)
 
 ## Using the functions
 
-There are two basic arguments common to all `metrica` functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values. 
+There are two arguments common to all `metrica` functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values. 
 
-For regression, some specific functions require defining the axis `orientation` (e.g. the slope of the SMA regression (`B1_sma`)). 
+For regression, specific functions require defining the axis `orientation` (e.g. predicted vs. observed -PO- or observed vs. predicted -OP-). 
 
-For two-class models, the `pos_level` argument serves to indicate the alphanumeric order of the “positive level”. Following most two-class denominations as c(0,1), c(“Negative”, “Positive”), and c(“FALSE”, “TRUE”), the default `pos_level = 2` (1, “Positive”, “TRUE”). However, we recognize other cases as possible (e.g. c(“Crop”, “NoCrop”)), for which the user needs to specify pos_level = 1.
-
-For multi-class classification, some functions present the `atom` argument (TRUE / FALSE), which controls the output to be an overall average estimate across all classes (default), or class-wise.
+For two-class models, the `pos_level` argument serves to indicate the alphanumeric order of the “positive level”. Following most two-class denominations as c(0,1), c(“Negative”, “Positive”), and c(“FALSE”, “TRUE”), the default `pos_level = 2` (1, “Positive”, “TRUE”). However, we recognize other cases as possible (e.g. c(“Crop”, “NoCrop”)), for which the user needs to specify `pos_level = 1`. For multi-class classification, some functions present the `atom` argument (TRUE / FALSE), which controls the output to be an overall average estimate across all classes (default), or class-wise.
 
 ## Example 1: Regression (continuous variables)
 
@@ -126,12 +122,8 @@ RMSE(data = data_wheat, obs = obs, pred = pred, tidy = FALSE)
 # Store results as a data frame
 RMSE(data = data_wheat, obs = obs, pred = pred, tidy = TRUE)
 ```
-| Metric | Score |
-|---|---|
-| RMSE | 1.67 |
 
-
-Estimate multiple regression metrics at once using `metrica::metrics_summary()`:
+To estimate multiple regression metrics at once using `metrica::metrics_summary()`:
 
 ```r
 # Define metrics list
@@ -156,7 +148,7 @@ metrics_summary(data = data_wheat,
                 
 ```
 
-To produce a scatter plot of predicted vs. observed values as a customizable `ggplot` object users may use:
+To produce a scatter plot of predicted vs. observed values as a customizable `ggplot` object:
 
 ```r
 scatter_plot(data = data_wheat, 
@@ -180,7 +172,7 @@ scatter_plot(data = data_wheat,
 
 ![Figure 1. Predicted vs. Observed scatter plot using metrica::scatter_plot(). ](man/figures/JOSS_regression_scatter_plot.png) 
 
-### Classification (categorical variables)
+### Example 2: Classification (categorical variables)
 
 The following lines of code serve to run a basic classification performance analysis using a native dataset called `maize_phenology`.
 
@@ -201,9 +193,6 @@ accuracy(data = data_multiclass, obs = actual, pred = predicted, tidy = TRUE)
 #> 1     accuracy   0.8834951
 
 ```
-| Metric | Score |
-|---|---|
-| accuracy | 0.8834951 |
 
 ```r
 # Define selected metrics
