@@ -38,7 +38,7 @@ affiliations:
    index: 3
  - name: CSIRO Agriculture and Food, Australia.
    index: 4
-date: 18 July 2022
+date: 26 July 2022
 bibliography: paper.bib
 ---
 
@@ -58,7 +58,7 @@ Finally, it is noteworthy that in the area of agricultural sciences, although po
 
 # Package features
 
-For regression models, `metrica v2.0.1` includes four plotting functions (scatter, tiles, density, & Bland-Altman plots) using `ggplot2` [@ggplot_book], and 48 prediction performance metrics. For classification models (two-class or multi-class), it includes one function to visualize a confusion matrix, and 27 functions of prediction scores. The full list of metrics with description, formula, and literature sources is presented in the package documentation at: 
+For regression models, `metrica` includes four plotting functions (scatter, tiles, density, & Bland-Altman plots) using `ggplot2` [@ggplot_book], and 48 prediction performance metrics. For classification models (two-class or multi-class), it includes one function to visualize a confusion matrix, and 27 functions of prediction scores. The full list of metrics with description, formula, and literature sources is presented in the package documentation at: 
 
 - Regression metrics: https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html.
 
