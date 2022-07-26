@@ -46,31 +46,31 @@ bibliography: paper.bib
 
 ![](man/figures/metrica_logo.png){ width=24% align=left}
 
-The `metrica` R-package [@metrica_manual] is an open-source software designed to facilitate the quantitative and visual assessment of prediction performance of point-forecast simulation models for continuous (regression) and categorical variables (classification). The package assembles a series of 80+ functions that account for multiple aspects of the agreement between predicted and observed values. Without the need of advanced skills on programming, `metrica` enables users to automate the estimation of multiple prediction performance metrics including goodness of fit, error metrics, error decomposition, model efficiency, indices of agreement, and to produce stylish data visualization outputs. This article introduces the `metrica` R-package, developed with the main objective of contributing to reproducible evaluation of point-forecast models performance.
+The *metrica* R-package [@metrica_manual] is an open-source software designed to facilitate the quantitative and visual assessment of prediction performance of point-forecast simulation models for continuous (regression) and categorical variables (classification). The package assembles a series of 80+ functions that account for multiple aspects of the agreement between predicted and observed values. Without the need of advanced skills on programming, *metrica* enables users to automate the estimation of multiple prediction performance metrics including goodness of fit, error metrics, error decomposition, model efficiency, indices of agreement, and to produce stylish data visualization outputs. This article introduces the *metrica* R-package, developed with the main objective of contributing to reproducible evaluation of point-forecast models performance.
 
 # Statement of need
 
 Evaluating the prediction quality is a crucial step for any simulation model, for which a myriad of metrics and visualization techniques have been developed [@Tedeschi_2006; @Yang_2014; @Wallach_etal_2019]. Nonetheless, to conduct a comprehensive assessment of the predicted-observed agreement in R [@R_Core_Team], users normally have to rely on multiple packages, and even on self-defined functions, which increases the risk of involuntary mistakes due to the need of fluctuating syntax and data wrangling.
 
-As the reproducibility of data analysis continues to be a challenge for science [@Seibold_2022], the development of open source software like `metrica` represent a step-forward toward transparent and reproducible process to assist researchers on evaluating models performance. We specifically decided to create `metrica` in R software [@R_Core_Team] due to its substantial role in data science [@Thiem_2018]. Under the open-source philosophy, R hosts cutting-edge algorithms that combined with an infrastructure like the Comprehensive R Archive Network (CRAN) -enhancing global dissemination-, clearly empowers the democratization of statistical computing [@Hackenberger_2020].
+As the reproducibility of data analysis continues to be a challenge for science [@Seibold_2022], developing open source software like *metrica* represents a step-forward toward transparent and reproducible process to assist researchers on evaluating models performance. We decided to create *metrica* in R [@R_Core_Team] due to its substantial role in data science [@Thiem_2018]. Under its open-source philosophy, R empowers the democratization of statistical computing [@Hackenberger_2020] by hosting and globally distributing cutting-edge algorithms through the Comprehensive R Archive Network (CRAN).
 
-Finally, it is noteworthy that in the area of agricultural sciences, although point-forecast simulation models such as the Agricultural Production Systems sIMulator (APSIM) [@APSIM_classic; @APSIM_nextgen] count with tools to facilitate the integration into R through packages such as apsimx [@apsimx_manual], the assessment of their prediction quality is not yet integrated for R users. Therefore, we aim `metrica` to offer users of agricultural simulation models a toolbox for assessing the simulation performance.
+Finally, it is noteworthy that in the area of agricultural sciences, although point-forecast simulation models such as the Agricultural Production Systems sIMulator (APSIM) [@APSIM_classic; @APSIM_nextgen] count with tools to facilitate the integration into R through packages such as apsimx [@apsimx_manual], the assessment of its prediction quality is not yet integrated for R users. Therefore, we aim *metrica* to offer users of agricultural simulation models a toolbox for assessing the simulation performance by simply using predicted and observed values.
 
 # Package features
 
-For regression models, `metrica` includes 4 plotting functions (scatter, tiles, density, & Bland-Altman plots) using `ggplot2` [@ggplot_book], and 48 prediction performance scores. For classification models (two-class or multi-class), it includes one function to visualize the confusion matrix, and 27 functions of prediction scores. The full list of regression and classification performance metrics, along with their corresponding description, formula, and literature sources, is presented in the package documentation at: 
+For regression models, `metrica v2.0.1` includes four plotting functions (scatter, tiles, density, & Bland-Altman plots) using `ggplot2` [@ggplot_book], and 48 prediction performance metrics. For classification models (two-class or multi-class), it includes one function to visualize a confusion matrix, and 27 functions of prediction scores. The full list of metrics with description, formula, and literature sources is presented in the package documentation at: 
 
 - Regression metrics: https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html.
 
 - Classification metrics: https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html.
 
-To extent of our knowledge, compared to similar R packages designed for model evaluation such as `yardstick` [@yardstick_manual], `mlr3` [@mlr3_paper], `Metrics` [@Metrics_manual], `hydroGOF` [@hydroGOF_manual], `cvms` [@cvms_package], `scoringutils`[@scoringutils_package], or `performance` [@performance_paper], `metrica` provides several unique features not supported, or partially supported by the latter such as:
+To extent of our knowledge, *metrica* covers several functions not supported, or partially supported by similar R packages (or components) designed for model evaluation such as `yardstick` [@yardstick_manual] from `tidymodels` [@tidymodels_manual], the measuring performance components from `caret` [@caret_manual] or `mlr3` [@mlr3_paper], `Metrics` [@Metrics_manual], `hydroGOF` [@hydroGOF_manual], `cvms` [@cvms_package], `scoringutils`[@scoringutils_package], or `performance` [@performance_paper]. Unique features include:
 
-- offering the most extensive collection of prediction performance metrics for both regression (48) and classification (27) models.
+- the most extensive collection of prediction performance metrics for regression and classification models.
 
-- working under both vectorized (just calling variables with $) or tabulated forms (using the `data` argument).
+- working under both vectorized (calling variables with $) or tabulated forms [@tidyverse_paper].
 
-- controling the output format as a list (`tidy = FALSE`) or as a table (`tidy = TRUE`).
+- controlling the output format as a list (`tidy = FALSE`) or as a table (`tidy = TRUE`).
 
 - for classification, functions automatically recognizing two-class or multi-class data; and specifically for multi-class cases, several metrics can be estimated for each class (`atom = TRUE`).
 
@@ -84,7 +84,7 @@ To extent of our knowledge, compared to similar R packages designed for model ev
 
 ## System requirements and installation
 
-Since `metrica` operates within R, the first step is to install R (>= 4.2.0). To install and load the package:
+Since *metrica* operates within R, the first step is to install R (>= 4.2.0). To install and load the package:
 
 ```r
 # Stable version (CRAN)
@@ -100,9 +100,8 @@ library(metrica)
 
 ## Using the functions
 
-There are two arguments common to all `metrica` functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values. 
-
-For regression, specific functions require defining the axis `orientation` (e.g. predicted vs. observed -PO- or observed vs. predicted -OP-). 
+There are two core arguments to all *metrica* functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values. 
+For regression, specific functions require defining the axis `orientation` (*e.g.* predicted vs. observed -PO- or observed vs. predicted -OP-). 
 
 For two-class models, the `pos_level` argument serves to indicate the alphanumeric order of the “positive level”. Following most two-class denominations as c(0,1), c(“Negative”, “Positive”), and c(“FALSE”, “TRUE”), the default `pos_level = 2` (1, “Positive”, “TRUE”). However, we recognize other cases as possible (e.g. c(“Crop”, “NoCrop”)), for which the user needs to specify `pos_level = 1`. For multi-class classification, some functions present the `atom` argument (TRUE / FALSE), which controls the output to be an overall average estimate across all classes (default), or class-wise.
 
@@ -235,6 +234,9 @@ confusion_matrix(data = data_multiclass,
 
 ![Figure 2. Confusion matrix plot using metrica::confusion_matrix().](man/figures/JOSS_classification_confusion_matrix.png) 
 
+# Documentation & License
+
+The complete documentation and vignettes of the package can be found online at https://adriancorrendo.github.io/metrica/. *metrica* is under the MIT License (https://opensource.org/licenses/MIT). Source code is available at GitHub (https://github.com/adriancorrendo/metrica) along with its corresponding section to report issues and suggestions (https://github.com/adriancorrendo/metrica/issues).
 
 # Acknowledgements
 
