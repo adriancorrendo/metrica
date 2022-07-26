@@ -32,10 +32,10 @@ Machine Learning). `metrica` offers a toolbox with a wide spectrum of
 goodness of fit, error metrics, indices, and coefficients accounting for
 different aspects of the agreement between predicted and observed
 values, plus some basic visualization functions to assess models
-performance (e.g. confusion matrix, scatter with regression line;
-Bland-Altman plot) provided in customizable format (ggplot).
+performance (e.g. scatter with regression line;
+Bland-Altman plot; confusion matrix) provided in customizable format (ggplot).
 
-For supervised models, always keep in mind the concept of
+For supervised models, we urge users to keep in mind the concept of
 “cross-validation” since predicted values should ideally come from
 out-of-bag samples (unseen by training sets) to avoid overestimation of
 the prediction performance. <br/>
@@ -67,7 +67,7 @@ APSIM](https://adriancorrendo.github.io/metrica/articles/apsim_open.html)
 
 ## Functions <br/>
 
-For regression models, it includes 4 plotting functions (scatter, tiles,
+For regression models, `metrica` offers 4 plotting functions (scatter, tiles,
 density, & Bland-Altman plots), and 48 prediction performance scores
 including error metrics (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE,
 RRMSE, RSR, PBE, iqRMSE), error decomposition (MLA, MLP, PLA, PLP, PAB,
@@ -79,7 +79,7 @@ correlation-dcorr-, maximal information coefficient -MIC-), variability
 Specifically for time-series predictions, `metrica` also includes the
 Mean Absolute Scaled Error (MASE). <br/>
 
-For classification (binomial and multinomial) tasks, it includes a
+For classification (binomial and multinomial) tasks, `metrica` offers a
 function to visualize the confusion matrix using ggplot2, and 27
 functions of prediction scores including: accuracy, error rate,
 precision, recall, specificity, balanced accuracy (balacc), F-score
@@ -109,10 +109,10 @@ values. <br/>
 
 Optional arguments include `data` that allows to call an existing data
 frame containing both observed and predicted vectors, and `tidy`, which
-controls the type of output as a list (tidy = FALSE) or as a data.frame
+controls the type of output as a list (tidy = FALSE) or as a data frame
 (tidy = TRUE). <br/>
 
-For regression, some specific functions for regression also require to
+For regression, some specific functions also require to
 define the axis `orientation`. For example, the slope of the symmetric
 linear regression describing the bivariate scatter (SMA). <br/>
 
@@ -247,8 +247,8 @@ barley.scat.plot <-
                         regline_color = "#9e0059",
                         regline_size = 2)+
   # Customize axis breaks
-  scale_y_continuous(breaks = seq(0,30, by = 5))+
-  scale_x_continuous(breaks = seq(0,30, by = 5))
+  scale_y_continuous(breaks = seq(0, 30, by = 5))+
+  scale_x_continuous(breaks = seq(0, 30, by = 5))
 
 barley.scat.plot
 ```
@@ -395,7 +395,9 @@ nested.examples <- bind_rows(list(wheat = metrica::wheat,
                                   sorghum = metrica::sorghum, 
                                   chickpea = metrica::chickpea), 
                              .id = "id") %>%
-  dplyr::group_by(id) %>% tidyr::nest() %>% dplyr::ungroup()
+  dplyr::group_by(id) %>% 
+  tidyr::nest() %>% 
+  dplyr::ungroup()
 
 head(nested.examples %>% group_by(id) %>% dplyr::slice_head(n=2))
 #> # A tibble: 4 × 2
