@@ -44,7 +44,7 @@ bibliography: paper.bib
 
 # Summary 
 
-![Figure 1. Metrica logo.](man/figures/metrica_logo.png){ width=15% align=left}
+![](man/figures/metrica_logo.png){ width=24% align=left}
 
 The `metrica` R-package [@metrica_manual] is an open-source software designed to facilitate the quantitative and visual assessment of prediction performance of point-forecast simulation models for continuous (regression) and categorical variables (classification). The package assembles a series of 80+ functions that account for multiple aspects of the agreement between predicted and observed values. Without the need of advanced skills on programming, `metrica` enables users to automate the estimation of multiple prediction performance metrics including goodness of fit, error metrics, error decomposition, model efficiency, indices of agreement, and to produce stylish data visualization outputs. This article introduces the `metrica` R-package, developed with the main objective of contributing to reproducible evaluation of point-forecast models performance.
 
@@ -58,31 +58,33 @@ Finally, it is noteworthy that in the area of agricultural sciences, although po
 
 # Package features
 
-For regression models, it includes 4 plotting functions (scatter, tiles, density, & Bland-Altman plots), and 48 prediction performance scores. For classification models (two-class or multi-class), `metrica` includes a function to visualize the confusion matrix using ggplot2 [@ggplot_book], and 27 functions of prediction scores. The full list of regression and classification performance metrics, along with their corresponding description, formula, and literature sources, is presented in the package documentation at: 
+For regression models, `metrica` includes 4 plotting functions (scatter, tiles, density, & Bland-Altman plots) using `ggplot2` [@ggplot_book], and 48 prediction performance scores. For classification models (two-class or multi-class), it includes one function to visualize the confusion matrix, and 27 functions of prediction scores. The full list of regression and classification performance metrics, along with their corresponding description, formula, and literature sources, is presented in the package documentation at: 
 
 - Regression metrics: https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html.
 
 - Classification metrics: https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html.
 
-To extent of our knowledge, `metrica` provides unique features not supported (or partially supported) by other similar R packages [@yardstick_manual; @mlr3_paper; @Metrics_manual; @hydroGOF_manual; @cvms_package; @performance_paper] designed for model evaluation such as:
+To extent of our knowledge, compared to similar R packages designed for model evaluation such as `yardstick` [@yardstick_manual], `mlr3` [@mlr3_paper], `Metrics` [@Metrics_manual], `hydroGOF` [@hydroGOF_manual], `cvms` [@cvms_package], `scoringutils`[@scoringutils_package], or `performance` [@performance_paper], `metrica` provides several unique features not supported, or partially supported by the latter such as:
 
-- work under both vectorized (calling variables with $) or data.frame forms (using `data` argument).
+- offering the most extensive collection of prediction performance metrics for both regression (48) and classification (27) models.
 
-- store results as a list (`tidy = FALSE`) or as a table (`tidy = TRUE`).
+- working under both vectorized (just calling variables with $) or tabulated forms (using the `data` argument).
 
-- for classification, functions automatically recognize two-class or multi-class data; and specifically for multi-class models, metrics can be estimated for each class (`atom = TRUE`).
+- controling the output format as a list (`tidy = FALSE`) or as a table (`tidy = TRUE`).
 
-- the implementation of a symmetric linear regression (standardized major axis-SMA-, [@Warton_2006]) to describe: i) the pattern of the bivariate relationship with linear parameters (`B0_sma`, `B1_sma`), and ii) the degree of predicted-observed agreement by using the SMA-line to decompose the mean-squared-error (MSE) into lack of accuracy (`MLA`, `PLA`, `RMLA`) and lack of precision (`MLP`, `PLP`, `RMLP`) components [@CORRENDO2021_AgSyst]. 
+- for classification, functions automatically recognizing two-class or multi-class data; and specifically for multi-class cases, several metrics can be estimated for each class (`atom = TRUE`).
 
-- alternative MSE decomposition approaches such as the ones described by [@Kobayashi_Salam_2000] (`SB`, `SDSD`, `LCS`), and by [@Smith_Rose_1995] (`Ub`, `Uc`, `Ue`).
+- for regression, implementing a symmetric linear regression (standardized major axis-SMA-, [@Warton_2006]) to describe: i) the pattern of the bivariate relationship with linear parameters (`B0_sma`, `B1_sma`), and ii) the degree of predicted-observed agreement by using the SMA-line to decompose the mean-squared-error (MSE) into lack of accuracy (`MLA`, `PLA`, `RMLA`) and lack of precision (`MLP`, `PLP`, `RMLP`) components [@CORRENDO2021_AgSyst]. 
 
-- the estimation of multiple indices of agreement and model efficiencies at their alternative versions such as: i) the index of agreement `d` [@Willmott_1981], and its modified `d1` [@Willmott_etal_1985] and refined `d1r` [@Willmott_etal_2012] variants, ii) the Nash–Sutcliffe model efficiency (`NSE`) [@Nash_1970] and its improved variants `E1` [@Legates_1999], `Erel` [@Krause_2005], and Kling-Gupta model efficiency (`KGE`) [@Kling_etal_2012], iii) the Robinson's index of agreement (RAC) [@Robinson_1957; @Robinson_1959], iv) the Ji & Gallo agreement coefficient (AC) [@Ji_Gallo_2006], v) the Duvellier's `lambda` [@Duveiller_2016], vi) the distance correlation (`dcorr`) [@Szekely_2007], or vii) the maximal information coefficient (`MIC`) [@Reshef_2011]), among others.
+- offering alternative MSE decomposition approaches such as the ones described by [@Kobayashi_Salam_2000] (`SB`, `SDSD`, `LCS`), and by [@Smith_Rose_1995] (`Ub`, `Uc`, `Ue`).
 
-- easily import files from APSIM Classic with `import_apsim_out()`), and APSIM Next Generation with `import_apsim_db()`.
+- including multiple indices of agreement and model efficiencies at their alternative versions such as: i) the index of agreement `d` [@Willmott_1981], and its modified `d1` [@Willmott_etal_1985] and refined `d1r` [@Willmott_etal_2012] variants, ii) the Nash–Sutcliffe model efficiency (`NSE`) [@Nash_1970] and its improved variants `E1` [@Legates_1999], `Erel` [@Krause_2005], and Kling-Gupta model efficiency (`KGE`) [@Kling_etal_2012], iii) the Robinson's index of agreement (RAC) [@Robinson_1957; @Robinson_1959], iv) the Ji & Gallo agreement coefficient (AC) [@Ji_Gallo_2006], v) the Duvellier's `lambda` [@Duveiller_2016], vi) the distance correlation (`dcorr`) [@Szekely_2007], or vii) the maximal information coefficient (`MIC`) [@Reshef_2011]), among others.
+
+- importing files from APSIM Classic with `import_apsim_out()`), and from APSIM Next Generation with the `import_apsim_db()` function.
 
 ## System requirements and installation
 
-The `metrica` package operates within the R environment, the first step is to install R (version 4.2.0 or higher). We encourage users to install the latest version RStudio desktop [@RStudio_manual], a free and user-friendly environment that facilitates operations in R.
+Since `metrica` operates within R, the first step is to install R (version 4.2.0 or higher). We encourage users to install RStudio desktop [@RStudio_manual], a free and user-friendly environment that facilitates operations in R.
 
 To install and load the package:
 
@@ -102,64 +104,127 @@ library(metrica)
 
 There are two basic arguments common to all `metrica` functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values. 
 
-For regression, some specific functions also require defining the axis `orientation`. For example, the slope of the symmetric linear regression describing the bivariate scatter (SMA). For binary classification (two classes), functions also require to check the `pos_level` arg., which indicates the alphanumeric order of the “positive level”. Normally, the most common binary denominations are c(0,1), c(“Negative”, “Positive”), c(“FALSE”, “TRUE”), so the default pos_level = 2 (1, “Positive”, “TRUE”). However, other cases are also possible, such as c(“Crop”, “NoCrop”) for which the user needs to specify pos_level = 1.
+For regression, some specific functions require defining the axis `orientation` (e.g. the slope of the SMA regression (`B1_sma`)). 
 
-For multi-class classification tasks, some functions present the `atom` arg. (logical TRUE / FALSE), which controls the output to be an overall average estimate across all classes, or a class-wise estimate. For example, user might be interested in obtaining estimates of precision and recall for each possible class of the prediction.
+For two-class models, the `pos_level` argument serves to indicate the alphanumeric order of the “positive level”. Following most two-class denominations as c(0,1), c(“Negative”, “Positive”), and c(“FALSE”, “TRUE”), the default `pos_level = 2` (1, “Positive”, “TRUE”). However, we recognize other cases as possible (e.g. c(“Crop”, “NoCrop”)), for which the user needs to specify pos_level = 1.
+
+For multi-class classification, some functions present the `atom` argument (TRUE / FALSE), which controls the output to be an overall average estimate across all classes (default), or class-wise.
 
 ## Example 1: Regression (continuous variables)
 
-The following line of code calls a `data.frame` called `wheat`, contained by `metrica` as part of the native datasets.
+The following lines of code serve to run basic regression performance analysis using a native dataset called `wheat`.
 
 ```r
+# Define dataset
 data_wheat <- metrica::wheat
+
+# Estimate Root Mean Square Error, result as a list
+RMSE(data = data_wheat, obs = obs, pred = pred, tidy = FALSE)
+#> $RMSE
+#> [1] 1.666441
+
+# Store results as a data frame
+RMSE(data = data_wheat, obs = obs, pred = pred, tidy = TRUE)
 ```
-
-Users can specifies a vector with a few classification metrics of interest, which can be passed within the `metrics_summary()` function as follows:
-
-```r
-my_reg_metrics <- c("RMSE", "MAE", "KGE", "d", "PLP", "PLA")
-metrics_summary(data = data_wheat, type = "regression", metrics_list = my_reg_metrics)
-```
-
-### Table 1: Regression metrics summary.
-
 | Metric | Score |
 |---|---|
-| RMSE | 0.90 |
-| MAE | 0.90 |
-| KGE | 0.90 |
-| d | 0.90 |
-| PLP | 0.90 |
-| PLA | 0.90 |
+| RMSE | 1.67 |
 
-To produce a classical scatter plot users may use:
+
+Estimate multiple regression metrics at once using `metrica::metrics_summary()`:
+
+```r
+# Define metrics list
+my_reg_metrics <- c("R2", "CCC", "MBE", "RMSE", "RSR", "NSE", "KGE")
+
+# Run metrics summary
+metrics_summary(data = data_wheat, 
+                obs = obs, pred = pred,
+                type = "regression", 
+                metrics_list = my_reg_metrics)
+
+#>         Metric          Score
+#> 1           R2     0.84555376
+#> 2          CCC     0.91553253
+#> 3          MBE     0.31815953
+#> 4         RMSE     1.66644142
+#> 5          RSR     0.09678632
+#> 6          PLP     5.15949064
+#> 7          PLA    94.84050936
+#> 8          NSE     0.83871126
+#> 9          KGE     0.91064709
+                
+```
+
+To produce a scatter plot of predicted vs. observed values as a customizable `ggplot` object users may use:
 
 ```r
 scatter_plot(data = data_wheat, 
              obs = obs , pred = pred,
+             orientation = "PO",
              print_metrics = TRUE, 
-             metrics_list = my_reg_metrics)
+             metrics_list = my_reg_metrics
+             print_eq = TRUE,
+             position_eq = c(x=15, y = 2), 
+             # Optional arguments to customize the plot
+             shape_type = 21,
+             shape_color = "steelblue",
+             shape_size = 3,
+             regline_type = "F1",
+             regline_color = "#9e0059",
+             regline_size = 2)+
+  # Customize axis breaks
+  scale_y_continuous(breaks = seq(0,30, by = 5))+
+  scale_x_continuous(breaks = seq(0,30, by = 5))
 ```
 
-![Caption for example figure.\label{fig:scatter_plot}](man/figures/README-unnamed-chunk-3-1.png) 
+![Figure 1. Predicted vs. Observed scatter plot using metrica::scatter_plot(). ](man/figures/JOSS_regression_scatter_plot.png) 
 
 ### Classification (categorical variables)
 
-The following line of code calls a `data.frame` called `maize_phenology`, one of the native datasets of `metrica` for classification.
+The following lines of code serve to run a basic classification performance analysis using a native dataset called `maize_phenology`.
 
 ```r
+# Define dataset
 data_multiclass <- metrica::maize_phenology
+
+# Estimate accuracy, result as a list
+accuracy(data = data_multiclass, obs = actual, pred = predicted, tidy = FALSE)
+
+#> $accuracy
+#> [1] 0.8834951
+
+# Result as a data frame
+accuracy(data = data_multiclass, obs = actual, pred = predicted, tidy = TRUE)
+
+#>         Metric       Score
+#> 1     accuracy   0.8834951
+
 ```
+| Metric | Score |
+|---|---|
+| accuracy | 0.8834951 |
 
 ```r
-recall(data = data_multiclass, obs = , pred = , atom = TRUE)
-```
+# Define selected metrics
+my_class_metrics <- c("accuracy", "precision", "recall", "specificity",
+                      "fscore", "gmean", "khat")
 
-```r
-my_class_metrics <- c("accuracy", "precision", "recall")
+# Run the summary for selected metrics    
 metrics_summary(data = data_multiclass, 
                 obs = actual, pred = predicted,
                 type = "classification")
+
+#>         Metric        Score
+#> 1     accuracy 8.834951e-01
+#> 2    precision 8.335108e-01
+#> 3       recall 8.405168e-01
+#> 4  specificity 9.915764e-01
+#> 5       fscore 8.369991e-01
+#> 6          agf 8.370017e-01
+#> 7        gmean 9.129275e-01
+#> 8         khat 8.624527e-01
+                
 ```
 
 To produce a classical confusion matrix plot users may use:
@@ -168,25 +233,22 @@ To produce a classical confusion matrix plot users may use:
 confusion_matrix(data = data_multiclass,
                  obs = actual, pred = predicted, 
                  plot = TRUE, 
-                 colors = c(low="grey85" , high="steelblue") )
+                 colors = c(low="grey85" , high="steelblue"), 
+                 unit = "count",
+                 # Print metrics_summary
+                 print_metrics = TRUE,
+                 # List of performance metrics
+                 metrics_list = my_class_metrics,
+                 # Position (bottom or top)
+                 position_metrics = "bottom")
+
 ```
 
-![Caption for example figure.\label{fig:multiclass_cm}](man/figures/README-unnamed-chunk-15-1.png) 
+![Figure 2. Confusion matrix plot using metrica::confusion_matrix().](man/figures/JOSS_classification_confusion_matrix.png) 
 
-### Table 2: Classification metrics summary.
-
-| Metric | Score |
-|---|---|
-| accuracy | 0.90 |
-| precision | 0.90 |
-| recall | 0.90 |
 
 # Acknowledgements
 
-We acknowledge contributions from #### during the genesis of this project.
-
-# License
-
-`metrica` is under MIT License.
+Authors gratefully acknowledge the financial support from Kansas State University for sponsoring A.A. Correndo's Postdoctoral Position and Dr. I.A. Ciampitti's research program. This is contribution no. 22-###-J from the Kansas Agricultural Experiment Station.
 
 # References
