@@ -72,7 +72,7 @@ To extent of our knowledge, *metrica* covers several functions not supported, or
 
 - controlling the output format as a list (`tidy = FALSE`) or as a table (`tidy = TRUE`).
 
-- for classification, functions automatically recognizing two-class or multi-class data; and specifically for multi-class cases, several metrics can be estimated for each class (`atom = TRUE`)[@Ferri2009], [@David2007], including balanced and imbalanced scenarios [@Kubat1997].
+- for classification, functions automatically recognizing two-class or multi-class data; and specifically for multi-class cases, several metrics can be estimated for each class (`atom = TRUE`)[@ferri2009], [@david2007], including balanced and imbalanced scenarios [@kubat1997].
 
 - for regression, implementing a symmetric linear regression (standardized major axis-SMA-, [@Warton_2006]) to describe: i) pattern of the bivariate relationship with linear parameters (`B0_sma`, `B1_sma`), and ii) degree of predicted-observed agreement by using SMA-line to decompose the mean-squared-error (MSE) into lack of accuracy (`MLA`, `PLA`, `RMLA`) and lack of precision (`MLP`, `PLP`, `RMLP`) components [@CORRENDO2021_AgSyst].
 
