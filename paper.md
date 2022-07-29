@@ -134,16 +134,17 @@ metrics_summary(data = data_wheat,
                 type = "regression",
                 metrics_list = my_reg_metrics)
 
-#>         Metric          Score
-#> 1           R2     0.84555376
-#> 2          CCC     0.91553253
-#> 3          MBE     0.31815953
-#> 4         RMSE     1.66644142
-#> 5          RSR     0.09678632
-#> 6          PLP     5.15949064
-#> 7          PLA    94.84050936
-#> 8          NSE     0.83871126
-#> 9          KGE     0.91064709
+#>      Metric          Score
+#> 1        R2     0.84555376
+#> 2       CCC     0.91553253
+#> 3       MBE     0.31815953
+#> 4      RMSE     1.66644142
+#> 5     RRMSE     0.19094834
+#> 6       RSR     0.09678632
+#> 7       PLP     5.15949064
+#> 8       PLA    94.84050936
+#> 9       NSE     0.83871126
+#> 10      KGE     0.91064709
 
 ```
 
