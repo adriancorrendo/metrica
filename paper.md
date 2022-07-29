@@ -10,6 +10,7 @@ tags:
 authors:
   - name: Adrian A. Correndo^[Corresponding author]
     orcid: 0000-0002-4172-289X
+    corresponding: true
     affiliation: 1
   - name: Luiz H. Moro Rosso
     orcid: 0000-0002-8642-911X
@@ -24,7 +25,6 @@ authors:
     orcid: 0000-0002-7172-0799
     affiliation: 1
   - name: Dean Holzworth
-    orcid: 0000-0000-0000-0000
     affiliation: 4
   - name: Ignacio A. Ciampitti
     orcid: 0000-0001-9619-5129
