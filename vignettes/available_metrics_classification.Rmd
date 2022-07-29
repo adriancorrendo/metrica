@@ -1,6 +1,6 @@
 ---
 title: "Classification performance metrics and indices"
-author: "Adrian Correndo & Luciana Nieto"
+author: "Luciana Nieto & Adrian Correndo"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
