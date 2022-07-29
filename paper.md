@@ -169,7 +169,7 @@ scatter_plot(data = data_wheat,
   scale_x_continuous(breaks = seq(0,20, by = 2))
 ```
 
-![Figure 1. Predicted vs. Observed scatter plot using metrica::scatter_plot(). ](man/figures/Figure_2_JOSS.png)
+![Predicted vs. Observed scatter plot using metrica::scatter_plot().](man/figures/Figure_2_JOSS.png)
 
 ### Example 2: Classification (categorical variables)
 
@@ -232,7 +232,7 @@ confusion_matrix(data = data_multiclass,
 
 ```
 
-![Figure 2. Confusion matrix plot using metrica::confusion_matrix().](man/figures/Figure_3_JOSS.png)
+![Confusion matrix plot using metrica::confusion_matrix().](man/figures/Figure_3_JOSS.png)
 
 # Documentation & License
 
