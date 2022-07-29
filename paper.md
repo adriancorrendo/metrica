@@ -120,6 +120,10 @@ RMSE(data = data_wheat, obs = obs, pred = pred, tidy = FALSE)
 
 # Store results as a data frame
 RMSE(data = data_wheat, obs = obs, pred = pred, tidy = TRUE)
+
+#>      Metric          Score
+#> 1      RMSE     1.66644142
+
 ```
 
 To estimate multiple regression metrics at once using `metrica::metrics_summary()`:
@@ -241,6 +245,6 @@ The complete documentation and vignettes of the package can be found online at h
 
 # Acknowledgements
 
-Authors gratefully acknowledge the financial support by the Feed the Future Innovation Lab for Collaborative Research on Sustainable Intensification (SIIL) at Kansas State University through funding United States Agency for International Development (USAID) under the Cooperative Agreement (Grant number AID-OAA-L-14-00006).
+Authors gratefully acknowledge the financial support from the Feed the Future Innovation Lab for Collaborative Research on Sustainable Intensification (SIIL) at Kansas State University through funding United States Agency for International Development (USAID) under the Cooperative Agreement (Grant number AID-OAA-L-14-00006).
 
 # References
