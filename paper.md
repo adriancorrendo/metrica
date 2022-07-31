@@ -20,7 +20,7 @@ authors:
     affiliation: 1
   - name: Leonardo M. Bastos
     orcid: 0000-0001-8958-6527
-    affiliation: 5
+    affiliation: 3
   - name: Luciana Nieto
     orcid: 0000-0002-7172-0799
     affiliation: 1
