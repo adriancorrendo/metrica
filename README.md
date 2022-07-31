@@ -19,6 +19,7 @@ status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metric
 [![codecov](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn)](https://app.codecov.io/gh/adriancorrendo/metrica)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6474101.svg)](https://doi.org/10.5281/zenodo.6474101)
 
+[![status](https://joss.theoj.org/papers/c3113e0e3fe8c8f9f49d43fde5f4125f/status.svg)](https://joss.theoj.org/papers/c3113e0e3fe8c8f9f49d43fde5f4125f)
 <!-- badges: end -->
 
 ## Introduction <br/>
