@@ -1,6 +1,6 @@
 Package: metrica
 Title: Prediction Performance Metrics
-Version: 2.0.1
+Version: 2.0.1.999
 Date: 2022-07-07
 Authors@R: c(
     person("Adrian A.", "Correndo", email = "correndo@ksu.edu", role = c("cre", "cph"), comment = c(ORCID = "0000-0002-4172-289X")),
@@ -19,7 +19,7 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
 Depends: 
-    R (>= 2.10)
+    R (>= 3.6.0)
 Suggests: 
     tidyverse,
     purrr,

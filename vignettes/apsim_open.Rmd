@@ -39,16 +39,22 @@ library(tidyr)
 
 ### 1. APSIM Classic (.out)  
 ```{r warning=FALSE, message=FALSE}
+# Obtaining filepath from package folder
+apsim_out_filepath <- system.file("extdata/soybean.out", package = "metrica")
+
 # Use import_apsim_out for APSIM Classic output
-soybean.out <- metrica::import_apsim_out(filepath = "../tests/testthat/examples/soybean.out")
+soybean.out <- metrica::import_apsim_out(filepath = apsim_out_filepath)
 
 head(soybean.out)
 ```
 
 ### 1. APSIM NextGeneration (.db) 
 ```{r warning=FALSE, message=FALSE}
+# Obtaining path from package folder
+apsim_db_folderpath <- system.file("extdata", package = "metrica")
+
 # Use import_apsim_db for APSIM NextGeneration output
-soybean.db <- metrica::import_apsim_db(filename = "soybean.example.db", folder = "../tests/testthat/examples/")
+soybean.db <- metrica::import_apsim_db(filename = "soybean.example.db", folder = apsim_db_folderpath)
 
 head(soybean.db)
 

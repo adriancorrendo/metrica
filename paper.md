@@ -58,7 +58,7 @@ Finally, it is noteworthy that in the area of agricultural sciences, although po
 
 # Package features
 
-For regression models, `metrica` includes four plotting functions (scatter, tiles, density, & Bland-Altman plots) using `ggplot2` [@ggplot_book], and 48 prediction performance metrics. For classification models (two-class or multi-class), it includes one function to visualize a confusion matrix, and 27 functions of prediction scores. The full list of metrics with description, formula, and literature sources is presented in the package documentation at:
+For regression models, `metrica` includes four plotting functions (scatter, tiles, density, & Bland-Altman plots) using `ggplot2` [@ggplot_book], and 48 prediction performance metrics. For classification models (two-class or multi-class), it includes one function to visualize a confusion matrix, and 26 functions of prediction scores. The full list of metrics with description, formula, and literature sources is presented in the package documentation at:
 
 - Regression metrics: https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html.
 
@@ -66,7 +66,7 @@ For regression models, `metrica` includes four plotting functions (scatter, tile
 
 To extent of our knowledge, *metrica* covers several functions not supported, or partially supported by similar R packages (or components) designed for model evaluation such as `yardstick` [@yardstick_manual] from `tidymodels` [@tidymodels_manual], the measuring performance components from `caret` [@caret_manual] or `mlr3` [@mlr3_paper], `Metrics` [@Metrics_manual], `hydroGOF` [@hydroGOF_manual], `cvms` [@cvms_package], `scoringutils`[@scoringutils_package], or `performance` [@performance_paper]. Unique features include:
 
-- the most extensive collection of prediction performance metrics for regression and classification models up to date.
+- one of the most extensive collections of prediction performance metrics for regression and classification models in R.
 
 - working under both vectorized (calling variables with $) or tabulated forms [@tidyverse_paper].
 
@@ -82,166 +82,27 @@ To extent of our knowledge, *metrica* covers several functions not supported, or
 
 - importing files from APSIM Classic with `import_apsim_out()`), and from APSIM Next Generation with the `import_apsim_db()` function.
 
-## System requirements and installation
-
-Since *metrica* operates within R, the first step is to install R (>= 4.2.0). To install and load the package:
-
-```r
-# Stable version (CRAN)
-install.packages("metrica")
-
-# Development version (GitHub)
-devtools::install_github("adriancorrendo/metrica")
-
-# Load
-library(metrica)
-
-```
-
 ## Using the functions
 
 There are two core arguments to all *metrica* functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values.
-For regression, specific functions require defining the axis `orientation` (*e.g.* predicted vs. observed -PO- or observed vs. predicted -OP-).
 
-For two-class models, the `pos_level` argument serves to indicate the alphanumeric order of the “positive level”. Following most two-class denominations as c(0,1), c(“Negative”, “Positive”), and c(“FALSE”, “TRUE”), the default `pos_level = 2` (1, “Positive”, “TRUE”). However, we recognize other cases as possible (e.g. c(“Crop”, “NoCrop”)), for which the user needs to specify `pos_level = 1`. For multi-class classification, some functions present the `atom` argument (TRUE / FALSE), which controls the output to be an overall average estimate across all classes (default), or class-wise.
+For regression, specific functions such as scatter_plot() require defining the axis `orientation` (*e.g.* predicted vs. observed -PO- or observed vs. predicted -OP-). For two-class models, the `pos_level` argument serves to indicate the alphanumeric order of the “positive level”. For multi-class classification, some functions present the `atom` argument (TRUE / FALSE), which controls the output to be an overall average estimate across all classes (default), or class-wise.
 
 ## Example 1: Regression (continuous variables)
 
-The following lines of code serve to run basic regression performance analysis using a native dataset called `wheat`.
-
-```r
-# Define dataset
-data_wheat <- metrica::wheat
-
-# Estimate Root Mean Square Error, result as a list
-RMSE(data = data_wheat, obs = obs, pred = pred, tidy = FALSE)
-#> $RMSE
-#> [1] 1.666441
-
-# Store results as a data frame
-RMSE(data = data_wheat, obs = obs, pred = pred, tidy = TRUE)
-
-#>      Metric          Score
-#> 1      RMSE     1.66644142
-
-```
-
-To estimate multiple regression metrics at once using `metrica::metrics_summary()`:
-
-```r
-# Define metrics list
-my_reg_metrics <- c("R2", "CCC", "MBE", "RMSE", "RSR", "NSE", "KGE")
-
-# Run metrics summary
-metrics_summary(data = data_wheat,
-                obs = obs, pred = pred,
-                type = "regression",
-                metrics_list = my_reg_metrics)
-
-#>      Metric          Score
-#> 1        R2     0.84555376
-#> 2       CCC     0.91553253
-#> 3       MBE     0.31815953
-#> 4      RMSE     1.66644142
-#> 5     RRMSE     0.19094834
-#> 6       RSR     0.09678632
-#> 7       PLP     5.15949064
-#> 8       PLA    94.84050936
-#> 9       NSE     0.83871126
-#> 10      KGE     0.91064709
-
-```
-
-To produce a scatter plot of predicted vs. observed values as a customizable `ggplot` object:
-
-```r
-scatter_plot(data = data_wheat,
-             obs = obs , pred = pred,
-             orientation = "PO",
-             print_metrics = TRUE,
-             metrics_list = my_reg_metrics,
-             print_eq = TRUE,
-             position_eq = c(x=14, y = 2),
-             # Optional arguments to customize the plot
-             shape_type = 21,
-             shape_color = "steelblue",
-             shape_size = 3,
-             regline_type = "F1",
-             regline_color = "#9e0059",
-             regline_size = 2)+
-  # Customize axis breaks
-  scale_y_continuous(breaks = seq(0,20, by = 2))+
-  scale_x_continuous(breaks = seq(0,20, by = 2))
-```
+The following scatter plot is an output example of regression performance analysis using the scatter_plot() function for the native dataset called `wheat`.
 
 ![Predicted vs. Observed scatter plot using metrica::scatter_plot().](man/figures/Figure_2_JOSS.png)
 
 ### Example 2: Classification (categorical variables)
 
-The following lines of code serve to run a basic classification performance analysis using a native dataset called `maize_phenology`.
-
-```r
-# Define dataset
-data_multiclass <- metrica::maize_phenology
-
-# Estimate accuracy, result as a list
-accuracy(data = data_multiclass, obs = actual, pred = predicted, tidy = FALSE)
-
-#> $accuracy
-#> [1] 0.8834951
-
-# Result as a data frame
-accuracy(data = data_multiclass, obs = actual, pred = predicted, tidy = TRUE)
-
-#>         Metric       Score
-#> 1     accuracy   0.8834951
-
-```
-
-```r
-# Define selected metrics
-my_class_metrics <- c("accuracy", "precision", "recall", "specificity",
-                      "fscore", "gmean", "khat")
-
-# Run the summary for selected metrics    
-metrics_summary(data = data_multiclass,
-                obs = actual, pred = predicted,
-                type = "classification")
-
-#>         Metric        Score
-#> 1     accuracy 8.834951e-01
-#> 2    precision 8.335108e-01
-#> 3       recall 8.405168e-01
-#> 4  specificity 9.915764e-01
-#> 5       fscore 8.369991e-01
-#> 6          agf 8.370017e-01
-#> 7        gmean 9.129275e-01
-#> 8         khat 8.624527e-01
-
-```
-
-To produce a confusion matrix plot users may use:
-
-```r
-confusion_matrix(data = data_multiclass,
-                 obs = actual, pred = predicted,
-                 plot = TRUE,
-                 colors = c(low="grey85" , high="steelblue"),
-                 unit = "count",
-                 # Print metrics_summary
-                 print_metrics = TRUE,
-                 # List of performance metrics
-                 metrics_list = my_class_metrics,
-                 # Position (bottom or top)
-                 position_metrics = "bottom")
-
-```
+The following confusion matrix plot is an output example of classification performance analysis using the confustion_matrix() function for the native dataset called `maize_phenology`.
 
 ![Confusion matrix plot using metrica::confusion_matrix().](man/figures/Figure_3_JOSS.png)
 
 # Documentation & License
 
-The complete documentation and vignettes of the package can be found online at https://adriancorrendo.github.io/metrica/. *metrica* is under the MIT License (https://opensource.org/licenses/MIT). Source code is available at GitHub (https://github.com/adriancorrendo/metrica) along with its corresponding section to report issues and suggestions (https://github.com/adriancorrendo/metrica/issues).
+The complete documentation and vignettes of *metrica* are available online at https://adriancorrendo.github.io/metrica/.  The package is under the MIT License (https://opensource.org/licenses/MIT). Source code is available at GitHub (https://github.com/adriancorrendo/metrica) along with its corresponding section to report issues and suggestions (https://github.com/adriancorrendo/metrica/issues).
 
 # Acknowledgements
 

@@ -233,6 +233,7 @@ example.data <- barley %>%  # or 'wheat', 'sorghum', or 'chickpea'
 ### 3.1.1.1. Create a customizable scatter plot with PO orientation
 
 ``` r
+
 barley.scat.plot <- 
   metrica::scatter_plot(data = example.data, 
                         obs = measured, 
@@ -257,6 +258,7 @@ barley.scat.plot
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
 ``` r
+
 # Alternative using vectors instead of dataframe
 #metrica::scatter_plot(obs = example.data$obs, pred = example.data$pred)
 ```
@@ -344,6 +346,7 @@ metrica::B1_sma(data = example.data, obs = measured, pred = simulated)
 ### 3.1.2.2. Metrics Summary
 
 ``` r
+
 metrics.sum <- metrics_summary(data = example.data, 
                                obs = measured, pred = simulated,
                                type = "regression")  
@@ -692,6 +695,7 @@ multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions,
 ```
 
 ``` r
+
 multinomial_case %>% accuracy(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #>   accuracy
 #> 1     0.32
@@ -784,3 +788,33 @@ multinomial_case %>% AUC_roc(data = ., obs = labels, pred = predictions, tidy=TR
 
 Please, visit the
 [vignette](https://adriancorrendo.github.io/metrica/articles/apsim_open.html)
+
+## 5. Contributing to our package
+
+Thank you for considering contributing to our an open-source project.
+Although we are not directly funded to maintain `metrica`, we care about
+reproducible science, like you. Thus, all contributions are more than
+welcome!
+
+There are multiple ways you can contribute to `metrica` such as asking
+questions, propose ideas, report bugs, improve the vignettes &
+documentation of functions, as well as contributing with code, of
+course.
+
+For comments, suggestions, and bug reports, we highly encourage to use
+[our GitHub issues
+section](https://github.com/adriancorrendo/metrica/issues).
+
+To improve the documentation and contribute with code, we encourage to
+[fork the
+repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
+and use [pull
+requests](https://docs.github.com/en/get-started/quickstart/contributing-to-projects#making-a-pull-request)
+to contribute code.
+
+## 6. Code of Conduct
+
+Please note that the metrica project is released with a [Contributor
+Code of
+Conduct](https://adriancorrendo.github.io/metrica/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

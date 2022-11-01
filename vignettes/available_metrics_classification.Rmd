@@ -93,6 +93,32 @@ _Note: All classification functions automatically recognize the number of classe
 
 <br/>
 
+_List of abbreviations:_
+P = positive (true + false)
+
+N = negative (true + false)
+
+TP = true positive
+
+TN = true negative
+
+FP = false positive
+
+FN = false negative
+
+TPR = true positive rate
+
+TNR = true negative rate
+
+FPR = false positive rate
+
+FNR = false negative rate
+
+PPV = positive predictive value
+
+B = coefficient B (a.k.a. beta) indicating the weight to be applied to the estimation of `fscore` (as {B^2}).
+
+
 ## References: <br/>
 
 01. Ting K.M. (2017). Confusion Matrix. _In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining. Springer, Boston, MA._ \doi{10.1007/978-1-4899-7687-1_50}
