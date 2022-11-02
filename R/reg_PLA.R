@@ -37,17 +37,18 @@ PLA <- function(data=NULL,
                 pred,
                 tidy = FALSE,
                 na.rm = TRUE){
-  MSE <- sum(({{obs}}-{{pred}})^2)/length({{obs}})
-  MLA <- sum ((
-    pred - ( (mean({{obs}}) - (sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
-                                 sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))*mean({{pred}}))) +
-               sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
-               sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}})) * {{pred}}))^2) / length({{obs}})
-  
+  # PLA = 100*(MLA/MSE)
   PLA <- rlang::eval_tidy(
     data = data,
     rlang::quo(
-    100 * (MLA / MSE)
+    100 * (
+      (sum ((pred - ( (mean({{obs}}) - 
+      (sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
+         sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))*mean({{pred}}))) +
+        sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
+        sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}})) * {{pred}}))^2) / length({{obs}}) )
+      
+      / (sum(({{obs}}-{{pred}})^2)/length({{obs}}) ) )
     )
   )
   
