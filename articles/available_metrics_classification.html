@@ -22,11 +22,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1.999</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,7 +77,7 @@
       <img src="" class="logo" alt=""><h1>Classification performance metrics and indices</h1>
                         <h4 data-toc-skip class="author">Luciana Nieto &amp; Adrian Correndo</h4>
             
-            <h4 data-toc-skip class="date">2022-07-29</h4>
+            <h4 data-toc-skip class="date">2022-11-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/vignettes/available_metrics_classification.Rmd" class="external-link"><code>vignettes/available_metrics_classification.Rmd</code></a></small>
       <div class="d-none name"><code>available_metrics_classification.Rmd</code></div>
@@ -307,20 +307,29 @@
 </tbody>
 </table>
 <p><br></p>
+<p><strong>List of abbreviations:</strong></p>
+<p>P = positive (true + false)</p>
+<p>N = negative (true + false)</p>
+<p>TP = true positive</p>
+<p>TN = true negative</p>
+<p>FP = false positive</p>
+<p>FN = false negative</p>
+<p>TPR = true positive rate</p>
+<p>TNR = true negative rate</p>
+<p>FPR = false positive rate</p>
+<p>FNR = false negative rate</p>
+<p>PPV = positive predictive value</p>
+<p>B = coefficient B (a.k.a. beta) indicating the weight to be applied to the estimation of <code>fscore</code> (as <span class="math inline">\(B^2\)</span>).</p>
 </div>
 <div class="section level2">
 <h2 id="references">References: <br><a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <ol style="list-style-type: decimal">
 <li><p>Ting K.M. (2017). Confusion Matrix. <em>In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining. Springer, Boston, MA.</em> </p></li>
-<li><ol start="2017" style="list-style-type: decimal">
-<li>Accuracy. <em>In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining</em> <em>. Springer, Boston, MA.</em> </li>
-</ol></li>
+<li><p>Accuracy. (2017). <em>In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining</em> <em>. Springer, Boston, MA.</em> </p></li>
 <li><p>García, V., Mollineda, R.A., Sánchez, J.S. (2009). Index of Balanced Accuracy: A Performance Measure for Skewed Class Distributions. <em>In: Araujo, H., Mendonça, A.M., Pinho, A.J., Torres, M.I. (eds) Pattern Recognition and Image Analysis. IbPRIA 2009. Lecture Notes in Computer Science, vol 5524. Springer-Verlag Berlin Heidelberg.</em> </p></li>
 <li><p>Ting K.M. (2017). Precision and Recall. <em>In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining. Springer, Boston, MA.</em> </p></li>
-<li><ol start="2017" style="list-style-type: decimal">
-<li>Sensitivity. <em>In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining. Springer, Boston, MA.</em> </li>
-</ol></li>
+<li><p>Sensitivity. (2017). <em>In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining. Springer, Boston, MA.</em> </p></li>
 <li><p>Ting K.M. (2017). Sensitivity and Specificity. <em>In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning and Data Mining. Springer, Boston, MA.</em> </p></li>
 <li><p>Trevethan, R. (2017). Sensitivity, Specificity, and Predictive Values: Foundations, Pliabilities, and Pitfalls in Research and Practice. <em>Front. Public Health 5:307</em> </p></li>
 <li><p>Goutte, C., Gaussier, E. (2005). A Probabilistic Interpretation of Precision, Recall and F-Score, with Implication for Evaluation. <em>In: D.E. Losada and J.M. Fernandez-Luna (Eds.): ECIR 2005. Advances in Information Retrieval LNCS 3408, pp. 345–359, 2. Springer-Verlag Berlin Heidelberg.</em> </p></li>

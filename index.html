@@ -22,11 +22,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
     
     <a class="navbar-brand me-2" href="index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1.999</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,19 +74,20 @@
 <div class="page-header"><h1 id="metrica-prediction-performance-metrics">metrica: Prediction performance metrics.<a class="anchor" aria-label="anchor" href="#metrica-prediction-performance-metrics"></a>
 </h1></div>
 <!-- badges: start -->
-
-<!-- badges: end --><div class="section level2">
+<p><a href="https://ci.appveyor.com/project/adriancorrendo/metrica" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&amp;svg=true" alt="AppVeyor build status"></a> <a href="https://github.com/adriancorrendo/metrica/actions" class="external-link"><img src="https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://app.codecov.io/gh/adriancorrendo/metrica" class="external-link"><img src="https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn" alt="codecov"></a> <a href="https://doi.org/10.5281/zenodo.6474101" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6474101.svg" alt="DOI"></a></p>
+<p><a href="https://joss.theoj.org/papers/c3113e0e3fe8c8f9f49d43fde5f4125f" class="external-link"><img src="https://joss.theoj.org/papers/c3113e0e3fe8c8f9f49d43fde5f4125f/status.svg" alt="status"></a> <!-- badges: end --></p>
+<div class="section level2">
 <h2 id="introduction--">Introduction <br><a class="anchor" aria-label="anchor" href="#introduction--"></a>
 </h2>
 <p><img src="reference/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;"><br><code>metrica</code> is a compilation of more than 80 functions designed to quantitatively and visually evaluate the prediction performance of regression (continuous variables) and classification (categorical variables) point-forecast models (e.g. APSIM, DSSAT, DNDC, Supervised Machine Learning). <code>metrica</code> offers a toolbox with a wide spectrum of goodness of fit, error metrics, indices, and coefficients accounting for different aspects of the agreement between predicted and observed values, plus some basic visualization functions to assess models performance (e.g. confusion matrix, scatter with regression line; Bland-Altman plot) provided in customizable format (ggplot).</p>
 <p>For supervised models, always keep in mind the concept of “cross-validation” since predicted values should ideally come from out-of-bag samples (unseen by training sets) to avoid overestimation of the prediction performance. <br></p>
-<p>Check the Documentation at <a href="https://adriancorrendo.github.io/metrica/" class="uri">https://adriancorrendo.github.io/metrica/</a> <br></p>
+<p>Check the Documentation at <a href="https://adriancorrendo.github.io/metrica/" class="external-link uri">https://adriancorrendo.github.io/metrica/</a> <br></p>
 <p><strong>Vignettes</strong> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html">1. List of metrics for Regression</a> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html">2. List of metrics for Classification</a> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/regression_case.html">3. A regression case (numerical variables)</a> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/classification_case.html">4. A classification case (categorical variables)</a> <br></p>
-<p><a href="https://adriancorrendo.github.io/metrica/articles/apsim_open.html">5. Import files from APSIM</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html" class="external-link">1. List of metrics for Regression</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html" class="external-link">2. List of metrics for Classification</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/regression_case.html" class="external-link">3. A regression case (numerical variables)</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/classification_case.html" class="external-link">4. A classification case (categorical variables)</a> <br></p>
+<p><a href="https://adriancorrendo.github.io/metrica/articles/apsim_open.html" class="external-link">5. Import files from APSIM</a> <br></p>
 </div>
 <div class="section level2">
 <h2 id="functions--">Functions <br><a class="anchor" aria-label="anchor" href="#functions--"></a>
@@ -94,7 +95,7 @@
 <p>For regression models, it includes 4 plotting functions (scatter, tiles, density, &amp; Bland-Altman plots), and 48 prediction performance scores including error metrics (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE, RRMSE, RSR, PBE, iqRMSE), error decomposition (MLA, MLP, PLA, PLP, PAB, PPB, SB, SDSD, LCS, Ub, Uc, Ue), model efficiency (NSE, E1, Erel, KGE), indices of agreement (d, d1, d1r, RAC, AC, lambda), goodness of fit (r, R2, RSS, TSS, RSE), adjusted correlation coefficients (CCC, Xa, distance correlation-dcorr-, maximal information coefficient -MIC-), variability (uSD, var_u), and symmetric regression coefficients (B0_sma, B1_sma). Specifically for time-series predictions, <code>metrica</code> also includes the Mean Absolute Scaled Error (MASE). <br></p>
 <p>For classification (binomial and multinomial) tasks, it includes a function to visualize the confusion matrix using ggplot2, and 27 functions of prediction scores including: accuracy, error rate, precision, recall, specificity, balanced accuracy (balacc), F-score (fscore), adjusted F-score (agf), G-mean (gmean), Bookmaker Informedness (bmi, a.k.a. Youden’s J-index), Markedness (deltaP), Matthews Correlation Coefficient (mcc), Cohen’s Kappa (khat), negative predictive value (npv), positive and negative likelihood ratios (posLr, negLr), diagnostic odds ratio (dor), prevalence (preval), prevalence threshold (preval_t), critical success index (csi, a.k.a. threat score), false positive rate (FPR), false negative rate (FNR), false detection rate (FDR), false omission rate (FOR), and area under the ROC curve (AUC_roc). <br></p>
 <p><code>metrica</code> also offers a function that allows users to run all prediction performance scores at once. The user just needs to specify the type of model (“regression” or “classification”). <br></p>
-<p>For more details visit the vignettes <a href="https://adriancorrendo.github.io/metrica/" class="uri">https://adriancorrendo.github.io/metrica/</a>.</p>
+<p>For more details visit the vignettes <a href="https://adriancorrendo.github.io/metrica/" class="external-link uri">https://adriancorrendo.github.io/metrica/</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="using-the-functions--">Using the functions <br><a class="anchor" aria-label="anchor" href="#using-the-functions--"></a>
@@ -152,9 +153,9 @@
 <h3 id="libraries">Libraries<a class="anchor" aria-label="anchor" href="#libraries"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adriancorrendo.github.io/metrica/">metrica</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adriancorrendo.github.io/metrica/" class="external-link">metrica</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span></code></pre></div>
 <p>This is a basic example which shows you the core regression and classification functions of <em>metrica</em>: <br></p>
@@ -186,7 +187,8 @@
 <h3 id="3111-create-a-customizable-scatter-plot-with-po-orientation">3.1.1.1. Create a customizable scatter plot with PO orientation<a class="anchor" aria-label="anchor" href="#3111-create-a-customizable-scatter-plot-with-po-orientation"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">barley.scat.plot</span> <span class="op">&lt;-</span> </span>
+<code class="sourceCode R"><span></span>
+<span><span class="va">barley.scat.plot</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/scatter_plot.html">scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, </span>
 <span>                        obs <span class="op">=</span> <span class="va">measured</span>, </span>
 <span>                        pred <span class="op">=</span> <span class="va">simulated</span>,</span>
@@ -207,7 +209,8 @@
 <span><span class="va">barley.scat.plot</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Alternative using vectors instead of dataframe</span></span>
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Alternative using vectors instead of dataframe</span></span>
 <span><span class="co">#metrica::scatter_plot(obs = example.data$obs, pred = example.data$pred)</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -291,7 +294,8 @@
 <h3 id="3122-metrics-summary">3.1.2.2. Metrics Summary<a class="anchor" aria-label="anchor" href="#3122-metrics-summary"></a>
 </h3>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">metrics.sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, </span>
+<code class="sourceCode R"><span></span>
+<span><span class="va">metrics.sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">example.data</span>, </span>
 <span>                               obs <span class="op">=</span> <span class="va">measured</span>, pred <span class="op">=</span> <span class="va">simulated</span>,</span>
 <span>                               type <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span>  </span>
 <span><span class="co"># Print first 15</span></span>
@@ -636,7 +640,8 @@
 <span><span class="co">#&gt; 2   recall 0.3202998</span></span>
 <span><span class="co">#&gt; 3   fscore 0.3202471</span></span></code></pre></div>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span></span>
+<span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   accuracy</span></span>
 <span><span class="co">#&gt; 1     0.32</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/error_rate.html">error_rate</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
@@ -727,7 +732,20 @@
 <div class="section level2">
 <h2 id="4-import-data-from-apsim">4. Import data from APSIM<a class="anchor" aria-label="anchor" href="#4-import-data-from-apsim"></a>
 </h2>
-<p>Please, visit the <a href="https://adriancorrendo.github.io/metrica/articles/apsim_open.html">vignette</a></p>
+<p>Please, visit the <a href="https://adriancorrendo.github.io/metrica/articles/apsim_open.html" class="external-link">vignette</a></p>
+</div>
+<div class="section level2">
+<h2 id="5-contributing-to-our-package">5. Contributing to our package<a class="anchor" aria-label="anchor" href="#5-contributing-to-our-package"></a>
+</h2>
+<p>Thank you for considering contributing to our open-source project. Although we are not directly funded to maintain <code>metrica</code>, we care about reproducible science, like you. Thus, all contributions are more than welcome!</p>
+<p>There are multiple ways you can contribute to <code>metrica</code> such as asking questions, propose ideas, report bugs, improve the vignettes &amp; documentation of functions, as well as contributing with code, of course.</p>
+<p>For comments, suggestions, and bug reports, we highly encourage to use <a href="https://github.com/adriancorrendo/metrica/issues" class="external-link">our GitHub issues section</a>.</p>
+<p>To improve the documentation and contribute with code, we encourage to <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork" class="external-link">fork the repo</a> and use <a href="https://docs.github.com/en/get-started/quickstart/contributing-to-projects#making-a-pull-request" class="external-link">pull requests</a> to contribute code.</p>
+</div>
+<div class="section level2">
+<h2 id="6-code-of-conduct">6. Code of Conduct<a class="anchor" aria-label="anchor" href="#6-code-of-conduct"></a>
+</h2>
+<p>Please note that the metrica project is released with a <a href="https://adriancorrendo.github.io/metrica/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -747,6 +765,12 @@
 </ul>
 </div>
 
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
@@ -776,10 +800,6 @@
 <li><a href="https://CRAN.R-project.org/package=metrica" class="external-link"><img src="https://www.r-pkg.org/badges/version/metrica" alt="CRAN status"></a></li>
 <li><a href="https://r-pkg.org/pkg/metrica" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/metrica?color=blue" alt="CRAN RStudio mirror downloads"></a></li>
 <li><a href="https://r-pkg.org/pkg/metrica" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/last-month/metrica?color=blue" alt="CRAN RStudio mirror downloads"></a></li>
-<li><a href="https://ci.appveyor.com/project/adriancorrendo/metrica" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
-<li><a href="https://github.com/adriancorrendo/metrica/actions" class="external-link"><img src="https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://app.codecov.io/gh/adriancorrendo/metrica" class="external-link"><img src="https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn" alt="codecov"></a></li>
-<li><a href="https://doi.org/10.5281/zenodo.6474101" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6474101.svg" alt="DOI"></a></li>
 </ul>
 </div>
 
