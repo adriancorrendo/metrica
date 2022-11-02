@@ -1,3 +1,24 @@
+# metrica 2.0.1.999
+
+* November 2nd, 2022. <br/>
+
+This new development version fixes minor bugs found in v2.0.1:
+
+1) Adding "Contributing"" and "Code of conduct"" sections to the README file.
+
+2) Adding "CODE_OF_CONDUCT.md" file.
+
+3) Adding a list of abbreviations used on the vignette "Available Classification Metrics".
+
+4) Fixing a bug on the PLA and PLP formulas, which were not working when the `data` argument was specified.
+
+5) Corrects, on the DESCRIPTION file, the minimum R version required (from 2.1.0 to 3.6.2)
+
+
+######################################################################################################
+
+- PREVIOUS VERSIONS
+
 # metrica 2.0.1
 
 * July 23th, 2022. <br/>
@@ -10,10 +31,6 @@ This new version fixes minor bugs found in v2.0.0:
 
 3) printing metrics on confusion matrix, which produced a NaN when printing 9 metrics.
 
-
-######################################################################################################
-
-- PREVIOUS VERSIONS
 
 # metrica 2.0.0
 

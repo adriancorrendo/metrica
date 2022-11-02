@@ -17,3 +17,4 @@
 ^pkgdown$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+^CODE_OF_CONDUCT\.md$

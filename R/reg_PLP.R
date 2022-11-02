@@ -36,21 +36,24 @@ PLP <- function(data=NULL,
                 pred,
                 tidy = FALSE,
                 na.rm = TRUE){
-  MSE <- sum(({{obs}}-{{pred}})^2)/length({{obs}})
-  MLP <- sum (abs({{obs}} - ((mean({{obs}}) -
-                                (sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
-                                   sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))*mean({{pred}}))) +
-                               sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
-                               sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}})) * {{pred}})) *
-                abs({{pred}} - ((mean({{pred}}) - (sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))/
-                                                     sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))*mean({{obs}}))) +
-                                  sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))/
-                                  sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}})) * {{obs}}) ) ) /
-    length({{obs}})
+  # 100 * (MLP / MSE)
+  
   PLP <- rlang::eval_tidy(
     data = data,
     rlang::quo(
-    100 * (MLP / MSE)
+    100 * (
+      (sum (abs({{obs}} - ((mean({{obs}}) -
+       (sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
+      sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))*mean({{pred}}))) +
+                      sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))/
+        sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}})) * {{pred}})) *
+      abs({{pred}} - ((mean({{pred}}) - (sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))/
+        sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}}))*mean({{obs}}))) +
+                     sqrt(sum(({{pred}} - mean({{pred}}))^2)/length({{pred}}))/
+         sqrt(sum(({{obs}} - mean({{obs}}))^2)/length({{obs}})) * {{obs}}) ) ) /
+        length({{obs}}) )
+           / (sum(({{obs}}-{{pred}})^2)/length({{obs}}) )
+             )
     )
   )
   
