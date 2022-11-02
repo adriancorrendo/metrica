@@ -791,7 +791,7 @@ Please, visit the
 
 ## 5. Contributing to our package
 
-Thank you for considering contributing to our an open-source project.
+Thank you for considering contributing to our open-source project.
 Although we are not directly funded to maintain `metrica`, we care about
 reproducible science, like you. Thus, all contributions are more than
 welcome!

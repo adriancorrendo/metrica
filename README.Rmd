@@ -447,7 +447,7 @@ Please, visit the [vignette](https://adriancorrendo.github.io/metrica/articles/a
   
 ## 5. Contributing to our package
 
-Thank you for considering contributing to our an open-source project. Although we are not directly funded to maintain `metrica`, we care about reproducible science, like you. Thus, all contributions are more than welcome!
+Thank you for considering contributing to our open-source project. Although we are not directly funded to maintain `metrica`, we care about reproducible science, like you. Thus, all contributions are more than welcome!
 
 There are multiple ways you can contribute to `metrica` such as asking questions, propose ideas, report bugs, improve the vignettes & documentation of functions, as well as contributing with code, of course. 
 
