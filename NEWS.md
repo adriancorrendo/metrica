@@ -1,6 +1,6 @@
 # metrica 2.0.1.999
 
-* November 2nd, 2022. <br/>
+* November 4th, 2022. <br/>
 
 This new development version fixes minor bugs found in v2.0.1:
 
@@ -14,6 +14,7 @@ This new development version fixes minor bugs found in v2.0.1:
 
 5) Corrects, on the DESCRIPTION file, the minimum R version required (from 2.1.0 to 3.6.2)
 
+6) Including an "extdata" directory containing APSIM example files (soybean.out & soybean.example.db)
 
 ######################################################################################################
 
