@@ -60,11 +60,11 @@ Finally, it is noteworthy that in the area of agricultural sciences, although po
 
 For regression models, `metrica` includes four plotting functions (scatter, tiles, density, & Bland-Altman plots) using `ggplot2` [@ggplot_book], and 48 prediction performance metrics. For classification models (two-class or multi-class), it includes one function to visualize a confusion matrix, and 26 functions of prediction scores. The full list of metrics with description, formula, and literature sources is presented in the package documentation at:
 
-- Regression metrics: https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html.
+- [Regression metrics vignette](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html).
 
-- Classification metrics: https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html.
+- [Classification metrics vignette](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html).
 
-To extent of our knowledge, *metrica* covers several functions not supported, or partially supported by similar R packages (or components) designed for model evaluation such as `yardstick` [@yardstick_manual] from `tidymodels` [@tidymodels_manual], the measuring performance components from `caret` [@caret_manual] or `mlr3` [@mlr3_paper], `Metrics` [@Metrics_manual], `hydroGOF` [@hydroGOF_manual], `cvms` [@cvms_package], `scoringutils`[@scoringutils_package], or `performance` [@performance_paper]. Unique features include:
+To the best of our knowledge, *metrica* covers several functions not supported, or partially supported by similar R packages (or components) designed for model evaluation such as `yardstick` [@yardstick_manual] from `tidymodels` [@tidymodels_manual], the measuring performance components from `caret` [@caret_manual] or `mlr3` [@mlr3_paper], `Metrics` [@Metrics_manual], `hydroGOF` [@hydroGOF_manual], `cvms` [@cvms_package], `scoringutils`[@scoringutils_package], or `performance` [@performance_paper]. Unique features include:
 
 - one of the most extensive collections of prediction performance metrics for regression and classification models in R.
 
@@ -84,25 +84,25 @@ To extent of our knowledge, *metrica* covers several functions not supported, or
 
 ## Using the functions
 
-There are two core arguments to all *metrica* functions: (i) `obs`(Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values.
+There are two core arguments to all *metrica* functions: (i) `obs` (Oi; observed, a.k.a. actual, measured, truth, target, label), and (ii) `pred` (Pi; predicted, a.k.a. simulated, fitted, modeled, estimate) values.
 
 For regression, specific functions such as scatter_plot() require defining the axis `orientation` (*e.g.* predicted vs. observed -PO- or observed vs. predicted -OP-). For two-class models, the `pos_level` argument serves to indicate the alphanumeric order of the “positive level”. For multi-class classification, some functions present the `atom` argument (TRUE / FALSE), which controls the output to be an overall average estimate across all classes (default), or class-wise.
 
 ## Example 1: Regression (continuous variables)
 
-The following scatter plot is an output example of regression performance analysis using the scatter_plot() function for the native dataset called `wheat`.
+Figure 1 is an output example of regression performance analysis using the scatter_plot() function for the native dataset called `wheat`.
 
 ![Predicted vs. Observed scatter plot using metrica::scatter_plot().](man/figures/Figure_2_JOSS.png)
 
 ### Example 2: Classification (categorical variables)
 
-The following confusion matrix plot is an output example of classification performance analysis using the confustion_matrix() function for the native dataset called `maize_phenology`.
+Figure 2 is an output example of classification performance analysis using the confustion_matrix() function for the native dataset called `maize_phenology`.
 
 ![Confusion matrix plot using metrica::confusion_matrix().](man/figures/Figure_3_JOSS.png)
 
 # Documentation & License
 
-The complete documentation and vignettes of *metrica* are available online at https://adriancorrendo.github.io/metrica/.  The package is under the MIT License (https://opensource.org/licenses/MIT). Source code is available at GitHub (https://github.com/adriancorrendo/metrica) along with its corresponding section to report issues and suggestions (https://github.com/adriancorrendo/metrica/issues).
+The complete documentation and vignettes of *metrica* are available online at [https://adriancorrendo.github.io/metrica/](https://adriancorrendo.github.io/metrica/). The package is under the MIT License ([https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)). Source code is available at GitHub ([https://github.com/adriancorrendo/metrica](https://github.com/adriancorrendo/metrica)) along with its corresponding section to report issues and suggestions ([https://github.com/adriancorrendo/metrica/issues](https://github.com/adriancorrendo/metrica/issues)).
 
 # Acknowledgements
 
