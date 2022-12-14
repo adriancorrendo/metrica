@@ -34,7 +34,7 @@ RRMSE <- function(data=NULL,
   RRMSE <- rlang::eval_tidy(
     data = data,
     rlang::quo(
-    sqrt(sum(({{obs}}-{{pred}})^2)/length({{obs}})) / (mean({{obs}}))
+    100*sqrt(sum(({{obs}}-{{pred}})^2)/length({{obs}})) / (mean({{obs}}))
     )
   )
   if (tidy==TRUE){ return(as.data.frame(RRMSE)) }
