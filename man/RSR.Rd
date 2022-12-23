@@ -29,7 +29,7 @@ following Moriasi et al. (2007).
 }
 \details{
 The RSR normalizes the Root Mean Squared Error (RMSE) using the standard
-deviation of observed values. It goes from  a optimal value of 0 to infinity.
+deviation of observed values. It goes from an optimal value of 0 to infinity.
 Based on RSR, Moriasi et al. (2007) indicates performance ratings as:
 i) very-good (0-0.50), ii) good (0.50-0.60), iii) satisfactory (0.60-0.70), or
 iv) unsatisfactory (>0.70).

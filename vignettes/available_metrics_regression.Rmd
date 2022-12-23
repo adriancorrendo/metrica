@@ -77,9 +77,9 @@ describing the bivariate scatter (SMA). <br/>
 |20| `PPB` | Percentage Proportional Bias | Percentage of the MSE related to systematic proportionality issues on the predictions. Related to slope of regression line describing the bivariate scatter | $PPB = 100 \frac{S_O S_P}{\frac{1}{n} \sum{(P_i - O_i)^2}}$ |
 |21| `MSE` | Mean Squared Error |  Comprises both accuracy and precision. High sensitivity to outliers | $MSE = \frac{1}{n} \sum{(P_i - O_i)^2}$ |
 |22| `RMSE` | Root Mean Squared Error |  Comprises both precision and accuracy, has the same units than the variable of interest. Very sensitive to outliers | $RMSE = \sqrt{\frac{1}{n} \sum{(P_i - O_i)^2}}$ |
-|23| `RRMSE` | Relative Root Mean Squared Error |  RMSE normalized by the mean of observations | $RRMSE = 100\frac{\sqrt{\frac{1}{n} \sum{(P_i - O_i)^2}}}{\bar{O}}$ |
-|24| `RSR` | Root Mean Standard Deviation Ratio | RMSE normalized by the standard deviation of observations. Moriasi et al. (2007) | $RSR = 100\frac{1}{n} \sum{(P_i - O_i)^2}$ |
-|25| `iqRMSE` | Inter-quartile Normalized Root Mean Squared Error |  RMSE normalized by the interquartile range length (between percentiles 25th and 75th) | $iqRMSE = 100\frac{\sqrt{\frac{1}{n} \sum{(P_i - O_i)^2}}}{[75^{th} percentile - 25^{th} percentile]}$ |
+|23| `RRMSE` | Relative Root Mean Squared Error |  RMSE normalized by the mean of observations | $RRMSE = \frac{\sqrt{\frac{1}{n} \sum{(P_i - O_i)^2}}}{\bar{O}}$ |
+|24| `RSR` | Root Mean Standard Deviation Ratio | RMSE normalized by the standard deviation of observations. Moriasi et al. (2007) | $RSR = \frac{1}{n} \sum{(P_i - O_i)^2}$ |
+|25| `iqRMSE` | Inter-quartile Normalized Root Mean Squared Error |  RMSE normalized by the interquartile range length (between percentiles 25th and 75th) | $iqRMSE = \frac{\sqrt{\frac{1}{n} \sum{(P_i - O_i)^2}}}{[75^{th} percentile - 25^{th} percentile]}$ |
 |26| `MLA` | Mean Lack of Accuracy | Bias component of MSE decomposition. Correndo et al. (2021) | $MLA = (\bar{O}-\bar{P})^2 + (S_O - S_P)^2$ |
 |27| `MLP` | Mean Lack of Precision | Variance component of MSE decomposition. Correndo et al. (2021)  | $MLP = 2 S_O S_P (1-r)$ |
 |28| `RMLA` | Root Mean Lack of Accuracy | Bias component of MSE decomposition expressed on the original units of interest. Correndo et al. (2021) | $RMLA = \sqrt{(\bar{O}-\bar{P})^2 + (S_O - S_P)^2}$ |

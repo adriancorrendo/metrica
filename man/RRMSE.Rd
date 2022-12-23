@@ -27,7 +27,7 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 It estimates the RRMSE for a continuous predicted-observed dataset.
 }
 \details{
-The RRMSE (\%) normalizes the Root Mean Squared Error (RMSE) by the mean
+The RRMSE normalizes the Root Mean Squared Error (RMSE) by the mean
 of observations. It goes from 0 to infinity. The lower the better the prediction performance.
 In literature, it can be also found as NRMSE (normalized root mean squared error).
 However, here we use RRMSE since several other alternatives to

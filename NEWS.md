@@ -1,5 +1,9 @@
 # metrica 2.0.1.999
 
+* December 22nd, 2022. <br/>
+
+7) Fix typos in the documentation of RRMSE, RSR, and iqRMSE, which formulas were corrected (removing 100 from the beginning of formulas.
+
 * November 3rd, 2022. <br/>
 
 This new development version fixes minor bugs found in v2.0.1:
