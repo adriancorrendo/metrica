@@ -1,297 +1,297 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/404.html</loc>
   </url>
   <url>
-    <loc>/CODE_OF_CONDUCT.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/articles/apsim_open.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/articles/apsim_open.html</loc>
   </url>
   <url>
-    <loc>/articles/available_metrics_classification.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html</loc>
   </url>
   <url>
-    <loc>/articles/available_metrics_regression.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html</loc>
   </url>
   <url>
-    <loc>/articles/classification_case.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/articles/classification_case.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/regression_case.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/articles/regression_case.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/index.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/AC.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/AC.html</loc>
   </url>
   <url>
-    <loc>/reference/AUC_roc.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/AUC_roc.html</loc>
   </url>
   <url>
-    <loc>/reference/B0_sma.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/B0_sma.html</loc>
   </url>
   <url>
-    <loc>/reference/B1_sma.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/B1_sma.html</loc>
   </url>
   <url>
-    <loc>/reference/CCC.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/CCC.html</loc>
   </url>
   <url>
-    <loc>/reference/E1.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/E1.html</loc>
   </url>
   <url>
-    <loc>/reference/Erel.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/Erel.html</loc>
   </url>
   <url>
-    <loc>/reference/KGE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/KGE.html</loc>
   </url>
   <url>
-    <loc>/reference/LCS.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/LCS.html</loc>
   </url>
   <url>
-    <loc>/reference/MAE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/MAE.html</loc>
   </url>
   <url>
-    <loc>/reference/MAPE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/MAPE.html</loc>
   </url>
   <url>
-    <loc>/reference/MASE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/MASE.html</loc>
   </url>
   <url>
-    <loc>/reference/MBE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/MBE.html</loc>
   </url>
   <url>
-    <loc>/reference/MIC.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/MIC.html</loc>
   </url>
   <url>
-    <loc>/reference/MLA.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/MLA.html</loc>
   </url>
   <url>
-    <loc>/reference/MLP.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/MLP.html</loc>
   </url>
   <url>
-    <loc>/reference/MSE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/MSE.html</loc>
   </url>
   <url>
-    <loc>/reference/NSE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/NSE.html</loc>
   </url>
   <url>
-    <loc>/reference/PAB.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/PAB.html</loc>
   </url>
   <url>
-    <loc>/reference/PBE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/PBE.html</loc>
   </url>
   <url>
-    <loc>/reference/PLA.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/PLA.html</loc>
   </url>
   <url>
-    <loc>/reference/PLP.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/PLP.html</loc>
   </url>
   <url>
-    <loc>/reference/PPB.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/PPB.html</loc>
   </url>
   <url>
-    <loc>/reference/R2.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/R2.html</loc>
   </url>
   <url>
-    <loc>/reference/RAC.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RAC.html</loc>
   </url>
   <url>
-    <loc>/reference/RAE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RAE.html</loc>
   </url>
   <url>
-    <loc>/reference/RMAE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RMAE.html</loc>
   </url>
   <url>
-    <loc>/reference/RMLA.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RMLA.html</loc>
   </url>
   <url>
-    <loc>/reference/RMLP.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RMLP.html</loc>
   </url>
   <url>
-    <loc>/reference/RMSE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RMSE.html</loc>
   </url>
   <url>
-    <loc>/reference/RRMSE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RRMSE.html</loc>
   </url>
   <url>
-    <loc>/reference/RSE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RSE.html</loc>
   </url>
   <url>
-    <loc>/reference/RSR.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RSR.html</loc>
   </url>
   <url>
-    <loc>/reference/RSS.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/RSS.html</loc>
   </url>
   <url>
-    <loc>/reference/SB.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/SB.html</loc>
   </url>
   <url>
-    <loc>/reference/SDSD.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/SDSD.html</loc>
   </url>
   <url>
-    <loc>/reference/SMAPE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/SMAPE.html</loc>
   </url>
   <url>
-    <loc>/reference/TSS.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/TSS.html</loc>
   </url>
   <url>
-    <loc>/reference/Ub.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/Ub.html</loc>
   </url>
   <url>
-    <loc>/reference/Uc.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/Uc.html</loc>
   </url>
   <url>
-    <loc>/reference/Ue.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/Ue.html</loc>
   </url>
   <url>
-    <loc>/reference/Xa.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/Xa.html</loc>
   </url>
   <url>
-    <loc>/reference/accuracy.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/accuracy.html</loc>
   </url>
   <url>
-    <loc>/reference/agf.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/agf.html</loc>
   </url>
   <url>
-    <loc>/reference/balacc.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/balacc.html</loc>
   </url>
   <url>
-    <loc>/reference/barley.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/barley.html</loc>
   </url>
   <url>
-    <loc>/reference/bland_altman_plot.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/bland_altman_plot.html</loc>
   </url>
   <url>
-    <loc>/reference/bmi.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/bmi.html</loc>
   </url>
   <url>
-    <loc>/reference/chickpea.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/chickpea.html</loc>
   </url>
   <url>
-    <loc>/reference/confusion_matrix.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/confusion_matrix.html</loc>
   </url>
   <url>
-    <loc>/reference/csi.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/csi.html</loc>
   </url>
   <url>
-    <loc>/reference/d.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/d.html</loc>
   </url>
   <url>
-    <loc>/reference/d1.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/d1.html</loc>
   </url>
   <url>
-    <loc>/reference/d1r.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/d1r.html</loc>
   </url>
   <url>
-    <loc>/reference/dcorr.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/dcorr.html</loc>
   </url>
   <url>
-    <loc>/reference/deltap.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/deltap.html</loc>
   </url>
   <url>
-    <loc>/reference/density_plot.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/density_plot.html</loc>
   </url>
   <url>
-    <loc>/reference/error_rate.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/error_rate.html</loc>
   </url>
   <url>
-    <loc>/reference/fmi.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/fmi.html</loc>
   </url>
   <url>
-    <loc>/reference/fscore.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/fscore.html</loc>
   </url>
   <url>
-    <loc>/reference/gmean.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/gmean.html</loc>
   </url>
   <url>
-    <loc>/reference/import_apsim_db.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/import_apsim_db.html</loc>
   </url>
   <url>
-    <loc>/reference/import_apsim_out.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/import_apsim_out.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/iqRMSE.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/iqRMSE.html</loc>
   </url>
   <url>
-    <loc>/reference/khat.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/khat.html</loc>
   </url>
   <url>
-    <loc>/reference/lambda.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/lambda.html</loc>
   </url>
   <url>
-    <loc>/reference/land_cover.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/land_cover.html</loc>
   </url>
   <url>
-    <loc>/reference/likelihood_ratios.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/likelihood_ratios.html</loc>
   </url>
   <url>
-    <loc>/reference/maize_phenology.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/maize_phenology.html</loc>
   </url>
   <url>
-    <loc>/reference/mcc.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/mcc.html</loc>
   </url>
   <url>
-    <loc>/reference/metrica-package.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/metrica-package.html</loc>
   </url>
   <url>
-    <loc>/reference/metrics_summary.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/metrics_summary.html</loc>
   </url>
   <url>
-    <loc>/reference/npv.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/npv.html</loc>
   </url>
   <url>
-    <loc>/reference/precision.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/precision.html</loc>
   </url>
   <url>
-    <loc>/reference/prevalence.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/prevalence.html</loc>
   </url>
   <url>
-    <loc>/reference/r.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/r.html</loc>
   </url>
   <url>
-    <loc>/reference/recall.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/recall.html</loc>
   </url>
   <url>
-    <loc>/reference/scatter_plot.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/scatter_plot.html</loc>
   </url>
   <url>
-    <loc>/reference/sorghum.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/sorghum.html</loc>
   </url>
   <url>
-    <loc>/reference/specificity.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/specificity.html</loc>
   </url>
   <url>
-    <loc>/reference/tiles_plot.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/tiles_plot.html</loc>
   </url>
   <url>
-    <loc>/reference/uSD.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/uSD.html</loc>
   </url>
   <url>
-    <loc>/reference/var_u.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/var_u.html</loc>
   </url>
   <url>
-    <loc>/reference/wheat.html</loc>
+    <loc>https://adriancorrendo.github.io/metrica/reference/wheat.html</loc>
   </url>
 </urlset>

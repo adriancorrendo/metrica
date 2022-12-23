@@ -8,10 +8,10 @@
 <meta name="description" content="metrica">
 <title>Classification case: Assessing the performance of remote sensing models • metrica</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification case: Assessing the performance of remote sensing models">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification case: Assessing the performance of remote sensing models">
 <meta property="og:description" content="metrica">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -72,12 +72,14 @@
 
 
 
-<script src="classification_case_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Classification case: Assessing the performance of remote sensing models</h1>
-                        <h4 data-toc-skip class="author">Luciana Nieto &amp; Adrian Correndo</h4>
+                        <h4 data-toc-skip class="author">Luciana Nieto
+&amp; Adrian Correndo</h4>
             
-            <h4 data-toc-skip class="date">2022-11-04</h4>
+            <h4 data-toc-skip class="date">2022-12-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/vignettes/classification_case.Rmd" class="external-link"><code>vignettes/classification_case.Rmd</code></a></small>
       <div class="d-none name"><code>classification_case.Rmd</code></div>
@@ -88,25 +90,36 @@
 <div class="section level2">
 <h2 id="introduction">1. Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p><img src="../reference/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;"><br> The <em><code>metrica</code></em> package was developed to visualize and compute the level of agreement between observed ground-truth values and model-derived (e.g., mechanistic or empirical) predicted.</p>
+<p><img src="../reference/figures/metrica_logo.png" align="right" height="150" style="float:right; height:150px;"><br> The <em><code>metrica</code></em> package was developed to
+visualize and compute the level of agreement between observed
+ground-truth values and model-derived (e.g., mechanistic or empirical)
+predicted.</p>
 <p>This package is intended to fit into the following workflow:</p>
 <ol style="list-style-type: decimal">
-<li>a data set containing the observed values is used to train a model<br>
+<li>a data set containing the observed values is used to train a
+model<br>
 </li>
 <li>the trained model is used to generate predicted<br>
 </li>
-<li>a data frame containing at least the <strong>observed</strong> and model-<strong>predicted</strong> values is created<br>
+<li>a data frame containing at least the <strong>observed</strong> and
+model-<strong>predicted</strong> values is created<br>
 </li>
 <li>
-<em><code>metrica</code></em> package is used to compute and evaluate the classification model based on observed and predicted values<br>
+<em><code>metrica</code></em> package is used to compute and
+evaluate the classification model based on observed and predicted
+values<br>
 </li>
 <li>
-<em><code>metrica</code></em> package is used to visualize model fit and selected fit metrics</li>
+<em><code>metrica</code></em> package is used to visualize model fit
+and selected fit metrics</li>
 </ol>
-<p>This vignette introduces the functionality of the <em><code>metrica</code></em> package applied to observed and model-predicted values of a binary land cover classification scenario, where the two classes are vegetation (1) and non-vegetation (0)).</p>
+<p>This vignette introduces the functionality of the
+<em><code>metrica</code></em> package applied to observed and
+model-predicted values of a binary land cover classification scenario,
+where the two classes are vegetation (1) and non-vegetation (0)).</p>
 <p>Let’s begin by loading the packages needed. <br> ## Libraries</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adriancorrendo.github.io/metrica/" class="external-link">metrica</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adriancorrendo.github.io/metrica/">metrica</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span></code></pre></div>
@@ -120,10 +133,14 @@
 <p><br></p>
 <p><img src="../reference/figures/land_cover_example.png" align="right" height="500" style="float:right; height:500px;"></p>
 <p><br></p>
-<p>Now we load the binary <code>land_cover</code> data set already included with the <code>metrica</code> package. This data set contains two columns: <br></p>
+<p>Now we load the binary <code>land_cover</code> data set already
+included with the <code>metrica</code> package. This data set contains
+two columns: <br></p>
 <ul>
-<li><p><code>predicted</code>: model-predicted (random forest) land cover, being vegetation = 1 and other = 0, <br></p></li>
-<li><p><code>actual</code>: ground-truth observed land cover, being 0 = vegetation and 1 = other <br></p></li>
+<li><p><code>predicted</code>: model-predicted (random forest) land
+cover, being vegetation = 1 and other = 0, <br></p></li>
+<li><p><code>actual</code>: ground-truth observed land cover, being 0 =
+vegetation and 1 = other <br></p></li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load</span></span>
@@ -145,7 +162,11 @@
 <p><br></p>
 <p><img src="../reference/figures/maize_phenology_example.png" align="right" height="500" style="float:right; height:500px;"></p>
 <p><br></p>
-<p>Now we load the multinomial <code>maize_phenology</code> data set, which is also already included with the <code>metrica</code> package. This multiclass data set presents 16 different classes corresponding to phenological stages of the maize (<em>Zea Mays</em> (L.)) crop. <br></p>
+<p>Now we load the multinomial <code>maize_phenology</code> data set,
+which is also already included with the <code>metrica</code> package.
+This multiclass data set presents 16 different classes corresponding to
+phenological stages of the maize (<em>Zea Mays</em> (L.)) crop.
+<br></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load</span></span>
 <span><span class="va">multi_maize_phen</span> <span class="op">&lt;-</span> <span class="fu">metrica</span><span class="fu">::</span><span class="va"><a href="../reference/maize_phenology.html">maize_phenology</a></span></span>
@@ -167,15 +188,22 @@
 <div class="section level3">
 <h3 id="confusion-matrix">3.1 Confusion matrix<a class="anchor" aria-label="anchor" href="#confusion-matrix"></a>
 </h3>
-<p>The simplest way to visually assess agreement between observed and predicted classes is with a confusion matrix. <br></p>
-<p>We can use the function <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code> from the <em>metrica</em> package. <br></p>
+<p>The simplest way to visually assess agreement between observed and
+predicted classes is with a confusion matrix. <br></p>
+<p>We can use the function <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code> from the
+<em>metrica</em> package. <br></p>
 <p>The function requires specifying: <br></p>
 <ul>
-<li><p>the data frame object name (<code>data</code> argument) <br></p></li>
-<li><p>the name of the column containing observed values (<code>obs</code> argument) <br></p></li>
-<li><p>the name of the column containing predicted values (<code>pred</code> argument) <br></p></li>
+<li><p>the data frame object name (<code>data</code> argument)
+<br></p></li>
+<li><p>the name of the column containing observed values
+(<code>obs</code> argument) <br></p></li>
+<li><p>the name of the column containing predicted values
+(<code>pred</code> argument) <br></p></li>
 </ul>
-<p>The output of the <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code> function is either a table (<code>plot = FALSE</code>) or a <code>ggplot2</code> object (<code>plot = TRUE</code>) that can be further customized: <br></p>
+<p>The output of the <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code> function is either
+a table (<code>plot = FALSE</code>) or a <code>ggplot2</code> object
+(<code>plot = TRUE</code>) that can be further customized: <br></p>
 </div>
 <div class="section level3">
 <h3 id="binary">3.1. Binary<a class="anchor" aria-label="anchor" href="#binary"></a>
@@ -243,22 +271,38 @@
 <div class="section level2">
 <h2 id="numerical-assessment-of-agreement">4. Numerical assessment of agreement <br><a class="anchor" aria-label="anchor" href="#numerical-assessment-of-agreement"></a>
 </h2>
-<p>The <em>metrica</em> package contains functions for <strong>26</strong> scoring rules to assess the agreement between observed and predicted values for classification data. <br></p>
-<p>A list with all the the classification metrics including their name, definition, details, formula, and function name, please check <a href="https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html" class="external-link">here</a>. <br></p>
+<p>The <em>metrica</em> package contains functions for
+<strong>26</strong> scoring rules to assess the agreement between
+observed and predicted values for classification data. <br></p>
+<p>A list with all the the classification metrics including their name,
+definition, details, formula, and function name, please check <a href="https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html">here</a>.
+<br></p>
 <p>All of the metric functions take at least three arguments: <br></p>
 <ul>
-<li><p>the data frame object name (<code>data</code> argument, optional) <br></p></li>
-<li><p>the name of the column containing observed values (<code>obs</code> argument) <br></p></li>
-<li><p>the name of the column containing predicted values (<code>pred</code> argument) <br></p></li>
-<li><p>an integer (1 or 2) indicating the alphanumerical order of the positive event (<code>pos_level</code> argument, Default = 2) <br></p></li>
-<li><p>a TRUE/FALSE indicating to estimate metrics for each single class (<code>atom</code> argument, Default = FALSE). This argument is only functional for multiclass datasets. <br></p></li>
-<li><p>a TRUE/FALSE indicating to store the numeric result as a list (<code>tidy</code> argument, Default = FALSE), or as a data frame (tidy = TRUE). <br></p></li>
+<li><p>the data frame object name (<code>data</code> argument, optional)
+<br></p></li>
+<li><p>the name of the column containing observed values
+(<code>obs</code> argument) <br></p></li>
+<li><p>the name of the column containing predicted values
+(<code>pred</code> argument) <br></p></li>
+<li><p>an integer (1 or 2) indicating the alphanumerical order of the
+positive event (<code>pos_level</code> argument, Default = 2)
+<br></p></li>
+<li><p>a TRUE/FALSE indicating to estimate metrics for each single class
+(<code>atom</code> argument, Default = FALSE). This argument is only
+functional for multiclass datasets. <br></p></li>
+<li><p>a TRUE/FALSE indicating to store the numeric result as a list
+(<code>tidy</code> argument, Default = FALSE), or as a data frame (tidy
+= TRUE). <br></p></li>
 </ul>
 <div class="section level3">
 <h3 id="single-metrics">4.1. Single metrics<a class="anchor" aria-label="anchor" href="#single-metrics"></a>
 </h3>
-<p>The user can choose to calculate a single metric, or to calculate all metrics at once. <br></p>
-<p>To calculate a single metric, the metric function can be called. For example, to calculate <span class="math inline">\(accuracy\)</span>, we can use the <code><a href="../reference/accuracy.html">accuracy()</a></code> function:</p>
+<p>The user can choose to calculate a single metric, or to calculate all
+metrics at once. <br></p>
+<p>To calculate a single metric, the metric function can be called. For
+example, to calculate <span class="math inline">\(accuracy\)</span>, we
+can use the <code><a href="../reference/accuracy.html">accuracy()</a></code> function:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Binary</span></span>
 <span><span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -269,7 +313,8 @@
 <span><span class="va">maize_phenology</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    accuracy</span></span>
 <span><span class="co">#&gt; 1 0.8834951</span></span></code></pre></div>
-<p>Or considering imbalanced observations across classes we can call the <code><a href="../reference/balacc.html">balacc()</a></code> function for balanced accuracy:</p>
+<p>Or considering imbalanced observations across classes we can call the
+<code><a href="../reference/balacc.html">balacc()</a></code> function for balanced accuracy:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Binary</span></span>
 <span><span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/balacc.html">balacc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -280,7 +325,8 @@
 <span><span class="va">maize_phenology</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/balacc.html">balacc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      balacc</span></span>
 <span><span class="co">#&gt; 1 0.9160466</span></span></code></pre></div>
-<p>Similarly, to calculate precision, we can use the <code><a href="../reference/precision.html">precision()</a></code> function: <br></p>
+<p>Similarly, to calculate precision, we can use the
+<code><a href="../reference/precision.html">precision()</a></code> function: <br></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Binary</span></span>
 <span><span class="va">binary_landCover</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/precision.html">precision</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -295,7 +341,8 @@
 <div class="section level3">
 <h3 id="metrics-summary">4.2. Metrics summary<a class="anchor" aria-label="anchor" href="#metrics-summary"></a>
 </h3>
-<p>The user can also calculate all metrics at once using the function <code><a href="../reference/metrics_summary.html">metrics_summary()</a></code>: <br></p>
+<p>The user can also calculate all metrics at once using the function
+<code><a href="../reference/metrics_summary.html">metrics_summary()</a></code>: <br></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Get all at once with metrics_summary()</span></span>
@@ -372,7 +419,10 @@
 <span><span class="co">#&gt; 24      preval          NaN</span></span>
 <span><span class="co">#&gt; 25    preval_t          NaN</span></span>
 <span><span class="co">#&gt; 26     AUC_roc 9.160466e-01</span></span></code></pre></div>
-<p>Alternatively, if the user is only looking for specific metrics, within the same function <code><a href="../reference/metrics_summary.html">metrics_summary()</a></code>, the user can pass a list of desired metrics using the argument “metrics_list” as follows: <br></p>
+<p>Alternatively, if the user is only looking for specific metrics,
+within the same function <code><a href="../reference/metrics_summary.html">metrics_summary()</a></code>, the user can
+pass a list of desired metrics using the argument “metrics_list” as
+follows: <br></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get a selected list at once with metrics_summary()</span></span>
 <span><span class="va">selected_class_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"accuracy"</span>, <span class="st">"precision"</span>, <span class="st">"recall"</span>, <span class="st">"fscore"</span><span class="op">)</span></span>
@@ -413,7 +463,11 @@
 <div class="section level3">
 <h3 id="class-wise-metrics-atom-true">4.3. Class wise metrics (<code>atom</code> = TRUE)<a class="anchor" aria-label="anchor" href="#class-wise-metrics-atom-true"></a>
 </h3>
-<p>For multiclass cases, most of the classification metrics can (and should) be estimated at the class level and not simply as an overall average across classes. With the exceptions of kappa (khat), mcc, fmi, and AUC_roc, all classification metrics can be estimated at the class level using the argument <code>atom = TRUE</code>, as follows:</p>
+<p>For multiclass cases, most of the classification metrics can (and
+should) be estimated at the class level and not simply as an overall
+average across classes. With the exceptions of kappa (khat), mcc, fmi,
+and AUC_roc, all classification metrics can be estimated at the class
+level using the argument <code>atom = TRUE</code>, as follows:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Precision</span></span>
 <span><span class="va">maize_phenology</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="../reference/precision.html">precision</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, atom <span class="op">=</span> <span class="cn">TRUE</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -510,7 +564,9 @@
 <div class="section level3">
 <h3 id="multiple-models">4.4. Multiple models<a class="anchor" aria-label="anchor" href="#multiple-models"></a>
 </h3>
-<p>In some cases, multiple runs of a model are available to compare vs. observed values (e.g. cross-validation folds). Thus, we can also fit the agreement analysis for several datasets as follows: <br></p>
+<p>In some cases, multiple runs of a model are available to compare
+vs. observed values (e.g. cross-validation folds). Thus, we can also fit
+the agreement analysis for several datasets as follows: <br></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span>
@@ -701,7 +757,9 @@
 <div class="section level3">
 <h3 id="customizing-the-confusion-matrix">5.1. Customizing the confusion matrix <br><a class="anchor" aria-label="anchor" href="#customizing-the-confusion-matrix"></a>
 </h3>
-<p>To print the metrics on the <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code>, just use print.metrics = TRUE. Warning: do not forget to specify your ‘metrics.list’ and choice wisely: <br></p>
+<p>To print the metrics on the <code><a href="../reference/confusion_matrix.html">confusion_matrix()</a></code>, just use
+print.metrics = TRUE. Warning: do not forget to specify your
+‘metrics.list’ and choice wisely: <br></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">selected_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"accuracy"</span>, <span class="st">"precision"</span>, <span class="st">"recall"</span>, <span class="st">"khat"</span>,</span>
@@ -752,7 +810,8 @@
 <span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
 <span>  </span>
 <span><span class="va">multinomial_matrix_metrics</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-2.png" width="720"> Also, as a ggplot element, outputs are flexible of further edition:</p>
+<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-2.png" width="720">
+Also, as a ggplot element, outputs are flexible of further edition:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">binary_matrix_metrics</span> <span class="op">+</span></span>
@@ -777,14 +836,16 @@
 <div class="section level2">
 <h2 id="exporting">6. Exporting<a class="anchor" aria-label="anchor" href="#exporting"></a>
 </h2>
-<p>To export the metrics summary table, the user can simply write it to file with the function <code><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv()</a></code>:</p>
+<p>To export the metrics summary table, the user can simply write it to
+file with the function <code><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv()</a></code>:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">binary_landCover</span>,</span>
 <span>                obs <span class="op">=</span> <span class="va">obs</span>, </span>
 <span>                pred <span class="op">=</span> <span class="va">pred</span>,</span>
 <span>                type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv</a></span><span class="op">(</span><span class="st">"binary_landcover_metrics_summary.csv"</span><span class="op">)</span></span></code></pre></div>
-<p>Similarly, to export a plot, the user can simply write it to file with the function <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave()</a></code>:</p>
+<p>Similarly, to export a plot, the user can simply write it to file
+with the function <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave()</a></code>:</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="va">multinomial_matrix_metrics</span>,</span>
@@ -805,7 +866,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
     </footer>

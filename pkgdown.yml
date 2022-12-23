@@ -1,5 +1,5 @@
-pandoc: 2.7.3
-pkgdown: 2.0.6
+pandoc: 2.19.2
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   apsim_open: apsim_open.html
@@ -7,5 +7,8 @@ articles:
   available_metrics_regression: available_metrics_regression.html
   classification_case: classification_case.html
   regression_case: regression_case.html
-last_built: 2022-11-04T15:40Z
+last_built: 2022-12-23T02:02Z
+urls:
+  reference: https://adriancorrendo.github.io/metrica/reference
+  article: https://adriancorrendo.github.io/metrica/articles
 
