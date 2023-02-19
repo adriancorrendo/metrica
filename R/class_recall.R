@@ -1,4 +1,4 @@
-#' @title Recall | Sensitivity  
+#' @title Recall | Sensitivity | True Positive Rate
 #' @name recall
 #' @description \code{recall} estimates the recall (a.k.a. sensitivity or true 
 #' positive rate -TPR-) for a nominal/categorical predicted-observed dataset.
@@ -125,6 +125,21 @@ recall <- function(data=NULL, obs, pred,
   if (tidy == FALSE) {
     return(list("recall" = recall)) } 
 }
+#' @rdname recall
+#' @description \code{TNR} alternative renamed version of `recall()`.
+#' @export
+#' 
+TPR <- function(data = NULL, obs, pred, 
+                atom = FALSE, pos_level = 2, 
+                tidy = FALSE, na.rm = TRUE) {
+  res <- recall(
+    data = data, obs = obs, pred = pred, 
+    atom = FALSE, pos_level = 2, 
+    tidy = FALSE, na.rm = TRUE
+    )
+  return(res)
+  }
+
 #' @rdname recall
 #' @description \code{FNR} estimates false negative rate (or false alarm, or fall-out)
 #' for a nominal/categorical predicted-observed dataset.

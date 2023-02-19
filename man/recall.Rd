@@ -2,10 +2,21 @@
 % Please edit documentation in R/class_recall.R
 \name{recall}
 \alias{recall}
+\alias{TPR}
 \alias{FNR}
-\title{Recall | Sensitivity}
+\title{Recall | Sensitivity | True Positive Rate}
 \usage{
 recall(
+  data = NULL,
+  obs,
+  pred,
+  atom = FALSE,
+  pos_level = 2,
+  tidy = FALSE,
+  na.rm = TRUE
+)
+
+TPR(
   data = NULL,
   obs,
   pred,
@@ -54,6 +65,8 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \description{
 \code{recall} estimates the recall (a.k.a. sensitivity or true
 positive rate -TPR-) for a nominal/categorical predicted-observed dataset.
+
+\code{TNR} alternative renamed version of \code{recall()}.
 
 \code{FNR} estimates false negative rate (or false alarm, or fall-out)
 for a nominal/categorical predicted-observed dataset.

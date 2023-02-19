@@ -1,4 +1,4 @@
-#' @title Specificity  
+#' @title Specificity  | True Negative Rate
 #' @name specificity
 #' @description \code{specificity} estimates the specificity (a.k.a. selectivity, 
 #' or true negative rate -TNR-)  
@@ -166,5 +166,21 @@ FPR <- function(data=NULL, obs, pred,
    
 }
 NULL
+#' @rdname specificity
+#' @description \code{TNR} alternative renamed version of `specificity()`.
+#' @export
+#' 
+TNR <- function(
+  data=NULL, obs = NULL, pred = NULL, 
+  atom = FALSE, pos_level = 2, 
+  tidy = FALSE, na.rm = TRUE
+  ) {
+  res <- specificity(
+    data = data, obs = obs, pred = pred, 
+    atom = FALSE, pos_level = 2, 
+    tidy = FALSE, na.rm = TRUE
+  )
+  return(res)
+  }
 
 
