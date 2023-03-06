@@ -93,6 +93,7 @@ test_that('no error recall_6', {expect_false(inherits(recall_6.test, "try-error"
 test_that('no error recall_7', {expect_false(inherits(recall_7.test, "try-error")) })
 test_that('no error recall_8', {expect_false(inherits(recall_8.test, "try-error")) })
 
+# 4.b
 sensitivity_1.test <- sensitivity(data = binary, obs = labels, pred = predictions, tidy = FALSE, atom = FALSE, pos_level = 1)
 sensitivity_2.test <- sensitivity(data = binary, obs = labels, pred = predictions, tidy = TRUE, atom = FALSE, pos_level = 1)
 sensitivity_3.test <- sensitivity(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = FALSE)
@@ -112,6 +113,7 @@ test_that('no error sensitivity_6', {expect_false(inherits(sensitivity_6.test, "
 test_that('no error sensitivity_7', {expect_false(inherits(sensitivity_7.test, "try-error")) })
 test_that('no error sensitivity_8', {expect_false(inherits(sensitivity_8.test, "try-error")) })
 
+# 4.c
 TPR_1.test <- TPR(data = binary, obs = labels, pred = predictions, tidy = FALSE, atom = FALSE, pos_level = 1)
 TPR_2.test <- TPR(data = binary, obs = labels, pred = predictions, tidy = TRUE, atom = FALSE, pos_level = 1)
 TPR_3.test <- TPR(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = FALSE)
@@ -131,6 +133,7 @@ test_that('no error TPR_6', {expect_false(inherits(TPR_6.test, "try-error")) })
 test_that('no error TPR_7', {expect_false(inherits(TPR_7.test, "try-error")) })
 test_that('no error TPR_8', {expect_false(inherits(TPR_8.test, "try-error")) })
 
+# 4.d
 hitrate_1.test <- hitrate(data = binary, obs = labels, pred = predictions, tidy = FALSE, atom = FALSE, pos_level = 1)
 hitrate_2.test <- hitrate(data = binary, obs = labels, pred = predictions, tidy = TRUE, atom = FALSE, pos_level = 1)
 hitrate_3.test <- hitrate(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = FALSE)
@@ -168,6 +171,7 @@ test_that('no error specificity_5', {expect_false(inherits(specificity_5.test, "
 test_that('no error specificity_6', {expect_false(inherits(specificity_6.test, "try-error")) })
 test_that('no error specificity_7', {expect_false(inherits(specificity_7.test, "try-error")) })
 
+# 5.b
 selectivity_1.test <- selectivity(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
 selectivity_2.test <- selectivity(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 1)
 selectivity_3.test <- selectivity(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
@@ -185,6 +189,7 @@ test_that('no error selectivity_5', {expect_false(inherits(selectivity_5.test, "
 test_that('no error selectivity_6', {expect_false(inherits(selectivity_6.test, "try-error")) })
 test_that('no error selectivity_7', {expect_false(inherits(selectivity_7.test, "try-error")) })
 
+# 5.c
 TNR_1.test <- TNR(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
 TNR_2.test <- TNR(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 1)
 TNR_3.test <- TNR(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
