@@ -1,7 +1,7 @@
-#' @title Recall | Sensitivity  
+#' @title Recall | Sensitivity | True Positive Rate | Hit rate
 #' @name recall
-#' @description \code{recall} estimates the recall (a.k.a. sensitivity or true 
-#' positive rate -TPR-) for a nominal/categorical predicted-observed dataset.
+#' @description \code{recall} estimates the recall (a.k.a. sensitivity, true 
+#' positive rate -TPR-, or hit rate) for a nominal/categorical predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character | factor).
 #' @param pred Vector with predicted values (character | factor).
@@ -29,6 +29,10 @@
 #' Values towards zero indicate low performance. It can be either estimated for 
 #' each particular class or at a global level.
 #' 
+#' Metrica offers 4 identical alternative functions that do the same job: i) \code{recall},
+#' ii) \code{sensitivity}, iii) \code{TPR}, and iv) \code{hitrate}. However, consider 
+#' when using \code{metrics_summary}, only the \code{recall} alternative is used.
+#'
 #' The false negative rate (or false alarm, or fall-out) is the complement of the 
 #' recall, representing the ratio between the number of false negatives (FN) 
 #' to the actual number of positives (P). The \code{FNR} formula is:
@@ -95,8 +99,8 @@ recall <- function(data=NULL, obs, pred,
   if (nrow(matrix) == 2){
     
     if (pos_level == 1){
-    TP <- matrix[[1]]
-    TPFN <- matrix[[1]] + matrix[[2]] }
+      TP <- matrix[[1]]
+      TPFN <- matrix[[1]] + matrix[[2]] }
     
     if (pos_level == 2){
       TP <- matrix[[4]]
@@ -125,6 +129,147 @@ recall <- function(data=NULL, obs, pred,
   if (tidy == FALSE) {
     return(list("recall" = recall)) } 
 }
+#' @rdname recall
+#' @description \code{TPR} alternative to `recall()`.
+#' @export
+#' 
+TPR <- function(data=NULL, obs, pred, 
+                atom = FALSE, pos_level = 2, 
+                tidy = FALSE, na.rm = TRUE){
+  # True Positive Rate
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}}) ) )
+  
+  # If binomial, atom arg. doesn't apply
+  if (nrow(matrix) == 2){
+    
+    if (pos_level == 1){
+      TP <- matrix[[1]]
+      TPFN <- matrix[[1]] + matrix[[2]] }
+    
+    if (pos_level == 2){
+      TP <- matrix[[4]]
+      TPFN <- matrix[[4]] + matrix[[3]] }
+    
+    
+    TPR <- TP/ (TPFN) }
+  
+  if (nrow(matrix) >2) {
+    
+    # Calculations
+    correct <- diag(matrix)
+    total_actual <- colSums(matrix) 
+    
+    if (atom == FALSE) { 
+      TPR <- mean(correct / total_actual) }
+    
+    # Overall
+    if (atom == TRUE) { 
+      TPR <- correct / total_actual }
+  }
+  
+  if (tidy == TRUE) {
+    return(as.data.frame(TPR)) }
+  
+  if (tidy == FALSE) {
+    return(list("TPR" = TPR)) } 
+}
+
+#' @rdname recall
+#' @description \code{sensitivity} alternative to `recall()`.
+#' @export
+#' 
+sensitivity <- function(data=NULL, obs, pred, 
+                        atom = FALSE, pos_level = 2, 
+                        tidy = FALSE, na.rm = TRUE){
+  # True Positive Rate
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}}) ) )
+  
+  # If binomial, atom arg. doesn't apply
+  if (nrow(matrix) == 2){
+    
+    if (pos_level == 1){
+      TP <- matrix[[1]]
+      TPFN <- matrix[[1]] + matrix[[2]] }
+    
+    if (pos_level == 2){
+      TP <- matrix[[4]]
+      TPFN <- matrix[[4]] + matrix[[3]] }
+    
+    
+    sensitivity <- TP/ (TPFN) }
+  
+  if (nrow(matrix) >2) {
+    
+    # Calculations
+    correct <- diag(matrix)
+    total_actual <- colSums(matrix) 
+    
+    if (atom == FALSE) { 
+      sensitivity <- mean(correct / total_actual) }
+    
+    # Overall
+    if (atom == TRUE) { 
+      sensitivity <- correct / total_actual }
+  }
+  
+  if (tidy == TRUE) {
+    return(as.data.frame(sensitivity)) }
+  
+  if (tidy == FALSE) {
+    return(list("Sensitivity" = sensitivity)) } 
+}
+
+#' @rdname recall
+#' @description \code{hitrate} alternative to `recall()`.
+#' @export
+#' 
+hitrate <- function(data=NULL, obs, pred, 
+                    atom = FALSE, pos_level = 2, 
+                    tidy = FALSE, na.rm = TRUE){
+  # True Positive Rate
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}}) ) )
+  
+  # If binomial, atom arg. doesn't apply
+  if (nrow(matrix) == 2){
+    
+    if (pos_level == 1){
+      TP <- matrix[[1]]
+      TPFN <- matrix[[1]] + matrix[[2]] }
+    
+    if (pos_level == 2){
+      TP <- matrix[[4]]
+      TPFN <- matrix[[4]] + matrix[[3]] }
+    
+    
+    hitrate <- TP/ (TPFN) }
+  
+  if (nrow(matrix) >2) {
+    
+    # Calculations
+    correct <- diag(matrix)
+    total_actual <- colSums(matrix) 
+    
+    if (atom == FALSE) { 
+      hitrate <- mean(correct / total_actual) }
+    
+    # Overall
+    if (atom == TRUE) { 
+      hitrate <- correct / total_actual }
+  }
+  
+  if (tidy == TRUE) {
+    return(as.data.frame(hitrate)) }
+  
+  if (tidy == FALSE) {
+    return(list("HitRate" = hitrate)) } 
+}
+
 #' @rdname recall
 #' @description \code{FNR} estimates false negative rate (or false alarm, or fall-out)
 #' for a nominal/categorical predicted-observed dataset.

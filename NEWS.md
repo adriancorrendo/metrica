@@ -1,5 +1,12 @@
 # metrica 2.0.1.999
 
+* March 6th, 2023. <br/>
+
+8) Add alternative functions to recall performing identical job such as (i) sensitivity, (ii) True Positive Rate -TPR-, and (iii) Hit Rate -hitrate-.
+
+9) Add alternative functions to specificity performing identical job such as (i) selectivity, (ii) True Negative Rate -TNR-.
+
+
 * December 22nd, 2022. <br/>
 
 7) Fix typos in the documentation of RRMSE, RSR, and iqRMSE, which formulas were corrected (removing 100 from the beginning of formulas.

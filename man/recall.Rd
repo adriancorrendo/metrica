@@ -2,10 +2,43 @@
 % Please edit documentation in R/class_recall.R
 \name{recall}
 \alias{recall}
+\alias{TPR}
+\alias{sensitivity}
+\alias{hitrate}
 \alias{FNR}
-\title{Recall | Sensitivity}
+\title{Recall | Sensitivity | True Positive Rate | Hit rate}
 \usage{
 recall(
+  data = NULL,
+  obs,
+  pred,
+  atom = FALSE,
+  pos_level = 2,
+  tidy = FALSE,
+  na.rm = TRUE
+)
+
+TPR(
+  data = NULL,
+  obs,
+  pred,
+  atom = FALSE,
+  pos_level = 2,
+  tidy = FALSE,
+  na.rm = TRUE
+)
+
+sensitivity(
+  data = NULL,
+  obs,
+  pred,
+  atom = FALSE,
+  pos_level = 2,
+  tidy = FALSE,
+  na.rm = TRUE
+)
+
+hitrate(
   data = NULL,
   obs,
   pred,
@@ -52,8 +85,14 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \verb{data frame} (if tidy = TRUE).
 }
 \description{
-\code{recall} estimates the recall (a.k.a. sensitivity or true
-positive rate -TPR-) for a nominal/categorical predicted-observed dataset.
+\code{recall} estimates the recall (a.k.a. sensitivity, true
+positive rate -TPR-, or hit rate) for a nominal/categorical predicted-observed dataset.
+
+\code{TPR} alternative to \code{recall()}.
+
+\code{sensitivity} alternative to \code{recall()}.
+
+\code{hitrate} alternative to \code{recall()}.
 
 \code{FNR} estimates false negative rate (or false alarm, or fall-out)
 for a nominal/categorical predicted-observed dataset.
@@ -69,6 +108,10 @@ For binomial cases, \eqn{recall  =  \frac{TP}{P} = \frac{TP}{TP + FN} }
 The \code{recall} metric is bounded between 0 and 1. The closer to 1 the better.
 Values towards zero indicate low performance. It can be either estimated for
 each particular class or at a global level.
+
+Metrica offers 4 identical alternative functions that do the same job: i) \code{recall},
+ii) \code{sensitivity}, iii) \code{TPR}, and iv) \code{hitrate}. However, consider
+when using \code{metrics_summary}, only the \code{recall} alternative is used.
 
 The false negative rate (or false alarm, or fall-out) is the complement of the
 recall, representing the ratio between the number of false negatives (FN)

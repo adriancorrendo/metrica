@@ -2,10 +2,32 @@
 % Please edit documentation in R/class_specificity.R
 \name{specificity}
 \alias{specificity}
+\alias{selectivity}
+\alias{TNR}
 \alias{FPR}
-\title{Specificity}
+\title{Specificity  | Selectivity | True Negative Rate}
 \usage{
 specificity(
+  data = NULL,
+  obs,
+  pred,
+  atom = FALSE,
+  pos_level = 2,
+  tidy = FALSE,
+  na.rm = TRUE
+)
+
+selectivity(
+  data = NULL,
+  obs,
+  pred,
+  atom = FALSE,
+  pos_level = 2,
+  tidy = FALSE,
+  na.rm = TRUE
+)
+
+TNR(
   data = NULL,
   obs,
   pred,
@@ -56,6 +78,10 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 or true negative rate -TNR-)
 for a nominal/categorical predicted-observed dataset.
 
+\code{selectivity} alternative to \code{specificity()}.
+
+\code{TNR} alternative to \code{specificity()}.
+
 \code{FPR} estimates the false positive rate (a.k.a fall-out or false alarm)
 for a nominal/categorical predicted-observed dataset.
 }
@@ -70,6 +96,10 @@ For binomial cases, \eqn{specificity  =  \frac{TN}{N} = \frac{TN}{TN+FP}}
 The \code{specificity} metric is bounded between 0 and 1. The closer to 1 the better.
 Values towards zero indicate low performance. For multinomial cases, it can be
 either estimated for each particular class or at a global level.
+
+Metrica offers 3 identical alternative functions that do the same job: i) \code{specificity},
+ii) \code{selectivity}, and iii) \code{TNR}. However, consider
+when using \code{metrics_summary}, only the \code{specificity} alternative is used.
 
 The false positive rate (or false alarm, or fall-out) is the complement of the
 specificity, representing the ratio between the number of false positives (FP)
