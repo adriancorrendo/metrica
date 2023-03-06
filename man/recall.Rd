@@ -3,10 +3,15 @@
 \name{recall}
 \alias{recall}
 \alias{TPR}
+<<<<<<< HEAD
 \alias{sensitivity}
 \alias{hitrate}
 \alias{FNR}
 \title{Recall | Sensitivity | True Positive Rate | Hit rate}
+=======
+\alias{FNR}
+\title{Recall | Sensitivity | True Positive Rate}
+>>>>>>> master
 \usage{
 recall(
   data = NULL,
@@ -28,6 +33,7 @@ TPR(
   na.rm = TRUE
 )
 
+<<<<<<< HEAD
 sensitivity(
   data = NULL,
   obs,
@@ -48,6 +54,8 @@ hitrate(
   na.rm = TRUE
 )
 
+=======
+>>>>>>> master
 FNR(
   data = NULL,
   obs,
@@ -93,6 +101,8 @@ positive rate -TPR-, or hit rate) for a nominal/categorical predicted-observed d
 \code{sensitivity} alternative to \code{recall()}.
 
 \code{hitrate} alternative to \code{recall()}.
+
+\code{TNR} alternative renamed version of \code{recall()}.
 
 \code{FNR} estimates false negative rate (or false alarm, or fall-out)
 for a nominal/categorical predicted-observed dataset.

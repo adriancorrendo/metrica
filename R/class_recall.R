@@ -134,8 +134,13 @@ recall <- function(data=NULL, obs, pred,
 #' @export
 #' 
 TPR <- function(data=NULL, obs, pred, 
+<<<<<<< HEAD
                 atom = FALSE, pos_level = 2, 
                 tidy = FALSE, na.rm = TRUE){
+=======
+                   atom = FALSE, pos_level = 2, 
+                   tidy = FALSE, na.rm = TRUE){
+>>>>>>> master
   # True Positive Rate
   matrix <- rlang::eval_tidy(
     data = data,
@@ -145,8 +150,13 @@ TPR <- function(data=NULL, obs, pred,
   if (nrow(matrix) == 2){
     
     if (pos_level == 1){
+<<<<<<< HEAD
       TP <- matrix[[1]]
       TPFN <- matrix[[1]] + matrix[[2]] }
+=======
+    TP <- matrix[[1]]
+    TPFN <- matrix[[1]] + matrix[[2]] }
+>>>>>>> master
     
     if (pos_level == 2){
       TP <- matrix[[4]]
@@ -175,14 +185,23 @@ TPR <- function(data=NULL, obs, pred,
   if (tidy == FALSE) {
     return(list("TPR" = TPR)) } 
 }
+<<<<<<< HEAD
 
+=======
+#'
+>>>>>>> master
 #' @rdname recall
 #' @description \code{sensitivity} alternative to `recall()`.
 #' @export
 #' 
 sensitivity <- function(data=NULL, obs, pred, 
+<<<<<<< HEAD
                         atom = FALSE, pos_level = 2, 
                         tidy = FALSE, na.rm = TRUE){
+=======
+                   atom = FALSE, pos_level = 2, 
+                   tidy = FALSE, na.rm = TRUE){
+>>>>>>> master
   # True Positive Rate
   matrix <- rlang::eval_tidy(
     data = data,
@@ -192,8 +211,13 @@ sensitivity <- function(data=NULL, obs, pred,
   if (nrow(matrix) == 2){
     
     if (pos_level == 1){
+<<<<<<< HEAD
       TP <- matrix[[1]]
       TPFN <- matrix[[1]] + matrix[[2]] }
+=======
+    TP <- matrix[[1]]
+    TPFN <- matrix[[1]] + matrix[[2]] }
+>>>>>>> master
     
     if (pos_level == 2){
       TP <- matrix[[4]]
@@ -222,14 +246,23 @@ sensitivity <- function(data=NULL, obs, pred,
   if (tidy == FALSE) {
     return(list("Sensitivity" = sensitivity)) } 
 }
+<<<<<<< HEAD
 
+=======
+#'
+>>>>>>> master
 #' @rdname recall
 #' @description \code{hitrate} alternative to `recall()`.
 #' @export
 #' 
 hitrate <- function(data=NULL, obs, pred, 
+<<<<<<< HEAD
                     atom = FALSE, pos_level = 2, 
                     tidy = FALSE, na.rm = TRUE){
+=======
+                   atom = FALSE, pos_level = 2, 
+                   tidy = FALSE, na.rm = TRUE){
+>>>>>>> master
   # True Positive Rate
   matrix <- rlang::eval_tidy(
     data = data,
@@ -239,8 +272,13 @@ hitrate <- function(data=NULL, obs, pred,
   if (nrow(matrix) == 2){
     
     if (pos_level == 1){
+<<<<<<< HEAD
       TP <- matrix[[1]]
       TPFN <- matrix[[1]] + matrix[[2]] }
+=======
+    TP <- matrix[[1]]
+    TPFN <- matrix[[1]] + matrix[[2]] }
+>>>>>>> master
     
     if (pos_level == 2){
       TP <- matrix[[4]]
@@ -269,7 +307,11 @@ hitrate <- function(data=NULL, obs, pred,
   if (tidy == FALSE) {
     return(list("HitRate" = hitrate)) } 
 }
+<<<<<<< HEAD
 
+=======
+#'
+>>>>>>> master
 #' @rdname recall
 #' @description \code{FNR} estimates false negative rate (or false alarm, or fall-out)
 #' for a nominal/categorical predicted-observed dataset.
