@@ -139,26 +139,15 @@ selectivity <- function(data=NULL, obs, pred,
   if (nrow(matrix) == 2){ 
     
     if (pos_level == 1){ 
-<<<<<<< HEAD
       
       TN <- matrix[[4]]
       TNFP <- matrix[[4]] + matrix[[3]] }
-=======
-    
-    TN <- matrix[[4]]
-    TNFP <- matrix[[4]] + matrix[[3]] }
->>>>>>> master
     
     if (pos_level == 2){
       TN <- matrix[[1]]
       TNFP <- matrix[[1]] + matrix[[2]] }
-<<<<<<< HEAD
     
     selectivity <- TN / TNFP  }
-=======
-      
-      selectivity <- TN / TNFP  }
->>>>>>> master
   
   # If multinomial
   if (nrow(matrix) > 2) {
@@ -169,13 +158,8 @@ selectivity <- function(data=NULL, obs, pred,
     TN   <- sum(matrix) - (TPFP + TPFN - TP)
     FP   <- TPFP - TP 
     
-<<<<<<< HEAD
     if (atom == TRUE) { selectivity <- TN / (TN + FP) }
     
-=======
-  if (atom == TRUE) { selectivity <- TN / (TN + FP) }
-  
->>>>>>> master
     if (atom == FALSE) { selectivity <- mean(TN / (TN + FP)) }
   }
   
@@ -190,13 +174,8 @@ selectivity <- function(data=NULL, obs, pred,
 #' @export
 #' 
 TNR <- function(data=NULL, obs, pred, 
-<<<<<<< HEAD
                 atom = FALSE, pos_level = 2, 
                 tidy = FALSE, na.rm = TRUE){
-=======
-                        atom = FALSE, pos_level = 2, 
-                        tidy = FALSE, na.rm = TRUE){
->>>>>>> master
   # Selectivity  
   matrix <- rlang::eval_tidy(
     data = data,
@@ -208,26 +187,15 @@ TNR <- function(data=NULL, obs, pred,
   if (nrow(matrix) == 2){ 
     
     if (pos_level == 1){ 
-<<<<<<< HEAD
       
       TN <- matrix[[4]]
       TNFP <- matrix[[4]] + matrix[[3]] }
-=======
-    
-    TN <- matrix[[4]]
-    TNFP <- matrix[[4]] + matrix[[3]] }
->>>>>>> master
     
     if (pos_level == 2){
       TN <- matrix[[1]]
       TNFP <- matrix[[1]] + matrix[[2]] }
-<<<<<<< HEAD
     
     TNR <- TN / TNFP  }
-=======
-      
-      TNR <- TN / TNFP  }
->>>>>>> master
   
   # If multinomial
   if (nrow(matrix) > 2) {
@@ -238,13 +206,8 @@ TNR <- function(data=NULL, obs, pred,
     TN   <- sum(matrix) - (TPFP + TPFN - TP)
     FP   <- TPFP - TP 
     
-<<<<<<< HEAD
     if (atom == TRUE) { TNR <- TN / (TN + FP) }
     
-=======
-  if (atom == TRUE) { TNR <- TN / (TN + FP) }
-  
->>>>>>> master
     if (atom == FALSE) { TNR <- mean(TN / (TN + FP)) }
   }
   

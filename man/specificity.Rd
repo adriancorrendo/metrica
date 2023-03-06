@@ -5,12 +5,7 @@
 \alias{selectivity}
 \alias{TNR}
 \alias{FPR}
-<<<<<<< HEAD
 \title{Specificity  | Selectivity | True Negative Rate}
-=======
-\alias{TNR}
-\title{Specificity  | True Negative Rate}
->>>>>>> master
 \usage{
 specificity(
   data = NULL,
@@ -46,16 +41,6 @@ FPR(
   data = NULL,
   obs,
   pred,
-  atom = FALSE,
-  pos_level = 2,
-  tidy = FALSE,
-  na.rm = TRUE
-)
-
-TNR(
-  data = NULL,
-  obs = NULL,
-  pred = NULL,
   atom = FALSE,
   pos_level = 2,
   tidy = FALSE,
@@ -99,8 +84,6 @@ for a nominal/categorical predicted-observed dataset.
 
 \code{FPR} estimates the false positive rate (a.k.a fall-out or false alarm)
 for a nominal/categorical predicted-observed dataset.
-
-\code{TNR} alternative renamed version of \code{specificity()}.
 }
 \details{
 The specificity (or selectivity, or true negative rate-TNR-) is a non-normalized
