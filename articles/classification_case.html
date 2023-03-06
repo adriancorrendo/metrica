@@ -79,7 +79,7 @@
                         <h4 data-toc-skip class="author">Luciana Nieto
 &amp; Adrian Correndo</h4>
             
-            <h4 data-toc-skip class="date">2022-12-23</h4>
+            <h4 data-toc-skip class="date">2023-03-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/vignettes/classification_case.Rmd" class="external-link"><code>vignettes/classification_case.Rmd</code></a></small>
       <div class="d-none name"><code>classification_case.Rmd</code></div>
@@ -381,12 +381,12 @@ can use the <code><a href="../reference/accuracy.html">accuracy()</a></code> fun
 <span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~actual, pred = ~predicted, : For</span></span>
 <span><span class="co">#&gt; multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
 <span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~actual, pred = ~predicted, pos_level =</span></span>
-<span><span class="co">#&gt; pos_level): For multiclass cases, the agf should be estimated at a class level.</span></span>
-<span><span class="co">#&gt; Please, consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~actual, pred = ~predicted, pos_level =</span></span>
-<span><span class="co">#&gt; pos_level): The Fowlkes-Mallows Index is not available for multiclass cases. The</span></span>
-<span><span class="co">#&gt; result has been recorded as NaN.</span></span>
+<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~actual, pred = ~predicted, pos_level</span></span>
+<span><span class="co">#&gt; = pos_level): For multiclass cases, the agf should be estimated at a class</span></span>
+<span><span class="co">#&gt; level. Please, consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~actual, pred = ~predicted, pos_level</span></span>
+<span><span class="co">#&gt; = pos_level): The Fowlkes-Mallows Index is not available for multiclass cases.</span></span>
+<span><span class="co">#&gt; The result has been recorded as NaN.</span></span>
 <span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~actual, pred = ~predicted, : For</span></span>
 <span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
 <span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
@@ -443,12 +443,12 @@ follows: <br></p>
 <span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~actual, pred = ~predicted, : For</span></span>
 <span><span class="co">#&gt; multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
 <span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~actual, pred = ~predicted, pos_level =</span></span>
-<span><span class="co">#&gt; pos_level): For multiclass cases, the agf should be estimated at a class level.</span></span>
-<span><span class="co">#&gt; Please, consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~actual, pred = ~predicted, pos_level =</span></span>
-<span><span class="co">#&gt; pos_level): The Fowlkes-Mallows Index is not available for multiclass cases. The</span></span>
-<span><span class="co">#&gt; result has been recorded as NaN.</span></span>
+<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~actual, pred = ~predicted, pos_level</span></span>
+<span><span class="co">#&gt; = pos_level): For multiclass cases, the agf should be estimated at a class</span></span>
+<span><span class="co">#&gt; level. Please, consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~actual, pred = ~predicted, pos_level</span></span>
+<span><span class="co">#&gt; = pos_level): The Fowlkes-Mallows Index is not available for multiclass cases.</span></span>
+<span><span class="co">#&gt; The result has been recorded as NaN.</span></span>
 <span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~actual, pred = ~predicted, : For</span></span>
 <span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
 <span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
@@ -577,7 +577,7 @@ the agreement analysis for several datasets as follows: <br></p>
 <span>                     predicted <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, <span class="fl">285</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># a. Create nested df with the folds</span></span>
-<span><span class="va">binary_nested_folds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fold_1 <span class="op">=</span> <span class="va">binary_landCover</span>, </span>
+<span><span class="va">binary_nested_folds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fold_1 <span class="op">=</span> <span class="va">binary_landCover</span>, </span>
 <span>                                      fold_2 <span class="op">=</span> <span class="va">fold_2</span>,</span>
 <span>                                      fold_3 <span class="op">=</span> <span class="va">fold_3</span><span class="op">)</span>,</span>
 <span>                             .id <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -601,7 +601,7 @@ the agreement analysis for several datasets as follows: <br></p>
 <span>                                                       obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, </span>
 <span>                                                       type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">data</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">performance</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">performance</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">Metric</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">binary_folds_summary</span><span class="op">)</span></span>
@@ -609,12 +609,12 @@ the agreement analysis for several datasets as follows: <br></p>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [3]</span></span></span>
 <span><span class="co">#&gt;   id     Metric   Score</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fold_1 accuracy 0.958</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> fold_2 accuracy 0.435</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> fold_3 accuracy 0.516</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> fold_1 agf      0.939</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> fold_2 agf      0.393</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> fold_3 agf      0.518</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fold_1 AUC_roc 0.418 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> fold_2 AUC_roc 0.446 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> fold_3 AUC_roc 0.513 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> fold_1 FDR     0.061<span style="text-decoration: underline;">2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> fold_2 FDR     0.620 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> fold_3 FDR     0.471</span></span></code></pre></div>
 <div class="section level4">
 <h4 id="non-nested-data">4.4.1. Non-nested data <br><a class="anchor" aria-label="anchor" href="#non-nested-data"></a>
 </h4>
@@ -623,7 +623,7 @@ the agreement analysis for several datasets as follows: <br></p>
 <h4 id="using-group_map">4.4.1.1. Using <code>group_map()</code> <br><a class="anchor" aria-label="anchor" href="#using-group_map"></a>
 </h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">non_nested_folds</span> <span class="op">&lt;-</span> <span class="va">binary_nested_folds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span> </span>
+<code class="sourceCode R"><span><span class="va">non_nested_folds</span> <span class="op">&lt;-</span> <span class="va">binary_nested_folds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co"># Using group_map()</span></span>
 <span><span class="va">binary_folds_summary_2</span> <span class="op">&lt;-</span> <span class="va">non_nested_folds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -728,6 +728,11 @@ the agreement analysis for several datasets as follows: <br></p>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">Metric</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in</span></span>
+<span><span class="co">#&gt; dplyr 1.1.0.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `reframe()` instead.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> When switching from `summarise()` to `reframe()`, remember that `reframe()`</span></span>
+<span><span class="co">#&gt;   always returns an ungrouped data frame and adjust accordingly.</span></span>
 <span><span class="co">#&gt; `summarise()` has grouped output by 'id'. You can override using the `.groups`</span></span>
 <span><span class="co">#&gt; argument.</span></span>
 <span></span>
@@ -737,16 +742,16 @@ the agreement analysis for several datasets as follows: <br></p>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [3]</span></span></span>
 <span><span class="co">#&gt;    id     Metric   Score</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fold_1 accuracy 0.958</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fold_2 accuracy 0.435</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fold_3 accuracy 0.516</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fold_1 agf      0.939</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fold_2 agf      0.393</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fold_3 agf      0.518</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fold_1 AUC_roc  0.418</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fold_2 AUC_roc  0.446</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fold_3 AUC_roc  0.513</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fold_1 balacc   0.953</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fold_1 AUC_roc 0.418 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fold_2 AUC_roc 0.446 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fold_3 AUC_roc 0.513 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fold_1 FDR     0.061<span style="text-decoration: underline;">2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fold_2 FDR     0.620 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fold_3 FDR     0.471 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fold_1 FNR     0.061<span style="text-decoration: underline;">2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fold_2 FNR     0.594 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fold_3 FNR     0.493 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fold_1 FOR     0.032<span style="text-decoration: underline;">1</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 68 more rows</span></span></span></code></pre></div>
 </div>
 </div>
@@ -798,14 +803,14 @@ print.metrics = TRUE. Warning: do not forget to specify your
 <span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
 <span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
 <span><span class="co">#&gt; Warning in metrica::agf(data = ~data, obs = ~actual, pred = ~predicted, : For</span></span>
-<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please, consider</span></span>
-<span><span class="co">#&gt; using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please,</span></span>
+<span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
 <span><span class="co">#&gt; Warning in metrica::fmi(data = ~data, obs = ~actual, pred = ~predicted, : The</span></span>
-<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span></span>
-<span><span class="co">#&gt; recorded as NaN.</span></span>
+<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has</span></span>
+<span><span class="co">#&gt; been recorded as NaN.</span></span>
 <span><span class="co">#&gt; Warning in metrica::preval(data = ~data, obs = ~actual, pred = ~predicted, :</span></span>
-<span><span class="co">#&gt; For multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
-<span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
+<span><span class="co">#&gt; For multiclass cases, prevalence should be estimated at a class level. A NaN</span></span>
+<span><span class="co">#&gt; has been recorded as the result. Please, use `atom = TRUE`</span></span>
 <span><span class="co">#&gt; Warning in metrica::preval_t(data = ~data, obs = ~actual, pred = ~predicted, : For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
 <span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
 <span>  </span>
