@@ -1,4 +1,4 @@
-#' @title Specificity  | True Negative Rate
+#' @title Specificity  | Selectivity | True Negative Rate
 #' @name specificity
 #' @description \code{specificity} estimates the specificity (a.k.a. selectivity, 
 #' or true negative rate -TNR-)  
@@ -30,6 +30,10 @@
 #' Values towards zero indicate low performance. For multinomial cases, it can be 
 #' either estimated for each particular class or at a global level.
 #' 
+#' Metrica offers 3 identical alternative functions that do the same job: i) \code{specificity},
+#' ii) \code{selectivity}, and iii) \code{TNR}. However, consider 
+#' when using \code{metrics_summary}, only the \code{specificity} alternative is used.
+#'
 #' The false positive rate (or false alarm, or fall-out) is the complement of the 
 #' specificity, representing the ratio between the number of false positives (FP) 
 #' to the actual number of negatives (N). The \code{FPR} formula is:
@@ -116,6 +120,103 @@ specificity <- function(data=NULL, obs, pred,
   if (tidy==FALSE){ return(list("spec" = spec)) }
   
 }
+
+#' @rdname specificity
+#' @description \code{selectivity} alternative to `specificity()`.
+#' @export
+#' 
+selectivity <- function(data=NULL, obs, pred, 
+                        atom = FALSE, pos_level = 2, 
+                        tidy = FALSE, na.rm = TRUE){
+  # Selectivity  
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}}) ) )
+  
+  #levels <- nrow(matrix)
+  
+  # If binomial
+  if (nrow(matrix) == 2){ 
+    
+    if (pos_level == 1){ 
+    
+    TN <- matrix[[4]]
+    TNFP <- matrix[[4]] + matrix[[3]] }
+    
+    if (pos_level == 2){
+      TN <- matrix[[1]]
+      TNFP <- matrix[[1]] + matrix[[2]] }
+      
+      selectivity <- TN / TNFP  }
+  
+  # If multinomial
+  if (nrow(matrix) > 2) {
+    
+    TP   <- diag(matrix)
+    TPFP <- rowSums(matrix)
+    TPFN <- colSums(matrix)
+    TN   <- sum(matrix) - (TPFP + TPFN - TP)
+    FP   <- TPFP - TP 
+    
+  if (atom == TRUE) { selectivity <- TN / (TN + FP) }
+  
+    if (atom == FALSE) { selectivity <- mean(TN / (TN + FP)) }
+  }
+  
+  if (tidy==TRUE){ return(as.data.frame(selectivity)) }
+  
+  if (tidy==FALSE){ return(list("Selectivity" = selectivity)) }
+  
+}
+
+#' @rdname specificity
+#' @description \code{TNR} alternative to `specificity()`.
+#' @export
+#' 
+TNR <- function(data=NULL, obs, pred, 
+                        atom = FALSE, pos_level = 2, 
+                        tidy = FALSE, na.rm = TRUE){
+  # Selectivity  
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}}) ) )
+  
+  #levels <- nrow(matrix)
+  
+  # If binomial
+  if (nrow(matrix) == 2){ 
+    
+    if (pos_level == 1){ 
+    
+    TN <- matrix[[4]]
+    TNFP <- matrix[[4]] + matrix[[3]] }
+    
+    if (pos_level == 2){
+      TN <- matrix[[1]]
+      TNFP <- matrix[[1]] + matrix[[2]] }
+      
+      TNR <- TN / TNFP  }
+  
+  # If multinomial
+  if (nrow(matrix) > 2) {
+    
+    TP   <- diag(matrix)
+    TPFP <- rowSums(matrix)
+    TPFN <- colSums(matrix)
+    TN   <- sum(matrix) - (TPFP + TPFN - TP)
+    FP   <- TPFP - TP 
+    
+  if (atom == TRUE) { TNR <- TN / (TN + FP) }
+  
+    if (atom == FALSE) { TNR <- mean(TN / (TN + FP)) }
+  }
+  
+  if (tidy==TRUE){ return(as.data.frame(TNR)) }
+  
+  if (tidy==FALSE){ return(list("TNR" = TNR)) }
+  
+}
+
 #' @rdname specificity
 #' @description \code{FPR} estimates the false positive rate (a.k.a fall-out or false alarm) 
 #' for a nominal/categorical predicted-observed dataset.
@@ -166,21 +267,3 @@ FPR <- function(data=NULL, obs, pred,
    
 }
 NULL
-#' @rdname specificity
-#' @description \code{TNR} alternative renamed version of `specificity()`.
-#' @export
-#' 
-TNR <- function(
-  data=NULL, obs = NULL, pred = NULL, 
-  atom = FALSE, pos_level = 2, 
-  tidy = FALSE, na.rm = TRUE
-  ) {
-  res <- specificity(
-    data = data, obs = obs, pred = pred, 
-    atom = FALSE, pos_level = 2, 
-    tidy = FALSE, na.rm = TRUE
-  )
-  return(res)
-  }
-
-
