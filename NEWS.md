@@ -1,5 +1,13 @@
 # metrica 2.0.1.999
 
+* March 13th, 2023. <br/>
+
+12) Add vignettes related to (i) publication of metrica on the Journal of Open Source Software (JOSS),  (ii) the metrica `ShinyApp`, and (iii) the new `cheatsheets` of the metrica package.
+
+11) Make a correction on the vignette specifying the formula of Duveiller's `lambda()`, which by the way does not affect the `lambda()` function itself.
+
+10) Add alternative functions to precision (`ppv()`), mcc (`phi_coef()`), bmi (`jindex()`), csi (`jaccardindex()`), and deltap (`mk()`).
+
 * March 6th, 2023. <br/>
 
 8) Add alternative functions to recall performing identical job such as (i) sensitivity, (ii) True Positive Rate -TPR-, and (iii) Hit Rate -hitrate-.

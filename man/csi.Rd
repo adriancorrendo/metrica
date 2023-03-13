@@ -2,9 +2,20 @@
 % Please edit documentation in R/class_csi.R
 \name{csi}
 \alias{csi}
-\title{Critical Success Index}
+\alias{jaccardindex}
+\title{Critical Success Index | Jaccard's Index}
 \usage{
 csi(
+  data = NULL,
+  obs,
+  pred,
+  pos_level = 2,
+  atom = FALSE,
+  tidy = FALSE,
+  na.rm = TRUE
+)
+
+jaccardindex(
   data = NULL,
   obs,
   pred,
@@ -43,6 +54,9 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \description{
 It estimates the Critical Success Index (a.k.a. threat score,
 Jaccard Index) for a nominal/categorical predicted-observed dataset.
+
+\code{jaccardindex} estimates the Jaccard similarity coefficient
+or Jaccard's Index (equivalent to the Critical Success Index \code{csi}).
 }
 \details{
 The \code{csi} is also known as the threat score or the Jaccard Index.

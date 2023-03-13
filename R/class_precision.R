@@ -1,7 +1,7 @@
-#' @title Precision  
+#' @title Precision | Positive Predictive Value 
 #' @name precision
 #' @description \code{precision} estimates the precision (a.k.a. positive predictive 
-#' value -PPV-) for a nominal/categorical predicted-observed dataset.
+#' value -ppv-) for a nominal/categorical predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character | factor).
 #' @param pred Vector with predicted values (character | factor).
@@ -109,6 +109,51 @@ precision <- function(data=NULL, obs, pred, tidy = FALSE, atom = FALSE, na.rm = 
   if (tidy == FALSE) {
     return(list("precision" = precision)) }
 }
+#' @rdname precision
+#' @description \code{ppv} estimates the Positive Predictive Value (equivalent 
+#' to precision) for a nominal/categorical predicted-observed dataset.
+#' @export 
+#' 
+ppv <- function(data=NULL, obs, pred, tidy = FALSE, atom = FALSE, na.rm = TRUE,
+                      pos_level = 2) {
+  # Precision
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}})))
+  
+  # If binomial
+  if (nrow(matrix) == 2){ 
+    
+    if (pos_level == 1){  
+      TP <- matrix[[1]]
+      TPFP <- matrix[[1]] + matrix[[3]] }
+    
+    if (pos_level == 2){  
+      TP <- matrix[[4]]
+      TPFP <- matrix[[4]] + matrix[[2]] }
+    
+    ppv <- TP/ (TPFP) }
+  
+  # If multinomial
+  if (nrow(matrix) >2) {
+    
+    # Calculations
+    correct <- diag(matrix)
+    total_pred <- rowSums(matrix)
+    
+    if (atom == FALSE) { 
+      ppv <- mean(correct / total_pred) }
+    
+    if (atom == TRUE) { 
+      ppv <- correct / total_pred }
+  }
+  
+  if (tidy == TRUE) {
+    return(as.data.frame(ppv)) }
+  
+  if (tidy == FALSE) {
+    return(list("ppv" = ppv)) }
+} 
 #' @rdname precision
 #' @description \code{FDR} estimates the complement of precision (a.k.a. positive predictive 
 #' value -PPV-) for a nominal/categorical predicted-observed dataset.

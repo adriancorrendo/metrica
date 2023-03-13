@@ -2,9 +2,12 @@
 % Please edit documentation in R/class_mcc.R
 \name{mcc}
 \alias{mcc}
-\title{Matthews Correlation Coefficient}
+\alias{phi_coef}
+\title{Matthews Correlation Coefficient | Phi Coefficient}
 \usage{
 mcc(data = NULL, obs, pred, pos_level = 2, tidy = FALSE, na.rm = TRUE)
+
+phi_coef(data = NULL, obs, pred, pos_level = 2, tidy = FALSE, na.rm = TRUE)
 }
 \arguments{
 \item{data}{(Optional) argument to call an existing data frame containing the data.}
@@ -29,10 +32,13 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \verb{data frame} (if tidy = TRUE).
 }
 \description{
-It estimates the mcc for a nominal/categorical predicted-observed dataset.
+It estimates the \code{mcc} for a nominal/categorical predicted-observed dataset.
+
+\code{phi_coef} estimates the Phi coefficient
+(equivalent to the Matthews Correlation Coefficient \code{mcc}).
 }
 \details{
-The mcc it is also known as the phi-coefficient. It has gained
+The \code{mcc} it is also known as the phi-coefficient. It has gained
 popularity within the machine learning community to summarize into a single
 value the confusion matrix of a binary classification.
 

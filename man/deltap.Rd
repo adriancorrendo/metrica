@@ -2,9 +2,20 @@
 % Please edit documentation in R/class_deltap.R
 \name{deltap}
 \alias{deltap}
+\alias{mk}
 \title{deltaP or Markedness}
 \usage{
 deltap(
+  data = NULL,
+  obs,
+  pred,
+  pos_level = 2,
+  atom = FALSE,
+  tidy = FALSE,
+  na.rm = TRUE
+)
+
+mk(
   data = NULL,
   obs,
   pred,
@@ -43,6 +54,9 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \description{
 \code{deltap} estimates the Markedness or deltaP for a nominal/categorical
 predicted-observed dataset.
+
+\code{mk} estimates the Markedness (equivalent
+to deltaP) for a nominal/categorical predicted-observed dataset.
 }
 \details{
 The \code{deltap} is also known as the markedness. It is a metric

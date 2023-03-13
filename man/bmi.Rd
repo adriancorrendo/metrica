@@ -2,9 +2,20 @@
 % Please edit documentation in R/class_bmi.R
 \name{bmi}
 \alias{bmi}
+\alias{jindex}
 \title{Bookmaker Informedness}
 \usage{
 bmi(
+  data = NULL,
+  obs,
+  pred,
+  pos_level = 2,
+  atom = FALSE,
+  tidy = FALSE,
+  na.rm = TRUE
+)
+
+jindex(
   data = NULL,
   obs,
   pred,
@@ -43,6 +54,9 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 \description{
 It estimates the Bookmaker Informedness (a.k.a. Youden's J-index)
 for a nominal/categorical predicted-observed dataset.
+
+\code{jindex} estimates the Youden's J statistic or
+Youden's J Index (equivalent to Bookmaker Informedness \code{bmi})
 }
 \details{
 The Bookmaker Informedness (or Youden's J index) it is a suitable metric when the
@@ -71,7 +85,7 @@ predictions = sample(c("Red","Blue", "Green"), 100, replace = TRUE)    )
 bmi(data = binomial_case, obs = labels, pred = predictions, tidy = TRUE)
 
 # Get Informedness estimate for each class for the multi-class case
-bmi(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE)
+bmi(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE, atom = TRUE)
 
 # Get Informedness estimate for the multi-class case at a global level
 bmi(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE)

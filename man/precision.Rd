@@ -2,10 +2,21 @@
 % Please edit documentation in R/class_precision.R
 \name{precision}
 \alias{precision}
+\alias{ppv}
 \alias{FDR}
-\title{Precision}
+\title{Precision | Positive Predictive Value}
 \usage{
 precision(
+  data = NULL,
+  obs,
+  pred,
+  tidy = FALSE,
+  atom = FALSE,
+  na.rm = TRUE,
+  pos_level = 2
+)
+
+ppv(
   data = NULL,
   obs,
   pred,
@@ -52,7 +63,10 @@ an object of class \code{numeric} within a \code{list} (if tidy = FALSE) or with
 }
 \description{
 \code{precision} estimates the precision (a.k.a. positive predictive
-value -PPV-) for a nominal/categorical predicted-observed dataset.
+value -ppv-) for a nominal/categorical predicted-observed dataset.
+
+\code{ppv} estimates the Positive Predictive Value (equivalent
+to precision) for a nominal/categorical predicted-observed dataset.
 
 \code{FDR} estimates the complement of precision (a.k.a. positive predictive
 value -PPV-) for a nominal/categorical predicted-observed dataset.

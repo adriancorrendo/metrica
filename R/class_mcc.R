@@ -1,6 +1,6 @@
-#' @title Matthews Correlation Coefficient  
+#' @title Matthews Correlation Coefficient | Phi Coefficient
 #' @name mcc
-#' @description It estimates the mcc for a nominal/categorical predicted-observed dataset.
+#' @description It estimates the \code{mcc} for a nominal/categorical predicted-observed dataset.
 #' @param data (Optional) argument to call an existing data frame containing the data.
 #' @param obs Vector with observed values (character | factor).
 #' @param pred Vector with predicted values (character | factor).
@@ -14,7 +14,7 @@
 #' (NA). Default is na.rm = TRUE.
 #' @return an object of class `numeric` within a `list` (if tidy = FALSE) or within a
 #' `data frame` (if tidy = TRUE).
-#' @details The mcc it is also known as the phi-coefficient. It has gained 
+#' @details The \code{mcc} it is also known as the phi-coefficient. It has gained 
 #' popularity within the machine learning community to summarize into a single 
 #' value the confusion matrix of a binary classification.
 #' 
@@ -97,4 +97,61 @@ mcc <- function(data=NULL, obs, pred,
   if (tidy == FALSE) {
     return(list("mcc" = mcc)) } 
 }
+
+#' @rdname mcc
+#' @description \code{phi_coef} estimates the Phi coefficient
+#' (equivalent to the Matthews Correlation Coefficient \code{mcc}).
+#' @export 
+phi_coef <- function(data=NULL, obs, pred, 
+                pos_level = 2,
+                tidy = FALSE, na.rm = TRUE){
+  
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}}) ) )
+  
+  # If binomial
+  if (nrow(matrix) == 2){
+    
+    if(pos_level == 1) {
+      TP <- matrix[[1]]
+      FP <- matrix[[3]]
+      TN <- matrix[[4]]
+      FN <- matrix[[2]] }
+    
+    if(pos_level == 2) {
+      TP <- matrix[[4]]
+      FP <- matrix[[2]]
+      TN <- matrix[[1]]
+      FN <- matrix[[3]] }
+    
+    # PHI estimate
+    phi_coef <- (TP * TN - FP * FN) / sqrt( (TP+FP) * (TP+FN) * (TN+FP) * (TN+FN) ) 
+    
+  }
+  
+  # If multinomial
+  if (nrow(matrix) >2) {
+    
+    P_sum <- rowSums(matrix)
+    O_sum <- colSums(matrix)
+    
+    n_correct <- sum(diag(matrix))
+    n_samples <- sum(matrix)
+    
+    cov_OP <- n_correct * n_samples - (O_sum %*% P_sum)
+    cov_PP <- n_samples^2 - (P_sum %*% P_sum)
+    cov_OO <- n_samples^2 - (O_sum %*% O_sum)
+    
+    phi_coef <- sum(cov_OP / sqrt(cov_PP * cov_OO))
+    
+  }
+  
+  if (tidy == TRUE) {
+    return(as.data.frame(phi_coef)) }
+  
+  if (tidy == FALSE) {
+    return(list("phi_coef" = phi_coef)) } 
+}
+NULL
 

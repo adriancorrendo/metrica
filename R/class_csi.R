@@ -1,4 +1,4 @@
-#' @title Critical Success Index  
+#' @title Critical Success Index | Jaccard's Index
 #' @name csi
 #' @description It estimates the Critical Success Index (a.k.a. threat score, 
 #' Jaccard Index) for a nominal/categorical predicted-observed dataset.
@@ -110,4 +110,63 @@ csi <- function(data=NULL, obs, pred,
   if (tidy == FALSE) {
     return(list("csi" = csi)) } 
 }
+
+#' @rdname csi
+#' @description \code{jaccardindex} estimates the Jaccard similarity coefficient
+#' or Jaccard's Index (equivalent to the Critical Success Index \code{csi}).
+#' @export 
+jaccardindex <- function(data=NULL, obs, pred, 
+                pos_level = 2, atom = FALSE,
+                tidy = FALSE, na.rm = TRUE){
+  
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}}) ) )
+  
+  # If binomial
+  if (nrow(matrix) == 2){
+    if (pos_level == 1){ 
+      TP <- matrix[[1]]
+      TPFN <- matrix[[1]] + matrix[[2]]
+      TN <- matrix[[4]]
+      TNFP <- matrix[[4]] + matrix[[3]] }
+    
+    if (pos_level == 2){ 
+      TP <- matrix[[4]]
+      TPFN <- matrix[[4]] + matrix[[3]]
+      TN <- matrix[[1]]
+      TNFP <- matrix[[1]] + matrix[[2]] }
+    
+    jaccardindex <- TP / (TP + TNFP) 
+    
+    
+  }
+  
+  # If multinomial
+  if (nrow(matrix) >2) {
+    
+    # Calculations
+    correct <- diag(matrix)
+    total_actual <- colSums(matrix) 
+    
+    TP   <- diag(matrix)
+    TPFP <- rowSums(matrix)
+    TPFN <- colSums(matrix)
+    TN   <- sum(matrix) - (TPFP + TPFN - TP)
+    FP   <- TPFP - TP
+    
+    if (atom == FALSE){ jaccardindex <- mean(TP / (TP + TN + FP)) }
+    
+    if (atom == TRUE){ jaccardindex <- TP / (TP + TN + FP) }
+    
+    
+  }
+  
+  if (tidy == TRUE) {
+    return(as.data.frame(jaccardindex)) }
+  
+  if (tidy == FALSE) {
+    return(list("jaccardindex" = jaccardindex)) } 
+}
+NULL
 

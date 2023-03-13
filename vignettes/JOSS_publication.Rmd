@@ -1,0 +1,30 @@
+---
+title: "JOSS publication"
+author: Adrian Correndo 
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{JOSS_publication}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=6, 
+  fig.height=4
+)
+```
+
+<img src="../man/figures/soiltestcorr_logo.png" align="right" height="200" style="float:right; height:200px;"/>
+
+## Citation
+
+Correndo et al., (2022). metrica: an R package to evaluate prediction performance of regression and classification point-forecast models. Journal of Open Source Software, 7(79), 4655, [https://doi.org/10.21105/joss.04655](https://doi.org/10.21105/joss.04655)
+
+## Summary
+
+The *metrica* R package is an open-source software designed to facilitate the quantitative and visual assessment of prediction performance of point-forecast simulation models for continuous (regression) and categorical variables (classification). The package ensembles a series of 80+ functions that account for multiple aspects of the agreement between predicted and observed values. Without the need of advanced skills on programming, *metrica* enables users to automate the estimation of multiple prediction performance metrics including goodness of fit, error metrics, error decomposition, model efficiency, indices of agreement, and to produce stylish data visualization outputs. This article introduces *metrica*, an R package developed with the main objective of contributing to transparent and reproducible evaluation of point-forecast models performance. <br/>
+
+Full publication is open-access here [https://doi.org/10.21105/joss.04655](https://doi.org/10.21105/joss.04655)

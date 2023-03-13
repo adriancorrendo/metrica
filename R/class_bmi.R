@@ -48,7 +48,7 @@
 #' bmi(data = binomial_case, obs = labels, pred = predictions, tidy = TRUE)
 #' 
 #' # Get Informedness estimate for each class for the multi-class case
-#' bmi(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE)
+#' bmi(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE, atom = TRUE)
 #' 
 #' # Get Informedness estimate for the multi-class case at a global level
 #' bmi(data = multinomial_case, obs = labels, pred = predictions, tidy = TRUE)
@@ -125,3 +125,76 @@ bmi <- function(data=NULL, obs, pred,
     return(list("bmi" = bmi)) }
 }
 
+#' @rdname bmi
+#' @description \code{jindex} estimates the Youden's J statistic or 
+#' Youden's J Index (equivalent to Bookmaker Informedness \code{bmi})
+#' @export 
+jindex <- function(data=NULL, obs, pred, 
+                pos_level = 2, atom = FALSE,
+                tidy = FALSE, na.rm = TRUE){
+  
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}}) ) )
+  
+  # If binomial
+  if (nrow(matrix) == 2){
+    if (pos_level == 1){ 
+      TP <- matrix[[1]]
+      TPFP <- matrix[[1]] + matrix[[3]]
+      TPFN <- matrix[[1]] + matrix[[2]]
+      TN <- matrix[[4]]
+      TNFP <- matrix[[4]] + matrix[[3]] }
+    
+    if (pos_level == 2){ 
+      TP <- matrix[[4]]
+      TPFP <- matrix[[4]] + matrix[[2]]
+      TPFN <- matrix[[4]] + matrix[[3]]
+      TN <- matrix[[1]]
+      TNFP <- matrix[[1]] + matrix[[2]] }
+    
+    rec <- TP/ (TPFN) 
+    #prec <- TP/ (TPFP)
+    spec <- TN / TNFP
+    
+  }
+  
+  # If multinomial
+  if (nrow(matrix) >2) {
+    
+    # Calculations
+    correct <- diag(matrix)
+    total_actual <- colSums(matrix) 
+    
+    TP   <- diag(matrix)
+    TPFP <- rowSums(matrix)
+    TPFN <- colSums(matrix)
+    #TNFP   <- sum(matrix) - (TPFP + TPFN - TP)
+    TN   <- sum(matrix) - (TPFP + TPFN - TP)
+    FP   <- TPFP - TP 
+    
+    if (atom == FALSE) { 
+      #prec <- mean(correct / total_pred)
+      rec <- mean(correct / total_actual)
+      spec <- mean(TN / (TN + FP))
+      #warning("For multiclass cases, the gmean should be estimated at a class level. Please, consider using `atom = TRUE`")
+    }
+    
+    if (atom == TRUE) { 
+      #prec <- correct / total_pred
+      rec <- correct / total_actual
+      spec <- TN / (TN + FP)
+    }
+    
+  }
+  
+  # Calculation
+  jindex <- rec + spec - 1
+  
+  if (tidy==TRUE){
+    return(as.data.frame(jindex)) }
+  
+  if (tidy==FALSE){
+    return(list("jindex" = jindex)) }
+}
+NULL

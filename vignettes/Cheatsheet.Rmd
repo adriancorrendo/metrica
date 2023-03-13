@@ -1,0 +1,30 @@
+---
+title: "Cheatsheet"
+author: Carlos Hernandez & Adrian Correndo
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Cheatsheet}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=6, 
+  fig.height=4
+)
+```
+
+<img src="../man/figures/metrica_logo.png" align="right" height="120" style="float:right; height:120px;"/>
+
+## Description
+
+New users are encouraged to use the `metrica` cheatsheet. <br/>
+
+The cheatsheet is available open-access in English, Spanish, Portuguese, and Russian languages at the RStudio [https://github.com/rstudio/cheatsheets](https://github.com/rstudio/cheatsheets)
+
+
+<img src="../man/figures/cheatsheet.png" align="center" height="320" style="float:center; height:320px;"/>

@@ -66,34 +66,34 @@ _Note: All classification functions automatically recognize the number of classe
 | :-| :----- | :--------- | :------ | :------ |
 |1| `accuracy` | Accuracy | It is the most commonly used metric to evaluate classification quality. It represents the number of corrected classified cases with respect to all cases. However, be aware that this metric does not cover all aspects about classification quality. When classes are uneven in number, it may not be a reliable metric. | $accuracy = \frac{TP+TN}{TP+FP+TN+FN}$|
 |2| `error_rate` | Error Rate | It represents the complement of accuracy. It could vary between 0 and 1. Being 0 the best and 1 the worst | $error~rate = \frac{FP+FN}{TP+FP+TN+FN}$|
-|3| `precision` | Precision | Also known as positive predictive value (PPV), it represents the proportion of well classified cases with respect to the total of cases predicted with a given class (multinomial) or the true class (binomial)  | $precision = \frac{TP}{TP + FP}$|
-|4| `recall`, `sensitivity`, `TPR` ,`hitrate`  | Recall | Also known as sensitivity, hit rate, or true positive rate (TPR) for binary cases. It represents the proportion of well predicted cases with respect to the total number of observed cases for a given class (multinomial) or the positive class (binomial) | $recall = \frac{TP}{P} = 1 - FNR$| 
+|3| `precision`, `ppv` | Precision | Also known as positive predictive value (ppv), it represents the proportion of well classified cases with respect to the total of cases predicted with a given class (multinomial) or the true class (binomial)  | $precision = \frac{TP}{TP + FP}$|
+|4| `recall`, `sensitivity`, `TPR`, `hitrate`  | Recall | Also known as sensitivity, hit rate, or true positive rate (TPR) for binary cases. It represents the proportion of well predicted cases with respect to the total number of observed cases for a given class (multinomial) or the positive class (binomial) | $recall = \frac{TP}{P} = 1 - FNR$| 
 |5| `specificity`, `selectivity`, `TNR` | Specificity | Also known as selectivity or true negative rate (TNR). It represents the proportion of well classified negative values with respect to the total number of actual negatives  | $specificity = \frac{TN}{N} = 1 - FPR$|
 |6| `balacc` | Balanced Accuracy | This metric is especially useful when the number of observations across classes is imbalanced | $b.accuracy = \frac{recall + specificity}{2}$|
 |7| `fscore` | F-score | F1-score, F-measure | $fscore = \frac{(1 + B ^ 2) * precision * recall}{(B ^ 2 * precision) + recall)}$|
 |8| `agf` | Adjusted F-score | The agf adjusts the fscore for datasets with imbalanced classes | $agf = \sqrt{F_2 * invF_{0.5}}$, where $F_2 = 5 * \frac{recall~*~precision}{(4*recall)~+~precision}$, and $invF_{0.5} = (\frac{5}{4}) * \frac{recall~*~precision}{(0.5^2 ~*~ recall)~+~precision}$|
 |9| `gmean` | G-mean | The Geometric Mean (gmean) is a measure that considers a balance between the performance of both majority and minority classes. The higher the value the lower the risk of over-fitting of negative and under-fitting of positive classes | $gmean = \sqrt{recall~*~specificity}$|
 |10| `khat` | K-hat or Cohen's Kappa Coefficient | The khat is considered a more robust metric than the classic `accuracy`. It normalizes the accuracy by the possibility of agreement by chance. It is positively bounded to 1, but it is not negatively bounded. The closer to 1, the better the classification quality | $khat = \frac{2 * (TP * TN - FN * FP)}{(TP+FP) * (FP+TN) + (TP+FN) * (FN + TN)}$|
-|11| `mcc` | Matthews Correlation Coefficient | Also known as phi-coefficient. It is particularly useful when the number of observations belonging to each class is uneven. It varies between 0-1, being 0 the worst and 1 the best. Currently, the mcc estimation is only available for binary cases (two classes) | $mcc = \frac{TP * TN - FP * FN}{\sqrt{(TP+FP) * (TP+FN) * (TN+FP) * (TN+FN)}}$|
+|11| `mcc`, `phi_coef` | Matthews Correlation Coefficient | Also known as phi-coefficient. It is particularly useful when the number of observations belonging to each class is uneven. It varies between 0-1, being 0 the worst and 1 the best. Currently, the mcc estimation is only available for binary cases (two classes) | $mcc = \frac{TP * TN - FP * FN}{\sqrt{(TP+FP) * (TP+FN) * (TN+FP) * (TN+FN)}}$|
 |12| `fmi` | Fowlkes-Mallows Index | The fmi is a metric that measures the similarity between two clusters (predicted and observed). It is equivalent to the square root of the product between precision (PPV) and recall (TPR). It varies between 0-1, being 0 the worst and 1 the best.  | $fmi = \sqrt{precision * recall} = \sqrt{PPV * TPR}$ |
-|13| `bmi`| Informedness | Also known as the Bookmaker Informedness, or as the Youden's J-index. It is a suitable metric when the number of cases for each class is uneven. It varies between| $bmi = recall + specificity -1 = TPR + TNR - 1 = \frac{FP+FN}{TP+FP+TN+FN}$|
+|13| `bmi`, `jindex`| Informedness | Also known as the Bookmaker Informedness, or as the Youden's J-index. It is a suitable metric when the number of cases for each class is uneven. It varies between| $bmi = recall + specificity -1 = TPR + TNR - 1 = \frac{FP+FN}{TP+FP+TN+FN}$|
 |14| `posLr` | Positive Likelihood Ratio | The posLr, also known as LR(+) represents the odds of obtaining a positive prediction for actual positives. | $posLr = \frac{recall}{1+specificity} = \frac{TPR}{FPR}$|
 |15| `negLr` | Negative Likelihood Ratio | The negLr, also known as LR(-) indicates the odds of obtaining a negative prediction for actual positives (or non-negatives in multiclass) relative to the probability of actual negatives of obtaining a negative prediction | $negLr = \frac{1-recall}{specificity} = \frac{FNR}{TNR}$|
 |16| `dor` | Diagnostic Odds Ratio | The dor is a metric summarizing the effectiveness of classification. It represents the odds of a positive case obtaining a positive prediction result with respect to the odds of actual negatives obtaining a positive result| $dor = \frac{posLr}{negLr}$|
 |17| `npv` | Negative predictive Value | It represents the complement of accuracy. It could vary between 0 and 1. Being 0 the best and 1 the worst | $npv = \frac{TP}{PP} = \frac{TP}{TP + FP}$|
 |18| `FPR` | False Positive Rate | It represents the complement of `specificity`. It could vary between 0 and 1. The lower the better. | $FPR = 1 - specificity = 1 - TNR = \frac{FP}{N}$|
 |19| `FNR` | False Negative Rate | It represents the complement of `recall`. It could vary between 0 and 1. The lower the better. | $FNR = 1 - recall = 1 - TPR = \frac{FN}{P}$|
-|20| `FDR` | False Detection Rate | It represents the complement of `precision` (or positive predictive value -`PPV`-). It could vary between 0 and 1, being 0 the best and 1 the worst | $FDR = 1 - precision = \frac{FP}{PP} = \frac{FP}{TP + FP}$|
+|20| `FDR` | False Detection Rate | It represents the complement of `precision` (or positive predictive value -`ppv`-). It could vary between 0 and 1, being 0 the best and 1 the worst | $FDR = 1 - precision = \frac{FP}{PP} = \frac{FP}{TP + FP}$|
 |21| `FOR` | False Omission Rate | It represents the complement of the `npv`. It could vary between 0 and 1, being 0 the best and 1 the worst | $FOR = 1 - npv = \frac{FN}{PN} = \frac{FN}{TN + FN}$|
 |22| `preval` | Error Rate | It represents the complement of accuracy. It could vary between 0 and 1. Being 0 the best and 1 the worst | $error~rate = \frac{FP+FN}{TP+FP+TN+FN}$|
 |23| `preval_t` | Error Rate | It represents the complement of accuracy. It could vary between 0 and 1. Being 0 the best and 1 the worst | $error~rate = \frac{FP+FN}{TP+FP+TN+FN}$|
-|24| `csi` | Critical Success Index | The `csi` is also known as the threat score (TS). It could vary between 0 and 1, being 0 the worst and 1 the best | $csi = \frac{TP}{TP+FP+TN}$|
-|25| `deltap` | Markedness or deltap | The `deltap` is a metric that quantifies the probability that a condition is marked by the predictor with respect to a random chance | $deltap = precision+npv-1 = PPV + NPV -1$|
+|24| `csi`, `jaccardindex` | Critical Success Index | The `csi` is also known as the threat score (TS) or Jaccard's Index. It could vary between 0 and 1, being 0 the worst and 1 the best | $csi = \frac{TP}{TP+FP+TN}$|
+|25| `deltap`, `mk` | Markedness or deltap | The `deltap` (a.k.a. Markedness -`mk`-) is a metric that quantifies the probability that a condition is marked by the predictor with respect to a random chance | $deltap = precision+npv-1 = PPV + NPV -1$|
 |26| `AUC_roc` | Area Under the Curve | The `AUC_roc` estimates the area under the receiving operator characteristic curve following the trapezoid approach. It bounded between 0 and 1. The closet to 1 the better. AUC_roc = 0.5 means the models predictions are the same than a random classifier. | $AUC_{roc} = precision+npv-1 = PPV + NPV -1$|
 
 <br/>
 
-**List of abbreviations:**
+**List of additional abbreviations:**
 
 P = positive (true + false)
 
@@ -115,7 +115,7 @@ FPR = false positive rate
 
 FNR = false negative rate
 
-PPV = positive predictive value
+ppv = positive predictive value
 
 B = coefficient B (a.k.a. beta) indicating the weight to be applied to the estimation of `fscore` (as $B^2$).
 

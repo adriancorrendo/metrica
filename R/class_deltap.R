@@ -84,7 +84,7 @@ deltap <- function(data=NULL, obs, pred,
     
     # Formula
     deltap <- prec + npv - 1
-    
+  
     
   }
   
@@ -127,4 +127,83 @@ deltap <- function(data=NULL, obs, pred,
   if (tidy == FALSE) {
     return(list("deltap" = deltap)) } 
 }
-
+#' @rdname deltap
+#' @description \code{mk} estimates the Markedness (equivalent 
+#' to deltaP) for a nominal/categorical predicted-observed dataset.
+#' @export 
+mk <- function(data=NULL, obs, pred, 
+                   pos_level = 2, atom = FALSE,
+                   tidy = FALSE, na.rm = TRUE){
+  
+  matrix <- rlang::eval_tidy(
+    data = data,
+    rlang::quo(table({{pred}}, {{obs}}) ) )
+  
+  # If binomial
+  if (nrow(matrix) == 2){
+    if (pos_level == 1){ 
+      TP <- matrix[[1]]
+      TPFP <- matrix[[1]] + matrix[[3]]
+      TPFN <- matrix[[1]] + matrix[[2]]
+      TN <- matrix[[4]]
+      TNFP <- matrix[[4]] + matrix[[3]]
+      TNFN <- matrix[[4]] + matrix[[2]] 
+      
+      prec <- TP/ TPFP
+      npv <- TN / TNFN
+    }
+    
+    if (pos_level == 2){ 
+      TP <- matrix[[4]]
+      TPFP <- matrix[[4]] + matrix[[2]] 
+      TPFN <- matrix[[4]] + matrix[[3]]
+      TN <- matrix[[1]]
+      TNFP <- matrix[[1]] + matrix[[2]]
+      TNFN <- matrix[[1]] + matrix[[3]]  
+      
+      prec <- TP/ TPFP
+      npv <- TN / TNFN
+    }
+    
+    # Formula
+    mk <- prec + npv - 1
+    
+    
+  }
+  
+  # If multinomial
+  if (nrow(matrix) >2) {
+    
+    # Calculations
+    correct <- diag(matrix)
+    total_actual <- colSums(matrix)
+    total_pred <- rowSums(matrix)
+    
+    TP   <- diag(matrix)
+    TPFP <- rowSums(matrix)
+    TPFN <- colSums(matrix)
+    TN   <- sum(matrix) - (TPFP + TPFN - TP)
+    FP   <- TPFP - TP 
+    FN <- TPFN - TP
+    
+    if (atom == TRUE) { 
+      prec <- correct / total_pred
+      npv <- TN / (TN + FN) }
+    
+    if (atom == FALSE) { 
+      prec <- mean(correct / total_pred)
+      npv <- mean(TN / (TN + FN)) }
+    
+    # Formula
+    mk <- prec + npv - 1
+    
+    
+  }
+  
+  if (tidy == TRUE) {
+    return(as.data.frame(mk)) }
+  
+  if (tidy == FALSE) {
+    return(list("mk" = mk)) } 
+}
+NULL
