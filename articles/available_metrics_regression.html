@@ -41,6 +41,9 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/Cheatsheet.html">Cheatsheet</a>
+    <a class="dropdown-item" href="../articles/JOSS_publication.html">JOSS publication</a>
+    <a class="dropdown-item" href="../articles/Shinyapp.html">Shinyapp</a>
     <a class="dropdown-item" href="../articles/apsim_open.html">APSIM: Importing APSIM Classic and NewGeneration files</a>
     <a class="dropdown-item" href="../articles/available_metrics_classification.html">Classification performance metrics and indices</a>
     <a class="dropdown-item" href="../articles/available_metrics_regression.html">Regression performance metrics and indices</a>
@@ -79,7 +82,7 @@
                         <h4 data-toc-skip class="author">Adrian
 Correndo</h4>
             
-            <h4 data-toc-skip class="date">2023-03-06</h4>
+            <h4 data-toc-skip class="date">2023-03-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/vignettes/available_metrics_regression.Rmd" class="external-link"><code>vignettes/available_metrics_regression.Rmd</code></a></small>
       <div class="d-none name"><code>available_metrics_regression.Rmd</code></div>
@@ -609,9 +612,9 @@ Equivalent to CCC when <code>r</code> is greater or equal to 0.
 Duveiller et al. (2016)</td>
 <td align="left">
 <span class="math inline">\(\lambda = 1 -
-\frac{\frac{1}{n}\sum(O_i-P_i)^2}{S^2_P+S^2_O+(\bar{O}-\bar{P})^2+k}\)</span>
-<br> where <br><span class="math inline">\(k = 0\,\, if\,\, r
-\geq{0}\)</span>, <br> otherwise <br><span class="math inline">\(k =
+\frac{\frac{1}{n}\sum(O_i-P_i)^2}{S^2_P+S^2_O+(\bar{O}-\bar{P})^2+
+n^{-1}k}\)</span> <br> where <br><span class="math inline">\(k =
+0\,\, if\,\, r \geq{0}\)</span>, <br> otherwise <br><span class="math inline">\(k =
 2|\sum[(O_i-\bar{O})(P_i-\bar{P})]|\)</span>
 </td>
 </tr>

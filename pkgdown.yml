@@ -2,12 +2,15 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
+  Cheatsheet: Cheatsheet.html
+  JOSS_publication: JOSS_publication.html
+  Shinyapp: Shinyapp.html
   apsim_open: apsim_open.html
   available_metrics_classification: available_metrics_classification.html
   available_metrics_regression: available_metrics_regression.html
   classification_case: classification_case.html
   regression_case: regression_case.html
-last_built: 2023-03-06T22:55Z
+last_built: 2023-03-13T22:23Z
 urls:
   reference: https://adriancorrendo.github.io/metrica/reference
   article: https://adriancorrendo.github.io/metrica/articles

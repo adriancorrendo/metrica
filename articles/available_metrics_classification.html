@@ -41,6 +41,9 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/Cheatsheet.html">Cheatsheet</a>
+    <a class="dropdown-item" href="../articles/JOSS_publication.html">JOSS publication</a>
+    <a class="dropdown-item" href="../articles/Shinyapp.html">Shinyapp</a>
     <a class="dropdown-item" href="../articles/apsim_open.html">APSIM: Importing APSIM Classic and NewGeneration files</a>
     <a class="dropdown-item" href="../articles/available_metrics_classification.html">Classification performance metrics and indices</a>
     <a class="dropdown-item" href="../articles/available_metrics_regression.html">Regression performance metrics and indices</a>
@@ -79,7 +82,7 @@
                         <h4 data-toc-skip class="author">Luciana Nieto
 &amp; Adrian Correndo</h4>
             
-            <h4 data-toc-skip class="date">2023-03-06</h4>
+            <h4 data-toc-skip class="date">2023-03-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/vignettes/available_metrics_classification.Rmd" class="external-link"><code>vignettes/available_metrics_classification.Rmd</code></a></small>
       <div class="d-none name"><code>available_metrics_classification.Rmd</code></div>
@@ -184,9 +187,11 @@ between 0 and 1. Being 0 the best and 1 the worst</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
-<td align="left"><code>precision</code></td>
+<td align="left">
+<code>precision</code>, <code>ppv</code>
+</td>
 <td align="left">Precision</td>
-<td align="left">Also known as positive predictive value (PPV), it
+<td align="left">Also known as positive predictive value (ppv), it
 represents the proportion of well classified cases with respect to the
 total of cases predicted with a given class (multinomial) or the true
 class (binomial)</td>
@@ -197,7 +202,7 @@ FP}\)</span></td>
 <td align="left">4</td>
 <td align="left">
 <code>recall</code>, <code>sensitivity</code>,
-<code>TPR</code> ,<code>hitrate</code>
+<code>TPR</code>, <code>hitrate</code>
 </td>
 <td align="left">Recall</td>
 <td align="left">Also known as sensitivity, hit rate, or true positive
@@ -275,7 +280,9 @@ FN * FP)}{(TP+FP) * (FP+TN) + (TP+FN) * (FN + TN)}\)</span></td>
 </tr>
 <tr class="odd">
 <td align="left">11</td>
-<td align="left"><code>mcc</code></td>
+<td align="left">
+<code>mcc</code>, <code>phi_coef</code>
+</td>
 <td align="left">Matthews Correlation Coefficient</td>
 <td align="left">Also known as phi-coefficient. It is particularly
 useful when the number of observations belonging to each class is
@@ -298,7 +305,9 @@ recall} = \sqrt{PPV * TPR}\)</span></td>
 </tr>
 <tr class="odd">
 <td align="left">13</td>
-<td align="left"><code>bmi</code></td>
+<td align="left">
+<code>bmi</code>, <code>jindex</code>
+</td>
 <td align="left">Informedness</td>
 <td align="left">Also known as the Bookmaker Informedness, or as the
 Youden’s J-index. It is a suitable metric when the number of cases for
@@ -370,7 +379,7 @@ could vary between 0 and 1. The lower the better.</td>
 <td align="left"><code>FDR</code></td>
 <td align="left">False Detection Rate</td>
 <td align="left">It represents the complement of <code>precision</code>
-(or positive predictive value -<code>PPV</code>-). It could vary between
+(or positive predictive value -<code>ppv</code>-). It could vary between
 0 and 1, being 0 the best and 1 the worst</td>
 <td align="left"><span class="math inline">\(FDR = 1 - precision =
 \frac{FP}{PP} = \frac{FP}{TP + FP}\)</span></td>
@@ -404,21 +413,26 @@ between 0 and 1. Being 0 the best and 1 the worst</td>
 </tr>
 <tr class="even">
 <td align="left">24</td>
-<td align="left"><code>csi</code></td>
+<td align="left">
+<code>csi</code>, <code>jaccardindex</code>
+</td>
 <td align="left">Critical Success Index</td>
 <td align="left">The <code>csi</code> is also known as the threat score
-(TS). It could vary between 0 and 1, being 0 the worst and 1 the
-best</td>
+(TS) or Jaccard’s Index. It could vary between 0 and 1, being 0 the
+worst and 1 the best</td>
 <td align="left"><span class="math inline">\(csi =
 \frac{TP}{TP+FP+TN}\)</span></td>
 </tr>
 <tr class="odd">
 <td align="left">25</td>
-<td align="left"><code>deltap</code></td>
+<td align="left">
+<code>deltap</code>, <code>mk</code>
+</td>
 <td align="left">Markedness or deltap</td>
-<td align="left">The <code>deltap</code> is a metric that quantifies the
-probability that a condition is marked by the predictor with respect to
-a random chance</td>
+<td align="left">The <code>deltap</code> (a.k.a. Markedness
+-<code>mk</code>-) is a metric that quantifies the probability that a
+condition is marked by the predictor with respect to a random
+chance</td>
 <td align="left"><span class="math inline">\(deltap = precision+npv-1 =
 PPV + NPV -1\)</span></td>
 </tr>
@@ -437,7 +451,7 @@ classifier.</td>
 </tbody>
 </table>
 <p><br></p>
-<p><strong>List of abbreviations:</strong></p>
+<p><strong>List of additional abbreviations:</strong></p>
 <p>P = positive (true + false)</p>
 <p>N = negative (true + false)</p>
 <p>TP = true positive</p>
@@ -448,7 +462,7 @@ classifier.</td>
 <p>TNR = true negative rate</p>
 <p>FPR = false positive rate</p>
 <p>FNR = false negative rate</p>
-<p>PPV = positive predictive value</p>
+<p>ppv = positive predictive value</p>
 <p>B = coefficient B (a.k.a. beta) indicating the weight to be applied
 to the estimation of <code>fscore</code> (as <span class="math inline">\(B^2\)</span>).</p>
 </div>
