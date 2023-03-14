@@ -136,6 +136,13 @@ where the two classes are vegetation (1) and non-vegetation (0)).</p>
 <p><br></p>
 <p><img src="../reference/figures/land_cover_example.png" align="right" height="500" style="float:right; height:500px;"></p>
 <p><br></p>
+<p><strong>Figure 1</strong>. This binary classification dataset
+corresponds to a Random Forest model using a 70:30 training:testing
+split to predict vegetation vs. other land coverage. This exercise
+focused on pixel level classification. The image is showing the
+classification map where yellow areas are associated to non-vegetation
+pixels (other), and the green areas to those classified as vegetation.
+<br></p>
 <p>Now we load the binary <code>land_cover</code> data set already
 included with the <code>metrica</code> package. This data set contains
 two columns: <br></p>
@@ -165,6 +172,12 @@ vegetation and 1 = other <br></p></li>
 <p><br></p>
 <p><img src="../reference/figures/maize_phenology_example.png" align="right" height="500" style="float:right; height:500px;"></p>
 <p><br></p>
+<p><strong>Figure 2</strong>. This multiclass classification dataset
+corresponds to a Random Forest model using a 70:30 training:testing
+split to predict maize vegetation vs. other land coverage. This exercise
+focused on field level classification. The image is showing, in dark
+grey shapes, the fields used as the ground-truth locations to develop
+the model. <br></p>
 <p>Now we load the multinomial <code>maize_phenology</code> data set,
 which is also already included with the <code>metrica</code> package.
 This multiclass data set presents 16 different classes corresponding to
