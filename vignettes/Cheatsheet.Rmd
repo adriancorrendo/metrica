@@ -18,10 +18,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-<img src="../man/figures/metrica_logo.png" align="right" height="120" style="float:right; height:120px;"/>
-
-## Description
-
 New users are encouraged to use the `metrica` cheatsheet. <br/>
 
 The cheatsheet is available open-access in English, Spanish, Portuguese, and Russian languages at the RStudio [https://github.com/rstudio/cheatsheets](https://github.com/rstudio/cheatsheets)

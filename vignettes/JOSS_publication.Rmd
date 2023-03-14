@@ -17,8 +17,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-<img src="../man/figures/soiltestcorr_logo.png" align="right" height="200" style="float:right; height:200px;"/>
-
 ## Citation
 
 Correndo et al., (2022). metrica: an R package to evaluate prediction performance of regression and classification point-forecast models. Journal of Open Source Software, 7(79), 4655, [https://doi.org/10.21105/joss.04655](https://doi.org/10.21105/joss.04655)
