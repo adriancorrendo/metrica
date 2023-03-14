@@ -49,6 +49,8 @@ library(tidyr)
 
 <br/>
 
+**Figure 1**. This binary classification dataset corresponds to a Random Forest model using a 70:30 training:testing split to predict vegetation vs. other land coverage. This exercise focused on pixel level classification. The image is showing the classification map where yellow areas are associated to non-vegetation pixels (other), and the green areas to those classified as vegetation. <br/>
+
 Now we load the binary `land_cover` data set already included with the `metrica` package. This data set contains two columns:  <br/>
 
 - `predicted`: model-predicted (random forest) land cover, being vegetation = 1 and other = 0,  <br/>
@@ -70,6 +72,8 @@ head(binary_landCover)
 <img src="../man/figures/maize_phenology_example.png" align="right" height="500" style="float:right; height:500px;"> 
 
 <br/>
+
+**Figure 2**. This multiclass classification dataset corresponds to a Random Forest model using a 70:30 training:testing split to predict maize vegetation vs. other land coverage. This exercise focused on field level classification. The image is showing, in dark grey shapes, the fields used as the ground-truth locations to develop the model. <br/>
 
 Now we load the multinomial `maize_phenology` data set, which is also already included with the `metrica` package. This multiclass data set presents 16 different classes corresponding to phenological stages of the maize (*Zea Mays* (L.)) crop.  <br/>
 

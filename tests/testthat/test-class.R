@@ -73,6 +73,26 @@ test_that('no error precision_6', {expect_false(inherits(precision_6.test, "try-
 test_that('no error precision_5', {expect_false(inherits(precision_7.test, "try-error")) })
 test_that('no error precision_6', {expect_false(inherits(precision_8.test, "try-error")) })
 
+# 3b. Positive Predictive Value
+ppv_1.test <- ppv(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
+ppv_2.test <- ppv(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 1)
+ppv_3.test <- ppv(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
+ppv_4.test <- ppv(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
+ppv_5.test <- ppv(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
+ppv_6.test <- ppv(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, atom = TRUE)
+ppv_7.test <- ppv(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
+ppv_8.test <- ppv(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+
+# TEST
+test_that('no error ppv_1', {expect_false(inherits(ppv_1.test, "try-error")) })
+test_that('no error ppv_2', {expect_false(inherits(ppv_2.test, "try-error")) })
+test_that('no error ppv_3', {expect_false(inherits(ppv_3.test, "try-error")) })
+test_that('no error ppv_4', {expect_false(inherits(ppv_4.test, "try-error")) })
+test_that('no error ppv_5', {expect_false(inherits(ppv_5.test, "try-error")) })
+test_that('no error ppv_6', {expect_false(inherits(ppv_6.test, "try-error")) })
+test_that('no error ppv_5', {expect_false(inherits(ppv_7.test, "try-error")) })
+test_that('no error ppv_6', {expect_false(inherits(ppv_8.test, "try-error")) })
+
 # 4. Recall
 recall_1.test <- recall(data = binary, obs = labels, pred = predictions, tidy = FALSE, atom = FALSE, pos_level = 1)
 recall_2.test <- recall(data = binary, obs = labels, pred = predictions, tidy = TRUE, atom = FALSE, pos_level = 1)
@@ -289,6 +309,22 @@ test_that('no error mcc_4', {expect_false(inherits(mcc_4.test, "try-error")) })
 test_that('no error mcc_5', {expect_false(inherits(mcc_5.test, "try-error")) })
 test_that('no error mcc_6', {expect_false(inherits(mcc_6.test, "try-error")) })
 
+# 10b. phi_coef
+phi_coef_1.test <- phi_coef(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
+phi_coef_2.test <- phi_coef(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 1)
+phi_coef_3.test <- phi_coef(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
+phi_coef_4.test <- phi_coef(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
+phi_coef_5.test <- phi_coef(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
+phi_coef_6.test <- phi_coef(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+
+# TEST
+test_that('no error phi_coef_1', {expect_false(inherits(phi_coef_1.test, "try-error")) })
+test_that('no error phi_coef_2', {expect_false(inherits(phi_coef_2.test, "try-error")) })
+test_that('no error phi_coef_3', {expect_false(inherits(phi_coef_3.test, "try-error")) })
+test_that('no error phi_coef_4', {expect_false(inherits(phi_coef_4.test, "try-error")) })
+test_that('no error phi_coef_5', {expect_false(inherits(phi_coef_5.test, "try-error")) })
+test_that('no error phi_coef_6', {expect_false(inherits(phi_coef_6.test, "try-error")) })
+
 # 11. BMI, Informedness, Youden's J-index
 bmi_1.test <- bmi(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
 bmi_2.test <- bmi(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 1)
@@ -306,6 +342,24 @@ test_that('no error bmi_4', {expect_false(inherits(bmi_4.test, "try-error")) })
 test_that('no error bmi_5', {expect_false(inherits(bmi_5.test, "try-error")) })
 test_that('no error bmi_6', {expect_false(inherits(bmi_6.test, "try-error")) })
 test_that('no error bmi_7', {expect_false(inherits(bmi_7.test, "try-error")) })
+
+# 11b. Jindex
+jindex_1.test <- jindex(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
+jindex_2.test <- jindex(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 1)
+jindex_3.test <- jindex(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
+jindex_4.test <- jindex(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
+jindex_5.test <- jindex(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
+jindex_6.test <- jindex(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+jindex_7.test <- jindex(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
+
+# TEST
+test_that('no error jindex_1', {expect_false(inherits(jindex_1.test, "try-error")) })
+test_that('no error jindex_2', {expect_false(inherits(jindex_2.test, "try-error")) })
+test_that('no error jindex_3', {expect_false(inherits(jindex_3.test, "try-error")) })
+test_that('no error jindex_4', {expect_false(inherits(jindex_4.test, "try-error")) })
+test_that('no error jindex_5', {expect_false(inherits(jindex_5.test, "try-error")) })
+test_that('no error jindex_6', {expect_false(inherits(jindex_6.test, "try-error")) })
+test_that('no error jindex_7', {expect_false(inherits(jindex_7.test, "try-error")) })
 
 # 12. AGF
 agf_1.test <- agf(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
@@ -546,6 +600,24 @@ test_that('no error csi_5', {expect_false(inherits(csi_5.test, "try-error")) })
 test_that('no error csi_6', {expect_false(inherits(csi_6.test, "try-error")) })
 test_that('no error csi_7', {expect_false(inherits(csi_7.test, "try-error")) })
 
+# 24b. Jaccard Index
+jaccardindex_1.test <- jaccardindex(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
+jaccardindex_2.test <- jaccardindex(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 1)
+jaccardindex_3.test <- jaccardindex(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
+jaccardindex_4.test <- jaccardindex(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
+jaccardindex_5.test <- jaccardindex(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
+jaccardindex_6.test <- jaccardindex(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+jaccardindex_7.test <- jaccardindex(data = multiclass, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2, atom = TRUE)
+
+# TEST
+test_that('no error jaccardindex_1', {expect_false(inherits(jaccardindex_1.test, "try-error")) })
+test_that('no error jaccardindex_2', {expect_false(inherits(jaccardindex_2.test, "try-error")) })
+test_that('no error jaccardindex_3', {expect_false(inherits(jaccardindex_3.test, "try-error")) })
+test_that('no error jaccardindex_4', {expect_false(inherits(jaccardindex_4.test, "try-error")) })
+test_that('no error jaccardindex_5', {expect_false(inherits(jaccardindex_5.test, "try-error")) })
+test_that('no error jaccardindex_6', {expect_false(inherits(jaccardindex_6.test, "try-error")) })
+test_that('no error jaccardindex_7', {expect_false(inherits(jaccardindex_7.test, "try-error")) })
+
 # 25. deltap
 deltap_1.test <- deltap(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
 deltap_2.test <- deltap(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 1)
@@ -563,6 +635,24 @@ test_that('no error deltap_4', {expect_false(inherits(deltap_4.test, "try-error"
 test_that('no error deltap_5', {expect_false(inherits(deltap_5.test, "try-error")) })
 test_that('no error deltap_6', {expect_false(inherits(deltap_6.test, "try-error")) })
 test_that('no error deltap_7', {expect_false(inherits(deltap_7.test, "try-error")) })
+
+# 25b. mk
+mk_1.test <- mk(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
+mk_2.test <- mk(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 1)
+mk_3.test <- mk(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
+mk_4.test <- mk(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
+mk_5.test <- mk(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
+mk_6.test <- mk(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+mk_7.test <- mk(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
+
+# TEST
+test_that('no error mk_1', {expect_false(inherits(mk_1.test, "try-error")) })
+test_that('no error mk_2', {expect_false(inherits(mk_2.test, "try-error")) })
+test_that('no error mk_3', {expect_false(inherits(mk_3.test, "try-error")) })
+test_that('no error mk_4', {expect_false(inherits(mk_4.test, "try-error")) })
+test_that('no error mk_5', {expect_false(inherits(mk_5.test, "try-error")) })
+test_that('no error mk_6', {expect_false(inherits(mk_6.test, "try-error")) })
+test_that('no error mk_7', {expect_false(inherits(mk_7.test, "try-error")) })
 
 # 26. AUC_roc
 AUC_roc_1.test <- AUC_roc(data = binary, obs = labels, pred = predictions, tidy = FALSE)
