@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1.999</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,8 +78,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><a href="https://ci.appveyor.com/project/adriancorrendo/metrica" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&amp;svg=true" alt="AppVeyor build status"></a> <a href="https://github.com/adriancorrendo/metrica/actions" class="external-link"><img src="https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://app.codecov.io/gh/adriancorrendo/metrica" class="external-link"><img src="https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn" alt="codecov"></a> <a href="https://doi.org/10.5281/zenodo.6474101" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6474101.svg" alt="DOI"></a></p>
-<p><a href="https://joss.theoj.org/papers/c3113e0e3fe8c8f9f49d43fde5f4125f" class="external-link"><img src="https://joss.theoj.org/papers/c3113e0e3fe8c8f9f49d43fde5f4125f/status.svg" alt="status"></a> <!-- badges: end --></p>
+<p><a href="https://ci.appveyor.com/project/adriancorrendo/metrica" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metrica?branch=master&amp;svg=true" alt="AppVeyor build status"></a> <a href="https://github.com/adriancorrendo/metrica/actions" class="external-link"><img src="https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://app.codecov.io/gh/adriancorrendo/metrica" class="external-link"><img src="https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn" alt="codecov"></a> <a href="https://doi.org/10.5281/zenodo.6474101" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6474101.svg" alt="DOI"></a> <a href="https://joss.theoj.org/papers/c3113e0e3fe8c8f9f49d43fde5f4125f" class="external-link"><img src="https://joss.theoj.org/papers/c3113e0e3fe8c8f9f49d43fde5f4125f/status.svg" alt="status"></a> <a href="https://github.com/adriancorrendo/metrica/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/adriancorrendo/metrica/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <!-- badges: end --></p>
 <div class="section level2">
 <h2 id="introduction--">Introduction <br><a class="anchor" aria-label="anchor" href="#introduction--"></a>
 </h2>
@@ -97,7 +96,7 @@
 <h2 id="functions--">Functions <br><a class="anchor" aria-label="anchor" href="#functions--"></a>
 </h2>
 <p>For regression models, it includes 4 plotting functions (scatter, tiles, density, &amp; Bland-Altman plots), and 48 prediction performance scores including error metrics (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE, RRMSE, RSR, PBE, iqRMSE), error decomposition (MLA, MLP, PLA, PLP, PAB, PPB, SB, SDSD, LCS, Ub, Uc, Ue), model efficiency (NSE, E1, Erel, KGE), indices of agreement (d, d1, d1r, RAC, AC, lambda), goodness of fit (r, R2, RSS, TSS, RSE), adjusted correlation coefficients (CCC, Xa, distance correlation-dcorr-, maximal information coefficient -MIC-), variability (uSD, var_u), and symmetric regression coefficients (B0_sma, B1_sma). Specifically for time-series predictions, <code>metrica</code> also includes the Mean Absolute Scaled Error (MASE). <br></p>
-<p>For classification (binomial and multinomial) tasks, it includes a function to visualize the confusion matrix using ggplot2, and 27 functions of prediction scores including: accuracy, error rate, precision, recall, specificity, balanced accuracy (balacc), F-score (fscore), adjusted F-score (agf), G-mean (gmean), Bookmaker Informedness (bmi, a.k.a. Youden’s J-index), Markedness (deltaP), Matthews Correlation Coefficient (mcc), Cohen’s Kappa (khat), negative predictive value (npv), positive and negative likelihood ratios (posLr, negLr), diagnostic odds ratio (dor), prevalence (preval), prevalence threshold (preval_t), critical success index (csi, a.k.a. threat score), false positive rate (FPR), false negative rate (FNR), false detection rate (FDR), false omission rate (FOR), and area under the ROC curve (AUC_roc). <br></p>
+<p>For classification (binomial and multinomial) tasks, it includes a function to visualize the confusion matrix using ggplot2, and 27 functions of prediction scores including: accuracy, error rate, precision (predictive positive value-PPV-), recall (or true positive rate-TPR-), specificity (or true negative rate-TNR-, or selectivity), balanced accuracy (balacc), F-score (fscore), adjusted F-score (agf), G-mean (gmean), Bookmaker Informedness (bmi, a.k.a. Youden’s J-index), Markedness (deltaP), Matthews Correlation Coefficient (mcc, a.k.a. phi-coefficient), Cohen’s Kappa (khat), negative predictive value (npv), positive and negative likelihood ratios (posLr, negLr), diagnostic odds ratio (dor), prevalence (preval), prevalence threshold (preval_t), critical success index (csi, a.k.a. threat score or Jaccard Index), false positive rate (FPR), false negative rate (FNR), false detection rate (FDR), false omission rate (FOR), and area under the ROC curve (AUC_roc). <br></p>
 <p><code>metrica</code> also offers a function that allows users to run all prediction performance scores at once. The user just needs to specify the type of model (“regression” or “classification”). <br></p>
 <p>For more details visit the vignettes <a href="https://adriancorrendo.github.io/metrica/" class="uri">https://adriancorrendo.github.io/metrica/</a>.</p>
 </div>
@@ -372,8 +371,9 @@
 <span><span class="co"># b. Run </span></span>
 <span><span class="va">multiple.sum</span> <span class="op">&lt;-</span> <span class="va">nested.examples</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="co"># Store metrics in new.column "performance"</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>performance <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">data</span>, <span class="op">~</span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">.</span>, obs <span class="op">=</span> <span class="va">obs</span>, pred <span class="op">=</span> <span class="va">pred</span>, </span>
-<span>                                                           type <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>performance <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span></span>
+<span>    <span class="va">data</span>, <span class="op">~</span><span class="fu">metrica</span><span class="fu">::</span><span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">.</span>, obs <span class="op">=</span> <span class="va">obs</span>, pred <span class="op">=</span> <span class="va">pred</span>, </span>
+<span>                                    type <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">multiple.sum</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 3</span></span>
@@ -579,15 +579,15 @@
 <span></span>
 <span><span class="co"># Multinomial</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, :</span></span>
-<span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
+<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, : For</span></span>
+<span><span class="co">#&gt; multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
 <span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions, pos_level</span></span>
-<span><span class="co">#&gt; = pos_level): For multiclass cases, the agf should be estimated at a class</span></span>
-<span><span class="co">#&gt; level. Please, consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions, pos_level</span></span>
-<span><span class="co">#&gt; = pos_level): The Fowlkes-Mallows Index is not available for multiclass cases.</span></span>
-<span><span class="co">#&gt; The result has been recorded as NaN.</span></span>
+<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions,</span></span>
+<span><span class="co">#&gt; pos_level = pos_level): For multiclass cases, the agf should be estimated at a</span></span>
+<span><span class="co">#&gt; class level. Please, consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions,</span></span>
+<span><span class="co">#&gt; pos_level = pos_level): The Fowlkes-Mallows Index is not available for</span></span>
+<span><span class="co">#&gt; multiclass cases. The result has been recorded as NaN.</span></span>
 <span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions, : For</span></span>
 <span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
 <span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
@@ -635,15 +635,15 @@
 <span><span class="co"># Multiclass</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span>,</span>
 <span>                                  metrics_list <span class="op">=</span> <span class="va">selected_class_metrics</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, :</span></span>
-<span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
+<span><span class="co">#&gt; Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, : For</span></span>
+<span><span class="co">#&gt; multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
 <span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions, pos_level</span></span>
-<span><span class="co">#&gt; = pos_level): For multiclass cases, the agf should be estimated at a class</span></span>
-<span><span class="co">#&gt; level. Please, consider using `atom = TRUE`</span></span>
-<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions, pos_level</span></span>
-<span><span class="co">#&gt; = pos_level): The Fowlkes-Mallows Index is not available for multiclass cases.</span></span>
-<span><span class="co">#&gt; The result has been recorded as NaN.</span></span>
+<span><span class="co">#&gt; Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions,</span></span>
+<span><span class="co">#&gt; pos_level = pos_level): For multiclass cases, the agf should be estimated at a</span></span>
+<span><span class="co">#&gt; class level. Please, consider using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions,</span></span>
+<span><span class="co">#&gt; pos_level = pos_level): The Fowlkes-Mallows Index is not available for</span></span>
+<span><span class="co">#&gt; multiclass cases. The result has been recorded as NaN.</span></span>
 <span><span class="co">#&gt; Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions, : For</span></span>
 <span><span class="co">#&gt; multiclass cases, prevalence should be estimated at a class level. A NaN has</span></span>
 <span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
@@ -674,15 +674,15 @@
 <span><span class="co">#&gt;     balacc</span></span>
 <span><span class="co">#&gt; 1 0.490305</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fscore.html">fscore</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in fscore(data = ., obs = labels, pred = predictions, tidy = TRUE):</span></span>
-<span><span class="co">#&gt; For multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
+<span><span class="co">#&gt; Warning in fscore(data = ., obs = labels, pred = predictions, tidy = TRUE): For</span></span>
+<span><span class="co">#&gt; multiclass cases, the fscore should be estimated at a class level. Please,</span></span>
 <span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
 <span><span class="co">#&gt;      fscore</span></span>
 <span><span class="co">#&gt; 1 0.3202471</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/agf.html">agf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in agf(data = ., obs = labels, pred = predictions, tidy = TRUE): For</span></span>
-<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please, consider</span></span>
-<span><span class="co">#&gt; using `atom = TRUE`</span></span>
+<span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please,</span></span>
+<span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
 <span><span class="co">#&gt;         agf</span></span>
 <span><span class="co">#&gt; 1 0.3202471</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/gmean.html">gmean</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
@@ -696,8 +696,8 @@
 <span><span class="co">#&gt; 1 -0.01926552</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fmi.html">fmi</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in fmi(data = ., obs = labels, pred = predictions, tidy = TRUE): The</span></span>
-<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has been</span></span>
-<span><span class="co">#&gt; recorded as NaN.</span></span>
+<span><span class="co">#&gt; Fowlkes-Mallows Index is not available for multiclass cases. The result has</span></span>
+<span><span class="co">#&gt; been recorded as NaN.</span></span>
 <span><span class="co">#&gt;   fmi</span></span>
 <span><span class="co">#&gt; 1 NaN</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/likelihood_ratios.html">posLr</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
