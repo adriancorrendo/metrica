@@ -20,7 +20,13 @@ knitr::opts_chunk$set(
 
 New users are encouraged to use the `metrica` cheatsheet. <br/>
 
-The cheatsheet is available open-access in English, Spanish, Portuguese, and Russian languages at the RStudio [https://github.com/rstudio/cheatsheets](https://github.com/rstudio/cheatsheets)
+The cheatsheet is available open-access in: 
 
+- [English](https://github.com/adriancorrendo/cheatsheets/blob/main/metrica.pdf),
+- [Spanish](https://github.com/adriancorrendo/cheatsheets/blob/main/translations/spanish/metrica_es.pdf),
+- [Portuguese](https://github.com/adriancorrendo/cheatsheets/blob/main/translations/portuguese/metrica_pt_br.pdf),  
+- [Russian](https://github.com/adriancorrendo/cheatsheets/blob/main/translations/russian/metrica_ru.pdf)
 
 <img src="../man/figures/cheatsheet.png" align="center" height="320" style="float:center; height:320px;"/>
+
+More info at the [RStudio Cheatsheets's Repository ](https://github.com/rstudio/cheatsheets)

@@ -28,12 +28,12 @@ status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metric
 <br/> `metrica` is a compilation of more than 80 functions designed to
 quantitatively and visually evaluate the prediction performance of
 regression (continuous variables) and classification (categorical
-variables) point-forecast models (e.g. APSIM, DSSAT, DNDC, Supervised
+variables) point-forecast models (e.g. APSIM, DSSAT, DNDC, Supervised
 Machine Learning). `metrica` offers a toolbox with a wide spectrum of
 goodness of fit, error metrics, indices, and coefficients accounting for
 different aspects of the agreement between predicted and observed
 values, plus some basic visualization functions to assess models
-performance (e.g. confusion matrix, scatter with regression line;
+performance (e.g. confusion matrix, scatter with regression line;
 Bland-Altman plot) provided in customizable format (ggplot).
 
 For supervised models, always keep in mind the concept of
@@ -46,24 +46,28 @@ Check the Documentation at <https://adriancorrendo.github.io/metrica/>
 
 **Vignettes** <br/>
 
-[1. List of metrics for
-Regression](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
+[1. List of metrics for Regression](https://adriancorrendo.github.io/metrica/articles/available_metrics_regression.html)
 <br/>
 
-[2. List of metrics for
-Classification](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
+[2. List of metrics for Classification](https://adriancorrendo.github.io/metrica/articles/available_metrics_classification.html)
 <br/>
 
-[3. A regression case (numerical
-variables)](https://adriancorrendo.github.io/metrica/articles/regression_case.html)
+[3. A regression case (numerical variables)](https://adriancorrendo.github.io/metrica/articles/regression_case.html)
 <br/>
 
-[4. A classification case (categorical
-variables)](https://adriancorrendo.github.io/metrica/articles/classification_case.html)
+[4. A classification case (categorical variables)](https://adriancorrendo.github.io/metrica/articles/classification_case.html)
 <br/>
 
-[5. Import files from
-APSIM](https://adriancorrendo.github.io/metrica/articles/apsim_open.html)
+[5. Import files from APSIM](https://adriancorrendo.github.io/metrica/articles/apsim_open.html)
+<br/>
+
+[6. JOSS publication](https://adriancorrendo.github.io/metrica/articles/JOSS_publication.html)
+<br/>
+
+[7. metrica Shiinyapp](https://adriancorrendo.github.io/metrica/articles/Shinyapp.html)
+<br/>
+
+[8. Cheatsheet](https://adriancorrendo.github.io/metrica/articles/Cheatsheet.html)
 <br/>
 
 ## Functions <br/>
@@ -83,20 +87,20 @@ Mean Absolute Scaled Error (MASE). <br/>
 For classification (binomial and multinomial) tasks, it includes a
 function to visualize the confusion matrix using ggplot2, and 27
 functions of prediction scores including: accuracy, error rate,
-precision (predictive positive value-PPV-), recall (or true positive
+precision (predictive positive value -ppv-), recall (or true positive
 rate-TPR-), specificity (or true negative rate-TNR-, or selectivity),
 balanced accuracy (balacc), F-score (fscore), adjusted F-score (agf),
-G-mean (gmean), Bookmaker Informedness (bmi, a.k.a. Youden’s J-index),
-Markedness (deltaP), Matthews Correlation Coefficient (mcc, a.k.a.
+G-mean (gmean), Bookmaker Informedness (bmi, a.k.a. Youden’s J-index -jindex-),
+Markedness (deltaP, or mk), Matthews Correlation Coefficient (mcc, a.k.a.
 phi-coefficient), Cohen’s Kappa (khat), negative predictive value (npv),
 positive and negative likelihood ratios (posLr, negLr), diagnostic odds
 ratio (dor), prevalence (preval), prevalence threshold (preval_t),
-critical success index (csi, a.k.a. threat score or Jaccard Index),
+critical success index (csi, a.k.a. threat score or Jaccard Index -jaccardindex-),
 false positive rate (FPR), false negative rate (FNR), false detection
 rate (FDR), false omission rate (FOR), and area under the ROC curve
 (AUC_roc). <br/>
 
-`metrica` also offers a function that allows users to run all prediction
+`metrica` also offers a function (\code{metrics_summary}) that allows users to run all prediction
 performance scores at once. The user just needs to specify the type of
 model (“regression” or “classification”). <br/>
 
