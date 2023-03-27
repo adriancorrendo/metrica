@@ -1,6 +1,6 @@
-# metrica 2.0.1 
+# metrica 2.0.2 
 
-* This is a minor update fixing bugs of the package v2.0.0. 
+* This is a minor update fixing bugs of the package v2.0.1. 
 
 ## Maintainer's comments on NOTES (1):
 
@@ -11,30 +11,18 @@ This note only appeared for the rhub::Windows Server 2022, R-devel, and does not
 
 #########################################################################
 
-## 1. Local R CMD (--as-cran = TRUE) check results ───────── metrica 2.0.1 ────
-Duration: 1m 6.2s
+## 1. Local R CMD (--as-cran = TRUE) check results ───────── metrica 2.0.2 ────
+
+Duration: 1m 5s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
 R CMD check succeeded
 
 > sessionInfo()
-R version 4.2.0 (2022-04-22 ucrt)
+R version 4.2.1 (2022-06-23 ucrt)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
-Running under: Windows 10 x64 (build 22000)
-
-Matrix products: default
-
-locale:
-[1] LC_COLLATE=English_United States.utf8  LC_CTYPE=English_United States.utf8   
-[3] LC_MONETARY=English_United States.utf8 LC_NUMERIC=C                          
-[5] LC_TIME=English_United States.utf8    
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
-[1] metrica_2.0.1
+Running under: Windows 11 x64, version 22H2, OS build 22621.1265
 
 ##############################################################################
 

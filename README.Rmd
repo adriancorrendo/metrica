@@ -53,7 +53,7 @@ Check the Documentation at [https://adriancorrendo.github.io/metrica/](https://a
 
 For regression models, it includes 4 plotting functions (scatter, tiles, density, & Bland-Altman plots), and 48 prediction performance scores including error metrics (MBE, MAE, RAE, RMAE, MAPE, SMAPE, MSE, RMSE, RRMSE, RSR, PBE, iqRMSE), error decomposition (MLA, MLP, PLA, PLP, PAB, PPB, SB, SDSD, LCS, Ub, Uc, Ue), model efficiency (NSE, E1, Erel, KGE), indices of agreement (d, d1, d1r, RAC, AC, lambda), goodness of fit (r, R2, RSS, TSS, RSE), adjusted correlation coefficients (CCC, Xa, distance correlation-dcorr-, maximal information coefficient -MIC-), variability (uSD, var_u), and symmetric regression coefficients (B0_sma, B1_sma). Specifically for time-series predictions, `metrica` also includes the Mean Absolute Scaled Error (MASE). <br/>
 
-For classification (binomial and multinomial) tasks, it includes a function to visualize the confusion matrix using ggplot2, and 27 functions of prediction scores including: accuracy, error rate, precision, recall, specificity, balanced accuracy (balacc), F-score (fscore), adjusted F-score (agf), G-mean (gmean), Bookmaker Informedness (bmi, a.k.a. Youden's J-index), Markedness (deltaP), Matthews Correlation Coefficient (mcc), Cohen's Kappa (khat), negative predictive value (npv), positive and negative likelihood ratios (posLr, negLr), diagnostic odds ratio (dor), prevalence (preval), prevalence threshold (preval_t), critical success index (csi, a.k.a. threat score), false positive rate (FPR), false negative rate (FNR), false detection rate (FDR), false omission rate (FOR), and area under the ROC curve (AUC_roc). <br/>
+For classification (binomial and multinomial) tasks, it includes a function to visualize the confusion matrix using ggplot2, and 27 functions of prediction scores including: accuracy, error rate, precision (predictive positive value-PPV-), recall (or true positive rate-TPR-), specificity (or true negative rate-TNR-, or selectivity), balanced accuracy (balacc), F-score (fscore), adjusted F-score (agf), G-mean (gmean), Bookmaker Informedness (bmi, a.k.a. Youden's J-index), Markedness (deltaP), Matthews Correlation Coefficient (mcc, a.k.a. phi-coefficient), Cohen's Kappa (khat), negative predictive value (npv), positive and negative likelihood ratios (posLr, negLr), diagnostic odds ratio (dor), prevalence (preval), prevalence threshold (preval_t), critical success index (csi, a.k.a. threat score or Jaccard Index), false positive rate (FPR), false negative rate (FNR), false detection rate (FDR), false omission rate (FOR), and area under the ROC curve (AUC_roc). <br/>
 
 `metrica` also offers a \code{metrics_summary()} function that allows users to run all prediction performance scores at once. The user just needs to specify the type of model ("regression" or "classification"). <br/>
 
@@ -283,8 +283,9 @@ head(nested.examples %>% group_by(id) %>% dplyr::slice_head(n=2))
 # b. Run 
 multiple.sum <- nested.examples %>% 
   # Store metrics in new.column "performance"
-  mutate(performance = map(data, ~metrica::metrics_summary(data=., obs = obs, pred = pred, 
-                                                           type = "regression")))
+  mutate(performance = map(
+    data, ~metrica::metrics_summary(data=., obs = obs, pred = pred, 
+                                    type = "regression")))
 
 head(multiple.sum)
 

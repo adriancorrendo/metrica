@@ -118,7 +118,7 @@ scatter_plot <- function(data = NULL,
         ggplot2::geom_abline()+
         # SMA line
         ggplot2::geom_abline(linetype = ifelse(is.null(regline_type), "F1", regline_type), 
-                             size = ifelse(is.null(regline_size), 2, regline_size), 
+                            
                              col = ifelse(is.null(regline_color), "#f46036", regline_color), 
                              slope = B1.PO,
                              intercept = B0.PO) +
@@ -160,7 +160,7 @@ scatter_plot <- function(data = NULL,
           ggplot2::geom_abline()+
           # SMA line
           ggplot2::geom_abline(linetype = ifelse(is.null(regline_type), "F1", regline_type), 
-                               size = ifelse(is.null(regline_size), 2, regline_size), 
+                              
                                col = ifelse(is.null(regline_color), "#073b4c", regline_color), 
                                slope = B1.OP,
                                intercept = B0.OP) +

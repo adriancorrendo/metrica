@@ -38,7 +38,7 @@
 #' @seealso 
 #'  \code{\link[ggplot2]{ggplot}},\code{\link[ggplot2]{geom_point}},\code{\link[ggplot2]{aes}}
 #' @rdname density_plot
-#' @importFrom ggplot2 ggplot geom_point aes geom_abline geom_hex
+#' @importFrom ggplot2 ggplot geom_point aes geom_abline geom_hex 
 #' coord_fixed theme_bw labs
 #' @importFrom dplyr %>%
 #' @importFrom rlang eval_tidy quo
@@ -158,7 +158,7 @@ if (orientation == "OP"){
       ggplot2::geom_abline()+
       # SMA line
       ggplot2::geom_abline(linetype = ifelse(is.null(regline_type), "F1", regline_type), 
-                             size = ifelse(is.null(regline_size), 2, regline_size), 
+                           linewidth = ifelse(is.null(regline_size), 2, regline_size), 
                              col = ifelse(is.null(regline_color), "#006d77", regline_color), 
                              slope = B1.OP,
                              intercept = B0.OP) +

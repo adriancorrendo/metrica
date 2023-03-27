@@ -1,25 +1,6 @@
-# metrica 2.0.1.999
+# metrica 2.0.2
 
-* March 13th, 2023. <br/>
-
-12) Add vignettes related to (i) publication of metrica on the Journal of Open Source Software (JOSS),  (ii) the metrica `ShinyApp`, and (iii) the new `cheatsheets` of the metrica package.
-
-11) Make a correction on the vignette specifying the formula of Duveiller's `lambda()`, which by the way does not affect the `lambda()` function itself.
-
-10) Add alternative functions to precision (`ppv()`), mcc (`phi_coef()`), bmi (`jindex()`), csi (`jaccardindex()`), and deltap (`mk()`).
-
-* March 6th, 2023. <br/>
-
-8) Add alternative functions to recall performing identical job such as (i) sensitivity, (ii) True Positive Rate -TPR-, and (iii) Hit Rate -hitrate-.
-
-9) Add alternative functions to specificity performing identical job such as (i) selectivity, (ii) True Negative Rate -TNR-.
-
-
-* December 22nd, 2022. <br/>
-
-7) Fix typos in the documentation of RRMSE, RSR, and iqRMSE, which formulas were corrected (removing 100 from the beginning of formulas.
-
-* November 3rd, 2022. <br/>
+This new version fixes minor bugs from version 2.0.1, typos, update and add new vignettes, and add alternative functions to several classification performance metrics. Details:
 
 This new development version fixes minor bugs found in v2.0.1:
 
@@ -35,6 +16,17 @@ This new development version fixes minor bugs found in v2.0.1:
 
 6) Including an "extdata" directory containing APSIM example files (soybean.out & soybean.example.db)
 
+7) Fix typos in the documentation of RRMSE, RSR, and iqRMSE, which formulas were corrected (removing 100 from the beginning of formulas.
+
+8) Add alternative functions to recall performing identical job such as (i) sensitivity, (ii) True Positive Rate -TPR-, and (iii) Hit Rate -hitrate-.
+
+9) Add alternative functions to specificity performing identical job such as (i) selectivity, (ii) True Negative Rate -TNR-.
+
+12) Add vignettes related to (i) publication of metrica on the Journal of Open Source Software (JOSS),  (ii) the metrica `ShinyApp`, and (iii) the new `cheatsheets` of the metrica package.
+
+11) Make a correction on the vignette specifying the formula of Duveiller's `lambda()`, which by the way does not affect the `lambda()` function itself.
+
+10) Add alternative functions to precision (`ppv()`), mcc (`phi_coef()`), bmi (`jindex()`), csi (`jaccardindex()`), and deltap (`mk()`).
 
 ######################################################################################################
 

@@ -18,8 +18,8 @@ status](https://ci.appveyor.com/api/projects/status/github/adriancorrendo/metric
 [![R-CMD-check](https://github.com/adriancorrendo/metrica/workflows/R-CMD-check/badge.svg)](https://github.com/adriancorrendo/metrica/actions)
 [![codecov](https://codecov.io/gh/adriancorrendo/metrica/branch/master/graph/badge.svg?token=CfK5NhXzYn)](https://app.codecov.io/gh/adriancorrendo/metrica)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6474101.svg)](https://doi.org/10.5281/zenodo.6474101)
-
 [![status](https://joss.theoj.org/papers/c3113e0e3fe8c8f9f49d43fde5f4125f/status.svg)](https://joss.theoj.org/papers/c3113e0e3fe8c8f9f49d43fde5f4125f)
+[![R-CMD-check](https://github.com/adriancorrendo/metrica/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/adriancorrendo/metrica/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Introduction <br/>
@@ -83,15 +83,17 @@ Mean Absolute Scaled Error (MASE). <br/>
 For classification (binomial and multinomial) tasks, it includes a
 function to visualize the confusion matrix using ggplot2, and 27
 functions of prediction scores including: accuracy, error rate,
-precision, recall, specificity, balanced accuracy (balacc), F-score
-(fscore), adjusted F-score (agf), G-mean (gmean), Bookmaker Informedness
-(bmi, a.k.a. Youden’s J-index), Markedness (deltaP), Matthews
-Correlation Coefficient (mcc), Cohen’s Kappa (khat), negative predictive
-value (npv), positive and negative likelihood ratios (posLr, negLr),
-diagnostic odds ratio (dor), prevalence (preval), prevalence threshold
-(preval_t), critical success index (csi, a.k.a. threat score), false
-positive rate (FPR), false negative rate (FNR), false detection rate
-(FDR), false omission rate (FOR), and area under the ROC curve
+precision (predictive positive value-PPV-), recall (or true positive
+rate-TPR-), specificity (or true negative rate-TNR-, or selectivity),
+balanced accuracy (balacc), F-score (fscore), adjusted F-score (agf),
+G-mean (gmean), Bookmaker Informedness (bmi, a.k.a. Youden’s J-index),
+Markedness (deltaP), Matthews Correlation Coefficient (mcc, a.k.a.
+phi-coefficient), Cohen’s Kappa (khat), negative predictive value (npv),
+positive and negative likelihood ratios (posLr, negLr), diagnostic odds
+ratio (dor), prevalence (preval), prevalence threshold (preval_t),
+critical success index (csi, a.k.a. threat score or Jaccard Index),
+false positive rate (FPR), false negative rate (FNR), false detection
+rate (FDR), false omission rate (FOR), and area under the ROC curve
 (AUC_roc). <br/>
 
 `metrica` also offers a function that allows users to run all prediction
@@ -414,8 +416,9 @@ head(nested.examples %>% group_by(id) %>% dplyr::slice_head(n=2))
 # b. Run 
 multiple.sum <- nested.examples %>% 
   # Store metrics in new.column "performance"
-  mutate(performance = map(data, ~metrica::metrics_summary(data=., obs = obs, pred = pred, 
-                                                           type = "regression")))
+  mutate(performance = map(
+    data, ~metrica::metrics_summary(data=., obs = obs, pred = pred, 
+                                    type = "regression")))
 
 head(multiple.sum)
 #> # A tibble: 4 × 3
@@ -618,15 +621,15 @@ binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, ty
 
 # Multinomial
 multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
-#> Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, :
-#> For multiclass cases, the fscore should be estimated at a class level. Please,
+#> Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, : For
+#> multiclass cases, the fscore should be estimated at a class level. Please,
 #> consider using `atom = TRUE`
-#> Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions, pos_level
-#> = pos_level): For multiclass cases, the agf should be estimated at a class
-#> level. Please, consider using `atom = TRUE`
-#> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions, pos_level
-#> = pos_level): The Fowlkes-Mallows Index is not available for multiclass cases.
-#> The result has been recorded as NaN.
+#> Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions,
+#> pos_level = pos_level): For multiclass cases, the agf should be estimated at a
+#> class level. Please, consider using `atom = TRUE`
+#> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions,
+#> pos_level = pos_level): The Fowlkes-Mallows Index is not available for
+#> multiclass cases. The result has been recorded as NaN.
 #> Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions, : For
 #> multiclass cases, prevalence should be estimated at a class level. A NaN has
 #> been recorded as the result. Please, use `atom = TRUE`
@@ -674,15 +677,15 @@ binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, ty
 # Multiclass
 multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification",
                                   metrics_list = selected_class_metrics)
-#> Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, :
-#> For multiclass cases, the fscore should be estimated at a class level. Please,
+#> Warning in metrica::fscore(data = ~., obs = ~labels, pred = ~predictions, : For
+#> multiclass cases, the fscore should be estimated at a class level. Please,
 #> consider using `atom = TRUE`
-#> Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions, pos_level
-#> = pos_level): For multiclass cases, the agf should be estimated at a class
-#> level. Please, consider using `atom = TRUE`
-#> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions, pos_level
-#> = pos_level): The Fowlkes-Mallows Index is not available for multiclass cases.
-#> The result has been recorded as NaN.
+#> Warning in metrica::agf(data = ~., obs = ~labels, pred = ~predictions,
+#> pos_level = pos_level): For multiclass cases, the agf should be estimated at a
+#> class level. Please, consider using `atom = TRUE`
+#> Warning in metrica::fmi(data = ~., obs = ~labels, pred = ~predictions,
+#> pos_level = pos_level): The Fowlkes-Mallows Index is not available for
+#> multiclass cases. The result has been recorded as NaN.
 #> Warning in metrica::preval(data = ~., obs = ~labels, pred = ~predictions, : For
 #> multiclass cases, prevalence should be estimated at a class level. A NaN has
 #> been recorded as the result. Please, use `atom = TRUE`
@@ -715,15 +718,15 @@ multinomial_case %>% balacc(data = ., obs = labels, pred = predictions, tidy=TRU
 #>     balacc
 #> 1 0.490305
 multinomial_case %>% fscore(data = ., obs = labels, pred = predictions, tidy=TRUE)
-#> Warning in fscore(data = ., obs = labels, pred = predictions, tidy = TRUE):
-#> For multiclass cases, the fscore should be estimated at a class level. Please,
+#> Warning in fscore(data = ., obs = labels, pred = predictions, tidy = TRUE): For
+#> multiclass cases, the fscore should be estimated at a class level. Please,
 #> consider using `atom = TRUE`
 #>      fscore
 #> 1 0.3202471
 multinomial_case %>% agf(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #> Warning in agf(data = ., obs = labels, pred = predictions, tidy = TRUE): For
-#> multiclass cases, the agf should be estimated at a class level. Please, consider
-#> using `atom = TRUE`
+#> multiclass cases, the agf should be estimated at a class level. Please,
+#> consider using `atom = TRUE`
 #>         agf
 #> 1 0.3202471
 multinomial_case %>% gmean(data = ., obs = labels, pred = predictions, tidy=TRUE)
@@ -737,8 +740,8 @@ multinomial_case %>% mcc(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #> 1 -0.01926552
 multinomial_case %>% fmi(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #> Warning in fmi(data = ., obs = labels, pred = predictions, tidy = TRUE): The
-#> Fowlkes-Mallows Index is not available for multiclass cases. The result has been
-#> recorded as NaN.
+#> Fowlkes-Mallows Index is not available for multiclass cases. The result has
+#> been recorded as NaN.
 #>   fmi
 #> 1 NaN
 multinomial_case %>% posLr(data = ., obs = labels, pred = predictions, tidy=TRUE)

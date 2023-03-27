@@ -32,8 +32,7 @@
 #'  \code{\link[ggplot2]{ggplot}},\code{\link[ggplot2]{geom_point}},\code{\link[ggplot2]{aes}}
 #' @rdname bland_altman_plot
 #' @export 
-#' @importFrom ggplot2 ggplot geom_point aes geom_abline labs theme_bw
-#' theme
+#' @importFrom ggplot2 ggplot geom_point aes geom_abline labs theme_bw theme
 #' @importFrom dplyr %>%
 #' @importFrom rlang eval_tidy quo  
 bland_altman_plot <- function(data=NULL,
@@ -69,16 +68,16 @@ bland_altman_plot <- function(data=NULL,
     # Zero line
     ggplot2::geom_hline(yintercept = 0, 
                         linetype = ifelse(is.null(zeroline_type), "solid", zeroline_type), 
-                        size = ifelse(is.null(zeroline_size), 2, zeroline_size), 
+                        linewidth = ifelse(is.null(zeroline_size), 2, zeroline_size), 
                         col = ifelse(is.null(zeroline_color), "black", zeroline_color))+
     # Boundary lines
     ggplot2::geom_hline(yintercept = 1.96*stats::sd(obs),
                         linetype = ifelse(is.null(limitsline_type), "dashed", limitsline_type), 
-                        size = ifelse(is.null(limitsline_size), 2, limitsline_size), 
+                        linewidth = ifelse(is.null(limitsline_size), 2, limitsline_size), 
                         col = ifelse(is.null(limitsline_color), "dark red", limitsline_color))+
     ggplot2::geom_hline(yintercept = -1.96*stats::sd(obs),
                         linetype = ifelse(is.null(limitsline_type), "dashed", limitsline_type), 
-                        size = ifelse(is.null(limitsline_size), 2, limitsline_size), 
+                        linewidth = ifelse(is.null(limitsline_size), 2, limitsline_size), 
                         col = ifelse(is.null(limitsline_color), "dark red", limitsline_color))+
     ggplot2::labs(x = "Observed", y = "Observed - Predicted")+
     ggplot2::theme_bw()+
