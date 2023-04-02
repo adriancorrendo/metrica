@@ -1,0 +1,17 @@
+citHeader("To cite metrica in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "metrica: an R package to evaluate prediction performance of regression and classification point-forecast models",
+  author   = "Adrian A. Correndo and Luiz H. Moro Rosso and Carlos H. Hernandez and Leonardo M. Bastos and Luciana Nieto and Dean Holzworth and Ignacio A. Ciampitti",
+  journal  = "Journal of Open Source Software",
+  year     = "2022",
+  volume   = "7",
+  number   = "79",
+  pages    = "4655",
+  doi      = "10.21105/joss.04655",
+  url      = "https://joss.theoj.org/papers/10.21105/joss.04655",
+  textVersion = paste("Correndo et al., (2022). metrica: an R package to evaluate prediction performance of regression and classification point-forecast models. Journal of Open Source Software, 7(79), 4655, https://doi.org/10.21105/joss.04655"
+
+  )
+)
