@@ -28,7 +28,7 @@ Running under: Windows 11 x64, version 22H2, OS build 22621.1265
 
 ## 2. WIN-DEVEL. Results devtools::check_win_devel()
 
-Build log: https://win-builder.r-project.org/qLRecSwZfLQT/
+Build log: https://win-builder.r-project.org/fRrt6yci0oEH/
 
 Status: OK
 
@@ -38,54 +38,42 @@ Status: OK
 
 ## Test environments
 
-── metrica 2.0.1: NOTE
+- R-hub Windows Server 2022, R-devel, 64 bit, build log:
+https://builder.r-hub.io/status/metrica_2.0.2.tar.gz-752293e692dd4dc4aa9b7ee49ef51364
 
-  Build ID:   metrica_2.0.1.tar.gz-cddad00116384bfe8374f5e0222ab4a6
+- R-hub Ubuntu Linux 20.04.1 LTS, R-release, GCC, build log:
+https://builder.r-hub.io/status/metrica_2.0.2.tar.gz-c5bc7096ecbf40bfb0873e4e26fadb8d
+
+- R-hub Fedora Linux, R-devel, clang, gfortran, build log:
+https://builder.r-hub.io/status/metrica_2.0.2.tar.gz-10e1f465207b482bbf83e3c5c8fd359e
+
+## SUMMARY
+
+── metrica 2.0.2: NOTE
+
+  Build ID:   metrica_2.0.2.tar.gz-752293e692dd4dc4aa9b7ee49ef51364
   Platform:   Windows Server 2022, R-devel, 64 bit
-  Submitted:  28m 58s ago
-  Build time: 7m 59.6s
+  Submitted:  7m 17.5s ago
+  Build time: 5m 33.2s
+
+❯ checking HTML version of manual ... [13s] NOTE
+  
 
 ❯ checking for detritus in the temp directory ... NOTE
-  Found the following files/directories:
     'lastMiKTeXException'
 
-0 errors ✔ | 0 warnings ✔ | 1 note ✖
+0 errors ✔ | 0 warnings ✔ | 2 notes ✖
 
-── metrica 2.0.1: OK
+── metrica 2.0.2: IN-PROGRESS
 
-  Build ID:   metrica_2.0.1.tar.gz-1bf5dd3e5aaf432286a28e77368835ee
+  Build ID:   metrica_2.0.2.tar.gz-c5bc7096ecbf40bfb0873e4e26fadb8d
   Platform:   Ubuntu Linux 20.04.1 LTS, R-release, GCC
-  Submitted:  28m 58s ago
-  Build time: 27m 21.4s
+  Submitted:  7m 17.5s ago
 
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
-── metrica 2.0.1: OK
+── metrica 2.0.2: IN-PROGRESS
 
-  Build ID:   metrica_2.0.1.tar.gz-3a7e79c144b74f3db218c7495e2cf5fa
+  Build ID:   metrica_2.0.2.tar.gz-10e1f465207b482bbf83e3c5c8fd359e
   Platform:   Fedora Linux, R-devel, clang, gfortran
-  Submitted:  28m 58s ago
-  Build time: 27m 58.2s
-
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
-
-── metrica 2.0.1: OK
-
-  Build ID:   metrica_2.0.1.tar.gz-ab17ac63da134bffaa77f571fa694d0d
-  Platform:   Apple Silicon (M1), macOS 11.6 Big Sur, R-release
-  Submitted:  28m 58s ago
-  Build time: 1m 20s
-
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
-
-── metrica 2.0.1: OK
-
-  Build ID:   metrica_2.0.1.tar.gz-cdc84b2cf7574c25b84eeae3614b0c5f
-  Platform:   macOS 10.13.6 High Sierra, R-release, CRAN's setup
-  Submitted:  28m 58s ago
-  Build time: 1m 51.1s
-
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
-
-####################################################################
+  Submitted:  7m 17.5s ago
 
