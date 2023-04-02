@@ -28,6 +28,8 @@ This new development version fixes minor bugs found in v2.0.1:
 
 10) Add alternative functions to precision (`ppv()`), mcc (`phi_coef()`), bmi (`jindex()`), csi (`jaccardindex()`), and deltap (`mk()`).
 
+11) Add `CITATION` file into "inst/" folder following `bibentry` format.
+
 ######################################################################################################
 
 - PREVIOUS VERSIONS
