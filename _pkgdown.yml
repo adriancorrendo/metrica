@@ -6,6 +6,8 @@ template:
     base_font: {google: "Barlow Condensed"}
     heading_font: {google: "Barlow Semi Condensed"}
     code_font: {google: "Ubuntu Mono"}
+    primary: "#003049"
+    bg: "#202123"
     fg: "#f0783c"
     
 navbar:
