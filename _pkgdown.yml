@@ -3,18 +3,17 @@ template:
   bootstrap: 5
   bootswatch: flatly
   bslib:
-    base_font: {google: "Barlow Semi Condensed"}
+    base_font: {google: "Barlow Condensed"}
+    heading_font: {google: "Barlow Semi Condensed"}
+    code_font: {google: "Ubuntu Mono"}
+    primary: "#f0783c"
     
 navbar:
   structure:
-    left:  [home, functions, metrics, tutorials, cheatsheet, more, news]
+    left:  [functions, metrics, tutorials, cheatsheet, more, news]
     right: [github, contact, search]
   
   components:
-    home:
-      text: "Home"
-      href: articles/index.html
-      
     functions:
       icon: fa-gears
       text: "Functions"
@@ -38,10 +37,10 @@ navbar:
        - text: "Classification"
          href: articles/regression_case.html
        - text: "Import APSIM files"
-         href: articles/apsim_open.Rmd
+         href: articles/apsim_open.html
          
     cheatsheet:
-      icon: fa-wand-magic-sparkles
+      icon: fa-note-sticky
       text: "Cheatsheet"
       href: articles/Cheatsheet.html
       
