@@ -1,3 +1,18 @@
+# metrica 2.0.3
+This version fixes an issue found for Debian for Importing APSIM NewGeneration files that violated CRAN Policy's.
+
+Change details:
+
+1) Adding a READ-ONLY flag within import_apsim_db() as follows:
+
+con <- DBI::dbConnect(..., flags = RSQLite::SQLITE_RO)
+
+2) Simplified vignette for open "APSIM: Importing APSIM Classic and NewGeneration files" now implementing "eval = FALSE" for a chunk containing example code to open APSIM files. Code is there but not running by default.
+
+Potentially problematic code line:
+apsim_out_filepath <- system.file("extdata/soybean.out", package = "metrica")
+
+
 # metrica 2.0.2
 
 This new version fixes minor bugs from version 2.0.1, typos, update and add new vignettes, and add alternative functions to several classification performance metrics. Details:

@@ -1,4 +1,72 @@
 url: https://adriancorrendo.github.io/metrica/
 template:
   bootstrap: 5
+  bootswatch: flatly
+  bslib:
+    base_font: {google: "Barlow Semi Condensed"}
+    
+navbar:
+  structure:
+    left:  [home, functions, metrics, tutorials, cheatsheet, more, news]
+    right: [github, contact, search]
+  
+  components:
+    home:
+      text: "Home"
+      href: articles/index.html
+      
+    functions:
+      icon: fa-gears
+      text: "Functions"
+      href: reference/index.html
+    
+    metrics:
+      icon: fa-ruler
+      text: "Metrics"
+      menu:
+       - text: "Regression performance"
+         href: articles/regression_case.html
+       - text: "Classification performance"
+         href: articles/regression_case.html
+    
+    tutorials:
+      icon: fa-paperclip
+      text: "Tutorials"
+      menu:
+       - text: "Regression"
+         href: articles/regression_case.html
+       - text: "Classification"
+         href: articles/regression_case.html
+       - text: "Import APSIM files"
+         href: articles/apsim_open.Rmd
+         
+    cheatsheet:
+      icon: fa-wand-magic-sparkles
+      text: "Cheatsheet"
+      href: articles/Cheatsheet.html
+      
+    more:
+      icon: fa-plus
+      text: "More"
+      menu:
+       - text: "JOSS publication"
+         href: articles/JOSS_publication.html
+       - text: "Shinyapp"
+         href: articles/Shinyapp.html
+    
+    news:
+      icon: fa-newspaper
+      text: "News"
+      href: news/index.html
+    
+    github:
+      icon: fa-github
+      hreft: https://github.com/adriancorrendo/metrica/
+    
+    contact:
+      icon: fa-user
+      hreft: https://adriancorrendo.github.io/
 
+home:
+  sidebar:
+    structure: [citation, dev, links, community, license, authors]

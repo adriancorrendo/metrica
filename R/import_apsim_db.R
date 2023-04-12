@@ -32,7 +32,9 @@ import_apsim_db <- function(filename = "", folder = ".", value = "report", simpl
   
   file.name.path <- file.path(folder, filename)
   
-  con <- DBI::dbConnect(RSQLite::SQLite(), file.name.path)
+  con <- DBI::dbConnect(RSQLite::SQLite(), file.name.path,
+                        # Adding a READ-ONLY flag, no "write access" permission.
+                        flags = RSQLite::SQLITE_RO)
   ## create data frame for each table
   ## Find table names first
   table.names <- RSQLite::dbListTables(con)
