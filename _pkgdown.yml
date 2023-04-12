@@ -6,7 +6,7 @@ template:
     base_font: {google: "Barlow Condensed"}
     heading_font: {google: "Barlow Semi Condensed"}
     code_font: {google: "Ubuntu Mono"}
-    primary: "#f0783c"
+    fg: "#f0783c"
     
 navbar:
   structure:
@@ -24,9 +24,9 @@ navbar:
       text: "Metrics"
       menu:
        - text: "Regression performance"
-         href: articles/regression_case.html
+         href: articles/available_metrics_regression.html
        - text: "Classification performance"
-         href: articles/regression_case.html
+         href: articles/available_metrics_classification.html
     
     tutorials:
       icon: fa-paperclip
