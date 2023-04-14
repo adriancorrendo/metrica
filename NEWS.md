@@ -12,6 +12,9 @@ con <- DBI::dbConnect(..., flags = RSQLite::SQLITE_RO)
 Potentially problematic code line:
 apsim_out_filepath <- system.file("extdata/soybean.out", package = "metrica")
 
+######################################################################################################
+
+- PREVIOUS VERSIONS
 
 # metrica 2.0.2
 
@@ -45,9 +48,6 @@ This new development version fixes minor bugs found in v2.0.1:
 
 11) Add `CITATION` file into "inst/" folder following `bibentry` format.
 
-######################################################################################################
-
-- PREVIOUS VERSIONS
 
 # metrica 2.0.1
 
