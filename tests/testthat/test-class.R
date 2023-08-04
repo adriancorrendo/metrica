@@ -665,6 +665,15 @@ test_that('no error AUC_roc_2', {expect_false(inherits(AUC_roc_2.test, "try-erro
 test_that('no error AUC_roc_3', {expect_false(inherits(AUC_roc_3.test, "try-error")) })
 test_that('no error AUC_roc_4', {expect_false(inherits(AUC_roc_4.test, "try-error")) })
 
+# 27. P4-metric
+p4_1.test <- p4(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
+p4_2.test <- p4(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 1)
+p4_3.test <- p4(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
+p4_4.test <- p4(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
+p4_5.test <- p4(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
+p4_6.test <- p4(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+p4_7.test <- p4(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
+
 
 # 25. Classification Metrics Summary
 metrics_summary_1.test <- metrics_summary(data = binary, obs = labels, pred = predictions, type = "classification")

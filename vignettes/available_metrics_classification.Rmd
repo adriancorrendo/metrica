@@ -31,7 +31,7 @@ value (npv), positive and negative likelihood ratios (posLr, negLr), diagnostic
 odds ratio (dor), prevalence (preval), prevalence threshold (preval_t), critical 
 success index (csi, a.k.a. threat score), false positive rate (FPR), false 
 negative rate (FNR), false detection rate (FDR), false omission rate (FOR), 
-and area under the ROC curve (AUC_roc). <br/>
+area under the ROC curve (AUC_roc), and the P4-metric (p4). <br/>
 
 For supervised models, always keep in mind the concept of "cross-validation" 
 since predicted values should ideally come from out-of-bag samples 
@@ -89,7 +89,8 @@ _Note: All classification functions automatically recognize the number of classe
 |23| `preval_t` | Error Rate | It represents the complement of accuracy. It could vary between 0 and 1. Being 0 the best and 1 the worst | $error~rate = \frac{FP+FN}{TP+FP+TN+FN}$|
 |24| `csi`, `jaccardindex` | Critical Success Index | The `csi` is also known as the threat score (TS) or Jaccard's Index. It could vary between 0 and 1, being 0 the worst and 1 the best | $csi = \frac{TP}{TP+FP+TN}$|
 |25| `deltap`, `mk` | Markedness or deltap | The `deltap` (a.k.a. Markedness -`mk`-) is a metric that quantifies the probability that a condition is marked by the predictor with respect to a random chance | $deltap = precision+npv-1 = PPV + NPV -1$|
-|26| `AUC_roc` | Area Under the Curve | The `AUC_roc` estimates the area under the receiving operator characteristic curve following the trapezoid approach. It bounded between 0 and 1. The closet to 1 the better. AUC_roc = 0.5 means the models predictions are the same than a random classifier. | $AUC_{roc} = precision+npv-1 = PPV + NPV -1$|
+|26| `AUC_roc` | Area Under the Curve | The `AUC_roc` estimates the area under the receiving operator characteristic curve following the trapezoid approach. It is bounded between 0 and 1. The closet to 1 the better. AUC_roc = 0.5 means the models predictions are the same than a random classifier. | $AUC_{roc} = precision+npv-1 = PPV + NPV -1$|
+|27| `p4` | P4-metric | The `p4` estimates the P-4 following Sitarz (2023) as an extension of the `F-score`. It is bounded between 0 and 1. The closet to 1 the better. It integrates four metrics: `precision`, `recall`, `specificity`, and `npv`. | $p4 = \frac{4} {\frac{1}{precision} + \frac{1}{recall} + \frac{1}{specificity} + \frac{1}{npv} }$|
 
 <br/>
 
@@ -169,7 +170,9 @@ accuracy in binary classification evaluation. _BMC Genomics 21, 6 (2020)._ \doi{
 23. Hand, D.J., Till, R.J. (2001). A simple generalisation of the area under the ROC curve for multiple class
 classification problems. _Machine Learning 45: 171-186_ \doi{10.1023/A:1010920819831}  
 
-24. Mandrekar, J.N. (2010). Receiver operating characteristic curve in diagnostic test assessment. _J. Thoracic Oncology 5(9): 1315-1316_ \doi{10.1097/JTO.0b013e3181ec173d} 
+24. Mandrekar, J.N. (2010). Receiver operating characteristic curve in diagnostic test assessment. _J. Thoracic Oncology 5(9): 1315-1316_ \doi{10.1097/JTO.0b013e3181ec173d}
+
+25. Sitarz, M. (2023). Extending F1 metric, probabilistic approach. _Adv. Artif. Intell. Mach. Learn., 3 (2):1025-1038._ \doi{10.54364/AAIML.2023.1161}
 
 
 

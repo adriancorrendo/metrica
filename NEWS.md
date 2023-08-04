@@ -1,3 +1,14 @@
+# metrica 2.0.4
+This version fixes an issue found for Debian for Importing APSIM NewGeneration files that violated CRAN Policy's.
+
+Change details:
+
+1) Adding the P4-metric to the classification metrics group following Sitarz, M. (2023) doi:10.54364/AAIML.2023.1161
+
+######################################################################################################
+
+- PREVIOUS VERSIONS
+
 # metrica 2.0.3
 This version fixes an issue found for Debian for Importing APSIM NewGeneration files that violated CRAN Policy's.
 
@@ -12,9 +23,6 @@ con <- DBI::dbConnect(..., flags = RSQLite::SQLITE_RO)
 Potentially problematic code line:
 apsim_out_filepath <- system.file("extdata/soybean.out", package = "metrica")
 
-######################################################################################################
-
-- PREVIOUS VERSIONS
 
 # metrica 2.0.2
 
