@@ -194,7 +194,7 @@ example.data <- barley %>%  # or 'wheat', 'sorghum', or 'chickpea'
 
 ### 3.1.1. Plot functions
 ### 3.1.1.1. Create a customizable scatter plot with PO orientation
-```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=300}
+```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=90}
 
 barley.scat.plot <- 
   metrica::scatter_plot(data = example.data, 
@@ -223,7 +223,7 @@ barley.scat.plot
 ```
 
 ### 3.1.1.2. Create tiles plot with OP orientation
-```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=300}
+```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=90}
 barley.tiles.plot <- 
   tiles_plot(data = example.data, 
                       obs = measured, 
@@ -236,7 +236,7 @@ barley.tiles.plot
 ```
 
 ### 3.1.1.3. Create a density plot with OP orientation
-```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=300}
+```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=90}
 barley.density.plot <-
 metrica::density_plot(data = example.data, 
                       obs = measured, pred = simulated,
@@ -249,7 +249,7 @@ barley.density.plot
 ```
 
 ### 3.1.1.4. Create a Bland-Altman plot
-```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=300}
+```{r warning=FALSE, message=FALSE, fig.height=4, fig.width=5, dpi=90}
 barley.ba.plot <- metrica::bland_altman_plot(data = example.data,
                                              obs = measured, pred = simulated)
 
@@ -335,7 +335,7 @@ head(non_nested_summary)
 ```
 
 ### 3.1.4. Print metrics in a plot
-```{r warning=F, message=F, fig.height=5, fig.width=7, dpi=300}
+```{r warning=F, message=F, fig.height=5, fig.width=7, dpi=90}
 df <- metrica::wheat
 
 # Create list of selected metrics
@@ -375,7 +375,7 @@ multinomial_case <- data.frame(labels = sample(c("Red","Green", "Blue"), 100, re
 ### 3.1.1. Confusion Matrix <br/>
 
 ### 3.1.1.1. Binary
-```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
+```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=90}
 # a. Print
 binomial_case %>% confusion_matrix(obs = labels, pred = predictions, 
                                             plot = FALSE, colors = c(low="#f9dbbd" , high="#735d78"), 
@@ -388,7 +388,7 @@ binomial_case %>% confusion_matrix(obs = labels, pred = predictions,
 ```
 
 ### 3.1.1.2. Multiclass
-```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=300}
+```{r warning=FALSE, message=FALSE, fig.height=6, fig.width=7, dpi=90}
 # a. Print
 multinomial_case %>% confusion_matrix(obs = labels, 
                                       pred = predictions, 
