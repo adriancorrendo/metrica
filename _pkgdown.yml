@@ -1,4 +1,71 @@
 url: https://adriancorrendo.github.io/metrica/
 template:
   bootstrap: 5
+  bootswatch: flatly
+  theme: ayu-light
+  bslib:
+    base_font: {google: "Barlow Condensed"}
+    heading_font: {google: "Barlow Semi Condensed"}
+    code_font: {google: "Ubuntu Mono"}
+    
+navbar:
+  structure:
+    left:  [functions, metrics, tutorials, cheatsheet, more, news]
+    right: [github, contact, search]
+  
+  components:
+    functions:
+      icon: fa-gears
+      text: "Functions"
+      href: reference/index.html
+    
+    metrics:
+      icon: fa-ruler
+      text: "Metrics"
+      menu:
+       - text: "Regression performance"
+         href: articles/available_metrics_regression.html
+       - text: "Classification performance"
+         href: articles/available_metrics_classification.html
+    
+    tutorials:
+      icon: fa-paperclip
+      text: "Tutorials"
+      menu:
+       - text: "Regression"
+         href: articles/regression_case.html
+       - text: "Classification"
+         href: articles/classification_case.html
+       - text: "Import APSIM files"
+         href: articles/apsim_open.html
+         
+    cheatsheet:
+      icon: fa-note-sticky
+      text: "Cheatsheet"
+      href: articles/Cheatsheet.html
+      
+    more:
+      icon: fa-plus
+      text: "More"
+      menu:
+       - text: "JOSS publication"
+         href: articles/JOSS_publication.html
+       - text: "Shinyapp"
+         href: articles/Shinyapp.html
+    
+    news:
+      icon: fa-newspaper
+      text: "News"
+      href: news/index.html
+    
+    github:
+      icon: fa-github
+      hreft: https://github.com/adriancorrendo/metrica/
+    
+    contact:
+      icon: fa-user
+      hreft: https://adriancorrendo.github.io/
 
+home:
+  sidebar:
+    structure: [citation, dev, links, community, license, authors]
