@@ -69,6 +69,7 @@ agf <- function(data=NULL, obs, pred,
       TP <- matrix[[1]]
       TPFP <- matrix[[1]] + matrix[[3]]
       TPFN <- matrix[[1]] + matrix[[2]]
+      TNFN <- matrix[[4]] + matrix[[2]]
       TN <- matrix[[4]]
       N <- matrix[[4]] + matrix[[3]] }
     
@@ -76,12 +77,14 @@ agf <- function(data=NULL, obs, pred,
       TP <- matrix[[4]]
       TPFP <- matrix[[4]] + matrix[[2]]
       TPFN <- matrix[[4]] + matrix[[3]]
+      TNFN <- matrix[[1]] + matrix[[3]]
       TN <- matrix[[1]]
       N <- matrix[[1]] + matrix[[2]] }
     
     rec <- TP/ (TPFN) 
     prec <- TP/ (TPFP)
-    #spec <- TN/N
+    spec <- TN/N
+    npv <- TN/ (TNFN)
     
   }
   
@@ -97,19 +100,22 @@ agf <- function(data=NULL, obs, pred,
     TPFP <- rowSums(matrix)
     TPFN <- colSums(matrix)
     TN   <- sum(matrix) - (TPFP + TPFN - TP)
-    FP   <- TPFP - TP 
+    FP   <- TPFP - TP
+    FN <- TPFN - TP
     
     if (atom == FALSE) { 
       prec <- mean(correct / total_pred)
       rec <- mean(correct / total_actual)
-      #spec <- mean( TN / (TN + FP) )
+      spec <- mean( TN / (TN + FP) )
+      npv <- mean( TN / (TN + FN) )
       warning("For multiclass cases, the agf should be estimated at a class level. Please, consider using `atom = TRUE`")
     }
     
     if (atom == TRUE) { 
       prec <- correct / total_pred
       rec <- correct / total_actual
-      #spec <- TN / (TN + FP)
+      spec <- TN / (TN + FP)
+      npv <- TN / (TN + FN)
     } 
     
     
@@ -117,7 +123,8 @@ agf <- function(data=NULL, obs, pred,
   
   # Formula components
   F2 <- 5 * ( (rec*prec) / ((4*rec) + prec) )
-  invF05 <- (5/4) * ( (rec*prec) / (( (0.5^2) * rec)+prec) )
+  #invF05 <- (5/4) * ( (rec*prec) / (( (0.5^2) * rec)+prec) )
+  invF05 <- (5/4) *( (npv*spec) / (( (0.5^2) * npv) + spec))
   
   agf <- sqrt(F2 * invF05)
   

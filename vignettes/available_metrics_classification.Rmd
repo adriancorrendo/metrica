@@ -71,7 +71,7 @@ _Note: All classification functions automatically recognize the number of classe
 |5| `specificity`, `selectivity`, `TNR` | Specificity | Also known as selectivity or true negative rate (TNR). It represents the proportion of well classified negative values with respect to the total number of actual negatives  | $specificity = \frac{TN}{N} = 1 - FPR$|
 |6| `balacc` | Balanced Accuracy | This metric is especially useful when the number of observations across classes is imbalanced | $b.accuracy = \frac{recall + specificity}{2}$|
 |7| `fscore` | F-score | F1-score, F-measure | $fscore = \frac{(1 + B ^ 2) * precision * recall}{(B ^ 2 * precision) + recall)}$|
-|8| `agf` | Adjusted F-score | The agf adjusts the fscore for datasets with imbalanced classes | $agf = \sqrt{F_2 * invF_{0.5}}$, where $F_2 = 5 * \frac{recall~*~precision}{(4*recall)~+~precision}$, and $invF_{0.5} = (\frac{5}{4}) * \frac{recall~*~precision}{(0.5^2 ~*~ recall)~+~precision}$|
+|8| `agf` | Adjusted F-score | The agf adjusts the fscore for datasets with imbalanced classes | $agf = \sqrt{F_2 * invF_{0.5}}$, where $F_2 = 5 * \frac{recall~*~precision}{(4*recall)~+~precision}$, and $invF_{0.5} = (\frac{5}{4}) * \frac{npv~*~specificity}{(0.5^2 ~*~ npv)~+~specificity}$|
 |9| `gmean` | G-mean | The Geometric Mean (gmean) is a measure that considers a balance between the performance of both majority and minority classes. The higher the value the lower the risk of over-fitting of negative and under-fitting of positive classes | $gmean = \sqrt{recall~*~specificity}$|
 |10| `khat` | K-hat or Cohen's Kappa Coefficient | The khat is considered a more robust metric than the classic `accuracy`. It normalizes the accuracy by the possibility of agreement by chance. It is positively bounded to 1, but it is not negatively bounded. The closer to 1, the better the classification quality | $khat = \frac{2 * (TP * TN - FN * FP)}{(TP+FP) * (FP+TN) + (TP+FN) * (FN + TN)}$|
 |11| `mcc`, `phi_coef` | Matthews Correlation Coefficient | Also known as phi-coefficient. It is particularly useful when the number of observations belonging to each class is uneven. It varies between 0-1, being 0 the worst and 1 the best. Currently, the mcc estimation is only available for binary cases (two classes) | $mcc = \frac{TP * TN - FP * FN}{\sqrt{(TP+FP) * (TP+FN) * (TN+FP) * (TN+FN)}}$|
@@ -117,6 +117,8 @@ FPR = false positive rate
 FNR = false negative rate
 
 ppv = positive predictive value
+
+npv = negative predictive value
 
 B = coefficient B (a.k.a. beta) indicating the weight to be applied to the estimation of `fscore` (as $B^2$).
 

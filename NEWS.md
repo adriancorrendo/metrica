@@ -1,3 +1,19 @@
+# metrica 2.0.5
+This version:
+1) adds a new classification metric called P4 (https://en.wikipedia.org/wiki/P4-metric). https://github.com/adriancorrendo/metrica/issues/36
+Special thanks to Davide Chicco for suggesting this metric.
+
+2) fixes an error in the invF05 formula from the adjusted F-score metric (agf):
+  - InvF0.5=(5/4) * ((npv * spec)/( (0.5^2*npv) +spec ))
+https://github.com/adriancorrendo/metrica/issues/37
+Special thanks to Gilles Koumou for pointing out the error.
+
+3) adds a new plot argument, shape_fill, indicating the shape fill for the data points on the 'scatter_plot' and 'bland_altman_plot' functions.
+
+######################################################################################################
+
+- PREVIOUS VERSIONS
+
 # metrica 2.0.4
 This version fixes an issue found for Debian for Importing APSIM NewGeneration files that violated CRAN Policy's.
 
@@ -5,9 +21,6 @@ Change details:
 
 1) Adding the P4-metric to the classification metrics group following Sitarz, M. (2023) doi:10.54364/AAIML.2023.1161
 
-######################################################################################################
-
-- PREVIOUS VERSIONS
 
 # metrica 2.0.3
 This version fixes an issue found for Debian for Importing APSIM NewGeneration files that violated CRAN Policy's.

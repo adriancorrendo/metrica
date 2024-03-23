@@ -22,8 +22,9 @@
 #' @param shape_type integer indicating the shape type for the data points.
 #' @param shape_size number indicating the shape size for the data points.
 #' @param shape_color string indicating the shape color for the data points.
+#' @param shape_fill string indicating the shape fill for the data points.
 #' @param regline_type string or integer indicating the SMA-regression line-type.
-#' @param regline_size number indicating the SMA-regression line size.
+#' @param regline_size number indicating the SMA-regression linewidth.
 #' @param regline_color string indicating the SMA-regression line color. 
 #' @param na.rm Logic argument to remove rows with missing values 
 #' (NA). Default is na.rm = TRUE.
@@ -59,6 +60,7 @@ scatter_plot <- function(data = NULL,
                          shape_type = NULL,
                          shape_size = NULL,
                          shape_color = NULL,
+                         shape_fill = NULL,
                          regline_type = NULL,
                          regline_size = NULL,
                          regline_color = NULL,
@@ -110,16 +112,17 @@ scatter_plot <- function(data = NULL,
                                       round(max(c(max({{pred}}), 
                                                   max({{obs}}))))))+
         # Shape
-        ggplot2::geom_point(shape = ifelse(is.null(shape_type), 21, shape_type), 
-                            fill = ifelse(is.null(shape_color), "#073b4c", shape_color), 
+        ggplot2::geom_point(shape = ifelse(is.null(shape_type), 21, shape_type),
+                            color = ifelse(is.null(shape_color), "#073b4c", shape_color),
+                            fill = ifelse(is.null(shape_fill), "#073b4c", shape_fill), 
                             size = ifelse(is.null(shape_size), 3, shape_size),
                             alpha = 0.65) +
         # 1:1 line
         ggplot2::geom_abline()+
         # SMA line
         ggplot2::geom_abline(linetype = ifelse(is.null(regline_type), "F1", regline_type), 
-                            
                              col = ifelse(is.null(regline_color), "#f46036", regline_color), 
+                             linewidth = ifelse(is.null(regline_size), 1, regline_size),
                              slope = B1.PO,
                              intercept = B0.PO) +
         # Print SMA equation
@@ -153,15 +156,16 @@ scatter_plot <- function(data = NULL,
                                                     max({{obs}}))))))+
           # Shape
           ggplot2::geom_point(shape = ifelse(is.null(shape_type), 21, shape_type), 
-                              fill = ifelse(is.null(shape_color), "#f46036", shape_color), 
+                              color = ifelse(is.null(shape_color), "#073b4c", shape_color),
+                              fill = ifelse(is.null(shape_fill), "#073b4c", shape_fill),
                               size = ifelse(is.null(shape_size), 3, shape_size),
                               alpha = 0.65) +
           # 1:1 line
           ggplot2::geom_abline()+
           # SMA line
           ggplot2::geom_abline(linetype = ifelse(is.null(regline_type), "F1", regline_type), 
-                              
                                col = ifelse(is.null(regline_color), "#073b4c", regline_color), 
+                               linewidth = ifelse(is.null(regline_size), 1, regline_size),
                                slope = B1.OP,
                                intercept = B0.OP) +
           # Print SMA equation

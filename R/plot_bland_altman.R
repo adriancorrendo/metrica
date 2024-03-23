@@ -8,6 +8,7 @@
 #' @param shape_type number indicating the shape type for the data points.
 #' @param shape_size number indicating the shape size for the data points.
 #' @param shape_color string indicating the shape color for the data points.
+#' @param shape_fill string indicating the shape fill for the data points.
 #' @param zeroline_type string or integer indicating the zero line-type.
 #' @param zeroline_size number indicating the zero line size.
 #' @param zeroline_color string indicating the zero line color.
@@ -41,6 +42,7 @@ bland_altman_plot <- function(data=NULL,
                               shape_type = NULL,
                               shape_size = NULL,
                               shape_color = NULL,
+                              shape_fill = NULL,
                               zeroline_type = NULL,
                               zeroline_size = NULL,
                               zeroline_color = NULL,
@@ -62,7 +64,8 @@ bland_altman_plot <- function(data=NULL,
     )+
     # Shape
     ggplot2::geom_point(shape = ifelse(is.null(shape_type), 21, shape_type), 
-                          fill = ifelse(is.null(shape_color), "#006d77", shape_color), 
+                        color = ifelse(is.null(shape_color), "#006d77", shape_color), 
+                        fill = ifelse(is.null(shape_fill), "#073b4c", shape_fill),
                           size = ifelse(is.null(shape_size), 3, shape_size),
                           alpha = 0.65) +  
     # Zero line

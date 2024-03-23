@@ -205,7 +205,8 @@ barley.scat.plot <-
                         position_eq = c(x=24, y =8), 
                         # Optional arguments to customize the plot
                         shape_type = 21,
-                        shape_color = "steelblue",
+                        shape_color = "grey15",
+                        shape_fill = "steelblue",
                         shape_size = 3,
                         regline_type = "F1",
                         regline_color = "#9e0059",

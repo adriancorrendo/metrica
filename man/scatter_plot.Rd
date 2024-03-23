@@ -18,6 +18,7 @@ scatter_plot(
   shape_type = NULL,
   shape_size = NULL,
   shape_color = NULL,
+  shape_fill = NULL,
   regline_type = NULL,
   regline_size = NULL,
   regline_color = NULL,
@@ -58,9 +59,11 @@ Default : c(x = 0.70 max(x), y = 1.25*min(y)).}
 
 \item{shape_color}{string indicating the shape color for the data points.}
 
+\item{shape_fill}{string indicating the shape fill for the data points.}
+
 \item{regline_type}{string or integer indicating the SMA-regression line-type.}
 
-\item{regline_size}{number indicating the SMA-regression line size.}
+\item{regline_size}{number indicating the SMA-regression linewidth.}
 
 \item{regline_color}{string indicating the SMA-regression line color.}
 
