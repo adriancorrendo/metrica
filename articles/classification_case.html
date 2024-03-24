@@ -8,10 +8,10 @@
 <meta name="description" content="metrica">
 <title>Classification case: Assessing the performance of remote sensing models • metrica</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Barlow_Condensed-0.4.5/font.css" rel="stylesheet">
-<link href="../deps/Ubuntu_Mono-0.4.5/font.css" rel="stylesheet">
-<link href="../deps/Barlow_Semi_Condensed-0.4.5/font.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Barlow_Condensed-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/Ubuntu_Mono-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/Barlow_Semi_Condensed-0.4.9/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification case: Assessing the performance of remote sensing models">
@@ -29,7 +29,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +56,7 @@
     <a class="dropdown-item" href="../articles/available_metrics_classification.html">Classification performance</a>
   </div>
 </li>
-<li class="nav-item dropdown">
+<li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--tutorials">
     <span class="fa fa-paperclip"></span>
      
@@ -64,7 +64,7 @@
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdown--tutorials">
     <a class="dropdown-item" href="../articles/regression_case.html">Regression</a>
-    <a class="dropdown-item" href="../articles/regression_case.html">Classification</a>
+    <a class="dropdown-item" href="../articles/classification_case.html">Classification</a>
     <a class="dropdown-item" href="../articles/apsim_open.html">Import APSIM files</a>
   </div>
 </li>
@@ -127,7 +127,7 @@
                         <h4 data-toc-skip class="author">Luciana Nieto
 &amp; Adrian Correndo</h4>
             
-            <h4 data-toc-skip class="date">2023-04-14</h4>
+            <h4 data-toc-skip class="date">2024-03-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adriancorrendo/metrica/blob/HEAD/vignettes/classification_case.Rmd" class="external-link"><code>vignettes/classification_case.Rmd</code></a></small>
       <div class="d-none name"><code>classification_case.Rmd</code></div>
@@ -179,7 +179,7 @@ where the two classes are vegetation (1) and non-vegetation (0)).</p>
 <h3 id="kansas-land-cover-data">2.1. Kansas Land Cover data<a class="anchor" aria-label="anchor" href="#kansas-land-cover-data"></a>
 </h3>
 <p><br></p>
-<p><img src="../reference/figures/land_cover_example.png" align="right" height="500" style="float:right; height:500px;"></p>
+<p><img src="../reference/figures/land_cover_example.png" align="right" height="250" style="float:right; height:250px;"></p>
 <p><br></p>
 <p><strong>Figure 1</strong>. This binary classification dataset
 corresponds to a Random Forest model using a 70:30 training:testing
@@ -215,7 +215,7 @@ vegetation and 1 = other <br></p></li>
 <h3 id="maize-phenology">2.2. Maize Phenology<a class="anchor" aria-label="anchor" href="#maize-phenology"></a>
 </h3>
 <p><br></p>
-<p><img src="../reference/figures/maize_phenology_example.png" align="right" height="500" style="float:right; height:500px;"></p>
+<p><img src="../reference/figures/maize_phenology_example.png" align="right" height="250" style="float:right; height:250px;"></p>
 <p><br></p>
 <p><strong>Figure 2</strong>. This multiclass classification dataset
 corresponds to a Random Forest model using a 70:30 training:testing
@@ -284,7 +284,7 @@ a table (<code>plot = FALSE</code>) or a <code>ggplot2</code> object
 <span>                                      plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>                                      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#ffe8d6"</span> , high<span class="op">=</span><span class="st">"#892b64"</span><span class="op">)</span>, </span>
 <span>                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/confusion_matrix%20binary-1.png" width="720"></p>
+<p><img src="classification_case_files/figure-html/confusion_matrix%20binary-1.png" width="360"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># c. Unit = proportion</span></span>
@@ -292,7 +292,7 @@ a table (<code>plot = FALSE</code>) or a <code>ggplot2</code> object
 <span>                                      plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>                                      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"#f9dbbd"</span> , high<span class="op">=</span><span class="st">"#892b64"</span><span class="op">)</span>, </span>
 <span>                                      unit <span class="op">=</span> <span class="st">"proportion"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/confusion_matrix%20binary-2.png" width="720"></p>
+<p><img src="classification_case_files/figure-html/confusion_matrix%20binary-2.png" width="360"></p>
 </div>
 <div class="section level3">
 <h3 id="multiclass">3.2. Multiclass<a class="anchor" aria-label="anchor" href="#multiclass"></a>
@@ -326,7 +326,7 @@ a table (<code>plot = FALSE</code>) or a <code>ggplot2</code> object
 <span>                                      plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                                      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"grey85"</span> , high<span class="op">=</span><span class="st">"steelblue"</span><span class="op">)</span>, </span>
 <span>                                      unit <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/confusion_matrix%20multiclass-1.png" width="720"></p>
+<p><img src="classification_case_files/figure-html/confusion_matrix%20multiclass-1.png" width="360"></p>
 </div>
 </div>
 <div class="section level2">
@@ -417,7 +417,7 @@ can use the <code><a href="../reference/accuracy.html">accuracy()</a></code> fun
 <span><span class="co">#&gt; 5  specificity   0.96791444</span></span>
 <span><span class="co">#&gt; 6       balacc   0.95334497</span></span>
 <span><span class="co">#&gt; 7       fscore   0.93877551</span></span>
-<span><span class="co">#&gt; 8          agf   0.93877551</span></span>
+<span><span class="co">#&gt; 8          agf   0.95323364</span></span>
 <span><span class="co">#&gt; 9        gmean   0.95323364</span></span>
 <span><span class="co">#&gt; 10        khat   0.90668995</span></span>
 <span><span class="co">#&gt; 11         mcc   0.90668995</span></span>
@@ -436,6 +436,7 @@ can use the <code><a href="../reference/accuracy.html">accuracy()</a></code> fun
 <span><span class="co">#&gt; 24      preval   0.34385965</span></span>
 <span><span class="co">#&gt; 25    preval_t   0.50382084</span></span>
 <span><span class="co">#&gt; 26     AUC_roc   0.41849817</span></span>
+<span><span class="co">#&gt; 27          p4   0.95312232</span></span>
 <span></span>
 <span><span class="co"># Multiclass</span></span>
 <span><span class="va">multi_maize_phen</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">actual</span>, pred <span class="op">=</span> <span class="va">predicted</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span>
@@ -453,6 +454,9 @@ can use the <code><a href="../reference/accuracy.html">accuracy()</a></code> fun
 <span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
 <span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~actual, pred = ~predicted, : For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
 <span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
+<span><span class="co">#&gt; Warning in metrica::p4(data = ~., obs = ~actual, pred = ~predicted, pos_level =</span></span>
+<span><span class="co">#&gt; pos_level): Sorry, the p4 metric has not been generalized for multinomial</span></span>
+<span><span class="co">#&gt; cases. A NaN has been recorded as the result</span></span>
 <span><span class="co">#&gt;         Metric        Score</span></span>
 <span><span class="co">#&gt; 1     accuracy 8.834951e-01</span></span>
 <span><span class="co">#&gt; 2   error_rate 1.165049e-01</span></span>
@@ -461,7 +465,7 @@ can use the <code><a href="../reference/accuracy.html">accuracy()</a></code> fun
 <span><span class="co">#&gt; 5  specificity 9.915764e-01</span></span>
 <span><span class="co">#&gt; 6       balacc 9.160466e-01</span></span>
 <span><span class="co">#&gt; 7       fscore 8.369991e-01</span></span>
-<span><span class="co">#&gt; 8          agf 8.370017e-01</span></span>
+<span><span class="co">#&gt; 8          agf 9.100137e-01</span></span>
 <span><span class="co">#&gt; 9        gmean 9.129275e-01</span></span>
 <span><span class="co">#&gt; 10        khat 8.624527e-01</span></span>
 <span><span class="co">#&gt; 11         mcc 8.636129e-01</span></span>
@@ -479,7 +483,8 @@ can use the <code><a href="../reference/accuracy.html">accuracy()</a></code> fun
 <span><span class="co">#&gt; 23         FOR 8.041482e-03</span></span>
 <span><span class="co">#&gt; 24      preval          NaN</span></span>
 <span><span class="co">#&gt; 25    preval_t          NaN</span></span>
-<span><span class="co">#&gt; 26     AUC_roc 9.160466e-01</span></span></code></pre></div>
+<span><span class="co">#&gt; 26     AUC_roc 9.160466e-01</span></span>
+<span><span class="co">#&gt; 27          p4          NaN</span></span></code></pre></div>
 <p>Alternatively, if the user is only looking for specific metrics,
 within the same function <code><a href="../reference/metrics_summary.html">metrics_summary()</a></code>, the user can
 pass a list of desired metrics using the argument “metrics_list” as
@@ -515,6 +520,9 @@ follows: <br></p>
 <span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
 <span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~actual, pred = ~predicted, : For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
 <span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
+<span><span class="co">#&gt; Warning in metrica::p4(data = ~., obs = ~actual, pred = ~predicted, pos_level =</span></span>
+<span><span class="co">#&gt; pos_level): Sorry, the p4 metric has not been generalized for multinomial</span></span>
+<span><span class="co">#&gt; cases. A NaN has been recorded as the result</span></span>
 <span><span class="co">#&gt;      Metric     Score</span></span>
 <span><span class="co">#&gt; 1  accuracy 0.8834951</span></span>
 <span><span class="co">#&gt; 2 precision 0.8335108</span></span>
@@ -701,7 +709,7 @@ the agreement analysis for several datasets as follows: <br></p>
 <span><span class="co">#&gt; 5  specificity   0.96791444</span></span>
 <span><span class="co">#&gt; 6       balacc   0.95334497</span></span>
 <span><span class="co">#&gt; 7       fscore   0.93877551</span></span>
-<span><span class="co">#&gt; 8          agf   0.93877551</span></span>
+<span><span class="co">#&gt; 8          agf   0.95323364</span></span>
 <span><span class="co">#&gt; 9        gmean   0.95323364</span></span>
 <span><span class="co">#&gt; 10        khat   0.90668995</span></span>
 <span><span class="co">#&gt; 11         mcc   0.90668995</span></span>
@@ -720,6 +728,7 @@ the agreement analysis for several datasets as follows: <br></p>
 <span><span class="co">#&gt; 24      preval   0.34385965</span></span>
 <span><span class="co">#&gt; 25    preval_t   0.50382084</span></span>
 <span><span class="co">#&gt; 26     AUC_roc   0.41849817</span></span>
+<span><span class="co">#&gt; 27          p4   0.95312232</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
 <span><span class="co">#&gt;         Metric      Score</span></span>
@@ -730,7 +739,7 @@ the agreement analysis for several datasets as follows: <br></p>
 <span><span class="co">#&gt; 5  specificity  0.4585987</span></span>
 <span><span class="co">#&gt; 6       balacc  0.4324244</span></span>
 <span><span class="co">#&gt; 7       fscore  0.3924528</span></span>
-<span><span class="co">#&gt; 8          agf  0.3925343</span></span>
+<span><span class="co">#&gt; 8          agf  0.4299557</span></span>
 <span><span class="co">#&gt; 9        gmean  0.4316315</span></span>
 <span><span class="co">#&gt; 10        khat -0.1342793</span></span>
 <span><span class="co">#&gt; 11         mcc -0.1345500</span></span>
@@ -749,6 +758,7 @@ the agreement analysis for several datasets as follows: <br></p>
 <span><span class="co">#&gt; 24      preval  0.4491228</span></span>
 <span><span class="co">#&gt; 25    preval_t  0.5151462</span></span>
 <span><span class="co">#&gt; 26     AUC_roc  0.4457023</span></span>
+<span><span class="co">#&gt; 27          p4  0.4286205</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt;         Metric      Score</span></span>
@@ -759,7 +769,7 @@ the agreement analysis for several datasets as follows: <br></p>
 <span><span class="co">#&gt; 5  specificity 0.52517986</span></span>
 <span><span class="co">#&gt; 6       balacc 0.51601459</span></span>
 <span><span class="co">#&gt; 7       fscore 0.51748252</span></span>
-<span><span class="co">#&gt; 8          agf 0.51752352</span></span>
+<span><span class="co">#&gt; 8          agf 0.51579900</span></span>
 <span><span class="co">#&gt; 9        gmean 0.51593318</span></span>
 <span><span class="co">#&gt; 10        khat 0.03199606</span></span>
 <span><span class="co">#&gt; 11         mcc 0.03202444</span></span>
@@ -777,7 +787,8 @@ the agreement analysis for several datasets as follows: <br></p>
 <span><span class="co">#&gt; 23         FOR 0.49655172</span></span>
 <span><span class="co">#&gt; 24      preval 0.51228070</span></span>
 <span><span class="co">#&gt; 25    preval_t 0.50444076</span></span>
-<span><span class="co">#&gt; 26     AUC_roc 0.51257025</span></span></code></pre></div>
+<span><span class="co">#&gt; 26     AUC_roc 0.51257025</span></span>
+<span><span class="co">#&gt; 27          p4 0.51577792</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="using-summarise">4.4.1.2. Using <code>summarise()</code> <br><a class="anchor" aria-label="anchor" href="#using-summarise"></a>
@@ -801,7 +812,7 @@ the agreement analysis for several datasets as follows: <br></p>
 <span></span>
 <span></span>
 <span><span class="va">binary_folds_summary_3</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 78 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 81 × 3</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [3]</span></span></span>
 <span><span class="co">#&gt;    id     Metric   Score</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -815,7 +826,7 @@ the agreement analysis for several datasets as follows: <br></p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fold_2 FNR     0.594 </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fold_3 FNR     0.493 </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fold_1 FOR     0.032<span style="text-decoration: underline;">1</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 68 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 71 more rows</span></span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -847,7 +858,7 @@ print.metrics = TRUE. Warning: do not forget to specify your
 <span>                   position_metrics <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">binary_matrix_metrics</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-1.png" width="720"></p>
+<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-1.png" width="360"></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">multinomial_matrix_metrics</span> <span class="op">&lt;-</span></span>
@@ -876,9 +887,12 @@ print.metrics = TRUE. Warning: do not forget to specify your
 <span><span class="co">#&gt; has been recorded as the result. Please, use `atom = TRUE`</span></span>
 <span><span class="co">#&gt; Warning in metrica::preval_t(data = ~data, obs = ~actual, pred = ~predicted, : For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
 <span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
+<span><span class="co">#&gt; Warning in metrica::p4(data = ~data, obs = ~actual, pred = ~predicted,</span></span>
+<span><span class="co">#&gt; pos_level = pos_level): Sorry, the p4 metric has not been generalized for</span></span>
+<span><span class="co">#&gt; multinomial cases. A NaN has been recorded as the result</span></span>
 <span>  </span>
 <span><span class="va">multinomial_matrix_metrics</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-2.png" width="720">
+<p><img src="classification_case_files/figure-html/scatter_plot%20print_metrics-2.png" width="360">
 Also, as a ggplot element, outputs are flexible of further edition:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
@@ -887,7 +901,7 @@ Also, as a ggplot element, outputs are flexible of further edition:</p>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Observed Vegetation"</span>, </span>
 <span>       y <span class="op">=</span> <span class="st">"Predicted Vegetation"</span>,</span>
 <span>       title <span class="op">=</span> <span class="st">"Binary Confusion Matrix"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/scatter_plot.edit-1.png" width="720"></p>
+<p><img src="classification_case_files/figure-html/scatter_plot.edit-1.png" width="360"></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  </span>
 <span></span>
@@ -898,7 +912,7 @@ Also, as a ggplot element, outputs are flexible of further edition:</p>
 <span>       title <span class="op">=</span> <span class="st">"Multinomial Confusion Matrix"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="co"># Modify theme</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_light</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="classification_case_files/figure-html/scatter_plot.edit-2.png" width="720"></p>
+<p><img src="classification_case_files/figure-html/scatter_plot.edit-2.png" width="360"></p>
 </div>
 </div>
 <div class="section level2">

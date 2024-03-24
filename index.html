@@ -8,10 +8,10 @@
 <meta name="description" content="A compilation of more than 80 functions designed to quantitatively and visually evaluate prediction performance of regression (continuous variables) and classification (categorical variables) of point-forecast models (e.g. APSIM, DSSAT, DNDC, supervised Machine Learning). For regression, it includes functions to generate plots (scatter, tiles, density, &amp; Bland-Altman plot), and to estimate error metrics (e.g. MBE, MAE, RMSE), error decomposition (e.g. lack of accuracy-precision), model efficiency (e.g. NSE, E1, KGE), indices of agreement (e.g. d, RAC), goodness of fit (e.g. r, R2), adjusted correlation coefficients (e.g. CCC, dcorr), symmetric regression coefficients (intercept, slope), and mean absolute scaled error (MASE) for time series predictions. For classification (binomial and multinomial), it offers functions to generate and plot confusion matrices, and to estimate performance metrics such as accuracy, precision, recall, specificity, F-score, Cohen's Kappa, G-mean, and many more. For more details visit the vignettes &lt;https://adriancorrendo.github.io/metrica/&gt;.">
 <title>Prediction Performance Metrics • metrica</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="deps/Barlow_Condensed-0.4.5/font.css" rel="stylesheet">
-<link href="deps/Ubuntu_Mono-0.4.5/font.css" rel="stylesheet">
-<link href="deps/Barlow_Semi_Condensed-0.4.5/font.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Barlow_Condensed-0.4.9/font.css" rel="stylesheet">
+<link href="deps/Ubuntu_Mono-0.4.9/font.css" rel="stylesheet">
+<link href="deps/Barlow_Semi_Condensed-0.4.9/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Prediction Performance Metrics">
@@ -29,7 +29,7 @@
     
     <a class="navbar-brand me-2" href="index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdown--tutorials">
     <a class="dropdown-item" href="articles/regression_case.html">Regression</a>
-    <a class="dropdown-item" href="articles/regression_case.html">Classification</a>
+    <a class="dropdown-item" href="articles/classification_case.html">Classification</a>
     <a class="dropdown-item" href="articles/apsim_open.html">Import APSIM files</a>
   </div>
 </li>
@@ -250,7 +250,8 @@
 <span>                        position_eq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">24</span>, y <span class="op">=</span><span class="fl">8</span><span class="op">)</span>, </span>
 <span>                        <span class="co"># Optional arguments to customize the plot</span></span>
 <span>                        shape_type <span class="op">=</span> <span class="fl">21</span>,</span>
-<span>                        shape_color <span class="op">=</span> <span class="st">"steelblue"</span>,</span>
+<span>                        shape_color <span class="op">=</span> <span class="st">"grey15"</span>,</span>
+<span>                        shape_fill <span class="op">=</span> <span class="st">"steelblue"</span>,</span>
 <span>                        shape_size <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>                        regline_type <span class="op">=</span> <span class="st">"F1"</span>,</span>
 <span>                        regline_color <span class="op">=</span> <span class="st">"#9e0059"</span>,</span>
@@ -383,11 +384,11 @@
 <span><span class="co">#&gt;      B0    B1     r    R2    Xa   CCC   MAE  RMAE  MAPE SMAPE   RAE   RSE   MBE</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1  1.13 0.929 0.672 0.451 0.996 0.669  3.06 0.163  16.8  16.8 0.764 0.616 0.207</span></span>
-<span><span class="co">#&gt; # … with 32 more variables: PBE &lt;dbl&gt;, PAB &lt;dbl&gt;, PPB &lt;dbl&gt;, MSE &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   RMSE &lt;dbl&gt;, RRMSE &lt;dbl&gt;, RSR &lt;dbl&gt;, iqRMSE &lt;dbl&gt;, MLA &lt;dbl&gt;, MLP &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   RMLA &lt;dbl&gt;, RMLP &lt;dbl&gt;, SB &lt;dbl&gt;, SDSD &lt;dbl&gt;, LCS &lt;dbl&gt;, PLA &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   PLP &lt;dbl&gt;, Ue &lt;dbl&gt;, Uc &lt;dbl&gt;, Ub &lt;dbl&gt;, NSE &lt;dbl&gt;, E1 &lt;dbl&gt;, Erel &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   KGE &lt;dbl&gt;, d &lt;dbl&gt;, d1 &lt;dbl&gt;, d1r &lt;dbl&gt;, RAC &lt;dbl&gt;, AC &lt;dbl&gt;, lambda &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; # ℹ 32 more variables: PBE &lt;dbl&gt;, PAB &lt;dbl&gt;, PPB &lt;dbl&gt;, MSE &lt;dbl&gt;, RMSE &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   RRMSE &lt;dbl&gt;, RSR &lt;dbl&gt;, iqRMSE &lt;dbl&gt;, MLA &lt;dbl&gt;, MLP &lt;dbl&gt;, RMLA &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   RMLP &lt;dbl&gt;, SB &lt;dbl&gt;, SDSD &lt;dbl&gt;, LCS &lt;dbl&gt;, PLA &lt;dbl&gt;, PLP &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   Ue &lt;dbl&gt;, Uc &lt;dbl&gt;, Ub &lt;dbl&gt;, NSE &lt;dbl&gt;, E1 &lt;dbl&gt;, Erel &lt;dbl&gt;, KGE &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   d &lt;dbl&gt;, d1 &lt;dbl&gt;, d1r &lt;dbl&gt;, RAC &lt;dbl&gt;, AC &lt;dbl&gt;, lambda &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   dcorr &lt;dbl&gt;, MIC &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -572,7 +573,7 @@
 <span><span class="co">#&gt; 1 0.5794393</span></span>
 <span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/agf.html">agf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         agf</span></span>
-<span><span class="co">#&gt; 1 0.5795213</span></span>
+<span><span class="co">#&gt; 1 0.5462663</span></span>
 <span><span class="va">binomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/gmean.html">gmean</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       gmean</span></span>
 <span><span class="co">#&gt; 1 0.5482755</span></span>
@@ -605,7 +606,7 @@
 <span><span class="co">#&gt; 5  specificity 0.53333333</span></span>
 <span><span class="co">#&gt; 6       balacc 0.54848485</span></span>
 <span><span class="co">#&gt; 7       fscore 0.57943925</span></span>
-<span><span class="co">#&gt; 8          agf 0.57952126</span></span>
+<span><span class="co">#&gt; 8          agf 0.54626632</span></span>
 <span><span class="co">#&gt; 9        gmean 0.54827553</span></span>
 <span><span class="co">#&gt; 10        khat 0.09638554</span></span>
 <span><span class="co">#&gt; 11         mcc 0.09656091</span></span>
@@ -624,6 +625,7 @@
 <span><span class="co">#&gt; 24      preval 0.55000000</span></span>
 <span><span class="co">#&gt; 25    preval_t 0.49309260</span></span>
 <span><span class="co">#&gt; 26     AUC_roc 0.54848485</span></span>
+<span><span class="co">#&gt; 27          p4 0.54595487</span></span>
 <span></span>
 <span><span class="co"># Multinomial</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/metrics_summary.html">metrics_summary</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, type <span class="op">=</span> <span class="st">"classification"</span><span class="op">)</span></span>
@@ -641,6 +643,9 @@
 <span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
 <span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions, : For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
 <span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
+<span><span class="co">#&gt; Warning in metrica::p4(data = ~., obs = ~labels, pred = ~predictions, pos_level</span></span>
+<span><span class="co">#&gt; = pos_level): Sorry, the p4 metric has not been generalized for multinomial</span></span>
+<span><span class="co">#&gt; cases. A NaN has been recorded as the result</span></span>
 <span><span class="co">#&gt;         Metric       Score</span></span>
 <span><span class="co">#&gt; 1     accuracy  0.32000000</span></span>
 <span><span class="co">#&gt; 2   error_rate  0.68000000</span></span>
@@ -649,7 +654,7 @@
 <span><span class="co">#&gt; 5  specificity  0.66031031</span></span>
 <span><span class="co">#&gt; 6       balacc  0.49030504</span></span>
 <span><span class="co">#&gt; 7       fscore  0.32024709</span></span>
-<span><span class="co">#&gt; 8          agf  0.32024710</span></span>
+<span><span class="co">#&gt; 8          agf  0.45982261</span></span>
 <span><span class="co">#&gt; 9        gmean  0.45988829</span></span>
 <span><span class="co">#&gt; 10        khat -0.01918465</span></span>
 <span><span class="co">#&gt; 11         mcc -0.01926552</span></span>
@@ -668,6 +673,7 @@
 <span><span class="co">#&gt; 24      preval         NaN</span></span>
 <span><span class="co">#&gt; 25    preval_t         NaN</span></span>
 <span><span class="co">#&gt; 26     AUC_roc  0.49030504</span></span>
+<span><span class="co">#&gt; 27          p4         NaN</span></span>
 <span></span>
 <span><span class="co"># Get a selected list at once with metrics_summary()</span></span>
 <span><span class="va">selected_class_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"accuracy"</span>, <span class="st">"recall"</span>, <span class="st">"fscore"</span><span class="op">)</span></span>
@@ -697,6 +703,9 @@
 <span><span class="co">#&gt; been recorded as the result. Please, use `atom = TRUE`</span></span>
 <span><span class="co">#&gt; Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions, : For multiclass cases, prevalence threshold should be estimated at a class level. </span></span>
 <span><span class="co">#&gt;       A NaN has been recorded as the result. Please, use `atom = TRUE`.</span></span>
+<span><span class="co">#&gt; Warning in metrica::p4(data = ~., obs = ~labels, pred = ~predictions, pos_level</span></span>
+<span><span class="co">#&gt; = pos_level): Sorry, the p4 metric has not been generalized for multinomial</span></span>
+<span><span class="co">#&gt; cases. A NaN has been recorded as the result</span></span>
 <span><span class="co">#&gt;     Metric     Score</span></span>
 <span><span class="co">#&gt; 1 accuracy 0.3200000</span></span>
 <span><span class="co">#&gt; 2   recall 0.3202998</span></span>
@@ -732,7 +741,7 @@
 <span><span class="co">#&gt; multiclass cases, the agf should be estimated at a class level. Please,</span></span>
 <span><span class="co">#&gt; consider using `atom = TRUE`</span></span>
 <span><span class="co">#&gt;         agf</span></span>
-<span><span class="co">#&gt; 1 0.3202471</span></span>
+<span><span class="co">#&gt; 1 0.4598226</span></span>
 <span><span class="va">multinomial_case</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/gmean.html">gmean</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, obs <span class="op">=</span> <span class="va">labels</span>, pred <span class="op">=</span> <span class="va">predictions</span>, tidy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       gmean</span></span>
 <span><span class="co">#&gt; 1 0.4598883</span></span>
