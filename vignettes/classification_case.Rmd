@@ -45,7 +45,7 @@ library(tidyr)
 
 <br/>
 
-<img src="../man/figures/land_cover_example.png" align="right" height="500" style="float:right; height:500px;"> 
+<img src="../man/figures/land_cover_example.png" align="right" height="250" style="float:right; height:250px;"> 
 
 <br/>
 
@@ -69,7 +69,7 @@ head(binary_landCover)
 
 <br/>
 
-<img src="../man/figures/maize_phenology_example.png" align="right" height="500" style="float:right; height:500px;"> 
+<img src="../man/figures/maize_phenology_example.png" align="right" height="250" style="float:right; height:250px;"> 
 
 <br/>
 
@@ -107,7 +107,7 @@ a `ggplot2` object (`plot = TRUE`) that can be further customized: <br/>
 
 ### 3.1. Binary
 
-```{r confusion_matrix binary, fig.width=6, fig.height=5, dpi=120}
+```{r confusion_matrix binary, fig.width=6, fig.height=5, dpi=60}
 # a. Print
 binary_landCover %>% confusion_matrix(obs = actual, pred = predicted, 
                                       plot = FALSE,
@@ -129,7 +129,7 @@ binary_landCover %>% confusion_matrix(obs = actual, pred = predicted,
 
 ### 3.2. Multiclass
 
-```{r confusion_matrix multiclass, fig.width=6, fig.height=5, dpi=120}  
+```{r confusion_matrix multiclass, fig.width=6, fig.height=5, dpi=60}  
 # a. Print
 multi_maize_phen %>% confusion_matrix(obs = actual, pred = predicted, 
                                       plot = FALSE, 
@@ -357,7 +357,7 @@ binary_folds_summary_3
 
 To print the metrics on the `confusion_matrix()`, just use print.metrics = TRUE. Warning: do not forget to specify your 'metrics.list' and choice wisely: <br/>  
 
-```{r scatter_plot print_metrics, fig.width=6, fig.height=5, dpi=120}
+```{r scatter_plot print_metrics, fig.width=6, fig.height=5, dpi=60}
 
 selected_metrics <- c("accuracy", "precision", "recall", "khat",
                    "mcc", "fscore", "agf", "npv", "FPR", "FNR")
@@ -395,7 +395,7 @@ multinomial_matrix_metrics
 ```
 Also, as a ggplot element, outputs are flexible of further edition:  
 
-```{r scatter_plot.edit, fig.width=6, fig.height=5, dpi=120}
+```{r scatter_plot.edit, fig.width=6, fig.height=5, dpi=60}
 
 binary_matrix_metrics +
   # Modify labels

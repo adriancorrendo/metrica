@@ -35,7 +35,7 @@ navbar:
        - text: "Regression"
          href: articles/regression_case.html
        - text: "Classification"
-         href: articles/regression_case.html
+         href: articles/classification_case.html
        - text: "Import APSIM files"
          href: articles/apsim_open.html
          

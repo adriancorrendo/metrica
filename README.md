@@ -257,7 +257,8 @@ barley.scat.plot <-
                         position_eq = c(x=24, y =8), 
                         # Optional arguments to customize the plot
                         shape_type = 21,
-                        shape_color = "steelblue",
+                        shape_color = "grey15",
+                        shape_fill = "steelblue",
                         shape_size = 3,
                         regline_type = "F1",
                         regline_color = "#9e0059",
@@ -394,11 +395,11 @@ metrics.sum.wide
 #>      B0    B1     r    R2    Xa   CCC   MAE  RMAE  MAPE SMAPE   RAE   RSE   MBE
 #>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1  1.13 0.929 0.672 0.451 0.996 0.669  3.06 0.163  16.8  16.8 0.764 0.616 0.207
-#> # … with 32 more variables: PBE <dbl>, PAB <dbl>, PPB <dbl>, MSE <dbl>,
-#> #   RMSE <dbl>, RRMSE <dbl>, RSR <dbl>, iqRMSE <dbl>, MLA <dbl>, MLP <dbl>,
-#> #   RMLA <dbl>, RMLP <dbl>, SB <dbl>, SDSD <dbl>, LCS <dbl>, PLA <dbl>,
-#> #   PLP <dbl>, Ue <dbl>, Uc <dbl>, Ub <dbl>, NSE <dbl>, E1 <dbl>, Erel <dbl>,
-#> #   KGE <dbl>, d <dbl>, d1 <dbl>, d1r <dbl>, RAC <dbl>, AC <dbl>, lambda <dbl>,
+#> # ℹ 32 more variables: PBE <dbl>, PAB <dbl>, PPB <dbl>, MSE <dbl>, RMSE <dbl>,
+#> #   RRMSE <dbl>, RSR <dbl>, iqRMSE <dbl>, MLA <dbl>, MLP <dbl>, RMLA <dbl>,
+#> #   RMLP <dbl>, SB <dbl>, SDSD <dbl>, LCS <dbl>, PLA <dbl>, PLP <dbl>,
+#> #   Ue <dbl>, Uc <dbl>, Ub <dbl>, NSE <dbl>, E1 <dbl>, Erel <dbl>, KGE <dbl>,
+#> #   d <dbl>, d1 <dbl>, d1r <dbl>, RAC <dbl>, AC <dbl>, lambda <dbl>,
 #> #   dcorr <dbl>, MIC <dbl>
 ```
 
@@ -578,7 +579,7 @@ binomial_case %>% fscore(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #> 1 0.5794393
 binomial_case %>% agf(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #>         agf
-#> 1 0.5795213
+#> 1 0.5462663
 binomial_case %>% gmean(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #>       gmean
 #> 1 0.5482755
@@ -611,7 +612,7 @@ binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, ty
 #> 5  specificity 0.53333333
 #> 6       balacc 0.54848485
 #> 7       fscore 0.57943925
-#> 8          agf 0.57952126
+#> 8          agf 0.54626632
 #> 9        gmean 0.54827553
 #> 10        khat 0.09638554
 #> 11         mcc 0.09656091
@@ -630,6 +631,7 @@ binomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, ty
 #> 24      preval 0.55000000
 #> 25    preval_t 0.49309260
 #> 26     AUC_roc 0.54848485
+#> 27          p4 0.54595487
 
 # Multinomial
 multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions, type = "classification")
@@ -647,6 +649,9 @@ multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions,
 #> been recorded as the result. Please, use `atom = TRUE`
 #> Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions, : For multiclass cases, prevalence threshold should be estimated at a class level. 
 #>       A NaN has been recorded as the result. Please, use `atom = TRUE`.
+#> Warning in metrica::p4(data = ~., obs = ~labels, pred = ~predictions, pos_level
+#> = pos_level): Sorry, the p4 metric has not been generalized for multinomial
+#> cases. A NaN has been recorded as the result
 #>         Metric       Score
 #> 1     accuracy  0.32000000
 #> 2   error_rate  0.68000000
@@ -655,7 +660,7 @@ multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions,
 #> 5  specificity  0.66031031
 #> 6       balacc  0.49030504
 #> 7       fscore  0.32024709
-#> 8          agf  0.32024710
+#> 8          agf  0.45982261
 #> 9        gmean  0.45988829
 #> 10        khat -0.01918465
 #> 11         mcc -0.01926552
@@ -674,6 +679,7 @@ multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions,
 #> 24      preval         NaN
 #> 25    preval_t         NaN
 #> 26     AUC_roc  0.49030504
+#> 27          p4         NaN
 
 # Get a selected list at once with metrics_summary()
 selected_class_metrics <- c("accuracy", "recall", "fscore")
@@ -703,6 +709,9 @@ multinomial_case %>% metrics_summary(data = ., obs = labels, pred = predictions,
 #> been recorded as the result. Please, use `atom = TRUE`
 #> Warning in metrica::preval_t(data = ~., obs = ~labels, pred = ~predictions, : For multiclass cases, prevalence threshold should be estimated at a class level. 
 #>       A NaN has been recorded as the result. Please, use `atom = TRUE`.
+#> Warning in metrica::p4(data = ~., obs = ~labels, pred = ~predictions, pos_level
+#> = pos_level): Sorry, the p4 metric has not been generalized for multinomial
+#> cases. A NaN has been recorded as the result
 #>     Metric     Score
 #> 1 accuracy 0.3200000
 #> 2   recall 0.3202998
@@ -740,7 +749,7 @@ multinomial_case %>% agf(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #> multiclass cases, the agf should be estimated at a class level. Please,
 #> consider using `atom = TRUE`
 #>         agf
-#> 1 0.3202471
+#> 1 0.4598226
 multinomial_case %>% gmean(data = ., obs = labels, pred = predictions, tidy=TRUE)
 #>       gmean
 #> 1 0.4598883

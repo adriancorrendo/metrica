@@ -145,7 +145,7 @@ metrics_summary <-
                  "mcc", "fmi", "bmi", "csi", "deltap", 
                  "posLr", "negLr", "dor", "npv", "FPR", 
                  "FNR", "FDR", "FOR", "preval", "preval_t",
-                 "AUC_roc"
+                 "AUC_roc", "p4"
                  )
     
     # Create data.frame to store metrics
@@ -187,7 +187,8 @@ metrics_summary <-
             FOR = as.numeric(metrica::FOR(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
             preval = as.numeric(metrica::preval(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
             preval_t = as.numeric(metrica::preval_t(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]]),
-            AUC_roc = as.numeric(metrica::AUC_roc(data={{data}}, obs={{obs}}, pred={{pred}})[[1]])
+            AUC_roc = as.numeric(metrica::AUC_roc(data={{data}}, obs={{obs}}, pred={{pred}})[[1]]),
+            p4 = as.numeric(metrica::p4(data={{data}}, obs={{obs}}, pred={{pred}}, pos_level = pos_level)[[1]])
             ) 
           ) 
         )

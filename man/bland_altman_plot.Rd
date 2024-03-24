@@ -11,6 +11,7 @@ bland_altman_plot(
   shape_type = NULL,
   shape_size = NULL,
   shape_color = NULL,
+  shape_fill = NULL,
   zeroline_type = NULL,
   zeroline_size = NULL,
   zeroline_color = NULL,
@@ -32,6 +33,8 @@ bland_altman_plot(
 \item{shape_size}{number indicating the shape size for the data points.}
 
 \item{shape_color}{string indicating the shape color for the data points.}
+
+\item{shape_fill}{string indicating the shape fill for the data points.}
 
 \item{zeroline_type}{string or integer indicating the zero line-type.}
 

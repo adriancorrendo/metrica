@@ -1,3 +1,22 @@
+# metrica 2.0.4
+This version:
+1) fixes an issue found for Debian for Importing APSIM NewGeneration files that violated CRAN Policy's.
+
+2) adds a new classification metric called P4, following Sitarz, M. (2023) doi:10.54364/AAIML.2023.1161. 
+https://github.com/adriancorrendo/metrica/issues/36
+Special thanks to Davide Chicco for suggesting this metric.
+
+3) fixes an error in the invF05 formula from the adjusted F-score metric (agf):
+  - InvF0.5=(5/4) * ((npv * spec)/( (0.5^2*npv) +spec ))
+https://github.com/adriancorrendo/metrica/issues/37
+Special thanks to Gilles Koumou for pointing out the error.
+
+4) adds a new plot argument, shape_fill, indicating the shape fill for the data points on the 'scatter_plot' and 'bland_altman_plot' functions.
+
+#####################################################################################################
+
+- PREVIOUS VERSIONS
+
 # metrica 2.0.3
 This version fixes an issue found for Debian for Importing APSIM NewGeneration files that violated CRAN Policy's.
 
@@ -12,9 +31,6 @@ con <- DBI::dbConnect(..., flags = RSQLite::SQLITE_RO)
 Potentially problematic code line:
 apsim_out_filepath <- system.file("extdata/soybean.out", package = "metrica")
 
-######################################################################################################
-
-- PREVIOUS VERSIONS
 
 # metrica 2.0.2
 

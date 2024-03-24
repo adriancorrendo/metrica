@@ -66,14 +66,14 @@ The function requires specifying at least:
 
 Besides a scatterplot, this function also adds to the plot the **1:1 line** (solid line) and the **linear regression line** (dashed line).  
 
-```{r scatter_plot PO, fig.width=5, fig.height=4, dpi=200}
+```{r scatter_plot PO, fig.width=5, fig.height=4, dpi=90, warning=FALSE, message=FALSE}
 scatter_plot(data = wheat, 
              obs = obs, 
              pred = pred)
 ```
 
 The default behavior of `scatter_plot()` places the `obs` column on the x axis and the `pred` column on the y axis (`orientation = "PO"`). This can be inverted by changing the argument `orientation` to "OP":    
-```{r scatter_plot OP, fig.width=5, fig.height=4, dpi=200}
+```{r scatter_plot OP, fig.width=5, fig.height=4, dpi=90, warning=FALSE, message=FALSE}
 scatter_plot(data = wheat, 
              obs = obs, 
              pred = pred,
@@ -82,7 +82,7 @@ scatter_plot(data = wheat,
 
 
 The output of the `scatter_plot()` function is a `ggplot2` object that can be further customized:  
-```{r scatter_plot custom, fig.width=5, fig.height=4, dpi=200}
+```{r scatter_plot custom, fig.width=5, fig.height=4, dpi=90, warning=FALSE, message=FALSE}
 scatter_plot(data = wheat, 
              obs = obs, 
              pred = pred,
@@ -99,7 +99,7 @@ scatter_plot(data = wheat,
 ## 3.2 Bland-Altman plot  
 The Bland-Altman plot is another way of visually assessing observed vs. predicted agreement. It plots the difference between observed and predicted values on the y axis, and the observed values on the x axis:  
 
-```{r bland-altman, fig.width=5, fig.height=4, dpi=200}
+```{r bland-altman, fig.width=5, fig.height=4, dpi=90,  warning=FALSE, message=FALSE}
 bland_altman_plot(data = wheat,
                   obs = obs, 
                   pred = pred)
@@ -164,7 +164,7 @@ In some cases, we may count with time-series predictions (e.g. cumulative values
 Let's suppose that we have predictions of wheat grain N over the years on the same location
 for a series of 20 years from 2001 to 2020. Thus, we may get a random sample from the wheat data set and assume they represent the time series of interest. Therefore, we create a new `time` variable called `Year` that will serve to sort the observations.
 
-```{r metrics time-series, fig.width=6, fig.height=5, dpi=200}
+```{r metrics time-series, fig.width=6, fig.height=5, dpi=90}
 set.seed(165)
 
 wheat_time <- metrica::wheat %>% sample_n(., size = 20) %>% 
@@ -215,7 +215,7 @@ The user can also create a scatter plot that includes not only the **predicted**
 
 This is accomplished with the function `scatter_plot()`:  
 
-```{r scatter_plot, fig.width=6, fig.height=5, dpi=200}
+```{r scatter_plot, fig.width=6, fig.height=5, dpi=90}
 scatter_plot(data = wheat,
              obs = obs, 
              pred = pred)
@@ -224,7 +224,7 @@ scatter_plot(data = wheat,
 
 To print the metrics on the `scatter_plot()`, just use print.metrics. Warning: do not forget to specify your 'metrics.list':  
 
-```{r scatter_plot print_metrics, fig.width=6, fig.height=5, dpi=200}
+```{r scatter_plot print_metrics, fig.width=6, fig.height=5, dpi=90}
 
 my.metrica.plot <- scatter_plot(data = wheat,
                                 obs = obs, 
@@ -236,7 +236,7 @@ my.metrica.plot
 ```
 Also, as a ggplot element, outputs are flexible of further edition:  
 
-```{r scatter_plot.edit, fig.width=6, fig.height=5, dpi=200}
+```{r scatter_plot.edit, fig.width=6, fig.height=5, dpi=90}
 
 my.metrica.plot +
   # Modify labels
