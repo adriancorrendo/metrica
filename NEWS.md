@@ -9,9 +9,13 @@ Special thanks to Davide Chicco for suggesting this metric.
 3) fixes an error in the invF05 formula from the adjusted F-score metric (agf):
   - InvF0.5=(5/4) * ((npv * spec)/( (0.5^2*npv) +spec ))
 https://github.com/adriancorrendo/metrica/issues/37
-Special thanks to Gilles Koumou for pointing out the error.
+Special thanks to Gilles Koumou for pointing out the error and helping to fix it!
 
 4) adds a new plot argument, shape_fill, indicating the shape fill for the data points on the 'scatter_plot' and 'bland_altman_plot' functions.
+
+5) replace 'size' argument with 'linewidth' following ggplot2 updates.
+
+6) replace deprecated 'aes_string()' within several plot functions with 'aes()' following latest ggplot2 updates.
 
 #####################################################################################################
 

@@ -122,8 +122,9 @@ agf <- function(data=NULL, obs, pred,
   }
   
   # Formula components
-  F2 <- 5 * ( (rec*prec) / ((4*rec) + prec) )
+ # F2 <- 5 * ( (rec*prec) / ((4*rec) + prec) )
   #invF05 <- (5/4) * ( (rec*prec) / (( (0.5^2) * rec)+prec) )
+  F2 <- 5 * ( (rec*prec) / ((4*prec) + rec) )
   invF05 <- (5/4) *( (npv*spec) / (( (0.5^2) * npv) + spec))
   
   agf <- sqrt(F2 * invF05)

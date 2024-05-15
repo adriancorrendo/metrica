@@ -72,7 +72,8 @@ confusion_matrix <- function(data = NULL, obs, pred,
   levels <- NULL
   levels_metrics_list <- length(metrics_list)
   isdiag <- NULL
-  
+  .data <- NULL
+
   
   matrix <- rlang::eval_tidy(
     data = {{data}},
@@ -96,11 +97,11 @@ confusion_matrix <- function(data = NULL, obs, pred,
       
       if (unit == "count") {
       plot <- mat_plot %>% 
-        ggplot2::ggplot(ggplot2::aes_string(y="PREDICTED",x="OBSERVED")) +
-        ggplot2::geom_tile(ggplot2::aes_string(width=0.975, height=0.975, 
-                                               fill= "count", col = "count",
-                                               size = "isdiag"), alpha = 0.65) + 
-        ggplot2::geom_text(ggplot2::aes_string(label = "count")) +
+        ggplot2::ggplot(ggplot2::aes(y=.data[["PREDICTED"]],x=.data[["OBSERVED"]])) +
+        ggplot2::geom_tile(ggplot2::aes(width=0.975, height=0.975, 
+                                        fill= .data[["count"]], col = .data[["count"]],
+                                        linewidth = .data[["isdiag"]]), alpha = 0.65) + 
+        ggplot2::geom_text(ggplot2::aes(label = .data[["count"]])) +
         { if(!is.null(colors[1]))
           ggplot2::scale_fill_gradient(low= palette[[1]], high = palette[[2]])} +
         { if(!is.null(colors[1]))
@@ -121,11 +122,11 @@ confusion_matrix <- function(data = NULL, obs, pred,
       
       if (unit == "proportion") {
         plot <- mat_plot %>% 
-          ggplot2::ggplot(ggplot2::aes_string(y="PREDICTED",x="OBSERVED")) +
-          ggplot2::geom_tile(ggplot2::aes_string(width=0.975, height=0.975,
-                                                 fill= "proportion", col = "proportion",
-                                                 size = "isdiag"), alpha = 0.65) + 
-          ggplot2::geom_text(ggplot2::aes_string(label = "proportion")) +
+          ggplot2::ggplot(ggplot2::aes(y=.data[["PREDICTED"]],x=.data[["OBSERVED"]])) +
+          ggplot2::geom_tile(ggplot2::aes(width=0.975, height=0.975,
+                                          fill= .data[["proportion"]], col = .data[["proportion"]],
+                                          linewidth = .data[["isdiag"]]), alpha = 0.65) + 
+          ggplot2::geom_text(ggplot2::aes(label = .data[["count"]])) +
           { if(!is.null(colors[1]))
             ggplot2::scale_fill_gradient(low= palette[[1]], high = palette[[2]])} +
           { if(!is.null(colors[1]))

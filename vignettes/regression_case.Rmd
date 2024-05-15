@@ -94,6 +94,7 @@ scatter_plot(data = wheat,
   labs(x ="Predicted wheat N content (g N/m2)",
        y = "Observed wheat N content (g N/m2)")+
   theme_dark()
+
 ```
 
 ## 3.2 Bland-Altman plot  
