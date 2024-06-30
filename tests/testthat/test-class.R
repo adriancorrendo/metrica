@@ -681,6 +681,23 @@ metrics_summary_1.test <- metrics_summary(data = binary, obs = labels, pred = pr
 # TEST
 test_that('no error metrics_summary_1', {expect_false(inherits(metrics_summary_1.test, "try-error")) })
 
+# 16. P4
+p4_1.test <- p4(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 1)
+p4_2.test <- p4(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 1)
+p4_3.test <- p4(data = multiclass, obs = labels, pred = predictions, tidy = FALSE)
+p4_4.test <- p4(data = multiclass, obs = labels, pred = predictions, tidy = TRUE)
+p4_5.test <- p4(data = binary, obs = labels, pred = predictions, tidy = FALSE, pos_level = 2)
+p4_6.test <- p4(data = binary, obs = labels, pred = predictions, tidy = TRUE, pos_level = 2)
+p4_7.test <- p4(data = multiclass, obs = labels, pred = predictions, tidy = FALSE, atom = TRUE)
+
+# TEST
+test_that('no error p4_1', {expect_false(inherits(p4_1.test, "try-error")) })
+test_that('no error p4_2', {expect_false(inherits(p4_2.test, "try-error")) })
+test_that('warning', {expect_warning(p4_3.test, NA)})
+test_that('warning', {expect_warning(p4_4.test, NA)})
+test_that('no error p4_5', {expect_false(inherits(p4_5.test, "try-error")) })
+test_that('no error p4_6', {expect_false(inherits(p4_6.test, "try-error")) })
+test_that('no error p4_7', {expect_false(inherits(p4_7.test, "try-error")) })
 
 #################
 
@@ -847,4 +864,3 @@ test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_7, "t
 test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_8, "try-error")) })
 test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_9, "try-error")) })
 test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_10, "try-error")) })
-

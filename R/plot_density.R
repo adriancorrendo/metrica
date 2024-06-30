@@ -60,6 +60,9 @@ density_plot <- function(data=NULL,
                        regline_color = NULL,
                        na.rm = TRUE){
   
+  # Add global variable
+  ..level.. <- NULL
+  
   # STOP. Specify metrics_list
   if (print_metrics == TRUE & is.null(metrics_list)) {
   warning("Please, specify the 'metrics_list' arg. For example, metrics_list = c('R2','RMSE','NSE'). 
@@ -110,14 +113,14 @@ density_plot <- function(data=NULL,
                                                 min({{obs}})))),
                                     round(max(c(max({{pred}}), 
                                                 max({{obs}}))))))+
-      ggplot2::stat_density_2d(ggplot2::aes_string(fill = '..level..'), geom = "polygon", n = n)+
+      ggplot2::stat_density_2d(ggplot2::aes(fill = ..level..), geom = "polygon", n = n)+
       { if (!is.null(colors[[1]]))
       ggplot2::scale_fill_gradient(low = palette[[1]], high = palette[[2]]) } +
       # 1:1 line
       ggplot2::geom_abline()+
       # SMA line
       ggplot2::geom_abline(linetype = ifelse(is.null(regline_type), "F1", regline_type), 
-                             size = ifelse(is.null(regline_size), 2, regline_size), 
+                             linewidth = ifelse(is.null(regline_size), 2, regline_size), 
                              col = ifelse(is.null(regline_color), "#f46036", regline_color), 
                              slope = B1.PO,
                              intercept = B0.PO) +
@@ -150,7 +153,7 @@ if (orientation == "OP"){
                                                 min({{obs}})))),
                                     round(max(c(max({{pred}}), 
                                                 max({{obs}}))))))+
-      ggplot2::stat_density_2d(ggplot2::aes_string(fill = '..level..'), geom = "polygon", n = n)+
+      ggplot2::stat_density_2d(ggplot2::aes(fill = ..level..), geom = "polygon", n = n)+
       { if (!is.null(colors[[1]]))
       ggplot2::scale_fill_gradient(low = palette[[1]], high = palette[[2]]) } +
       #viridis::scale_fill_viridis(option = "cividis", direction = -1)+
