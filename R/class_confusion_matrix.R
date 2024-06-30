@@ -342,4 +342,3 @@ confusion_matrix <- function(data = NULL, obs, pred,
       
       plot    
       } 
-

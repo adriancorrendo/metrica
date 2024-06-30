@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Adrian A. Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID}) [copyright holder]
+\strong{Maintainer}: Adrian A. Correndo \email{acorrend@uoguelph.ca} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID}) [copyright holder]
 
 Authors:
 \itemize{

@@ -864,4 +864,3 @@ test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_7, "t
 test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_8, "try-error")) })
 test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_9, "try-error")) })
 test_that('no error confusion_matrix_1', {expect_false(inherits(cm_bin_top_10, "try-error")) })
-
