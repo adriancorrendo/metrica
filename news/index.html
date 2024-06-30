@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">metrica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,17 +100,17 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="2.0.4" id="metrica-204">metrica 2.0.4<a class="anchor" aria-label="anchor" href="#metrica-204"></a></h2>
+<h2 class="pkg-version" data-toc-text="2.1.0" id="metrica-210">metrica 2.1.0<a class="anchor" aria-label="anchor" href="#metrica-210"></a></h2>
 <p>Updates on this version:</p>
-<ol style="list-style-type: decimal"><li><p>Updating contact and ORCID of maintainer (Adrian Correndo) on DESCRIPTION file.</p></li>
+<ol style="list-style-type: decimal"><li><p>Updating contact and ORCID of maintainer (Adrian Correndo) on DESCRIPTION file. Fixed conflict of duplicated ORCID.</p></li>
 <li><p>fixing an issue found for Debian for Importing APSIM NewGeneration files that violated CRAN Policy’s.</p></li>
 <li><p>adding a new classification metric called P4, following Sitarz, M. (2023) <a href="doi:10.54364/AAIML.2023.1161" class="uri">doi:10.54364/AAIML.2023.1161</a>. <a href="https://github.com/adriancorrendo/metrica/issues/36" class="external-link uri">https://github.com/adriancorrendo/metrica/issues/36</a> Special thanks to Davide Chicco for suggesting this metric.</p></li>
 <li><p>fixing an error in the invF05 formula from the adjusted F-score metric (agf):</p></li>
 </ol><ul><li>InvF0.5=(5/4) * ((npv * spec)/( (0.5^2*npv) +spec )) <a href="https://github.com/adriancorrendo/metrica/issues/37" class="external-link uri">https://github.com/adriancorrendo/metrica/issues/37</a> Special thanks to Gilles Koumou for pointing out the error and helping to fix it!</li>
 </ul><ol start="5" style="list-style-type: decimal"><li><p>adding a new plot argument, shape_fill, indicating the shape fill for the data points on the ‘scatter_plot’ and ‘bland_altman_plot’ functions.</p></li>
-<li><p>replacing ‘size’ argument with ‘linewidth’ following ggplot2 updates.</p></li>
+<li><p>replacing ‘size’ argument with ‘linewidth’ within plot functions using wrappers of ggplot2.</p></li>
 <li><p>replacing deprecated ‘aes_string()’ within several plot functions with ‘aes()’ following latest ggplot2 updates.</p></li>
-</ol><div id="section-2-0-4" class="section level102">
+</ol><div id="section-2-1-0" class="section level102">
 <p class="heading"></p>
 <ul><li>PREVIOUS VERSIONS</li>
 </ul></div>
