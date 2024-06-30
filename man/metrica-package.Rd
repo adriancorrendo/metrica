@@ -21,7 +21,6 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Adrian A. Correndo \email{correndo@ksu.edu} (\href{https://orcid.org/0000-0002-4172-289X}{ORCID})
   \item Luiz H. Moro Rosso \email{lhmrosso@ksu.edu} (\href{https://orcid.org/0000-0002-8642-911X}{ORCID})
   \item Rai Schwalbert \email{rai.schwalbert@hotmail.com} (\href{https://orcid.org/0000-0001-8488-7507}{ORCID})
   \item Carlos Hernandez \email{carlosh92@ksu.edu} (\href{https://orcid.org/0000-0001-5171-2516}{ORCID})
