@@ -1,8 +1,8 @@
-# metrica 2.0.4
+# metrica 2.1.0
 
 Updates on this version:
 
-1) Updating contact and ORCID of maintainer (Adrian Correndo) on DESCRIPTION file.
+1) Updating contact and ORCID of maintainer (Adrian Correndo) on DESCRIPTION file. Fixed conflict of duplicated ORCID.
 
 2) fixing an issue found for Debian for Importing APSIM NewGeneration files that violated CRAN Policy's.
 
@@ -17,7 +17,7 @@ Special thanks to Gilles Koumou for pointing out the error and helping to fix it
 
 5) adding a new plot argument, shape_fill, indicating the shape fill for the data points on the 'scatter_plot' and 'bland_altman_plot' functions.
 
-6) replacing 'size' argument with 'linewidth' following ggplot2 updates.
+6) replacing 'size' argument with 'linewidth' within plot functions using wrappers of ggplot2.
 
 7) replacing deprecated 'aes_string()' within several plot functions with 'aes()' following latest ggplot2 updates.
 
